@@ -1,0 +1,254 @@
+<div class="row" style="width:99%">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <br>
+      <div class="container-fluid">
+        <div class="jumbotron" style="background-color: #0077B5;color: white; ">
+            <div class="row">
+                <div class="col-md-4">
+                        <div class="row">
+                        <div class="col-md-4">    
+                    <form class="form-inline" action="/action_page.php">
+                        <label for="email">First Name:</label>
+                        </form>
+                    </div>   
+                        <div class="col-md-6">    
+                    <form class="form-inline" action="/action_page.php">
+                        <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="name" [(ngModel)]="queryString" placeholder="Enter First Name" name="name" #firstName="ngModel">
+                        <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid" style="width:205px;">
+                   
+                            <div *ngIf=firstName.errors.pattern>first name should contain only alphabets </div>
+            
+                          </div>    
+                    </form>
+                    </div>
+        
+                    </div>
+                </div>
+      
+             <div class="col-md-4">
+                     <div class="row">
+                        <div class="col-md-4">    
+                            <form class="form-inline" action="/action_page.php">
+                            <label for="email">Last Name:</label>
+                             </form>
+                       </div>   
+            
+                     <div class="col-md-6">    
+                            <form class="form-inline" action="/action_page.php">
+                             <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="email" [(ngModel)]="lastName" placeholder="Enter Last Name" name="email" #LastNAMEE="ngModel">
+                             <div class="alert alert-danger" *ngIf="LastNAMEE.touched && !LastNAMEE.valid" style="width:205px;">
+                   
+                                <div *ngIf=LastNAMEE.errors.pattern>last name should contain only alphabets </div>
+                        
+                              </div> 
+                            </form>
+                    </div>
+      
+                    </div>
+                </div>
+      
+                <div class="col-md-4">
+                            <div class="row">
+                               <div class="col-md-4">    
+                                   <form class="form-inline" action="/action_page.php">
+                                   <label for="email">Room_Type:</label>
+                                    </form>
+                              </div>   
+                            
+                            <div class="col-md-6">    
+                                   <form class="form-inline" action="/action_page.php">
+                                    <select name="roomtypetemp" class="form-control" id="email" [(ngModel)]="roomtype" (ngModelChange)="onSelect(roomtype)">
+                                    <option *ngFor="let rooms of list" [ngValue]="rooms.type">{{rooms.type}}</option>    
+                                    </select>   
+                                    </form>
+                           </div>
+           
+                           </div>
+                       </div>
+                
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-4">
+                      <div class="row">
+                      <div class="col-md-4">    
+                  <form class="form-inline" action="/action_page.php">
+                      <label for="email">Room:</label>
+                      </form>
+                  </div>   
+                      <div class="col-md-6">    
+                  <form class="form-inline" action="/action_page.php">
+                      <input type="text" class="form-control" id="email" placeholder="Enter Room" name="email">
+                      </form>
+                  </div>
+      
+                  </div>
+              </div>
+      
+           <div class="col-md-4">
+                   <div class="row">
+                      <div class="col-md-4">    
+                          <form class="form-inline" action="/action_page.php">
+                          <label for="email">Room_Class:</label>
+                           </form>
+                     </div>   
+          
+                   <div class="col-md-6">    
+                          <form class="form-inline" action="/action_page.php">
+                           <input type="text" class="form-control" id="email" placeholder="Enter Room_Class" name="email"[(ngModel)]="roomclass">
+                           </form>
+                  </div>
+      
+                  </div>
+              </div>
+      
+              <div class="col-md-4">
+                      <div class="row">
+                      <div class="col-md-4"></div>
+                      <div class="col-md-6">
+                      <button class="btn btn-info" style="width: 100%">Search <i class="fa fa-search"></i></button>   
+                    </div>
+                   </div></div>
+          </div>     
+      </div>
+      
+      <br>
+      <div class="table-responsive">
+          <table class="table table-bordered " >
+        <thead>
+            <tr class="table table-primary"style="background-color: #0077B5;color:white; ">
+                <th> </th>
+                <th>Reservation_Id</th>
+                <th> Name</th>
+                <th> Q-Time</th>
+                <th> Queue</th>
+                <th> Queue_Date</th>
+                <th> Mobile_No</th>
+                <th> Room</th>
+                <th> Room_Type</th>
+                <th> Room_Class</th>
+                <th> FO_Status</th>
+                <th> Room_Status</th>
+            </tr>
+        </thead>
+        <tbody style="overflow-y: auto;height: 300px;position:relative;">
+      
+                <tr *ngFor="let checkin of search | filterdata: queryString :'pf_firstname'| filterdata: lastName : 'pf_firstname'| filterdata: roomtype : 'Room_Class'; let i = index"
+                (click)="selectMembersEdit(checkin,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                  <td>  {{i+1}}</td>     
+                  <td>  {{checkin.res_id}}</td>
+                  <td>  {{checkin.pf_firstname}}</td>     
+                  <td>  {{checkin.rm_qtime}}</td>     
+                  <td>  {{checkin.rm_queue}}</td>     
+                  <td>  {{checkin.rm_queue_date}}</td>     
+                  <td>  {{checkin.pf_mobileno}}</td>     
+                  <td>  {{checkin.res_room}}</td>     
+                  <td>  {{checkin?.rm_room_type}}</td>     
+                  <td>  {{checkin.rm_room_class}}</td>     
+                  <td>  {{checkin.rm_fo_status}}</td>     
+                  <td>  {{checkin.rm_room_status}}</td>                             
+               </tr>
+                    <tr>
+                  <td> <input type="checkbox"></td>      
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>
+                   <td></td>     
+                   <td></td>     
+                   <td></td>                        
+                </tr>
+                    <tr>
+                  <td> <input type="checkbox"></td>      
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>
+                   <td></td>     
+                   <td></td>     
+                   <td></td>                        
+                </tr>
+                    <tr>
+                   <td> <input type="checkbox"></td>          
+                   <td></td>     
+                   <td></td> 
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>
+                   <td></td>     
+                   <td></td>     
+                   <td></td>                             
+                </tr>
+                    <tr>
+                  <td> <input type="checkbox"></td>      
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>     
+                   <td></td>
+                   <td></td>     
+                   <td></td>     
+                   <td></td>                        
+                </tr>                                                            
+        </tbody>
+      </table>
+      </div>
+      <br>
+      
+      <div>
+        <button class="btn btn-info" style="width:10%; margin-left:7%;"(click)="checkinProfile()" data-toggle="modal" data-target="#Checkin"> Check In <i class="fa fa-sign-in"></i></button>    
+        <button class="btn btn-default disabled"style="width:10%">Priority <i class="fa fa-square"></i> </button>    
+        <button class="btn btn-warning" style="width:14%" routerLink="/reservation">Resv <i class="fa fa-tasks"></i></button>   
+        <button class="btn btn-default disabled" style="width:10%">Details <i class="fa fa-credit-card"></i></button>   
+        <button class="btn btn-info" style="width:10%"> Statistics <i class="fa fa-user"></i></button>   
+        <button class="btn btn-primary" style="width:10%"> Report <i class="fa fa-caret-square-o-down"></i></button>     
+        <button class="btn btn-danger" style="width:10%"> Close <i class="fa fa-close"></i></button>   
+        </div>
+      
+      
+      </div>
+      </div>
+      
+      
+      <!---managing the queue-->
+
+              <!-- Checkin modal -->
+      
+              <div class="modal fade" id="Checkin" role="dialog" >
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content" style="width:150%;">
+                        <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Checkin Status</h4>
+                              </div>
+                        <div class="modal-body">  
+                            <div>    
+                        <p align="center"><b> {{status}} </b></p>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                      
+                   <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+                    </div>
+                  </div>
+                  
+                </div>
+            </div>
+          <!-- Checkin end -->

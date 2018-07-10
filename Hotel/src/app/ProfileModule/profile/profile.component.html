@@ -1,0 +1,338 @@
+    <!---Alert response-->
+
+	<div class="modal fade" id="myModal1" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			 <h4>Connect 24/7 Hotel</h4>
+			</div>
+			<div class="modal-body">
+			<b align="center">{{profile}}</b>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	
+		 <div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-10">
+				
+					<div class="container-fluid" style="padding-top:50px;">
+				
+						<ul class="nav nav-tabs">
+						  <li><a data-toggle="tab" routerLink="/individualprofile">Individual Profile</a></li>
+						  <li class="active"><a data-toggle="tab" >Company Profile</a></li>
+						  
+						</ul>
+					 
+				  </div><br>
+				  <div class="container">
+						<ul class="nav nav-tabs">
+							<li class="active" data-toggle="tab"><a>More Fields</a></li>
+							<li><a>Stats & Info</a></li>
+							<li><a>Contact</a></li>
+							<!-- <li><a>Search</a></li> -->
+							
+						  </ul>
+					  </div><br>
+	
+	<div class="container">
+	
+	<div class="row">
+	
+	<div class="col-lg-6">
+	<div class="panel panel-primary">
+	<div class="panel-heading"><b>Address Information</b></div>
+	<div class="panel-body">
+	<div class="row">
+	<div class="col-lg-3">
+	  <b>Account</b>
+	</div>
+		<div class="col-lg-3">
+		<div class="input-group">
+			<input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Account"></div>
+			<div class="input-group" style="padding-top:5px;">
+			<input type="text" id="email" class="form-control" style="width:250px;"></div>
+			<div class="input-group" style="padding-top:5px;">
+			<input type="text" id="email" class="form-control" style="width:250px;"></div>
+	  </div>
+	</div><br>
+	
+	<div class="row">
+	<div class="col-lg-3">
+	<b>Address</b>
+	</div>
+	
+	<div class="col-lg-3">
+	<div class="input-group">
+			<input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Company_Address"></div>
+	</div>
+	
+	</div>
+	
+	<div class="row" style="padding-top:5px;">
+	<div class="col-lg-3">
+	<b>Bussiness Address</b>
+	</div>
+	
+	<div class="col-lg-3">
+	<div class="input-group">
+			<input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Business_Address"></div>
+	</div>
+	
+	</div>
+	
+	<div class="row">
+	<div class="col-lg-3">
+	
+	</div>
+	
+	<div class="col-lg-3">
+	<div class="input-group">
+			<input type="text" id="email" class="form-control" style="width:250px;"></div>
+	</div>
+	
+	</div>
+	
+	<div class="row" style="padding-top:5px;">
+	<div class="col-lg-3">
+	
+	</div>
+	
+	<div class="col-lg-3">
+	<div class="input-group">
+			<input type="text" id="email" class="form-control" style="width:250px;"></div>
+	</div>
+	
+	</div>
+	
+	<div class="row" style="padding-top:5px;">
+	<div class="col-lg-3">
+	<b>City</b>
+	</div>
+	
+	<div class="col-lg-3">
+	<div class="input-group">
+			<input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_City"></div>
+	</div>
+	
+	</div>
+	
+	<div class="row" style="padding-top:5px;">
+	<div class="col-lg-3">
+	<b>Postal Code</b>
+	</div>
+	
+		<div class="col-lg-3">
+		<div class="input-group">
+	
+	  <input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Postalcode">
+			
+			
+			  </div>
+	</div>
+	</div>
+	
+	<div class="row" style="padding-top:5px;">
+	<div class="col-lg-3">
+	<b>Country/State</b>
+	</div>
+	
+	<div class="col-lg-3">
+	<table>
+	<tr>
+	<td>	<select  required style="height:34px;width:122px;" [(ngModel)]="user.PF_Company_Country">
+	<option *ngFor="let companyprofile of country1" [ngValue] = "companyprofile.country">{{companyprofile.country}} </option></select></td>
+	
+	<td style="padding-left:5px;"><select  required style="height:34px;width:122px;" [(ngModel)]="user.PF_Company_State">
+	<option *ngFor="let companystate of state1" [ngValue] = "companystate.state">{{companystate.state}} </option></select></td>
+	</tr>
+	</table>
+	</div>
+	</div>
+	
+	
+	
+	
+	</div>
+	</div>
+	</div>
+	
+	<div class="col-lg-6">
+	<div class="panel panel-primary" style="height:480px;">
+	<div class="panel-heading"><b>Internal Information</b></div>
+	<div class="panel-body">
+	<div class="row">
+	<div class="col-lg-3">
+	<b>Owner</b>
+	</div>
+	<div class="col-lg-3">
+	
+	<select  required style="height:34px;width:250px;" [(ngModel)]="user.PF_Owner">
+	<option value = "select1"> </option>
+	<option value = "All">All</option>
+	<option value = "New Delhi">New Delhi</option>
+	<option value = "Bangalore">Bangalore</option>
+	</select>
+	</div>
+	</div>
+	<div class="row" style="padding-top:5px;">
+	<div class="col-lg-3">
+	<b>Territory</b>
+	</div>
+	
+	<div class="col-lg-3">
+	<div class="input-group">
+			<input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Territory"></div>
+	</div>
+	</div>
+	
+	<div class="row" style="padding-top:5px;">
+	<div class="col-lg-3">
+	<b>Type</b>
+	</div>
+	<div class="col-lg-3">
+	
+		<select  required style="height:34px;width:250px;"  [(ngModel)]="user.PF_Type">
+			<option *ngFor="let companyprofiletype1 of type" [ngValue] = "companyprofiletype1.profiletype">{{companyprofiletype1.profiletype}} </option>
+		 </select>
+	   </div>
+	</div>
+	
+	
+		<div class="row" style="padding-top:5px;">
+	<div class="col-lg-3">
+	<b>Ref. Currency</b>
+	</div>
+	<div class="col-lg-3">
+	
+	<select  required style="height:34px;width:250px;" [(ngModel)]="user.PF_Ref_Currency">
+		<option *ngFor="let individualcurrency of currency" [ngValue] = "individualcurrency.currency">{{individualcurrency.currency}} </option></select>
+	</div>
+	</div>
+	
+	
+		<div class="row" style="padding-top:5px;">
+	<div class="col-lg-3">
+	<b>A/R No.</b>
+	</div>
+	
+	<div class="col-lg-3">
+	<div class="input-group">
+			<input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_AR_Number"></div>
+	</div>
+	</div>
+	
+	<div class="row" style="padding-top:5px;">
+	<div class="col-lg-3">
+	<b>Active</b>
+	</div>
+	
+	<div class="col-lg-3">
+	<div class="input-group">
+			<input type="checkbox"  class="form-control" style="width:20px;height:20px;"></div>
+	</div>
+	</div>
+	
+	<div class="row" style="padding-left:15px;padding-top:5px;">
+	<b>Communications</b>
+	</div>
+	
+	<div class="row" style="padding-top:5px;">
+		<table>
+		<tr>
+		<td style="padding-left:10px;">
+		<select  required style="height:34px;width:100px;" [(ngModel)]="user.PF_Company_Commtype1">
+			<option *ngFor="let individualcommunication of comm1" [ngValue] = "individualcommunication.commtype">{{individualcommunication.commtype}} </option>
+	</select>
+		</td>
+		<td style="padding-left:5px;">
+		<select  required style="height:34px;width:100px;" [(ngModel)]="user.PF_Company_Commtype2">
+			<option *ngFor="let individualcommunication1 of comm2" [ngValue] = "individualcommunication1.commtype">{{individualcommunication1.commtype}} </option> 
+	</select>
+		</td>
+		<td style="padding-left:5px;">
+		<select  required style="height:34px;width:100px;" [(ngModel)]="user.PF_Company_Commtype3">
+			<option *ngFor="let individualcommunication2 of comm3" [ngValue] = "individualcommunication2.commtype">{{individualcommunication2.commtype}} </option></select>
+		</td>
+		</tr>
+		</table>
+		
+	</div>
+	
+	<div class="row" style="padding-top:5px;">
+	<table>
+	<tr>
+	<td style="padding-left:10px;"><div class="input-group">
+			<input type="text" class="form-control" style="width:100px;" [(ngModel)]="user.PF_Company_Communication1"></div></td>
+	
+	<td style="padding-left:5px;"><div class="input-group">
+			<input type="text" class="form-control" style="width:100px;" [(ngModel)]="user.PF_Company_Communication2"></div></td>
+	
+	<td style="padding-left:5px;"><div class="input-group">
+			<input type="text" class="form-control" style="width:100px;" [(ngModel)]="user.PF_Company_Communication3"></div></td>
+			</tr>
+	</table>
+	</div>
+	
+	
+	
+	
+	</div>
+	
+	</div>
+	
+	
+	</div>
+	</div>
+	</div>
+	
+	
+	
+	<div class="container">
+	
+	
+	<div class="row">
+	<div class="col-lg-3"></div>
+	
+	<div class="col-lg-2">
+	<button type="button" class="btn btn-info" (click)="submit(user)" style="width:160px;" data-toggle="modal" data-target="#myModal1"><b>Ok</b></button>
+	</div>
+	<div class="col-lg-2">
+	<button type="button" class="btn btn-primary" style="width:160px;"><b>New</b></button>
+	</div>
+	<div class="col-lg-2">
+	<button type="button" class="btn btn-success" (click)="updateCompanyProfile()" style="width:160px;"><b>Save</b></button>
+	</div>
+	<div class="col-lg-3"></div>
+	
+	<!-- <div class="col-lg-2">
+	<button type="button" class="btn btn-default" style="width:160px;"><b>Options</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+	</div> -->
+	<!-- <div class="col-lg-2">
+	<button type="button" class="btn btn-danger" style="width:160px;"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+	</div> -->
+	
+	<!-- <div class="col-lg-2">
+	<button type="button" class="btn btn-danger" (click)="deleteCompanyProfile()" style="width:160px;"><b>Delete</b><span class="glyphicon glyphicon-trash" style="padding-left:5px;"></span></button>
+	</div> -->
+	
+	</div>
+	
+	
+	</div>
+	
+	
+	</div>
+	</div>
+	
+	
+	
+	

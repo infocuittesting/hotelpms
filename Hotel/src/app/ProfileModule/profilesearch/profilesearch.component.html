@@ -1,0 +1,210 @@
+
+ <div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-10">
+ <div class="container" style="padding-top:50px;">
+ <div class="jumbotron" style="padding-top:10px;background-color:#0077B5;color:white;padding-bottom:20px;">
+  <!-- <form #f="ngForm">    -->
+     <div class="row">
+
+     <div class="col-sm-4">
+        <b>First Name</b> <div class="input-group">
+             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+             <input type="text" [(ngModel)]="queryString" class="form-control" name="queryString"></div>
+     </div>
+
+     <div class="col-sm-4">
+
+         <b>Last Name</b> <div class="input-group">
+             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+             <input type="text" [(ngModel)]="lastname" class="form-control" name="lastname"></div>
+     </div>
+   
+     <div class="col-sm-4">
+           <b>Mobile No</b> <div class="input-group">
+             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
+             <input type="text" class="form-control" [(ngModel)]="mobile"></div>
+
+         </div>
+   
+
+       </div>
+
+   
+   
+   <div class="row" style="padding-top:10px;">
+   
+   <div class="col-lg-4">
+    <b>City</b> <div class="input-group">
+             
+             <table>
+               <tr>
+             <td><input type="text" [(ngModel)]="city" class="form-control"  name="city" style="width:320px;"></td>
+       </tr>
+       </table>
+       </div>
+     </div>
+
+     <div class="col-lg-4">
+         <b>Postal Code</b> <div class="input-group">
+                  
+                  <table>
+                    <tr>
+                  <td><input type="text" [(ngModel)]="postal" class="form-control"  class="form-control" style="width:320px;"></td>
+            </tr>
+            </table>
+            </div>
+          </div>
+   
+   <div class="col-lg-4" style="padding-top:20px;">
+     <b>View By</b>
+     <select [(ngModel)]="pftypeselection" (ngModelChange)="onSelect(pftypeselection)" style="width:150px;height:35px;color:black;"> 
+      <option *ngFor="let option of options" 
+              [ngValue]="option.profiletype"> 
+              {{option.profiletype}}
+      </option>
+ </select>
+      
+   </div>
+   
+</div>
+
+
+
+<div class="row" style="padding-top:20px;">
+
+<div class="col-lg-3">
+ 
+<input type="checkbox"><b style="padding-left:5px;">Neg.Rates</b>
+</div>
+
+<div class="col-lg-3">
+ 
+   <input type="checkbox"><b style="padding-left:5px;">Show Inactive</b>
+ </div>
+         
+     <div class="col-lg-2">
+   <!-- <button type="button" class="btn btn-warning" routerLink="/stables"><b>Search</b><span class="glyphicon glyphicon-search" style="padding-left:5px;"></span></button> -->
+</div>
+
+ <div class="col-lg-2">
+<button type="button" class="btn btn-success" (click)="clear()"><b>Clear</b></button>
+</div> 
+</div>
+  <!-- </form>  -->
+ </div>
+
+ </div>
+
+
+
+ <div class="container">
+      <div class="scrollable2">
+   <table class="table table-bordered table-hover">
+     <thead style="background-color:#0077B5;color:white;">
+       <tr>
+          <th>No</th>
+          <th>Id</th>
+          <th>F.Name</th>
+          <th>L.Name</th>
+          <th>Lang.</th>
+          <th>Title</th>
+          <th>MobileNo.</th>
+          <th>Address</th>
+          <th>HomeAddress</th>
+          <th>City</th>
+          <th>P.Code</th>
+          <th>Country</th>
+          <th>State</th>
+          <th>VIP</th>
+          <th>Nationality</th>
+          <th>D.O.B</th>
+          <th>Pwd</th>
+          <th>P.Type</th>
+          <th>Comm.Type1</th>
+          <th>Comm.Type2</th>
+          <th>Comm.Type3</th>
+          <th>Owner</th>
+          <th>Territory</th>
+          <th>A/R.Number</th>
+          <th>Currency</th>
+          <th>Account</th>
+        
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let profilesearch of profile1| filterdata: queryString :'pf_firstname' | filterdata: lastname :'pf_lastname' | filterdata: city :'pf_city'
+      | filterdata: postal :'pf_postalcode' |  filterdata: mobile :'pf_mobileno'; let i = index " 
+      (click)="selectMembersEdit(profilesearch,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+       <td>{{i+1}}</td>
+       <td>{{profilesearch?.pf_id}}</td>
+       <td>{{profilesearch?.pf_firstname}}</td>
+       <td>{{profilesearch?.pf_lastname}}</td>
+       <td>{{profilesearch?.pf_language}}</td>
+       <td>{{profilesearch?.pf_title}}</td>
+       <td>{{profilesearch?.pf_mobileno}}</td>
+       <td>{{profilesearch?.pf_company_address}}</td>
+       <td>{{profilesearch?.pf_business_address}}</td>
+       <td>{{profilesearch?.pf_city}}</td>
+       <td>{{profilesearch?.pf_postalcode}}</td>
+       <td>{{profilesearch?.pf_company_country}}</td>
+       <td>{{profilesearch?.pf_company_state}}</td>
+       <td>{{profilesearch?.pf_individual_vip}}</td>
+       <td>{{profilesearch?.pf_nationality}}</td>
+       <td>{{profilesearch?.pf_date_of_birth}}</td>
+       <td>{{profilesearch?.pf_passport}}</td>
+       <td>{{profilesearch?.pf_type}}</td>
+       <td>{{profilesearch?.pf_individual_commtype1}}</td>
+       <td>{{profilesearch?.pf_individual_commtype2}}</td>
+       <td>{{profilesearch?.pf_individual_commtype3}}</td>
+       <td>{{profilesearch?.pf_owner}}</td>
+       <td>{{profilesearch?.pf_territory}}</td>
+       <td>{{profilesearch?.pf_ar_number}}</td>
+       <td>{{profilesearch?.pf_ref_currency}}</td>
+       <td>{{profilesearch?.pf_account}}</td>
+        </tr>
+       
+     </tbody>
+   </table>
+ </div>
+</div>    <br> 
+ <div class="container">
+  <div class="row">
+    <!-- <div class="col-lg-1"></div> -->
+<div class="col-lg-2">
+ <button type="button" class="btn btn-warning" style="width:160px;"><b>Enrollment</b></button>
+ <!-- <button type="button" class="btn btn-success" (click)="clearSearch()"><b>Clear</b></button> -->
+</div>
+
+<div class="col-lg-2">
+ <button type="button" class="btn btn-success" routerLink="/reservation" style="width:160px;"><b>Resv.</b></button>
+</div>
+
+<div class="col-lg-2">
+ <button type="button" class="btn btn-primary" routerLink="/individualprofile" style="width:160px;"><b>New</b></button>
+</div>
+
+<div class="col-lg-2">
+ <button type="button" class="btn btn-default" routerLink="/modal-basic" style="width:160px;"><b>Options</b></button>
+</div>
+
+<div class="col-lg-2">
+  <button type="button" class="btn btn-success" style="width:160px;"routerLink="/reservation"><b>Ok</b></button>
+</div>
+
+<div class="col-lg-2">
+    <button type="button" class="btn btn-success" routerLink="/modal-basic" style="width:160px;"><b>Edit</b></button>
+   </div>
+   
+
+<!-- <div class="col-lg-2">
+ <button type="button" class="btn btn-danger" style="width:160px;"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+</div> -->
+
+
+
+  </div>
+ 
+ </div>
+</div>
+</div>

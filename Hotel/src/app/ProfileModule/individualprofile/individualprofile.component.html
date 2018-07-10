@@ -1,0 +1,558 @@
+<!---Alert response-->
+
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4>Connect 24/7 Hotel</h4>
+      </div>
+      <div class="modal-body">
+      <b align="center">{{individual}}</b>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+
+<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-10">
+
+    <div class="container" style="padding-top:50px;">
+
+        <ul class="nav nav-tabs">
+          <li class="active" data-toggle="tab"><a>Individual Profile</a></li>
+          <li><a data-toggle="tab" routerLink="/profile">Company Profile</a></li>
+          
+        </ul>
+     
+  </div><br>
+
+<div class="container">
+    <ul class="nav nav-tabs">
+        <li class="active" data-toggle="tab"><a>More Fields</a></li>
+        <li><a>Stats & Info</a></li>
+        <li><a>Contact</a></li>
+       
+        
+      </ul>
+  </div><br>
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-6">
+
+          <div class="panel panel-primary">
+              <div class="panel-heading"><b>Address Information</b></div>
+              <div class="panel-body">
+                 
+                  <div class="row">
+                      <div class="col-lg-3">
+                        <b>First Name</b>
+                      </div>
+                        <div class="col-lg-3">
+                            <div class="input-group">
+                                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+                                <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:210px;" [(ngModel)]="user.PF_Firstname" #firstName="ngModel" required>
+                              </div>
+                                <div class="alert alert-danger alert-dismissible fade in" *ngIf="firstName.touched && !firstName.valid" style="width:250px;">
+                                  <div *ngIf=firstName.errors.required>first name required</div>
+                                  <div *ngIf=firstName.errors.pattern>first name doesn't match the pattern </div>
+
+                                </div>
+                              
+                        </div>
+                      </div>
+
+                      <div class="row" style="padding-top:5px;">
+                          <div class="col-lg-3">
+                            <b>Last Name</b>
+                          </div>
+                          <div class="col-lg-3">
+                            <div class="input-group">
+                                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+                                <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:210px;" [(ngModel)]="user.PF_Lastname" #lastName="ngModel">
+                            </div>
+                                <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid" style="width:250px;">
+                                  <div *ngIf=lastName.errors.pattern>Last name doesn't match the pattern </div>
+                                </div>
+                              
+                          </div>
+                              
+                      </div>
+
+                          <div class="row" style="padding-top:5px;">
+                              <div class="col-lg-3">
+                                <b>Language/Title</b>
+                              </div>
+                                <div class="col-lg-3">
+                                <div class="input-group">
+                                  <table>
+                                    <tr>
+                                        <td><input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:122px;" [(ngModel)]="user.PF_Language" #Language="ngModel"></td>
+                                        <td style="padding-left:5px;"><input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:122px;" [(ngModel)]="user.PF_Title" #Title="ngModel"></td>
+                                      </tr>
+                                      </table>
+                                      </div>
+                                      <div class="alert alert-danger" *ngIf="Language.touched && !Language.valid" style="width:250px;">
+                                        <div *ngIf=Language.errors.pattern>Language should contains only alphabets </div>
+                                      </div>
+                                      <div class="alert alert-danger" *ngIf="Title.touched && !Title.valid" style="width:250px;">
+                                        <div *ngIf=Title.errors.pattern>Title must contains only alphabet </div>
+                                      </div>
+                                </div>
+                              </div>
+
+                              <div class="row" style="padding-top:5px;">
+                                  <div class="col-lg-3">
+                                    <b>Mobile No.</b>
+                                  </div>
+                                    <div class="col-lg-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+                                            <input type="tel" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:210px;" [(ngModel)]="user.PF_Mobileno" #phone="ngModel">
+                                        </div>
+                                    
+                                    <div class="alert alert-danger" *ngIf="phone.touched && !phone.valid" style="width:250px;">       
+                                      <div *ngIf=phone.errors.pattern>mobile number should contain only numbers</div>
+                                   </div>
+                                  </div>
+                                </div>
+
+
+                                  <div class="row" style="padding-top:5px;">
+
+                                      <div class="col-lg-3">
+                                        <b>Date of Birth</b>
+                  
+                                      </div>
+                  
+                                      <div class="col-lg-3">
+                  
+                                          <div class="input-group">
+                                              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                                              <input type="date" class="form-control" style="width:210px;" [(ngModel)]="user.PF_Date_Of_Birth"></div>
+                                      </div>
+                  
+                  
+                                    </div>
+
+
+                          <div class="row" style="padding-top:5px;">
+                              <div class="col-lg-3">
+                                <b>Address</b>
+                              </div>
+                                <div class="col-lg-3">
+                                <div class="input-group">
+                                        <input type="text" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Individual_Address" ></div>
+                                </div>
+                              </div>
+
+                              <div class="row" style="padding-top:5px;">
+                                  <div class="col-lg-3">
+                                    <b>Home Address</b>
+                                  </div>
+                                    <div class="col-lg-3">
+                                    <div class="input-group">                                          
+                                            <textarea rows="4" cols="39"  [(ngModel)]="user.PF_Home_Address" #address=ngModel required></textarea>
+                                    </div>
+
+                                    <div class="alert alert-danger" *ngIf="address.touched && !address.valid" style="width:295px;">       
+                                      <div *ngIf=address.errors.required>home address is required</div>
+                                   </div>
+
+                                  </div>
+                              </div>
+
+
+                                                                            
+                                  <div class="row" style="padding-top:5px;">
+                                      <div class="col-lg-3">
+                                        <b>City</b>
+                                      </div>
+                                        <div class="col-lg-3">
+                                        <div class="input-group">
+                                                <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Individual_City" #city="ngModel"   >
+                                        </div>
+                                        <div class="alert alert-danger" *ngIf="city.touched && !city.valid" style="width:250px;">       
+                                          <div *ngIf=city.errors.pattern>city name should contains only alphabets</div>
+                                        </div>
+                                        </div>
+                                  </div>  
+                                      
+                                      
+                                      <div class="row" style="padding-top:5px;">
+                                          <div class="col-lg-3">
+                                            <b>Postalcode</b>
+                                          </div>
+                                            <div class="col-lg-3">
+                                            <div class="input-group">
+                                              
+                                                    <input type="text" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Postalcode" #postal="ngModel">
+                                            </div>
+                                            <div class="alert alert-danger" *ngIf="postal.touched && !postal.valid" style="width:250px;">       
+                                              <div *ngIf=postal.errors.pattern>postal code should contain only numbers</div>
+                                            </div>
+                                          </div>
+                                      </div>
+
+
+                                          <div class="row" style="padding-top:5px;">
+                                              <div class="col-lg-3">
+                                              <b>Country/State</b>
+                                              </div>
+                                              
+                                              <div class="col-lg-3">
+                                              <table>
+                                              <tr>
+                                            <td>	<select  required style="height:34px;width:122px;" [(ngModel)]="user.PF_Individual_Country">
+                                            <option *ngFor="let individualprofile of country" [ngValue] = "individualprofile.country">{{individualprofile.country}} </option>
+   
+                                            </select></td>
+                                            
+                                            <td style="padding-left:5px;"><select  required style="height:34px;width:122px;" [(ngModel)]="user.PF_Individual_State">
+                                              <option *ngFor="let individual of statelist" [ngValue] = "individual.state">{{individual.state}} </option>
+                                            </select></td>
+                                            </tr>
+                                            </table>
+                                              </div>
+                                              </div>
+
+          
+
+              </div>
+            </div>
+          
+
+      </div>
+
+      <div class="col-lg-6">
+
+          <div class="panel panel-primary" style="height:508px;">
+              <div class="panel-heading"><b>Internal Information</b></div>
+              <div class="panel-body">
+                  <div class="row">
+                      <div class="col-lg-3">
+                        <b>Salutation</b>
+                      </div>
+                        <div class="col-lg-3">
+                        <div class="input-group">
+                                <input type="text" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Salutation" ></div>
+                        </div>
+                      </div>
+
+
+                      <div class="row" style="padding-top:5px;">
+                          <div class="col-lg-3">
+                            <b>Passport</b>
+                          </div>
+                            <div class="col-lg-3">
+                            <div class="input-group">
+                                    <input type="text" pattern="^(0|[1-9][0-9]*)$"  class="form-control" style="width:250px;" [(ngModel)]="user.PF_Passport" #passport="ngModel">
+                            </div>
+                            
+                            <div class="alert alert-danger" *ngIf="passport.touched && !passport.valid" style="width:250px;">       
+                              <div *ngIf=passport.errors.pattern>passport number should contain only numbers</div>
+                           </div>
+                          </div>
+                      </div>
+
+
+               
+
+
+                  <div class="row" style="padding-top:5px;">
+                      <div class="col-lg-3">
+                        <b>PF Type</b>
+                      </div>
+                        <div class="col-lg-3">
+                        <div class="input-group">
+                                <input type="text" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Type" #pf="ngModel" required>
+                        </div>  
+                        <div class="alert alert-danger" *ngIf="pf.touched && !pf.valid" style="width:250px;">       
+                          <div *ngIf=pf.errors.required>Pf type is required</div>
+                       </div>                         
+                        </div>
+                      </div>
+
+
+
+                      <div class="row" style="padding-top:5px;">
+                          <div class="col-lg-3">
+                          <b>VIP</b>
+                          </div>
+                          
+                          <div class="col-lg-3">
+                        	<select  required style="height:34px;width:250px;"  [(ngModel)]="user.PF_Individual_VIP">
+                            <option *ngFor="let individualvip of viplist" [ngValue] = "individualvip.vipguest">{{individualvip.vipguest}} </option>
+                         </select>
+                       </div>
+
+                          </div>
+                          <div class="row" style="padding-top:5px;">
+                              <div class="col-lg-3">
+                              <b>Nationality</b>
+                              </div>
+                              
+                              <div class="col-lg-3">
+                              <select  required style="height:34px;width:250px;" [(ngModel)]="user.PF_Nationality">
+                           <option *ngFor="let individualnationality of nationality" [ngValue] = "individualnationality.nationality">{{individualnationality.nationality}} </option>
+                           
+                            </select>
+                            
+                            
+                              </div>
+                              </div>
+
+
+                              <div class="row" style="padding-top:5px;">
+                                  <div class="col-lg-3">
+                                  <b>Ref.Currency</b>
+                                  </div>
+                                  
+                                  <div class="col-lg-3">
+                                  <select  required style="height:34px;width:250px;">
+                                    <option *ngFor="let individualcurrency of currency" [ngValue] = "individualcurrency.currency">{{individualcurrency.currency}} </option>
+                               
+                                </select>
+                                
+                                
+                                  </div>
+                                  </div>
+
+
+                                  <div class="row" style="padding-top:5px;">
+                                      <div class="col-lg-3">
+                                        <b>Notes</b>
+                                      </div>
+                                        <div class="col-lg-3">
+                                        <div class="input-group">
+                                                <input type="text" class="form-control" style="width:250px;" ></div>
+                                        </div>
+                                      </div>
+
+
+                                      <div class="row" style="padding-top:15px;">
+                                      <div class="col-lg-2">
+
+                                        <table>
+
+                                          <tr>
+
+                                            <td><b>Active</b></td>
+                                         <td style="padding-left:5px;"><input type="checkbox" style="width:20px;height:20px;"></td>
+
+                                          </tr>
+                                        </table>
+
+                                      </div>
+
+                                      <div class="col-lg-2">
+
+                                          <table>
+
+                                              <tr>
+    
+                                                <td><b>Contact</b></td>
+                                             <td style="padding-left:5px;"><input type="checkbox" style="width:20px;height:20px;"></td>
+    
+                                              </tr>
+                                            </table>
+                                        
+                                        </div>
+
+                                        <div class="col-lg-2">
+
+                                            <table>
+
+                                                <tr>
+      
+                                                  <td><b>History</b></td>
+                                               <td style="padding-left:5px;"><input type="checkbox" style="width:20px;height:20px;"></td>
+      
+                                                </tr>
+                                              </table>
+                                        
+                                          </div>
+                                        
+                                      </div>
+
+
+                                      <div class="row" style="padding-left:15px;padding-top:5px;">
+                                          <b>Communications</b>
+                                          </div>
+                                          <div class="row" style="padding-top:5px;">
+                                              <table>
+                                              <tr>
+                                              <td style="padding-left:10px;">
+                                              <select  required style="height:34px;width:100px;" [(ngModel)]="user.PF_Individual_Communication1">
+                                                <option *ngFor="let individualcommunication of comm1" [ngValue] = "individualcommunication.commtype">{{individualcommunication.commtype}} </option>
+                                          </select>
+                                              </td>
+                                              <td style="padding-left:5px;">
+                                              <select  required style="height:34px;width:100px;" [(ngModel)]="user.PF_Individual_Communication2">
+                                                <option *ngFor="let individualcommunication1 of comm2" [ngValue] = "individualcommunication1.commtype">{{individualcommunication1.commtype}} </option> 
+                                          </select>
+                                              </td>
+                                              <td style="padding-left:5px;">
+                                              <select  required style="height:34px;width:100px;" [(ngModel)]="user.PF_Individual_Communication3">
+                                                <option *ngFor="let individualcommunication2 of comm3" [ngValue] = "individualcommunication2.commtype">{{individualcommunication2.commtype}} </option>  </select>
+                                              </td>
+                                              </tr>
+                                              </table>
+                                              
+                                          </div>    
+                                          
+                                          <div class="row" style="padding-top:5px;">
+                                              <table>
+                                              <tr>
+                                              <td style="padding-left:10px;"><div class="input-group">
+                                                          <input type="text" class="form-control" style="width:100px;" [(ngModel)]="user.PF_Individual_Commtype1"></div></td>
+                                              
+                                                <td style="padding-left:5px;"><div class="input-group">
+                                                          <input type="text" class="form-control" style="width:100px;" [(ngModel)]="user.PF_Individual_Commtype2"></div></td>
+                                                
+                                                <td style="padding-left:5px;"><div class="input-group">
+                                                          <input type="text" class="form-control" style="width:100px;" [(ngModel)]="user.PF_Individual_Commtype3"></div></td>
+                                                    </tr>
+                                              </table>
+                                              </div>
+    
+
+              </div>
+            </div>
+        </div>
+
+    </div>
+
+
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-6">
+
+          <div class="panel panel-primary">
+              <div class="panel-body">
+                  <div class="row">
+                      <div class="col-lg-3">
+                        <b>Search Name</b>
+                      </div>
+                        <div class="col-lg-3">
+                        <div class="input-group">
+                                <input type="text" class="form-control" style="width:250px;" ></div>
+                        </div>
+                      </div>
+
+                      <div class="row" style="padding-top:5px;">
+                          <div class="col-lg-3">
+                            <b>First</b>
+                          </div>
+                            <div class="col-lg-3">
+                            <div class="input-group">
+                                    <input type="text" class="form-control" style="width:250px;" ></div>
+                            </div>
+                          </div>
+
+
+                          <div class="row" style="padding-top:5px;">
+                              <div class="col-lg-3">
+                                <b>Name</b>
+                              </div>
+                                <div class="col-lg-3">
+                                <div class="input-group">
+                                       <textarea rows="3" cols="38"></textarea></div>
+                                </div>
+                              </div>
+              </div>
+            </div>
+      </div>
+
+      <div class="col-lg-6">
+
+          <div class="panel panel-primary">
+              <div class="panel-body">
+                  <form class="form-inline">
+                      <div class="form-group">
+                        <label for="rate">Rate Code</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="room">Last Room</label>
+                        <input type="text" class="form-control">
+                      </div>
+                     </form>
+                     <form class="form-inline">
+                      <div class="form-group">
+                        <label for="ar/no." style="padding-right:22px;">A/R No.</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="rate" style="padding-left:12px;">Last Rate</label>
+                        <input type="text" class="form-control">
+                      </div>
+                     </form>
+                     <form class="form-inline">
+                      <div class="form-group">
+                        <label for="visit" style="padding-right:12px;">Last Visit</label>
+                        <input type="text" class="form-control">
+                      </div>
+                      
+                     </form>
+              
+
+             
+     </div>
+</div>
+
+
+    </div>
+  </div>
+
+  
+
+   <div class="container">
+      <div class="row">
+
+        <div class="col-lg-2"></div>
+
+         
+
+          <div class="col-lg-2">
+              <button type="button" class="btn btn-success" style="width:160px;" (click)="submit(user)" data-toggle="modal" data-target="#myModal" [disabled]="(!firstName.valid && !firstName.untouched ) || (!address.valid && !address.untouched) || (!pf.valid && !pf.untouched)"><b>Ok</b></button>
+ </div>
+          
+          <div class="col-lg-2">
+          <button type="button" class="btn btn-warning" style="width:160px;"  [disabled]="(!firstName.valid && !firstName.untouched ) || (!address.valid && !address.untouched) || (!address.valid && !address.untouched) || (!pf.valid && !pf.untouched)"><b>Save</b></button>
+          </div>
+
+         
+          <div class="col-lg-2">
+          <button type="button" class="btn btn-primary" style="width:160px;"><b>New</b></button>
+          </div>
+          
+          <div class="col-lg-2">
+              <button type="button" class="btn btn-primary" style="width:160px;"><b>Reset</b></button>
+              </div>
+          
+          <div class="col-lg-2"></div>
+          
+          
+          </div>
+   </div>
+  </div>
+</div>
+

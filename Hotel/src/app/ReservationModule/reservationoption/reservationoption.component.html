@@ -1,0 +1,2242 @@
+
+     <!-- Alert start-->
+     <div class="modal fade" id="alert" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"> Alert</h4>
+          </div>
+          <div class="modal-body">
+            <div class="panel panel-primary" style="width:90%;margin-left: 5%; height: 280px;">
+              <!-- <div class="panel-heading"><b></b> <span class="glyphicon glyphicon-remove" style="padding-left:590px;"></span></div> -->
+              <div class="panel-body">
+                <br>
+              <table>
+              <tr>
+              <td><b>Code</b></td>
+            <td style="padding-left:60px;"><select id="curr" [(ngModel)]="alerts.RES_Alert_Code" required style="height:30px;border-radius:4px;width:240px;color:black;">
+              <option *ngFor="let alcode of clist" [ngValue] = "alcode.alertcode"> {{alcode.alertcode}} </option>
+            </select></td>
+            
+             <td style="padding-left:60px;"><b>Area</b></td>
+            <td style="padding-left:15px;"><select id="curr" [(ngModel)]="alerts.RES_Alert_Area" required style="height:30px;border-radius:4px;width:240px;color:black;">
+            <option *ngFor="let areacode of alist" [ngValue] = "areacode.alertarea"> {{areacode.alertarea}} </option>
+            </select></td>
+            
+              </tr>
+ 
+              </table><br><br>
+              <table>
+              <tr>
+              <td><b>Description</b></td>
+              <td style="padding-left:15px;"><textarea rows="5" cols="78" style="border-radius:8px;" [(ngModel)]="alerts.RES_Alert_Description">
+              Private Guest.Do not address guest by name.
+            </textarea></td>
+              </tr>
+              </table><br><br>
+              
+              
+              
+              </div>
+            </div>
+            
+          </div>
+          <div class="modal-footer">
+
+               <button type="button" class="btn btn-success"style="margin-left: 70%;" data-toggle="modal" data-target="#alert1" data-dismiss="modal" (click)="alertsub(alerts)"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+             <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+
+          </div>
+        </div>
+        
+      </div>
+    </div> 
+    <!-- Alert End -->
+
+     <!-- Alert start-->
+     <div class="modal fade" id="alert1" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"> Alert</h4>
+          </div>
+          <div class="modal-body">
+
+            <p align="center"><b>Alert {{user3}}</b></p>
+          </div>
+          <div class="modal-footer">
+             <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+
+          </div>
+        </div>
+        
+      </div>
+    </div> 
+    <!-- Alert End -->    
+
+    <!-- changes start-->
+    <div class="modal fade" id="changes" role="dialog">
+      <div class="modal-dialog">
+   
+    <div class="modal-content" style="margin-left:-10%;margin-top:8%;width:140%;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Changes</h4> 
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid" style="width:100%;">
+          <div class="jumbotron jumbotron-fluid">
+       <div class="table-responsive"style="height:45%;width:100%;overflow-y: auto;">
+      <table class="table table-hover table-bordered" >
+      <thead style="background-color:#0077B5;color:white;">
+        <tr>
+          <th> </th>
+          <th> User</th>
+          <th> Time</th>
+          <th> Date</th>
+           <th class="inline"> Action_Type</th>
+            <th> Description</th>
+        </tr>
+      </thead>
+      <tbody style="background-color:white;" >
+        <tr *ngFor="let tablelist of tableschanges">
+          <th> <input type="checkbox"></th>
+          <td>{{tablelist.emp_firstname}}</td>
+          <td> {{tablelist.res_log_time}}</td>
+          <td> {{tablelist.res_log_date}}</td>
+          <td> {{tablelist.res_action_type}}</td>
+          <td> {{tablelist.res_description}}</td>
+        </tr>
+             
+      </tbody>
+      </table>
+    </div></div></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+      </div>
+    </div>
+    
+  </div>
+  </div>
+    <!-- changes End -->
+  
+
+   <!-- confirmation start -->
+   <div class="modal fade" id="confirm" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-left:-15%;width:140%;" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <!-- <h4 class="modal-title">Modal Header</h4> -->
+        </div>
+        <div class="modal-body" style="max-height: 75%; overflow-y:scroll;">
+          <div class="container-fluid"  style="width:80%;margin-left: 20px;">
+            <div class="jumbotron jumbotron-fluid" style="width:120%;padding-top:20px;height:auto;">
+            
+       <div id="content" #content style="margin-left:20px;margin-top:100px;margin-right:20px;font-size:20px;">
+            <div class="text-center">
+              <p>Reservation Confirmation Letter</p>
+            </div>          
+            <br>
+            <div class="text-left">
+              <p><b>To,</b></p>
+              <p> {{Name}}</p>
+            </div>
+            <div style="font-family:'Times New Roman', Times, serif"><p>It has been a pleasure speaking with you today</p></div>
+            <div><p>I would like to confirm the reservation information at this time. I have made a reservation for 
+              <b style="color: green">{{Name}}</b> for <b style="color: green">{{Nights}}</b> night at connect 24/7 hotel, the arrival date is 
+              <b style="color:green"> {{Arrival}} </b>with the departure on <b style="color:green">{{Departure}}</b> for <b style="color:green"> {{ Adults}}</b> adult and 
+              <b style="color:green">{{child}}</b> children <b style="color:green">{{RoomType}}</b> King Smoking at the rate of 
+              <b style="color:green">{{Rate}}</b> USD. The reservation is on <b style="color:green">{{restype}}</b>, a credit card number is required for guarantee past CC on the day of arrival. 
+              Your confirmation number for the reservation is <b style="color: green">{{conf}}</b>. </p></div>
+            <div><p>Again, We thank you for calling <b style="color: green">{{Name}}</b>.</p></div>
+            <div style="font-family:'Times New Roman', Times, serif"><p>and the staff at connect 24/7 is looking forward to your visit. Have a great day.</p></div>
+<br>
+              <div>
+                <p> <b>The cancellation policy for group reservation is as under:</b></p>
+              </div>
+<div>
+            <p>
+            Booking cancelled within 60 days of confirmation retention will not be charged.</p>
+         <p>Booking cancelled after 60 days of confirmation one day retention will be charged for all the rooms confirmed.</p>
+         <p>The no of rooms cancelled two weeks prior to the conference full retention for the entire period of booking will be charged.
+  </p>
+</div><br><br>
+<div>
+  <p>Thanks and Regards,</p>
+   <p>Reservation Agent</p>
+</div>
+          </div> 
+
+             </div>
+             </div>
+             <br>        
+        </div>
+        <div class="modal-footer">
+  <table>
+    <tr>
+            <td style="padding-left:5px;"><button type="button" class="btn btn-warning" (click)="downloadPDF()"><b>Preview</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+          <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
+        </tr>
+        </table>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+     <!-- Confirmation End -->
+
+   <!-- confirmation start -->
+   <!-- <div class="modal fade" id="confirm" role="dialog">
+      <div class="modal-dialog"> -->
+        <!-- Modal content-->
+        <!-- <div class="modal-content" style="margin-left:-15%;width:140%;" >
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+            <!-- <h4 class="modal-title">Modal Header</h4> -->
+          <!-- </div>
+          <div class="modal-body" style="max-height: 75%; overflow-y:scroll;">
+            <div class="container-fluid"  style="width:80%;margin-left: 20px;">
+              <div class="jumbotron jumbotron-fluid" style="width:120%;padding-top:20px;background-color:#0077B5;color:white;height:auto;">
+              
+              <table>
+              <tr>
+              <td><input type="checkbox" style="width:15px;height:15px;"></td>
+              <td style="padding-left:15px;"><b>Print</b></td>
+              <td style="padding-left:30px;"><input type="checkbox" style="width:15px;height:15px;"></td>
+               <td style="padding-left:15px;"><b>Email</b></td>
+               <td style="padding-left:30px;"><input type="checkbox" style="width:15px;height:15px;"></td>
+                <td style="padding-left:15px;"><b>Fax</b></td>
+                <td style="padding-left:30px;"><input type="checkbox"  style="width:15px;height:15px;"></td>
+                 <td style="padding-left:15px;"><b>SMS</b></td>
+              </tr>
+              
+              </table><br>
+                   
+                 <table class="table table-responsive table-hover table-bordered"  style="width:120%;">
+                 <thead class="thead-light" style="background-color:#0077B5;color:white;">
+                   <tr>
+                     
+                    <th><span class="fa fa-user" style="padding-right:10px;"></span>Name</th>
+                     <th><span class="	fa fa-asterisk" style="padding-right:10px;"></span>Type</th>
+                      <th><span class="fa fa-user" style="padding-right:10px;"></span>Conf.Name</th>
+                     <th><span class="fa fa-user" style="padding-right:10px;"></span>Address</th>
+                      <th><span class="	fa fa-envelope" style="padding-right:10px;"></span>Email</th>
+                     <th><i class="fa fa-fax" style="padding-right:10px;"></i>Fax</th>
+                    
+                   </tr>
+                 </thead>
+                 <tbody style="background-color:white;color:black;">
+                    <tr style="height:35px;">
+                     <td>Harris</td>
+                     <td>Guest</td>
+                    <td></td>
+                     <td>Phoneix 85044 AZ U</td>
+                    
+                     <td></td>
+                     <td></td>
+                   </tr>
+                   <tr style="height:35px;">
+                     <td>Microsystem</td>
+                     <td>Company</td>
+                      <td></td>
+                     <td>7031 Columbia Gateway</td>
+                  
+                     <td></td>
+                     <td></td>
+                   </tr>
+                     <tr style="height:35px;">
+                     <td>ABC Travel</td>
+                     <td>Agent</td>
+                  <td></td>
+                     <td>123 MainStreet</td>
+                      
+                     <td></td>
+                     <td></td>
+                   </tr>
+                 
+                   <tr style="height:35px;">
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                       <td></td>
+                     <td></td>
+                     <td></td>
+                   </tr>
+                 
+                     <tr style="height:35px;">
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                       <td></td>
+                     <td></td>
+                     <td></td>
+                   </tr>
+                 
+                   <tr style="height:35px;">
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                       <td></td>
+                     <td></td>
+                     <td></td>
+                   </tr>
+                 
+                   <tr style="height:35px;">
+                     <td></td>
+                     <td></td>
+                     <td></td>
+                       <td></td>
+                     <td></td>
+                     <td></td>
+                   </tr>
+                 
+                 
+                  </tbody>
+               </table>
+               </div>
+               </div>
+               <br>
+             <div class="container-fluid" style="width:80%;margin-left: 20px;">  
+             <div class="jumbotron jumbotron-fluid" style="padding-top:20px;width:120%;height:230px;background-color:#0077B5;">
+               <table class="table table-hover table-bordered"  style="width:120%;">
+                 <thead class="thead-light" style="background-color:#0077B5;color:white;">
+                   <tr>
+                     
+                    
+                      <th></th>
+                     <th>Status</th>
+                      <th>Last Attempt</th>
+                     <th>Successful Attempt</th>
+                    
+                   </tr>
+                 </thead>
+                 <tbody style="background-color:white;">
+               <tr style="height:35px;">
+                     <td><i class="fa fa-fax" style="padding-right:10px;color:#0077B5;"></i><b style="color:#0077B5;">Fax</b></td>
+                     <td></td>
+                     <td></td>
+                       <td></td>
+                    </tr>
+                 
+                   <tr style="height:35px;">
+                     <td> <span class="fa fa-envelope" style="padding-right:10px;color:#0077B5;"></span><b style="color:#0077B5">Email</b></td>
+                     <td></td>
+                     <td></td>
+                       <td></td>
+                    </tr>
+                 
+                   <tr style="height:35px;">
+                     <td>  <span class="fa fa-print" style="padding-right:10px;color:#0077B5;"></span><b style="color:#0077B5">Print</b></td>
+                     <td></td>
+                     <td></td>
+                       <td></td>
+                    </tr>
+                 
+                   <tr style="height:35px;">
+                     <td>  <span class="fa fa-envelope" style="padding-right:10px;color:#0077B5;"></span><b style="color:#0077B5">SMS</b></td>
+                     <td></td>
+                     <td></td>
+                       <td></td>
+                    </tr>
+                 
+                 
+                  </tbody>
+               </table>
+               </div>
+               </div>
+          
+          </div>
+          <div class="modal-footer">
+    <table>
+      <tr>
+            <td style="padding-left:150px;">  <button type="button" class="btn btn-primary"><b>Customize</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+              <td style="padding-left:5px;"><button type="button" class="btn btn-info"><b>File</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+              <td style="padding-left:5px;"><button type="button" class="btn btn-warning"><b>Preview</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+              <td style="padding-left:5px;"><button type="button" class="btn btn-success"><b>Send</b><span class="glyphicon glyphicon-send" style="padding-left:5px;"></span></button></td>
+              <td style="padding-left:5px;"><button type="button" class="btn btn-info"><b>New</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+              <td style="padding-left:5px;"><button type="button" class="btn btn-success"><b>save</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+            <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
+          </tr>
+          </table>
+          </div>
+        </div>
+        
+      </div>
+    </div> -->
+       <!-- Confirmation End -->
+  
+   <!-- credit card start -->
+   <div class="modal fade" id="credit" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-left:-20%;margin-top:20%;width:150%;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Credit Card</h4> 
+        </div>
+        <div class="modal-body">
+            <div>
+                <table class="table table-hover table-border">
+                 <thead style="background-color: steelblue; color: white;">
+                     <tr>
+                        <th>Seq.</th>
+                        <th> Card Type</th>
+                        <th> Credit Card Number</th>
+                        <th>Expiration Date</th>
+                     </tr>
+                 </thead> 
+                 <tbody>
+                           <tr *ngFor="let listsct of arrycdt; let i=index"(click)="selectMembersCredit(listsct,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                                <td>{{i+1}}</td>
+                                <td>{{listsct.pf_card_type}}</td>
+                                <td>{{listsct.pf_creditcard_no}}</td>
+                                <td>{{listsct.pf_expiration_date}}</td>
+                             </tr>
+                                                                                                       
+                 </tbody>   
+                
+                </table>
+              
+              
+                </div>
+                
+        </div>
+        <div class="modal-footer">
+          <table>
+          <tr>
+  
+            <td style="padding-left:300px;"> <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#insert" data-dismiss="modal"><b>New</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+            <td style="padding-left:5px;"> <button type="button" class="btn btn-info"data-toggle="modal" data-target="#insert1" data-dismiss="modal"><b>Update</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+            <td style="padding-left:5px;"><button type="button" class="btn btn-warning" (click)="delcredit()"data-toggle="modal" data-target="#creditdel" data-dismiss="modal"><b>Delete</b><span class="glyphicon glyphicon-trash" style="padding-left:5px;"></span></button></td>
+          <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
+        </tr>
+        </table>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- credit_card End -->
+
+
+  <!--Credit card insert-->
+  <div class="modal fade" id="insert" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content"style="margin-left:-10%;margin-top:20%;width:100%;" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Credit Card Details here...</h4>
+        </div>
+        <div class="modal-body">
+ 
+    <div class="input-group">
+      <div class="col-sm-6" ><b>Creditcard Type</b></div>
+      <div class="col-sm-6" style="padding-left:24px;">          
+        <select class="form-control"  style="width:200px;" [(ngModel)]="ic.pf_card_type">
+        <option *ngFor="let typec of creditlist" [ngValue]="typec.creditcard_description">{{typec.creditcard_description}}</option>
+          </select>
+      </div>
+    </div><br>
+    
+    <div class="input-group">
+      <div class="col-sm-6"><b>Creditcard Number</b></div>
+      <div class="col-sm-6" style="padding-left:17px;">          
+        <input type="text" class="form-control"  [(ngModel)]="ic.pf_creditcard_no" style="width:200px;">
+      </div>
+    </div><br>
+    
+    <div class="input-group">
+      <div class="col-sm-6"><b>ExpiryDate</b></div>
+      <div class="col-sm-6" style="padding-left:36px;">          
+        <input type="text" class="form-control"  [(ngModel)]="ic.pf_expiration_date" style="width:200px;">
+      </div>
+    </div>
+
+    
+  <!-- </form> -->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="submit(ic)" data-toggle="modal" data-target="#credin"  data-dismiss="modal"><b>Ok</b></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!--Credit Card insert end-->
+
+  <!--Credit card insert-->
+  <div class="modal fade" id="insert1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content"style="margin-left:-10%;margin-top:20%;width:100%;" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Credit Card Details here...</h4>
+        </div>
+        <div class="modal-body">
+ 
+    <div class="input-group">
+      <div class="col-sm-6" ><b>Creditcard Type</b></div>
+      <div class="col-sm-6" style="padding-left:24px;">          
+        <select class="form-control"  style="width:200px;" [(ngModel)]="ic1.pf_card_type">
+        <option *ngFor="let typec of creditlist" [ngValue]="typec.creditcard_description">{{typec.creditcard_description}}</option>
+          </select>
+      </div>
+    </div><br>
+    
+    <div class="input-group">
+      <div class="col-sm-6"><b>Creditcard Number</b></div>
+      <div class="col-sm-6" style="padding-left:17px;">          
+        <input type="text" class="form-control"  [(ngModel)]="ic1.pf_creditcard_no" style="width:200px;">
+      </div>
+    </div><br>
+    
+    <div class="input-group">
+      <div class="col-sm-6"><b>ExpiryDate</b></div>
+      <div class="col-sm-6" style="padding-left:36px;">          
+        <input type="text" class="form-control"  [(ngModel)]="ic1.pf_expiration_date" style="width:200px;">
+      </div>
+    </div>
+
+    
+  <!-- </form> -->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="submit1(ic1)" data-toggle="modal" data-target="#credin"  data-dismiss="modal"><b>Ok</b></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!--Credit Card insert end-->
+
+     <!-- creditinsert response start-->
+     <div class="modal fade" id="credin" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"> Credit catd</h4>
+          </div>
+          <div class="modal-body">
+
+            <p align="center"><b> {{inscredit}}</b></p>
+          </div>
+          <div class="modal-footer">
+             <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+
+          </div>
+        </div>
+        
+      </div>
+    </div> 
+    <!-- creditinsert response End --> 
+
+     <!-- creditdelete  response start-->
+     <div class="modal fade" id="creditdel" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"> Delete</h4>
+          </div>
+          <div class="modal-body">
+
+            <p align="center"><b> {{delstatus}}</b></p>
+          </div>
+          <div class="modal-footer">
+             <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+
+          </div>
+        </div>
+        
+      </div>
+    </div> 
+    <!-- creditdelete response End -->   
+
+         <!-- Delete start-->
+         <div class="modal fade" id="deleted" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"> Reservation Cancel</h4>
+                </div>
+                <div class="modal-body">
+                  <p align="center"><b>Are you Sure you want to Delete Reservation ?</b></p>
+                  <br>
+                  <div class="text-center">
+                 <button type="button" class="btn btn-success"style="padding-left:5px;"data-toggle="modal" data-target="#delete1" data-dismiss="modal" (click)="subdele()"><b>Yes</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+                 <button type="button" class="btn btn-danger"style="padding-left:5px;"data-dismiss="modal"><b>No</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+                </div>
+              </div>
+              </div>
+              
+            </div>
+          </div> 
+          <!-- delete End -->   
+
+         <!-- delete start-->
+         <div class="modal fade" id="delete1" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"> Reservation Deleted</h4>
+                </div>
+                <div class="modal-body">
+      
+                  <p align="center"><b>Reservation Delete {{delereturn}} </b></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+                </div>
+              </div>
+              
+            </div>
+          </div> 
+          <!-- Reinstate End -->  
+
+   <!-- fixex charges start -->
+   <div class="modal fade" id="fixed" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-left:-15%;width:140%;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Fixed Charges</h4>
+          </div>
+          <div class="modal-body">
+               
+              <div class="container-fluid" style="background-color: #0077B5;">
+                  <div class="jumbotron" style="background-color:white; margin-top:30px;">
+                      
+                  <label>Name</label> <label style="margin-left:320px;">Arrival</label>
+                  <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
+                  <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+                  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" 
+                  [(ngModel)]="Name" />	
+                  </div>
+                  <div class="input-group" style="width:200px;margin-left:470px;margin-top:-35px;">
+                  <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                  <input type="date" class="form-control" placeholder="" aria-describedby="basic-addon1" [(ngModel)]="Arrival">		
+                  </div>	
+                  <br>
+                  <label>Nights</label> <label style="margin-left:312px;">Departure</label>
+                  <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
+                  <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-star"></i></span>
+                  <input type="text" class="form-control" placeholder=" Nights " aria-describedby="basic-addon1" [(ngModel)]="Nights">		
+                  </div>
+                  <div class="input-group" style="width:200px;margin-left:470px;margin-top:-35px;">
+                  <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                  <input type="date" class="form-control" placeholder="" aria-describedby="basic-addon1"  [(ngModel)]="Departure">		
+                  </div>
+                  <legend style="margin-top:5px;"> </legend>
+                  <label>Begin Date</label> <label style="margin-left:285px;">End Date</label>
+                  <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
+                  <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                  <input type="date" class="form-control" placeholder="" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_Begin_Date">		
+                  </div>
+                  <div class="input-group" style="width:200px;margin-left:470px;margin-top:-35px;">
+                  <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                  <input type="date" class="form-control" placeholder="" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_End_Date">		
+                  </div>
+                  <br>
+                  <label>Trn.Code</label> 
+                  <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
+                  <select style="height:30px;width:350px;"[(ngModel)]="fixed.Fixed_Charges_Transaction_Code">
+                    <option *ngFor="let ctc of listtc" [ngValue] = "ctc.transaction_description"> {{ctc.transaction_description}} </option>
+                </select>	
+                  </div>
+                  <br>
+                  <label>Article Code</label> 
+                  <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
+                  <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
+                  <input type="text" class="form-control" placeholder="Article code" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_Article_Code">		
+                  </div>
+                  <br>
+                  <label>Amount</label> <label style="margin-left:330px;">Quantity</label>
+                  <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
+                  <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-usd"></i></span>
+                  <input type="text" class="form-control" placeholder="Amount" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_Amount">		
+                  </div>
+                  <div class="input-group" style="width:200px;margin-left:470px;margin-top:-35px;">
+                  <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-list"></i></span>
+                  <input type="text" class="form-control" placeholder="value" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_Quantity">		
+                  </div>
+                  <br>
+                  <label>Supplement</label> 
+                  <div class="input-group" style=" width:80%;margin-left:120px;margin-top:-35px;">
+                  <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
+                  <input type="text" class="form-control" placeholder="content" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_Supplement">		
+                  </div>		
+                  <br>
+                  <legend style="margin-top:5px;"> </legend>
+
+                        <span><input type="radio" id="radio1" name="Fixed_Charges_Occurrence" 
+                          [(ngModel)]="fixed.Fixed_Charges_Occurrence" value="Once" /> <label for="radio1">Once</label></span>
+                        
+                         
+                        <span><input type="radio" id="radio2" name="Fixed_Charges_Occurrence" 
+                          [(ngModel)]="fixed.Fixed_Charges_Occurrence" value="Daily" /><label for="radio2">Daily</label></span>
+                        
+                          
+                        <span><input type="radio" id="radio3" name="Fixed_Charges_Occurrence" 
+                          [(ngModel)]="fixed.Fixed_Charges_Occurrence" value="Weekly " /><label for="radio3">Weekly </label></span>
+                        
+                        
+                        <span><input type="radio" id="radio4" name="Fixed_Charges_Occurrence" 
+                          [(ngModel)]="fixed.Fixed_Charges_Occurrence" value="Monthly" /><label for="radio4">Monthly</label></span>
+                        
+            
+                        <span><input type="radio" id="radio5" name="Fixed_Charges_Occurrence" 
+                          [(ngModel)]="fixed.Fixed_Charges_Occurrence" value="Quaterly " /><label for="radio5">Quaterly </label></span>
+                        
+            
+                        <span><input type="radio" id="radio6" name="Fixed_Charges_Occurrence" 
+                          [(ngModel)]="fixed.Fixed_Charges_Occurrence" value="Yearly" /><label for="radio6">Yearly</label></span>
+                  </div>
+                 </div>            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="fix(fixed)" data-dismiss="modal"data-toggle="modal" data-target="#f1"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+          </div>
+        </div>
+       
+      </div>
+   </div>
+     <!-- fixed charges End -->
+
+       <!-- Fixed charges resp start-->
+       <div class="modal fade" id="f1" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"> Fixed charges</h4>
+              </div>
+              <div class="modal-body">
+    
+                <p align="center"><b>{{fixs}}</b></p>
+              </div>
+              <div class="modal-footer">
+                 <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+    
+              </div>
+            </div>
+            
+          </div>
+        </div> 
+        <!-- Alert End -->   
+
+     <!-- privileges start-->
+     <div class="modal fade" id="privileges" role="dialog">
+        <div class="modal-dialog"> 
+          <!-- Modal content-->
+          <div class="modal-content" style="width:150%;">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4 class="modal-title">Privileges</h4> 
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-primary" style="width:90%;height: 450px;margin-left: 20px;">
+                    <!-- <div class="panel-heading"><b></b> <span class="glyphicon glyphicon-remove" style="padding-left:590px;"></span></div> -->
+                    <div class="panel-body">
+                    <div class="jumbotron " style="width:680px;margin-left:15px;background-color:#0077B5;color:white;">
+                  <table>
+                  <tr *ngFor="let checkvalue of privil">
+                  <td style="padding-left:35px;">
+                    <input type="checkbox" style="width:20px;height:20px;" (click)="checkboxfun1(checkvalue1)" 
+                    [(ngModel)]="checkvalue.val"> 
+                    {{checkvalue.values}}
+                  </td>
+                  </tr>
+                  
+                  <tr>
+                  <td style="padding-left:15px;"><input type="time" style="border-radius:4px;color:black;"[(ngModel)]="privillege.privileges_key"></td>
+                  </tr>
+                  
+                  </table>
+                   </div>
+                 <br>
+                 <br>
+                   <button type="button" class="btn btn-success" style="margin-left: 500px;" (click)="submits(privillege)"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+                <button type="button" class="btn btn-danger"><b>Cancel</b><span class="glyphicon glyphicon-thumbs-down" style="padding-left:5px;"></span></button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>     
+            </div>
+                  </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+     <!-- privileges End--> 
+  
+       <!-- Queue start-->
+       <div class="modal fade" id="queue" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"> Reservation Queue</h4>
+              </div>
+              <div class="modal-body">
+    
+                <p align="center"><b> {{status}}</b></p>
+                <p align="center"><b> Queue Number is: {{queno}}</b></p>
+                
+              </div>
+              <div class="modal-footer">
+                 <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+    
+              </div>
+            </div>
+            
+          </div>
+        </div> 
+        <!-- Queue End -->  
+  
+   <!-- room move -->
+   <div class="modal fade" id="room1" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-left:-20%;width:150%;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Move to Room</h4>
+          </div>
+          <div class="modal-body" style="max-height: 60%; overflow-y:scroll;">
+              <div class="container-fluid">
+                  <div class="jumbotron jumbotron-fluid" style="padding-top:20px;height:250px;background-color:#0077B5;color:white;">
+                  <table>
+                  <tr>
+                  
+                  <td><b>Date</b></td>
+                  <td>	<div class="input-group" >
+                  <!-- <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span> -->
+                  <input type="date" id="email" class="form-control"style="width:150px"></div></td>
+                  
+                  <td style="padding-left:20px;"><b>Days</b></td>
+                  <td style="padding-left:15px;">	<div class="input-group"style="width:80px">
+                  <!-- <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span> -->
+                  <input type="number" class="form-control"></div></td>
+                  
+                  <td style="padding-left:20px;"><b>Room Class</b></td>
+                  <td style="padding-left:15px;"><select id="curr" required style="width:80px;height:32px;border-radius:4px;color:black;">
+                  <option value = "select1"> </option>
+                  <option value = "Goa"></option>
+                  <option value = "New Delhi"></option>
+                  <option value = "Bangalore"></option>
+                  <option value = "Mumbai"></option>
+                  </select></td>
+                  
+                  <td style="padding-left:20px;"><b>Room Type</b></td>
+                  <td  style="padding-left:15px;"><select id="curr" required style="width:80px;height:32px;border-radius:4px;color:black;">
+                  <option value = "select1">SDBN </option>
+                  <option value = "Goa">KNGN</option>
+                  <option value = "New Delhi">KSBS</option>
+                  <option value = "Bangalore">PM</option>
+                  </select></td>
+                  
+                  
+                  </tr>
+                  
+                  <tr>
+                  <td style="padding-top:5px;"><b>Floor</b></td>
+                  <td  style="padding-top:5px;"><select id="curr" required style="width:150px;height:32px;border-radius:4px;color:black;">
+                  <option value = "select1">SDBN </option>
+                  <option value = "Goa">KNGN</option>
+                  <option value = "New Delhi">KSBS</option>
+                  <option value = "Bangalore">PM</option>
+                  </select></td>
+                  
+                  <td style="padding-top:5px;padding-left:20px;"><b>Smoking</b></td>
+                  <td  style="padding-left:15px;padding-top:5px;"><select id="curr" required style="width:80px;height:32px;border-radius:4px;color:black;">
+                  <option value = "select1">SDBN </option>
+                  <option value = "Goa">KNGN</option>
+                  <option value = "New Delhi">KSBS</option>
+                  <option value = "Bangalore">PM</option>
+                  </select></td>
+                  
+                  <td style="padding-top:5px;padding-left:20px;"><b>Features</b></td>
+                  <td  style="padding-left:15px;padding-top:5px;"><select id="curr" required style="width:80px;height:32px;border-radius:4px;color:black;">
+                  <option value = "select1">SDBN </option>
+                  <option value = "Goa">KNGN</option>
+                  <option value = "New Delhi">KSBS</option>
+                  <option value = "Bangalore">PM</option>
+                  </select></td>
+                  </tr>
+                  </table>
+                  
+                  <table>
+                  
+                  <tr>
+                  <td style="color:white;padding-top:15px;"><b>FO Status</b></td>
+                  <td style="padding-left:10px;padding-top:15px;"><input type="checkbox"></td>
+                  <td style="padding-left:5px;padding-top:15px;"><b>Due Out</b></td>
+                  
+                  <td style="padding-left:10px;padding-top:15px;"><input type="checkbox"></td>
+                  <td style="padding-left:5px;padding-top:15px;"><b>Checked Out</b></td>
+                  
+                  <td style="color:white;padding-top:15px;padding-left:10px;"><b>Room Status</b></td>
+                  <td style="padding-left:5px;padding-top:15px;"><input type="checkbox"></td>
+                  <td style="padding-left:5px;padding-top:15px;color:#d9534f;"><b>Dirty</b></td>
+                  
+                  <td style="padding-left:10px;padding-top:15px;"><input type="checkbox"></td>
+                  <td style="padding-left:5px;padding-top:15px;color:#5cb85c;"><b>Clean</b></td>
+                  <td style="padding-left:10px;padding-top:15px;"><input type="checkbox"></td>
+                  <td style="padding-left:5px;padding-top:15px;color:brown;"><b>Pick Up</b></td>
+                  <td style="padding-left:10px;padding-top:15px;"><input type="checkbox"></td>
+                  <td style="padding-left:5px;padding-top:15px;color:#5bc0de;"><b>Inspected</b></td>
+                  <td style="padding-left:10px;padding-top:15px;"><input type="checkbox"></td>
+                  <td style="padding-left:5px;padding-top:15px;color:#f0ad4e;"><b>Out Of Order</b></td>
+                  <td style="padding-left:10px;padding-top:15px;"><input type="checkbox"></td>
+                  <td style="padding-left:5px;padding-top:15px;color:#f0ad4e;"><b>Out Of Service</b></td>
+                  
+                  </tr>
+                  </table>
+                  
+                  <table>
+                  
+                  <tr>
+                  <td style="padding-left:300px;"><button type="button" class="btn btn-warning"><b>Search</b><span class="fa fa-search" style="padding-left:5px;"></span></button></td>
+                  </tr>
+                  
+                  </table>
+                
+                  </div>
+                  
+                  
+                  </div>
+                  
+                  <div class="container-fluid">
+                  <div class="jumbotron jumbotron-fluid" style="padding-top:20px;height:75px;background-color:#0077B5;color:white;">
+                  <table>
+                  <tr>
+                  <td><b>Description</b></td>
+                  <td style="padding-left:15px;">	<div class="input-group">
+                  <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
+                  <input type="text" id="email" class="form-control" value="Standard Double Beds Non-Smoking" style="width:600px;"></div></td>
+                  
+                  </tr>
+                  </table>
+                  
+                  
+                  </div>
+                  
+                  <div class="container-fluid" style="width:101%;padding-left:1px;">
+                  
+                   <table class="table table-bordered table-hover">
+                      <thead style="background-color:#0077B5;color:white;">
+                        <tr style="height:35px;">
+                          <th>Room</th>
+                          <th>Room Type</th>
+                          <th>HK Status</th>
+                      <th>FO</th>
+                          <th>Status</th>
+                          <th>Floor</th>
+                        <th>Features</th>
+                          <th>Remarks</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr style="height:35px;">
+                          <td>132</td>
+                          <td>SDBN</td>
+                          <td style="background-color:#5cb85c;color:white;"><b>Inspected</b></td>
+                       <td>VAC</td>
+                          <td></td>
+                          <td>3rd Floor</td>
+                        <td>CR,LF,MB,NS</td>
+                          <td></td>
+                        </tr>
+                           <tr style="height:35px;">
+                          <td>133</td>
+                          <td>SDBN</td>
+                          <td style="background-color:#5cb85c;color:white;"><b>Inspected</b></td>
+                       <td>VAC</td>
+                          <td></td>
+                          <td>High Floor</td>
+                        <td>CR,LF,MB,NS</td>
+                          <td></td>
+                        </tr>
+                          <tr style="height:35px;">
+                          <td>134</td>
+                          <td>SDBN</td>
+                          <td style="background-color:#5cb85c;color:white;"><b>Inspected</b></td>
+                       <td>VAC</td>
+                          <td></td>
+                          <td>Low Floor</td>
+                        <td>CR,LF,MB,NS</td>
+                          <td></td>
+                        </tr>
+                         <tr style="height:35px;">
+                          <td>135</td>
+                          <td>SDBN</td>
+                          <td style="background-color:#5cb85c;color:white;"><b>Inspected</b></td>
+                       <td>VAC</td>
+                          <td></td>
+                          <td>4th Floor</td>
+                        <td>CR,LF,MB,NS</td>
+                          <td></td>
+                        </tr>
+                      <tr style="height:35px;">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      </tr>
+                      
+                        <tr style="height:35px;">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      </tr>
+                        <tr style="height:35px;">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      </tr>
+                        <tr style="height:35px;">
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      </tr>
+                    
+                      
+                      </tbody>
+                    </table>
+                  </div>
+                  
+                  </div>
+                  
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-success"><b>OK</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  <!-- Room Move end-->
+
+
+   <!-- room move -->
+   <div class="modal fade" id="room" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-left:-20%; margin-top: 25%; width:150%;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+            <div class="container-fluid">
+                <div class="jumbotron jumbotron-fluid" style="padding-top:20px;height:auto;background-color:#0077B5;color:white;">
+                <br>
+                  <div class="row">
+              <div class="col-md-2"> <label><b> Move_To_Room </b></label></div>
+              <div class="col-md-6">   
+              <div class="input-group">
+                    <input type="text" name=" " class="form-control">
+                <span class="input-group-btn" >
+                    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#room1" data-dismiss="modal"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+                </span>
+            </div>
+            </div>
+            <div class="col-md-4"></div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-2"> <label><b> Extension </b></label></div>
+                        <div class="col-md-6">   
+                        <div class="input-group">
+                              <input type="text" name=" " class="form-control">
+                          <span class="input-group-btn" >
+                              <button class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-download"></i></button>
+                          </span>
+                      </div>
+                      </div>
+                      <div class="col-md-4"></div>
+                              </div>                    
+                </div> 
+                </div>
+                
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success"data-dismiss="modal"><b>OK</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" ><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<!-- Room Move -->
+  
+   <!-- getdeposit start -->
+   <div class="modal fade" id="deposites" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-left:-20%;margin-top:20%;width:150%;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Deposit</h4> 
+        </div>
+        <div class="modal-body">
+            <div>
+                <table class="table table-hover table-border">
+                 <thead style="background-color: steelblue; color: white;">
+                     <tr>
+                       <th> Sqe.</th>
+                        <th> Type</th>
+                        <th> Deposit_Rule</th>
+                        <th> Percentage</th>
+                        <th> Deposit Amount</th>
+                        <th> Due Date</th>
+                        <th> Comments</th>
+                     </tr>
+                 </thead> 
+                 <tbody>
+                           <tr *ngFor="let listsct of deptarry; let i=index"(click)="selectMembersdeposit(listsct,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                                <td>{{i+1}}</td>
+                                <td>{{listsct.res_deposit_type}}</td>
+                                <td>{{listsct.res_deposit_rule}}</td>
+                                <td>{{listsct.res_deposit_percentage}}</td>
+                                <td>{{listsct.res_deposit_amount}}</td>
+                                <td>{{listsct.res_due_date}}</td>
+                                <td> {{listsct.res_deposit_comments}}</td>
+                             </tr>
+                                                                                                       
+                 </tbody>   
+                
+                </table>
+              
+              
+                </div>
+                
+        </div>
+        <div class="modal-footer">
+          <table>
+          <tr>
+  
+           <td style="padding-left:300px;"> <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#deposit" data-dismiss="modal"><b>New</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+            <td style="padding-left:5px;"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#deposit1" data-dismiss="modal"><b>Edit</b><span class="glyphicon glyphicon-trash" style="padding-left:5px;"></span></button></td>
+          <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
+        </tr>
+        </table>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- getdeposite End -->
+
+     <!-- Deposite start-->
+     <div class="modal fade" id="deposit" role="dialog">
+      <div class="modal-dialog">
+      
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-left:-20%; margin-top: 5%; width:150%;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"> Deposit</h4>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid" style="background-color: #0077B5;">
+              <br>
+              <div class="jumbotron">
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-7">
+                <form>
+
+                  <div class="row">
+                    <div class="col-md-4">  <label for=""> Type</label></div>
+                    <div class="col-md-8">
+                  <div class="form-group">
+                    <input name="type" type="text" class="form-control" id="" [(ngModel)]="resdepos.RES_Deposit_Type">
+                  </div>
+                </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">  <label for=""> Deposit Rule</label></div>
+                    <div class="col-md-8">
+                  <div class="form-group">
+                      <select name="depositrule" required style="width: 100%;height: 34px;border-radius:4px;" [(ngModel)]="resdepos.RES_Deposit_Rule">
+                          <option *ngFor="let listdep of drget" [ngValue] = "listdep.deposit_rule">{{listdep.deposit_rule}}</option>                                          
+                        </select>
+                  </div>
+                </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4">  <label for=""> Pecentage</label></div>
+                    <div class="col-md-8">
+                  <div class="form-group">
+                    <input type="text" name="Percentage" class="form-control" id=""  [(ngModel)]="resdepos.RES_Deposit_Percentage">
+                  </div>
+                </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4">  <label for=""> Deposit Amount</label></div>
+                    <div class="col-md-8">
+                  <div class="form-group">
+                    <input type="text"name="DepositAmount" class="form-control" id=""  [(ngModel)]="resdepos.RES_Deposit_Amount">
+                  </div>
+                </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">  <label for=""> Due Date</label></div>
+                    <div class="col-md-8">
+                  <div class="form-group">
+                    <input type="text" name="dueDate"class="form-control" id=""  [(ngModel)]="resdepos.RES_Due_Date">
+                  </div>
+                </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">  <label for=""> Comments</label></div>
+                    <div class="col-md-8">
+                  <div class="form-group">
+                    <textarea name=" Comments" id="" rows="3" style="width: 100%" [(ngModel)]="resdepos.RES_Deposit_Comments" ></textarea>
+                  </div>
+                </div>
+                </div>
+                </form>
+              </div>
+              <div class="col-md-3"></div>
+            </div>
+            </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+
+               <button type="button" class="btn btn-success"style="margin-left: 70%;" data-toggle="modal" data-target="#depo" data-dismiss="modal" (click)="submitdep(resdepos)"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+             <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+
+          </div>
+        </div>
+        
+      </div>
+    </div> 
+    <!-- Deposit End -->
+
+         <!-- Deposite start-->
+         <div class="modal fade" id="deposit1" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content" style="margin-left:-20%; margin-top: 5%; width:150%;">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"> Deposit</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid" style="background-color: #0077B5;">
+                    <br>
+                    <div class="jumbotron">
+                  <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-7">
+                      <form>
+      
+                        <div class="row">
+                          <div class="col-md-4">  <label for=""> Type</label></div>
+                          <div class="col-md-8">
+                        <div class="form-group">
+                          <input name="type" type="text" class="form-control" id="" [(ngModel)]="resdepos1.RES_Deposit_Type">
+                        </div>
+                      </div>
+                      </div>
+      
+                      <div class="row">
+                          <div class="col-md-4">  <label for=""> Deposit Rule</label></div>
+                          <div class="col-md-8">
+                        <div class="form-group">
+                            <select name="depositrule" required style="width: 100%;height: 34px;border-radius:4px;" [(ngModel)]="resdepos1.RES_Deposit_Rule">
+                                <option *ngFor="let listdep of drget" [ngValue] = "listdep.deposit_rule">{{listdep.deposit_rule}}</option>                                          
+                              </select>
+                        </div>
+                      </div>
+                      </div>
+                      
+                      <div class="row">
+                          <div class="col-md-4">  <label for=""> Pecentage</label></div>
+                          <div class="col-md-8">
+                        <div class="form-group">
+                          <input type="text" name="Percentage" class="form-control" id=""  [(ngModel)]="resdepos1.RES_Deposit_Percentage">
+                        </div>
+                      </div>
+                      </div>
+                      
+                      <div class="row">
+                          <div class="col-md-4">  <label for=""> Deposit Amount</label></div>
+                          <div class="col-md-8">
+                        <div class="form-group">
+                          <input type="text"name="DepositAmount" class="form-control" id=""  [(ngModel)]="resdepos1.RES_Deposit_Amount">
+                        </div>
+                      </div>
+                      </div>
+      
+                      <div class="row">
+                          <div class="col-md-4">  <label for=""> Due Date</label></div>
+                          <div class="col-md-8">
+                        <div class="form-group">
+                          <input type="text" name="dueDate"class="form-control" id=""  [(ngModel)]="resdepos1.RES_Due_Date">
+                        </div>
+                      </div>
+                      </div>
+      
+                      <div class="row">
+                          <div class="col-md-4">  <label for=""> Comments</label></div>
+                          <div class="col-md-8">
+                        <div class="form-group">
+                          <textarea name=" Comments" id="" rows="3" style="width: 100%" [(ngModel)]="resdepos1.RES_Deposit_Comments" ></textarea>
+                        </div>
+                      </div>
+                      </div>
+                      </form>
+                    </div>
+                    <div class="col-md-3"></div>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+      
+                     <button type="button" class="btn btn-success"style="margin-left: 70%;" data-toggle="modal" data-target="#depo" data-dismiss="modal" (click)="submitdep1(resdepos1)"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+                   <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+      
+                </div>
+              </div>
+              
+            </div>
+          </div> 
+          <!-- Deposit End -->
+
+         <!-- Deposit response start-->
+         <div class="modal fade" id="depo" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title"> Deposit</h4>
+                </div>
+                <div class="modal-body">
+      
+                  <p align="center"><b>{{resdepo}}</b></p>
+                </div>
+                <div class="modal-footer">
+                   <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+      
+                </div>
+              </div>
+              
+            </div>
+          </div> 
+          <!-- Deposit End -->    
+      
+
+     <!-- party Start-->
+     <div class="modal fade" id="party" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content" style="width:140%;">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <!-- <h4 class="modal-title">Modal Header</h4> -->
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="jumbotron " style="padding-top:25px;height:85px;width:99%;background-color:#0077B5;color:white;">
+                    <table>
+                    <tr>
+                         <td><b>Guest</b></td>
+                    <td style="padding-left:15px;">	<div class="input-group">
+                    <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                    <input type="text" id="email" class="form-control" value="Wesh,Jim"></div></td>
+                    
+                    <td style="padding-left:100px;"><b>Party Name</b></td>
+                    <td style="padding-left:15px;">	<div class="input-group">
+                    <span class="input-group-addon" id="icon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                    <input type="text" id="email" class="form-control"></div></td>
+                    </tr>
+                    </table>
+                    
+                    </div>
+                    
+                    </div>
+                    
+                    
+                    <div class="container">
+                         
+                      <table class="table table-bordered table-hover"style="width:70%;">
+                        <thead style="background-color:#0077B5;color:white;">
+                          <tr>
+                            <th><span class="glyphicon glyphicon-flash" style="padding-right:10px;"></span>Conf.No</th>
+                            <th><span class="glyphicon glyphicon-user" style="padding-right:10px;"></span>Name</th>
+                            <th><span class="glyphicon glyphicon-home" style="padding-right:10px;"></span>Room Type</th>
+                         <th><span class="glyphicon glyphicon-user" style="padding-right:10px;"></span>Adults</th>
+                            <th><span class="glyphicon glyphicon-user" style="padding-right:10px;"></span>Children</th>
+                            <th><span class="glyphicon glyphicon-home" style="padding-right:10px;"></span>Room</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>11402</td>
+                            <td>Welsh,jim</td>
+                            <td>KNGN</td>
+                        <td>2</td>
+                            <td>2</td>
+                            <td>3</td>
+                          </tr>
+                          <tr style="height:40px;">
+                           <td></td>
+                            <td></td>
+                            <td></td>
+                        <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr style="height:40px;">
+                           <td></td>
+                            <td></td>
+                            <td></td>
+                        <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        <tr style="height:40px;">
+                           <td></td>
+                            <td></td>
+                            <td></td>
+                        <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        <tr style="height:40px;">
+                           <td></td>
+                            <td></td>
+                            <td></td>
+                        <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                          <tr style="height:40px;">
+                           <td></td>
+                            <td></td>
+                            <td></td>
+                        <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <table>
+                      <tr>
+                      <td>
+                         <td style="padding-left:40px;">
+                         <b>Total</b>
+                      </td>
+                      <td style="padding-left:15px;"><input type="number" min="1" max="100" style="width:160px;border-radius:4px;"></td>
+                       <td style="padding-left:15px;"><input type="number" min="1" max="100" style="width:190px;border-radius:4px;"></td>
+                        <td style="padding-left:25px;"><input type="number" min="1" max="100" style="width:145px;border-radius:4px;"></td>
+                      </tr>
+                      </table><br>
+                      <button type="button" class="btn btn-primary" style="margin-left: 100px;"><b>Split</b></button>
+                      <button type="button" class="btn btn-primary"><b>Split All</b></button>
+                       <button type="button" class="btn btn-primary"><b>Resv.</b></button>
+                      <button type="button" class="btn btn-primary"><b>Add to Party</b></button>
+                       <button type="button" class="btn btn-primary"><b>Chng.Party</b></button>
+                        <button type="button" class="btn btn-primary"><b>Detach</b></button>
+                        <br><br>
+                      
+                    </div>
+                    
+                    
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    <!-- party End-->
+      
+ 
+         
+        <!-- FixedRate Start-->
+        <div class="modal fade" id="fixedrate" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content" style="width:140%;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Fixed Rate</h4> 
+              </div>
+              <div class="modal-body">
+                
+                <div class="jumbotron" style="max-height: 75%; ">
+                <div class="row">
+                  <div class="col-md-6">
+                    <form action="">
+                      <div class="row">
+                        <div class="col-md-5">  <label for=""> Reservation Date</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                        <input type="date" class="form-control" name=" reservationDate" id="reservationDate" [(ngModel)]="Arrival">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">  <label for="">  Update Through</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                        <input type="date" class="form-control" name="UpdateThrough" id="" [(ngModel)]="Departure">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> Adults</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="Adults" id="" [(ngModel)]="Adults">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> Childs</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="child" id=""[(ngModel)]="child">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> Room Type</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                          <input type="text" required name="roomtype" style="width: 100%;height: 34px;border-radius:4px;"[(ngModel)]="RoomType">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> RTC</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                        <input type="text" required name="RTC" style="width: 100%;height: 34px;border-radius:4px;"[(ngModel)]="RoomType">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> Room</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                        <input type="text" name="Room" class="form-control" id="" [(ngModel)]="Room">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> Market Code</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                          <input type="text" required name="marketcode" style="width: 100%;height: 34px;border-radius:4px;"[(ngModel)]="market">
+                      </div>
+                    </div>
+                    </div>
+                    </form>
+                  </div>
+                  <div class="col-md-6">
+                    <form action="">
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> Rate</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                        <input type="text" name="rate" class="form-control" id="" [(ngModel)]="Rate">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> Rate Code</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                          <input type="text" name="ratecode" required style="width: 100%;height: 34px;border-radius:4px;"  [(ngModel)]="Ratecode">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> Source Code</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                          <input type="text" name="source" required style="width: 100%;height: 34px;border-radius:4px;"  [(ngModel)]="Source">
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> Fixed Rate</label></div>
+                        <div class="col-md-2">
+                      <div class="form-group">
+                        <input type="checkbox" class="form-control" id="">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> Discount %</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="" name="precentage" [(ngModel)]="Percentage">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> Discount Amount</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="" name="Amount" [(ngModel)]="DiscAmount">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> Discount Reasons</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                        <input type="text" class="form-control" id="" name="reasons"  [(ngModel)]="Discreasons">
+                      </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">  <label for=""> Currency</label></div>
+                        <div class="col-md-7">
+                      <div class="form-group">
+                          <input name="text" type="text" required style="width: 100%;height: 34px;border-radius:4px;"  [(ngModel)]="Currency">
+                      </div>
+                    </div>
+                    </div>
+                    </form>
+                  </div>                  
+                </div>    
+                </div>   
+              </div>
+
+                  <button type="button" class="btn btn-success" data-dismiss="modal"  data-toggle="modal" data-target="#fr" (click)="submitrate()" style="margin-left: 70%"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+            </div>
+            
+          </div>
+        </div>
+      <!--FixedRate End--> 
+
+ <!-- FixedRate start-->
+  <div class="modal fade" id="fr" role="dialog">
+                  <div class="modal-dialog">
+                  
+                    <!-- Modal content-->
+                    <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"> Fixed Rate</h4>
+                      </div>
+                      <div class="modal-body">
+            
+                        <p align="center"><b>{{tra}}</b></p>
+                      </div>
+                      <div class="modal-footer">
+                         <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+            
+                      </div>
+                    </div>
+                    
+                  </div>
+  </div> 
+  <!-- FixedRate End --> 
+
+       <!-- traces Start-->
+       <div class="modal fade" id="traces" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content" style="margin-left:-20%;width:155%;">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Traces</h4> 
+            </div>
+            <div class="modal-body"  style="max-height: 75%; overflow-y:scroll;">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container-fluid" style="padding-left:50px;padding-right:50px;">
+                      <div class="jumbotron jumbotron-fluid" style="width:100%;padding-left:50px;padding-right:50px;padding-top:30px;background-color:white;">
+                     <table class="table table-bordered table-hover">
+                        <thead style="background-color:#0077B5;color:white;">
+                          <tr>
+                            <th> Name </th>
+                            <th> Room No. </th>
+                            <th> Arrival </th>
+                            <th> Departure </th>
+                            <th> Status </th>
+                          </tr>
+                        </thead>
+                        <tbody style="background-color:white;">
+                         
+                           <tr>
+                            <td>{{Name}}</td>
+                            <td>{{Room}}</td>
+                            <td>{{Arrival}}</td>
+                            <td>{{Departure}}</td>
+                            <td>{{Status}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                     </div>
+                     </div>
+                     
+                     <div class="container-fluid" style="padding-left:50px;padding-right:50px;">
+                     
+                     <div class="jumbotron jumbotron-fluid" style="padding-top:30px;background-color:white;">
+                    <div class="row">
+                    <div class="col-md-4">
+                     <b>From Date</b>
+                    	<div class="input-group">
+                    <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                    <input type="date" name="FromDate" id="email" class="form-control"style="width:160px;" [(ngModel)]="find.traces_from_date"></div>
+                  </div>
+                    
+                  <div class="col-md-4">
+                     <b>To Date</b>
+                  	<div class="input-group">
+                    <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                    <input type="date" name="todate"id="email" class="form-control"style="width:160px;"  [(ngModel)]="find.traces_to_date"></div>
+                  </div>
+                    
+                  
+                  <div class="col-md-4">
+                    <b>Time</b>
+                    <div class="input-group">
+                    <span class="input-group-addon" id="iccon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-time"></i></span>
+                    <input type="time" name="time" id="email" class="form-control"style="width:160px;"  [(ngModel)]="find.traces_time"></div>
+                   </div>
+                  </div>
+                  <div class="row">
+
+                      <div class="col-md-4">                  
+                    <b>Dept.Code</b>
+                    <div class="input-group">
+                     <select name="deptcode" id="curr" required style="width:200px;height:30px;border-radius:4px;"  [(ngModel)]="find.traces_dept_code">
+                     <option *ngFor="let codedep of dlist" [ngValue] = "codedep.department">{{codedep.department}}</option>                                                                    
+                    </select> 
+                    </div>
+                    </div>
+                     <br>
+                    </div>
+                     
+                     <b>Trace_Text</b>
+                    <div class="input-group">
+                     <textarea name="des" cols="70" rows="4" style="border-radius:4px;"  [(ngModel)]="find.traces_trace_text"></textarea>
+                      </div>
+                    
+                     <br>
+                     </div>
+                     </div> 
+                     </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success"data-toggle="modal" data-target="#trac"  data-dismiss="modal" (click)="submittrace(find)" ><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+       <!-- traces End-->
+
+  <!-- Traces start-->
+   <div class="modal fade" id="trac" role="dialog">
+       <div class="modal-dialog">
+                          
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title"> Fixed Rate</h4>
+      </div>
+       <div class="modal-body">
+                    
+       <p align="center"><b>{{tracess}}</b></p>
+       </div>
+       <div class="modal-footer">
+      <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+                    
+       </div>
+       </div>
+                            
+       </div>
+   </div> 
+   <!-- Traces End --> 
+
+       <!-- Waitlist Start-->
+       <div class="modal fade" id="wt" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content" style="width:150%;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+              </div>
+              <div class="modal-body">
+                <div class="panel panel-primary" style="width:90%;margin-left: 5%; height: 400px;">
+  
+                  <div class="panel-body">
+                      <br>
+                      <table>
+                      <tr>
+                      <td><b>Reasons</b></td>
+                    <td style="padding-left:60px;">
+                      <select name="waitlistreason" id="curr" required style="height:30px;border-radius:4px;width:240px;color:black;" [(ngModel)]="waitls.RES_Waitlist_Reason">                   
+                   <option *ngFor="let list of wl" [ngValue]="list.waitlist_reason">{{list.waitlist_reason}}</option>
+                    </select></td>
+                    </tr><br>
+                    <tr>
+                     <td><b>Priority</b></td>
+                    <td style="padding-left:60px;"> 
+                      <input name="waitlistpriority" type="text" style="height:30px;border-radius:4px;width:240px;color:black;" [(ngModel)]="waitls.RES_Waitlist_Priority"></td>
+                    
+                      </tr><br>
+                      <tr>
+                          <td><b>Telephone No.</b></td>
+                         <td style="padding-left:60px;">
+                           <input name="waitlisttelephonenumber" type="text" required style="height:30px;border-radius:4px;width:240px;" [(ngModel)]="waitls.RES_Waitlist_Telephoneno"></td>
+                           </tr>
+                      </table><br><br>
+                  <table>
+                  <tr>
+                  <td><b>Description</b></td>
+                  <td><textarea name="waitlistdescription" rows="5" cols="81" style="border-radius:8px;"[(ngModel)]="waitls.RES_Waitlist_Description">
+                </textarea></td>
+                  </tr>
+                  </table><br><br>
+                  
+                  
+                  
+                  </div>
+                </div>
+                
+              </div>
+              <div class="modal-footer">
+                <table>
+                  <tr>
+                 <td style="padding-left:65px;"> <button type="button" class="btn btn-success" (click)="submitwait(waitls)" data-toggle="modal" data-target="#wai1" data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button></td>
+                <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
+              </tr>
+              </table>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+       <!-- Waitlist End-->
+
+     <!-- waitlist start-->
+     <div class="modal fade" id="wai1" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"> Waitlist</h4>
+            </div>
+            <div class="modal-body">
+  
+              <p align="center"><b> {{waitlist}}</b></p>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+  
+            </div>
+          </div>
+          
+        </div>
+      </div> 
+      <!-- Alert End -->    
+  
+
+  <!--History-->
+<div class="modal" id="history">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width:150%;">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">&times;</button>
+       <h4 class="modal-title">Reservation History</h4>
+      </div>
+      
+      <!-- Modal body -->
+      <div class="modal-body">
+          <div>
+              <table class="table table-hover table-bordered" style="width: 90%;margin-left:5%;">
+              <thead style="background-color:#0077B5;color:white;">
+                <tr>
+                  <th>Name</th>
+                  <th>Arrival</th>
+                  <th>Departure</th>
+                  <th>Room</th>
+                  <th>Room Type</th>
+                  <th>Rate</th>
+                  <th>Rate Code</th>
+                  <th>Adults</th>
+                   <th>Child</th>                   
+                </tr>
+              </thead>
+              <tbody style="background-color:white;">
+                <tr *ngFor="let historylist of history ; let i=index">
+                    <td>{{historylist.pf_firstname}}</td>
+                  <td>{{historylist.res_arrival}}</td>
+                  <td>{{historylist.res_depature}}</td>
+                  <td>{{historylist.res_number_of_rooms}}</td>
+                  <td>{{historylist.res_room_type}}</td>
+                  <td>{{historylist.res_rate}}</td>
+                  <td>{{historylist.res_rate_code}}</td>
+                  <td>{{historylist.res_adults}}</td>
+                  <td>{{historylist.res_child}}</td>
+                  </tr>
+                  </tbody>
+              </table>
+            </div>
+      </div>
+      
+      <!-- Modal footer -->
+      <div class="modal-footer" style="padding-left:160px;">
+        
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+         </div>
+      
+    </div>
+  </div>
+</div>
+<!--History End-->
+
+    
+  <div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-10">
+
+  <div class="container-fluid">
+  
+    <div class="row">
+        <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>  
+        <!--alert-->   
+   <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+    <div class="panel">
+    <div class="panel-body" data-toggle="modal" data-target="#alert">
+    <div class="text-center">  
+    <img src="assets/images/bell.png" alt="change" style="border-radius:50%;border:solid 10px lightgray;">
+   </div>
+    <h4  align="center">Alert</h4>
+    <p  align="center"><small>Reservation Alert!</small></p>
+    </div>
+    <div class="panel-footer">
+    <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Admin Alert!</small></p>
+    <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> Reservation Alert!</small></p>
+    </div>
+    </div>
+    </div><!-- column 1 for 1 row -->
+    
+  <!--Changes-->   
+   <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+  <div class="panel">
+  <div class="panel-body" data-toggle="modal" data-target="#changes">
+  <div class="text-center">  
+  <img src="assets/images/changes.jpg" alt="change" style="border-radius:50%;">
+  </div>
+  <h4  align="center">Changes</h4>
+  <p  align="center"><small>Change Options</small></p>
+  </div>
+  <div class="panel-footer">
+  <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Change Reservation</small></p>
+  <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> Change Reservation Alert!</small></p>
+  </div>
+  </div>
+  </div><!-- column 1 for 1 row -->
+  
+  <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+    <div class="panel">
+    <div class="panel-body" data-toggle="modal" data-target="#confirm">
+    <div class="text-center">    
+    <img src="assets/images/images.png" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+    </div>
+    <h4  align="center"> Confirmation</h4>
+    <p align="center"><small> Reservation_Confirmation</small></p>
+    </div>
+    <div class="panel-footer">
+    <p style="margin-top: 5px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Reservation Confirmation Mail</small></p>
+    <p style=" margin-top:-10px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Confirmation Alert!</small></p>
+    </div>
+    </div>
+    </div><!-- column 1 for 1 row -->
+  
+  <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+  <div class="panel">
+    <div class="panel-body"  data-toggle="modal" data-target="#credit" >
+    <div class="text-center">      
+    <img src="assets/images/credit_card.png" alt="alert" style="border-radius:50%;border:solid 8px lightgray ;">
+    </div>
+    <h4  align="center">Credit Card</h4>
+    <p  align="center"><small>Accept All Credit Cards</small></p>
+    </div>
+    <div class="panel-footer">
+    <p style=" margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Reservation Card Details</small></p>
+    <p style=" margin-top:-10px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Reservation Card Request!</small></p>
+    </div>
+    </div>
+    </div><!-- column 1 for 1 row -->
+  
+  
+      <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+      <div class="panel">
+      <div class="panel-body"data-toggle="modal" data-target="#deleted">
+      <div class="text-center">    
+      <img src="assets/images/delete-300x300.jpg" alt="change" style="border-radius:50%;border:solid 10px lightgray ;">
+      </div>
+      <h4  align="center"> Delete</h4>
+      <p align="center"><small> Delete Reservation </small></p>
+      </div>
+      <div class="panel-footer">
+      <p style="margin-top: 5px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i>  Reservation Delete Details</small></p>
+      <p style=" margin-top:-10px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Delete Alert!</small></p>
+      </div>
+      </div>
+      </div><!-- column 1 for 1 row -->
+    <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div> 
+        
+  </div><!--End of row-->
+  <br>
+  <div class="row">
+  <!--Changes-->   
+  <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>  
+  <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+      <div class="panel">
+      <div class="panel-body" data-toggle="modal" data-target="#fixed">
+      <div class="text-center">
+      <img src="assets/images/FixedDeposit-icon.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+      </div>
+      <h4 align="center"> Fixed Charges</h4>
+      <p align="center"><small> Fixed Charges Details </small></p>
+      </div>
+      <div class="panel-footer">
+      <p style="margin-top: 5px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i>  Fixed Charges Mail</small></p>
+      <p style=" margin-top:-10px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Charges Alert!</small></p>
+      </div>
+      </div>
+      </div><!-- column 1 for 1 row -->    
+   
+  <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+  <div class="panel">
+  <div class="panel-body" data-toggle="modal" data-target="#privileges">
+  <div class="text-center">
+  <img src="assets/images/badges_dd_console_stage2.png" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+  </div>
+  <h4  align="center">Privileges</h4>
+  <p align="center"><small>Change Privileges needs</small></p>
+  </div>
+  <div class="panel-footer">
+  <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Privileges Alert!</small></p>
+  <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> Change Room</small></p>
+  </div>
+  </div>
+  </div><!-- column 1 for 1 row -->
+  <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+  <div class="panel">
+  <div class="panel-body">
+  <div class="text-center">
+  <img src="assets/images/icona-guest-card.png" alt="alert" style="border-radius:50%; border:solid 8px lightgray ;">
+  </div>
+  <h4  align="center">Register card</h4>
+  <p align="center"><small>Confirmation for room</small></p>
+  </div>
+  <div class="panel-footer">
+  <p style=" margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Reserve Conform Mail</small></p>
+  <p style=" margin-top:-10px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Confirmation Alert!</small></p>
+  </div>
+  </div>
+  </div><!-- column 1 for 1 row -->
+  
+  <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+  <div class="panel">
+  <div class="panel-body" data-toggle="modal" data-target="#queue" (click)="queueProfile()">
+  <div class="text-center">
+  <img src="assets/images/800px_COLOURBOX11070120.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+  </div>
+  <h4 align="center"> Queue </h4>
+  <p align="center"><small>Reservation Queue</small></p>
+  </div>
+  <div class="panel-footer">
+  <p style="margin-top: 5px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Reserve Queue list</small></p>
+  <p style=" margin-top:-10px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Queue Alert!</small></p>
+  </div>
+  </div>
+  </div><!-- column 1 for 1 row -->
+  
+    <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+      <div class="panel">
+      <div class="panel-body" data-toggle="modal" data-target="#room">
+      <div class="text-center">
+      <img src="assets/images/images1.png" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+      </div>
+      <h4 align="center">Room Move</h4>
+      <p align="center"><small>Room Change</small></p>
+      </div>
+      <div class="panel-footer">
+      <p style="margin-top: 5px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i>  Room change Request</small></p>
+      <p style=" margin-top:-10px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Change Alert!</small></p>
+      </div>
+      </div>
+      </div><!-- column 1 for 1 row -->
+    <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>  
+      
+  </div>
+    <!--<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>-->
+    <br>
+  <div class="row">
+      <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>  
+  <!--Changes-->   
+  <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+    <div class="panel">
+    <div class="panel-body"data-toggle="modal" data-target="#deposites">
+    <div class="text-center">  
+    <img src="assets/images/deposit.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+    </div>
+    <h4  align="center"> Deposit</h4>
+    <p  align="center"><small> Deposit Confirmation</small></p>
+    </div>
+    <div class="panel-footer">
+    <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Deposit Email</small></p>
+    <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> Deposit Alert!</small></p>
+    </div>
+    </div>
+    </div><!-- column 1 for 1 row -->
+    
+   
+  <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+  <div class="panel">
+  <div class="panel-body" data-toggle="modal" data-target="#fixedrate">
+  <div class="text-center">  
+  <img src="assets/images/fixed-rate.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+  </div>
+  <h4  align="center"> Fixed Rate</h4>
+  <p align="center"><small>Fixed Rates</small></p>
+  </div>
+  <div class="panel-footer">
+  <p style="margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Fixed Rate conf.</small></p>
+  <p style=" margin-top:-10px; margin-left: 20px"><small><i class="fa fa-hand-o-right"></i> Fixed Rate Alert </small></p>
+  </div>
+  </div>
+  </div><!-- column 1 for 1 row -->
+  <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+  <div class="panel">
+  <div class="panel-body"  data-toggle="modal" data-target="#traces">
+  <div class="text-center">
+  <img src="assets/images/FindaJob_Icon.png" alt="alert" style="border-radius:50%; border:solid 8px lightgray ;">
+  </div>
+  <h4  align="center"> Traces </h4>
+  <p align="center"><small>Traces Dirty Room</small></p>
+  </div>
+  <div class="panel-footer">
+  <p style=" margin-top: 5px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Traces for check-in</small></p>
+  <p style=" margin-top:-10px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Traces Alert!</small></p>
+  </div>
+  </div>
+  </div><!-- column 1 for 1 row -->
+  
+  <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+  <div class="panel">
+  <div class="panel-body" data-toggle="modal" data-target="#wt">
+  <div class="text-center">
+  <img src="assets/images/waitlist-icon.png" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+  </div>
+  <h4 align="center">Waitlist</h4>
+  <p align="center"><small>Customer in waitlist</small></p>
+  </div>
+  <div class="panel-footer">
+  <p style="margin-top: 5px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Reservation Waitlist</small></p>
+  <p style=" margin-top:-10px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Waitlist Alert!</small></p>
+  </div>
+  </div>
+  </div><!-- column 1 for 1 row -->
+  
+  
+    <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
+      <div class="panel">
+      <div class="panel-body">
+      <div class="text-center" data-toggle="modal" data-target="#history">
+      <img src="assets/images/history.png" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
+      </div>
+      <h4 align="center"> History </h4>
+      <p align="center"><small> Reservation History </small></p>
+      </div>
+      <div class="panel-footer">
+      <p style="margin-top: 5px;margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> Guset History</small></p>
+      <p style=" margin-top:-10px; margin-left: 20px;"><small><i class="fa fa-hand-o-right"></i> History Alert!</small></p>
+      </div>
+      </div>
+      </div><!-- column 1 for 1 row -->
+      
+  </div>
+    
+  
+  <div class="col-md-1 col-sm-1 col-lg-1 col-xl-1"></div>  
+    
+  </div><!-- container End-->
+</div>
+</div>

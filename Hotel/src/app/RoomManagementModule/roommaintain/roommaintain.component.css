@@ -1,0 +1,12 @@
+.scroll{
+
+    height:35%;
+    width:100%;
+    overflow-x: auto;
+    overflow-y: auto;
+   }
+   
+
+.backGroundColor{
+	background-color:#D3D3D3;
+}

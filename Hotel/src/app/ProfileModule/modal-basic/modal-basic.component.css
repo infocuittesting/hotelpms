@@ -1,0 +1,43 @@
+.panel{
+	height:auto; 
+	width:auto;
+	border:1px solid gray;
+	margin-top:25px;
+	}
+	
+.panel-footer{
+     background-color:PowderBlue;
+	 height:58px;
+	 border-top:1px solid Dimgray;
+	}
+	
+.panel:hover{
+      box-shadow: 5px 0px 40px rgba(0,0,0, .3);	
+	  }		
+.panel-body{
+height:150px;
+}  
+ .panel-body img{
+         height:80px;
+		 width:80px;
+		 }
+		  
+	 
+.panel p{
+          font-size:13px;
+         }		 
+.modal-lg {
+	max-width:auto !important;
+}
+
+
+#negotiation{
+	height:35%;
+    width:100%;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.backGroundColor{
+	background-color:#D3D3D3;
+}

@@ -1,0 +1,635 @@
+<div class="row" style="width:99%">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <br>
+      <div class="container-fluid">
+        <div class="jumbotron" style="background-color: #0077B5;color: white; ">
+      
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="row">
+                  <div class="col-md-4">    
+              <form class="form-inline" action="/action_page.php">
+                  <label for=""> Name:</label>
+                  </form>
+              </div>   
+                  <div class="col-md-6">    
+              <form class="form-inline" action="/action_page.php">
+                  <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="name" [(ngModel)]="queryString" placeholder="Enter Name" name="name" #firstName="ngModel">
+                  
+                </form>
+                <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid" style="width:200px;">
+                   
+                    <div *ngIf=firstName.errors.pattern>name should contain only alphabets </div>
+    
+                  </div>
+              </div>
+      
+              </div>
+          </div>
+      
+              <div class="col-md-4">
+                <div class="row">
+               <div class="col-md-4">    
+               <form class="form-inline" action="/action_page.php">
+               <label for="email">Group:</label>
+                </form>
+               </div>   
+               <div class="col-md-6">    
+                <form class="form-inline" action="/action_page.php">
+               <input type="text" class="form-control" id="" placeholder="Enter Group" name="text">
+               </form>
+               </div>
+           
+               </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="row">
+                  <div class="col-md-4">    
+              <form class="form-inline" action="/action_page.php">
+                  <label for="email">Room_Type:</label>
+                  </form>
+              </div>   
+                  <div class="col-md-6">    
+              <form class="form-inline" action="/action_page.php">
+                  <input type="text" class="form-control" id="room_type" placeholder="Enter Room Type" name="room_type" [(ngModel)]="qrtype">
+                  </form>
+              </div>
+      
+              </div>
+          </div>
+      
+          </div>
+      
+            <div class="row">
+              <div class="col-md-4">
+                  <div class="row">
+                     <div class="col-md-4">    
+                         <form class="form-inline" action="/action_page.php">
+                         <label for="email">Res. Type:</label>
+                          </form>
+                    </div>   
+                  <div class="col-md-6">    
+                         <form class="form-inline" action="/action_page.php">
+                          <input type="text" class="form-control" id="type" placeholder="Enter Res.Type" name="type" [(ngModel)]="restype">
+                          </form>
+                 </div>
+         
+                 </div>
+             </div>
+             
+                 <div class="col-md-4">
+                         <div class="row">
+                         <div class="col-md-4">    
+                         <form class="form-inline" action="/action_page.php">
+                         <label for="email"> VIP:</label>
+                         </form>
+                         </div>   
+                         <div class="col-md-6">    
+                         <form class="form-inline" action="/action_page.php">
+                         <input type="text" class="form-control" id="vip" placeholder="Enter VIP" name="vip">
+                         </form>
+                         </div>
+             
+                             </div>
+                         </div>
+                 <div class="col-md-4">
+                  <div class="row">
+                  <div class="col-md-4">    
+                  <form class="form-inline" action="/action_page.php">
+                  <label for="email"> Date:</label>
+                  </form>
+                  </div>   
+                  <div class="col-md-6">    
+                  <form class="form-inline" action="/action_page.php">
+                    <div class="input-group">
+                        <input id="type" type="date" class="form-control" name="date"style="width: 110%;border-radius:5px;" [(ngModel)]="qdate">
+                      </div>
+                  </form>
+                  </div>
+          
+                      </div>
+                  </div> 
+
+            </div>
+      
+            <div class="row">
+      
+ 
+                  <div class="col-md-4"> 
+                  <div class="row">
+                  <div class="col-md-4">    
+                  </div>   
+                  <div class="col-md-6">    
+                    <button class="btn btn-info" style="width: 100%;">Search <i class="fa fa-search"></i></button>
+                  </div>
+          
+                      </div>                
+                  </div> 
+                  <div class="col-md-4"> 
+                          <div class="row">
+                          <div class="col-md-4">    
+                          </div>   
+                          <div class="col-md-6">    
+                          <button class="btn btn-warning"  style="width: 100%;">Advance <i class="fa fa-edit"></i> </button>    
+                          </div>
+                  
+                              </div>                
+                          </div>           
+                  
+           </div>
+      
+      </div>
+      <br>
+      <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead>
+      
+            <tr class="table table-primary" style="background-color: #0077B5;color: white ">
+              <th> </th>  
+              <th> Hk_Status</th>
+              <th> Room_Status</th>            
+              <th> Name</th>
+              <th> Room</th>
+              <th> Extension </th>
+              <th> Room_Type </th>
+              <th> Arrival_Date</th>
+              <th> Departure_Date </th>
+              <th> Nights </th>
+              <th> Status </th>
+              <th> Group </th>
+              <th> Adults </th>                        
+              <th> Child </th>
+              <th> Rate_Code </th>
+              <th> Rate </th>
+              <th> Block_Code </th>
+              <th> Packages </th>
+              <th> Rtc </th>
+              <th> Currency </th>
+              <th> ETA </th>
+              <th> Resv_Type </th>
+              <th> Market </th>
+              <th> Source </th>            
+              <th> Origin </th>            
+              <th> Payment </th>            
+              <th> CreditCard_Number </th>            
+              <th> Exp_Date </th>            
+              <th> Guest_Balance </th>            
+              <th> Disc_Amount </th>            
+              <th> Disc_perc </th>  
+              <th> Disc_Reason </th>            
+              <th> Specilals </th>            
+              <th> Comments </th>            
+              <th> Item_Inv </th>            
+                        
+            </tr>
+        </thead>
+        <tbody>
+              <tr *ngFor="let searched of searchandedit | filterdata: restype :'res_res_type' | filterdata: queryString :'pf_firstname'| filterdata: qdate :'res_arrival'| filterdata: qrtype :'res_room_type'; let i = index"
+               (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                      <td> {{i+1}}</td> 
+                      <td> {{searched.rm_hk_status}}</td>
+                      <td> {{searched.rm_room_status}}</td>
+                      <td>  {{searched.pf_firstname}}</td>
+                      <td> {{searched.res_room}} </td>
+                      <td> {{searched.res_extension}} </td>
+                      <td> {{searched.res_room_type}} </td>
+                      <td> {{searched.res_arrival}} </td> 
+                      <td> {{searched.res_depature}} </td>
+                      <td> {{searched.res_nights}} </td>
+                      <td> {{searched.res_guest_status}} </td>
+                      <td></td>     
+                      <td> {{searched.res_adults}}</td> 
+                      <td> {{searched.res_child}}</td>     
+                      <td> {{searched.res_rate_code}}</td>     
+                      <td> {{searched.res_rate}}</td>     
+                      <td> {{searched.res_block_code}}</td> 
+                      <td> {{searched.res_packages}}</td>     
+                      <td> {{searched.res_rtc}}</td>     
+                      <td> {{searched.res_currency}}</td>     
+                      <td> {{searched.res_eta}}</td>
+                      <td> {{searched.res_res_type}}</td>     
+                      <td> {{searched.res_market}}</td> 
+                      <td> {{searched.res_source}}</td>     
+                      <td> {{searched.res_origin}}</td>     
+                      <td> {{searched.res_payment}}</td>     
+                      <td> {{searched.res_creditcard_number}}</td>     
+                      <td> {{searched.res_exp_date}}</td>     
+                      <td> {{searched.res_guest_balance}}</td>     
+                      <td> {{searched.res_disc_amount}}</td>     
+                      <td> {{searched.res_disc_perc}}</td>
+                      <td> {{searched.res_disc_reason}}</td>     
+                      <td> {{searched.res_specials}}</td>     
+                      <td> {{searched.res_comments}}</td>     
+                      <td> {{searched.res_item_inv}}</td>
+                    </tr>
+      
+        </tbody>
+      </table></div>
+      <br>
+      
+      <div>
+        <button class="btn btn-info" style="width:11%; margin-left:5%;" routerLink="/housekeeping"> Assign <i class="fa fa-sign-in"></i></button>    
+        <button class="btn btn-Warning"style="width:11%" (click)="unassignProfile()" data-toggle="modal" data-target="#Unassign"> Unassign <i class="fa fa-sign-in"></i> </button>    
+        <button class="btn btn-primary disabled" style="width:11%"> Auto <i class="fa fa-tasks"></i></button>     
+        <button class="btn btn-info" style="width:11%" routerLink="/reservation"> Profile <i class="fa fa-user"></i></button>   
+        <button class="btn btn-warning" style="width:11%" routerLink="/reservation"> Resv. <i class="fa fa-caret-square-o-down"></i></button>   
+        <button class="btn btn-success" style="width:11%" (click)="checkinProfile()" data-toggle="modal" data-target="#Checkin"> Check In <i class="fa fa-sign-in"></i></button>   
+        <button class="btn btn-danger" style="width:11%" routerLink="/mains"> Close <i class="fa fa-close"></i></button>   
+      
+        </div>
+      
+      </div>
+      
+      </div>
+      
+           <!-- Alert -->
+           <div class="modal fade" id="Auto" role="dialog" >
+              <div class="modal-dialog">
+              
+                <!-- Modal content-->
+                <div class="modal-content" style="width:150%;">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Automatic Room Assignment</h4>
+                  </div>
+                  <div class="modal-body">
+                 <legend><b> Type: </b></legend>
+                  <div class="row">
+                <div class="col-md-2">
+                </div>
+      
+             <div class="col-md-4">          
+                            <form class="form-inline" action="/action_page.php">
+                             <input type="radio" class="form-control">
+                             <label>Assign</label>
+                            </form>
+           
+                </div>
+      
+                <div class="col-md-4">
+                  <form class="form-inline" action="/action_page.php">
+                      <input type="radio" class="form-control">
+                      <label>Unassign</label>
+                     </form>
+                       </div>
+          <div class="col-md-2">
+                </div>      
+                  </div>
+      
+      <legend><b> Guest: </b> </legend>
+                  <div class="row">
+            <div class="col-md-4">
+              <div class="row">
+              <div class="col-md-4">    
+              <form class="form-inline" action="/action_page.php">
+              <label for="email"> Date:</label>
+              </form>
+              </div>   
+              <div class="col-md-6">    
+              <form class="form-inline" action="/action_page.php">
+                <div class="input-group">
+                    <input id="email" type="date" class="form-control" name="email">
+                  </div>
+              </form>
+              </div>
+      
+                  </div>
+              </div>
+              <div class="col-md-1"></div>
+             <div class="col-md-4">          
+                  <form class="form-inline" action="/action_page.php">
+                   <input type="checkbox" class="form-control">
+                   <label>All Date</label>
+                   </form>
+           
+                  </div>
+      
+                  </div>
+      
+         <div class="row">
+            <div class="col-md-4">
+              <div class="row">
+              <div class="col-md-4">    
+              <form class="form-inline" action="/action_page.php">
+              <label for="email"> Room Type:</label>
+              </form>
+              </div>   
+              <div class="col-md-6">    
+              <form class="form-inline" action="/action_page.php">
+                <div class="input-group">
+                  <select class="form-control" id="sel1" style="width: 100%;">
+                      <option> Select </option>
+                      <option> KNGN</option>
+                      <option>KNGS</option>
+                      <option>KSND</option>
+                      <option>SPL</option>
+                      </select>
+                  </div>
+              </form>
+              </div>
+      
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="row">
+                  <div class="col-md-4">    
+                  <form class="form-inline" action="/action_page.php">
+                  <label for="email"> ETA From:</label>
+                  </form>
+                  </div>   
+                  <div class="col-md-6">    
+                  <form class="form-inline" action="/action_page.php">
+                    <div class="input-group">
+                      <input id="email" type="date" class="form-control" name="email">
+                      </div>
+                  </form>
+                  </div>
+          
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="row">
+                      <div class="col-md-4">    
+                      <form class="form-inline" action="/action_page.php">
+                      <label for="email">  To:</label>
+                      </form>
+                      </div>   
+                      <div class="col-md-6">    
+                      <form class="form-inline" action="/action_page.php">
+                        <div class="input-group">
+                          <input id="email" type="date" class="form-control" name="email">
+                          </div>
+                      </form>
+                      </div>
+              
+                          </div>
+                      </div>
+                  </div>
+                  
+                  
+                 <legend> <b> Rooms: </b> </legend>   
+                 <div class="row">
+                      <div class="col-md-1"></div>
+                  <div class="col-md-4">
+                    <div class="row">
+                    <div class="col-md-5">    
+                    <form class="form-inline" action="/action_page.php">
+                    <label for="email"> Features:</label>
+                    </form>
+                    </div>   
+                    <div class="col-md-6">    
+                    <form class="form-inline" action="/action_page.php">
+                      <div class="input-group">
+                        <select class="form-control" id="sel1" style="width: 100%;">
+                            <option> Select </option>
+                            <option> KNGN</option>
+                            <option>KNGS</option>
+                            <option>KSND</option>
+                            <option>SPL</option>
+                            </select>
+                        </div>
+                    </form>
+                    </div>
+            
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">          
+                          <form class="form-inline" action="/action_page.php">
+                           <input type="checkbox" class="form-control">
+                           <label> Dirty Rooms </label>
+                           </form>
+                   
+                          </div>
+      
+                        </div>
+                        
+           <div class="row">
+                      <div class="col-md-1"></div>
+                  <div class="col-md-4">
+                    <div class="row">
+                    <div class="col-md-5">    
+                    <form class="form-inline" action="/action_page.php">
+                    <label for="email"> Smoking</label>
+                    </form>
+                    </div>   
+                    <div class="col-md-6">    
+                    <form class="form-inline" action="/action_page.php">
+                      <div class="input-group">
+                        <select class="form-control" id="sel1" style="width: 100%;">
+                            <option> Select </option>
+                            <option> Non Smoking</option>
+                            <option> Yes</option>
+                            <option> No</option>
+                            </select>
+                        </div>
+                    </form>
+                    </div>
+            
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">          
+                          <form class="form-inline" action="/action_page.php">
+                           <input type="checkbox" class="form-control">
+                           <label> Clean Rooms </label>
+                           </form>
+                   
+                          </div>
+      
+          </div>
+         
+          <div class="row">
+                  <div class="col-md-1"></div>
+              <div class="col-md-4">
+                <div class="row">
+                <div class="col-md-5">    
+                <form class="form-inline" action="/action_page.php">
+                <label for="email"> Floor</label>
+                </form>
+                </div>   
+                <div class="col-md-6">    
+                <form class="form-inline" action="/action_page.php">
+                  <div class="input-group">
+                    <select class="form-control" id="sel1" style="width: 100%;">
+                        <option> Select </option>
+                        <option> Fisrt Floor</option>
+                        <option> Second Floor</option>
+                        <option> Third Floor</option>
+                        </select>
+                    </div>
+                </form>
+                </div>
+        
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-4">          
+                      <form class="form-inline" action="/action_page.php">
+                       <input type="checkbox" class="form-control">
+                       <label> Inspected Rooms </label>
+                       </form>
+               
+                      </div>
+      
+          </div>
+      
+          <div class="row">
+                  <div class="col-md-1"></div>
+              <div class="col-md-4">
+                <div class="row">
+                <div class="col-md-5">    
+                <form class="form-inline" action="/action_page.php">
+                <label for="email"> Start From Room</label>
+                </form>
+                </div>   
+                <div class="col-md-6">    
+                <form class="form-inline" action="/action_page.php">
+                  <div class="input-group">
+                    <select class="form-control" id="sel1" style="width: 100%;">
+                        <option> Select </option>
+                        <option> Fisrt Floor Room</option>
+                        <option> Second Floor Room</option>
+                        <option> Third Floor Room</option>
+                        </select>
+                    </div>
+                </form>
+                </div>
+        
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-4">          
+                      <form class="form-inline" action="/action_page.php">
+                       <input type="checkbox" class="form-control">
+                       <label> Include Due Out Rooms  </label>
+                       </form>
+               
+                      </div>
+      
+          </div>
+      
+          <div class="row">
+                  <div class="col-md-1"></div>
+              <div class="col-md-4">
+                <div class="row">
+                <div class="col-md-5">    
+                <form class="form-inline" action="/action_page.php">
+                <label for="email"> Room Class</label>
+                </form>
+                </div>   
+                <div class="col-md-6">    
+                <form class="form-inline" action="/action_page.php">
+                  <div class="input-group">
+                    <select class="form-control" id="sel1" style="width: 100%;">
+                        <option> Select </option>
+                        <option> Fisrt Class Room</option>
+                        <option> Delux Class Room</option>
+                        <option> Ac Class Room</option>
+                        </select>
+                    </div>
+                </form>
+                </div>
+        
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-4">          
+                      <form class="form-inline" action="/action_page.php">
+                       <input type="checkbox" class="form-control">
+                       <label> Include Out Of Service Rooms  </label>
+                       </form>
+               
+                      </div>
+      
+          </div>    
+      
+          <div class="row">
+                  <div class="col-md-1"></div>
+              <div class="col-md-4">
+      
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-4">          
+                      <form class="form-inline" action="/action_page.php">
+                       <input type="checkbox" class="form-control">
+                       <label> Use Assocciated Perferences </label>
+                       </form>
+               
+                      </div>
+      
+          </div>     
+      
+      
+          <legend><b> Status: </b></legend>
+      <div>
+          <textarea name="" id="" cols="110" rows="4"></textarea>
+      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <table>
+                      <tr>
+                     <td style="padding-left:65px;"> <button type="button" class="btn btn-success"><b>Start</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button></td>
+                    <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
+                  </tr>
+                  </table>
+                  </div>
+                </div>
+                
+              </div>
+          </div>
+            <!--room assignment traces-->
+            
+        <!-- Unassign modal -->
+      
+        <div class="modal fade" id="Unassign" role="dialog" >
+              <div class="modal-dialog">
+              
+                <!-- Modal content-->
+                <div class="modal-content" style="width:150%;">
+                      <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Room Unassignment details</h4>
+                            </div>
+                      <div class="modal-body">  
+                          <div>    
+                      <p align="center"><b> {{status}} </b></p>
+                  </div>
+                  </div>
+                  <div class="modal-footer">
+                    
+                 <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+                  </div>
+                </div>
+                
+              </div>
+          </div>
+        <!-- Unassign end -->
+
+
+        <!-- Checkin modal -->
+      
+        <div class="modal fade" id="Checkin" role="dialog" >
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content" style="width:150%;">
+                        <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Checkin Status</h4>
+                              </div>
+                        <div class="modal-body">  
+                            <div>    
+                        <p align="center"><b> {{status}} </b></p>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                      
+                   <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+                    </div>
+                  </div>
+                  
+                </div>
+            </div>
+          <!-- Checkin end -->

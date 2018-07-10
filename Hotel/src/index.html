@@ -1,0 +1,134 @@
+
+<html>
+    <head>
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>  
+<!------ Include the above in your HEAD tag ---------->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<base href="/">
+<my-apps></my-apps>
+</head>
+<body>
+       
+        <script>
+                function myFunction()
+                {
+                document.getElementById("hello").style.backgroundColor="#A9A9A9";
+                document.getElementById("nav").style.backgroundColor="#A9A9A9";
+               
+                document.getElementById("t1").style.backgroundColor="#A9A9A9";
+                document.getElementById("a9").style.backgroundColor="#A9A9A9";
+                document.getElementById("p1").style.backgroundColor="#A9A9A9";
+                document.getElementById("p1").style.color="white";
+                document.getElementById("a6").style.backgroundColor="#A9A9A9";
+               
+                document.getElementById("a6").style.color="white";
+                // document.getElementById("b8").style.backgroundColor="#A9A9A9";
+          
+                //  document.getElementById("b2").style.backgroundColor="#A9A9A9";
+                //  document.getElementById("b3").style.backgroundColor="#A9A9A9";
+                //  document.getElementById("b4").style.backgroundColor="#A9A9A9";
+                //  document.getElementById("b5").style.backgroundColor="#A9A9A9";
+                //  document.getElementById("b6").style.backgroundColor="#A9A9A9";
+                //  document.getElementById("b7").style.backgroundColor="#A9A9A9";
+
+             document.getElementsByClassName("room").style.backgroundColor="#A9A9A9";
+             document.getElementsByClassName("profile").style.backgroundColor="#A9A9A9";
+             document.getElementsByClassName("reservation").style.backgroundColor="#A9A9A9";
+              document.getElementById("32").style.color="white";
+                
+                }
+                  function myFunction1()
+                {
+                document.getElementById("hello").style.backgroundColor="#0077B5";
+              document.getElementById("nav").style.backgroundColor="#0077B5";
+                document.getElementById("a1").style.color="white";
+                document.getElementById("a9").style.backgroundColor="#0077B5";
+                document.getElementById("t1").style.backgroundColor="#0077B5";
+                document.getElementById("p1").style.backgroundColor="#0077B5";
+                document.getElementById("p1").style.color="white";
+                document.getElementById("a6").style.backgroundColor="#0077B5";
+               
+                document.getElementById("a6").style.color="white";
+            
+               
+              document.getElementById("p3").style.color="white";
+               
+              document.getElementById("32").style.color="white";
+               
+                }
+                  function myFunction2()
+                {
+                document.getElementById("hello").style.backgroundColor="black";
+                document.getElementById("nav").style.backgroundColor="black";
+                document.getElementById("a9").style.backgroundColor="black";
+                document.getElementById("t1").style.backgroundColor="black";
+                document.getElementById("p1").style.backgroundColor="black";
+                document.getElementById("a6").style.backgroundColor="black";
+           document.getElementById("a6").style.color="white";
+              document.getElementById("a2").style.color="white";
+              
+                document.getElementById("p1").style.color="white";
+               
+               document.getElementById("p3").style.color="white";
+               
+             document.getElementById("32").style.color="white";
+             document.getElementsByClassName("sub-menu collapse").style.backgroundColor="black";
+                }	
+                
+                 
+                
+                </script>
+<script>
+  function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+  }
+  </script>
+
+<script>
+ $.widget.bridge('uibutton', $.ui.button);
+</script>
+
+<script>
+  var chart = AmCharts.makeChart( "chartdiv", {
+    "type": "pie",
+    "theme": "light",
+    "dataProvider": [ {
+      "title": "Check-In",
+      "value": 4852
+    }, {
+      "title": "Check-Out",
+      "value": 9899
+    },
+  {
+      "title": "Reserved",
+      "value": 9899
+    }  ],
+    "titleField": "title",
+    "valueField": "value",
+    "labelRadius": 5,
+  
+    "radius": "42%",
+    "innerRadius": "60%",
+    "labelText": "[[title]]",
+    "export": {
+      "enabled": true
+    }
+  } );
+  </script>
+                
+
+</body>
+</html>

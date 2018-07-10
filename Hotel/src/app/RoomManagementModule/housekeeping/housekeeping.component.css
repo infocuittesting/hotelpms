@@ -1,0 +1,28 @@
+#div1 {
+    width: 500px;
+    height: 90px;
+    border: 1px solid white;
+    padding-left:30px;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+
+#div2 {
+    width: 500px;
+    height: 90px;
+    border: 1px solid white;
+     padding-left:30px;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.scrollable{
+    height:38%;
+    width:100%;
+    /* overflow-x: auto; */
+     overflow-y: auto; 
+}
+.backgroundcolor{
+    background-color: lightgray;
+}

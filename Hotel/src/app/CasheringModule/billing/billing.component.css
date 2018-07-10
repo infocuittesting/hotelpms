@@ -1,0 +1,30 @@
+.modal {
+    text-align: left;
+  padding: 0!important;
+}
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+}
+
+.scrollhid{
+    overflow-x: hidden;
+}
+
+
+.backGroundColor{
+    background-color:#D3D3D3;
+}
