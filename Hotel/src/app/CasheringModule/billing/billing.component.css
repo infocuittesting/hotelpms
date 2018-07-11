@@ -28,3 +28,10 @@
 .backGroundColor{
     background-color:#D3D3D3;
 }
+hr{
+    margin-top:5px !important;
+    margin-bottom: 5px !important;
+}
+.form-control{
+    height:30px;
+}

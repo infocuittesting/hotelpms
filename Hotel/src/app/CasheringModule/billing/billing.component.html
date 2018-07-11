@@ -1,757 +1,781 @@
 
-
-
-
-<div class="modal fade" id="transfertransaction" role="dialog">
-  <div class="vertical-alignment-helper">
-<div class="modal-dialog vertical-align-center">
-
-  <!-- Modal content-->
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title"><b>RESLU - Transfer Type</b></h4>
-    </div>
-    <div class="modal-body">
-     <div class="row">
-       <div class="col-sm-6">
-          <div class="panel panel-default">
-              <div class="panel-body">
-                  <form>
-                      <div class="radio" style="margin-left:15px;">
-                        <label><input type="radio" name="optradio"><b>Transfer To another Room</b></label>
-                      </div>
-                      <div class="radio" style="margin-left:15px;">
-                        <label><input type="radio" name="optradio"><b>Transfer From another Room</b></label>
-                      </div>
-                      <div class="radio" style="margin-left:15px;">
-                        <label><input type="radio" name="optradio"><b>Transfer From List of Rooms</b></label>
-                      </div>
-                    </form>
+<div class="scrollhid">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+    <div class="row"  style="padding-top:5px;">
+    
+    <div class="container">
+    <div class="jumbotron jumbotron-fluid" style="background-color:0077B5;color:white;padding-top:20px;margin-left:5px;margin-right:1%;">
+    
+                  
+        <form>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-2">
+                <label for="room">Balance</label>
+                  <div class="form-group">            
+                    <input type="text" class="form-control input-sm" >
+                  </div>
+              </div>
+            
+            <div class="col-md-2">
+            <label for="name">Arrival</label>
+            <div class="form-group">          
+              <input type="date" class="form-control input-sm">
+            </div>
+          </div>
+  
+          <div class="col-md-2">
+              <label for="group">Company</label>
+            <div class="form-group">
               
+              <input type="text" class="form-control input-sm">
+            </div>
+          </div>
+           
+          <div class="col-md-2">
+              <label for="group">Rate code</label>
+            <div class="form-group">
+              
+              <input type="text" class="form-control input-sm">
+            </div>
+          </div>
+  
+          <div class="col-md-2">
+              <label for="company">Prs</label>
+             <div class="form-group">
+             
+              <input type="text" class="form-control input-sm">
+            </div>
+          </div>
+  
+          <div class="col-md-1"></div>
+  
+          </div>
+  
+           <div class="row">
+            <div class="col-md-1"></div>
+            
+            <div class="col-md-2">
+                <label for="room">Status</label>
+            <div class="form-group">
+              <input type="text" class="form-control input-sm" >
+            </div>
+          </div>
+            
+          <div class="col-md-2">
+              <label for="name">Departure</label>
+            <div class="form-group">            
+              <input type="date" class="form-control input-sm">
+            </div>
+          </div>
+  
+          <div class="col-md-2">
+              <label for="group">Group</label>
+            <div class="form-group">           
+              <input type="text" class="form-control input-sm">
+            </div>
+          </div>
+           
+          <div class="col-md-2">
+              <label for="group">Rate</label>
+            <div class="form-group">           
+              <input type="text" class="form-control input-sm">
+            </div>
+          </div>
+  
+          <div class="col-md-2">
+              <label for="company">Room Type</label>
+             <div class="form-group">            
+              <input type="text" class="form-control input-sm">
+            </div>
+          </div>
+  
+            <div class="col-md-1"></div>
+  
+           </div>
+           
+          </form>
+    </div>
+    </div>
+  <br>
+    <div class="container">
+      <div class="table-responsive">
+    <table class="table table-bordered table-hover" style="width:98%;margin-left:1%;">
+      <thead style="background-color:#0077B5;color:white;">
+        <tr>
+          <th>Date</th>
+          <th>Code</th>
+          <th>Description</th>
+           <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+          <contextmenu #contextmenu style="width:70%;">
+              <div class="dropdown open">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer Transaction</a><br>
+                  <a class="dropdown-item" href="#">Transfer to another window</a><br>                                
+                </div>
+              </div>
+            </contextmenu>
+        <tr *ngFor="let item of items; let i=index" (click)="selectMembersEdit(item,i)" 
+        [ngClass]="{'backGroundColor':i==selectindex}"  [contextmenu]="[contextmenu, {item: item}]">
+         
+           <td >{{item.Date}}</td>
+          <td>{{item.Code}}</td>
+           <td>{{item.Description}}</td>
+          <td>{{item.Amount}}</td>
+          
+        </tr>
+        <!-- <tr>
+         
+          <td>16-04-2018</td>
+         <td>5150</td>
+          <td>parking</td>
+         <td>500</td>
+         
+       </tr>
+       <tr>
+         
+        <td>16-04-2018</td>
+       <td>5150</td>
+        <td>parking</td>
+       <td>500</td>
+       
+     </tr>
+     <tr>
+         
+      <td>16-04-2018</td>
+     <td>5150</td>
+      <td>parking</td>
+     <td>500</td>
+     </tr>
+     
+   <tr>
+         
+    <td>16-04-2018</td>
+   <td>5150</td>
+    <td>parking</td>
+   <td>500</td>
+   
+  </tr>
+  <tr>
+         
+    <td>16-04-2018</td>
+   <td>5150</td>
+    <td>parking</td>
+   <td>500</td>
+   
+  </tr>
+  <tr>
+         
+    <td>16-04-2018</td>
+   <td>5150</td>
+    <td>parking</td>
+   <td>500</td>
+   
+  </tr> -->
+  
+      </tbody>
+    </table>
+    </div>
+  </div>
+  
+  <form class="form-inline">
+  
+  
+  
+    <div class="row">
+      
+      <button type="button" id="post" class="btn btn-success" style="width:9%;margin-left:3%;" data-target="#postoption" data-toggle="modal"><b>post</b></button>
+      
+     
+      
+        <button type="button" class="btn btn-default" style="width:10%;margin-left:2%;" data-target="#editmodal" data-toggle="modal"><b>Edit</b></button>
+      
+  
+      
+        <button type="button" class="btn btn-info" style="width:10%;margin-left:2%;" ><b>Folio</b></button>
+   
+  
+       
+          <button type="button" class="btn btn-warning" style="width:10%;margin-left:2%;" ><b>Options</b></button>
+       
+  
+          
+            <button type="button" class="btn btn-secondary" style="width:10%;margin-left:2%;" data-toggle="modal" data-target="#myModal2"><b>Payment</b></button>
+          
+  
+          
+              <button type="button" class="btn btn-primary" style="width:10%;margin-left:2%;"><b>Settlement</b></button>
+  
+              <button type="button" class="btn btn-info" style="width:10%;margin-left:2%;" data-toggle="modal" data-target="#reinstatemodal" ><b>Reinstate</b></button>
+             
+                <button type="button" class="btn btn-danger" style="width:8%;margin-left:2%;" routerLink="/inhousecashering"><b>Close</b></button>
+                
+    </div>
+  
+  </form>
+  
+    </div>
+    
+    </div>
+    </div>
+  
+   
+  <!-- *********************************************************************************************************** -->
+            
+        <!--  post option Modal -->
+  
+  <div class="modal fade" id="postoption" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="vertical-alignment-helper">
+          <div class="modal-dialog vertical-align-center">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+  
+                      </button>
+                       <h3 class="modal-title" id="myModalLabel"><b>Modal title</b></h3>
+  
+                  </div>
+                  <div class="modal-body">
+                      <table class="table table-bordered table-hover">
+                          <thead style="background-color:#0077B5;color:white;">
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">First</th>
+                              <th scope="col">Last</th>
+                              <th scope="col">Handle</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">1</th>
+                              <td>Mark</td>
+                              <td>Otto</td>
+                              <td>@mdo</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">2</th>
+                              <td>Jacob</td>
+                              <td>Thornton</td>
+                              <td>@fat</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">3</th>
+                              <td colspan="2">Larry the Bird</td>
+                              <td>@twitter</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+          
+        <!--  Edit Modal -->
+        <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="vertical-alignment-helper">
+                <div class="modal-dialog vertical-align-center">
+                    <div class="modal-content">
+                        <div class="modal-header" style="background: #0077B5;color: white;">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        
+                            </button>
+                             <h4 class="modal-title" id="myModalLabel"><b>Edit Transaction Details</b></h4>
+        
+                        </div>
+                        <div class="modal-body">
+                          <form id="editform">
+  
+                              <div class="row">
+                                  <div class="col-sm-6">
+                                <div class="form-group">
+                                  <div class="col-sm-6">
+                                      <b>Room</b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="textbox" class="form-control">
+                                      </div>
+                              </div>
+                              </div>
+                              </div>
+  
+                              <div class="row" style="margin-top:5px;">
+                                  <div class="col-sm-6">
+                                  <div class="form-group">
+                                  <div class="col-sm-6">
+                                      <b>Name</b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="textbox" class="form-control">
+                                      </div>
+                              </div>
+                              </div>
+                            </div>
+                              <hr>
+  
+                              <div class="row">
+                                  <div class="col-sm-6">
+                                  <div class="form-group">
+                                  <div class="col-sm-6">
+                                      <b>Code</b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="textbox" class="form-control"> 
+                                      </div>
+                                      </div>
+                              </div>
+                            </div>
+                              <hr>
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                  <div class="form-group">
+                                  <div class="col-sm-6">
+                                      <b>Price</b>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="textbox" class="form-control">
+                                      </div>
+                                      </div>
+                           
+                  
+                                <div class="form-group">
+                                <div class="col-sm-6" style="padding-top:5px;">
+                                    <b>Quantity</b>
+                                  </div>
+                                  <div class="col-sm-6" style="padding-top:5px;">
+                                      <input type="textbox" class="form-control">
+                                  </div>
+                                </div>
+                        
+  
+  
+                              <div class="form-group">
+                              <div class="col-sm-6" style="padding-top:5px;">
+                                  <b>Amount</b>
+                                </div>
+                                <div class="col-sm-6" style="padding-top:5px;">
+                                    <input type="textbox" class="form-control">
+                                </div>
+                                </div>
+                              </div>
+  
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                      <textarea style="margin-left:4%;"class="form-control"  rows="5" id="comment">USD</textarea>
+                                    </div>
+                                 </div>
+                                </div>
+                              </div><hr>
+  
+                      <div class="row">
+                          
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                    <div class="col-sm-6">
+                                      <b>Cashier</b>
+                                    </div>
+                                    <div class="col-sm-6" >
+                                      <input type="textbox" class="form-control">
+                                    </div>
+                              </div>
+                                
+                                    
+                                       
+                                          
+                                      <div class="form-group">
+                                        <div class="col-sm-6" style="padding-top:5px;">
+                                          <b>Folio.No</b>
+                                        </div>
+                                        <div class="col-sm-6" style="padding-top:5px;">
+                                          <input type="textbox" class="form-control">
+                                        </div>
+                                  </div>
+  
+                          
+                                         
+                                         
+                          </div>
+  
+                          
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                <div class="col-md-4" style="margin-left:5%;">
+                                  <label>Arr.code</label>
+                                </div> 
+                         
+                                <div class="col-md-6">
+                                  <select style="width:70%;height:100%;" class="form-control">
+                                      <option value="101">101</option>
+                                      <option value="102">102</option>
+                                      <option value="103">103</option>
+                                      <option value="104">104</option>
+                                    </select>
+                                </div>
+                              </div>
+                            </div>
+                           </div>
+                      <hr>
+  
+                      <div class="row">
+                          <div class="col-sm-6">
+                        <div class="form-group">
+                          <div class="col-sm-6">
+                              <b>Posting Date</b>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="date" class="form-control" style="width:160px;">
+                              </div>
+                      </div>
+                      </div>
+                      </div>
+  
+                      <div class="row" style="padding-top:5px;">
+                          <div class="col-sm-6">
+                        <div class="form-group">
+                          <div class="col-sm-6">
+                              <b>Revenue Date</b>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="date" class="form-control" style="width:160px;">
+                              </div>
+                      </div>
+                      </div>
+                      </div>
+  <hr>
+  <div class="row">
+      <div class="col-sm-6">
+    <div class="form-group">
+      <div class="col-sm-6">
+          <b>Article</b>
+        </div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" style="width:260px;">
+          </div>
+  </div>
+  </div>
+  </div>
+  
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="col-sm-6" style="padding-top:5px;">
+          <b>Credit Card No.</b>
+        </div>
+        <div class="col-sm-6" style="padding-top:5px;">
+            <input type="textbox" class="form-control">
+        </div>
+        <br>
+      </div>           
+    </div>
+  
+    <div class="col-md-6">
+      <div class="form-group">
+        <div class="col-md-4" style="padding-top:5px;">
+          <label>Exp.Date</label>
+        </div> 
+     
+        <div class="col-md-6" style="padding-top:5px;">
+          <input type="textbox" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+    
+       <div class="row" style="padding-top:5px;">
+          <div class="col-sm-6">
+        <div class="form-group">
+          <div class="col-sm-6">
+              <b>Supplement</b>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" style="width:260px;">
+              </div>
+      </div>
+      </div>
+      </div>
+  
+      <div class="row" style="padding-top:5px;">
+          <div class="col-sm-6">
+        <div class="form-group">
+          <div class="col-sm-6">
+              <b>Reference</b>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" style="width:260px;">
+              </div>
+      </div>
+      </div>
+      </div>
+  
+  
+  
+  <div class="row" style="padding-top:5px;">
+      <div class="col-md-6">
+          <div class="form-group">
+          <div class="col-sm-6">
+              <b>Cheque No.</b>
+            </div>
+            <div class="col-sm-6">
+                <input type="textbox" class="form-control">
+            </div>
+            
+           
+            </div>
+                     
+                     
+      </div>
+  
+     
+      <div class="col-md-6">
+          <div class="form-group">
+            <div class="col-md-3">
+              <label>Covers</label>
+            </div> 
+     
+            <div class="col-md-6">
+                <input type="textbox" class="form-control">
+            </div>
+          </div>
+        </div>
+       </div>
+                      
+                      <div class="row">
+                        <div class="col-md-6">
+                          
+                        </div>
+                      </div>
+  
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-success">OK</button>
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+  
+          <!--Reinstate modal-->
+  
+          <div class="modal fade" id="reinstatemodal" role="dialog">
+              <div class="vertical-alignment-helper">  
+            <div class="modal-dialog vertical-align-center modal-sm">
+              
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><b>Confirm Reinstate</b></h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Are you sure want to reinstate? </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+                
               </div>
             </div>
-       </div>
-
-       <div class="col-sm-6" style="padding-left:35px;">
-          <div class="panel panel-default">
-              <div class="panel-body">
-              <div class="row">
-                <div class="col-sm-3">
-
-                </div>
-
-                <div class="col-sm-3">
+            </div>
+  </div>
+  <div class="modal fade" id="transfertransaction" role="dialog">
+      <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>RESLU - Transfer Type</b></h4>
+        </div>
+        <div class="modal-body">
+         <div class="row">
+           <div class="col-sm-6">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <form>
+                          <div class="radio" style="margin-left:15px;">
+                            <label><input type="radio" name="optradio"><b>Transfer To another Room</b></label>
+                          </div>
+                          <div class="radio" style="margin-left:15px;">
+                            <label><input type="radio" name="optradio"><b>Transfer From another Room</b></label>
+                          </div>
+                          <div class="radio" style="margin-left:15px;">
+                            <label><input type="radio" name="optradio"><b>Transfer From List of Rooms</b></label>
+                          </div>
+                        </form>
                   
                   </div>
-                </div>   
-              
-                <div class="row">
-                    <div class="col-sm-1">
-                  <input type="radio" name="optradio">
+                </div>
+           </div>
+  
+           <div class="col-sm-6" style="padding-left:35px;">
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+  
                     </div>
   
-                    <div class="col-sm-5" style="margin-left:2%;">
-                      <label>GroupedPostings</label>
-                    </div>
-                    </div>  
-
+                    <div class="col-sm-3">
+                      
+                      </div>
+                    </div>   
+                  
                     <div class="row">
                         <div class="col-sm-1">
-                            <input type="radio" name="optradio">
+                      <input type="radio" name="optradio">
                         </div>
       
-                        <div class="col-sm-5" style="margin-left:2%;" >
-                            <label >EntireFolio</label> 
-                          </div>
+                        <div class="col-sm-5" style="margin-left:2%;">
+                          <label>GroupedPostings</label>
+                        </div>
                         </div>  
-
+  
                         <div class="row">
                             <div class="col-sm-1">
                                 <input type="radio" name="optradio">
                             </div>
           
-                            <div class="col-sm-5" style="margin-left:2%">
-                                <label>MarkedPostings</label> 
+                            <div class="col-sm-5" style="margin-left:2%;" >
+                                <label >EntireFolio</label> 
                               </div>
                             </div>  
-
+  
                             <div class="row">
                                 <div class="col-sm-1">
                                     <input type="radio" name="optradio">
                                 </div>
               
                                 <div class="col-sm-5" style="margin-left:2%">
-                                    <label>PartialPostings</label> 
+                                    <label>MarkedPostings</label> 
                                   </div>
                                 </div>  
-
+  
                                 <div class="row">
                                     <div class="col-sm-1">
                                         <input type="radio" name="optradio">
                                     </div>
                   
                                     <div class="col-sm-5" style="margin-left:2%">
-                                        <label>CheckNumber</label>
+                                        <label>PartialPostings</label> 
                                       </div>
                                     </div>  
+  
+                                    <div class="row">
+                                        <div class="col-sm-1">
+                                            <input type="radio" name="optradio">
+                                        </div>
+                      
+                                        <div class="col-sm-5" style="margin-left:2%">
+                                            <label>CheckNumber</label>
+                                          </div>
+                                        </div>  
+                  </div>
+                </div>
+             
+            </div>
+  
+         </div>
+  
+      <div class="row">
+          <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <b> </b>
+                  </div>
+  
+                  <div class="col-sm-3">
+                      <b>To Room</b>
+                    </div>
+  
+                    <div class="col-sm-6">
+                        <select style="width:50%;height:100%;">
+                            <option value="101">101</option>
+                            <option value="102">102</option>
+                            <option value="103">103</option>
+                            <option value="104">104</option>
+                          </select>
+                    </div>
+                </div>
+              
               </div>
             </div>
-         
+      </div>
+  
+      <div class="row">
+        <div class="col-sm-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                  <b>133</b><br>
+                  <b>Barker</b>
+                </div>
+              </div>   
         </div>
-
-     </div>
-
-  <div class="row">
-      <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-sm-3">
-                <b> </b>
+        <div class="col-sm-1"><br>
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </div>
+        <div class="col-sm-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <b>415</b><br>
+                    <b>Archer</b>
               </div>
-
-              <div class="col-sm-3">
-                  <b>To Room</b>
-                </div>
-
-                <div class="col-sm-6">
-                    <select style="width:50%;height:100%;">
-                        <option value="101">101</option>
-                        <option value="102">102</option>
-                        <option value="103">103</option>
-                        <option value="104">104</option>
-                      </select>
-                </div>
-            </div>
-          
-          </div>
-        </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-5">
-        <div class="panel panel-default">
-            <div class="panel-body">
-              <b>133</b><br>
-              <b>Barker</b>
-            </div>
-          </div>   
-    </div>
-    <div class="col-sm-1"><br>
-      <span class="glyphicon glyphicon-chevron-right"></span>
-    </div>
-    <div class="col-sm-5">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <b>415</b><br>
-                <b>Archer</b>
-          </div>
+              </div>
           </div>
       </div>
-  </div>
-
-      
-
-
-
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#aftertransfer"><b>Transfer</b></button>
-      <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
-    </div>
-  </div>
   
-</div>
-</div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="aftertransfer" role="dialog">
-    <div class="vertical-alignment-helper">  
-  <div class="modal-dialog vertical-align-center modal-sm">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><b>Opera</b></h4>
-        </div>
-        <div class="modal-body">
-          <p> charge transferred </p>
+          
+  
+  
+  
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#aftertransfer"><b>Transfer</b></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
         </div>
       </div>
       
     </div>
-  </div>
+    </div>
   </div>
   
-
-
-<div class="scrollhid">
-<div class="row">
-<div class="col-md-2"></div>
-<div class="col-md-10">
-<div class="row"  style="padding-top:5px;">
-
-<div class="container">
-<div class="jumbotron jumbotron-fluid" style="background-color:0077B5;color:white;padding-top:20px;margin-left:5px;margin-right:1%;">
-
-              
-    <form>
-        <div class="row">
-          <div class="col-md-1"></div>
-          <div class="col-md-2">
-            <label for="room">Balance</label>
-              <div class="form-group">            
-                <input type="text" class="form-control input-sm" >
-              </div>
-          </div>
+    <!-- Modal -->
+    <div class="modal fade" id="aftertransfer" role="dialog">
+        <div class="vertical-alignment-helper">  
+      <div class="modal-dialog vertical-align-center modal-sm">
         
-        <div class="col-md-2">
-        <label for="name">Arrival</label>
-        <div class="form-group">          
-          <input type="date" class="form-control input-sm">
-        </div>
-      </div>
-
-      <div class="col-md-2">
-          <label for="group">Company</label>
-        <div class="form-group">
-          
-          <input type="text" class="form-control input-sm">
-        </div>
-      </div>
-       
-      <div class="col-md-2">
-          <label for="group">Rate code</label>
-        <div class="form-group">
-          
-          <input type="text" class="form-control input-sm">
-        </div>
-      </div>
-
-      <div class="col-md-2">
-          <label for="company">Prs</label>
-         <div class="form-group">
-         
-          <input type="text" class="form-control input-sm">
-        </div>
-      </div>
-
-      <div class="col-md-1"></div>
-
-      </div>
-
-       <div class="row">
-        <div class="col-md-1"></div>
-        
-        <div class="col-md-2">
-            <label for="room">Status</label>
-        <div class="form-group">
-          <input type="text" class="form-control input-sm" >
-        </div>
-      </div>
-        
-      <div class="col-md-2">
-          <label for="name">Departure</label>
-        <div class="form-group">            
-          <input type="date" class="form-control input-sm">
-        </div>
-      </div>
-
-      <div class="col-md-2">
-          <label for="group">Group</label>
-        <div class="form-group">           
-          <input type="text" class="form-control input-sm">
-        </div>
-      </div>
-       
-      <div class="col-md-2">
-          <label for="group">Rate</label>
-        <div class="form-group">           
-          <input type="text" class="form-control input-sm">
-        </div>
-      </div>
-
-      <div class="col-md-2">
-          <label for="company">Room Type</label>
-         <div class="form-group">            
-          <input type="text" class="form-control input-sm">
-        </div>
-      </div>
-
-        <div class="col-md-1"></div>
-
-       </div>
-       
-      </form>
-</div>
-</div>
-<br>
-<div class="container">
-  <div class="table-responsive">
-<table class="table table-bordered table-hover" style="width:98%;margin-left:1%;">
-  <thead style="background-color:#0077B5;color:white;">
-    <tr>
-      <th>Date</th>
-      <th>Code</th>
-      <th>Description</th>
-       <th>Amount</th>
-    </tr>
-  </thead>
-  <tbody>
-      <contextmenu #contextmenu style="width:70%;">
-          <div class="dropdown open">
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer Transaction</a><br>
-              <a class="dropdown-item" href="#">Transfer to another window</a><br>                                
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><b>Opera</b></h4>
+            </div>
+            <div class="modal-body">
+              <p> charge transferred </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
             </div>
           </div>
-        </contextmenu>
-    <tr *ngFor="let item of items; let i=index" (click)="selectMembersEdit(item,i)" 
-    [ngClass]="{'backGroundColor':i==selectindex}"  [contextmenu]="[contextmenu, {item: item}]">
-     
-       <td >{{item.Date}}</td>
-      <td>{{item.Code}}</td>
-       <td>{{item.Description}}</td>
-      <td>{{item.Amount}}</td>
-      
-    </tr>
-    <!-- <tr>
-     
-      <td>16-04-2018</td>
-     <td>5150</td>
-      <td>parking</td>
-     <td>500</td>
-     
-   </tr>
-   <tr>
-     
-    <td>16-04-2018</td>
-   <td>5150</td>
-    <td>parking</td>
-   <td>500</td>
-   
- </tr>
- <tr>
-     
-  <td>16-04-2018</td>
- <td>5150</td>
-  <td>parking</td>
- <td>500</td>
- </tr>
- 
-<tr>
-     
-<td>16-04-2018</td>
-<td>5150</td>
-<td>parking</td>
-<td>500</td>
-
-</tr>
-<tr>
-     
-<td>16-04-2018</td>
-<td>5150</td>
-<td>parking</td>
-<td>500</td>
-
-</tr>
-<tr>
-     
-<td>16-04-2018</td>
-<td>5150</td>
-<td>parking</td>
-<td>500</td>
-
-</tr> -->
-
-  </tbody>
-</table>
-</div>
-</div>
-
-<form class="form-inline">
-
-
-
-<div class="row">
-  
-  <button type="button" id="post" class="btn btn-success" style="width:10%;margin-left:7%;" data-target="#postoption" data-toggle="modal"><b>post</b></button>
-  
- 
-  
-    <button type="button" class="btn btn-default" style="width:10%;margin-left:2%;" data-target="#editmodal" data-toggle="modal"><b>Edit</b></button>
-  
-
-  
-    <button type="button" class="btn btn-info" style="width:10%;margin-left:2%;" ><b>Folio</b></button>
-
-
-   
-      <button type="button" class="btn btn-warning" style="width:10%;margin-left:2%;" ><b>Options</b></button>
-   
-
-      
-        <button type="button" class="btn btn-secondary" style="width:10%;margin-left:2%;" data-toggle="modal" data-target="#myModal2"><b>Payment</b></button>
-      
-
-      
-          <button type="button" class="btn btn-primary" style="width:10%;margin-left:2%;" ><b>Settlement</b></button>
-         
-            <button type="button" class="btn btn-danger" style="width:10%;margin-left:2%;" routerLink="/inhousecashering"><b>Close</b></button>
-            
-</div>
-
-</form>
-
-</div>
-
-</div>
-</div>
-
-
-      
-        
-    <!--  post option Modal -->
-
-<div class="modal fade" id="postoption" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="vertical-alignment-helper">
-      <div class="modal-dialog vertical-align-center">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-
-                  </button>
-                   <h3 class="modal-title" id="myModalLabel"><b>Modal title</b></h3>
-
-              </div>
-              <div class="modal-body">
-                  <table class="table table-bordered table-hover">
-                      <thead style="background-color:#0077B5;color:white;">
-                        <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">First</th>
-                          <th scope="col">Last</th>
-                          <th scope="col">Handle</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td colspan="2">Larry the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                      </tbody>
-                    </table>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
-
-      
-    <!--  Edit Modal -->
-    <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="vertical-alignment-helper">
-            <div class="modal-dialog vertical-align-center">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-    
-                        </button>
-                         <h4 class="modal-title" id="myModalLabel"><b>Edit Transaction Details</b></h4>
-    
-                    </div>
-                    <div class="modal-body">
-                      <form id="editform">
-
-                          <div class="row">
-                              <div class="col-sm-6">
-                            <div class="form-group">
-                              <div class="col-sm-6">
-                                  <b>Amount</b>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="textbox" class="form-control">
-                                  </div>
-                          </div>
-                          </div>
-                          </div>
-
-                          <div class="row" style="margin-top:5px;">
-                              <div class="col-sm-6">
-                              <div class="form-group">
-                              <div class="col-sm-6">
-                                  <b>Name</b>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="textbox" class="form-control">
-                                  </div>
-                          </div>
-                          </div>
-                        </div>
-                          <hr>
-
-                          <div class="row">
-                              <div class="col-sm-6">
-                              <div class="form-group">
-                              <div class="col-sm-6">
-                                  <b>Code</b>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="textbox" class="form-control"> 
-                                  </div>
-                                  </div>
-                          </div>
-                        </div>
-                          <hr>
-                              <div class="row">
-                                <div class="col-md-6">
-                              <div class="form-group">
-                              <div class="col-sm-6">
-                                  <b>Price</b>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="textbox" class="form-control">
-                                  </div>
-                                  </div>
-                       
-              
-                            <div class="form-group">
-                            <div class="col-sm-6">
-                                <b>Quantity</b>
-                              </div>
-                              <div class="col-sm-6" style="padding-top:5px;">
-                                  <input type="textbox" class="form-control">
-                              </div>
-                            </div>
-                    
-
-
-                          <div class="form-group">
-                          <div class="col-sm-6">
-                              <b>Amount</b>
-                            </div>
-                            <div class="col-sm-6" style="padding-top:5px;">
-                                <input type="textbox" class="form-control">
-                            </div>
-                            </div>
-                          </div>
-
-                          <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                  <textarea style="margin-left:4%;"class="form-control"  rows="5" id="comment">USD</textarea>
-                                </div>
-                             </div>
-                            </div>
-                          </div><hr>
-
-                  <div class="row">
-                      <div class="form-group">
-                      <div class="col-md-6">
-                          <div class="col-sm-6">
-                              <b>Cashier</b>
-                            </div>
-                            <div class="col-sm-6" style="padding-top:5px;">
-                                <input type="textbox" class="form-control">
-                            </div>
-                            
-                            <br>
-                            
-                                <div class="form-group" style="margin-top:10px;">
-                                   <div class="col-sm-6">
-                                       <b>Folio.No</b>
-                                    </div>
-                                     <div class="col-sm-6" style="padding-top:5px;">
-                                         <input type="textbox" class="form-control">
-                                     </div>
-                                </div>
-                      </div>
-                                     
-                                     
-                      </div>
-
-                      <div class="form-group">
-                      <div class="col-md-6">
-                            <div class="col-md-4" style="margin-left:5%;">
-                              <label>Arr.code</label>
-                            </div> 
-                     
-                            <div class="col-md-6">
-                              <select style="width:70%;height:100%;" class="form-control">
-                                  <option value="101">101</option>
-                                  <option value="102">102</option>
-                                  <option value="103">103</option>
-                                  <option value="104">104</option>
-                                </select>
-                            </div>
-                          </div>
-                        </div>
-                       </div>
-                  <hr>
-
-                  <div class="row">
-                      <div class="col-sm-6">
-                    <div class="form-group">
-                      <div class="col-sm-6">
-                          <b>Posting Date</b>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="date" class="form-control" style="width:160px;">
-                          </div>
-                  </div>
-                  </div>
-                  </div>
-
-                  <div class="row" style="padding-top:5px;">
-                      <div class="col-sm-6">
-                    <div class="form-group">
-                      <div class="col-sm-6">
-                          <b>Revenue Date</b>
-                        </div>
-                        <div class="col-sm-6">
-                            <input type="date" class="form-control" style="width:160px;">
-                          </div>
-                  </div>
-                  </div>
-                  </div>
-<hr>
-<div class="row">
-  <div class="col-sm-6">
-<div class="form-group">
-  <div class="col-sm-6">
-      <b>Article</b>
-    </div>
-    <div class="col-sm-6">
-        <input type="text" class="form-control" style="width:260px;">
-      </div>
-</div>
-</div>
-</div>
-
-
-<div class="row">
-  <div class="form-group">
-  <div class="col-md-6">
-      <div class="col-sm-6" style="padding-top:5px;">
-          <b>Credit Card No.</b>
-        </div>
-        <div class="col-sm-6" style="padding-top:5px;">
-            <input type="textbox" class="form-control">
-        </div>
-        
-        <br>
-        </div>
-                 
-                 
-  </div>
-
-  <div class="form-group">
-  <div class="col-md-6">
-        <div class="col-md-4" style="margin-left:5%;">
-          <label>Exp.Date</label>
-        </div> 
- 
-        <div class="col-md-6">
-            <input type="textbox" class="form-control">
+          
         </div>
       </div>
-    </div>
-   </div>
-
-   <div class="row" style="padding-top:5px;">
-      <div class="col-sm-6">
-    <div class="form-group">
-      <div class="col-sm-6">
-          <b>Supplement</b>
-        </div>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" style="width:260px;">
-          </div>
-  </div>
-  </div>
-  </div>
-
-  <div class="row" style="padding-top:5px;">
-      <div class="col-sm-6">
-    <div class="form-group">
-      <div class="col-sm-6">
-          <b>Reference</b>
-        </div>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" style="width:260px;">
-          </div>
-  </div>
-  </div>
-  </div>
-
-
-
-<div class="row" style="padding-top:5px;">
-  <div class="form-group">
-  <div class="col-md-6">
-      <div class="col-sm-6">
-          <b>Cheque No.</b>
-        </div>
-        <div class="col-sm-6">
-            <input type="textbox" class="form-control">
-        </div>
-        
-       
-        </div>
-                 
-                 
-  </div>
-
-  <div class="form-group">
-  <div class="col-md-6">
-        <div class="col-md-3">
-          <label>Covers</label>
-        </div> 
- 
-        <div class="col-md-6">
-            <input type="textbox" class="form-control">
-        </div>
       </div>
-    </div>
-   </div>
-                  
-                  <div class="row">
-                    <div class="col-md-6">
-                      
-                    </div>
-                  </div>
-
-                        </form>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-success">OK</button>
-                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                          
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-</div>
