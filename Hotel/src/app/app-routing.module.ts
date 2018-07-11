@@ -39,6 +39,11 @@ import { ManagingqueueComponent } from './FrontDeskModule/managingqueue/managing
 import { BillingComponent } from './CasheringModule/billing/billing.component';
 import { CasheringinhouseguestComponent } from './CasheringModule/casheringinhouseguest/casheringinhouseguest.component';
 
+
+//RevenueManagement
+import { RevenuemanagementComponent } from './RevenueManagementModule/revenuemanagement/revenuemanagement.component';
+
+
 const routes: Routes = [ { path:'individualprofile', component:IndividualprofileComponent},
 { path:'reservation', component: ReservationComponent },
 { path:'modal-basic', component: ModalBasicComponent },
@@ -72,6 +77,8 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 { path:'inhousecashering', component: CasheringinhouseguestComponent },
 { path:'billing', component: BillingComponent },
 
+//revenuemanagement
+{ path:'revenue', component:RevenuemanagementComponent},
 
 ];
 
@@ -86,4 +93,4 @@ export class AppRoutingModule { }
 export const routingComponents = [IndividualprofileComponent,ReservationComponent,ModalBasicComponent,ReservationoptionComponent,MainscreenComponent,
   ProfileComponent,ProfilesearchComponent,SearchandeditreservationComponent,HousekeepingComponent,QueueroomComponent,RoomdiscrepanciesComponent,RoomconditionComponent
 ,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,
-GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent]
+GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent]
