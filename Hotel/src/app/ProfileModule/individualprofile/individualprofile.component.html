@@ -28,7 +28,7 @@
 <div class="col-md-2"></div>
 <div class="col-md-10">
 
-    <div class="container" style="padding-top:50px;">
+    <div class="container-fluid" style="padding-top:50px;">
 
         <ul class="nav nav-tabs">
           <li class="active" data-toggle="tab"><a>Individual Profile</a></li>
@@ -38,7 +38,7 @@
      
   </div><br>
 
-<div class="container">
+<div class="container-fluid">
     <ul class="nav nav-tabs">
         <li class="active" data-toggle="tab"><a>More Fields</a></li>
         <li><a>Stats & Info</a></li>
@@ -48,7 +48,7 @@
       </ul>
   </div><br>
 
-  <div class="container">
+  <div class="container-fluid">
 
     <div class="row">
 
@@ -166,7 +166,7 @@
                                   </div>
                                     <div class="col-lg-3">
                                     <div class="input-group">                                          
-                                            <textarea rows="4" cols="39"  [(ngModel)]="user.PF_Home_Address" #address=ngModel required></textarea>
+                                            <textarea rows="4" cols="33"  [(ngModel)]="user.PF_Home_Address" #address=ngModel required></textarea>
                                     </div>
 
                                     <div class="alert alert-danger" *ngIf="address.touched && !address.valid" style="width:295px;">       
@@ -440,7 +440,7 @@
 
   </div>
 
-  <div class="container">
+  <div class="container-fluid">
 
     <div class="row">
       <div class="col-lg-6">
@@ -554,5 +554,6 @@
           </div>
    </div>
   </div>
+</div>
 </div>
 
