@@ -12,6 +12,15 @@ import { Router } from "@angular/router";
 export class BillingComponent implements OnInit {
 
   player;
+  showMore=false;
+  //show more
+  showMoreBut(){
+    this.showMore=true;
+  }
+  //show less
+  showLessBut(){
+    this.showMore=false;
+  }
 
   public items = [
     { Date: '16-04-2018', Code: 4121,Description:'parking',Amount:500 },
@@ -19,45 +28,8 @@ export class BillingComponent implements OnInit {
     { Date: '16-04-2018', Code: 4121,Description:'parking',Amount:500 },
     { Date: '16-04-2018', Code: 4121,Description:'parking',Amount:500 },
   ];
-  // public menuOptions = [
-  //   {
-  //     html: () => 'Buy',
-  //     click: (item, $event) => {
-  //       this.player.gold -= item.cost;
-  //     },
-  //   },
-  //   {
-  //     html: (): string => 'Sell',
-  //     click: (item, $event): void => {
-  //       this.player.gold += item.cost;
-  //     },
-  //     enabled: (item): boolean => {
-  //       return item.name.match(/Iron/) == null;
-  //     }
-  //   },
-  //   {
-  //     html: () => 'Alert Cost',
-  //     click: (item) => {
-  //       alert(item.cost);
-  //     },
-  //   },
-  //   {
-  //     html: () => 'Alert Player Gold',
-  //     click: (item) => {
-  //       alert(this.player.gold);
-  //     },
-  //   }
-  // ];
-
    constructor( public session:SessionStorageService,private route:Router) { }
-  // public onContextMenu($event: Event, item: any): void {
-  //   this.contextMenuService.show.next({
-  //     actions: this.menuOptions,
-  //     event: $event,
-  //     item: item,
-  //   });
-  //   $event.preventDefault();
-  // }
+  
   ngOnInit() {
 }
 
@@ -65,8 +37,20 @@ selectindex=null;
 selectMembersEdit(details,index){
 this.selectindex=index;
 this.session.store("id",details.Date);
-
-
 }
+roomdetails:any=[{
+  "business_id":"100",
+  "facilitie1":"abc",
+  "facilitie2":"def",
+  "facilitie3":"123",
+  "id":"1",
+  "room_type":"dulex",
+  "room_code":"dulex001",
+  "room_name":"double_bed",
+  "standard_rate":"100",
+  "standard_rate_currency":"USD",
+  "totel_room":"25",
+  "editFlag":false
+}]
 
 }
