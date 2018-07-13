@@ -1,92 +1,76 @@
 <div class="row" style="width:99%;">
-  <div class="col-md-2"></div>
-  <div class="col-md-10">
-    <div class="container-fluid" style="padding-top:20px;padding-left:50px;">
-        <ul class="nav nav-tabs">
-            <li><a data-toggle="tab" href="#rateheader"><b>Rate Header</b></a></li>
-            <li><a data-toggle="tab" href="#ratedetails">Rate Detail</a></li>
-            <li data-target="#"><a>Negotiated</a></li>
-            <li data-target="#"><a>More</a></li>
-      </ul>
-      <div class="tab-content">
-      <div id="rateheader" class="tab-pane fade in active" style="margin-top:10px;">
-       <form>
-
-       
-        <div class="row">
-        
-
-
-        <div class="col-sm-6" style="padding-top:20px;">
-            <div class="panel panel-primary">
-                <div class="panel-body">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+      <div class="container-fluid" style="padding-top:20px;padding-left:50px;">
+          <ul class="nav nav-tabs">
+              <li><a data-toggle="tab" href="#rateheader"><b>Rate Header</b></a></li>
+              <li><a data-toggle="tab" href="#ratedetails">Rate Detail</a></li>
+              <li><a data-toggle="tab" href="#negotiated">Negotiated</a></li>
+              <li data-target="#"><a>More</a></li>
+        </ul>
+        <div class="tab-content clearfix">
+        <div id="rateheader" class="tab-pane fade in active" style="margin-top:10px;">
+         <form>
           <div class="row">
-            <div class="col-sm-3">
-           <b>Rate code</b>
-            </div>
-            <div class="col-sm-3">
-                <select class="form-control input-sm"  style="width:150px;">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                  </select>
-              </div>
-          </div>
-
-          <div class="row" style="padding-top:5px;">
-              <div class="col-sm-3">
-             <b>Description</b>
-              </div>
-              <div class="col-sm-3">
-                  <div class="form-group">            
-                      <input type="text" class="form-control input-sm" style="width:150px;" >
-                    </div>
-                </div>
-            </div>
-
+          
+          <div class="col-sm-6" style="padding-top:20px;">
+              <div class="panel panel-primary">
+                  <div class="panel-body">
             <div class="row">
+              <div class="col-sm-3">
+             <b>Rate code</b>
+              </div>
+              <div class="col-sm-3">
+                  <select class="form-control input-sm"  style="width:150px;">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                    </select>
+                </div>
+            </div>
+  
+            <div class="row" style="padding-top:5px;">
                 <div class="col-sm-3">
-               <b>Rate category</b>
+               <b>Description</b>
                 </div>
                 <div class="col-sm-3">
-                    <select class="form-control input-sm"  style="width:150px;">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                      </select>
+                    <div class="form-group">            
+                        <input type="text" class="form-control input-sm" style="width:150px;" >
+                      </div>
                   </div>
               </div>
-
-
-              <div class="row" style="padding-top:5px;">
+  
+              <div class="row">
                   <div class="col-sm-3">
-                 <b>Rate Class</b>
+                 <b>Rate category</b>
                   </div>
                   <div class="col-sm-3">
-                      <div class="form-group">            
-                          <input type="text" class="form-control input-sm" style="width:150px;" >
-                        </div>
+                      <select class="form-control input-sm"  style="width:150px;">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                        </select>
                     </div>
                 </div>
-
-
+  
+  
                 <div class="row" style="padding-top:5px;">
                     <div class="col-sm-3">
-                   <b>Begin Sell Date</b>
+                   <b>Rate Class</b>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">            
-                            <input type="date" class="form-control input-sm" style="width:150px;" >
+                            <input type="text" class="form-control input-sm" style="width:150px;" >
                           </div>
                       </div>
                   </div>
-
-
+  
+  
                   <div class="row" style="padding-top:5px;">
                       <div class="col-sm-3">
-                     <b>End Sell Date</b>
+                     <b>Begin Sell Date</b>
                       </div>
                       <div class="col-sm-3">
                           <div class="form-group">            
@@ -94,26 +78,23 @@
                             </div>
                         </div>
                     </div>
-
-
+  
+  
                     <div class="row" style="padding-top:5px;">
                         <div class="col-sm-3">
-                       <b>Market</b>
+                       <b>End Sell Date</b>
                         </div>
                         <div class="col-sm-3">
-                            <select class="form-control input-sm"  style="width:150px;">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                              </select>
+                            <div class="form-group">            
+                                <input type="date" class="form-control input-sm" style="width:150px;" >
+                              </div>
                           </div>
                       </div>
-
-
+  
+  
                       <div class="row" style="padding-top:5px;">
                           <div class="col-sm-3">
-                         <b>Source</b>
+                         <b>Market</b>
                           </div>
                           <div class="col-sm-3">
                               <select class="form-control input-sm"  style="width:150px;">
@@ -124,11 +105,11 @@
                                 </select>
                             </div>
                         </div>
-
-
+  
+  
                         <div class="row" style="padding-top:5px;">
                             <div class="col-sm-3">
-                           <b>Room Types</b>
+                           <b>Source</b>
                             </div>
                             <div class="col-sm-3">
                                 <select class="form-control input-sm"  style="width:150px;">
@@ -139,11 +120,11 @@
                                   </select>
                               </div>
                           </div>
-
-
+  
+  
                           <div class="row" style="padding-top:5px;">
                               <div class="col-sm-3">
-                             <b>Packages</b>
+                             <b>Room Types</b>
                               </div>
                               <div class="col-sm-3">
                                   <select class="form-control input-sm"  style="width:150px;">
@@ -154,47 +135,48 @@
                                     </select>
                                 </div>
                             </div>
-
-
+  
+  
                             <div class="row" style="padding-top:5px;">
                                 <div class="col-sm-3">
-                               <b>Commmission%</b>
+                               <b>Packages</b>
                                 </div>
                                 <div class="col-sm-3">
-                                    <div class="form-group">            
-                                        <input type="text" class="form-control input-sm" style="width:150px;" >
-                                      </div>
+                                    <select class="form-control input-sm"  style="width:150px;">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                      </select>
                                   </div>
                               </div>
-
-    </div>
-         </div> 
-        </div>
-
-        <div class="col-sm-6" style="padding-top:20px;">
-            <!-- <div class="panel panel-primary">
-                <div class="panel-body"> -->
-            <div class="panel panel-primary">
-                <div class="panel-heading">Transaction Details</div>
-                <div class="panel-body">
-                  
-                    <div class="row" style="padding-top:5px;">
-                        <div class="col-sm-3">
-                       <b>TransactionCode</b>
-                        </div>
-                        <div class="col-sm-3">
-                            <select class="form-control input-sm"  style="width:150px;">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                              </select>
-                          </div>
-                      </div>
-
+  
+  
+                              <div class="row" style="padding-top:5px;">
+                                  <div class="col-sm-3">
+                                 <b>Commmission%</b>
+                                  </div>
+                                  <div class="col-sm-3">
+                                      <div class="form-group">            
+                                          <input type="text" class="form-control input-sm" style="width:150px;" >
+                                        </div>
+                                    </div>
+                                </div>
+  
+      </div>
+           </div> 
+          </div>
+  
+          <div class="col-sm-6" style="padding-top:20px;">
+              <!-- <div class="panel panel-primary">
+                  <div class="panel-body"> -->
+              <div class="panel panel-primary">
+                  <div class="panel-heading">Transaction Details</div>
+                  <div class="panel-body">
+                    
                       <div class="row" style="padding-top:5px;">
                           <div class="col-sm-3">
-                         <b>CurrencyCode</b>
+                         <b>TransactionCode</b>
                           </div>
                           <div class="col-sm-3">
                               <select class="form-control input-sm"  style="width:150px;">
@@ -205,167 +187,626 @@
                                 </select>
                             </div>
                         </div>
-
-                </div>
-              </div>
-
-
-              <div class="panel panel-primary">
-                  <div class="panel-heading">Components</div>
-                  <div class="panel-body">
-                      <div class="row" style="padding-top:5px;">
-
-                          <div class="col-sm-1">
-                              <div class="form-group">            
-                                  <input type="checkbox" style="width:15px;height:15px;" >
-                                </div>
-                            </div>
-                          <div class="col-sm-5">
-                         <b>Negotiated</b>
-                          </div>
-                        
-                        </div>
-
-
+  
                         <div class="row" style="padding-top:5px;">
-
+                            <div class="col-sm-3">
+                           <b>CurrencyCode</b>
+                            </div>
+                            <div class="col-sm-3">
+                                <select class="form-control input-sm"  style="width:150px;">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                  </select>
+                              </div>
+                          </div>
+  
+                  </div>
+                </div>
+  
+  
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Components</div>
+                    <div class="panel-body">
+                        <div class="row" style="padding-top:5px;">
+  
                             <div class="col-sm-1">
                                 <div class="form-group">            
                                     <input type="checkbox" style="width:15px;height:15px;" >
                                   </div>
                               </div>
                             <div class="col-sm-5">
-                           <b>Discount</b>
+                           <b>Negotiated</b>
                             </div>
                           
                           </div>
+  
+  
+                          <div class="row" style="padding-top:5px;">
+  
+                              <div class="col-sm-1">
+                                  <div class="form-group">            
+                                      <input type="checkbox" style="width:15px;height:15px;" >
+                                    </div>
+                                </div>
+                              <div class="col-sm-5">
+                             <b>Discount</b>
+                              </div>
+                            
+                            </div>
+                    </div>
                   </div>
-                </div>
-
-
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Sell Controls</div>
-                    <div class="panel-body">
-                        <div class="row" style="padding-top:5px;">
-                            <div class="col-sm-5">
-                                <b>Minimum Stay Through</b>
-                                 </div>  
-                            <div class="col-sm-1">
-                                <div class="form-group">            
-                                    <input type="text" style="width:120px;" >
+  
+  
+                  <div class="panel panel-primary">
+                      <div class="panel-heading">Sell Controls</div>
+                      <div class="panel-body">
+                          <div class="row" style="padding-top:5px;">
+                              <div class="col-sm-5">
+                                  <b>Minimum Stay Through</b>
+                                   </div>  
+                              <div class="col-sm-1">
+                                  <div class="form-group">            
+                                      <input type="text" style="width:120px;" >
+                                    </div>
+                                </div>
+                         
+                            
+                            </div>
+                      
+                      </div>
+                    </div>
+  
+  
+            <!-- </div>
+            </div> -->
+            </div>
+  
+          
+         </div>
+  
+         <div class="container-fluid">
+           <div class="row" style="margin-left:6%;">
+             
+             <!-- <div class="col-sm-1"> -->
+               <button type="button" class="btn btn-primary" style="width:11%;"><b>Deposit/cxl</b></button>
+              <!-- </div> -->
+  
+              <!-- <div class="col-sm-1"> -->
+              <button type="button" class="btn btn-basic" style="width:9%"><b>ShortInfo</b></button>
+              <!-- </div> -->
+              <!-- <div class="col-sm-1"> -->
+              <button type="button" class="btn btn-info" style="width:9%"><b>LongInfo</b></button>
+              <!-- </div> -->
+              <!-- <div class="col-sm-1"> -->
+              <button type="button" class="btn btn-success" style="width:9%"><b>Availablity</b></button>
+              <!-- </div> -->
+              <!-- <div class="col-sm-1"> -->
+              <button type="button" class="btn btn-primary" style="width:9%"><b>Changes</b></button>
+              <!-- </div> -->
+              <!-- <div class="col-sm-1"> -->
+              <button type="button" class="btn btn-warning" style="width:9%"><b>Repeat</b></button>
+              <!-- </div> -->
+              <!-- <div class="col-sm-1"> -->
+              <button type="button" class="btn btn-danger" style="width:9%"><b>Delete</b></button>
+              <!-- </div> -->
+              <!-- <div class="col-sm-1"> -->
+              <button type="button" class="btn btn-primary" style="width:9%"><b>New</b></button>
+              <!-- </div> -->
+              <!-- <div class="col-sm-1"> -->
+              <button type="button" class="btn btn-success" style="width:9%"><b>Save</b></button>
+              <!-- </div> -->
+              <!-- <div class="col-sm-1"> -->
+              <button type="button" class="btn btn-danger" style="width:9%"><b>Close</b></button>
+              <!-- </div> -->
+                               
+           </div>
+         </div>
+  
+         
+        </form>
+        </div>
+        
+  <!--************************************* rateheader tab content ends *****************************************-->
+  
+  <!-- Rate details tab content -->
+  
+        <div id="ratedetails" class="tab-pane fade in" style="margin-top:10px;">
+          <form> 
+          <div class="row">
+          <div class="col-sm-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading">Dates</div>
+                  <div class="panel-body">
+                      <div class="row" style="padding-top:5px;">
+                          <div class="col-sm-4">
+                              <b>Season Code</b>
+                          </div>  
+                          <div class="col-sm-6">
+                              <div class="form-group">            
+                                  <select class="form-control input-sm" style="width:100%;">
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+                  
+                      
+                      
+  
+                      <div class="row" style="padding-top:1%;">
+                          <div class="col-sm-4">
+                              <b>Start date</b>
+                          </div>  
+                          <div class="col-sm-6">
+                              <div class="form-group">            
+                                  <input type="date" class="form-control input-sm" >
+                              </div>
+                          </div>
+                      </div>
+  
+                      <div class="row" style="padding-top:1%">
+                          <div class="col-sm-4">
+                              <b>End date</b>
+                          </div>  
+                          <div class="col-sm-6">
+                              <div class="form-group">            
+                                  <input type="date" class="form-control input-sm" >
+                              </div>
+                          </div>
+                      </div>
+                      
+                          
+                      
+                  
+                  </div>
+            </div>
+            <!-- Attribute panel -->
+  
+  
+            <div class="panel panel-primary">
+                  <div class="panel-heading">Attributes</div>
+                      <div class="panel-body">
+                          <div class="row" style="padding-top:5px;">
+                                  <div class="col-sm-4">
+                                      <b>Room Types</b>
+                                  </div>  
+                                  <div class="col-sm-6">
+                                      <div class="form-group">            
+                                          <select class="form-control input-sm" style="width:100%;">
+                                              <option>1</option>
+                                              <option>2</option>
+                                              <option>3</option>
+                                              <option>4</option>
+                                          </select>
+                                      </div>
                                   </div>
                               </div>
-                       
-                          
-                          </div>
-                    
-                    </div>
-                  </div>
-
-
-          <!-- </div>
-          </div> -->
-          </div>
-
-        
-       </div>
-
-       <div class="container-fluid">
-         <div class="row">
-           <div class="col-sm-1">
-
-           </div>
-           <div class="col-sm-1">
-             <button type="button" class="btn btn-primary"><b>Deposited</b></button>
-            </div>
-            <div class="col-sm-1">
-                <button type="button" class="btn btn-primary"><b>Deposited</b></button>
-              </div>
-              <div class="col-sm-1">
-                  <button type="button" class="btn btn-info"><b>ShortInfo</b></button>
-                </div>
-                <div class="col-sm-1">
-                    <button type="button" class="btn btn-info"><b>LongInfo</b></button>
-                  </div>
-                  <div class="col-sm-1">
-                      <button type="button" class="btn btn-success" ><b>Availablity</b></button>
-                    </div>
-                    <div class="col-sm-1">
-                        <button type="button" class="btn btn-warning" style="width:140%;"><b>Repeat</b></button>
+                              <div class="row">
+                                      <div class="col-sm-2">
+                                          <b>Market</b>
+                                      </div>  
+                                      <div class="col-sm-2">
+                                          <div class="form-group">            
+                                              <select class="form-control input-sm" style="width:300%;">
+                                                  <option>1</option>
+                                                  <option>2</option>
+                                                  <option>3</option>
+                                                  <option>4</option>
+                                              </select>
+                                          </div>
+                                      </div>
+  
+                                      <div class="col-sm-2"></div>
+                                      <div class="col-sm-2">
+                                          <b>Source</b>
+                                      </div>  
+                                      <div class="col-sm-2">
+                                          <div class="form-group">            
+                                              <select class="form-control input-sm" style="width:300%;">
+                                                  <option>1</option>
+                                                  <option>2</option>
+                                                  <option>3</option>
+                                                  <option>4</option>
+                                              </select>
+                                          </div>
+                                      </div>
+                                  </div>
+  
+                                  
+  
                       </div>
-                      <div class="col-sm-1">
-                          <button type="button" class="btn btn-danger" style="width:140%;"><b>Delete</b></button>
-                        </div>
-                        <div class="col-sm-1">
-                            <button type="button" class="btn btn-primary" style="width:140%;"><b>New</b></button>
-                          </div>
-                          <div class="col-sm-1">
-                              <button type="button" class="btn btn-success" style="width:140%;"><b>Save</b></button>
-                            </div>
-                            <div class="col-sm-1">
-                                <button type="button" class="btn btn-danger" style="width:140%;"><b>Close</b></button>
+                  </div>
+  
+          </div>
+  
+  <!-- Amounts panel -->
+  
+          <div class="col-sm-8">
+              <div class="panel panel-primary">
+                  <div class="panel-heading">Amounts</div>
+                  <div class="panel-body">
+                 
+                      <div class="col-sm-6">
+                          <div class="row" style="padding-top:1%;">
+                              <div class="col-sm-4">
+                                  <b>1 Adults</b>
+                              </div>  
+                              <div class="col-sm-6">
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
                               </div>
-                              <div class="col-sm-1">
-             
-                                </div>
-         </div>
-       </div>
-
-       
-      </form>
-      </div>
-
-
-
-      <div id="ratedetails" style="margin-top:10px;" class="tab-pane fade in active">
-        <div class="col-sm-4">
-
-        
-
-          <div class="panel panel-primary">
-            <div class="panel-heading">Dates</div>
-            <div class="panel-body">
-                <div class="row" style="padding-top:5px;">
-                  <div class="col-sm-4">
-                      <b>Season Code</b>
-                  </div>  
-                  <div class="col-sm-6">
-                      <div class="form-group">            
-                          <select class="form-control input-sm" style="width:150px;">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                            </select>
+                          </div>
+  
+                          <div class="row" style="padding-top:1%;">
+                              <div class="col-sm-4">
+                                  <b>2 Adults</b>
+                              </div>  
+                              <div class="col-sm-6">
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                              </div>
+                          </div>
+  
+                          <div class="row" style="padding-top:1%;">
+                              <div class="col-sm-4">
+                                  <b>3 Adults</b>
+                              </div>  
+                              <div class="col-sm-6">
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <div class="row" style="padding-top:1%;">
+                              <div class="col-sm-4">
+                                  <b>4 Adults</b>
+                              </div>  
+                              <div class="col-sm-6">
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                              </div>
+                          </div>
+  
+                          <div class="row" style="padding-top:1%;">
+                              <div class="col-sm-4">
+                                  <b>5 Adults</b>
+                              </div>  
+                              <div class="col-sm-6">
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                              </div>
+                          </div>
+  
+                          <div class="row" style="padding-top:1%;">
+                              <div class="col-sm-4">
+                                  <b>Extra Adults</b>
+                              </div>  
+                              <div class="col-sm-6">
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                              </div>
+                          </div>
+  
+                          <br>
+                          <br>
+  
                       </div>
+                 
+  <!--  -->
+                      <div class="col-sm-6">
+                          <div class="row"></div>
+  
+                          <div class="row" style="padding-top:1%;">
+                              <div class="col-sm-4">
+                                  <b>1 child</b>
+                              </div>  
+                              <div class="col-sm-6">
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                              </div>
+                          </div>
+  
+                          <div class="row" style="padding-top:1%;">
+                              <div class="col-sm-4">
+                                  <b>2 children</b>
+                              </div>  
+                              <div class="col-sm-6">
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                              </div>
+                          </div>
+  
+                          <div class="row" style="padding-top:1%;">
+                              <div class="col-sm-4">
+                                  <b>3 children</b>
+                              </div>  
+                              <div class="col-sm-6">
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                              </div>
+                          </div>
+  
+                          <div class="row" style="padding-top:1%;">
+                              <div class="col-sm-4">
+                                  <b>4 children</b>
+                              </div>  
+                              <div class="col-sm-6">
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                              </div>
+                          </div>
+  
+                          
+  
+                      </div>
+                      
+  
                   </div>
-              
-                  
-                </div>
-            
-            </div>
+              </div>
           </div>
-        </div>
-
-        <div class="col-sm-4">
-
-
-        </div>
-
-        <div class="col-sm-4">
-
-
-        </div>
-
-
-
+  
+          
+  
       </div>
-
-
-
-    </div>
-
+  
+      </form>  
+          <!-- table content -->
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover" style="width:100%;">
+                  <thead style="background-color:#0077B5;color:white;">
+                    <tr>
+                      <th>Start</th>
+                      <th>End</th>
+                      <th>Room Types</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>16-04-2018</td>
+                          <td>20-04-2018</td>
+                          <td>KNGN</td>     
+                      </tr> 
+                    
+                      <tr>
+                          <td>17-04-2018</td>
+                          <td>28-04-2018</td>
+                          <td>KNGS</td>     
+                      </tr> 
+  
+                      <tr>
+                          <td>18-04-2018</td>
+                          <td>22-04-2018</td>
+                          <td>SJSN</td>     
+                      </tr> 
+                      <tr>
+                          <td>19-04-2018</td>
+                          <td>20-04-2018</td>
+                          <td>SJSS</td>     
+                      </tr> 
+                  </tbody>
+                </table>
+              </div>
+          
+  
+          <div class="col-md-2">
+              <button type="button" class="btn btn-Info" style="width:110px;" data-toggle="modal" ><b>Split</b></button>
+          </div>
+          <div class="col-md-2">
+              <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" ><b>Repeat</b></button>
+          </div>
+          <div class="col-md-2">
+              <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal" ><b>Delete</b></button>
+          </div>
+          <div class="col-md-2">
+              <button type="button" class="btn btn-Warning" style="width:110px;" data-toggle="modal" ><b>New</b></button>
+          </div>
+          <div class="col-md-2">
+              <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal" ><b>Save</b></button>
+          </div>
+          <div class="col-md-2">
+              <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal"><b>Close</b></button>
+          </div>
+  
+  
+  
+        </div>
+  <!-- **************************************rate details tab ends ************************************************-->
+  <!-- negotiated tab content -->
+          <div id="negotiated" class="tab-pane fade in" style="margin-top:2%;">
+              <form> 
+                  <div class="panel panel-primary">
+                          <div class="panel-body">
+                              <div class="row">
+                                  <div class="col-sm-6">
+                                          <div class="row" style="padding-top:1%;">
+                                              <div class="col-sm-1"></div>
+                                                  <div class="col-sm-3" style="padding-top:1%;">
+                                                      <b>Rate Code</b>
+                                                  </div>  
+                                                  <div class="col-sm-3">
+                                                      <div class="form-group">            
+                                                          <select class="form-control input-sm" style="width:100%;">
+                                                              <option>RACK</option>
+                                                              <option>MICROS</option>
+                                                              <option>BEST</option>
+                                                              <option>HONEY</option>
+                                                              <option>CORP</option>
+                                                          </select>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                  </div>
+  
+                                  <div class="col-sm-6">
+                                      <div class="row" style="margin-top:1%;">
+                                          <div class="col-md-6">
+                                              <div class="row" style="margin-top:1%;">
+                                                  <div class="col-md-2"></div>
+                                                  <div class="col-md-1">
+                                                      <input type="checkbox" class="form-control input-sm" style="width:15px;height:15px;">
+                                                  </div>
+                                                  <div class="col-md-8">
+                                                  <div class="form-group">            
+                                                      <label for="room">Show inactive</label>
+                                                  </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+  
+                                  </div>
+  
+                              </div>
+                                  
+                          </div>
+                  </div>
+  
+                  <!-- table content -->
+                  <div class="table-responsive">
+                          <table class="table table-bordered table-hover" style="width:100%;">
+                            <thead style="background-color:#0077B5;color:white;">
+                              <tr>
+                                  <th>Rate Code</th>
+                                  <th>Begin sell Date</th>
+                                  <th>End Sell Date</th>
+                              </tr>
+                            </thead>
+                            <tbody>                                 
+                              <tr>
+                                  <td>RACK</td>
+                                  <td>11-04-2018</td>
+                                  <td>20-04-2018</td>     
+                              </tr> 
+                              <tr>
+                                  <td>MICROS</td>
+                                  <td>12-04-2018</td>
+                                  <td>13-04-2018</td>     
+                              </tr>
+                              <tr>
+                                  <td>BEST</td>
+                                  <td>20-04-2018</td>
+                                  <td>22-04-2018</td>     
+                              </tr>
+                              <tr>
+                                  <td>CORP</td>
+                                  <td>02-04-2018</td>
+                                  <td>05-04-2018</td>     
+                                  </tr>
+                            </tbody>
+                          </table>
+                      </div>
+  <!-- ************************************table content ends******************************************************* -->
+  
+  
+                      <div class="row" style="margin-left:10%;">
+                          
+                          <div class="col-md-2">
+                              <button type="button" class="btn btn-Info" style="width:110px;"><b>Detail</b></button>
+                          </div>
+                          <div class="col-md-2">
+                              <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" data-target="#newnegotiated"><b>New</b></button>
+                          </div>
+                          <div class="col-md-2">
+                              <button type="button" class="btn btn-danger" style="width:110px;"><b>Edit</b></button>
+                          </div>
+                          <div class="col-md-2">
+                              <button type="button" class="btn btn-Warning" style="width:110px;"><b>Delete </b></button>
+                          </div>
+                          <div class="col-md-2">
+                              <button type="button" class="btn btn-Success" style="width:110px;"><b>Close</b></button>
+                          </div>
+                      </div>
+  <!-- *************************************************************************************************************************** -->
+  
+  <!-- *****new negotiated modal***** -->
+                      <div class="modal fade" id="newnegotiated" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                              <div class="vertical-alignment-helper">
+                                  <div class="modal-dialog vertical-align-center">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                          
+                                              </button>
+                                               <h3 class="modal-title" id="myModalLabel"><b>Negotiated Rates</b></h3>
+                          
+                                          </div>
+                                          <div class="modal-body">
+                                              <div class="row">
+                                                  <div class="col-sm-3" style="padding-top:1%;">
+                                                      <b>Rate Code</b>
+                                                  </div>  
+                                                  <div class="col-sm-3">
+                                                      <div class="form-group">            
+                                                          <select class="form-control input-sm" style="width:100%;">
+                                                              <option>RACK</option>
+                                                              <option>MICROS</option>
+                                                              <option>BEST</option>
+                                                              <option>HONEY</option>
+                                                              <option>CORP</option>
+                                                          </select>
+                                                      </div>
+                                                  </div>
+                                              </div>
+  
+  
+                                              <div class="row">
+                                                  <div class="col-sm-3">
+                                                      <b>Begin Sell Date</b>
+                                                  </div>  
+                                                  <div class="col-sm-3">
+                                                      <div class="form-group">            
+                                                          <input type="date" class="form-control input-sm" >
+                                                      </div>
+                                                  </div>
+                                              </div>
+  
+                                              <div class="row">
+                                                  <div class="col-sm-3">
+                                                      <b>End Sell Date</b>
+                                                  </div>  
+                                                  <div class="col-sm-3">
+                                                      <div class="form-group">            
+                                                          <input type="date" class="form-control input-sm" >
+                                                      </div>
+                                                  </div>
+                                              </div>
+  
+  
+                                          </div>
+                                          <div class="modal-footer">
+                                              <button type="button" class="btn btn-success">Save</button>
+                                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>                                            
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        
+  
+              </form> 
+          </div>
+  <!-- *******************************************negotiated tab content ends **************************************-->
+          
+            
+  
+     
+      </div>
+      </div>
     </div>
   </div>
-</div>
-    
+      
