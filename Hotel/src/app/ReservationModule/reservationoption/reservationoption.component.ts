@@ -205,7 +205,20 @@ submit1(inputt):void {
   console.log(inputt);
     this.pppService.insertcredit1(inputt)
     .subscribe( (user333:any) => {
-      this.inscredit = user333.Return;
+      this.inscredit = user333.ReturnCode;
+      if(this.inscredit == "RUS"){
+        console.log(this.inscredit);
+        this.inscredit = "Credit Card Updated Successfully for "+this.Name;
+
+        let paramss={
+          "pf_id":this.session.retrieve("id1"),
+       }
+         this.pppService.getcredit(paramss)
+         .subscribe((resp: any) => {
+           this.arrycdt=resp.ReturnValue;
+           console.log(this.arrycdt)
+         }); 
+      }
  
     });  
     this.route.navigate(['reservationoption/']);
