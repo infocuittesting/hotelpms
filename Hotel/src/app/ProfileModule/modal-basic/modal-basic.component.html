@@ -521,32 +521,32 @@
     </div><br> -->
 
     <div class="input-group">
-        <div class="row">
-      <div class="col-sm-5"><b>Creditcard Number</b></div>
-      <div class="col-sm-6" style="padding-left:7%;">          
+        <!-- <div class="row"> -->
+      <div class="col-md-5"><b>Creditcard Number</b></div>
+      <div class="col-md-6">          
         <input type="text" class="form-control"  [(ngModel)]="mbc.PF_Creditcard_No" style="width:115%;border-radius:4px;">
       </div>
-    </div>
+    <!-- </div> -->
 </div><br>
 
      <div class="input-group">
-        <div class="row">
-      <div class="col-sm-6"><b>Creditcard Type</b></div>
-      <div class="col-sm-6">          
-       <select  required style="height:34px;width:120%;color:black;border-radius:4px;color:black;" [(ngModel)]="mbc.PF_Card_Type"(change)="onSelect5(class)">
+        <!-- <div class="row"> -->
+      <div class="col-md-6" style="text-align:left"><b>Creditcard Type</b></div>
+      <div class="col-md-6">          
+       <select  required style="height:34px;padding-left:9px;color:black;border-radius:4px;color:black;" [(ngModel)]="mbc.PF_Card_Type"(change)="onSelect5(class)">
           <option *ngFor="let creditcardnumber of creditcard" [ngValue] = "creditcardnumber.creditcard_description" >{{creditcardnumber.creditcard_description}} </option>
             </select> 
      </div>
-    </div>
+    <!-- </div> -->
     </div><br>
 
     
     <div class="input-group">
-      <div class="col-sm-5"><b>ExpiryDate</b></div>
-      <div class="col-sm-2" style="padding-left:7%;">  
+      <div class="col-md-5" style="text-align:left"><b>ExpiryDate</b></div>
+      <div class="col-md-2">  
           <app-monthpicker (change)="onMonthChange($event.target.value)" [(ngModel)]="mbc.PF_Expiration_Month" style="width:100%;"> </app-monthpicker>
       </div>
-      <div class="col-sm-2"> 
+      <div class="col-md-2" style="margin-left:30px;"> 
            <app-yearpicker (change)="onYearChange($event.target.value)" [(ngModel)]="mbc.PF_Expiration_Year"  style="width:100%;"></app-yearpicker>
            {{mbc.PF_Expiration_Month}}        
         <!-- <input type="text" class="form-control"  [(ngModel)]="mbc.PF_Expiration_Date" style="width:200px;"> -->
@@ -1035,8 +1035,9 @@
 <!--negotiated temp-->
 
   <div class="modal" id="negotiated">
-      <div class="modal-dialog">
-        <div class="modal-content" style="width:170%;">
+      <div class="vertical-alignment-helper">
+      <div class="modal-dialog vertical-align-center">
+        <div class="modal-content">
         
           <!-- Modal Header -->
           <div class="modal-header">
@@ -1045,7 +1046,7 @@
           
           <!-- Modal body -->
           <div class="modal-body">
-              <table style=" width:95%; margin-left: 2%; border: 1px solid lightgray;height:70px;background-color:#0077B5;color:white;">
+              <table style=" border: 1px solid lightgray;background-color:#0077B5;color:white;">
                         
                   <tr>
                   <td style="padding-left:30px;"><b>Rate Code</b></td>
@@ -1125,14 +1126,16 @@
         
            <button type="button" class="btn btn-info" ><b>Detail</b></button>
            
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#update3" data-dismiss="modal"><b>Edit</b></button>
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#insert1" data-dismiss="modal"><b>Add New</b></button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#update3"><b>Edit</b></button>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#insert1"><b>Add New</b></button>
             <button type="button" class="btn btn-danger" (click)="deletenegotesClick()" data-toggle="modal" data-target="#negodeleteresponse" data-dismiss="modal"><b>Delete</b></button>
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
         
           </div>
         
         </div>
+
+      </div>
       </div>
     </div>
    
@@ -1143,7 +1146,8 @@
 
 
 <div class="modal fade" id="insert1" role="dialog">
-  <div class="modal-dialog" style="padding-left:350px;width:60%;">
+    <div class="vertical-alignment-helper">
+  <div class="modal-dialog vertical-align-center">
   
     <!-- Modal content-->
     <div class="modal-content" >
@@ -1192,6 +1196,7 @@
     </div>
     
   </div>
+  </div>
 </div>
 <!--Negotiated insert end-->
 
@@ -1199,9 +1204,8 @@
 
 <!--Negotiated update-->
 <div class="modal fade" id="update3" role="dialog">
-  <div class="modal-dialog" style="padding-left:350px;width:60%;">
-  
-  
+    <div class="vertical-alignment-helper">
+  <div class="modal-dialog vertical-align-center">
     <div class="modal-content" >
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -1244,14 +1248,16 @@
     </div>
     
   </div>
+  </div>
 </div> 
 <!--Negotiated update end-->
 
 <!--Perference template-->
   
 <div class="modal" id="preferences">
-    <div class="modal-dialog">
-      <div class="modal-content" style="width:150%;">
+    <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+      <div class="modal-content">
       
         <!-- Modal Header -->
         <div class="modal-header">
@@ -1262,18 +1268,18 @@
         <div class="modal-body">
             <div>
                 <br>
-                <table style=" width:95%; margin-left: 2%; border: 1px solid lightgray;background-color:#0077B5;height:70px;color:white;" >
+                <table style=" margin-left:2%; border: 1px solid lightgray;background-color:#0077B5;height:70px;color:white;" >
                    <tr>
                        <td style="padding-left:20px;"><b>Preference</b></td>
          <td style="padding-left:15px;">
-            <select  name="filterprtypeselection" [(ngModel)]="prtypeselection" (ngModelChange)="onSelect1(prtypeselection)" required style="height:34px;width:250px;color:black;">
+            <select  name="filterprtypeselection" [(ngModel)]="prtypeselection" (ngModelChange)="onSelect1(prtypeselection)" required style="height:34px;color:black;">
                 <option *ngFor="let companypreference of preference1" [ngValue] = "companypreference.preference">{{companypreference.preference}} </option>
                </select>
            </td>
          
         <td style="padding-left:50px;"><b>Preference Group</b></td>
          <td style="padding-left:15px;">
-            <select   name="filterpgtypeselection" [(ngModel)]="pgtypeselection" (ngModelChange)="onSelect2(pgtypeselection)" required style="height:34px;width:250px;color:black;">
+            <select   name="filterpgtypeselection" [(ngModel)]="pgtypeselection" (ngModelChange)="onSelect2(pgtypeselection)" required style="height:34px;color:black;">
                 <option *ngFor="let companypreference2 of preference2" [ngValue] = "companypreference2.prefernecegroup">{{companypreference2.prefernecegroup}} </option>
                </select>
            </td>
@@ -1329,20 +1335,22 @@
         
         <!-- Modal footer -->
         <div class="modal-footer" style="padding-right:100px;">
-           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#insert3" data-dismiss="modal" ><b>Add New</b></button>
+           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#insert3"><b>Add New</b></button>
            <button type="button" class="btn btn-danger" (click)="deletepreferClick(flag)"  data-toggle="modal" data-target="#preferdeleteresponse" data-dismiss="modal"><b>Delete</b></button>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#update4" data-dismiss="modal"><b>Edit</b></button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#update4"><b>Edit</b></button>
              <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
       </div>
         
       </div>
+    </div>
     </div>
   </div>
 
   <!-- preference insert -->
 
   <div class="modal fade" id="insert3" role="dialog">
-    <div class="modal-dialog" style="padding-left:350px;width:60%;">
+      <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
     
       <!-- Modal content-->
       <div class="modal-content" >
@@ -1397,13 +1405,15 @@
       </div>
       
     </div>
+    </div>
   </div>
 
 
   <!--preference update-->
 
   <div class="modal fade" id="update4" role="dialog">
-    <div class="modal-dialog" style="padding-left:350px;width:60%;">
+      <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
     
       <!-- Modal content-->
       <div class="modal-content" >
@@ -1454,6 +1464,7 @@
         </div>
       </div>
       
+    </div>
     </div>
   </div>
 
@@ -1638,10 +1649,11 @@
   <!-- Modal -->
 
   <div class="modal fade" id="updatecard" role="dialog">
-    <div class="modal-dialog" style="margin-left:40%;width:50%;">
+    <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
     
       <!-- Modal content-->
-      <div class="modal-content" style="width:50%;">
+      <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Add Credit Card Details here...</h4>
@@ -1656,32 +1668,32 @@
     </div><br> -->
 
     <div class="input-group">
-        <div class="row">
-      <div class="col-sm-5"><b>Creditcard Number</b></div>
-      <div class="col-sm-6" style="padding-left:7%;">          
-        <input type="text" class="form-control"  [(ngModel)]="cu1.PF_Creditcard_No" style="width:115%;border-radius:4px;">
+        <!-- <div class="row"> -->
+      <div class="col-md-5"><b>Creditcard Number</b></div>
+      <div class="col-md-6">          
+        <input type="text" class="form-control"  [(ngModel)]="cu1.PF_Creditcard_No" style="border-radius:4px;">
       </div>
-    </div>
+    <!-- </div> -->
 </div><br>
 
      <div class="input-group">
-        <div class="row">
-      <div class="col-sm-6"><b>Creditcard Type</b></div>
-      <div class="col-sm-6">          
-       <select  required style="height:34px;width:120%;color:black;border-radius:4px;color:black;" [(ngModel)]="cu1.PF_Card_Type"(change)="onSelect5(class)">
+        <!-- <div class="row"> -->
+      <div class="col-md-6" style="text-align:left"><b>Creditcard Type</b></div>
+      <div class="col-md-6">          
+       <select  required style="height:34px;padding-left:9px;color:black;border-radius:4px;color:black;" [(ngModel)]="cu1.PF_Card_Type"(change)="onSelect5(class)">
           <option *ngFor="let creditcardnumber of creditcard" [ngValue] = "creditcardnumber.creditcard_description" >{{creditcardnumber.creditcard_description}} </option>
             </select> 
      </div>
-    </div>
+    <!-- </div> -->
     </div><br>
 
     
     <div class="input-group">
-      <div class="col-sm-5"><b>ExpiryDate</b></div>
-      <div class="col-sm-2" style="padding-left:7%;">  
+      <div class="col-md-5" style="text-align:left"><b>ExpiryDate</b></div>
+      <div class="col-md-2">  
           <app-monthpicker (change)="onMonthChange($event.target.value)" [(ngModel)]="cu1.PF_Expiration_Date" style="width:100%;"> </app-monthpicker>
       </div>
-      <div class="col-sm-2"> 
+      <div class="col-md-2" style="margin-left:30px;"> 
            <app-yearpicker (change)="onYearChange($event.target.value)" [(ngModel)]="cu1.PF_Expiration_Date"  style="width:100%;"></app-yearpicker>
            {{mbc.PF_Expiration_Month}}        
         <!-- <input type="text" class="form-control"  [(ngModel)]="mbc.PF_Expiration_Date" style="width:200px;"> -->
@@ -1697,6 +1709,7 @@
         </div>
       </div>
       
+    </div>
     </div>
   </div>
 

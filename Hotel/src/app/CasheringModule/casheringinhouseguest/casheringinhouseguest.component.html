@@ -8,10 +8,10 @@
   <div class="row" style="margin-top:1%;">
   
   <div class="container">
-  <div class="jumbotron" style="background-color:0077B5;color:white;margin-top:10px;margin-bottom:10px;padding-top:10px;padding-bottom:1px;width:96%;margin-left:1%;">
+  <div class="jumbotron" style="background-color:0077B5;color:white;margin-top:10px;margin-bottom: 1%;padding-top:10px;padding-bottom:1px;width:96%;margin-left:1%;">
   
          
-    <form>
+    <form style="margin-bottom: 1px;">
         <div class="row">
             <div class="col-md-3">
               <div class="row">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-md-9">
                   <div class="form-group">            
-                    <input type="text" class="form-control input-sm" [(ngModel)]="room" name="room">
+                    <input type="text" class="form-control input-sm" [(ngModel)]="room" name="room" style="height:27px;width: 70%;">
                   </div>
                 </div>
               </div>
@@ -33,7 +33,7 @@
                   </div>
                   <div class="col-md-9">
                     <div class="form-group">            
-                      <input type="text" class="form-control input-sm" [(ngModel)]="personname" name="personname">
+                      <input type="text" class="form-control input-sm" [(ngModel)]="personname" name="personname" style="height:27px;width: 70%;">
                     </div>
                   </div>
                 </div>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="col-md-9">
                       <div class="form-group">            
-                        <input type="text" class="form-control input-sm" >
+                        <input type="text" class="form-control input-sm" style="height:27px;width:70%;">
                       </div>
                     </div>
                   </div>
@@ -61,7 +61,7 @@
                       </div>
                       <div class="col-md-9">
                         <div class="form-group">            
-                          <input type="text" class="form-control input-sm" [(ngModel)]="company" name="company">
+                          <input type="text" class="form-control input-sm" [(ngModel)]="company" name="company" style="height:27px;width: 70%;">
                         </div>
                       </div>
                     </div>
@@ -78,7 +78,7 @@
                       </div>
                       <div class="col-md-9">
                         <div class="form-group">            
-                          <input type="text" class="form-control input-sm" >
+                          <input type="text" class="form-control input-sm" style="height:27px;width:70%;">
                         </div>
                       </div>
                     </div>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="col-md-9">
                           <div class="form-group">            
-                            <input type="text" class="form-control input-sm" >
+                            <input type="text" class="form-control input-sm" style="height:27px;width: 70%;">
                           </div>
                         </div>
                       </div>
@@ -105,7 +105,7 @@
                           </div>
                           <div class="col-md-9">
                             <div class="form-group">            
-                                <select class="form-control input-sm" id="sel1" style="width:150px;">
+                                <select class="form-control input-sm" id="sel1" style="width:70%;height:27px;">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -132,12 +132,15 @@
             </div>
   
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                   <label><b><u>Arrival</u></b></label>
                 </div>
-                <div class="col-md-6">
-                    <label><b><u>Departure</u></b></label>
-                  </div>
+                <div class="col-md-3">
+                  <label><b><u>Departure</u></b></label>
+                </div>
+                <div class="col-md-3">
+                  <label><b><u>Status</u></b></label>
+                </div>
             </div>
   
             <div class="row">
@@ -151,39 +154,69 @@
                       </div>
                       <div class="col-md-9">
                         <div class="form-group">            
-                          <input type="date" class="form-control input-sm" >
+                          <input type="date" class="form-control input-sm" style="width:70%;height:27px;" >
                         </div>
                       </div>
                     </div>
                   </div>
   
                   <div class="col-md-6">
-                      <div class="row">
-                        <div class="col-md-3">
-                            <label for="room">To</label>
-                        </div>
-                        <div class="col-md-9">
-                          <div class="form-group">            
-                            <input type="date" class="form-control input-sm" >
-                          </div>
+                    <div class="row">
+                      <div class="col-md-3">
+                          <label for="room">From</label>
+                      </div>
+                      <div class="col-md-9">
+                        <div class="form-group">            
+                          <input type="date" class="form-control input-sm" style="width:70%;height:27px;">
                         </div>
                       </div>
                     </div>
-  
                   </div>
+                </div>
                                     
               </div>
+
+                  <div class="col-md-6">
+                    <div class="row">
+                      
+                          <div class="col-md-1 col-sm-1 col-xs-1">
+                            <input type="checkbox">
+                          </div>
+                          <div class="col-md-3 col-sm-3 col-xs-3">
+                            <label>StayOver</label>
+                          </div>
+                        
+                          <div class="col-md-1 col-sm-1 col-xs-1">
+                            <input type="checkbox">
+                          </div>
+                          <div class="col-md-3 col-sm-3 col-xs-3">
+                            <label>Due Out</label>
+                          </div>
+      
+                          <div class="col-md-1 col-sm-1 col-xs-1">
+                              <input type="checkbox">
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                              <label>Checked Out</label>
+                            </div>
+                        </div>
+                     
+                  </div>
+
+            </div>
+
+            <div class="row">
   
               <div class="col-md-6">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="row">
                         <div class="col-md-3">
-                            <label for="room">From</label>
+                            <label for="room">To</label>
                         </div>
                         <div class="col-md-9">
                           <div class="form-group">            
-                            <input type="date" class="form-control input-sm" >
+                            <input type="date" class="form-control input-sm" style="width:70%;height:27px;">
                           </div>
                         </div>
                       </div>
@@ -196,7 +229,7 @@
                           </div>
                           <div class="col-md-9">
                             <div class="form-group">            
-                              <input type="date" class="form-control input-sm" >
+                              <input type="date" class="form-control input-sm" style="width:70%;height:27px;">
                             </div>
                           </div>
                         </div>
@@ -205,11 +238,44 @@
                     </div>
                                       
                 </div>  
+
+                <div class="col-md-6">
+                  <div class="row">
+                    
+                        <div class="col-md-1 col-sm-1 col-xs-1">
+                          <input type="checkbox">
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                          <label>No shows</label>
+                        </div>
+                      
+                        <div class="col-md-1 col-sm-1 col-xs-1">
+                          <input type="checkbox">
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                          <label>Cancellations</label>
+                        </div>
+    
+                        <div class="col-md-1 col-sm-1 col-xs-1">
+                            <input type="checkbox">
+                          </div>
+                          <div class="col-md-2 col-sm-2 col-xs-2">
+                            <label>OpenFolio</label>
+                          </div>
+                          <div class="col-md-1 col-sm-1 col-xs-1">
+                            <button type="button"  class="btn btn-success" style="border-radius: 6px;"><b>Clear
+                            </b></button>
+                          </div>
+                      </div>
+                   
+                </div>
+
+              </div>
                 
-            </div>
-  <hr style="margin-top:1px;margin-bottom:2px;"> 
+            
+  <!-- <hr style="margin-top:1px;margin-bottom:2px;">  -->
   
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-6">
                 <div class="row">
                   
@@ -236,38 +302,44 @@
                     </div>
                  
               </div>
+
+              <div class="col-md-6">
+                <div class="row">
+                  
+                      <div class="col-md-1 col-sm-1 col-xs-1">
+                        <input type="checkbox">
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-3">
+                        <label>No shows</label>
+                      </div>
+                    
+                      <div class="col-md-1 col-sm-1 col-xs-1">
+                        <input type="checkbox">
+                      </div>
+                      <div class="col-md-3 col-sm-3 col-xs-3">
+                        <label>Cancellations</label>
+                      </div>
+  
+                      <div class="col-md-1 col-sm-1 col-xs-1">
+                          <input type="checkbox">
+                        </div>
+                        <div class="col-md-2 col-sm-2 col-xs-2">
+                          <label>OpenFolio</label>
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-1">
+                          <button type="button"  class="btn btn-success" style="border-radius: 6px;"><b>Clear
+                          </b></button>
+                        </div>
+                    </div>
+                 
+              </div>
       
   
              
-            </div>
+            </div> -->
   
-            <div class="row">
-                <div class="col-md-6">
-                  <div class="row">
-                    
-                        <div class="col-md-1 col-sm-1 col-xs-1">
-                          <input type="checkbox">
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                          <label>No shows</label>
-                        </div>
-                      
-                        <div class="col-md-1 col-sm-1 col-xs-1">
-                          <input type="checkbox">
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                          <label>Cancellations</label>
-                        </div>
-    
-                        <div class="col-md-1 col-sm-1 col-xs-1">
-                            <input type="checkbox">
-                          </div>
-                          <div class="col-md-3 col-sm-3 col-xs-3">
-                            <label>OpenFolio</label>
-                          </div>
-                      </div>
-                   
-                </div>
+            <!-- <div class="row">
+                
   
                 <div class="col-md-4"></div>
                 <div class="col-md-2">
@@ -276,7 +348,7 @@
                 </div>
                
               </div>
-            
+             -->
     </form>
   
   <!-- <div class="row">
@@ -326,7 +398,7 @@
         </tr>
       </thead>
       <tbody *ngFor="let item of items;let i=index" (click)="selectMembersEdit(item,i)"  
-      [ngClass]="{'backGroundColor':i==selectindex}">
+      [ngClass]="{'backGroundColor':i==selectindex}" style="padding-top:2px;padding-bottom:2px;padding-left:2px;padding-right:2px;font-size:small;">
 
       <tr>
         <td >{{item.Room}}</td>
