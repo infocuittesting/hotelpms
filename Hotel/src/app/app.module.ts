@@ -52,6 +52,7 @@ import { BillingComponent } from './CasheringModule/billing/billing.component';
 import { CasheringinhouseguestComponent } from './CasheringModule/casheringinhouseguest/casheringinhouseguest.component';
 import { ContextmenuModule } from 'ng2-contextmenu';
 import { RevenuemanagementComponent } from './RevenueManagementModule/revenuemanagement/revenuemanagement.component';
+import { BusinessblockComponent } from './businessblock/businessblock.component';
 
 
 
@@ -73,6 +74,7 @@ import { RevenuemanagementComponent } from './RevenueManagementModule/revenueman
    BillingComponent,
    CasheringinhouseguestComponent,
    RevenuemanagementComponent,
+   BusinessblockComponent,
    
    
    
