@@ -22,6 +22,7 @@ import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roomm
 
 
 
+
 //profile
 import { ModalBasicComponent } from './ProfileModule/modal-basic/modal-basic.component';
 import { IndividualprofileComponent } from './ProfileModule/individualprofile/individualprofile.component';

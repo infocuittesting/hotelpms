@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { Route } from "@angular/router";
+import { SessionStorageService } from "ngx-webstorage";
 
 @Component({
   selector: 'app-casheringinhouseguest',
@@ -27,7 +28,14 @@ export class CasheringinhouseguestComponent implements OnInit {
       label: 'four'
     },
   ];
-  constructor() { }
+
+  public items = [
+    { Room: '16-04-2018', Name: 'Anderson',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'CHECKED IN',Company:'Metro Design' },
+    { Room: '16-04-2018', Name: 'Anderson',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'CHECKED IN',Company:'Metro Design'},
+    { Room: '16-04-2018', Name: 'Anderson',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'CHECKED IN',Company:'Metro Design'},
+    {  Room: '16-04-2018', Name: 'Anderson',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'CHECKED IN',Company:'Metro Design' },
+  ];
+  constructor( public session:SessionStorageService,private route:Router) { }
 
   ngOnInit() {
   }
@@ -36,6 +44,13 @@ export class CasheringinhouseguestComponent implements OnInit {
     console.log(flag);
     this.showdiv=flag;
   }
+
+  selectindex=null;
+selectMembersEdit(details,index){
+this.selectindex=index;
+this.session.store("id",details.Date);
+}
+
   private month:any;
 private year:any;
 onMonthChange(month:any){

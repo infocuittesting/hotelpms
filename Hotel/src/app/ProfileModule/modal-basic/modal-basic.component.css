@@ -26,9 +26,9 @@ height:150px;
 .panel p{
           font-size:13px;
          }		 
-.modal-lg {
+/* .modal-lg {
 	max-width:auto !important;
-}
+} */
 
 
 #negotiation{
@@ -40,4 +40,26 @@ height:150px;
 
 .backGroundColor{
 	background-color:#D3D3D3;
+}
+
+.modal {
+    text-align: center;
+  padding: 0!important;
+}
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
 }

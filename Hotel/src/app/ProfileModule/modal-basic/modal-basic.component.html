@@ -433,8 +433,9 @@
 
 
 <div class="modal" id="credit">
-  <div class="modal-dialog">
-    <div class="modal-content" style="width:170%;">
+  <div class="vertical-alignment-helper">
+  <div class="modal-dialog vertical-align-center">
+    <div class="modal-content" style="width:70%;margin-left:20%;">
     
       <!-- Modal Header -->
       <div class="modal-header">
@@ -481,26 +482,31 @@
       
       <!-- Modal footer -->
       <div class="modal-footer" style="padding-right:150px;">
-        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#insert"  data-dismiss="modal"><b>Add New</b></button>
-        <button class="btn btn-danger" type="button" (click)="deletecreditClick(flag)" data-toggle="modal" data-target="#carddeleteresponse" data-dismiss="modal"><b>Delete</b></button>
-        <button class="btn btn-success" type="button" data-toggle="modal" data-target="#updatecard" data-dismiss="modal"><b>Edit</b></button>
+        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#insert"><b>Add New</b></button>
+        <button class="btn btn-danger" type="button" (click)="deletecreditClick(flag)" data-toggle="modal" data-target="#carddeleteresponse"><b>Delete</b></button>
+        <button class="btn btn-success" type="button" data-toggle="modal" data-target="#updatecard"><b>Edit</b></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
        </div>   
       
     </div>
   </div>
+  </div>
 </div>
+
 
 <!--Credit Card end-->
 
 <!--Credit card insert-->
 
   <!-- Modal -->
+  <div class="col-sm-2"></div>
+  <div class="col-sm-10">
   <div class="modal fade" id="insert" role="dialog">
-    <div class="modal-dialog" style="margin-left:40%;width:50%;">
+    <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center" style="margin-left:40%;width:50%;" >
     
       <!-- Modal content-->
-      <div class="modal-content" style="width:50%;">
+      <div class="modal-content" style="width:40%;margin-left: 35%;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Add Credit Card Details here...</h4>
@@ -517,17 +523,17 @@
     <div class="input-group">
         <div class="row">
       <div class="col-sm-5"><b>Creditcard Number</b></div>
-      <div class="col-sm-6">          
-        <input type="text" class="form-control"  [(ngModel)]="mbc.PF_Creditcard_No" style="width:100%;">
+      <div class="col-sm-6" style="padding-left:7%;">          
+        <input type="text" class="form-control"  [(ngModel)]="mbc.PF_Creditcard_No" style="width:115%;border-radius:4px;">
       </div>
     </div>
 </div><br>
 
      <div class="input-group">
         <div class="row">
-      <div class="col-sm-6" ><b>Creditcard Type</b></div>
+      <div class="col-sm-6"><b>Creditcard Type</b></div>
       <div class="col-sm-6">          
-       <select  required style="height:34px;width:100%;color:black;border-radius:4px;color:black;" [(ngModel)]="mbc.PF_Card_Type"(change)="onSelect5(class)">
+       <select  required style="height:34px;width:120%;color:black;border-radius:4px;color:black;" [(ngModel)]="mbc.PF_Card_Type"(change)="onSelect5(class)">
           <option *ngFor="let creditcardnumber of creditcard" [ngValue] = "creditcardnumber.creditcard_description" >{{creditcardnumber.creditcard_description}} </option>
             </select> 
      </div>
@@ -537,7 +543,7 @@
     
     <div class="input-group">
       <div class="col-sm-5"><b>ExpiryDate</b></div>
-      <div class="col-sm-1">  
+      <div class="col-sm-2" style="padding-left:7%;">  
           <app-monthpicker (change)="onMonthChange($event.target.value)" [(ngModel)]="mbc.PF_Expiration_Month" style="width:100%;"> </app-monthpicker>
       </div>
       <div class="col-sm-2"> 
@@ -557,7 +563,9 @@
       </div>
       
     </div>
+    </div>
   </div>
+</div>
 
 
 <!--Credit Card insert end-->
@@ -568,8 +576,9 @@
 <!--future-->
 <!-- The Modal -->
 <div class="modal" id="future">
-    <div class="modal-dialog">
-      <div class="modal-content" style="width:180%;">
+    <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+      <div class="modal-content" style="width:70%;margin-left:20%;">
       
         <!-- Modal Header -->
         <div class="modal-header">
@@ -625,14 +634,16 @@
         
       </div>
     </div>
+    </div>
   </div>
   
  <!--Future End-->
 
 <!--History-->
 <div class="modal" id="history">
-    <div class="modal-dialog">
-      <div class="modal-content" style="width:200%;">
+    <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+      <div class="modal-content" style="width:70%;margin-left:20%;">
       
         <!-- Modal Header -->
         <div class="modal-header">
@@ -683,13 +694,15 @@
         
       </div>
     </div>
+    </div>
   </div>
 <!--History End-->
 
 <!-- Merge-->
 <div class="modal" id="merge">
-    <div class="modal-dialog">
-      <div class="modal-content" style="width:170%;">
+    <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+      <div class="modal-content" style="width:70%;margin-left:20%;">
       
         <!-- Modal Header -->
         <div class="modal-header">
@@ -804,6 +817,7 @@
         
       </div>
     </div>
+    </div>
   </div>
 
 <!--Merge End-->
@@ -812,8 +826,9 @@
 <!--notes-->
 
 <div class="modal" id="notes">
-    <div class="modal-dialog">
-      <div class="modal-content" style="width:170%;">
+    <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+      <div class="modal-content" style="width:70%;margin-left:20%;">
       
         <!-- Modal Header -->
         <div class="modal-header">
@@ -898,13 +913,14 @@
         
         <!-- Modal footer -->
         <div class="modal-footer" style="padding-right:150px;">
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#insert2" data-dismiss="modal"><b>Add New</b></button>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#insert2"><b>Add New</b></button>
             <button type="button" class="btn btn-danger" (click)="deletenotesClick()" data-toggle="modal" data-target="#notesdeleteresponse" data-dismiss="modal"><b>Delete</b></button>
-            <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#update2" data-dismiss="modal"><b>Edit</b></button> 
+            <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#update2" ><b>Edit</b></button> 
              <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
         </div>
         
       </div>
+    </div>
     </div>
   </div>
  <!--notes end-->
@@ -913,7 +929,8 @@
 <!--notes insert-->
 
  <div class="modal fade" id="insert2" role="dialog">
-  <div class="modal-dialog" style="padding-left:350px;width:50%;">
+  <div class="vertical-alignment-helper">
+  <div class="modal-dialog vertical-align-center" style="width:40%;margin-left:50%;">
   
 
     <div class="modal-content" >
@@ -956,6 +973,7 @@
     </div>
     
   </div>
+  </div>
 </div>
 
 <!--notes insert end-->
@@ -963,7 +981,8 @@
 <!--notesupdate-->
 
  <div class="modal fade" id="update2" role="dialog">
-  <div class="modal-dialog" style="padding-left:350px;width:50%;">
+    <div class="vertical-alignment-helper">
+  <div class="modal-dialog vertical-align-center" style="width:40%;margin-left:50%;">
   
     
     <div class="modal-content" >
@@ -1006,6 +1025,7 @@
       </div>
     </div>
     
+  </div>
   </div>
 </div>
 
@@ -1123,7 +1143,7 @@
 
 
 <div class="modal fade" id="insert1" role="dialog">
-  <div class="modal-dialog" style="padding-left:350px;width:50%;">
+  <div class="modal-dialog" style="padding-left:350px;width:60%;">
   
     <!-- Modal content-->
     <div class="modal-content" >
@@ -1179,7 +1199,7 @@
 
 <!--Negotiated update-->
 <div class="modal fade" id="update3" role="dialog">
-  <div class="modal-dialog" style="padding-left:350px;width:50%;">
+  <div class="modal-dialog" style="padding-left:350px;width:60%;">
   
   
     <div class="modal-content" >
@@ -1322,7 +1342,7 @@
   <!-- preference insert -->
 
   <div class="modal fade" id="insert3" role="dialog">
-    <div class="modal-dialog" style="padding-left:350px;width:50%;">
+    <div class="modal-dialog" style="padding-left:350px;width:60%;">
     
       <!-- Modal content-->
       <div class="modal-content" >
@@ -1383,7 +1403,7 @@
   <!--preference update-->
 
   <div class="modal fade" id="update4" role="dialog">
-    <div class="modal-dialog" style="padding-left:350px;width:50%;">
+    <div class="modal-dialog" style="padding-left:350px;width:60%;">
     
       <!-- Modal content-->
       <div class="modal-content" >
@@ -1616,63 +1636,73 @@
  <!--Credit card update-->
 
   <!-- Modal -->
+
   <div class="modal fade" id="updatecard" role="dialog">
-      <div class="modal-dialog" style="padding-left:350px;width:50%;">
-      
-        <!-- Modal content-->
-        <div class="modal-content" >
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Update Credit Card Details here...</h4>
-          </div>
-          <div class="modal-body">
-   
-            <div class="input-group">
-              <div class="col-sm-6"><b>Creditcard Number</b></div>
-              <div class="col-sm-6" style="padding-left:17px;">          
-                <input name="updatecreditcardnumber" type="text" class="form-control" [(ngModel)]="cu1.PF_Creditcard_No" style="width:200px;">
-              </div>
-            </div><br>
-
-      <div class="input-group">
-        <div class="col-sm-6"><b>Creditcard Type</b></div>
-        <div class="col-sm-6" style="padding-left:48px;">          
-          <select name="updatecreditcardtype" required style="height:34px;color:black;border-radius:4px;width:198%;color:black;" [(ngModel)]="cu1.PF_Card_Type" (change)="onSelect5(class)">
-              <option *ngFor="let creditcardnumber of creditcard" [ngValue] = "creditcardnumber.creditcard_description">{{creditcardnumber.creditcard_description}} </option>
-          </select>        
-            </div>
-      </div><br>
-      
+    <div class="modal-dialog" style="margin-left:40%;width:50%;">
     
-      
-      <!-- <div class="input-group">
-        <div class="col-sm-6"><b>ExpiryDate</b></div>
-        <div class="col-sm-6" style="padding-left:35px;">          
-          <input type="text" class="form-control"  [(ngModel)]="cu1.PF_Expiration_Date" style="width:200px;">
+      <!-- Modal content-->
+      <div class="modal-content" style="width:50%;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Credit Card Details here...</h4>
         </div>
-      </div> -->
+        <div class="modal-body">
+ 
+    <!-- <div class="input-group">
+      <div class="col-sm-6" ><b>Creditcard Type</b></div>
+      <div class="col-sm-6" style="padding-left:24px;">          
+        <input type="text" class="form-control"  style="width:200px;" [(ngModel)]="mbc.PF_Card_Type">
+     </div>
+    </div><br> -->
 
-      <div class="input-group">
-        <div class="col-sm-6"><b>ExpiryDate</b></div>
-        <div class="col-sm-6" style="padding-left:48px;">  
-            <app-monthpicker (change)="onMonthChange($event.target.value)" [(ngModel)]="cu1.PF_Expiration_Date"> </app-monthpicker>
-             <app-yearpicker (change)="onYearChange($event.target.value)" [(ngModel)]="cu1.PF_Expiration_Date" ></app-yearpicker>        
-          <!-- <input type="text" class="form-control"  [(ngModel)]="mbc.PF_Expiration_Date" style="width:200px;"> -->
-        </div>
-      </div>
-  
-      
-    <!-- </form> -->
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-success" (click)="update(cu1)" data-toggle="modal" data-target="#cardupdateresponse"  data-dismiss="modal"><b>Ok</b></button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
-          </div>
-        </div>
-        
+    <div class="input-group">
+        <div class="row">
+      <div class="col-sm-5"><b>Creditcard Number</b></div>
+      <div class="col-sm-6" style="padding-left:7%;">          
+        <input type="text" class="form-control"  [(ngModel)]="cu1.PF_Creditcard_No" style="width:115%;border-radius:4px;">
       </div>
     </div>
-  
+</div><br>
+
+     <div class="input-group">
+        <div class="row">
+      <div class="col-sm-6"><b>Creditcard Type</b></div>
+      <div class="col-sm-6">          
+       <select  required style="height:34px;width:120%;color:black;border-radius:4px;color:black;" [(ngModel)]="cu1.PF_Card_Type"(change)="onSelect5(class)">
+          <option *ngFor="let creditcardnumber of creditcard" [ngValue] = "creditcardnumber.creditcard_description" >{{creditcardnumber.creditcard_description}} </option>
+            </select> 
+     </div>
+    </div>
+    </div><br>
+
+    
+    <div class="input-group">
+      <div class="col-sm-5"><b>ExpiryDate</b></div>
+      <div class="col-sm-2" style="padding-left:7%;">  
+          <app-monthpicker (change)="onMonthChange($event.target.value)" [(ngModel)]="cu1.PF_Expiration_Date" style="width:100%;"> </app-monthpicker>
+      </div>
+      <div class="col-sm-2"> 
+           <app-yearpicker (change)="onYearChange($event.target.value)" [(ngModel)]="cu1.PF_Expiration_Date"  style="width:100%;"></app-yearpicker>
+           {{mbc.PF_Expiration_Month}}        
+        <!-- <input type="text" class="form-control"  [(ngModel)]="mbc.PF_Expiration_Date" style="width:200px;"> -->
+      </div>
+    </div>
+
+    
+  <!-- </form> -->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="update(cu1)" data-toggle="modal" data-target="#cardupdateresponse"  data-dismiss="modal"><b>Ok</b></button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
   
   <!--Credit Card update end-->
   

@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-md-9">
                   <div class="form-group">            
-                    <input type="text" class="form-control input-sm" >
+                    <input type="text" class="form-control input-sm" [(ngModel)]="room" name="room">
                   </div>
                 </div>
               </div>
@@ -33,7 +33,7 @@
                   </div>
                   <div class="col-md-9">
                     <div class="form-group">            
-                      <input type="text" class="form-control input-sm" >
+                      <input type="text" class="form-control input-sm" [(ngModel)]="personname" name="personname">
                     </div>
                   </div>
                 </div>
@@ -61,7 +61,7 @@
                       </div>
                       <div class="col-md-9">
                         <div class="form-group">            
-                          <input type="text" class="form-control input-sm" >
+                          <input type="text" class="form-control input-sm" [(ngModel)]="company" name="company">
                         </div>
                       </div>
                     </div>
@@ -325,8 +325,21 @@
           <th>Company</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody *ngFor="let item of items;let i=index" (click)="selectMembersEdit(item,i)"  
+      [ngClass]="{'backGroundColor':i==selectindex}">
+
+      <tr>
+        <td >{{item.Room}}</td>
+        <td>{{item.Name}}</td>
+        <td>{{item.Alt_name}}</td>
+        <td>{{item.Arrival}}</td>
+        <td>{{item.Departure}}</td>
+        <td>{{item.Balance}}</td>
+        <td>{{item.Status}}</td>
+        <td>{{item.Company}}</td>
+      </tr>  
+      
+        <!-- <tr> 
           <td>527</td>
           <td>Enderby</td>
           <td></td>
@@ -394,7 +407,7 @@
                  <td>CHECKED IN</td>
                 <td>Metro Design</td>
           
-        </tr>
+        </tr> -->
               
       </tbody>
     </table>
@@ -575,6 +588,7 @@
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
           </div>
         </div>
+        
         
       </div>
     </div>
