@@ -182,7 +182,19 @@ submit(inputt):void {
   console.log(inputt);
     this.pppService.insertcredit(inputt)
     .subscribe( (user333:any) => {
-      this.inscredit = user333.Return;
+      this.inscredit = user333.ReturnCode;
+      if(this.inscredit == "RIS"){
+        this.inscredit = "Credit Card Inserted Successfully for "+this.Name;
+
+        let paramss={
+          "pf_id":this.session.retrieve("id1"),
+       }
+         this.pppService.getcredit(paramss)
+         .subscribe((resp: any) => {
+           this.arrycdt=resp.ReturnValue;
+           console.log(this.arrycdt)
+         }); 
+      }
  
     });  
     this.route.navigate(['reservationoption/']);
@@ -194,7 +206,20 @@ submit1(inputt):void {
   console.log(inputt);
     this.pppService.insertcredit1(inputt)
     .subscribe( (user333:any) => {
-      this.inscredit = user333.Return;
+      this.inscredit = user333.ReturnCode;
+      if(this.inscredit == "RUS"){
+        console.log(this.inscredit);
+        this.inscredit = "Credit Card Updated Successfully for "+this.Name;
+
+        let paramss={
+          "pf_id":this.session.retrieve("id1"),
+       }
+         this.pppService.getcredit(paramss)
+         .subscribe((resp: any) => {
+           this.arrycdt=resp.ReturnValue;
+           console.log(this.arrycdt)
+         }); 
+      }
  
     });  
     this.route.navigate(['reservationoption/']);
@@ -210,7 +235,21 @@ delcredit(){
   
   this.pppService.deletecredit(inputparms)
    .subscribe((resp: any) => {
-    this.delstatus=resp.ReturnValue;
+    this.delstatus=resp.ReturnCode;
+    if(this.delstatus == "RDS"){
+      console.log(this.delstatus);
+      this.delstatus = "Credit Card Deletes Successfully for "+this.Name;
+
+      let paramss={
+        "pf_id":this.session.retrieve("id1"),
+     }
+       this.pppService.getcredit(paramss)
+       .subscribe((resp: any) => {
+         this.arrycdt=resp.ReturnValue;
+         console.log(this.arrycdt)
+       }); 
+    }
+
   });
 
 }

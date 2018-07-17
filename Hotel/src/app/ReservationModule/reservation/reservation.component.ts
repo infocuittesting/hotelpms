@@ -62,7 +62,13 @@ export class ReservationComponent implements OnInit {
         
         this.user33 = resp;
           this.confim=resp.ConfirmationNumber;
-          this.usera=resp.Return;
+          this.usera=resp.ReturnCode;
+          if(this.usera == "RIS"){
+            this.usera = "Reservation is Created for "+this.PF_Firstname;
+            this.confim= "The Confirmation Number is:"+this.confim;
+
+          }
+
           this.user=" ";
           this.PF_Firstname="";
           this.Pf_lastname="";
@@ -71,9 +77,8 @@ export class ReservationComponent implements OnInit {
           this.Pf_title="";
           this.Pf_country="";
           this.Pf_vip="";
-      },
 
-                      );  
+      });  
                       this.route.navigate(['reservation/']);
      }
  
@@ -81,7 +86,10 @@ export class ReservationComponent implements OnInit {
   // console.log(inputt);
       this.ReservationService.getwaitdata (inputt)
       .subscribe( (resp:any) => {
-          this.user1=resp.Return;
+          this.user1=resp.ReturnCode;
+          if(this.user1 == "RIS"){
+            this.user1 = "Reservation Waitlist is Created for "+this.PF_Firstname;
+          }
           this.user="";
           this.PF_Firstname="";
           this.Pf_lastname="";
