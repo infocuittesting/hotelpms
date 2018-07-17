@@ -766,16 +766,16 @@
                     <div class="panel-body">
                     <div class="jumbotron " style="width:680px;margin-left:15px;background-color:#0077B5;color:white;">
                   <table>
-                  <tr *ngFor="let checkvalue of privil">
+                  <tr *ngFor="let privillege of privil">
                   <td style="padding-left:35px;">
-                    <input type="checkbox" style="width:20px;height:20px;" (click)="checkboxfun1(checkvalue1)" 
-                    [(ngModel)]="checkvalue.val"> 
-                    {{checkvalue.values}}
+                    <input type="checkbox" style="width:20px;height:20px;" (click)="checkboxfun1(privillege)" 
+                    [(ngModel)]="privillege.val"> 
+                    {{privillege.values}}
                   </td>
                   </tr>
                   
                   <tr>
-                  <td style="padding-left:15px;"><input type="time" style="border-radius:4px;color:black;"[(ngModel)]="privillege.privileges_key"></td>
+                  <td style="padding-left:15px;"><input type="time" style="border-radius:4px;color:black;"[(ngModel)]="privillege.checkouttime"></td>
                   </tr>
                   
                   </table>

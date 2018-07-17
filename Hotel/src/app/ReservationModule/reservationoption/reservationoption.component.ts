@@ -99,7 +99,8 @@ this.checkedvalue1=chk1.values;
     privillege=[];    
   submits(inputt):void {
     console.log(inputt);
-      this.pppService.privileges (inputt)
+    let body= {'privileges_key': this.checkedvalue1 + " | Scheduled check out at " +inputt.checkouttime };
+      this.pppService.privileges (body)
       .subscribe( users333 => {
        
       },

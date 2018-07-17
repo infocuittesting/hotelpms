@@ -49,7 +49,7 @@ alert(input:any):  Observable<object[]> {
      headers.append('Content-Type','application/json');
      const options = new RequestOptions({ headers: headers });
      console.log('working');
-     let body={"res_id":this.session.retrieve("id"),"privileges_key":inputss.privileges_key
+     let body={"res_id":this.session.retrieve("id"),"privileges_key":inputss.privileges_key,"res_unique_id":this.session.retrieve("uniq")
    };
      return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Post_Insert_UpdateGuestPrivileges',body,options)
         .map(this.extractData)
