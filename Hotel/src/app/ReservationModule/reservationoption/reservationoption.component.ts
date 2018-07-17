@@ -18,6 +18,7 @@ export class ReservationoptionComponent implements OnInit {
   @ViewChild('content') content:ElementRef;
 
 
+  public Id = this.session.retrieve("id");
   public Name = this.session.retrieve("name");
   public Arrival = this.session.retrieve("arrival");
   public Departure = this.session.retrieve("departure");
@@ -67,19 +68,29 @@ user3={};
 alertsub(inputt):void {
     this.pppService.alert(inputt)
     .subscribe( (resp:any )=> {
-      this.user3=resp.Return; 
+      this.user3=resp.ReturnCode; 
+      if(this.user3=="RIS"){
+        this.user3="Alert is Created for " +this.Name;
+      }
+     this.alerts=" ";
     },
     );  
    }
 
      //Fixed charges options 
     fixed:any=[];     
-    fixs=[];
+    fixs={};
      fix(inputt) {
        console.log(inputt);
          this.pppService.Fixedcharges(inputt)
          .subscribe(( user333:any )=> {
-          this.fixs=user333.Return;
+          this.fixs=user333.ReturnCode;
+          if(this.fixs =="RIS"){
+            this.fixs = "Fixed Charges is Created for "+this.Name;
+          }
+          else{
+            this.fixs = " Please Enter Valid Date";
+          }
           this.fixed="";
          },
 
@@ -122,7 +133,10 @@ tracess={};
 submittrace(input) {
     this.pppService.Traces(input)
     .subscribe(( user333:any )=> {
-      this.tracess = user333.Return;
+      this.tracess = user333.ReturnCode;
+      if(this.tracess=="RIS"){
+        this.tracess=" Traces is Add for "+this.Name;
+      }
  
     });  
    }
@@ -138,6 +152,11 @@ submitdep(inputt):void {
     this.pppService.deposit(inputt)
     .subscribe( (user333:any) => {
       this.resdepo = user333.Return;
+      this.pppService.getdeposit()
+      .subscribe((resp: any) => {
+        this.deptarry=resp.ReturnValue;
+        console.log(this.deptarry)
+      });
  this.resdepos=" ";
     },
 
@@ -151,7 +170,11 @@ submitdep1(inputt):void {
     this.pppService.depositupdate(inputt)
     .subscribe( (user333:any) => {
       this.resdepo = user333.Return;
- 
+      this.pppService.getdeposit()
+      .subscribe((resp: any) => {
+        this.deptarry=resp.ReturnValue;
+        console.log(this.deptarry)
+      });
     },
 
             );  
@@ -168,7 +191,10 @@ subdele() {
   };
     this.pppService.Delete(body)
     .subscribe( (resp:any)=> {
-      this.delereturn=resp.Return;
+      this.delereturn=resp.ReturnCode;
+      if(this.delereturn=="RDS"){
+        this.delereturn="Reservation Deleted for " +this.Name;
+      }
     },
     );  
    }
@@ -275,7 +301,10 @@ tra={};
 submitrate():void {
     this.pppService.Fixedrate()
     .subscribe( (user333:any )=> {
-      this.tra = user333.Return;
+      this.tra = user333.ReturnCode;
+      if(this.tra=="RIS"){
+        this.tra="Fixed Rate is created for "+this.Name;
+      }
     },
       );  
       this.route.navigate(['reservationoption/']);

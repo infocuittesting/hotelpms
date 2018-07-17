@@ -191,7 +191,7 @@ deposit(input:any):  Observable<object[]> {
    const options = new RequestOptions({ headers: headers });
    console.log('working');
    let body={
-    "Res_id":this.session.retrieve("id"),
+    "res_id":this.session.retrieve("id"),
     "RES_Deposit_Type":input.RES_Deposit_Type,
     "RES_Deposit_Rule":input.RES_Deposit_Rule,
     "RES_Deposit_Percentage":input.RES_Deposit_Percentage,
@@ -199,7 +199,7 @@ deposit(input:any):  Observable<object[]> {
     "RES_Due_Date":input.RES_Due_Date,
     "RES_Deposit_Comments":input.RES_Deposit_Comments,
     }
-   
+   console.log(JSON.stringify(body));
    return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_UpdateDeposit',body,options)
       .map(this.extractData)
 }
@@ -345,9 +345,10 @@ Fixedrate():  Observable<object[]> {
     "Res_id":this.session.retrieve("id"),
     "RES_Arrival":this.session.retrieve("arrival"),
     "RES_Depature":this.session.retrieve("departure"),
-    "RES_Adults":this.session.retrieve("Adults"),
-    "RES_Child":this.session.retrieve("child"),
+    "RES_Adults":this.session.retrieve("Adults".toString()),
+    "RES_Child":this.session.retrieve("child".toString()),
     "RES_Room_Type":this.session.retrieve("RoomType"),
+    "RES_RTC":this.session.retrieve("RoomType"),
     "RES_Room":this.session.retrieve("Room"),
     "RES_Rate_Code":this.session.retrieve("Ratecode"),
     "RES_Rate":this.session.retrieve("rate"),
@@ -358,6 +359,7 @@ Fixedrate():  Observable<object[]> {
     "RES_Source":this.session.retrieve("source"),
     "RES_Currency":this.session.retrieve("Currency")
     };
+    console.log(JSON.stringify(body));
    return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_UpdateFixedRateReservation',body,options)
       .map(this.extractData)
 }
