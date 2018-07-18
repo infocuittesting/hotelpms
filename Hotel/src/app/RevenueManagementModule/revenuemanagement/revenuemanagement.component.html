@@ -203,8 +203,8 @@
                            <b>CurrencyCode</b>
                             </div>
                             <div class="col-sm-3">
-                                <select class="form-control input-sm"  style="width:150px;"  [(ngModel)]="currency">
-                                        <option  *ngFor="let moneylist of money" [ngValue] = "moneylist.currency">{{moneylist.currency}}</option>
+                                <select name="currencycode" class="form-control input-sm"  style="width:150px;"  [(ngModel)]="currency">
+                                        <option  *ngFor="let moneylist of money" [ngValue] = "moneylist.transaction_currency_id">{{moneylist.currency}}</option>
                                   </select>
                               </div>
                           </div>
