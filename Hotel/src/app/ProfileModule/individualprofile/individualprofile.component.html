@@ -279,7 +279,9 @@
                       </div>
                         <div class="col-lg-3">
                         <div class="input-group">
-                                <input type="text" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Type" #pf="ngModel" required>
+                                <select style="height:34px;width:250px;" [(ngModel)]="user.PF_Type" #pf="ngModel" required>
+                                  <option *ngFor="let pf of listtype" [ngValue]="pf.profiletype">{{pf.profiletype}}</option>
+                                </select>
                         </div>  
                         <div class="alert alert-danger" *ngIf="pf.touched && !pf.valid" style="width:250px;">       
                           <div *ngIf=pf.errors.required>Pf type is required</div>

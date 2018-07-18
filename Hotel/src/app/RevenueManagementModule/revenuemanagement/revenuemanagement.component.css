@@ -19,3 +19,6 @@
     /* To center horizontally */
     margin: 0 auto;
 }
+.panel {
+    margin-bottom: 5px;
+}

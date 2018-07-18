@@ -21,6 +21,7 @@ public currency=[];
 public comm1=[];
 public comm2=[];
 public comm3=[];
+public listtype=[];
 
 
   constructor(private IndividualService:IndividualService,private route:Router) { }
@@ -130,6 +131,12 @@ this.IndividualService.communication1dropdown()
  .subscribe((resp: any) => {
   this.comm3=resp.ReturnValue;
 });
+
+this.IndividualService.pftypedropdown()
+  .subscribe((resp: any) => {
+   this.listtype=resp.ReturnValue;
+ });
+
 
 
 }
