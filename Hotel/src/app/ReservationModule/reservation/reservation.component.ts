@@ -37,7 +37,7 @@ export class ReservationComponent implements OnInit {
   public getc =[];
   public marketpro =[];
   
-  user1={};
+  public user1;
   constructor(private ReservationService:ReservationService,private route:Router,public session:SessionStorageService) { }
   clearsession(){
     this.session.clear();
@@ -52,8 +52,8 @@ export class ReservationComponent implements OnInit {
     }
   }
 
- usera={};
- confim={};
+ public usera;
+ public confim;
   user33={};
   submit(inputt):void {
   // console.log(inputt);

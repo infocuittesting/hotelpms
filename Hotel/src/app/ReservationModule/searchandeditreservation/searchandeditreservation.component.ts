@@ -17,36 +17,49 @@ import { SessionStorageService } from "ngx-webstorage";
 export class SearchandeditreservationComponent implements OnInit {
 
   public searchandedit =[];
-
+  public arry=[];
   constructor(private pService:SearchandeditreservationService,private route:Router,public session:SessionStorageService) { }
    
   ngOnInit() {
-  
- 
       
-    
   this.pService.searchedit()
   .subscribe((resp: any) => {
    this.searchandedit=resp.ReturnValue;
  });
+     
+this.pService.reasondropdown()
+.subscribe((resp: any) => {
+ this.arry=resp.ReturnValue;
+});
 
 }
 
+
 //res cancel
 cans={};
-user3={};
-
+public user3;
+public cansl;
 subcancel(inputt):void {
     this.pService.cancel(inputt)
     .subscribe( (resp:any )=> {
-      this.user3=resp.cancellationNumber; 
+      this.user3=resp.ReturnCode;
+
+      if(this.user3=="RIS")
+      {
+        this.user3="The Reservation is cancelled ";
+        this.cansl="The Cancellation Number is"+resp.cancellationNumber;
+      } 
+      this.pService.searchedit()
+      .subscribe((resp: any) => {
+       this.searchandedit=resp.ReturnValue;
+     });
     },
     );  
    }
 
 
-reinstates={};
-reinreturn={};
+public reinstates;
+public reinreturn;
 subrein():void {
   let body={
     "res_id":this.session.retrieve("id"),
@@ -56,15 +69,21 @@ subrein():void {
    //reinstate
     this.pService.Reinstate(body)
     .subscribe( (resp:any)=> {
-      console.log(resp);
-      this.reinstates=resp.ConfirmationNumber;
-      this.reinreturn=resp.Return;
+      this.reinreturn=resp.ReturnCode;
+      if(this.reinreturn=="RIS"){
+      this.reinreturn=" The Cancelled Reservation is Reinstated ";
+      this.reinstates="The Confirmation Number is "+resp.ConfirmationNumber;
+      }
+      this.pService.searchedit()
+      .subscribe((resp: any) => {
+       this.searchandedit=resp.ReturnValue;
+     });
     },
     );  
    }
    //Accept Waitlist
-   AcceptState={};
-   Acceptreturn={};
+   public AcceptState;
+   public Acceptreturn;
    subaccp(){
      let body={
        "Res_id":this.session.retrieve("id"),
@@ -74,7 +93,15 @@ subrein():void {
        this.pService.AcceptWaitlist(body)
        .subscribe((acceptwaitlist:any)=> {
          this.AcceptState=acceptwaitlist.ConfirmationNumber;
-         this.Acceptreturn=acceptwaitlist.Return;
+         this.Acceptreturn=acceptwaitlist.ReturnCode;
+         if(this.Acceptreturn=="RIS"){
+          this.Acceptreturn= "The Waitlist is Moved to Reservation ";
+          this.AcceptState="The Reservation Number is "+acceptwaitlist.ConfirmationNumber;
+          }
+          this.pService.searchedit()
+          .subscribe((resp: any) => {
+           this.searchandedit=resp.ReturnValue;
+         }); 
        },
        );  
       }

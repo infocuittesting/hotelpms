@@ -14,7 +14,7 @@ import { DatePipe } from '@angular/common';
   providers:[ReservationoptionService]
 })
 export class ReservationoptionComponent implements OnInit {
-
+  
   @ViewChild('content') content:ElementRef;
 
 
@@ -63,9 +63,9 @@ export class ReservationoptionComponent implements OnInit {
   
 //Alert start
 alerts={};
-user3={};
+public user3;
 
-alertsub(inputt):void {
+alertsub(inputt) {
     this.pppService.alert(inputt)
     .subscribe( (resp:any )=> {
       this.user3=resp.ReturnCode; 
@@ -79,7 +79,7 @@ alertsub(inputt):void {
 
      //Fixed charges options 
     fixed:any=[];     
-    fixs={};
+    public fixs;
      fix(inputt) {
        console.log(inputt);
          this.pppService.Fixedcharges(inputt)
@@ -122,15 +122,18 @@ this.checkedvalue1=chk1.values;
 
 //waitlist start
 waitls:any={};
-waitlist={};
+public waitlist;
 submitwait(input){
 this.pppService.waitli(input)
 .subscribe((user333:any )=> {
-  this.waitlist = user333.Return;
+  this.waitlist = user333.ReturnCode;
+  if(this.waitlist=="RIS"){
+    this.waitlist=" Waitlist Reason is created for "+this.Name;
+  }
 });
 }
 // Traces start 
-tracess={};
+public tracess;
 submittrace(input) {
     this.pppService.Traces(input)
     .subscribe(( user333:any )=> {
@@ -148,11 +151,14 @@ submittrace(input) {
 
 resdepos={};
  
-resdepo={};
+public resdepo;
 submitdep(inputt):void {
     this.pppService.deposit(inputt)
     .subscribe( (user333:any) => {
-      this.resdepo = user333.Return;
+      this.resdepo = user333.ReturnCode;
+      if(this.resdepo=="RIS"){
+        this.resdepo=" Deposit is Add For "+ this.Name;
+      }
       this.pppService.getdeposit()
       .subscribe((resp: any) => {
         this.deptarry=resp.ReturnValue;
@@ -170,7 +176,10 @@ submitdep(inputt):void {
 submitdep1(inputt):void {
     this.pppService.depositupdate(inputt)
     .subscribe( (user333:any) => {
-      this.resdepo = user333.Return;
+      this.resdepo = user333.ReturnCode;
+      if(this.resdepo=="RUS"){
+        this.resdepo=" Deposit is Updated For "+ this.Name;
+      }
       this.pppService.getdeposit()
       .subscribe((resp: any) => {
         this.deptarry=resp.ReturnValue;
@@ -184,7 +193,7 @@ submitdep1(inputt):void {
 
 
 //delete
-delereturn={};
+public delereturn;
 subdele() {
   let body={
     "res_id":this.session.retrieve("id"),
@@ -203,7 +212,7 @@ subdele() {
 
 // insertCredit start
 ic={}; 
-inscredit={};
+public inscredit;
 submit(inputt):void {
   console.log(inputt);
     this.pppService.insertcredit(inputt)
@@ -252,7 +261,7 @@ submit1(inputt):void {
    }
 
 // delete credit card
-delstatus={};
+public delstatus;
 delcredit(){
   let inputparms={
     "pf_id":this.session.retrieve("id1"),
@@ -298,7 +307,7 @@ queueProfile(){
 }
 // fixed start
 
-tra={};
+public tra;
 submitrate():void {
     this.pppService.Fixedrate()
     .subscribe( (user333:any )=> {

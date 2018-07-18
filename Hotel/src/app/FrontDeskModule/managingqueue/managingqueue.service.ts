@@ -18,7 +18,7 @@ checkin():  Observable<object[]> {
   const options = new RequestOptions({ headers: headers });
   
  
-  return this.http.post('https://hotel360.herokuapp.com/HOTEL_FD_GET_SELECT_QueryQueueReservation',options)
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_FD_POST_SELECT_QueryQueueReservation',options)
      .map(this.extractData)
      //.catch(this.handleErrorObservable);
 }

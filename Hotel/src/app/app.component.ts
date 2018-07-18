@@ -16,6 +16,7 @@ styleUrls: ['./app.component.css'],
   providers:[AppService]
 })
 export class AppComponent {
+  
   constructor(private AppService:AppService,private route:Router) { }
 
 

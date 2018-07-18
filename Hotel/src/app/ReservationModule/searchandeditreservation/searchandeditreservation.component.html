@@ -266,14 +266,16 @@
                     <div class="col-lg-2"> <label for="">Reason</label></div>
                     <div class="col-lg-10">
                       <div class="input-group">
-                          <input type="text" class="form-control" placeholder="" [(ngModel)]="cans.Cancel_reason">
+                          <select name="Reason" class="form-control" placeholder="" [(ngModel)]="cans.Cancel_reason">
+                            <option *ngFor="let lists of arry " [ngValue]="lists.reason">{{lists.reason}}</option>
+                            </select>
                       </div>
                     </div>
                   </div><br>
                   <div class="row">
                       <div class="col-lg-2"> <label for="">Reason Description</label></div>
                       <div class="col-lg-10">
-                        <textarea name="" id="" cols=" 25" rows="3" [(ngModel)]="cans.Cancel_description"></textarea>
+                        <textarea name="" id="" cols=" 38" rows="3" [(ngModel)]="cans.Cancel_description"></textarea>
                       </div>
                     </div>                  
                 </form>
@@ -302,7 +304,8 @@
               </div>
               <div class="modal-body">
     
-                <p align="center"><b> Reservation cancellation Number is {{user3}}</b></p>
+                  <p align="center"><b> {{user3}}</b></p>
+                  <p align="center"><b> {{cansl}}</b></p>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
@@ -322,7 +325,7 @@
               <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title"> Reservation Cancel</h4>
+                  <h4 class="modal-title"> Reservation Reinstate</h4>
                 </div>
                 <div class="modal-body">
                   <p align="center"><b>Are you Sure you want to Reinstate ?</b></p>
@@ -346,12 +349,12 @@
               <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title"> Reservation Cancel</h4>
+                  <h4 class="modal-title"> Reservation Reinstate</h4>
                 </div>
                 <div class="modal-body">
       
                   <p align="center"><b> {{reinreturn}}</b></p>
-                  <p align="center"><b> Reservation Number is {{reinstates}}</b></p>
+                  <p align="center"><b> {{reinstates}}</b></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
@@ -375,7 +378,7 @@
               <div class="modal-body">
     
                 <p align="center"><b> {{Acceptreturn}}</b></p>
-                <p align="center"><b> Reservation Number is {{AcceptState}}</b></p>
+                <p align="center"><b> {{AcceptState}}</b></p>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
