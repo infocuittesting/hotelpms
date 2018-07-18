@@ -23,12 +23,13 @@ export class RevenuemanagementComponent implements OnInit {
   public negotiatecode:any=[];
  
 
-  ncode=[ { Rate_code: 'CORP', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018'},
-  { Rate_code: 'HONEY', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018'},
-  { Rate_code: 'RACK', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018'},
-  { Rate_code: 'MICROS', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018'},
-  { Rate_code: 'CORP', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018'},
-  { Rate_code: 'RACK', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018'},
+  ncode=[ { Rate_code: 'CORP', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018',ID:'1'},
+  { Rate_code: 'EXTRA', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018',ID:'2'},
+  { Rate_code: 'HIGH', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018',ID:'4'},
+  { Rate_code: 'LOW', Begin_sell_date: '26-07-2018',End_sell_date:'99-07-2018',ID:'3'},
+  { Rate_code: 'LOW', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018',ID:'3'},
+  { Rate_code: 'CORP', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018',ID:'1'},
+  { Rate_code: 'EXTRA', Begin_sell_date: '17-07-2018',End_sell_date:'29-07-2018',ID:'2'},
 ];
 
   constructor(private RevenuemanagementService:RevenuemanagementService,private route:Router) {
@@ -73,8 +74,18 @@ export class RevenuemanagementComponent implements OnInit {
     // val = val.toLowerCase();
     // val = val.toLowerCase();
     console.log(val);
-    this.ncode = this.negotiatecode.filter(x => x.Rate_code == val)
-  }
+    if(val=="select")
+    {
+      this.ncode=this.negotiatecode;
+    }
+    else{
+       this.ncode = this.negotiatecode.filter(x => x.ID == val)
+        }
+    }
 
+toggletab(tabval){
+  console.log(tabval);
+
+}
 
 }
