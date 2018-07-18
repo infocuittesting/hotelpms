@@ -1,9 +1,26 @@
 <div class="row" style="width:99%;">
     <div class="col-md-2"></div>
     <div class="col-md-10">
+        <div class="container-fluid" style="padding-top:20px;padding-left:50px;">
+                <div class="panel panel-primary">
+                        <div class="panel-body">
+                                
+                            <div class="row">
+                                <div class="col-sm-3">
+                                <b>Rate code</b>
+                                </div>
+                                <div class="col-sm-3">
+                                <select class="form-control input-sm"  style="width:150px;" [(ngModel)]="ratecode">
+-                                    <option  *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.rate_code">{{ratecdlist.rate_code}}</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
       <div class="container-fluid" style="padding-top:20px;padding-left:50px;">
           <ul class="nav nav-tabs">
-              <li><a data-toggle="tab" href="#rateheader"><b>Rate Header</b></a></li>
+              <li class="active"><a data-toggle="tab" href="#rateheader"><b>Rate Header</b></a></li>
               <li><a data-toggle="tab" href="#ratedetails">Rate Detail</a></li>
               <li><a data-toggle="tab" href="#negotiated">Negotiated</a></li>
               <li data-target="#"><a>More</a></li>
@@ -14,29 +31,46 @@
           <div class="row">
           
           <div class="col-sm-6" style="padding-top:20px;">
+                <!-- <div class="panel panel-primary">
+                    <div class="panel-body">
+                          
+                        <div class="row">
+                            <div class="col-sm-3">
+                            <b>Rate code</b>
+                            </div>
+                            <div class="col-sm-3">
+                            <select class="form-control input-sm"  style="width:150px;">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
               <div class="panel panel-primary">
                   <div class="panel-body">
-            <div class="row">
-              <div class="col-sm-3">
-             <b>Rate code</b>
-              </div>
-              <div class="col-sm-3">
-                  <select class="form-control input-sm"  style="width:150px;">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                    </select>
+                    
+                <div class="row">
+                   
+                    <div class="col-sm-3">
+                    <b>Rate code</b>
+                    </div>
+                    <div class="col-sm-3">
+                            <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:150px;" [(ngModel)]="rateheader.ratecodeid" >                   
+                    </div>
                 </div>
-            </div>
-  
-            <div class="row" style="padding-top:5px;">
+
+
+            <div class="row" style="padding-top:7px;">
                 <div class="col-sm-3">
                <b>Description</b>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-group">            
-                        <input type="text" class="form-control input-sm" style="width:150px;" >
+                        <input type="text" name="des"  class="form-control input-sm" style="width:150px;" >
                       </div>
                   </div>
               </div>
@@ -46,27 +80,15 @@
                  <b>Rate category</b>
                   </div>
                   <div class="col-sm-3">
-                      <select class="form-control input-sm"  style="width:150px;">
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
+                      <select name="ratecategoryid" class="form-control input-sm"  style="width:150px;" [(ngModel)]="rateheader.ratecategoryid">
+                          <option  *ngFor="let roomtypelist of ratecat" [ngValue] = "roomtypelist.ratecategory_id">{{roomtypelist.rate_category}}</option>
+                          
                         </select>
                     </div>
                 </div>
   
   
-                <div class="row" style="padding-top:5px;">
-                    <div class="col-sm-3">
-                   <b>Rate Class</b>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">            
-                            <input type="text" class="form-control input-sm" style="width:150px;" >
-                          </div>
-                      </div>
-                  </div>
-  
+                
   
                   <div class="row" style="padding-top:5px;">
                       <div class="col-sm-3">
@@ -74,7 +96,7 @@
                       </div>
                       <div class="col-sm-3">
                           <div class="form-group">            
-                              <input type="date" class="form-control input-sm" style="width:150px;" >
+                              <input name="beginselldate" type="date" class="form-control input-sm" style="width:150px;" [(ngModel)]="rateheader.beginselldate">
                             </div>
                         </div>
                     </div>
@@ -86,7 +108,7 @@
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group">            
-                                <input type="date" class="form-control input-sm" style="width:150px;" >
+                                <input name="endselldate" type="date" class="form-control input-sm" style="width:150px;" [(ngModel)]="rateheader.endselldate" >
                               </div>
                           </div>
                       </div>
@@ -97,46 +119,37 @@
                          <b>Market</b>
                           </div>
                           <div class="col-sm-3">
-                              <select class="form-control input-sm"  style="width:150px;">
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
+                              <select name="mar" class="form-control input-sm"  style="width:150px;" [(ngModel)]="market_code">
+                                    <option  *ngFor="let list of shop" [ngValue] = "list.market_code">{{list.market_code}}</option>  
                                 </select>
                             </div>
                         </div>
   
   
-                        <div class="row" style="padding-top:5px;">
+                        <div class="row" style="padding-top:7px;">
                             <div class="col-sm-3">
                            <b>Source</b>
                             </div>
                             <div class="col-sm-3">
-                                <select class="form-control input-sm"  style="width:150px;">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
+                                <select name="sour1" class="form-control input-sm"  style="width:150px;" [(ngModel)]="source_code">
+                                        <option  *ngFor="let sourlist of src" [ngValue] = "sourlist.source_code">{{sourlist.source_code}}</option> 
                                   </select>
                               </div>
                           </div>
   
   
-                          <div class="row" style="padding-top:5px;">
+                          <div class="row" style="padding-top:7px;">
                               <div class="col-sm-3">
                              <b>Room Types</b>
                               </div>
                               <div class="col-sm-3">
-                                  <select class="form-control input-sm"  style="width:150px;">
-                                      <option>1</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
+                                  <select name="roomtypeid" class="form-control input-sm"  style="width:150px;" [(ngModel)]="rateheader.roomtypeid">
+                                        <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option> 
                                     </select>
                                 </div>
                             </div>
   
-  
+<!--   
                             <div class="row" style="padding-top:5px;">
                                 <div class="col-sm-3">
                                <b>Packages</b>
@@ -149,21 +162,23 @@
                                         <option>4</option>
                                       </select>
                                   </div>
-                              </div>
+                              </div> -->
   
   
-                              <div class="row" style="padding-top:5px;">
+                                <div class="row" style="padding-top:7px;">
                                   <div class="col-sm-3">
                                  <b>Commmission%</b>
                                   </div>
                                   <div class="col-sm-3">
                                       <div class="form-group">            
-                                          <input type="text" class="form-control input-sm" style="width:150px;" >
+                                          <input name="commissionpercentage" type="text" class="form-control input-sm" style="width:150px;" [(ngModel)]="commissionpercentage">
                                         </div>
                                     </div>
                                 </div>
+                                <br>
+
   
-      </div>
+        </div>
            </div> 
           </div>
   
@@ -180,10 +195,10 @@
                           </div>
                           <div class="col-sm-3">
                               <select class="form-control input-sm"  style="width:150px;">
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
+                                  <option>100</option>
+                                  <option>200</option>
+                                  <option>300</option>
+                                  <option>400</option>
                                 </select>
                             </div>
                         </div>
@@ -193,11 +208,8 @@
                            <b>CurrencyCode</b>
                             </div>
                             <div class="col-sm-3">
-                                <select class="form-control input-sm"  style="width:150px;">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
+                                <select name="currencycodeid" class="form-control input-sm"  style="width:150px;"  [(ngModel)]="rateheader.currencycodeid">
+                                        <option  *ngFor="let moneylist of money" [ngValue] = "moneylist.transaction_currency_id">{{moneylist.currency}}</option>
                                   </select>
                               </div>
                           </div>
@@ -252,6 +264,19 @@
                                     </div>
                                 </div>
                          
+                            
+                            </div>
+
+                            <div class="row" style="padding-top:5px;">
+                                <div class="col-sm-5">
+                                    <b>Maximum Stay Through</b>
+                                     </div>  
+                                <div class="col-sm-1">
+                                    <div class="form-group">            
+                                        <input type="text" style="width:120px;" >
+                                    </div>
+                                </div>
+                        
                             
                             </div>
                       
@@ -316,11 +341,30 @@
           <form> 
           <div class="row">
           <div class="col-sm-4">
+                <!-- <div class="panel panel-primary">
+                    <div class="panel-body">
+                            
+                        <div class="row">
+                            <div class="col-sm-3">
+                            <b>Rate code</b>
+                            </div>
+                            <div class="col-sm-3">
+                            <select class="form-control input-sm"  style="width:150px;">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
             <div class="panel panel-primary">
               <div class="panel-heading">Dates</div>
                   <div class="panel-body">
                       <div class="row" style="padding-top:5px;">
-                          <div class="col-sm-4">
+                          <div class="col-sm-5">
                               <b>Season Code</b>
                           </div>  
                           <div class="col-sm-6">
@@ -339,7 +383,7 @@
                       
   
                       <div class="row" style="padding-top:1%;">
-                          <div class="col-sm-4">
+                          <div class="col-sm-5">
                               <b>Start date</b>
                           </div>  
                           <div class="col-sm-6">
@@ -350,7 +394,7 @@
                       </div>
   
                       <div class="row" style="padding-top:1%">
-                          <div class="col-sm-4">
+                          <div class="col-sm-5">
                               <b>End date</b>
                           </div>  
                           <div class="col-sm-6">
@@ -372,7 +416,7 @@
                   <div class="panel-heading">Attributes</div>
                       <div class="panel-body">
                           <div class="row" style="padding-top:5px;">
-                                  <div class="col-sm-4">
+                                  <div class="col-sm-5">
                                       <b>Room Types</b>
                                   </div>  
                                   <div class="col-sm-6">
@@ -385,37 +429,33 @@
                                           </select>
                                       </div>
                                   </div>
-                              </div>
-                              <div class="row">
-                                      <div class="col-sm-2">
-                                          <b>Market</b>
-                                      </div>  
-                                      <div class="col-sm-2">
-                                          <div class="form-group">            
-                                              <select class="form-control input-sm" style="width:300%;">
-                                                  <option>1</option>
-                                                  <option>2</option>
-                                                  <option>3</option>
-                                                  <option>4</option>
-                                              </select>
-                                          </div>
-                                      </div>
-  
-                                      <div class="col-sm-2"></div>
-                                      <div class="col-sm-2">
-                                          <b>Source</b>
-                                      </div>  
-                                      <div class="col-sm-2">
-                                          <div class="form-group">            
-                                              <select class="form-control input-sm" style="width:300%;">
-                                                  <option>1</option>
-                                                  <option>2</option>
-                                                  <option>3</option>
-                                                  <option>4</option>
-                                              </select>
-                                          </div>
-                                      </div>
-                                  </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <b>Market</b>
+                                </div>  
+                                <div class="col-sm-6">
+                                    <div class="form-group">            
+                                        <select name="mark1" class="form-control input-sm" style="width:100%;">
+                                            <option>{{market_code}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                
+                                <div class="col-sm-5">
+                                    <b>Source</b>
+                                </div>  
+                                <div class="col-sm-6">
+                                    <div class="form-group">            
+                                        <select name="sour" class="form-control input-sm" style="width:100%;">
+                                           {{source_code}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                                  
   
                                   
   
@@ -427,6 +467,7 @@
   <!-- Amounts panel -->
   
           <div class="col-sm-8">
+
               <div class="panel panel-primary">
                   <div class="panel-heading">Amounts</div>
                   <div class="panel-body">
@@ -497,9 +538,6 @@
                                   </div>
                               </div>
                           </div>
-  
-                          <br>
-                          <br>
   
                       </div>
                  
@@ -640,13 +678,11 @@
                                                   </div>  
                                                   <div class="col-sm-3">
                                                       <div class="form-group">            
-                                                          <select class="form-control input-sm" style="width:100%;">
-                                                              <option>RACK</option>
-                                                              <option>MICROS</option>
-                                                              <option>BEST</option>
-                                                              <option>HONEY</option>
-                                                              <option>CORP</option>
-                                                          </select>
+                                                          <select name="ratecodedropdown" class="form-control input-sm" style="width:100%;" [(ngModel)]="ratecode" (change)="onSelect(ratecode)">
+                                                                <option [ngValue]="select" >select</option>    
+                                                                <option  *ngFor="let ratecodelist of price" [ngValue] = "ratecodelist.ratecode_id">{{ratecodelist.rate_code}}</option>
+                                                          
+                                                            </select>
                                                       </div>
                                                   </div>
                                               </div>
@@ -687,12 +723,12 @@
                               </tr>
                             </thead>
                             <tbody>                                 
-                              <tr>
-                                  <td>RACK</td>
-                                  <td>11-04-2018</td>
-                                  <td>20-04-2018</td>     
+                              <tr  *ngFor="let item of ncode; let i=index">
+                                  <td>{{item?.Rate_code}}</td>
+                                  <td>{{item?.Begin_sell_date}}</td>
+                                  <td>{{item?.End_sell_date}}</td>     
                               </tr> 
-                              <tr>
+                              <!-- <tr>
                                   <td>MICROS</td>
                                   <td>12-04-2018</td>
                                   <td>13-04-2018</td>     
@@ -706,7 +742,7 @@
                                   <td>CORP</td>
                                   <td>02-04-2018</td>
                                   <td>05-04-2018</td>     
-                                  </tr>
+                                  </tr> -->
                             </tbody>
                           </table>
                       </div>
@@ -753,11 +789,7 @@
                                                   <div class="col-sm-3">
                                                       <div class="form-group">            
                                                           <select class="form-control input-sm" style="width:100%;">
-                                                              <option>RACK</option>
-                                                              <option>MICROS</option>
-                                                              <option>BEST</option>
-                                                              <option>HONEY</option>
-                                                              <option>CORP</option>
+                                                             
                                                           </select>
                                                       </div>
                                                   </div>

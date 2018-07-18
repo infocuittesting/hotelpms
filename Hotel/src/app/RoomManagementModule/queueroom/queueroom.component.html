@@ -148,7 +148,7 @@
     </div>
 
     <div class="col-lg-2">
-        <select  required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="queueroom" (ngModelChange)="onSelect1(queueroom)">
+        <select  required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="queueroom" (change)="onSelect1(queueroom)">
           <option *ngFor="let selectroomlist of room" [ngValue] = "selectroomlist.rm_room">{{selectroomlist.rm_room}} </option>
             </select>
     </div>
