@@ -59,7 +59,7 @@
                     <b>Rate code</b>
                     </div>
                     <div class="col-sm-3">
-                            <input type="text" name="rtc"  class="form-control input-sm" style="width:150px;" >                   
+                            <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:150px;" [(ngModel)]="rateheader.ratecodeid" >                   
                     </div>
                 </div>
 
@@ -80,8 +80,8 @@
                  <b>Rate category</b>
                   </div>
                   <div class="col-sm-3">
-                      <select class="form-control input-sm"  style="width:150px;" [(ngModel)]="rate_category">
-                          <option  *ngFor="let roomtypelist of ratecat" [ngValue] = "roomtypelist.rate_category">{{roomtypelist.rate_category}}</option>
+                      <select name="ratecategoryid" class="form-control input-sm"  style="width:150px;" [(ngModel)]="rateheader.ratecategoryid">
+                          <option  *ngFor="let roomtypelist of ratecat" [ngValue] = "roomtypelist.ratecategory_id">{{roomtypelist.rate_category}}</option>
                           
                         </select>
                     </div>
@@ -96,7 +96,7 @@
                       </div>
                       <div class="col-sm-3">
                           <div class="form-group">            
-                              <input type="date" class="form-control input-sm" style="width:150px;" >
+                              <input name="beginselldate" type="date" class="form-control input-sm" style="width:150px;" [(ngModel)]="rateheader.beginselldate">
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group">            
-                                <input type="date" class="form-control input-sm" style="width:150px;" >
+                                <input name="endselldate" type="date" class="form-control input-sm" style="width:150px;" [(ngModel)]="rateheader.endselldate" >
                               </div>
                           </div>
                       </div>
@@ -143,8 +143,8 @@
                              <b>Room Types</b>
                               </div>
                               <div class="col-sm-3">
-                                  <select class="form-control input-sm"  style="width:150px;" [(ngModel)]="type">
-                                        <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.type">{{roomlist.type}}</option> 
+                                  <select name="roomtypeid" class="form-control input-sm"  style="width:150px;" [(ngModel)]="rateheader.roomtypeid">
+                                        <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option> 
                                     </select>
                                 </div>
                             </div>
@@ -171,7 +171,7 @@
                                   </div>
                                   <div class="col-sm-3">
                                       <div class="form-group">            
-                                          <input type="text" class="form-control input-sm" style="width:150px;" >
+                                          <input name="commissionpercentage" type="text" class="form-control input-sm" style="width:150px;" [(ngModel)]="rateheader.commissionpercentage">
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@
                            <b>CurrencyCode</b>
                             </div>
                             <div class="col-sm-3">
-                                <select name="currencycode" class="form-control input-sm"  style="width:150px;"  [(ngModel)]="currency">
+                                <select name="currencycodeid" class="form-control input-sm"  style="width:150px;"  [(ngModel)]="rateheader.currencycodeid">
                                         <option  *ngFor="let moneylist of money" [ngValue] = "moneylist.transaction_currency_id">{{moneylist.currency}}</option>
                                   </select>
                               </div>

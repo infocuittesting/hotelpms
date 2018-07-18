@@ -21,7 +21,7 @@ export class RevenuemanagementComponent implements OnInit {
   public money=[];
   public room=[];
   public negotiatecode:any=[];
- 
+  public rateheader:any={};
 
   ncode=[ { Rate_code: 'CORP', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018',ID:'1'},
   { Rate_code: 'EXTRA', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018',ID:'2'},
