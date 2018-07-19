@@ -66,6 +66,30 @@ export class RevenuemanagementService {
 
   }
   
+  saverateheader(input:any): Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+   let body={ 
+    "Ratecode_id":input.ratecode.toString(),
+    "Begin_sell_date":input.beginselldate,
+    "End_sell_date":input.endselldate,
+    "Roomtype_id":input.roomtypeid.toString(),
+    "Transaction_Currency_id":input.currencycodeid.toString(),
+    "Minimum_stay_through":input.Minimum_stay_through,
+    "Rate_Category_id":input.ratecategoryid.toString(),
+    "Market_id":input.market_id.toString(),
+    "Source_id":input.source_id.toString(),
+    "Commission_percentage":input.Commission_percentage,
+    "Maximum_stay_through":input.Maximum_stay_through,
+    "Rate_components":input.discoun
+   }
+   console.log(JSON.stringify(body));
+
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_INSERT_UpdateRatecodeSetup',body,options)
+       .map(this.extractData)
+
+  }
 
   private extractData(res: Response) {
     //alert('hai20')

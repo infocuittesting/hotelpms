@@ -381,6 +381,7 @@
             
   </div> -->
   </div>
+  <br>
   
   <div class="container">
       <div class="table-responsive">
@@ -397,18 +398,18 @@
           <th>Company</th>
         </tr>
       </thead>
-      <tbody *ngFor="let item of items;let i=index " (click)="selectMembersEdit(item,i)"  
+      <tbody *ngFor="let item of items |filterdata: personname :'Name' |  filterdata: room :'Room'|  filterdata: company :'Company';let i=index " (click)="selectMembersEdit(item,i)"  
       [ngClass]="{'backGroundColor':i==selectindex}" style="padding-top:2px;padding-bottom:2px;padding-left:2px;padding-right:2px;font-size:small;">
 
       <tr>
-        <td >{{item.Room}}</td>
-        <td>{{item.Name}}</td>
-        <td>{{item.Alt_name}}</td>
-        <td>{{item.Arrival}}</td>
-        <td>{{item.Departure}}</td>
-        <td>{{item.Balance}}</td>
-        <td>{{item.Status}}</td>
-        <td>{{item.Company}}</td>
+        <td >{{item?.Room}}</td>
+        <td>{{item?.Name}}</td>
+        <td>{{item?.Alt_name}}</td>
+        <td>{{item?.Arrival}}</td>
+        <td>{{item?.Departure}}</td>
+        <td>{{item?.Balance}}</td>
+        <td>{{item?.Status}}</td>
+        <td>{{item?.Company}}</td>
       </tr>  
       
         <!-- <tr> 
