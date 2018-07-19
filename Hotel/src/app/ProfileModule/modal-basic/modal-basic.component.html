@@ -482,9 +482,9 @@
       
       <!-- Modal footer -->
       <div class="modal-footer" style="padding-right:150px;">
-        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#insert"><b>Add New</b></button>
+        <button class="btn btn-info" type="button"  data-toggle="modal" data-target="#insert"><b>Add New</b></button>
         <button class="btn btn-danger" type="button" (click)="deletecreditClick(flag)" data-toggle="modal" data-target="#carddeleteresponse"><b>Delete</b></button>
-        <button class="btn btn-success" type="button" data-toggle="modal" data-target="#updatecard"><b>Edit</b></button>
+        <button class="btn btn-success"  type="button" data-toggle="modal" data-target="#updatecard"><b>Edit</b></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
        </div>   
       
@@ -1671,7 +1671,7 @@
         <!-- <div class="row"> -->
       <div class="col-md-5"><b>Creditcard Number</b></div>
       <div class="col-md-6">          
-        <input type="text" class="form-control"  [(ngModel)]="cu1.PF_Creditcard_No" style="border-radius:4px;">
+        <input type="text" name="creditcardnumber" class="form-control"  [(ngModel)]="cu1.PF_Creditcard_No" style="border-radius:4px;">
       </div>
     <!-- </div> -->
 </div><br>
@@ -1680,7 +1680,7 @@
         <!-- <div class="row"> -->
       <div class="col-md-6" style="text-align:left"><b>Creditcard Type</b></div>
       <div class="col-md-6">          
-       <select  required style="height:34px;padding-left:9px;color:black;border-radius:4px;color:black;" [(ngModel)]="cu1.PF_Card_Type"(change)="onSelect5(class)">
+       <select  required name="creditcard" style="height:34px;padding-left:9px;color:black;border-radius:4px;color:black;" [(ngModel)]="cu1.PF_Card_Type"(change)="onSelect5(class)">
           <option *ngFor="let creditcardnumber of creditcard" [ngValue] = "creditcardnumber.creditcard_description" >{{creditcardnumber.creditcard_description}} </option>
             </select> 
      </div>

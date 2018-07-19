@@ -76,12 +76,12 @@ getcreditexpiry(){
     user5 ={};
     mbc={};
     cu1:any ={};
-  card = {};
-  profilenego ={};
-  profilenegotes ={};
-  profilenotes ={};
-  profileprefer ={};
-  profileprefer1 ={};
+  public card;
+  public profilenego;
+  public profilenegotes;
+  public profilenotes;
+  public profileprefer;
+  public profileprefer1;
   user33={};
   user34={};
   user35={};
@@ -91,16 +91,16 @@ getcreditexpiry(){
   user40={};
   user24={};
   updatecard={};
-  delcard={};
-  delcard1={};
-  delcard2={};
+  public delcard;
+  public delcard1;
+  public delcard2;
   delcard3={};
   delcard4={};
   delcard6={};
-  delcard7={};
+  public delcard7;
   user25={};
   futurereservation={};
-  updatenotes={};
+  public updatenotes;
   nup:any={};
   noup:any={};
   user13={};
@@ -146,7 +146,7 @@ getcreditexpiry(){
 // }
 
   
-  submit(inputt):void {
+  submit(inputt){
     this.creditcard_expiry = this.month+"/"+this.year;
     console.log(this.creditcard_expiry);
     console.log('sruthi',inputt,'kanu');
@@ -154,7 +154,22 @@ getcreditexpiry(){
       this.pppService.insertCreditcard (inputt)
       .subscribe(( user333:any)=> {
         this.user33 = user333;
-        this.card=user333.Return;
+        this.card=user333.ReturnCode;
+        if(this.card=="RIS"){
+          this.card="Creditcard is Add";
+        }
+        let paramss={
+          "pf_id":this.session.retrieve("id"),
+       }
+       
+        this.pppService.getCreditcard(paramss)
+        .subscribe((resp: any) => {
+          this.credit=resp.ReturnValue;
+          console.log("creditcard details");
+           console.log(this.credit);
+       
+      });
+        this.mbc="";
       },
        );  
         }
@@ -168,7 +183,22 @@ getcreditexpiry(){
             this.pppService.updateCredit(inputt)
             .subscribe(( user339:any)=> {
               this.user38 = user339;
-              this.card=user339.Return;
+              this.card=user339.ReturnCode;
+              if(this.card=="RUS"){
+                this.card="CreditCard is Updated "
+              }
+              let paramss={
+                "pf_id":this.session.retrieve("id"),
+             }
+             
+              this.pppService.getCreditcard(paramss)
+              .subscribe((resp: any) => {
+                this.credit=resp.ReturnValue;
+                console.log("creditcard details");
+                 console.log(this.credit);
+             
+            });
+              this.cu1="";
             },
              );  
               }
@@ -181,7 +211,10 @@ getcreditexpiry(){
         this.pppService.insertNegotiated (inputt)
         .subscribe(( user334:any)=> {
           this.user34 = user334;
-          this.profilenego=user334.Return;
+          this.profilenego=user334.ReturnCode;
+          if(this.profilenego=="RIS"){
+            this.profilenego="The Negotiated Rate is Add for the Guest";
+          }
         },
         );  
                        
@@ -193,7 +226,10 @@ getcreditexpiry(){
           this.pppService.updateNegotiated(inputt)
           .subscribe(( user134:any)=> {
             this.user24 = user134;
-            this.profilenegotes=user134.Return;
+            this.profilenegotes=user134.ReturnCode;
+            if(this.profilenegotes=="RUS"){
+              this.profilenegotes="The Negotiated Rate is Updated for the Guest";
+            }
           },
           );  
                          
@@ -206,7 +242,10 @@ getcreditexpiry(){
           this.pppService.insertNotes(inputt)
           .subscribe(( user335:any)=> {
             this.user35 = user335;
-            this.profilenotes=user335.Return;
+            this.profilenotes=user335.ReturnCode;
+            if(this.profilenotes=="RIS"){
+              this.profilenotes="Special Notes is Add for the Guest";
+            }
           },
           );  
                          
@@ -218,7 +257,10 @@ getcreditexpiry(){
             this.pppService.updateNotes(inputt)
             .subscribe(( user235:any)=> {
               this.user25 = user235;
-              this.updatenotes=user235.Return;
+              this.updatenotes=user235.ReturnCode;
+              if(this.updatenotes=="RUS"){
+                this.updatenotes="The Notes is Updated for the Guest";
+              }
             },
             );  
                            
@@ -230,7 +272,10 @@ getcreditexpiry(){
             this.pppService.insertPrefer(inputt)
             .subscribe((user336:any)=> {
               this.user36 = user336;
-              this.profileprefer=user336.Return;
+              this.profileprefer=user336.ReturnCode;
+              if(this.profileprefer=="RIS"){
+                this.profileprefer="Preferences is Add for the Guest";
+              }
             },
             );  
                            
@@ -243,7 +288,10 @@ getcreditexpiry(){
               this.pppService.updatePrefer(inputt)
               .subscribe((user339:any)=> {
                 this.user39 = user339;
-                this.profileprefer1=user339.Return;
+                this.profileprefer1=user339.ReturnCode;
+                if(this.profileprefer1=="RUS"){
+                  this.profileprefer1="The Preferences is Updated for the Guest";
+                }
               },
               );  
                              
@@ -377,7 +425,10 @@ deletecreditClick(){
   this.pppService.deleteCredit(params)
 .subscribe(( user313:any)=> {
   this.user13 = user313;
-  this.delcard=user313.Return;
+  this.delcard=user313.ReturnCode;
+  if(this.delcard=="RDS"){
+    this.delcard=" The Creditcard detail is deleted";
+  }
 
   let paramss={
     "pf_id":this.session.retrieve("id"),
@@ -406,7 +457,10 @@ deletenegotesClick(){
   this.pppService.negotesDelete(params)
 .subscribe(( user314:any)=> {
   this.user14 = user314;
-  this.delcard1=user314.Return;
+  this.delcard1=user314.ReturnCode;
+  if(this.delcard1=="RDS"){
+    this.delcard1="The Negotiated Rate is Deleted ";
+  }
 
   let paramss={
     "pf_id":this.session.retrieve("id"),
@@ -433,8 +487,10 @@ deletenotesClick(){
   this.pppService.notesDelete(params)
 .subscribe(( user315:any)=> {
   this.user15 = user315;
-  this.delcard2=user315.Return;
-
+  this.delcard2=user315.ReturnCode;
+  if(this.delcard2=="RDS"){
+    this.delcard2="Notes is Deleted ";
+  }
   let paramss={
     "pf_id":this.session.retrieve("id"),
  }
@@ -462,8 +518,10 @@ deletepreferClick(){
   this.pppService.preferDelete(params)
 .subscribe(( user415:any)=> {
   this.user21 = user415;
-  this.delcard7=user415.Return;
-
+  this.delcard7=user415.ReturnCode;
+  if(this.delcard7=="RDS"){
+    this.delcard7="Preferences is Deleted for the Guest";
+  }
   let paramss={
     "pf_id":this.session.retrieve("id"),
  }
