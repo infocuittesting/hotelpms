@@ -83,7 +83,7 @@ export class RevenuemanagementComponent implements OnInit {
     // val = val.toLowerCase();
     // val = val.toLowerCase();
     console.log(val);
-    if(val=="select")
+    if(val=="0")
     {
       this.ncode=this.negotiatecode;
     }

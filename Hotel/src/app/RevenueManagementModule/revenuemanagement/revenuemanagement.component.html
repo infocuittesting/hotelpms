@@ -678,8 +678,8 @@
                                                   </div>  
                                                   <div class="col-sm-3">
                                                       <div class="form-group">            
-                                                          <select name="ratecodedropdown" class="form-control input-sm" style="width:100%;" [(ngModel)]="ratecode" (ngModalChange)="onSelect(ratecode)">
-                                                                <option [ngValue]="select" >select</option>    
+                                                          <select name="ratecodedropdown" class="form-control input-sm" style="width:100%;" [(ngModel)]="ratecode" (change)="onSelect(ratecode)">
+                                                                <option [ngValue]="0" >select</option>    
                                                                 <option  *ngFor="let ratecodelist of price" [ngValue] = "ratecodelist.ratecode_id">{{ratecodelist.rate_code}}</option>
                                                           
                                                             </select>
