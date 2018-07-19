@@ -36,6 +36,15 @@ export class RevenuemanagementComponent implements OnInit {
     this.negotiatecode = this.ncode;
    }
 
+   user={};
+   rateheaderins(input){
+   console.log(input.discoun);  
+   this.RevenuemanagementService.saverateheader(input)
+   .subscribe((resp: any) => {
+    this.room=resp.ReturnValue;
+  });
+}
+
   ngOnInit() {
     console.log(this.ncode);
     this.RevenuemanagementService.ratecategorydropdown()
