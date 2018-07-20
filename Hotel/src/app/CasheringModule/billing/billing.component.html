@@ -15,7 +15,7 @@
               <div class="col-md-2">
                 <label for="room">Balance</label>
                   <div class="form-group">            
-                    <input type="text" class="form-control input-sm" style="height:27px;;width: 70%;">
+                    <input type="text" name="balance1" class="form-control input-sm" style="height:27px;;width: 70%;">
                   </div>
               </div>
             
@@ -303,7 +303,7 @@
                                       <b>Room</b>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="textbox" class="form-control">
+                                        <input type="text" name="editroom" class="form-control" [(ngModel)]="room" disabled>
                                       </div>
                               </div>
                               </div>
@@ -316,7 +316,7 @@
                                       <b>Name</b>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="textbox" class="form-control">
+                                        <input type="text" name="editname" class="form-control" [(ngModel)]="name" disabled>
                                       </div>
                               </div>
                               </div>
@@ -330,7 +330,7 @@
                                       <b>Code</b>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="textbox" class="form-control"> 
+                                        <input type="text" name="editcode" class="form-control" [(ngModel)]="code" disabled> 
                                       </div>
                                       </div>
                               </div>
@@ -343,7 +343,7 @@
                                       <b>Price</b>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="textbox" class="form-control">
+                                        <input type="text"  name="editamount" class="form-control" [(ngModel)]="amount">
                                       </div>
                                       </div>
                            
@@ -353,7 +353,7 @@
                                     <b>Quantity</b>
                                   </div>
                                   <div class="col-sm-6" style="padding-top:5px;">
-                                      <input type="textbox" class="form-control">
+                                      <input type="text" class="form-control">
                                   </div>
                                 </div>
                         
@@ -364,7 +364,7 @@
                                   <b>Amount</b>
                                 </div>
                                 <div class="col-sm-6" style="padding-top:5px;">
-                                    <input type="textbox" class="form-control">
+                                    <input type="text" name="editamount" class="form-control" disabled>
                                 </div>
                                 </div>
                               </div>
@@ -372,7 +372,7 @@
                               <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                      <textarea style="margin-left:4%;"class="form-control"  rows="5" id="comment">USD</textarea>
+                                      <textarea style="margin-left:4%;"class="form-control"  rows="5" id="comment" disabled >USD</textarea>
                                     </div>
                                  </div>
                                 </div>
@@ -386,7 +386,7 @@
                                       <b>Cashier</b>
                                     </div>
                                     <div class="col-sm-6" >
-                                      <input type="textbox" class="form-control">
+                                      <input type="text" name="editcash" class="form-control" disabled>
                                     </div>
                               </div>
                                 
@@ -398,7 +398,7 @@
                                           <b>Folio.No</b>
                                         </div>
                                         <div class="col-sm-6" style="padding-top:5px;">
-                                          <input type="textbox" class="form-control">
+                                          <input type="text" name="editfolio" class="form-control" disabled>
                                         </div>
                                   </div>
   
@@ -434,7 +434,7 @@
                               <b>Posting Date</b>
                             </div>
                             <div class="col-sm-6">
-                                <input type="date" class="form-control" style="width:160px;">
+                                <input type="date" name="editpostdat" class="form-control" style="width:160px;" disabled>
                               </div>
                       </div>
                       </div>
@@ -447,7 +447,7 @@
                               <b>Revenue Date</b>
                             </div>
                             <div class="col-sm-6">
-                                <input type="date" class="form-control" style="width:160px;">
+                                <input type="date" name="editrevendat" class="form-control" style="width:160px;" disabled>
                               </div>
                       </div>
                       </div>
@@ -460,7 +460,7 @@
           <b>Article</b>
         </div>
         <div class="col-sm-6">
-            <input type="text" class="form-control" style="width:260px;">
+            <input type="text" class="form-control" name="article" style="width:260px;" disabled>
           </div>
   </div>
   </div>
@@ -474,7 +474,7 @@
           <b>Credit Card No.</b>
         </div>
         <div class="col-sm-6" style="padding-top:5px;">
-            <input type="textbox" class="form-control">
+            <input type="text" name="editcredit" class="form-control" disabled>
         </div>
         <br>
       </div>           
@@ -487,7 +487,7 @@
         </div> 
      
         <div class="col-md-6" style="padding-top:5px;">
-          <input type="textbox" class="form-control">
+          <input type="text" name="editexpdate" class="form-control" disabled>
         </div>
       </div>
     </div>
@@ -528,7 +528,7 @@
               <b>Cheque No.</b>
             </div>
             <div class="col-sm-6">
-                <input type="textbox" class="form-control">
+                <input type="text" class="form-control">
             </div>
             
            
@@ -545,7 +545,7 @@
             </div> 
      
             <div class="col-md-6">
-                <input type="textbox" class="form-control">
+                <input type="text" class="form-control">
             </div>
           </div>
         </div>

@@ -544,7 +544,7 @@
                         <b>Payment Code</b>
                       </div>
                       <div class="col-sm-6">
-                          <select style="height:30px;width:130%;" [(ngModel)]="selected" (change)="selectoption(selected)">
+                          <select style="height:30px;width:130%;" class="form-control" name="paycode" [(ngModel)]="checkout.selected" (change)="selectoption(selected)">
                               <option value="9001">9001</option>
                               <option value="9002">9002</option>
                               <option value="9003">9003</option>
@@ -567,11 +567,8 @@
                           <b>Currency</b>
                         </div>
                         <div class="col-sm-6">
-                            <select style="height:30px;width:150%;">
-                                <option value="volvo">USD</option>
-                                <option value="saab">EUR</option>
-                                <option value="mercedes">GBP  </option>
-                                <option value="audi">INR</option>
+                            <select name="cur" style="height:30px;width:150%;" [(ngModel)]="checkout.currency">
+                                <option *ngFor="let list of money" [ngValue]="list.transaction_currency_id">{{list.currency}}</option>
                               </select>
                           </div>
                         </div>
@@ -587,7 +584,7 @@
                           <b>Amount</b>
                         </div>
                         <div class="col-sm-6">
-                            <input type="textbox" style="width:150%;height:30px;">
+                            <input type="textbox" class="form-control" name="checkoutamount" style="width:150%;height:30px;" [(ngModel)]="checkout.amount">
                         </div>
                         </div>
                       </div>
@@ -602,7 +599,7 @@
                                 <b>Reference</b>
                               </div>
                               <div class="col-sm-6">
-                                  <input type="textbox" style="width:150%;height:30px;">
+                                  <input type="textbox" class="form-control" name="checkoutrefer" style="width:150%;height:30px;" [(ngModel)]="checkout.refer">
                               </div>
                               </div>
                             </div>
@@ -612,7 +609,7 @@
                                 <b>Credit card No.</b>
                               </div>
                               <div class="col-sm-6">
-                                  <input type="textbox" style="width:150%;height:30px;">
+                                  <input type="textbox" class="form-control" name="checkoutcardno" style="width:150%;height:30px;" [(ngModel)]="checkout.cardno">
                                 </div>
                             </div>
   
@@ -624,11 +621,11 @@
                                 <div class="col-sm-10">
                                   <div class="row">
                                     <div class="col-sm-6">  
-                                        <app-monthpicker (change)="onMonthChange($event.target.value)" [(ngModel)]="mbc.PF_Expiration_Month"> </app-monthpicker>
+                                        <app-monthpicker (change)="onMonthChange($event.target.value)" [(ngModel)]="checkout.PF_Expiration_Month"> </app-monthpicker>
                                     </div>
                                     
                                     <div class="col-sm-6"> 
-                                         <app-yearpicker (change)="onYearChange($event.target.value)" [(ngModel)]="mbc.PF_Expiration_Year"></app-yearpicker>
+                                         <app-yearpicker (change)="onYearChange($event.target.value)" [(ngModel)]="checkout.PF_Expiration_Year"></app-yearpicker>
                                          {{mbc.PF_Expiration_Month}}        
                                       <!-- <input type="text" class="form-control"  [(ngModel)]="mbc.PF_Expiration_Date" style="width:200px;"> -->
                                     </div>
@@ -641,7 +638,7 @@
                                 <b>Supplement</b>
                               </div>
                               <div class="col-sm-4">
-                                  <input type="textbox" style="width:150%;height:30px;">
+                                  <input type="textbox" class="form-control" name="checkoutsup" style="width:150%;height:30px;"   [(ngModel)]="checkout.sup">
                                 </div>
                               </div><br>
                                 <div class="row" *ngIf="showdiv=='9003'">
@@ -649,7 +646,7 @@
                                     <b>Reference</b>
                                   </div>
                                   <div class="col-sm-4">
-                                      <input type="textbox" style="width:150%;height:30px;">
+                                      <input type="textbox" class="form-control" name="checkoutref" style="width:150%;height:30px;"  [(ngModel)]="checkout.ref" >
                                     </div>
                             </div>
                           
@@ -657,7 +654,7 @@
                     </div>
                </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal"><b>Post</b></button>
+              <button type="button" class="btn btn-success" data-dismiss="modal" (click)="checkoutpost(checkout)"><b>Post</b></button>
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
           </div>
         </div>
