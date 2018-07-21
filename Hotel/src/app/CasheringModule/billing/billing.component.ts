@@ -13,6 +13,13 @@ import {BillingService} from './billing.service';
 })
 export class BillingComponent implements OnInit {
 
+  public historyitems = [
+    { Action: 'Night Audit posting', Revenue_Date:'2018-06-19' ,Posting_date:'2018-06-19',User:'Supervisor',name:'Antony',Reason:'Payment posted for 2',Description:'Payment posted successfully'},
+    {Action: 'Night Audit posting', Revenue_Date:'2018-06-19' ,Posting_date:'2018-06-19',User:'Supervisor',name:'Antony',Reason:'Payment posted for 2',Description:'Payment posted successfully'},
+    {Action: 'Night Audit posting', Revenue_Date:'2018-06-19' ,Posting_date:'2018-06-19',User:'Supervisor',name:'Antony',Reason:'Payment posted for 2',Description:'Payment posted successfully'},
+    {Action: 'Night Audit posting', Revenue_Date:'2018-06-19' ,Posting_date:'2018-06-19',User:'Supervisor',name:'Antony',Reason:'Payment posted for 2',Description:'Payment posted successfully'},
+  ];
+
   player;
   showMore=false;
   //show more
@@ -25,19 +32,15 @@ export class BillingComponent implements OnInit {
   }
 
   public items = [
-    { Date: '16-04-2018', Code: 4121,Description:'parking',Amount:500 },
-    { Date: '16-04-2018', Code: 4121,Description:'parking',Amount:500 },
-    { Date: '16-04-2018', Code: 4121,Description:'parking',Amount:500 },
-    { Date: '16-04-2018', Code: 4121,Description:'parking',Amount:500 },
+    { Date: '16-04-2018', Code: 4121,Description:'parking',Amount:300 },
+    { Date: '17-04-2018', Code: 4525,Description:'hotel',Amount:500 },
+    { Date: '18-04-2018', Code: 4444,Description:'parking',Amount:400 },
+    { Date: '19-04-2018', Code: 4321,Description:'hotel',Amount:100 },
   ];
    constructor(private cashbillservice: BillingService, public session:SessionStorageService,private route:Router) { }
   public listmark:any=[];
   ngOnInit() {
 
-    this.cashbillservice.cashbill()
-    .subscribe((resp:any) => {
-      this.listmark=resp.ReturnValue;
-    });
 }
 
 public room=this.session.retrieve("id");
