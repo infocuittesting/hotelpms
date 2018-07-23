@@ -141,6 +141,8 @@ this.IndividualService.pftypedropdown()
 
 }
 
-
+clear(){
+  this.user = '';
+  }
 
 }

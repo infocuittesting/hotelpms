@@ -33,6 +33,7 @@ this.city = '';
 this.lastname = '';
 this.mobile = '';
 this.postal = '';
+this.pftypeselection ='';
 }
   
  public type = [];

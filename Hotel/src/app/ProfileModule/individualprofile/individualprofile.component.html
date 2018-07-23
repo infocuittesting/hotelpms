@@ -50,15 +50,11 @@
   </div><br>
 
   <div class="container-fluid">
-
+    <div class="panel panel-primary">
+      <div class="panel-body">
     <div class="row">
-
       <div class="col-lg-6">
-
-          <div class="panel panel-primary">
-              <div class="panel-heading"><b>Address Information</b></div>
-              <div class="panel-body">
-                 
+                 <label><b>Address Information</b></label><hr>
                   <div class="row">
                       <div class="col-lg-3">
                         <b>First Name</b>
@@ -233,17 +229,13 @@
 
           
 
-              </div>
-            </div>
+
           
 
       </div>
 
       <div class="col-lg-6">
-
-          <div class="panel panel-primary" style="height:508px;">
-              <div class="panel-heading"><b>Internal Information</b></div>
-              <div class="panel-body">
+        <label for=""><b> Internal Information</b></label><hr>
                   <div class="row">
                       <div class="col-lg-3">
                         <b>Salutation</b>
@@ -435,6 +427,7 @@
     
 
               </div>
+
             </div>
         </div>
 
@@ -443,95 +436,14 @@
 
   </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid">  
 
-    <div class="row">
-      <div class="col-lg-6">
-
-          <div class="panel panel-primary">
-              <div class="panel-body">
-                  <div class="row">
-                      <div class="col-lg-3">
-                        <b>Search Name</b>
-                      </div>
-                        <div class="col-lg-3">
-                        <div class="input-group">
-                                <input type="text" class="form-control" style="width:250px;" ></div>
-                        </div>
-                      </div>
-
-                      <div class="row" style="padding-top:5px;">
-                          <div class="col-lg-3">
-                            <b>First</b>
-                          </div>
-                            <div class="col-lg-3">
-                            <div class="input-group">
-                                    <input type="text" class="form-control" style="width:250px;" ></div>
-                            </div>
-                          </div>
-
-
-                          <div class="row" style="padding-top:5px;">
-                              <div class="col-lg-3">
-                                <b>Name</b>
-                              </div>
-                                <div class="col-lg-3">
-                                <div class="input-group">
-                                       <textarea rows="3" cols="38"></textarea></div>
-                                </div>
-                              </div>
-              </div>
-            </div>
-      </div>
-
-      <div class="col-lg-6">
-
-          <div class="panel panel-primary">
-              <div class="panel-body">
-                  <form class="form-inline">
-                      <div class="form-group">
-                        <label for="rate">Rate Code</label>
-                        <input type="text" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for="room">Last Room</label>
-                        <input type="text" class="form-control">
-                      </div>
-                     </form>
-                     <form class="form-inline">
-                      <div class="form-group">
-                        <label for="ar/no." style="padding-right:22px;">A/R No.</label>
-                        <input type="text" class="form-control">
-                      </div>
-                      <div class="form-group">
-                        <label for="rate" style="padding-left:12px;">Last Rate</label>
-                        <input type="text" class="form-control">
-                      </div>
-                     </form>
-                     <form class="form-inline">
-                      <div class="form-group">
-                        <label for="visit" style="padding-right:12px;">Last Visit</label>
-                        <input type="text" class="form-control">
-                      </div>
-                      
-                     </form>
-              
-
-             
-     </div>
-</div>
-
-
-    </div>
-  </div>
-
-  
-
-   <div class="container">
+   <div class="container"></div>
       <div class="row">
 
         <div class="col-lg-2"></div>
 
+        <div class="col-lg-2"></div>
          
 
           <div class="col-lg-2">
@@ -539,23 +451,15 @@
  </div>
           
           <div class="col-lg-2">
-          <button type="button" class="btn btn-warning" style="width:160px;"  [disabled]="(!firstName.valid && !firstName.untouched ) || (!address.valid && !address.untouched) || (!address.valid && !address.untouched) || (!pf.valid && !pf.untouched)"><b>Save</b></button>
-          </div>
-
-         
-          <div class="col-lg-2">
-          <button type="button" class="btn btn-primary" style="width:160px;"><b>New</b></button>
-          </div>
-          
-          <div class="col-lg-2">
-              <button type="button" class="btn btn-primary" style="width:160px;"><b>Reset</b></button>
+              <button type="button" class="btn btn-primary" style="width:160px;" (click)="clear()"><b>Reset</b></button>
               </div>
           
           <div class="col-lg-2"></div>
           
+          <div class="col-lg-2"></div>
           
           </div>
-   </div>
+
   </div>
 </div>
 </div>

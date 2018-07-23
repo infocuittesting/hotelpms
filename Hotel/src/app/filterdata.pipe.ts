@@ -9,7 +9,7 @@ export class FilterdataPipe implements PipeTransform {
   transform(items: any[], value: string, label:string): any[] {
     if (!items) return [];
     if (!value) return  items;
-    if (value == "" || value == null) return [];
+    if (value == "" || value == null) return null;
     return filter 
      ? items.filter(e =>e[label].toLowerCase().indexOf(value) > -1 )
     : items;
