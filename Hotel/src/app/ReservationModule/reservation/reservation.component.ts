@@ -64,10 +64,13 @@ export class ReservationComponent implements OnInit {
           this.confim=resp.ConfirmationNumber;
           this.usera=resp.ReturnCode;
           if(this.usera == "RIS"){
-            this.usera = "Reservation is Created for "+this.PF_Firstname;
+            this.usera = "Reservation is Created for "+this.PF_Firstname+" "+this.Pf_lastname;
             this.confim= "The Confirmation Number is:"+this.confim;
 
           }
+else{
+  this.usera="Reservation is Already Exist";
+} 
 
           this.user=" ";
           this.PF_Firstname="";
@@ -88,7 +91,7 @@ export class ReservationComponent implements OnInit {
       .subscribe( (resp:any) => {
           this.user1=resp.ReturnCode;
           if(this.user1 == "RIS"){
-            this.user1 = "Reservation Waitlist is Created for "+this.PF_Firstname;
+            this.user1 = "Reservation Waitlist is Created for "+this.PF_Firstname+" "+this.Pf_lastname;
           }
           this.user="";
           this.PF_Firstname="";
