@@ -10,6 +10,7 @@ export class BillingService {
 
   constructor( private http: Http,public session:SessionStorageService) { }
 
+
   gethistorylog():  Observable<object[]> {
        
      const headers = new Headers({'Content-Type':'application/json'})
@@ -24,6 +25,22 @@ export class BillingService {
        .map(this.extractData)
        //.catch(this.handleErrorObservable);
   }
+
+  inhousetobilling():  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers });
+    let body =
+    {
+       "res_id":this.session.retrieve("id1"),
+       "res_room":this.session.retrieve("id")
+       
+    }
+   console.log(JSON.stringify(body));
+   return this.http.post('https://hotel360.herokuapp.com/HOTEL_CAH_POST_SELECT_QUERYGUESTBILLING',body,options)
+      .map(this.extractData)
+      //.catch(this.handleErrorObservable);
+ }
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);

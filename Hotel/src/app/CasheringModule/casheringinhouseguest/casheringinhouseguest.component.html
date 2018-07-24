@@ -105,10 +105,7 @@
                           <div class="col-md-9">
                             <div class="form-group">            
                                 <select class="form-control input-sm" id="sel1" style="width:70%;height:27px;">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
+                                  <option *ngFor="let restypelist of resty" [ngValue] = "restypelist.restype_description">{{restypelist.restype_description}}</option>  
                                   </select>
                             </div>
                           </div>
@@ -389,26 +386,27 @@
         <tr>
           <th>Room</th>
           <th>Name</th>
-          <th>Alt.Name</th>
+          
            <th>Arrival</th>
           <th>Departure</th>
           <th>Balance</th>
           <th>Status</th>
-          <th>Company</th>
+          <th>ResType</th>
         </tr>
       </thead>
-      <tbody *ngFor="let item of items |filterdata: personname :'Name' |  filterdata: room :'Room'|  filterdata: company :'Company';let i=index " (click)="selectMembersEdit(item,i)"  
+      <tbody *ngFor="let dell of housetable |filterdata: personname :'Name' |  filterdata: room :'Room'|  filterdata: company :'Company';let i=index " (click)="selectMembersEdit(dell,i)"  
       [ngClass]="{'backGroundColor':i==selectindex}" style="padding-top:2px;padding-bottom:2px;padding-left:2px;padding-right:2px;font-size:small;">
 
       <tr>
-        <td >{{item?.Room}}</td>
-        <td>{{item?.Name}}</td>
-        <td>{{item?.Alt_name}}</td>
-        <td>{{item?.Arrival}}</td>
-        <td>{{item?.Departure}}</td>
-        <td>{{item?.Balance}}</td>
-        <td>{{item?.Status}}</td>
-        <td>{{item?.Company}}</td>
+        <td >{{dell?.res_room}}</td>
+        <td>{{dell?.pf_firstname}}</td>
+      
+        <td>{{dell?.res_arrival}}</td>
+        <td>{{dell?.res_depature}}</td>
+        <td>{{dell?.res_guest_balance}}</td>
+        <td>{{dell?.res_guest_status}}</td>
+        <td>{{dell?.res_res_type}}</td>
+      
       </tr>  
       
         <!-- <tr> 
@@ -753,19 +751,15 @@
                         <th>Name</th>
                         <th>Wnd</th>
                         <th>Folio Amount</th>
-                        <th>Payee Name</th>
-                        <th>Invoice</th>
                         </tr>
                         </thead>
-                        <tbody>
-                          <tr *ngFor="let item of folio; let i=index">
-                            <td>{{item.FolioNo}}</td>
-                            <td>{{item.Date}}</td>
-                            <td>{{item.Name}}</td>
-                            <td>{{item.Wnd}}</td>
-                            <td>{{item.FolioAmount}}</td>
-                            <td>{{item.payeeName}}</td>
-                            <td>{{item.Invoice}}</td>
+                        <tbody style="font-size:12px;">
+                          <tr *ngFor="let folioitem of foliohis; let i=index">
+                            <td>{{folioitem.folio_no}}</td>
+                            <td>{{folioitem.posting_date}}</td>
+                            <td>{{folioitem.pf_firstname}}</td>
+                            <td>{{folioitem.post_window}}</td>
+                            <td>{{folioitem.total_amount}}</td>
                           </tr>
                         </tbody>
                      

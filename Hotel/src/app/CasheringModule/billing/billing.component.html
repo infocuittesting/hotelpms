@@ -15,14 +15,15 @@
               <div class="col-md-2">
                 <label for="room">Balance</label>
                   <div class="form-group">            
-                    <input type="text" name="balance1" class="form-control input-sm" style="height:27px;;width: 70%;">
+                    <input type="text"  name="balance1" class="form-control input-sm" style="height:27px;width: 70%;" [(ngModel)]="navigat.res_guest_balance">
                   </div>
+                  {{navigat.res_guest_balance}}
               </div>
             
             <div class="col-md-2">
             <label for="name">Arrival</label>
             <div class="form-group">          
-              <input type="date" class="form-control input-sm" style="height:27px;width: 70%;">
+              <input type="text" class="form-control input-sm" style="height:27px;width: 70%;">
             </div>
           </div>
   
@@ -67,7 +68,7 @@
           <div class="col-md-2">
               <label for="name">Departure</label>
             <div class="form-group">            
-              <input type="date" class="form-control input-sm" style="width:70%;height:27px;">
+              <input type="text" class="form-control input-sm" style="width:70%;height:27px;">
             </div>
           </div>
   
@@ -109,6 +110,11 @@
           <th>Code</th>
           <th>Description</th>
            <th>Amount</th>
+           <th>Check Number</th>
+           <th>Quantity</th>           
+           <th>Supplement</th>
+           <th>Reference</th>
+           
         </tr>
       </thead> 
       <tbody style="font-size:small;">
@@ -127,13 +133,18 @@
                 </div>
               </div>
             </contextmenu>
-        <tr *ngFor="let item of items; let i=index" (click)="selectMembersEdit(item,i)" 
+        <tr *ngFor="let item of navtbl; let i=index" (click)="selectMembersEdit(item,i)" 
         [ngClass]="{'backGroundColor':i==selectindex}"  [contextmenu]="[contextmenu, {item: item}]" >
          
-           <td >{{item.Date}}</td>
-          <td>{{item.Code}}</td>
-           <td>{{item.Description}}</td>
-          <td>{{item.Amount}}</td>
+          <td >{{item.posting_date}}</td>
+          <td >{{item.post_code_id}}</td>
+          <td >{{item.posting_description}}</td>           
+          <td>{{item.posting_amount}}</td>
+          <td>{{item.checkno}}</td>
+          <td>{{item.posting_quantity}}</td>
+          <td>{{item.posting_supplement }}</td>
+          <td>{{item.posting_reference }}</td>
+          
           
         </tr>
         <!-- <tr>
@@ -468,7 +479,7 @@
                                       <b>Price</b>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text"  name="editamount" class="form-control" [(ngModel)]="amount">
+                                        <input type="text"  name="editamount" class="form-control">
                                       </div>
                                       </div>
                            
@@ -478,7 +489,7 @@
                                     <b>Quantity</b>
                                   </div>
                                   <div class="col-sm-6" style="padding-top:5px;">
-                                      <input type="text" class="form-control">
+                                      <input type="text" class="form-control" [(ngModel)]="quan">
                                   </div>
                                 </div>
                         
@@ -489,7 +500,7 @@
                                   <b>Amount</b>
                                 </div>
                                 <div class="col-sm-6" style="padding-top:5px;">
-                                    <input type="text" name="editamount" class="form-control" disabled>
+                                    <input type="text" name="editamount" class="form-control" [(ngModel)]="amount"  disabled>
                                 </div>
                                 </div>
                               </div>
@@ -541,11 +552,11 @@
                          
                                 <div class="col-md-6">
                                   <select style="width:70%;height:100%;" class="form-control">
-                                      <option value="101">101</option>
-                                      <option value="102">102</option>
-                                      <option value="103">103</option>
-                                      <option value="104">104</option>
-                                    </select>
+                                    <option value="101">101</option>
+                                    <option value="102">102</option>
+                                    <option value="103">103</option>
+                                    <option value="104">104</option>
+                                  </select>
                                 </div>
                               </div>
                             </div>
@@ -559,7 +570,7 @@
                               <b>Posting Date</b>
                             </div>
                             <div class="col-sm-6">
-                                <input type="date" name="editpostdat" class="form-control" style="width:160px;" disabled>
+                                <input type="date" name="editpostdat" class="form-control" style="width:160px;" [(ngModel)]="pstdt" disabled>
                               </div>
                       </div>
                       </div>
@@ -599,7 +610,7 @@
           <b>Credit Card No.</b>
         </div>
         <div class="col-sm-6" style="padding-top:5px;">
-            <input type="text" name="editcredit" class="form-control" disabled>
+            <input type="text" name="editcredit" class="form-control" [(ngModel)]="creditcd" disabled>
         </div>
         <br>
       </div>           
@@ -612,7 +623,7 @@
         </div> 
      
         <div class="col-md-6" style="padding-top:5px;">
-          <input type="text" name="editexpdate" class="form-control" disabled>
+          <input type="text" name="editexpdate" class="form-control" [(ngModel)]="creditexpdt" disabled>
         </div>
       </div>
     </div>
