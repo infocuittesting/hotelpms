@@ -43,6 +43,19 @@ export class CasheringinhouseguestComponent implements OnInit {
    
     {  Room: '107', Name: 'Ander',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'OPEN FOLIO',Company:'Metro Design' },
   ];
+
+public folio=[
+  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+
+  
+];
+
+
   constructor(private cashinservice: CasheringinhouseguestService, public session:SessionStorageService,private route:Router) { }
 public money=[];
 
@@ -65,13 +78,13 @@ public money=[];
     console.log(flag);
   }
   
-
+  public checkname; 
   selectindex=null;
 selectMembersEdit(details,index){
 this.selectindex=index;
 this.session.store("id",details.Room);
 this.session.store("name",details.Name);
-
+this.checkname=details.Name;
 }
 
   private month:any;

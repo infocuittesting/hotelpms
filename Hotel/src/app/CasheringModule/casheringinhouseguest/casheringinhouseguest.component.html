@@ -488,31 +488,28 @@
   
   
   <div class="container">
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-2">
-          <button type="button" class="btn btn-primary" style="width:110px;" routerLink="/billing"><b>Billing</b></button>
+    <form class="form-inline">
+
+      <div class="row">
+        <div class="col-md-1"></div>
+            <button type="button" class="btn btn-primary" style="width:110px;margin-left:5%;" routerLink="/billing"><b>Billing</b></button>
+        
+    
+       
+            <button type="button" class="btn btn-Warning" style="width:110px;margin-left:2%;" data-toggle="modal" ><b>C/O All</b></button>
+    
+            <button type="button" class="btn btn-Basic" style="width:110px;margin-left:2%;" data-toggle="modal" ><b>C/O zero</b></button>
+    
+            <button type="button" class="btn btn-success" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#checkout"><b>Check Out</b></button>
+        
+    
+          <button type="button" class="btn btn-info" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#foliohistorymodal"><b>Folio History</b></button>
+
+            <button type="button" class="btn btn-danger" style="width:110px;margin-left:2%;" routerLink="/mains"><b>Close</b></button>
+
       </div>
-  
-      <div class="col-md-2">
-          <button type="button" class="btn btn-Warning" style="width:110px;" data-toggle="modal" ><b>C/O All</b></button>
-      </div>
-  
-      <div class="col-md-2">
-          <button type="button" class="btn btn-Basic" style="width:110px;" data-toggle="modal" ><b>C/O zero</b></button>
-      </div>
-  
-      <div class="col-md-2">
-          <button type="button" class="btn btn-success" style="width:110px;" data-toggle="modal" data-target="#checkout"><b>Check Out</b></button>
-          </div>
-      
-  
-      <div class="col-md-2">
-        <button type="button" class="btn btn-danger" style="width:110px;" routerLink="/mains"><b>Close</b></button>
-      </div>
-      <div class="col-md-1"></div>
-    </div>
-   </div>
+    </form>
+  </div>
   
   </div>
   </div>
@@ -520,16 +517,16 @@
   </div>
   </div>
   <!-- *********************************************************************************************************** -->
-  
+  <!-- checkout Modal -->
   <div class="modal fade" id="checkout"  role="dialog">
       <div class="vertical-alignment-helper">
       <div class="modal-dialog vertical-align-center">
       
-        <!-- Modal content-->
+        <!-- checkout Modal content-->
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">RESLU - Payment [Wind.1 - Barker,Bob - Room 133]</h4>
+            <h4 class="modal-title" >RESLU - Payment [ {{checkname}} ]</h4>
           </div>
           <div class="modal-body">
             
@@ -662,4 +659,128 @@
       </div>
     </div>
     </div>
-    
+
+<!--**************************************************************checkout Modal ends**************************************************************************************-->
+
+    <!-- foliohistory Modal content-->
+    <div class="modal fade" id="foliohistorymodal" role="dialog">
+        <div class="modal-dialog modal-lg">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+           <h4>Folio History</h4>
+          </div>
+          <div class="modal-body">
+          <!-- <b align="center">{{profile}}</b> -->
+           
+            
+      <div class="container-fluid" style="background-color: #0077B5;color: white;Width:99%;">
+        <br>
+              <div class="row" style="width:99%;">
+                  <div class="col-md-4">
+                  <div class="from-group" style="margin-left: 10px;">
+                  <label for="name">Date</label>
+                  <input type="date" class="from-control input-sm" style="width: 66%;">
+                  </div>
+
+               </div>
+              <div class="col-md-4">
+              <div class="from-group">
+                <label for="name">Folio.No</label>
+                <input type="text" class="from-control input-sm">
+              </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="from-group">
+                      <label for="name">FirstName</label>
+                      <input type="text" class="from-control input-sm">
+                    </div>
+                    </div>
+                </div>
+                <br>
+              <div class="row">
+              <div class="col-md-4">
+                 <div class="from-group">
+                   <label for="name">Room</label>
+                   <input type="text"class="from-control input-sm">
+                 </div>
+                </div>
+                <div class="col-md-4">
+                   <div class="from-group" style="margin-left: 4px;">
+                     <label for="name">Name</label>
+                     <input type="text" class="from-control input-sm">
+                   </div>
+                  </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-3">
+                    <div class="custom-control custom-checkbox"style="margin-left: 5px;">
+                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">Check Out</label>
+                      </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">Passer By</label>
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                          <label class="custom-control-label" for="customCheck">AR</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                            <label class="custom-control-label" for="customCheck">NoShow</label>
+                          </div>
+                      </div>
+              </div>
+             </div>
+             <br>
+             <div class="continer-fluid">
+               <div class="responsive-table">
+                 <table class="table table-bordered table-hover">
+                   <thead style="background-color: #0077B5;color:white;">
+                     <tr>
+                       <th>Folio.No</th>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Wnd</th>
+                        <th>Folio Amount</th>
+                        <th>Payee Name</th>
+                        <th>Invoice</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of folio; let i=index">
+                            <td>{{item.FolioNo}}</td>
+                            <td>{{item.Date}}</td>
+                            <td>{{item.Name}}</td>
+                            <td>{{item.Wnd}}</td>
+                            <td>{{item.FolioAmount}}</td>
+                            <td>{{item.payeeName}}</td>
+                            <td>{{item.Invoice}}</td>
+                          </tr>
+                        </tbody>
+                     
+                  
+                 </table>
+               </div>
+             </div>
+           
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary"style="width: 10%;" data-dismiss="modal"><b>Folio</b></button>
+            <button type="button" class="btn btn-danger" style="width: 10%;" data-dismiss="modal"><b>Close</b></button>
+          </div>
+          </div>
+          
+        </div>
+        </div>
+    <!-- ********************************************************foliohistory modal ends********************************************************************************** -->

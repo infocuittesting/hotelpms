@@ -12,9 +12,13 @@ import {BillingService} from './billing.service';
   providers:[BillingService],
 })
 export class BillingComponent implements OnInit {
-
+house=[];
+home=[];
+hist=[];
+limit=10;
   public historyitems = [
     { Action: 'Night Audit posting', Revenue_Date:'2018-06-19' ,Posting_date:'2018-06-19',User:'Supervisor',name:'Antony',Reason:'Payment posted for 2',Description:'Payment posted successfully'},
+    {Action: 'Night Audit posting', Revenue_Date:'2018-06-19' ,Posting_date:'2018-06-19',User:'Supervisor',name:'Antony',Reason:'Payment posted for 2',Description:'Payment posted successfully'},
     {Action: 'Night Audit posting', Revenue_Date:'2018-06-19' ,Posting_date:'2018-06-19',User:'Supervisor',name:'Antony',Reason:'Payment posted for 2',Description:'Payment posted successfully'},
     {Action: 'Night Audit posting', Revenue_Date:'2018-06-19' ,Posting_date:'2018-06-19',User:'Supervisor',name:'Antony',Reason:'Payment posted for 2',Description:'Payment posted successfully'},
     {Action: 'Night Audit posting', Revenue_Date:'2018-06-19' ,Posting_date:'2018-06-19',User:'Supervisor',name:'Antony',Reason:'Payment posted for 2',Description:'Payment posted successfully'},
@@ -37,9 +41,29 @@ export class BillingComponent implements OnInit {
     { Date: '18-04-2018', Code: 4444,Description:'parking',Amount:400 },
     { Date: '19-04-2018', Code: 4321,Description:'hotel',Amount:100 },
   ];
+  
    constructor(private cashbillservice: BillingService, public session:SessionStorageService,private route:Router) { }
   public listmark:any=[];
   ngOnInit() {
+
+    this.cashbillservice.gethistorylog()
+    .subscribe((resp: any) => {
+      this.house = resp.History;
+console.log(this.house);
+    });
+
+    this.cashbillservice.gethistorylog()
+    .subscribe((resp: any) => {
+      this.home = resp.Changes;
+console.log(this.house);
+    });
+
+    this.cashbillservice.gethistorylog()
+    .subscribe((resp: any) => {
+      this.hist = resp.Original;
+console.log(this.house);
+    });
+
 
 }
 

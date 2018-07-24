@@ -102,7 +102,7 @@
   <br>
     <div class="container">
       <div class="table-responsive">
-    <table class="table table-bordered table-hover" style="width:98%;margin-left:1%;">
+    <table id="tb2" class="table table-bordered table-hover" style="width:98%;margin-left:1%;">
       <thead style="background-color:#0077B5;color:white;">
         <tr>
           <th>Date</th>
@@ -116,7 +116,14 @@
               <div class="dropdown open">
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer Transaction</a><br>
-                  <a class="dropdown-item" href="#">Transfer to another window</a><br>                                
+                  <a class="dropdown-item" data-toggle="dropdown" href="dropdown-toggle">Transfer to another window</a><br>
+                      
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Link 1</a>
+                          <a class="dropdown-item" href="#">Link 2</a>
+                          <a class="dropdown-item" href="#">Link 3</a>
+                        </div>
+                                                      
                 </div>
               </div>
             </contextmenu>
@@ -189,31 +196,31 @@
   
     <div class="row">
       
-      <button type="button" id="post" class="btn btn-success" style="width:9%;margin-left:3%;" data-target="#postoption" data-toggle="modal"><b>post</b></button>
+      <button type="button" id="post" class="btn btn-success" style="width:110px;margin-left:5%;" data-target="#postoption" data-toggle="modal"><b>post</b></button>
       
      
       
-        <button type="button" class="btn btn-default" style="width:10%;margin-left:2%;" data-target="#editmodal" data-toggle="modal"><b>Edit</b></button>
+        <button type="button" class="btn btn-default" style="width:110px;margin-left:2%;"  data-target="#editmodal" data-toggle="modal"><b>Edit</b></button>
       
   
       
-        <button type="button" class="btn btn-info" style="width:10%;margin-left:2%;" ><b>Folio</b></button>
+        <button type="button" class="btn btn-info" style="width:110px;margin-left:2%;" ><b>Folio</b></button>
    
   
        
-          <button type="button" class="btn btn-warning" style="width:10%;margin-left:2%;" data-target="#postinghistory" data-toggle="modal"><b>Options</b></button>
+          <button type="button" class="btn btn-warning" style="width:110px;margin-left:2%;" data-target="#postinghistory" data-toggle="modal"><b>Options</b></button>
        
   
           
-            <button type="button" class="btn btn-secondary" style="width:10%;margin-left:2%;" data-toggle="modal" data-target="#myModal2"><b>Payment</b></button>
+            <button type="button" class="btn btn-secondary" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#myModal2"><b>Payment</b></button>
           
   
           
-              <button type="button" class="btn btn-primary" style="width:10%;margin-left:2%;"><b>Settlement</b></button>
+              <button type="button" class="btn btn-primary" style="width:110px;margin-left:2%;"><b>Settlement</b></button>
   
-              <button type="button" class="btn btn-info" style="width:10%;margin-left:2%;" data-toggle="modal" data-target="#reinstatemodal" ><b>Reinstate</b></button>
+              <button type="button" class="btn btn-info" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#reinstatemodal" ><b>Reinstate</b></button>
              
-                <button type="button" class="btn btn-danger" style="width:8%;margin-left:2%;" routerLink="/inhousecashering"><b>Close</b></button>
+                <button type="button" class="btn btn-danger" style="width:110px;margin-left:2%;" routerLink="/inhousecashering"><b>Close</b></button>
                 
     </div>
   
@@ -223,7 +230,7 @@
     
     </div>
     </div>
-  
+  </div>
    
   <!-- *********************************************************************************************************** -->
             
@@ -241,6 +248,7 @@
   
                   </div>
                   <div class="modal-body">
+                      <div class="table-responsive">
                       <table class="table table-bordered table-hover">
                           <thead style="background-color:#0077B5;color:white;">
                             <tr>
@@ -251,25 +259,16 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                              <td>Mark</td>
-                              <td>Otto</td>
-                              <td>@mdo</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">2</th>
-                              <td>Jacob</td>
-                              <td>Thornton</td>
-                              <td>@fat</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                              <td colspan="2">Larry the Bird</td>
-                              <td>@twitter</td>
-                            </tr>
+                              <tr *ngFor="let number of [0,1,2,3,4,5]">
+                                  <td><input type="text" name="links"></td>
+                                  <td><input type="text" name="keywords"></td> 
+                                  <td><input type="text" name="violationtype"></td>   
+                                  <td><input type="submit" id="last" class="button" value="Add another line" onclick:"addField()"></td>          
+                              </tr>
+                              
                           </tbody>
                         </table>
+                        </div>
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -282,8 +281,8 @@
         <!--posting history modal  -->
 
         <div class="modal fade" id="postinghistory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="vertical-alignment-helper">
-              <div class="modal-dialog modal-lg  vertical-align-center">
+         
+              <div class="modal-dialog modal-lg">
                   <div class="modal-content">
                       <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
@@ -294,8 +293,9 @@
                       </div>
                       <div class="modal-body">
                           <div class="container-fluid">
-                              <div class="table-responsive" style="height:40%;width:100%;overflow-y:auto;">
-                                <table class="table table-bordered  table-hover" style="font-size:10px;" style="font-size:12px;">
+                              <div class="scrollable2">
+                              <div class="table-responsive">
+                                <table class="table table-bordered  table-hover"  style="font-size:12px;">        
                                     <thead style="background-color:#0077B5;color:white;">
                                       <tr>
                                         <th scope="col">Action</th>
@@ -307,23 +307,30 @@
                                         <th scope="col">Description</th>
                                       </tr>
                                     </thead>
-                                    <tbody *ngFor="let hitem of historyitems">
+                                    <tbody *ngFor="let firstitem of house">
                                       <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+                                        <th scope="row">{{firstitem?.posting_action}}</th>
+                                        
+                                        <td>{{firstitem?.revenue_date}}</td>
+                                        <td>{{firstitem?.posting_date}}</td>
+                                        <td>{{firstitem?.user_role}}</td>
+                                        <td>{{firstitem?.user_name}}</td>
+                                        <td>{{firstitem?.posting_reason}}</td>
+                                        <td>{{firstitem?.posting_description}}</td>                                        
                                       </tr>
 
                                     </tbody>
                                   </table>
                                   </div>
                                   </div>
+                                  </div>
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="container-fluid">
-                                  <div class="table-responsive" style="height:40%;width:100%;overflow-y:auto;">
-                                    <table class="table table-bordered table-hover" style="font-size:12px;">
+                                  <b>Original</b>
+                                  <div class="scrollable2">
+                                  <div class="table-responsive" style="min-height:101.01%;">
+                                    <table class="table table-bordered table-hover"  style="font-size:12px;">
                                       <thead style="background-color:#0077B5;color:white;">
                                         <tr>
                                           <th scope="col">Action</th>
@@ -335,23 +342,30 @@
                                           <th scope="col">Description</th>
                                         </tr>
                                       </thead>
-                                      <tbody *ngFor="let hisitem of historyitems">
+                                      <tbody *ngFor="let hisitem of hist">
                                         <tr>
-                                          <th scope="row">1</th>
-                                          <td>Mark</td>
-                                          <td>Otto</td>
-                                          <td>@mdo</td>
+                                          <th scope="row">{{hisitem?.posting_action}}</th>
+                                          
+                                          <td>{{hisitem?.revenue_date}}</td>
+                                          <td>{{hisitem?.posting_date}}</td>
+                                          <td>{{hisitem?.user_role}}</td>
+                                          <td>{{hisitem?.user_name}}</td>
+                                          <td>{{hisitem?.posting_reason}}</td>
+                                          <td>{{hisitem?.posting_description}}</td>                                        
                                         </tr>
                                       
                                       </tbody>
                                     </table>
                                     </div>
                                     </div>
+                                    </div>
                                   </div>
                                   <div class="col-md-6">
                                     <div class="container-fluid">
-                                      <div class="table-responsive" >
-                                        <table class="table table-bordered table-hover" style="font-size:12px;height:40%;">
+                                      <b>Changes</b>
+                                      <div class="scrollable2">
+                                      <div class="table-responsive" style="min-height:101.01%;">
+                                        <table class="table table-bordered table-hover"  style="font-size:12px;">
                                           <thead style="background-color:#0077B5;color:white;">
                                             <tr>
                                               <th scope="col">Action</th>
@@ -363,20 +377,21 @@
                                               <th scope="col">Description</th>
                                             </tr>
                                           </thead>
-                                          <tbody *ngFor="let postitem of historyitems">
+                                          <tbody *ngFor="let postitem of home">
                                             <tr>
-                                              <th scope="row">{{postitem?.Action}}</th>
+                                              <th scope="row">{{postitem?.posting_action}}</th>
                                               
-                                              <td>{{postitem?.Revenue_Date}}</td>
-                                              <td>{{postitem?.Posting_date}}</td>
-                                              <td>{{postitem?.User}}</td>
-                                              <td>{{postitem?.name}}</td>
-                                              <td>{{postitem?.Reason}}</td>
-                                              <td>{{postitem?.Description}}</td>                                        
+                                              <td>{{postitem?.revenue_date}}</td>
+                                              <td>{{postitem?.posting_date}}</td>
+                                              <td>{{postitem?.user_role}}</td>
+                                              <td>{{postitem?.user_name}}</td>
+                                              <td>{{postitem?.posting_reason}}</td>
+                                              <td>{{postitem?.posting_description}}</td>                                        
                                             </tr>
                                           
                                           </tbody>
                                         </table>
+                                      </div>
                                       </div>
                                     </div>  
                           </div>
@@ -387,7 +402,7 @@
                           <button type="button" class="btn btn-primary">Save changes</button>
                       </div>
                   </div>
-              </div>
+             
           </div>
       </div>
           
@@ -703,7 +718,7 @@
               </div>
             </div>
             </div>
-  </div>
+  
   <div class="modal fade" id="transfertransaction" role="dialog">
       <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
