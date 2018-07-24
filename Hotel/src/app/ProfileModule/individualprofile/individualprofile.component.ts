@@ -18,6 +18,9 @@ public statelist=[];
 public viplist=[];
 public nationality=[];
 public currency=[];
+public itl=[];
+public lit=[];
+public tl=[];
 public comm1=[];
 public comm2=[];
 public comm3=[];
@@ -25,7 +28,7 @@ public listtype=[];
 
 
   constructor(private IndividualService:IndividualService,private route:Router) { }
-user={};
+public user={};
   individual = {};
   individual1 = {};
   user33={};
@@ -114,6 +117,20 @@ this.IndividualService.currencydropdown()
   this.currency=resp.ReturnValue;
 });
 
+this.IndividualService.citydropdown()
+ .subscribe((resp: any) => {
+  this.itl=resp.ReturnValue;
+});
+
+this.IndividualService.titledropdown()
+ .subscribe((resp: any) => {
+  this.lit=resp.ReturnValue;
+});
+
+this.IndividualService.languagedropdown()
+ .subscribe((resp: any) => {
+  this.tl=resp.ReturnValue;
+});
 
 this.IndividualService.communication1dropdown()
  .subscribe((resp: any) => {
@@ -141,8 +158,7 @@ this.IndividualService.pftypedropdown()
 
 }
 
-clear(){
+cleardata(){
   this.user = '';
   }
-
 }

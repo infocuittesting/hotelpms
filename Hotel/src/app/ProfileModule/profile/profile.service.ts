@@ -17,14 +17,9 @@ export class ProfileService {
          headers.append('Content-Type','application/json');
          const options = new RequestOptions({ headers: headers });
          console.log('working');
-         let body={
-          "PF_Firstname":"merlin",
-          "PF_Lastname":"d",
-          "PF_Language":"English",
-          "PF_Title":"",
-          "PF_Mobileno":"9698206966",  
+         let body={  
         "PF_Account":input.PF_Account,"PF_Company_Address":input.PF_Company_Address,
-        "PF_Business_Address":input.PF_Business_Address,"PF_Postalcode":input.PF_Postalcode,"PF_Owner":input.PF_Owner,
+        "PF_Business_Address":input.PF_Business_Address,"PF_Postalcode":input.PF_Postalcode.toString(),"PF_Owner":input.PF_Owner,
         "PF_Territory":input.PF_Territory,"PF_Type":input.PF_Type,"PF_AR_Number":input.PF_AR_Number,"PF_City":input.PF_City,
         "PF_Ref_Currency":input.PF_Ref_Currency,"PF_Company_Communication1":input.PF_Company_Communication1,"PF_Company_Communication2":input.PF_Company_Communication2,"PF_Company_Communication3":input.PF_Company_Communication3,
         "PF_Company_Commtype1":input.PF_Company_Commtype1,"PF_Company_Commtype2":input.PF_Company_Commtype2,"PF_Company_Commtype3":input.PF_Company_Commtype3,"PF_Company_Country":input.PF_Company_Country,"PF_Company_State":input.PF_Company_State,
@@ -116,7 +111,25 @@ export class ProfileService {
   
       }
   
+      postaldropdown():  Observable<object[]> {
+       
+        const headers = new Headers({'Content-Type':'application/json'})
+        const options = new RequestOptions({ headers: headers })
+       
+        return this.http.get('https://hotel360.herokuapp.com//Profile/profilepostalcode')
+           .map(this.extractData)
   
+      }
+  
+      citydropdown():  Observable<object[]> {
+         
+        const headers = new Headers({'Content-Type':'application/json'})
+        const options = new RequestOptions({ headers: headers })
+       
+        return this.http.get('https://hotel360.herokuapp.com/Profile/profilecity')
+           .map(this.extractData)
+  
+      }  
 
 
 

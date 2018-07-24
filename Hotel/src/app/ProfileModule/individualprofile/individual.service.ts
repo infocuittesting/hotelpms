@@ -109,7 +109,35 @@ export class IndividualService {
       const headers = new Headers({'Content-Type':'application/json'})
       const options = new RequestOptions({ headers: headers })
      
-      return this.http.get('https://hotel360.herokuapp.com/Profile/profilecurrency')
+      return this.http.get('https://hotel360.herokuapp.com//Profile/profilepostalcode')
+         .map(this.extractData)
+
+    }
+
+    citydropdown():  Observable<object[]> {
+       
+      const headers = new Headers({'Content-Type':'application/json'})
+      const options = new RequestOptions({ headers: headers })
+     
+      return this.http.get('https://hotel360.herokuapp.com/Profile/profilecity')
+         .map(this.extractData)
+
+    }
+    titledropdown():  Observable<object[]> {
+       
+      const headers = new Headers({'Content-Type':'application/json'})
+      const options = new RequestOptions({ headers: headers })
+     
+      return this.http.get('https://hotel360.herokuapp.com/Profile/Title')
+         .map(this.extractData)
+
+    }
+    languagedropdown():  Observable<object[]> {
+       
+      const headers = new Headers({'Content-Type':'application/json'})
+      const options = new RequestOptions({ headers: headers })
+     
+      return this.http.get('https://hotel360.herokuapp.com//Profile/profilelanguage')
          .map(this.extractData)
 
     }

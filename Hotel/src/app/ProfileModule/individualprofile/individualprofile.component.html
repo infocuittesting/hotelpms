@@ -51,10 +51,11 @@
 
   <div class="container-fluid">
     <div class="panel panel-primary">
+					<div class="panel-heading"><b>Address Information</b><b style="margin-left:50% ">Internal Information</b></div>
       <div class="panel-body">
+        <form action="">
     <div class="row">
       <div class="col-lg-6">
-                 <label><b>Address Information</b></label><hr>
                   <div class="row">
                       <div class="col-lg-3">
                         <b>First Name</b>
@@ -62,7 +63,7 @@
                         <div class="col-lg-3">
                             <div class="input-group">
                                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-                                <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:210px;" [(ngModel)]="user.PF_Firstname" #firstName="ngModel" required>
+                                <input type="text" name="firstName" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:210px;" [(ngModel)]="user.PF_Firstname" #firstName="ngModel" required>
                               </div>
                                 <div class="alert alert-danger alert-dismissible fade in" *ngIf="firstName.touched && !firstName.valid" style="width:250px;">
                                   <div *ngIf=firstName.errors.required>first name required</div>
@@ -80,7 +81,7 @@
                           <div class="col-lg-3">
                             <div class="input-group">
                                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-                                <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:210px;" [(ngModel)]="user.PF_Lastname" #lastName="ngModel">
+                                <input type="text" name="LastName" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:210px;" [(ngModel)]="user.PF_Lastname" #lastName="ngModel">
                             </div>
                                 <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid" style="width:250px;">
                                   <div *ngIf=lastName.errors.pattern>Last name doesn't match the pattern </div>
@@ -98,8 +99,16 @@
                                 <div class="input-group">
                                   <table>
                                     <tr>
-                                        <td><input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:122px;" [(ngModel)]="user.PF_Language" #Language="ngModel"></td>
-                                        <td style="padding-left:5px;"><input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:122px;" [(ngModel)]="user.PF_Title" #Title="ngModel"></td>
+                                        <td>
+                                          <select name="Language" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:122px;" [(ngModel)]="user.PF_Language" #Language="ngModel">
+                                          <option *ngFor="let cc of tl" [ngValue]="cc.language">{{cc.language}}</option>
+                                        </select>
+                                        </td>
+                                        <td style="padding-left:5px;">
+                                          <select name="Title" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:122px;" [(ngModel)]="user.PF_Title" #Title="ngModel">
+                                            <option *ngFor="let cy of lit" [ngValue]="cy.title">{{cy.title}}</option>
+                                            </select>
+                                          </td>
                                       </tr>
                                       </table>
                                       </div>
@@ -119,7 +128,7 @@
                                     <div class="col-lg-3">
                                         <div class="input-group">
                                             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-                                            <input type="tel" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:210px;" [(ngModel)]="user.PF_Mobileno" #phone="ngModel">
+                                            <input type="tel" name="Mobileno" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:210px;" [(ngModel)]="user.PF_Mobileno" #phone="ngModel">
                                         </div>
                                     
                                     <div class="alert alert-danger" *ngIf="phone.touched && !phone.valid" style="width:250px;">       
@@ -140,7 +149,7 @@
                   
                                           <div class="input-group">
                                               <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                                              <input type="date" class="form-control" style="width:210px;" [(ngModel)]="user.PF_Date_Of_Birth"></div>
+                                              <input type="date"name="Dateofbirth" class="form-control" style="width:210px;" [(ngModel)]="user.PF_Date_Of_Birth"></div>
                                       </div>
                   
                   
@@ -153,7 +162,7 @@
                               </div>
                                 <div class="col-lg-3">
                                 <div class="input-group">
-                                        <input type="text" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Individual_Address" ></div>
+                                        <textarea name="Address" class="form-control" row="1" style="width:250px;" [(ngModel)]="user.PF_Individual_Address" ></textarea></div>
                                 </div>
                               </div>
 
@@ -163,7 +172,7 @@
                                   </div>
                                     <div class="col-lg-3">
                                     <div class="input-group">                                          
-                                            <textarea rows="4" cols="33"  [(ngModel)]="user.PF_Home_Address" #address=ngModel required></textarea>
+                                            <textarea rows="4" cols="33"  name="Homeaddress"[(ngModel)]="user.PF_Home_Address" #address=ngModel required></textarea>
                                     </div>
 
                                     <div class="alert alert-danger" *ngIf="address.touched && !address.valid" style="width:295px;">       
@@ -181,7 +190,9 @@
                                       </div>
                                         <div class="col-lg-3">
                                         <div class="input-group">
-                                                <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Individual_City" #city="ngModel"   >
+                                                <select pattern="[a-zA-Z][a-zA-Z ]*" name="city" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Individual_City" #city="ngModel">
+                                                  <option *ngFor="let arr of itl" [ngValue]="arr.city">{{arr.city}}</option>
+                                                  </select>
                                         </div>
                                         <div class="alert alert-danger" *ngIf="city.touched && !city.valid" style="width:250px;">       
                                           <div *ngIf=city.errors.pattern>city name should contains only alphabets</div>
@@ -197,7 +208,9 @@
                                             <div class="col-lg-3">
                                             <div class="input-group">
                                               
-                                                    <input type="text" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Postalcode" #postal="ngModel">
+                                                    <select name="Postalcode" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Postalcode" #postal="ngModel">
+                                                      <option *ngFor="let list of currency" [ngValue]="list.postalcode">{{list.postalcode}}</option>
+                                                      </select>
                                             </div>
                                             <div class="alert alert-danger" *ngIf="postal.touched && !postal.valid" style="width:250px;">       
                                               <div *ngIf=postal.errors.pattern>postal code should contain only numbers</div>
@@ -214,12 +227,12 @@
                                               <div class="col-lg-3">
                                               <table>
                                               <tr>
-                                            <td>	<select  required style="height:34px;width:122px;" [(ngModel)]="user.PF_Individual_Country">
+                                            <td>	<select name="Country" required style="height:34px;width:122px;" [(ngModel)]="user.PF_Individual_Country">
                                             <option *ngFor="let individualprofile of country" [ngValue] = "individualprofile.country">{{individualprofile.country}} </option>
    
                                             </select></td>
                                             
-                                            <td style="padding-left:5px;"><select  required style="height:34px;width:122px;" [(ngModel)]="user.PF_Individual_State">
+                                            <td style="padding-left:5px;"><select name="State" required style="height:34px;width:122px;" [(ngModel)]="user.PF_Individual_State">
                                               <option *ngFor="let individual of statelist" [ngValue] = "individual.state">{{individual.state}} </option>
                                             </select></td>
                                             </tr>
@@ -235,14 +248,13 @@
       </div>
 
       <div class="col-lg-6">
-        <label for=""><b> Internal Information</b></label><hr>
                   <div class="row">
                       <div class="col-lg-3">
                         <b>Salutation</b>
                       </div>
                         <div class="col-lg-3">
                         <div class="input-group">
-                                <input type="text" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Salutation" ></div>
+                                <input type="text" name="Salutation" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Salutation" ></div>
                         </div>
                       </div>
 
@@ -253,7 +265,7 @@
                           </div>
                             <div class="col-lg-3">
                             <div class="input-group">
-                                    <input type="text" pattern="^(0|[1-9][0-9]*)$"  class="form-control" style="width:250px;" [(ngModel)]="user.PF_Passport" #passport="ngModel">
+                                    <input type="text" name="Passport" pattern="^(0|[1-9][0-9]*)$"  class="form-control" style="width:250px;" [(ngModel)]="user.PF_Passport" #passport="ngModel">
                             </div>
                             
                             <div class="alert alert-danger" *ngIf="passport.touched && !passport.valid" style="width:250px;">       
@@ -268,11 +280,11 @@
 
                   <div class="row" style="padding-top:5px;">
                       <div class="col-lg-3">
-                        <b>PF Type</b>
+                        <b>Profile Type</b>
                       </div>
                         <div class="col-lg-3">
                         <div class="input-group">
-                                <select style="height:34px;width:250px;" [(ngModel)]="user.PF_Type" #pf="ngModel" required>
+                                <select name="Profiletype" style="height:34px;width:250px;" [(ngModel)]="user.PF_Type" #pf="ngModel" required>
                                   <option *ngFor="let pf of listtype" [ngValue]="pf.profiletype">{{pf.profiletype}}</option>
                                 </select>
                         </div>  
@@ -290,7 +302,7 @@
                           </div>
                           
                           <div class="col-lg-3">
-                        	<select  required style="height:34px;width:250px;"  [(ngModel)]="user.PF_Individual_VIP">
+                        	<select name="Vip" required style="height:34px;width:250px;"  [(ngModel)]="user.PF_Individual_VIP">
                             <option *ngFor="let individualvip of viplist" [ngValue] = "individualvip.vipguest">{{individualvip.vipguest}} </option>
                          </select>
                        </div>
@@ -302,7 +314,7 @@
                               </div>
                               
                               <div class="col-lg-3">
-                              <select  required style="height:34px;width:250px;" [(ngModel)]="user.PF_Nationality">
+                              <select name="Nationality" required style="height:34px;width:250px;" [(ngModel)]="user.PF_Nationality">
                            <option *ngFor="let individualnationality of nationality" [ngValue] = "individualnationality.nationality">{{individualnationality.nationality}} </option>
                            
                             </select>
@@ -312,123 +324,54 @@
                               </div>
 
 
-                              <div class="row" style="padding-top:5px;">
-                                  <div class="col-lg-3">
-                                  <b>Ref.Currency</b>
-                                  </div>
-                                  
-                                  <div class="col-lg-3">
-                                  <select  required style="height:34px;width:250px;">
-                                    <option *ngFor="let individualcurrency of currency" [ngValue] = "individualcurrency.currency">{{individualcurrency.currency}} </option>
-                               
-                                </select>
-                                
-                                
-                                  </div>
-                                  </div>
-
-
-                                  <div class="row" style="padding-top:5px;">
-                                      <div class="col-lg-3">
-                                        <b>Notes</b>
-                                      </div>
-                                        <div class="col-lg-3">
-                                        <div class="input-group">
-                                                <input type="text" class="form-control" style="width:250px;" ></div>
-                                        </div>
-                                      </div>
-
-
-                                      <div class="row" style="padding-top:15px;">
-                                      <div class="col-lg-2">
-
-                                        <table>
-
-                                          <tr>
-
-                                            <td><b>Active</b></td>
-                                         <td style="padding-left:5px;"><input type="checkbox" style="width:20px;height:20px;"></td>
-
-                                          </tr>
-                                        </table>
-
-                                      </div>
-
-                                      <div class="col-lg-2">
-
-                                          <table>
-
-                                              <tr>
-    
-                                                <td><b>Contact</b></td>
-                                             <td style="padding-left:5px;"><input type="checkbox" style="width:20px;height:20px;"></td>
-    
-                                              </tr>
-                                            </table>
-                                        
-                                        </div>
-
-                                        <div class="col-lg-2">
-
-                                            <table>
-
-                                                <tr>
-      
-                                                  <td><b>History</b></td>
-                                               <td style="padding-left:5px;"><input type="checkbox" style="width:20px;height:20px;"></td>
-      
-                                                </tr>
-                                              </table>
-                                        
-                                          </div>
-                                        
-                                      </div>
-
-
-                                      <div class="row" style="padding-left:15px;padding-top:5px;">
+                                      <div class="row" style="padding-top:5px;">
+                                        <div class="col-lg-3">                                          
                                           <b>Communications</b>
                                           </div>
+                                          <div class="col-lg-3">                                             
+                                              <select name="Comm1" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Individual_Communication1">
+                                              <option *ngFor="let individualcommunication of comm1" [ngValue] = "individualcommunication.commtype">{{individualcommunication.commtype}} </option>
+                                        </select>
+                                      </div>
+                                          <div class="col-lg-3">
+                                              <div class="input-group">
+                                                  <input type="text" name="commtype" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Individual_Commtype1">
+                                                </div>
+                                          </div> 
+                                          </div>
+
                                           <div class="row" style="padding-top:5px;">
-                                              <table>
-                                              <tr>
-                                              <td style="padding-left:10px;">
-                                              <select  required style="height:34px;width:100px;" [(ngModel)]="user.PF_Individual_Communication1">
-                                                <option *ngFor="let individualcommunication of comm1" [ngValue] = "individualcommunication.commtype">{{individualcommunication.commtype}} </option>
-                                          </select>
-                                              </td>
-                                              <td style="padding-left:5px;">
-                                              <select  required style="height:34px;width:100px;" [(ngModel)]="user.PF_Individual_Communication2">
-                                                <option *ngFor="let individualcommunication1 of comm2" [ngValue] = "individualcommunication1.commtype">{{individualcommunication1.commtype}} </option> 
-                                          </select>
-                                              </td>
-                                              <td style="padding-left:5px;">
-                                              <select  required style="height:34px;width:100px;" [(ngModel)]="user.PF_Individual_Communication3">
-                                                <option *ngFor="let individualcommunication2 of comm3" [ngValue] = "individualcommunication2.commtype">{{individualcommunication2.commtype}} </option>  </select>
-                                              </td>
-                                              </tr>
-                                              </table>
-                                              
-                                          </div>    
-                                          
-                                          <div class="row" style="padding-top:5px;">
-                                              <table>
-                                              <tr>
-                                              <td style="padding-left:10px;"><div class="input-group">
-                                                          <input type="text" class="form-control" style="width:100px;" [(ngModel)]="user.PF_Individual_Commtype1"></div></td>
-                                              
-                                                <td style="padding-left:5px;"><div class="input-group">
-                                                          <input type="text" class="form-control" style="width:100px;" [(ngModel)]="user.PF_Individual_Commtype2"></div></td>
-                                                
-                                                <td style="padding-left:5px;"><div class="input-group">
-                                                          <input type="text" class="form-control" style="width:100px;" [(ngModel)]="user.PF_Individual_Commtype3"></div></td>
-                                                    </tr>
-                                              </table>
+                                              <div class="col-lg-3"></div>
+                                              <div class="col-lg-3">
+                                                  <select name="comm2"  required style="height:34px;width:118px;" [(ngModel)]="user.PF_Individual_Communication2">
+                                                      <option *ngFor="let individualcommunication1 of comm2" [ngValue] = "individualcommunication1.commtype">{{individualcommunication1.commtype}} </option> 
+                                                </select>
                                               </div>
-    
+                                              <div class="col-lg-3">
+                                                  <div class="input-group">
+                                                      <input type="text" name="com2"class="form-control" style="width:118px;" [(ngModel)]="user.PF_Individual_Commtype2">
+                                                    </div>
+                                              </div>
+                                          </div>
+
+                                          <div class="row" style="padding-top:5px;">
+                                              <div class="col-lg-3"></div>
+                                              <div class="col-lg-3">
+                                                  <select name="comm3" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Individual_Communication3">
+                                                      <option *ngFor="let individualcommunication2 of comm3" [ngValue] = "individualcommunication2.commtype">{{individualcommunication2.commtype}} </option> 
+                                                     </select>
+                                              </div>
+                                              <div class="col-lg-3">
+                                                  <div class="input-group">
+                                                      <input type="text"name="com3" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Individual_Commtype3">
+                                                    </div>
+                                              </div>
+                                          </div>    
 
               </div>
 
             </div>
+          </form>
         </div>
 
     </div>
@@ -451,7 +394,7 @@
  </div>
           
           <div class="col-lg-2">
-              <button type="button" class="btn btn-primary" style="width:160px;" (click)="clear()"><b>Reset</b></button>
+              <button type="button" class="btn btn-primary" style="width:160px;" (click)="cleardata()"><b>Reset</b></button>
               </div>
           
           <div class="col-lg-2"></div>

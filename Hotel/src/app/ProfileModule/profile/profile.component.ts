@@ -19,10 +19,12 @@ export class ProfileComponent implements OnInit {
   public comm2=[];
   public comm3=[];
   public type=[];
+  public cury=[];
+  public itl=[];
 
 
   constructor(private ProfileService:ProfileService,private route:Router) { }
-user={};
+public user={};
  
   user33={};
   profile = {};
@@ -66,6 +68,9 @@ user={};
  });
 }
 
+cleardata(){
+  this.user=' ';
+}
 ngOnInit()
 {
 
@@ -96,7 +101,15 @@ this.ProfileService.communication1dropdown()
   this.comm2=resp.ReturnValue;
 });
 
+this.ProfileService.postaldropdown()
+ .subscribe((resp: any) => {
+  this.cury=resp.ReturnValue;
+});
 
+this.ProfileService.citydropdown()
+ .subscribe((resp: any) => {
+  this.itl=resp.ReturnValue;
+});
 this.ProfileService.communication1dropdown()
  .subscribe((resp: any) => {
   this.comm3=resp.ReturnValue;

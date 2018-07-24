@@ -44,24 +44,21 @@
 					  </div><br>
 	
 	<div class="container-fluid">
-	
+			<div class="panel panel-primary">
+					<div class="panel-heading"><b>Address Information</b><b style="margin-left:50% ">Internal Information</b></div>
+					<div class="panel-body">
+						<form action="">
 	<div class="row">
 	
 	<div class="col-lg-6">
-	<div class="panel panel-primary">
-	<div class="panel-heading"><b>Address Information</b></div>
-	<div class="panel-body">
+
 	<div class="row">
 	<div class="col-lg-3">
 	  <b>Account</b>
 	</div>
 		<div class="col-lg-3">
 		<div class="input-group">
-			<input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Account"></div>
-			<div class="input-group" style="padding-top:5px;">
-			<input type="text" id="email" class="form-control" style="width:250px;"></div>
-			<div class="input-group" style="padding-top:5px;">
-			<input type="text" id="email" class="form-control" style="width:250px;"></div>
+			<input type="text" id="account" name="account" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Account"></div>
 	  </div>
 	</div><br>
 	
@@ -72,55 +69,34 @@
 	
 	<div class="col-lg-3">
 	<div class="input-group">
-			<input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Company_Address"></div>
+			<textarea id="address" name="address" row="1" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Company_Address"></textarea></div>
 	</div>
 	
-	</div>
+	</div><br>
 	
-	<div class="row" style="padding-top:5px;">
+	<div class="row" >
 	<div class="col-lg-3">
 	<b>Bussiness Address</b>
 	</div>
 	
 	<div class="col-lg-3">
 	<div class="input-group">
-			<input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Business_Address"></div>
+	<textarea id="business" row="3" class="form-control" name="business"style="width:250px;" [(ngModel)]="user.PF_Business_Address"></textarea></div>
 	</div>
 	
 	</div>
-	
-	<div class="row">
-	<div class="col-lg-3">
-	
-	</div>
-	
-	<div class="col-lg-3">
-	<div class="input-group">
-			<input type="text" id="email" class="form-control" style="width:250px;"></div>
-	</div>
-	
-	</div>
-	
-	<div class="row" style="padding-top:5px;">
-	<div class="col-lg-3">
-	
-	</div>
-	
-	<div class="col-lg-3">
-	<div class="input-group">
-			<input type="text" id="email" class="form-control" style="width:250px;"></div>
-	</div>
-	
-	</div>
-	
-	<div class="row" style="padding-top:5px;">
+
+	<div class="row" style="padding-top:10px;">
 	<div class="col-lg-3">
 	<b>City</b>
 	</div>
 	
 	<div class="col-lg-3">
 	<div class="input-group">
-			<input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_City"></div>
+			<select name="city" id="city" name="city" class="form-control" style="width:250px;" [(ngModel)]="user.PF_City">
+					<option *ngFor="let arr of itl" [ngValue]="arr.city">{{arr.city}}</option>
+				</select>
+			</div>
 	</div>
 	
 	</div>
@@ -133,9 +109,9 @@
 		<div class="col-lg-3">
 		<div class="input-group">
 	
-	  <input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Postalcode">
-			
-			
+	  <select name="postal" id="zipcode" name="postalcode" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Postalcode">
+		<option *ngFor="let list of cury" [ngValue]="list.postalcode">{{list.postalcode}}</option>
+	</select>		
 			  </div>
 	</div>
 	</div>
@@ -148,39 +124,29 @@
 	<div class="col-lg-3">
 	<table>
 	<tr>
-	<td>	<select  required style="height:34px;width:122px;" [(ngModel)]="user.PF_Company_Country">
+	<td>	<select name="country" required style="height:34px;width:122px;" [(ngModel)]="user.PF_Company_Country">
 	<option *ngFor="let companyprofile of country1" [ngValue] = "companyprofile.country">{{companyprofile.country}} </option></select></td>
 	
-	<td style="padding-left:5px;"><select  required style="height:34px;width:122px;" [(ngModel)]="user.PF_Company_State">
+	<td style="padding-left:5px;">
+		<select name="state" required style="height:34px;width:122px;" [(ngModel)]="user.PF_Company_State">
 	<option *ngFor="let companystate of state1" [ngValue] = "companystate.state">{{companystate.state}} </option></select></td>
 	</tr>
 	</table>
 	</div>
 	</div>
-	
-	
-	
-	
-	</div>
-	</div>
 	</div>
 	
 	<div class="col-lg-6">
-	<div class="panel panel-primary" style="height:480px;">
-	<div class="panel-heading"><b>Internal Information</b></div>
-	<div class="panel-body">
+
 	<div class="row">
 	<div class="col-lg-3">
 	<b>Owner</b>
 	</div>
 	<div class="col-lg-3">
 	
-	<select  required style="height:34px;width:250px;" [(ngModel)]="user.PF_Owner">
-	<option value = "select1"> </option>
-	<option value = "All">All</option>
-	<option value = "New Delhi">New Delhi</option>
-	<option value = "Bangalore">Bangalore</option>
-	</select>
+	<input type="text" name="owner" required style="height:34px;width:250px;" [(ngModel)]="user.PF_Owner">
+
+	
 	</div>
 	</div>
 	<div class="row" style="padding-top:5px;">
@@ -190,7 +156,7 @@
 	
 	<div class="col-lg-3">
 	<div class="input-group">
-			<input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Territory"></div>
+			<input type="text" id="territory" name="territory" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Territory"></div>
 	</div>
 	</div>
 	
@@ -200,7 +166,7 @@
 	</div>
 	<div class="col-lg-3">
 	
-		<select  required style="height:34px;width:250px;"  [(ngModel)]="user.PF_Type">
+		<select name="type" required style="height:34px;width:250px;"  [(ngModel)]="user.PF_Type">
 			<option *ngFor="let companyprofiletype1 of type" [ngValue] = "companyprofiletype1.profiletype">{{companyprofiletype1.profiletype}} </option>
 		 </select>
 	   </div>
@@ -213,7 +179,7 @@
 	</div>
 	<div class="col-lg-3">
 	
-	<select  required style="height:34px;width:250px;" [(ngModel)]="user.PF_Ref_Currency">
+	<select name="currency"  required style="height:34px;width:250px;" [(ngModel)]="user.PF_Ref_Currency">
 		<option *ngFor="let individualcurrency of currency" [ngValue] = "individualcurrency.currency">{{individualcurrency.currency}} </option></select>
 	</div>
 	</div>
@@ -221,74 +187,65 @@
 	
 		<div class="row" style="padding-top:5px;">
 	<div class="col-lg-3">
-	<b>A/R No.</b>
+	<b>A/R No</b>
 	</div>
 	
 	<div class="col-lg-3">
 	<div class="input-group">
-			<input type="text" id="email" class="form-control" style="width:250px;" [(ngModel)]="user.PF_AR_Number"></div>
+			<input type="text" id="arno" name="arno" class="form-control" style="width:250px;" [(ngModel)]="user.PF_AR_Number"></div>
 	</div>
 	</div>
 	
+
 	<div class="row" style="padding-top:5px;">
-	<div class="col-lg-3">
-	<b>Active</b>
-	</div>
-	
-	<div class="col-lg-3">
-	<div class="input-group">
-			<input type="checkbox"  class="form-control" style="width:20px;height:20px;"></div>
-	</div>
-	</div>
-	
-	<div class="row" style="padding-left:15px;padding-top:5px;">
+	<div class="col-lg-3">	
 	<b>Communications</b>
 	</div>
-	
+	<div class="col-lg-3">
+			<select name="Communications" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Company_Commtype1">
+					<option *ngFor="let individualcommunication of comm1" [ngValue] = "individualcommunication.commtype">{{individualcommunication.commtype}} </option>
+			</select>
+	</div>
+	<div class="col-lg-3">
+			<div class="input-group">
+					<input type="text"name="com" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Company_Communication1">
+				</div>
+	</div>
+	</div>
+
 	<div class="row" style="padding-top:5px;">
-		<table>
-		<tr>
-		<td style="padding-left:10px;">
-		<select  required style="height:34px;width:100px;" [(ngModel)]="user.PF_Company_Commtype1">
-			<option *ngFor="let individualcommunication of comm1" [ngValue] = "individualcommunication.commtype">{{individualcommunication.commtype}} </option>
-	</select>
-		</td>
-		<td style="padding-left:5px;">
-		<select  required style="height:34px;width:100px;" [(ngModel)]="user.PF_Company_Commtype2">
-			<option *ngFor="let individualcommunication1 of comm2" [ngValue] = "individualcommunication1.commtype">{{individualcommunication1.commtype}} </option> 
-	</select>
-		</td>
-		<td style="padding-left:5px;">
-		<select  required style="height:34px;width:100px;" [(ngModel)]="user.PF_Company_Commtype3">
-			<option *ngFor="let individualcommunication2 of comm3" [ngValue] = "individualcommunication2.commtype">{{individualcommunication2.commtype}} </option></select>
-		</td>
-		</tr>
-		</table>
-		
-	</div>
+			<div class="col-lg-3"></div>
+			<div class="col-lg-3">
+					<select name="comm1" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Company_Commtype2">
+							<option *ngFor="let individualcommunication1 of comm2" [ngValue] = "individualcommunication1.commtype">{{individualcommunication1.commtype}} </option> 
+					</select>
+			</div>
+			<div class="col-lg-3">
+					<div class="input-group">
+							<input type="text" name="com1" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Company_Communication2">
+						</div>
+			</div>
+	</div>		
 	
+
 	<div class="row" style="padding-top:5px;">
-	<table>
-	<tr>
-	<td style="padding-left:10px;"><div class="input-group">
-			<input type="text" class="form-control" style="width:100px;" [(ngModel)]="user.PF_Company_Communication1"></div></td>
-	
-	<td style="padding-left:5px;"><div class="input-group">
-			<input type="text" class="form-control" style="width:100px;" [(ngModel)]="user.PF_Company_Communication2"></div></td>
-	
-	<td style="padding-left:5px;"><div class="input-group">
-			<input type="text" class="form-control" style="width:100px;" [(ngModel)]="user.PF_Company_Communication3"></div></td>
-			</tr>
-	</table>
-	</div>
-	
-	
-	
-	
+			<div class="col-lg-3"></div>
+			<div class="col-lg-3">
+					<select name="comm2" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Company_Commtype3">
+							<option *ngFor="let individualcommunication2 of comm3" [ngValue] = "individualcommunication2.commtype">{{individualcommunication2.commtype}} </option>
+						</select>
+			</div>
+			<div class="col-lg-3">
+					<div class="input-group">
+							<input type="text" name="com2"class="form-control" style="width:118px;" [(ngModel)]="user.PF_Company_Communication3">
+						</div>
+			</div>
+	</div>		
+
 	</div>
 	
 	</div>
-	
+</form>
 	
 	</div>
 	</div>
@@ -306,7 +263,7 @@
 	<button type="button" class="btn btn-info" (click)="submit(user)" style="width:160px;" data-toggle="modal" data-target="#myModal1"><b>Ok</b></button>
 	</div>
 	<div class="col-lg-2">
-	<button type="button" class="btn btn-primary" style="width:160px;"><b>New</b></button>
+	<button type="button" class="btn btn-primary" style="width:160px;" (click)="cleardata()"><b>Reset</b></button>
 	</div>
 	<div class="col-lg-2">
 	<button type="button" class="btn btn-success" (click)="updateCompanyProfile()" style="width:160px;"><b>Save</b></button>
