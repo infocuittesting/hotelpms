@@ -43,19 +43,51 @@ export class CasheringinhouseguestComponent implements OnInit {
    
     {  Room: '107', Name: 'Ander',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'OPEN FOLIO',Company:'Metro Design' },
   ];
+
+public folio=[
+  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+
+  
+];
+
+
   constructor(private cashinservice: CasheringinhouseguestService, public session:SessionStorageService,private route:Router) { }
 public money=[];
+public housetable=[];
+public resty=[];
+public foliohis=[];
 
   ngOnInit() {
 
     this.cashinservice.currencydropdown()
     .subscribe((resp: any) => {
-
      this.money=resp.Return;
      console.log(this.money);
    });
 
+   this.cashinservice.inhousetable()
+   .subscribe((resp: any) => {
+    this.housetable=resp.ReturnValue;
+    console.log(this.housetable);
+  });
 
+  this.cashinservice.restypedropdown()
+  .subscribe((resp: any) => {
+    this.resty = resp.ReturnValue;
+  console.log(this.resty);
+  });
+
+  
+  this.cashinservice.foliohistory()
+  .subscribe((resp: any) => {
+    this.foliohis = resp.Return;
+  console.log(this.resty);
+  });
 
   }
   showdiv="9000";
@@ -65,13 +97,24 @@ public money=[];
     console.log(flag);
   }
   
-
+  public checkname; 
   selectindex=null;
 selectMembersEdit(details,index){
 this.selectindex=index;
-this.session.store("id",details.Room);
-this.session.store("name",details.Name);
-
+this.session.store("id",details.res_room.toString());
+this.session.store("id1",details.res_id.toString());
+this.session.store("name",details.pf_firstname);
+this.session.store("cc",details.res_creditcard_number);
+this.session.store("expdate",details.res_exp_date);
+// for displaying
+this.session.store("balanc",details.res_guest_balance);
+this.session.store("arr",details.res_arrival);
+this.session.store("depar",details.res_depature);
+this.session.store("gstat",details.res_guest_status);
+this.session.store("rtcd",details.res_rate_code);
+this.session.store("rte",details.res_rate);
+this.session.store("persn",details.res_adults);
+this.checkname=details.Name;
 }
 
   private month:any;
