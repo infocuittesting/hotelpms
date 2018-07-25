@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BusinessblockComponent } from './businessblock.component';
+import { RominglistComponent } from './rominglist.component';
 
-describe('BusinessblockComponent', () => {
-  let component: BusinessblockComponent;
-  let fixture: ComponentFixture<BusinessblockComponent>;
+describe('RominglistComponent', () => {
+  let component: RominglistComponent;
+  let fixture: ComponentFixture<RominglistComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BusinessblockComponent ]
+      declarations: [ RominglistComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BusinessblockComponent);
+    fixture = TestBed.createComponent(RominglistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
