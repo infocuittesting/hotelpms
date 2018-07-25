@@ -45,6 +45,15 @@ import { CasheringinhouseguestComponent } from './CasheringModule/casheringinhou
 import { RevenuemanagementComponent } from './RevenueManagementModule/revenuemanagement/revenuemanagement.component';
 
 
+
+//BusinessBlockModule
+import { BusinessBlockOptionsComponent } from './BusinessBlockModule/business-block-options/business-block-options.component';
+import { BusinessBlockSearchComponent } from './BusinessBlockModule/business-block-search/business-block-search.component';
+import { RominglistComponent } from './BusinessBlockModule/rominglist/rominglist.component';
+import { BusinessCreateBlockComponent } from './BusinessBlockModule/business-create-block/business-create-block.component';
+import { InquriprocessComponent } from './BusinessBlockModule/inquriprocess/inquriprocess.component'
+
+
 const routes: Routes = [ { path:'individualprofile', component:IndividualprofileComponent},
 { path:'reservation', component: ReservationComponent },
 { path:'modal-basic', component: ModalBasicComponent },
@@ -80,7 +89,12 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 
 //revenuemanagement
 { path:'revenue', component:RevenuemanagementComponent},
-
+//BusinessBLockSearch
+{path:'business',component:BusinessBlockSearchComponent},
+{path:'inquiri',component:InquriprocessComponent},
+{path:'bcreate',component:BusinessCreateBlockComponent},
+{path:"options",component:BusinessBlockOptionsComponent},
+{path:"rominglist",component:RominglistComponent},
 ];
 
 @NgModule({
@@ -94,4 +108,5 @@ export class AppRoutingModule { }
 export const routingComponents = [IndividualprofileComponent,ReservationComponent,ModalBasicComponent,ReservationoptionComponent,MainscreenComponent,
   ProfileComponent,ProfilesearchComponent,SearchandeditreservationComponent,HousekeepingComponent,QueueroomComponent,RoomdiscrepanciesComponent,RoomconditionComponent
 ,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,
-GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent]
+GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
+BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent]

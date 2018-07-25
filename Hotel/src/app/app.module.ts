@@ -52,8 +52,13 @@ import { BillingComponent } from './CasheringModule/billing/billing.component';
 import { CasheringinhouseguestComponent } from './CasheringModule/casheringinhouseguest/casheringinhouseguest.component';
 import { ContextmenuModule } from 'ng2-contextmenu';
 import { RevenuemanagementComponent } from './RevenueManagementModule/revenuemanagement/revenuemanagement.component';
-import { BusinessblockComponent } from './businessblock/businessblock.component';
 
+//BusinessBlockModule
+import { BusinessBlockOptionsComponent } from './BusinessBlockModule/business-block-options/business-block-options.component';
+import { BusinessBlockSearchComponent } from './BusinessBlockModule/business-block-search/business-block-search.component';
+import { RominglistComponent } from './BusinessBlockModule/rominglist/rominglist.component';
+import { BusinessCreateBlockComponent } from './BusinessBlockModule/business-create-block/business-create-block.component';
+import { InquriprocessComponent } from './BusinessBlockModule/inquriprocess/inquriprocess.component'
 
 
 @NgModule({
@@ -74,8 +79,11 @@ import { BusinessblockComponent } from './businessblock/businessblock.component'
    BillingComponent,
    CasheringinhouseguestComponent,
    RevenuemanagementComponent,
-   BusinessblockComponent,
-   
+   BusinessBlockOptionsComponent,
+   BusinessBlockSearchComponent,
+   RominglistComponent,
+   BusinessCreateBlockComponent,
+   InquriprocessComponent
    
    
   ],
