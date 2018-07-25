@@ -74,7 +74,7 @@ getcreditexpiry(){
     user1 ={};
     user3 ={};
     user5 ={};
-    mbc={};
+  public  mbc={};
     cu1:any ={};
   public card;
   public profilenego;
@@ -155,9 +155,11 @@ getcreditexpiry(){
       .subscribe(( user333:any)=> {
         this.user33 = user333;
         this.card=user333.ReturnCode;
+        this.mbc="";
         if(this.card=="RIS"){
           this.card="Creditcard is Add";
         }
+        
         let paramss={
           "pf_id":this.session.retrieve("id"),
        }
@@ -169,7 +171,7 @@ getcreditexpiry(){
            console.log(this.credit);
        
       });
-        this.mbc="";
+      
       },
        );  
         }

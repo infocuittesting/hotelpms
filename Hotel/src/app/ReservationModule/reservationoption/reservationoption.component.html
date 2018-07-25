@@ -185,7 +185,7 @@
         <div class="modal-footer">
   <table>
     <tr>
-            <td style="padding-left:5px;"><button type="button" class="btn btn-warning" (click)="downloadPDF()"><b>Preview</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+            <td style="padding-left:5px;"><button type="button" class="btn btn-warning" (click)="downloadPDF()"><b>Download</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
           <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
         </tr>
         </table>
@@ -418,8 +418,8 @@
           <tr>
   
             <td style="padding-left:300px;"> <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#insert" data-dismiss="modal"><b>New</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
-            <td style="padding-left:5px;"> <button type="button" class="btn btn-info"data-toggle="modal" data-target="#insert1" data-dismiss="modal"><b>Update</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
-            <td style="padding-left:5px;"><button type="button" class="btn btn-warning" (click)="delcredit()"data-toggle="modal" data-target="#creditdel" data-dismiss="modal"><b>Delete</b><span class="glyphicon glyphicon-trash" style="padding-left:5px;"></span></button></td>
+            <td style="padding-left:5px;"> <button type="button" class="btn btn-info"data-toggle="modal" data-target="#insert1" data-dismiss="modal"[disabled]=edits><b>Edit</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+            <td style="padding-left:5px;"><button type="button" class="btn btn-warning" (click)="delcredit()"data-toggle="modal" data-target="#creditdel" data-dismiss="modal" [disabled]=deletes><b>Delete</b><span class="glyphicon glyphicon-trash" style="padding-left:5px;"></span></button></td>
           <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
         </tr>
         </table>
@@ -611,7 +611,7 @@
                   <p align="center"><b> {{delereturn}} </b></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+                    <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal" routerLink="/searchedit"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
                 </div>
               </div>
               
@@ -633,7 +633,7 @@
           <div class="modal-body">
                
               <div class="container-fluid" style="background-color: #0077B5;">
-                  <div class="jumbotron" style="background-color:white; margin-top:30px;">
+                  <div class="jumbotron" style="background-color: white; margin-top:30px;">
                       
                   <label>Name</label> <label style="margin-left:320px;">Arrival</label>
                   <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
@@ -659,7 +659,7 @@
                   <label>Begin Date</label> <label style="margin-left:285px;">End Date</label>
                   <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
                   <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                  <input type="date" class="form-control" placeholder="" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_Begin_Date">		
+                  <input type="date" class="form-control" placeholder="" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_Begin_Date" style="width:160px; ">		
                   </div>
                   <div class="input-group" style="width:200px;margin-left:470px;margin-top:-35px;">
                   <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -668,7 +668,7 @@
                   <br>
                   <label>Trn.Code</label> 
                   <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
-                  <select style="height:30px;width:350px;"[(ngModel)]="fixed.Fixed_Charges_Transaction_Code">
+                  <select style="height:30px;width:200px;"[(ngModel)]="fixed.Fixed_Charges_Transaction_Code">
                     <option *ngFor="let ctc of listtc" [ngValue] = "ctc.transaction_description"> {{ctc.transaction_description}} </option>
                 </select>	
                   </div>
@@ -679,14 +679,14 @@
                   <input type="text" class="form-control" placeholder="Article code" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_Article_Code">		
                   </div>
                   <br>
-                  <label>Amount</label> <label style="margin-left:330px;">Quantity</label>
+                  <label>Amount</label> <label style="margin-left:300px;">Quantity</label>
                   <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
                   <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-usd"></i></span>
                   <input type="text" class="form-control" placeholder="Amount" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_Amount">		
                   </div>
                   <div class="input-group" style="width:200px;margin-left:470px;margin-top:-35px;">
                   <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-list"></i></span>
-                  <input type="text" class="form-control" placeholder="value" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_Quantity">		
+                  <input type="text" class="form-control" placeholder="value" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_Quantity" style="width:180px;">		
                   </div>
                   <br>
                   <label>Supplement</label> 
@@ -760,17 +760,17 @@
      <div class="modal fade" id="privileges" role="dialog">
         <div class="modal-dialog"> 
           <!-- Modal content-->
-          <div class="modal-content" style="width:150%;">
+          <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
                <h4 class="modal-title">Privileges</h4> 
                <p><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
             </div>
             <div class="modal-body">
-                <div class="panel panel-primary" style="width:90%;height: 450px;margin-left: 20px;">
+              <div class="container" style="background-color:#0077B5;color:white;width:100%">
+                <br>
+                <div class="jumbotron" style="background-color: white;">
                     <!-- <div class="panel-heading"><b></b> <span class="glyphicon glyphicon-remove" style="padding-left:590px;"></span></div> -->
-                    <div class="panel-body">
-                    <div class="jumbotron " style="width:680px;margin-left:15px;background-color:#0077B5;color:white;">
                   <table>
                   <tr *ngFor="let privillege of privil">
                   <td style="padding-left:35px;">
@@ -784,21 +784,43 @@
                   <td style="padding-left:15px;"><input type="time" style="border-radius:4px;color:black;"[(ngModel)]="privillege.checkouttime"></td>
                   </tr>
                   
-                  </table>
-                   </div>
-                 <br>
-                 <br>
-                   <button type="button" class="btn btn-success" style="margin-left: 500px;" (click)="submits(privillege)"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
-                <button type="button" class="btn btn-danger"><b>Cancel</b><span class="glyphicon glyphicon-thumbs-down" style="padding-left:5px;"></span></button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>     
-            </div>
-                  </div>
-            </div>
+                </table>
+                </div>
+                </div>
+     </div>
+     <div class="modal-footer">
+        <button type="button" class="btn btn-success" style="margin-left: 300px;" data-dismiss="modal" data-toggle="modal" data-target="#pri"(click)="submits(privillege)" ><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>    
+     </div>
           </div>
           
         </div>
       </div>
      <!-- privileges End--> 
+
+            <!-- privileges resp start-->
+            <div class="modal fade" id="pri" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title"> Privileges</h4>
+                    </div>
+                    <div class="modal-body">
+          
+                      <p align="center"><b>{{pri}}</b></p>
+                    </div>
+                    <div class="modal-footer">
+                       <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+          
+                    </div>
+                  </div>
+                  
+                </div>
+              </div> 
+              <!-- Alert End --> 
   
        <!-- Queue start-->
        <div class="modal fade" id="queue" role="dialog">
@@ -1133,7 +1155,8 @@
           <p><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
         </div>
         <div class="modal-body">
-            <div>
+            <div class="container" style="background-color: steelblue;width:100%;">
+              <div class="jumbotron" style="background-color: white;margin-top: 30px;">
                 <table class="table table-hover table-border">
                  <thead style="background-color: steelblue; color: white;">
                      <tr>
@@ -1161,7 +1184,7 @@
                 
                 </table>
               
-              
+              </div>
                 </div>
                 
         </div>
@@ -1528,15 +1551,15 @@
           <div class="modal-dialog">
           
             <!-- Modal content-->
-            <div class="modal-content" style="width:140%;">
+            <div class="modal-content" style="width:140%;margin-left:-20%;">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Fixed Rate</h4> 
                 <p><b>[ Name:</b><b style="color: #ffb100"> {{Name}}</b>,<b> Res.Id:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
               </div>
               <div class="modal-body">
-                
-                <div class="jumbotron" style="max-height: 75%; background-color:#0077B5;">
+                <div class="container" style="background-color:#0077B5;width:100%">
+                <div class="jumbotron" style="max-height: 75%;margin-top: 30px; background-color:white;">
                 <div class="row">
                   <div class="col-md-6">
                     <form action="">
@@ -1676,7 +1699,8 @@
                     </form>
                   </div>                  
                 </div>    
-                </div>   
+                </div> 
+                </div>
               </div>
 
                   <button type="button" class="btn btn-success" data-dismiss="modal"  data-toggle="modal" data-target="#fr" (click)="submitrate()" style="margin-left: 70%"><b>Ok</b><span class="glyphicon glyphicon-thumbs-up" style="padding-left:5px;"></span></button>

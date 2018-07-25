@@ -173,23 +173,23 @@
 </div>
 
 <div class="col-lg-2">
- <button type="button" class="btn btn-success" routerLink="/reservation" style="width:160px;"><b>Reservation</b></button>
+ <button type="button" class="btn btn-success" routerLink="/reservation" style="width:160px;" [disabled]=res><b>Reservation</b></button>
 </div>
 
 <div class="col-lg-2">
- <button type="button" class="btn btn-primary" routerLink="/individualprofile" style="width:160px;"><b>New</b></button>
+ <button type="button" class="btn btn-primary" routerLink="/individualprofile" style="width:160px;"  [disabled]=new><b>New</b></button>
 </div>
 
 <div class="col-lg-2">
- <button type="button" class="btn btn-info" routerLink="/modal-basic" style="width:160px;"><b>Options</b></button>
+ <button type="button" class="btn btn-info" routerLink="/modal-basic" style="width:160px;"  [disabled]=option><b>Options</b></button>
 </div>
 
 <div class="col-lg-2">
-  <button type="button" class="btn btn-success" style="width:160px;"routerLink="/reservation"><b>Ok</b></button>
+  <button type="button" class="btn btn-success" style="width:160px;"routerLink="/reservation" [disabled]=ok><b>Ok</b></button>
 </div>
 
 <div class="col-lg-2">
-    <button type="button" class="btn btn-success" routerLink="/modal-basic" style="width:160px;"><b>Edit</b></button>
+    <button type="button" class="btn btn-success" routerLink="/modal-basic" style="width:160px;" [disabled]=edit><b>Edit</b></button>
    </div>
    
 

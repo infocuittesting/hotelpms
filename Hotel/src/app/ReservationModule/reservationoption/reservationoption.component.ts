@@ -106,14 +106,17 @@ checkedvalue1:String;
      checkboxfun1(chk1){
 this.checkedvalue1=chk1.values;
      }
- 
+ pri;
     privillege=[];    
   submits(inputt):void {
     console.log(inputt);
     let body= {'privileges_key': this.checkedvalue1 + " | Scheduled check out at " +inputt.checkouttime };
       this.pppService.privileges (body)
-      .subscribe( users333 => {
-       
+      .subscribe((users333:any) => {
+     this.pri=users333.ReturnCode;
+     if(this.pri=="RIS"){
+       this.pri="Privilleges is created for "+this.Name;
+     }  
       },
       );  
       this.route.navigate(['reservationoption/']);
@@ -325,7 +328,7 @@ privil:any;
   ngOnInit() {
     
     this.privil =[ { val:false, values:"No Post"},{ val:false, values:"Authourized Direct Bill"},
-    { val:false, values:"Pre Stay Charging"},{ val:false, values:"Schedule Check Out at"}]
+    { val:false, values:"Pre Stay Charging"}]
 
  this.pppService.getchaTables1()
    .subscribe((resp: any) => {
@@ -421,10 +424,20 @@ privil:any;
    
 
   }
-   
+  deletes=true;
+  edits=true;
+public credid;   
   selectindex=null;
 selectMembersCredit(details,index){
 this.selectindex=index;
+this.credid=details.cc_id;
+if(this.credid==details.cc_id){
+this.deletes=false;
+this.edits=false;
+}else{
+  this.deletes=true;
+  this.edits=true;
+}
 this.session.store("ccid",details.cc_id.toString());
 this.session.store("depid",details.deposit_id.toString());
 this.session.store("id1",details.pf_id);

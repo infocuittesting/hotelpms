@@ -18,6 +18,7 @@ export class SearchandeditreservationComponent implements OnInit {
 
   public searchandedit =[];
   public arry=[];
+
   constructor(private pService:SearchandeditreservationService,private route:Router,public session:SessionStorageService) { }
    
   ngOnInit() {
@@ -46,13 +47,15 @@ subcancel(inputt):void {
 
       if(this.user3=="RIS")
       {
-        this.user3="The Reservation is cancelled ";
+        this.user3="The Reservation is cancelled for "+this.name;
         this.cansl="The Cancellation Number is"+resp.cancellationNumber;
+        this.pService.searchedit()
+        .subscribe((resp: any) => {
+         this.searchandedit=resp.ReturnValue;
+       });
       } 
-      this.pService.searchedit()
-      .subscribe((resp: any) => {
-       this.searchandedit=resp.ReturnValue;
-     });
+      this.name="";
+      this.cans="";
     },
     );  
    }
@@ -71,13 +74,14 @@ subrein():void {
     .subscribe( (resp:any)=> {
       this.reinreturn=resp.ReturnCode;
       if(this.reinreturn=="RIS"){
-      this.reinreturn=" The Cancelled Reservation is Reinstated ";
+      this.reinreturn=" The Cancelled Reservation is Reinstated for "+this.name;
       this.reinstates="The Confirmation Number is "+resp.ConfirmationNumber;
-      }
       this.pService.searchedit()
       .subscribe((resp: any) => {
        this.searchandedit=resp.ReturnValue;
      });
+      }
+this.name=" ";
     },
     );  
    }
@@ -95,13 +99,14 @@ subrein():void {
          this.AcceptState=acceptwaitlist.ConfirmationNumber;
          this.Acceptreturn=acceptwaitlist.ReturnCode;
          if(this.Acceptreturn=="RIS"){
-          this.Acceptreturn= "The Waitlist is Moved to Reservation ";
+          this.Acceptreturn= "The Waitlist is Moved to Reservation for "+this.name;
           this.AcceptState="The Reservation Number is "+acceptwaitlist.ConfirmationNumber;
-          }
           this.pService.searchedit()
           .subscribe((resp: any) => {
            this.searchandedit=resp.ReturnValue;
-         }); 
+         });
+          }
+       this.name=""; 
        },
        );  
       }
@@ -118,10 +123,47 @@ filterDatefrmList(startDate,endDate){
   }
   
 }
-
+rein=true;
+cale=true;
+wait=true;
+new=false;
+profile=false;
+option=true;
+public reinstate;
+public resid;
+public name;
 selectindex=null;
 selectMembersEdit(details,index){
 this.selectindex=index;
+this.reinstate=details.res_guest_status;
+this.resid=details.res_id;
+this.name=details.pf_firstname;
+if(this.resid==details.res_id){
+  this.new=true;
+  this.profile=true;
+  this.option=false;
+}else{
+  this.new=false;
+  this.profile=false;
+  this.option=true;
+}
+if(this.reinstate=="cancel"){
+  this.rein=false;
+}else {
+  this.rein=true;
+}
+if(this.reinstate=="reserved"){
+  console.log(this.reinstate);
+  this.cale=false;
+}else {
+  this.cale=true;
+}
+if(this.reinstate=="waitlist"){
+  console.log(this.reinstate);
+  this.wait=false;
+}else {
+  this.wait=true;
+}
 this.session.store("id",details.res_id.toString());
 this.session.store("id1",details.pf_id.toString());
 this.session.store("name",details.pf_firstname);
@@ -144,5 +186,8 @@ this.session.store("percentage",details.res_disc_perc);
 this.session.store("Discreasons",details.res_disc_reason);
 this.session.store("DiscAmount",details.res_disc_amount);
 this.session.store("Currency",details.res_currency);
+
+
 }
 }
+

@@ -248,16 +248,6 @@
       </div>
 
       <div class="col-lg-6">
-                  <div class="row">
-                      <div class="col-lg-3">
-                        <b>Salutation</b>
-                      </div>
-                        <div class="col-lg-3">
-                        <div class="input-group">
-                                <input type="text" name="Salutation" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Salutation" ></div>
-                        </div>
-                      </div>
-
 
                       <div class="row" style="padding-top:5px;">
                           <div class="col-lg-3">
@@ -273,10 +263,7 @@
                            </div>
                           </div>
                       </div>
-
-
-               
-
+                      <br>
 
                   <div class="row" style="padding-top:5px;">
                       <div class="col-lg-3">
@@ -293,7 +280,7 @@
                        </div>                         
                         </div>
                       </div>
-
+                      <br>
 
 
                       <div class="row" style="padding-top:5px;">
@@ -306,8 +293,9 @@
                             <option *ngFor="let individualvip of viplist" [ngValue] = "individualvip.vipguest">{{individualvip.vipguest}} </option>
                          </select>
                        </div>
-
                           </div>
+                          <br>
+
                           <div class="row" style="padding-top:5px;">
                               <div class="col-lg-3">
                               <b>Nationality</b>
@@ -317,12 +305,10 @@
                               <select name="Nationality" required style="height:34px;width:250px;" [(ngModel)]="user.PF_Nationality">
                            <option *ngFor="let individualnationality of nationality" [ngValue] = "individualnationality.nationality">{{individualnationality.nationality}} </option>
                            
-                            </select>
-                            
-                            
+                            </select>  
                               </div>
                               </div>
-
+                              <br>
 
                                       <div class="row" style="padding-top:5px;">
                                         <div class="col-lg-3">                                          
