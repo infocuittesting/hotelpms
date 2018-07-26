@@ -139,10 +139,31 @@ this.comm3=resp.ReturnValue;
 });
 
 }
-
+res=false;
+new=false;
+option=true;
+ok=true;
+edit=true;
+pfid;
 selectindex=null;
 selectMembersEdit(details,index){
 this.selectindex=index;
+this.pfid=details.pf_id;
+if(this.pfid==details.pf_id){
+  this.res=true;
+  this.new=true;
+  this.option=false;
+  this.ok=false;
+  this.edit=false;
+}
+else
+{
+  this.res=false;
+  this.new=false;
+  this.option=true;
+  this.ok=true;
+  this.edit=true;
+}
 this.session.store("id",details.pf_id);
 this.session.store("pf_fname",details.pf_firstname);
 this.session.store("pf_lastname",details.pf_lastname);

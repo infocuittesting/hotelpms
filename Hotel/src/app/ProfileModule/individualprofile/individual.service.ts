@@ -28,7 +28,7 @@ export class IndividualService {
          "PF_Postalcode":input.PF_Postalcode,
          "PF_Individual_Country":input.PF_Individual_Country,
          "PF_Individual_State":input.PF_Individual_State,
-         "PF_Salutation":input.PF_Salutation,
+         "PF_Salutation":" ",
          "PF_Individual_VIP":input.PF_Individual_VIP,
          "PF_Nationality":input.PF_Nationality,
          "PF_Date_Of_Birth":input.PF_Date_Of_Birth,
