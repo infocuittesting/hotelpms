@@ -197,12 +197,28 @@
 <div class="col-md-4" style="margin-top: -19px;">
         <div class="form-group" style="width: 82px;">
            <label for="name">Attdence</label>
-         <select class="form-control input-sm" id="sel1" style="width: 211px;">
+         <!-- <select class="form-control input-sm" id="sel1" style="width: 211px;">
             <option>200 </option>
             <option>400 </option>
             <option>600 </option>
             <option>800 </option>
-          </select>
+          </select> -->
+
+          <div class="col-sm-3">
+            <div class="input-group">
+                <span class="input-group-btn">
+              <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                  <span class="glyphicon glyphicon-minus"></span>
+                </button>
+                </span>
+                <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
+                <span class="input-group-btn">
+              <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+                </span>
+            </div>
+        </div>
         </div>
      </div>
 </div>

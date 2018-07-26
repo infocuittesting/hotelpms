@@ -58,7 +58,8 @@ import { BusinessBlockOptionsComponent } from './BusinessBlockModule/business-bl
 import { BusinessBlockSearchComponent } from './BusinessBlockModule/business-block-search/business-block-search.component';
 import { RominglistComponent } from './BusinessBlockModule/rominglist/rominglist.component';
 import { BusinessCreateBlockComponent } from './BusinessBlockModule/business-create-block/business-create-block.component';
-import { InquriprocessComponent } from './BusinessBlockModule/inquriprocess/inquriprocess.component'
+import { InquriprocessComponent } from './BusinessBlockModule/inquriprocess/inquriprocess.component';
+
 
 
 @NgModule({
@@ -83,7 +84,8 @@ import { InquriprocessComponent } from './BusinessBlockModule/inquriprocess/inqu
    BusinessBlockSearchComponent,
    RominglistComponent,
    BusinessCreateBlockComponent,
-   InquriprocessComponent
+   InquriprocessComponent,
+
    
    
   ],

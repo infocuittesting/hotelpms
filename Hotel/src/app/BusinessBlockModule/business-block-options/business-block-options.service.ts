@@ -14,7 +14,7 @@ export class BusinessBlockOptionsService {
      const options = new RequestOptions({ headers: headers });
      let body=
      {
-      "block_id":"10",
+      "block_id":this.session.retrieve("id"),
       "notes_date":args.notesdate,
       "notes_type":args.notetype,
       "title":args.title,
