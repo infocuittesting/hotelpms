@@ -14,7 +14,7 @@ export class BusinessBlockOptionsService {
      const options = new RequestOptions({ headers: headers });
      let body=
      {
-      "block_id":this.session.retrieve("id"),
+      "block_id":this.session.retrieve("id".toString()),
       "notes_date":args.notesdate,
       "notes_type":args.notetype,
       "title":args.title,
@@ -52,7 +52,22 @@ export class BusinessBlockOptionsService {
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_Business_Block_activitylog',body,options)
        .map(this.extractData)
 }
+// notetypeDroup down
+notetype():  Observable<object[]> {   
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
   
+  return this.http.get('https://hotel360.herokuapp.com/Profile/profilenotetype')
+     .map(this.extractData)
+}
+reason():  Observable<object[]> {   
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  
+  return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_GET_SELECT_CancelReason')
+     .map(this.extractData)
+}
+
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);

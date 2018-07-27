@@ -16,6 +16,8 @@ export class BusinessBlockOptionsComponent implements OnInit {
  public return:any =[];
  public cancelmessage:any=[];
  public tableschanges;
+ public roomtype=[];
+ public reason=[];
   constructor(private blockservice:BusinessBlockOptionsService) { }
  insertnotes(args){
    console.log(args);
@@ -64,7 +66,18 @@ export class BusinessBlockOptionsComponent implements OnInit {
     .subscribe((resp: any) => {
       this.tableschanges=resp.ReturnValue;
     });
-  }
+    // notetype droup down
+    this.blockservice.notetype()
+.subscribe((resp: any) => {
+this.roomtype=resp.ReturnValue;
 
+});
 
+this.blockservice.reason()
+.subscribe((resp: any) => {
+this.reason=resp.ReturnValue;
+
+});
+  
+}
 }
