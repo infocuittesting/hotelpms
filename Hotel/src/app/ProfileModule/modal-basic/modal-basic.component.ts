@@ -70,7 +70,7 @@ getcreditexpiry(){
     user2:any = {};
     user21 = {};
     profile1 =[];
-    profile2 =[];
+    profile2;
     user1 ={};
     user3 ={};
     user5 ={};
@@ -648,7 +648,10 @@ deletesClick(flag){
   this.pppService.deleterecordDelete(paramss)
   .subscribe((resp: any) => {
     this.profile1=resp.ReturnValue;
-   this.profile2=resp.Return;
+   this.profile2=resp.ReturnCode;
+   if(this.profile2=="RDS"){
+    this.profile2="The profile is Deleted";
+   }
     // console.log("creditcard details");
     //  console.log(this.credit);
  
