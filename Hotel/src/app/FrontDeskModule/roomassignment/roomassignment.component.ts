@@ -17,7 +17,7 @@ export class RoomassignmentComponent implements OnInit {
   constructor(private RoomassignmentService:RoomassignmentService,private route:Router,public session:SessionStorageService) { }
 
   // Room Unassign
-  status=[];
+  public status;
   unassignProfile(){
      let inputparms={
        "Res_id":this.session.retrieve("rmid"),
@@ -27,7 +27,17 @@ export class RoomassignmentComponent implements OnInit {
     }
    this.RoomassignmentService.unassignProfile(inputparms)
    .subscribe((resp: any) => {
-    this.status=resp.ReturnValue;
+    this.status=resp.ReturnCode;
+    if(this.status=="RUS"){
+      this.status="The room number "+this.room +" is unassigned for "+this.Name;
+    }
+    
+    this.RoomassignmentService.searchedit()
+    .subscribe((resp: any) => {
+     this.searchandedit=resp.ReturnValue;
+   });
+   this.Name.clear();
+   this.room.clear();
   });
 }
 
@@ -55,9 +65,27 @@ ngOnInit() {
  });
 
 }
+public room;
+public Name;
+public chin=true;
+public assign=true;
+public unass=true;
+public rmrsid;
 selectindex=null;
 selectMembersEdit(details,index){
 this.selectindex=index;
+this.rmrsid=details.res_id;
+if(this.rmrsid=details.res_id){
+  this.assign=false;
+  this.unass=false;
+  this.chin=false;
+}else{
+  this.assign=true;
+  this.unass=true;
+  this.chin=true;
+}
+this.Name=details.pf_firstname;
+this.room=details.res_room;
 this.session.store("rmid",details.res_id.toString());
 this.session.store("rmpfid",details.pf_id.toString());
 this.session.store("uniq",details.res_unique_id.toString());

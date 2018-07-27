@@ -102,7 +102,7 @@ export class OutoforderserviceComponent implements OnInit {
    }
 
 oos2=[];
-oos3=[];
+oos3;
    roomcard=[];
    roomcard1=[];
   user={};
@@ -170,9 +170,10 @@ oos3=[];
              this.roomService.deleteoutoforder(inputt)
              .subscribe(( user335:any)=> {
                this.user35 = user335;
-               this.oos3=user335.Return;
+               this.oos3=user335.ReturnCode;
               //  window.location.reload();
-              if(user335.Return == "Record Deleted Successfully"){
+              if(this.oos3 == "RDS"){
+                this.oos3="The OOS is delted"
                 console.log("checking return value is success or not")
                 this.roomService.outofOrder()
                 .subscribe((resp: any) => {
