@@ -15,7 +15,7 @@
               </div>   
                   <div class="col-md-6">    
               <form class="form-inline" action="/action_page.php">
-                  <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="name" [(ngModel)]="queryString" placeholder="Enter Name" name="name" #firstName="ngModel">
+                  <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="name" [(ngModel)]="queryString" name="name" #firstName="ngModel">
                   
                 </form>
                 <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid" style="width:200px;">
@@ -37,7 +37,7 @@
                </div>   
                <div class="col-md-6">    
                 <form class="form-inline" action="/action_page.php">
-               <input type="text" class="form-control" id="" placeholder="Enter Group" name="text">
+               <input type="text" class="form-control" id=""  name="text">
                </form>
                </div>
            
@@ -52,7 +52,7 @@
               </div>   
                   <div class="col-md-6">    
               <form class="form-inline" action="/action_page.php">
-                  <input type="text" class="form-control" id="room_type" placeholder="Enter Room Type" name="room_type" [(ngModel)]="qrtype">
+                  <input type="text" class="form-control" id="room_type" name="room_type" [(ngModel)]="qrtype">
                   </form>
               </div>
       
@@ -71,7 +71,7 @@
                     </div>   
                   <div class="col-md-6">    
                          <form class="form-inline" action="/action_page.php">
-                          <input type="text" class="form-control" id="type" placeholder="Enter Res.Type" name="type" [(ngModel)]="restype">
+                          <input type="text" class="form-control" id="type"  name="type" [(ngModel)]="restype">
                           </form>
                  </div>
          
@@ -87,7 +87,7 @@
                          </div>   
                          <div class="col-md-6">    
                          <form class="form-inline" action="/action_page.php">
-                         <input type="text" class="form-control" id="vip" placeholder="Enter VIP" name="vip">
+                         <input type="text" class="form-control" id="vip" name="vip">
                          </form>
                          </div>
              
@@ -116,27 +116,14 @@
             <div class="row">
       
  
-                  <div class="col-md-4"> 
-                  <div class="row">
-                  <div class="col-md-4">    
-                  </div>   
-                  <div class="col-md-6">    
-                    <button class="btn btn-info" style="width: 100%;">Search <i class="fa fa-search"></i></button>
-                  </div>
-          
-                      </div>                
+                  <div class="col-md-5">                 
                   </div> 
-                  <div class="col-md-4"> 
-                          <div class="row">
-                          <div class="col-md-4">    
-                          </div>   
-                          <div class="col-md-6">    
-                          <button class="btn btn-warning"  style="width: 100%;">Advance <i class="fa fa-edit"></i> </button>    
-                          </div>
-                  
-                              </div>                
+                  <div class="col-md-2"> 
+  
+                          <button class="btn btn-warning"  style="width: 100%;">Advance <i class="fa fa-edit"></i> </button>        
                           </div>           
-                  
+                          <div class="col-md-5">                 
+                            </div>       
            </div>
       
       </div>
@@ -229,12 +216,12 @@
       <br>
       
       <div>
-        <button class="btn btn-info" style="width:11%; margin-left:5%;" routerLink="/housekeeping"> Assign <i class="fa fa-sign-in"></i></button>    
-        <button class="btn btn-Warning"style="width:11%" (click)="unassignProfile()" data-toggle="modal" data-target="#Unassign"> Unassign <i class="fa fa-sign-in"></i> </button>    
+        <button class="btn btn-info" style="width:11%; margin-left:5%;" routerLink="/housekeeping" [disabled]=assign> Assign <i class="fa fa-sign-in"></i></button>    
+        <button class="btn btn-Warning"style="width:11%" (click)="unassignProfile()" data-toggle="modal" data-target="#Unassign"  [disabled]=unass> Unassign <i class="fa fa-sign-in"></i> </button>    
         <button class="btn btn-primary disabled" style="width:11%"> Auto <i class="fa fa-tasks"></i></button>     
         <button class="btn btn-info" style="width:11%" routerLink="/reservation"> Profile <i class="fa fa-user"></i></button>   
         <button class="btn btn-warning" style="width:11%" routerLink="/reservation"> Resv. <i class="fa fa-caret-square-o-down"></i></button>   
-        <button class="btn btn-success" style="width:11%" (click)="checkinProfile()" data-toggle="modal" data-target="#Checkin"> Check In <i class="fa fa-sign-in"></i></button>   
+        <button class="btn btn-success" style="width:11%" (click)="checkinProfile()" data-toggle="modal" data-target="#Checkin"  [disabled]=chin> Check In <i class="fa fa-sign-in"></i></button>   
         <button class="btn btn-danger" style="width:11%" routerLink="/mains"> Close <i class="fa fa-close"></i></button>   
       
         </div>
@@ -587,7 +574,7 @@
               <div class="modal-dialog">
               
                 <!-- Modal content-->
-                <div class="modal-content" style="width:150%;">
+                <div class="modal-content" style="width:150%;margin-left: -20%;margin-top: 10%;">
                       <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                               <h4 class="modal-title">Room Unassignment details</h4>
