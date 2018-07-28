@@ -216,7 +216,7 @@ subdele() {
 // insertCredit start
 ic={}; 
 public inscredit;
-submit(inputt):void {
+submit(inputt) {
   console.log(inputt);
     this.pppService.insertcredit(inputt)
     .subscribe( (user333:any) => {
@@ -442,10 +442,18 @@ this.session.store("ccid",details.cc_id.toString());
 this.session.store("depid",details.deposit_id.toString());
 this.session.store("id1",details.pf_id);
 }
-
-
+public dedit=true;
+public did
 selectMembersdeposit(details,index){
 this.selectindex=index;
+this.did=details.deposit_id;
+if(this.did=details.deposit_id){
+  this.dedit=false;
+}
+else
+{
+  this.dedit=true;
+}
 this.session.store("depid",details.deposit_id.toString());
 }
 public  downloadPDF(){

@@ -7,7 +7,7 @@
   <div class="row" style="margin-top:1%;">
   
   <div class="container">
-  <div class="jumbotron" style="background-color:0077B5;color:white;margin-top:10px;margin-bottom: 1%;padding-top:10px;padding-bottom:1px;width:96%;margin-left:1%;">
+  <div class="jumbotron" style="background-color:0077B5;color:white;margin-top:10px;margin-bottom:  1%;padding-top:10px;padding-bottom:1px;width:96%;margin-left:1%;">
   
          
     <form style="margin-bottom: 1px;">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-9">
                   <div class="form-group">            
-                    <input type="text" class="form-control input-sm" [(ngModel)]="room" name="room" style="height:27px;width: 70%;">
+                    <input type="text" class="form-control input-sm" [(ngModel)]="mainroom" name="room" style="height:27px;width: 70%;">
                   </div>
                 </div>
               </div>
@@ -32,7 +32,7 @@
                   </div>
                   <div class="col-md-9">
                     <div class="form-group">            
-                      <input type="text" class="form-control input-sm" [(ngModel)]="personname" name="personname" style="height:27px;width: 70%;">
+                      <input type="text" class="form-control input-sm" [(ngModel)]="mainpersonname" name="personname" style="height:27px;width: 70%;">
                     </div>
                   </div>
                 </div>
@@ -104,7 +104,7 @@
                           </div>
                           <div class="col-md-9">
                             <div class="form-group">            
-                                <select class="form-control input-sm" id="sel1" style="width:70%;height:27px;">
+                                <select class="form-control input-sm" id="sel1" style="width:70%;height:27px;" [(ngModel)]="rooms" (ngModelChange)="onSelect5(rooms)">
                                   <option *ngFor="let restypelist of resty" [ngValue] = "restypelist.restype_description">{{restypelist.restype_description}}</option>  
                                   </select>
                             </div>
@@ -112,7 +112,7 @@
                         </div>
                       </div>
   
-                      <div class="col-md-3">
+                      <!-- <div class="col-md-3">
                           <div class="row">
                             <div class="col-md-2"></div>
                             <div class="col-md-1">
@@ -124,7 +124,7 @@
                               </div>
                             </div>
                           </div>
-                      </div>
+                      </div> -->
             </div>
   
             <div class="row">
@@ -176,25 +176,27 @@
                     <div class="row">
                       
                           <div class="col-md-1 col-sm-1 col-xs-1">
-                            <input type="checkbox" [(ngModel)]="checkboxflg.checkstay" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkstay,'STAY OVER')" name="stay">
+                              <input type="checkbox" [(ngModel)]="checkboxflg.checkout" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkout,'checkin')" name="chkout">
                           </div>
                           <div class="col-md-3 col-sm-3 col-xs-3">
-                            <label>StayOver</label>
+                            <label>CHECKIN</label>
                           </div>
                         
                           <div class="col-md-1 col-sm-1 col-xs-1">
-                            <input type="checkbox" [(ngModel)]="checkboxflg.checkdue" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkdue,'DUE OUT')" name="chkdue">
+                            <!-- <input type="checkbox" [(ngModel)]="checkboxflg.checkdue" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkdue,'due out')" name="chkdue"> -->
                           </div>
                           <div class="col-md-3 col-sm-3 col-xs-3">
-                            <label>Due Out</label>
+                            <!-- <label>Due Out</label> -->
                           </div>
       
                           <div class="col-md-1 col-sm-1 col-xs-1">
-                              <input type="checkbox" [(ngModel)]="checkboxflg.checkout" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkout,'CHECKED OUT')" name="chkout">
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                              <label>Checked Out</label>
-                            </div>
+                              <button type="reset"  class="btn btn-success" style="border-radius: 6px;">
+                                  <b>Clear</b>
+                              </button>
+                          </div>
+                          <!-- <div class="col-md-3 col-sm-3 col-xs-3">
+                            <label>Checked Out</label>
+                          </div> -->
                         </div>
                      
                   </div>
@@ -239,29 +241,30 @@
                   <div class="row">
                     
                         <div class="col-md-1 col-sm-1 col-xs-1">
-                          <input type="checkbox" [(ngModel)]="checkboxflg.checknoshow" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checknoshow,'NO SHOWS')" name="checkshow">
+                          <input type="checkbox" [(ngModel)]="checkboxflg.checkdue" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkdue,'due out')" name="chkdue">
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-3">
-                          <label>No shows</label>
+                          <label>DUE OUT</label>
                         </div>
                       
                         <div class="col-md-1 col-sm-1 col-xs-1">
-                          <input type="checkbox" [(ngModel)]="checkboxflg.checkcancel" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkcancel,'CANCELLATION')" name="checkcan">
+                          <!-- <input type="checkbox" [(ngModel)]="checkboxflg.checkcancel" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkcancel,'CANCELLATION')" name="checkcan"> -->
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-3">
-                          <label>Cancellations</label>
+                          <!-- <label>Cancellations</label> -->
                         </div>
     
                         <div class="col-md-1 col-sm-1 col-xs-1">
-                            <input type="checkbox" [(ngModel)]="checkboxflg.checkopen" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkopen,'OPEN FOLIO  ')" name="checkopn">
-                          </div>
-                          <div class="col-md-2 col-sm-2 col-xs-2">
-                            <label>OpenFolio</label>
-                          </div>
-                          <div class="col-md-1 col-sm-1 col-xs-1">
-                            <button type="button"  class="btn btn-success" style="border-radius: 6px;"><b>Clear
-                            </b></button>
-                          </div>
+                            
+                            <!-- <input type="checkbox" [(ngModel)]="checkboxflg.checkopen" [checked]="checkselectClr" (change)="filtercheckboxData(checkboxflg.checkopen,'OPEN FOLIO  ')" name="checkopn"> -->
+                        </div>
+                        <!-- <div class="col-md-2 col-sm-2 col-xs-2">
+                          <label>OpenFolio</label>
+                        </div> -->
+                        <!-- <div class="col-md-1 col-sm-1 col-xs-1">
+                          <button type="button"  class="btn btn-success" style="border-radius: 6px;"><b>Clear
+                          </b></button>
+                        </div> -->
                       </div>
                    
                 </div>
@@ -394,7 +397,7 @@
           <th>ResType</th>
         </tr>
       </thead>
-      <tbody *ngFor="let dell of housetable |filterdata: personname :'Name' |  filterdata: room :'Room'|  filterdata: company :'Company';let i=index " (click)="selectMembersEdit(dell,i)"  
+      <tbody *ngFor="let dell of housetable |filterdata: mainpersonname :'pf_firstname' |  filterdata: mainroom :'res_room'|  filterdata: company :'Company';let i=index " (click)="selectMembersEdit(dell,i)"  
       [ngClass]="{'backGroundColor':i==selectindex}" style="padding-top:2px;padding-bottom:2px;padding-left:2px;padding-right:2px;font-size:small;">
 
       <tr>
@@ -409,75 +412,7 @@
       
       </tr>  
       
-        <!-- <tr> 
-          <td>527</td>
-          <td>Enderby</td>
-          <td></td>
-           <td>16-04-2018</td>
-          <td>20-04-2018</td>
-          <td>275.00</td>
-           <td>CHECKED IN</td>
-          <td>Metro Design</td>
-          
-        </tr>
-        <tr>
-          <td>527</td>
-          <td>Enderby</td>
-          <td></td>
-           <td>16-04-2018</td>
-          <td>20-04-2018</td>
-          <td>275.00</td>
-           <td>CHECKED IN</td>
-          <td>Metro Design</td>
-          
-        </tr>
-        <tr>
-          <td>527</td>
-          <td>Enderby</td>
-          <td></td>
-           <td>16-04-2018</td>
-          <td>20-04-2018</td>
-          <td>275.00</td>
-           <td>CHECKED IN</td>
-          <td>Metro Design</td>
-          
-        </tr>
-        
-              <tr>
-                <td>527</td>
-                <td>Enderby</td>
-                <td></td>
-                 <td>16-04-2018</td>
-                <td>20-04-2018</td>
-                <td>275.00</td>
-                 <td>CHECKED IN</td>
-                <td>Metro Design</td>
-          
-        </tr>
-        
-              <tr>
-                <td>527</td>
-                <td>Enderby</td>
-                <td></td>
-                 <td>16-04-2018</td>
-                <td>20-04-2018</td>
-                <td>275.00</td>
-                 <td>CHECKED IN</td>
-                <td>Metro Design</td>
-          
-        </tr>
-        
-              <tr>
-                <td>527</td>
-                <td>Enderby</td>
-                <td></td>
-                 <td>16-04-2018</td>
-                <td>20-04-2018</td>
-                <td>275.00</td>
-                 <td>CHECKED IN</td>
-                <td>Metro Design</td>
-          
-        </tr> -->
+       
               
       </tbody>
     </table>
@@ -490,15 +425,11 @@
 
       <div class="row">
         <div class="col-md-1"></div>
-            <button type="button" class="btn btn-primary" style="width:110px;margin-left:5%;" routerLink="/billing"><b>Billing</b></button>
-        
+            <button type="button" class="btn btn-primary" style="width:110px;margin-left:10%;" routerLink="/billing" [disabled]=siva><b>Billing</b></button>
     
-       
-            <button type="button" class="btn btn-Warning" style="width:110px;margin-left:2%;" data-toggle="modal" ><b>C/O All</b></button>
+            <button type="button" class="btn btn-Basic" style="width:110px;margin-left:2%;" data-toggle="modal" [disabled]=disone><b>C/O zero</b></button>
     
-            <button type="button" class="btn btn-Basic" style="width:110px;margin-left:2%;" data-toggle="modal" ><b>C/O zero</b></button>
-    
-            <button type="button" class="btn btn-success" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#checkout"><b>Check Out</b></button>
+            <button type="button" class="btn btn-success" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#checkout" [disabled]=distwo><b>Check Out</b></button>
         
     
           <button type="button" class="btn btn-info" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#foliohistorymodal"><b>Folio History</b></button>
@@ -674,46 +605,65 @@
           <!-- <b align="center">{{profile}}</b> -->
            
             
-      <div class="container-fluid" style="background-color: #0077B5;color: white;Width:99%;">
-        <br>
-              <div class="row" style="width:99%;">
-                  <div class="col-md-4">
-                  <div class="from-group" style="margin-left: 10px;">
-                  <label for="name">Date</label>
-                  <input type="date" class="from-control input-sm" style="width: 66%;">
-                  </div>
+      <div class="container" style="width:99%;">
+        <div class="jumbotron" style="background-color:0077B5;color:white;margin-top:10px;margin-bottom: 1%;padding-top:10px;padding-bottom:1px;width:96%;margin-left:1%;">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="row">
+              <div class="col-md-3">
+                <label for="room">Date</label>
+              </div>
+              <div class="col-md-9">
+                <div class="form-group">            
+                  <input type="date" class="form-control input-sm" [(ngModel)]="hisdate" name="hdate" style="height:27px;width:100%;">
+                </div>
+              </div>
+            </div>
+          </div>
 
-               </div>
-              <div class="col-md-4">
-              <div class="from-group">
-                <label for="name">Folio.No</label>
-                <input type="text" class="from-control input-sm">
-              </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="from-group">
-                      <label for="name">FirstName</label>
-                      <input type="text" class="from-control input-sm">
-                    </div>
-                    </div>
-                </div>
-                <br>
+          <div class="col-md-3">
               <div class="row">
-              <div class="col-md-4">
-                 <div class="from-group">
-                   <label for="name">Room</label>
-                   <input type="text"class="from-control input-sm">
-                 </div>
-                </div>
                 <div class="col-md-4">
-                   <div class="from-group" style="margin-left: 4px;">
-                     <label for="name">Name</label>
-                     <input type="text" class="from-control input-sm">
-                   </div>
+                  <label for="room">Folio.No</label>
+                </div>
+                <div class="col-md-8">
+                  <div class="form-group">            
+                    <input type="text" class="form-control input-sm" [(ngModel)]="foliono" name="hisfolio" style="height:27px;width:75%;">
                   </div>
+                </div>
               </div>
-              <br>
-              <div class="row">
+                
+            </div>
+
+            <div class="col-md-3">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="room">Name</label>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="form-group">            
+                      <input type="text" class="form-control input-sm"  [(ngModel)]="hisname" name="hname" style="height:27px;width:75%;">
+                    </div>
+                  </div>
+                </div>
+                  
+              </div>
+            
+              <div class="col-md-3">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <label for="room">Room</label>
+                    </div>
+                    <div class="col-md-9">
+                      <div class="form-group">            
+                        <input type="text" class="form-control input-sm" [(ngModel)]="hisroom" name="hroom" style="height:27px;width:75%;">
+                      </div>
+                    </div>
+                  </div>
+                    
+                </div>
+          </div>
+              <!-- <div class="row">
                 <div class="col-md-3">
                     <div class="custom-control custom-checkbox"style="margin-left: 5px;">
                         <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
@@ -738,24 +688,26 @@
                             <label class="custom-control-label" for="customCheck">NoShow</label>
                           </div>
                       </div>
-              </div>
+              </div> -->
              </div>
              <br>
-             <div class="continer-fluid">
+             <div class="container-fluid">
                <div class="responsive-table">
                  <table class="table table-bordered table-hover">
                    <thead style="background-color: #0077B5;color:white;">
-                     <tr>
-                       <th>Folio.No</th>
-                        <th>Date</th>
-                        <th>Name</th>
-                        <th>Wnd</th>
-                        <th>Folio Amount</th>
-                        </tr>
+                    <tr>
+                      <th>Folio.No</th>
+                      <th>Room</th>                      
+                       <th>Date</th>
+                       <th>Name</th>
+                       <th>Wnd</th>
+                       <th>Folio Amount</th>
+                       </tr>
                         </thead>
                         <tbody style="font-size:12px;">
-                          <tr *ngFor="let folioitem of foliohis; let i=index">
+                          <tr *ngFor="let folioitem of foliohis|filterdata: hisname :'pf_firstname' |  filterdata: hisdate :'posting_date'|  filterdata: foliono :'folio_no'|  filterdata: hisroom :'res_room';let i=index ">
                             <td>{{folioitem.folio_no}}</td>
+                            <td>{{folioitem.res_room}}</td>
                             <td>{{folioitem.posting_date}}</td>
                             <td>{{folioitem.pf_firstname}}</td>
                             <td>{{folioitem.post_window}}</td>
@@ -770,7 +722,7 @@
            
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-primary"style="width: 10%;" data-dismiss="modal"><b>Folio</b></button>
+              
             <button type="button" class="btn btn-danger" style="width: 10%;" data-dismiss="modal"><b>Close</b></button>
           </div>
           </div>

@@ -22,8 +22,7 @@ export class HousekeepingService {
            .map(this.extractData)
            //.catch(this.handleErrorObservable);
       }
-      
-    
+            
       getroomlist(input:any):  Observable<object[]> {
        
         const headers = new Headers({'Content-Type':'application/json'})

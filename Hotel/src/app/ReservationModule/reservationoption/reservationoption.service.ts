@@ -71,7 +71,7 @@ Traces(input:any):  Observable<object[]> {
   const headers = new Headers();
    headers.append('Content-Type','application/json');
    const options = new RequestOptions({ headers: headers });
-   let body={"res_id":this.session.retrieve("id"),"traces_from_date":input.traces_from_date, "traces_to_date":input.traces_to_date,
+   let body={"res_id":this.session.retrieve("id"),"Res_unique_id":this.session.retrieve("uniq"),"traces_from_date":input.traces_from_date, "traces_to_date":input.traces_to_date,
    "traces_time":input.traces_time,"traces_dept_code":input.traces_dept_code,"traces_trace_text":input.traces_trace_text
  };
    return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Post_Insert_UpdateGuestTraces',body,options)

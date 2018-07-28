@@ -54,10 +54,16 @@ checkinProfile(){
    });
   
   }
-
+  public chin=true
+  public option=true;
+  public resid;
   selectindex=null;
   selectMembersEdit(details,index){
   this.selectindex=index;
+  this.resid=details.res_id;
+  if(this.resid=details.res_id){
+    this.chin=false; this.option=false;
+  }else{    this.chin=true; this.option=true;}
   this.session.store("id",details.res_id.toString());
   this.session.store("id1",details.pf_id.toString());
   this.session.store("id2",details.res_room.toString());

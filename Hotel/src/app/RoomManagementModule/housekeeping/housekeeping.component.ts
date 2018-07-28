@@ -39,6 +39,10 @@ export class HousekeepingComponent implements OnInit {
     doc.save('test.pdf');
   }
 
+  cleardata(){
+    this.session.clear();
+  }
+
 house = [
 
 
@@ -211,19 +215,20 @@ selectandClearAll(flag){
     this.commonflag = flag;
 
   }  
+  public searchandedit;
     roomassign(){
     let body =
     {
       "Res_id": this.session.retrieve("rmid"),
-      "Res_room": this.session.retrieve("hsid"),
+      "Res_room": this.hsid,
       "Res_unique_id":this.session.retrieve("uniq")
     }
     console.log(body);
     this.roomService.roomassign(body)
     .subscribe(( user233:any)=> {
+    
 
-    },
-     ); 
+    }); 
 
   }
 
@@ -285,10 +290,17 @@ selectandClearAll(flag){
 
     }
 }
+public ok=true;
+public hsid;
   selectindex=null;
   selectMembersEdit(details,index){
   this.selectindex=index;
-  this.session.store("hsid",details.rm_room.toString());
+  this.hsid=details.rm_room.toString();
+  if(this.hsid=details.rm_room){
+    this.ok=false;
+  }else{
+    this.ok=true;
+  }
   }
 
 
