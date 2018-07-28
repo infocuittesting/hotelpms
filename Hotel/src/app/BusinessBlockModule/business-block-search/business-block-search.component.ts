@@ -25,7 +25,7 @@ export class BusinessBlockSearchComponent implements OnInit {
   selectindex=null;
   selectMembersEdit(details,index){
   this.selectindex=index;
-  this.session.store("id",details.block_id);
+  this.session.store("id",details.block_id.toString());
   
 }
 }

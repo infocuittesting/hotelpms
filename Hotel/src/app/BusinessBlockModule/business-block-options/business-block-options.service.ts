@@ -14,7 +14,7 @@ export class BusinessBlockOptionsService {
      const options = new RequestOptions({ headers: headers });
      let body=
      {
-      "block_id":this.session.retrieve("id".toString()),
+      "block_id":this.session.retrieve("id"),
       "notes_date":args.notesdate,
       "notes_type":args.notetype,
       "title":args.title,
@@ -47,7 +47,7 @@ export class BusinessBlockOptionsService {
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers });
     let body={
-      "block_id":"1049"
+      "block_id":this.session.retrieve("id")
     }
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_Business_Block_activitylog',body,options)
        .map(this.extractData)

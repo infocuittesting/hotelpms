@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import {DatePicker} from './datepicker';
 import {BusinessBlockOptionsService} from './business-block-options.service'
+import { MomentModule } from 'angular2-moment';
 
 
 @Component({
@@ -78,6 +79,7 @@ this.blockservice.reason()
 this.reason=resp.ReturnValue;
 
 });
+
   
 }
 }

@@ -111,7 +111,7 @@
     <div class="modal fade" id="myModal1" role="dialog">
       <div class="modal-dialog">
       
-        <!-- Modal content-->
+        <!--Third Modal content-->
         <div class="modal-content"style="width:160%; margin-left:-10%;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -130,24 +130,28 @@
               
               <div class="col-md-4">
                   <br>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <input type="checkbox" name="any" style="font-size: 30px;">
                   <label for="">Internal</label>
-                </div>
+                </div> -->
               </div>
               <div class="col-md-4">
-                  <label for="">Note Type</label>
-                <div class="form-group">
-                  <select class="from-control"name="notetype" id="" style="height: 30px;width:150px" [(ngModel)]="notes.notetype" (ngModelChange)="onSelect(notes.notetype)">
+                  <label for="name">Note Type</label>
+                <div class="form-group"[class.has-error]="notetype.touched && notetype.invalid">
+                  <select class="from-control"name="notetype" id="notetype"#notetype="ngModel" required style="height: 30px;width:150px" [(ngModel)]="notes.notetype" (ngModelChange)="onSelect(notes.notetype)">
+                    isActive 
                     <option *ngFor="let option of roomtype" 
-            [ngValue]="option.notetype"> 
-            {{option.notetype}}
-    </option>
+                      [ngValue]="option.notetype"> 
+                      {{option.notetype}}
+                  </option>
                   </select>
                 </div>
+                
               </div>
             </div>
-            
+            <span class="help-block" *ngIf="notetype.touched && notetype.touched && notetype.errors?.requried">
+                Is Active is Required
+              </span>
               <div class="row">
                 <div class="col-md-8">
                     <label for="name">Title</label>
@@ -176,7 +180,7 @@
       </div>
       </div>
 
-      <!-- third model notes -->
+      <!-- fourth model  -->
 
       <div class="modal fade" id="myModal2" role="dialog">
           <div class="modal-dialog model-lg">
