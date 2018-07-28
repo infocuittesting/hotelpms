@@ -34,23 +34,23 @@ export class CasheringinhouseguestComponent implements OnInit {
   ];
 
   public items = [
-    { Room: '101', Name: 'Anderson',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'CHECKED IN',Company:'Metro Design' },
-    { Room: '102', Name: 'Bala',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'STAY OVER',Company:'Metro Design'},
-    { Room: '103', Name: 'Jeevitha',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'DUE OUT',Company:'Metro Design'},
-    {  Room: '104', Name: 'Priya',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'NO SHOWS',Company:'Metro Design' },
-    {  Room: '105', Name: 'peter',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'CHECKED IN',Company:'Metro Design' },
-    {  Room: '106', Name: 'prince',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'CANCELLATION',Company:'Metro Design' },
+    // { Room: '101', Name: 'Anderson',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'CHECKED IN',Company:'Metro Design' },
+    // { Room: '102', Name: 'Bala',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'STAY OVER',Company:'Metro Design'},
+    // { Room: '103', Name: 'Jeevitha',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'DUE OUT',Company:'Metro Design'},
+    // {  Room: '104', Name: 'Priya',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'NO SHOWS',Company:'Metro Design' },
+    // {  Room: '105', Name: 'peter',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'CHECKED IN',Company:'Metro Design' },
+    // {  Room: '106', Name: 'prince',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'CANCELLATION',Company:'Metro Design' },
    
-    {  Room: '107', Name: 'Ander',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'OPEN FOLIO',Company:'Metro Design' },
+    // {  Room: '107', Name: 'Ander',Alt_name:'',Arrival:'20-05-2018',Departure:'21-05-2018',Balance:500,Status:'OPEN FOLIO',Company:'Metro Design' },
   ];
 
 public folio=[
-  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
-  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
-  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
-  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
-  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
-  {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  // {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  // {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  // {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  // {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  // {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
+  // {FolioNo:'122',Date:'20-05-2018',Name:'Anderson',Wnd:'1',FolioAmount:'5000',payeeName:'Jack',Invoice:''},
 
   
 ];
@@ -61,33 +61,36 @@ public money=[];
 public housetable=[];
 public resty=[];
 public foliohis=[];
-
+disone=true
+distwo=true
+siva=true
   ngOnInit() {
-
     this.cashinservice.currencydropdown()
     .subscribe((resp: any) => {
+
      this.money=resp.Return;
-     console.log(this.money);
+    //  console.log(this.money);
    });
 
    this.cashinservice.inhousetable()
    .subscribe((resp: any) => {
-    this.housetable=resp.ReturnValue;
-    console.log(this.housetable);
-  });
 
+    this.housetable=resp.ReturnValue;
+    // console.log(this.housetable);
+  });
   this.cashinservice.restypedropdown()
   .subscribe((resp: any) => {
     this.resty = resp.ReturnValue;
-  console.log(this.resty);
+console.log("restypeeeeeeeeeeeeeeeeee",this.resty);
   });
 
-  
+
   this.cashinservice.foliohistory()
   .subscribe((resp: any) => {
     this.foliohis = resp.Return;
-  console.log(this.resty);
   });
+
+      
 
   }
   showdiv="9000";
@@ -101,23 +104,54 @@ public foliohis=[];
   selectindex=null;
 selectMembersEdit(details,index){
 this.selectindex=index;
+// condition for checkout button
+if(details.res_guest_balance!=0){
+  this.distwo=false;
+}
+else{
+  this.disone=true;
+}
+// condition for checkout zero button
+if(details.res_guest_balance==0){
+  this.disone=false;
+}
+else{
+  this.disone=true;
+}
+
+// condition for billing button
+if(details.res_guest_balance!="null"){
+  this.siva=false; 
+}
+else{
+  this.siva=true; 
+}
+
+//  console.log("res id",details.res_id)
+// if(details.res_id!=0){
+//   this.disthree=false;
+// }
+// else{
+//   this.disthree=true;
+// }
+
 this.session.store("id",details.res_room.toString());
 this.session.store("id1",details.res_id.toString());
 this.session.store("name",details.pf_firstname);
 this.session.store("cc",details.res_creditcard_number);
 this.session.store("expdate",details.res_exp_date);
 // for displaying
-this.session.store("balanc",details.res_guest_balance);
-this.session.store("arr",details.res_arrival);
-this.session.store("depar",details.res_depature);
-this.session.store("gstat",details.res_guest_status);
-this.session.store("rtcd",details.res_rate_code);
-this.session.store("rte",details.res_rate);
-this.session.store("persn",details.res_adults);
+// this.session.store("balanc",details.res_guest_balance);
+// this.session.store("arr",details.res_arrival);
+// this.session.store("depar",details.res_depature);
+// this.session.store("gstat",details.res_guest_status);
+// this.session.store("rtcd",details.res_rate_code);
+// this.session.store("rte",details.res_rate);
+// this.session.store("persn",details.res_adults);
 this.checkname=details.Name;
 }
 
-  private month:any;
+private month:any;
 private year:any;
 onMonthChange(month:any){
   this.month = month.toString();
@@ -132,8 +166,10 @@ getcreditexpiry(){
 }
 
 checkoutpost(arg1){
-console.log(arg1);
+// console.log(arg1);
 }
+
+
 
 //filter data in table  using checkbox
 checkboxflg=[];
@@ -156,19 +192,21 @@ filtercheckboxData(ngmodel, flag) {
    
     if(this.count==0){
       this.count++;
-   this.copy =JSON.parse(JSON.stringify(this.items))
+   this.copy =JSON.parse(JSON.stringify(this.housetable))
     }
-  this.items=[];
-  console.log("this.filtercheckboxList   ----"+this.filtercheckboxList);
+  this.housetable=[];
+  // console.log("this.filtercheckboxList   ----"+this.filtercheckboxList);
   for(var j=0;j<this.copy.length;j++){
-    if(this.filtercheckboxList.includes(this.copy[j].Status)){
-      this.items.push(this.copy[j]);
+    if(this.filtercheckboxList.includes(this.copy[j].res_guest_status)){
+      this.housetable.push(this.copy[j]);
     }
   }
 }else{
-  this.items=this.copy; 
+  this.housetable=this.copy; 
 }
 }
+
+// 
 
 
 }

@@ -17,7 +17,7 @@ export class BillingService {
      const options = new RequestOptions({ headers: headers });
      let body =
      {
-        "res_id":"2"
+        "res_id":this.session.retrieve("id1")
         
      }
   
@@ -41,6 +41,30 @@ export class BillingService {
       .map(this.extractData)
       //.catch(this.handleErrorObservable);
  }
+
+ updateeditposting(amt,quan,ed_arcode,ed_sup,ref,cqno): Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+ let body={ 
+  "Res_id":this.session.retrieve("id1"),
+  "post_id":this.session.retrieve("posid"),
+  "Posting_amount":amt,
+  "Arrangement_code":ed_arcode.toString(),
+  "Checkno":cqno.toString(),
+  "Posting_supplement":ed_sup,
+  "Posting_reference":ref,
+  "Posting_quantity":quan.toString(),
+  "res_room":this.session.retrieve("id")
+ }
+ console.log(JSON.stringify(body));
+
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_CAH_POST_UPDATE_UPDATEGUESTBILLING',body,options)
+     .map(this.extractData)
+
+}
+
+
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);

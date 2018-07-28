@@ -96,9 +96,9 @@
 <div class="col-md-2">
         <div class="form-group" style="width:82%;">
            <label for="name">Roomtype</label>
-         <select class="form-control input-sm" id="sel1" style="width:150px;"[(ngModel)]="roomtypeselection" (ngModelChange)="onSelect(roomtypeselection)">
+         <select class="form-control input-sm" id="sel1" style="width:150px;"[(ngModel)]="user.roomtypeselection" (ngModelChange)="onSelect(roomtypeselection)">
             <option *ngFor="let option of roomtype" 
-            [ngValue]="option.type"> 
+            [ngValue]="option"> 
             {{option.type}}
     </option>
             <!-- <option>800 </option> -->
@@ -108,16 +108,15 @@
        </div>
    
        <div class="col-md-2">
-           <div class="form-group" style="width:82%;">
+           <div class="form-group" style="width:82%;"></div>
              <label for="">count</label>
-            <input type="text" name=" " class="form-control input-sm" id="sel1" style="width:150px;">          
+            <input type="text" name=" " class="form-control input-sm" id="sel1" style="width:150px;" [(ngModel)]="user.count">          
            </div>
-          </div>
-    <div class="col-md-2">
+           <div class="col-md-2">
   
             <div class="form-group" style="width:82%;">
                 <label for="name">Meeting Size</label>
-                <input type="text" name=" " class="form-control input-sm" id="sel1" style="width:211px;"> 
+                <input type="text" name=" " class="form-control input-sm" id="sel1" style="width:211px;"[(ngModel)]="user.meeting_size"> 
               
              </div>
             </div>
@@ -125,15 +124,17 @@
             <div class="col-md-2" style="margin-top: 17px;">
                 <div class="form-group" style="width:82%;">
                   <label for=""></label>
-                  <select class="form-control input-sm" id="sel1" style="width: 150px;">
-                    <option> S.F</option>
-                    <option> S.F</option>
-                    <option> S.F</option>
-                    <option> S.F</option>
+                  <select class="form-control input-sm" id="sel1" style="width: 150px;"[(ngModel)]="user.meeting_size_type">
+                    <option> Square Feet</option>
+                    <option> Square Meter</option>
+                    <option> Square Cent</option>
+                    
                   </select>
                 </div>
                </div>
 </div>
+          </div>
+    
 
 
 <div class="row">
@@ -179,9 +180,9 @@
 <div class="col-md-2">
         <div class="form-group" style="width:82%;">
            <label for="name"></label>
-         <select class="form-control input-sm" id="sel1" style="width:150px;"[(ngModel)]="roomtype1selection" (ngModelChange)="onSelect(roomtype1selection)">
+         <select class="form-control input-sm" id="sel1" style="width:150px;"[(ngModel)]="user.roomtype1selection" (ngModelChange)="onSelect(roomtype1selection)">
             <option *ngFor="let option of roomtype" 
-            [ngValue]="option.type"> 
+            [ngValue]="option"> 
             {{option.type}}
     </option>
             <!-- <option>800 </option> -->
@@ -191,18 +192,12 @@
        <div class="col-md-2">
            <div class="form-group" style="width:82%;">
              <label for=""></label>
-            <input type="text" name=" " class="form-control input-sm" id="sel1" style="width:150px;">          
+            <input type="text" name=" " class="form-control input-sm" id="sel1" style="width:150px;"[(ngModel)]="user.count2">          
            </div>
           </div>
 <div class="col-md-4" style="margin-top: -19px;">
         <div class="form-group" style="width: 82px;">
            <label for="name">Attdence</label>
-         <!-- <select class="form-control input-sm" id="sel1" style="width: 211px;">
-            <option>200 </option>
-            <option>400 </option>
-            <option>600 </option>
-            <option>800 </option>
-          </select> -->
 
           <div class="col-sm-3">
             <div class="input-group">
@@ -248,9 +243,9 @@
 <div class="col-md-2">
         <div class="form-group" style="width:82%;">
            <label for="name"></label>
-         <select class="form-control input-sm" id="sel1" style="width:150px;"[(ngModel)]="roomtype2selection" (ngModelChange)="onSelect(roomtype2selection)">
+         <select class="form-control input-sm" id="sel1" style="width:150px;"[(ngModel)]="user.roomtype2selection" (ngModelChange)="onSelect(roomtype2selection)">
             <option *ngFor="let option of roomtype" 
-            [ngValue]="option.type"> 
+            [ngValue]="option"> 
             {{option.type}}
     </option>
             <!-- <option>800 </option> -->
@@ -262,7 +257,7 @@
        <div class="col-md-2">
            <div class="form-group" style="width:82%;">
              <label for=""></label>
-            <input type="text" name=" " class="form-control input-sm" id="sel1" style="width:150px;">          
+            <input type="text" name=" " class="form-control input-sm" id="sel1" style="width:150px;"[(ngModel)]="user.count3">          
            </div>
           </div>
 
@@ -273,7 +268,7 @@
             </div> -->
              <div class="form-group" style="width:52%;margin-top: -19px;">
                <label for="room">Rooms Per Day</label>
-               <input type="text" class="form-control input-sm">
+               <input type="text" class="form-control input-sm"[(ngModel)]="user.roomperday">
               </div>
         </div>
 
@@ -282,7 +277,7 @@
   
     
 
-                <div class="col-md-4"></div>
+     <div class="col-md-4"></div>
     </div>
     <div class="row">
             <div class="col-md-4"></div>
@@ -291,20 +286,21 @@
         </div>
   </div>
   
-</div>
-</div> <br>
-<div class="col-md-2">
-        <button class="btn btn-primary" style="width:100%;margin-left:-3px;">Inquiry Grid</button>
-      </div>
-  <div class="conainer-fluid"style="margin-left:12px;">
 
-    <div class="responsive-table">
+ <br>
+<div class="row">
+        <button class="btn btn-primary" style="width:200px;margin-left:-3px;"(click)="inquirygrid(user)"(click)="onSelect()">Inquiry Grid</button>
+      </div>
+    </div>
+  <div  *ngIf="showSelected" class="conainer-fluid">
+
+    <div  class="responsive-table">
       <table class="table table-bordered table-hover"style="input-sm;">
         <thead style="background-color:#0077B5;color:wheat;">
          
           <tr>
-            <th>Day</th>
-            <th>Total</th>
+     
+            
             <th>Kngn</th>
             <th>Sdbn</th>
             <th>Ksbn</th>
@@ -313,42 +309,36 @@
             <th>Sjsn</th>
             <th>Sjss</th>
             <th>Comp</th>
+            <th>Day</th>
+            <th>Total</th>
             
           </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>day1</td>
-                <td>500</td>
-                <td> 10</td>
-                <td> 20</td>
-                <td> 30</td>
-                <td> 40</td>
-                <td> 50</td>
-                <td>10</td>
-                <td>10</td>
-                <td>10</td>
+            <tr *ngFor="let grid of inquirygridtable; let i = index">
+                <!-- <td></td>   -->
+                <td>{{grid.KNGN}}</td>
+                <td>{{grid.SDBN}}</td>
+                <td>{{grid.KSBN}}</td>
+                <td>{{grid.KNGS}}</td>
+                <td>{{grid.KSBS}}</td>
+                <td>{{grid.SJSN}}</td>
+                <td>{{grid.SJSS}}</td>
+                <td>{{grid.COMP}}</td>
+                <td>{{grid.days}}</td>
+                <td>{{grid.total}}</td>
             </tr>
-            <tr>
-                <td>day2</td>
-                <td>500</td>
-                <td> 10</td>
-                <td> 20</td>
-                <td> 30</td>
-                <td> 40</td>
-                <td> 50</td>
-                <td>10</td>
-                <td>10</td>
-                <td>10</td>
-            </tr>
+     
         </tbody>
       </table>
 
   </div>
   </div>
-  <div class ="container-fluid" div class="font-size:">
+
+  <br>
+  
+  <div class ="container-fluid">
   <div class="row">
-     <div class="col-md-1"></div> 
     <div class="col-md-2">
   <button class="btn btn-primary" style="width:100%">Avalability</button>
 </div>
@@ -359,10 +349,12 @@
       <button class="btn btn-info" style="width:100%">Reset</button>
     </div>
     <div class="col-md-2">
-        <button class="btn btn-success" style="width:100%">Ok</button>
+        <button class="btn btn-success" style="width:100%" (click)="veronica(user)">Ok</button>
     </div>
     <div class="col-md-2">
         <button class="btn btn-danger" style="width:100%">Close</button>
       </div>
+</div>
+</div>
 </div>
 </div>

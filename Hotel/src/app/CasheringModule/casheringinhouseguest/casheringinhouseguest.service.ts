@@ -9,7 +9,7 @@ import { SessionStorageService } from "ngx-webstorage";
 export class CasheringinhouseguestService {
 
   constructor( private http: Http,public session:SessionStorageService) { }
-
+  
 
   restypedropdown():  Observable<object[]> {    
     const headers = new Headers({'Content-Type':'application/json'})
@@ -38,7 +38,7 @@ export class CasheringinhouseguestService {
        .map(this.extractData)
 
   }
-
+  
   foliohistory():  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
