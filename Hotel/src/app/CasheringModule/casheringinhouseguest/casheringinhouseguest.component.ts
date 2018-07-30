@@ -61,6 +61,7 @@ public money=[];
 public housetable=[];
 public resty=[];
 public foliohis=[];
+public letter=[];
 disone=true
 distwo=true
 siva=true
@@ -81,7 +82,7 @@ siva=true
   this.cashinservice.restypedropdown()
   .subscribe((resp: any) => {
     this.resty = resp.ReturnValue;
-console.log("restypeeeeeeeeeeeeeeeeee",this.resty);
+// console.log(this.resty);
   });
 
 
@@ -90,6 +91,7 @@ console.log("restypeeeeeeeeeeeeeeeeee",this.resty);
     this.foliohis = resp.Return;
   });
 
+ 
       
 
   }
@@ -161,12 +163,17 @@ onYearChange(year:any){
 }
 private creditcard_expiry:any;
 getcreditexpiry(){
-    this.creditcard_expiry = this.month+"/"+this.year;
-    console.log(this.creditcard_expiry);
+  this.creditcard_expiry = this.month+"/"+this.year;
+  console.log(this.creditcard_expiry);
 }
 
 checkoutpost(arg1){
-// console.log(arg1);
+  this.creditcard_expiry = this.month+"/"+this.year;
+  arg1.PF_Expiration_Date = this.creditcard_expiry; //PF_Expiration_Date is the name should given in webservice 
+  this.cashinservice.postbuttoninsert(arg1)
+    .subscribe((resp: any) => {
+    this.letter=resp.ReturnValue;
+})
 }
 
 
