@@ -127,7 +127,7 @@
               <div class="dropdown open">
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer Transaction</a><br>
-                  <a class="dropdown-item" data-toggle="dropdown" href="dropdown-toggle">Transfer to another window</a><br>
+                  <a class="dropdown-item" data-toggle="modal" href="#transfertowindowalert" (click)="window_button()">Transfer to another window</a><br>
                   
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">Link 1</a>
@@ -182,8 +182,16 @@
             <contextmenu #contextmenu style="width:70%;">
               <div class="dropdown open">
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer Transaction</a><br>
-                  <a class="dropdown-item" data-toggle="modal" href="#transfertowindowalert">Transfer to another window</a><br>                                  
+                  <a class="dropdown-item" data-toggle="modal" href="#transfertransaction" >Transfer Transaction</a><br>
+                  <a class="dropdown-item" data-toggle="modal" href="#transfertowindowalert" (click)= "window_button()">Transfer to another window</a><br>                                  
+                
+
+
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Link 1</a>
+                  <a class="dropdown-item" href="#">Link 2</a>
+                  <a class="dropdown-item" href="#">Link 3</a>
+                </div>
                 </div>
               </div>
             </contextmenu>
@@ -259,10 +267,11 @@
           <h4 class="modal-title"><b>Alert</b></h4>
         </div>
         <div class="modal-body">
-          <p>Posting charge was transferred to another window successfully</p>
+          <p>Which window do you want to transfer?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]=butn1 (click)="transfertowindow('win1')">Window 1</button>
+          <button type="button" class="btn btn-info" data-dismiss="modal" [disabled]=butn2 (click)="transfertowindow('win2')">Window 2</button>
         </div>
       </div>
       

@@ -67,6 +67,7 @@ public foliohis=[];
 public letter=[];
 public orderr=[];
 public housetable1=[];
+public window=[];
 disone=true
 distwo=true
 siva=true
@@ -184,6 +185,8 @@ checkoutpost(arg1){
     .subscribe((resp: any) => {
     this.letter=resp.ReturnValue;
 })
+
+
 }
 
 
@@ -245,6 +248,20 @@ filterDatefrmList(startDate,endDate){
   if(startDate!=null && endDate!=null){
     let selectedMembers = this.housetable.filter(
       m => new Date(m.res_arrival) >= new Date(startDate) && new Date(m.res_arrival) <= new Date(endDate)
+      );
+        console.log(selectedMembers);
+        this.housetable = selectedMembers;
+  }else {
+    this.housetable = this.housetable;
+  }
+  
+}
+
+
+filterDatefrmdep(startDate,endDate){
+  if(startDate!=null && endDate!=null){
+    let selectedMembers = this.housetable.filter(
+      m => new Date(m.res_depature) >= new Date(startDate) && new Date(m.res_depature) <= new Date(endDate)
       );
         console.log(selectedMembers);
         this.housetable = selectedMembers;

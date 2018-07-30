@@ -75,6 +75,23 @@ currencydropdown():  Observable<object[]> {
 
 }
 
+
+transferwindow(poscdid,postwindow):  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+  let body={ 
+    "Res_id":this.session.retrieve("id1"),
+    "Post_id":poscdid.toString(),
+    "Post_window":postwindow,
+   }
+   console.log(JSON.stringify(body));
+
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_CAH_POST_UPDATE_TransfertoAnotherWindow',body,options)
+     .map(this.extractData)
+
+}
+
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);

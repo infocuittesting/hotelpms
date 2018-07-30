@@ -150,7 +150,7 @@
                         </div>
                         <div class="col-md-9">
                           <div class="form-group">            
-                            <input type="date" class="form-control input-sm" style="width:70%;height:27px;" [(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)">
+                            <input type="date" name="arrivalfrom" class="form-control input-sm" style="width:70%;height:27px;" [(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)">
                           </div>
                         </div>
                       </div>
@@ -163,7 +163,7 @@
                         </div>
                         <div class="col-md-9">
                           <div class="form-group">            
-                            <input type="date" class="form-control input-sm" style="width:70%;height:27px;">
+                            <input type="date" name="depfrom" class="form-control input-sm" style="width:70%;height:27px;" [(ngModel)]="startDatedep" (change)="filterDatefrmdep(startDatedep,endDatedep)">
                           </div>
                         </div>
                       </div>
@@ -214,7 +214,7 @@
                           </div>
                           <div class="col-md-9">
                             <div class="form-group">            
-                              <input type="date" class="form-control input-sm" style="width:70%;height:27px;" [(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)">
+                              <input type="date" name="arrivalto" class="form-control input-sm" style="width:70%;height:27px;" [(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)">
                             </div>
                           </div>
                         </div>
@@ -227,7 +227,7 @@
                             </div>
                             <div class="col-md-9">
                               <div class="form-group">            
-                                <input type="date" class="form-control input-sm" style="width:70%;height:27px;">
+                                <input type="date" name="depto" class="form-control input-sm" style="width:70%;height:27px;" [(ngModel)]="endDatedep" (change)="filterDatefrmdep(startDatedep,endDatedep)">
                               </div>
                             </div>
                           </div>
@@ -594,7 +594,7 @@
 
   <!--alert after checkout payment modal-->
     
-  <div class="modal fade" id="reinstatemodal" role="dialog">
+  <div class="modal fade" id="checkoutalert" role="dialog">
       <div class="vertical-alignment-helper">  
     <div class="modal-dialog vertical-align-center modal-sm">
       

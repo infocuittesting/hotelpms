@@ -19,10 +19,14 @@ public navigat=[];
 public navtbl=[];
 public wind=[];
 public money=[];
+public windowvar=[];
 resty=[];
 vaal1:any=[];
 vaal2:any=[];
-public gaga=[];
+public editbil=[];
+
+butn1:boolean;
+butn2:boolean;
 
 limit=10;
 public company;
@@ -44,16 +48,28 @@ public company;
    constructor(private cashbillservice: BillingService, public session:SessionStorageService,private route:Router) { }
   public listmark:any=[];
 
-  // for editposting payment 
+  // service call for editposting payment 
   editbilling(amt,quan,ed_arcode,supple,ref,ed_cqno){
-// console.log("edit return values",amount,quan,ed_arcode,ed_sup,ed_ref,ed_cqno)
     this.cashbillservice.updateeditposting(amt,quan,ed_arcode,supple,ref,ed_cqno)
     .subscribe((resp: any) => {
-     this.gaga=resp.Return;
+     this.editbil=resp.Return;
     //  console.log(this.gaga);
    });
  }
-
+win_id:any;
+transfertowindow(args){
+      console.log("windoww");
+      if(args == "win1"){
+        this.win_id = "1";
+      }else{
+        this.win_id = "2";
+      }
+      this.cashbillservice.transferwindow(this.poscdid,this.win_id)
+      .subscribe((resp: any) => {
+       this.windowvar=resp.Return;
+       console.log(this.windowvar);
+     });
+   }
 
 
 
@@ -145,9 +161,14 @@ public amt
 public posdt
 public quant
 public posid
+public poscdid
+public postwindow
 sidx=null;
+
 vaalvaalfunc(dtl,idx){
-  // console.log("selectMembersEdit",dtl)
+
+
+  console.log("selectMembersEdit",dtl)
   //displaying values in edit posting on clicking value in table
   this.supple=dtl.posting_supplement;
   this.ref=dtl.posting_reference;
@@ -156,7 +177,10 @@ vaalvaalfunc(dtl,idx){
   this.amt=dtl.posting_amount;
   this.posdt=dtl.posting_date;
   this.quant=dtl.posting_quantity;
-  
+  this.poscdid=dtl.post_id;  
+  this.postwindow = dtl.post_window;
+  // console.log("window noo",this.postwindow)
+
 this.sidx=idx;
 // this.session.store("Code",dtl.posting_code);
 // this.session.store("Amount",dtl.posting_amount);
@@ -175,6 +199,9 @@ this.cqno=detailss.checkno;
   this.amt=detailss.posting_amount;
   this.posdt=detailss.posting_date;
   this.quant=detailss.posting_quantity;
+  this.poscdid=detailss.post_id;
+  this.postwindow = detailss.post_window;
+  // console.log("window no",this.postwindow)
 // console.log("suppleeeeeeeeeeeeeeeeeee",this.supple);
 // console.log(this.ref);
 this.selectindexx=indexx;
@@ -208,5 +235,19 @@ getcreditexpiry(){
   console.log(this.creditcard_expiry);
 }
 
+window_button(){
+  console.log("post id-----------------------",this.postwindow);
+  if(this.postwindow == 1){
 
+    this.butn2=false;
+    this.butn1=true;
+  }
+  else{
+    console.log("post id-------start----------------",this.postwindow)
+    this.butn1=false ;
+    this.butn2=true;
+    console.log("post id-------end  ----------------",this.postwindow)
+
+  }
+}
 }

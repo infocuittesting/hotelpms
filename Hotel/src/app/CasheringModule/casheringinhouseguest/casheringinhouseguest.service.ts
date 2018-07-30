@@ -67,6 +67,8 @@ export class CasheringinhouseguestService {
        .map(this.extractData)
 
   }
+   
+
 
 
   private extractData(res: Response) {
