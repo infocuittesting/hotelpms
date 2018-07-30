@@ -60,6 +60,7 @@ notetype():  Observable<object[]> {
   return this.http.get('https://hotel360.herokuapp.com/Profile/profilenotetype')
      .map(this.extractData)
 }
+//
 reason():  Observable<object[]> {   
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers });

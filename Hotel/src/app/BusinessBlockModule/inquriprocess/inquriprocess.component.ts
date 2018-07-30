@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { InquriprocessserviceService} from './inquriprocessservice.service'
-import { String, StringBuilder } from 'typescript-string-operations';
+
 
 @Component({
   selector: 'app-inquriprocess',
