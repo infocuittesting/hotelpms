@@ -56,12 +56,17 @@ public folio=[
 ];
 
 
-  constructor(private cashinservice: CasheringinhouseguestService, public session:SessionStorageService,private route:Router) { }
+  constructor(private cashinservice: CasheringinhouseguestService, public session:SessionStorageService,private route:Router) { 
+    this.orderr=this.housetable;
+    this.housetable1=this.housetable;
+  }
 public money=[];
 public housetable=[];
 public resty=[];
 public foliohis=[];
 public letter=[];
+public orderr=[];
+public housetable1=[];
 disone=true
 distwo=true
 siva=true
@@ -79,6 +84,14 @@ siva=true
     this.housetable=resp.ReturnValue;
     // console.log(this.housetable);
   });
+
+//   this.cashinservice.inhousetable()
+//   .subscribe((resp: any) => {
+
+//    this.orderr=resp.ReturnValue;
+//    console.log(this.housetable);
+//  });
+
   this.cashinservice.restypedropdown()
   .subscribe((resp: any) => {
     this.resty = resp.ReturnValue;
@@ -90,9 +103,6 @@ siva=true
   .subscribe((resp: any) => {
     this.foliohis = resp.Return;
   });
-
- 
-      
 
   }
   showdiv="9000";
@@ -178,6 +188,7 @@ checkoutpost(arg1){
 
 
 
+
 //filter data in table  using checkbox
 checkboxflg=[];
 count=0;
@@ -213,7 +224,33 @@ filtercheckboxData(ngmodel, flag) {
 }
 }
 
-// 
+//dropdown filter
+onSelect(val){
+  console.log(val);
+  this.housetable = this.orderr.filter(x => x.res_res_type == val)
+} 
 
+clear(){
 
+  this.cashinservice.inhousetable()
+  .subscribe((resp: any) => {
+
+   this.housetable=resp.ReturnValue;
+   // console.log(this.housetable);
+ });
+}
+//date filter
+
+filterDatefrmList(startDate,endDate){
+  if(startDate!=null && endDate!=null){
+    let selectedMembers = this.housetable.filter(
+      m => new Date(m.res_arrival) >= new Date(startDate) && new Date(m.res_arrival) <= new Date(endDate)
+      );
+        console.log(selectedMembers);
+        this.housetable = selectedMembers;
+  }else {
+    this.housetable = this.housetable;
+  }
+  
+}
 }

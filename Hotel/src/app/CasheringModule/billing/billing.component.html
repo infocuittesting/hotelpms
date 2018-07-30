@@ -183,14 +183,7 @@
               <div class="dropdown open">
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer Transaction</a><br>
-                  <a class="dropdown-item" data-toggle="dropdown" href="dropdown-toggle">Transfer to another window</a><br>
-                  
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                  </div>
-                                  
+                  <a class="dropdown-item" data-toggle="modal" href="#transfertowindowalert">Transfer to another window</a><br>                                  
                 </div>
               </div>
             </contextmenu>
@@ -231,7 +224,7 @@
 
       <button type="button" class="btn btn-warning" style="width:110px;margin-left:2%;" data-target="#postinghistory" data-toggle="modal"><b>History</b></button>
   
-      <button type="button" class="btn btn-secondary" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#myModal2"><b>Payment</b></button>
+      <button type="button" class="btn btn-secondary" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#paymentmodal"><b>Payment</b></button>
   
       <button type="button" class="btn btn-primary" style="width:110px;margin-left:2%;"><b>Settlement</b></button>
 
@@ -250,7 +243,39 @@
   </div>
    
   <!-- *********************************************************************************************************** -->
-            
+     
+  
+
+ <!--alert for Transfer to another room-->
+    
+ <div class="modal fade" id="transfertowindowalert" role="dialog">
+    <div class="vertical-alignment-helper">  
+  <div class="modal-dialog vertical-align-center modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Alert</b></h4>
+        </div>
+        <div class="modal-body">
+          <p>Posting charge was transferred to another window successfully</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  </div>
+  
+  
+  <!-- ******************************************alert for Transfer to another room ends************************************************************************* -->
+
+
+
+
         <!--  post option Modal -->
   
   <div class="modal fade" id="postoption" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -581,10 +606,10 @@
                          
                                 <div class="col-md-6">
                                   <select style="width:70%;height:100%;" name="arrcode" class="form-control" [(ngModel)]="ed_arcode">
-                                      <option value="101">101</option>
-                                      <option value="102">102</option>
-                                      <option value="103">103</option>
-                                      <option value="104">104</option>
+                                      <option value="101">1</option>
+                                      <option value="102">2</option>
+                                      <option value="103">3</option>
+                                      <option value="104">4</option>
                                     </select>
                                 </div>
                               </div>
@@ -726,7 +751,7 @@
   </div>
 </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-success" (click)="editbilling(amt,quan,ed_arcode,supple,ref,cqno)">OK</button>
+              <button type="button" class="btn btn-success" (click)="editbilling(amt,quan,ed_arcode,supple,ref,cqno)" data-dismiss="modal">OK</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               
           </div>
@@ -735,30 +760,30 @@
   </div>
 </div>
   
-          <!--Reinstate modal-->
-  
-          <div class="modal fade" id="reinstatemodal" role="dialog">
-              <div class="vertical-alignment-helper">  
-            <div class="modal-dialog vertical-align-center modal-sm">
-              
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><b>Confirm Reinstate</b></h4>
-                  </div>
-                  <div class="modal-body">
-                    <p>Are you sure want to reinstate? </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-                
-              </div>
-            </div>
-            </div>
+<!--Reinstate modal-->
+
+<div class="modal fade" id="reinstatemodal" role="dialog">
+    <div class="vertical-alignment-helper">  
+  <div class="modal-dialog vertical-align-center modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Confirm Reinstate</b></h4>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure want to reinstate? </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  </div>
   
   <div class="modal fade" id="transfertransaction" role="dialog">
       <div class="vertical-alignment-helper">
@@ -923,7 +948,7 @@
     </div>
   </div>
   
-    <!-- Modal -->
+    <!--after transfer to another room Modal -->
     <div class="modal fade" id="aftertransfer" role="dialog">
         <div class="vertical-alignment-helper">  
       <div class="modal-dialog vertical-align-center modal-sm">
@@ -945,3 +970,150 @@
         </div>
       </div>
       </div>
+<!--****************************** after transfer to another room ends************************************************************ -->
+
+ <!-- payment Modal in billing -->
+ <div class="modal fade" id="paymentmodal"  role="dialog">
+  <div class="vertical-alignment-helper">
+  <div class="modal-dialog vertical-align-center">
+  
+    <!-- payment  Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" >Payment </h4>
+      </div>
+      <div class="modal-body">
+          <form>
+          <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="row">
+
+                  <div class="col-sm-6">
+                    <b>Payment Code</b>
+                  </div>
+                      <div class="col-sm-6">
+                          <select style="height:30px;width:130%;" class="form-control" name="paycode" [(ngModel)]="selected" (change)="selectoption(selected)">
+                              <option value="9001">9001</option>
+                              <option value="9002">9002</option>
+                              <option value="9003">9003</option>
+                          </select>
+
+                      </div>
+                    </div>
+                    </div>
+                    <div class="col-sm-3" style="color:#0077B5;">
+                        <div *ngIf="showdiv=='9001'">cash</div>
+                        <div *ngIf="showdiv=='9002'">credit card</div>
+                        <div *ngIf="showdiv=='9003'">Direct Bill</div>
+                    </div>
+                  
+                </div><br>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="col-sm-6">
+                      <b>Currency</b>
+                    </div>
+                    <div class="col-sm-6">
+                        <select style="height:30px;width:150%;" class="form-control" [(ngModel)]="currency">
+                          <option *ngFor="let list of money" [ngValue]="list.transaction_currency_id">{{list.currency}}</option>
+                          </select>
+                      </div>
+                    </div>  
+                  </div>
+              </div>
+            </div> 
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-sm-6">
+                    <div class="col-sm-6">
+                      <b>Amount</b>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" name="curr" class="form-control" style="width:150%;height:30px;" [(ngModel)]="amount">
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                        <div class="row" *ngIf="showdiv=='9001'" >
+                          <div class="col-sm-6">
+                          <div class="col-sm-6">
+                            <b>Reference</b>
+                          </div>
+                          <div class="col-sm-6">
+                              <input type="text" class="form-control" name="reff" style="width:150%;height:30px;" [(ngModel)]="ref">
+                          </div>
+                          </div>
+                        </div>
+                        <div class="row" *ngIf="showdiv=='9002'">
+                          <div class="col-sm-6">
+                          <div class="col-sm-6">
+                            <b>Credit card No.</b>
+                          </div>
+                          <div class="col-sm-6">
+                              <input type="text" class="form-control" name="cardnum" style="width:150%;height:30px;" [(ngModel)]="cardno">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="col-sm-2">
+                              <b>Expiry Date</b>
+                            </div>
+                            
+                            <div class="col-sm-10">
+                              <div class="row">
+                                <div class="col-sm-6">  
+                                    <app-monthpicker (change)="onMonthChange($event.target.value)" [(ngModel)]="PF_Expiration_Month"> </app-monthpicker>
+                                </div>
+                                
+                                <div class="col-sm-6"> 
+                                    <app-yearpicker (change)="onYearChange($event.target.value)" [(ngModel)]="PF_Expiration_Year"></app-yearpicker>
+                                    {{PF_Expiration_Month}}        
+                                  <!-- <input type="text" class="form-control"  [(ngModel)]="mbc.PF_Expiration_Date" style="width:200px;"> -->
+                                </div>
+                              </div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="row" *ngIf="showdiv=='9003'">
+                          <div class="col-sm-3">
+                            <b>Supplement</b>
+                          </div>
+                          <div class="col-sm-4">
+                              <input type="text" class="form-control" name="sup" style="width:150%;height:30px;" [(ngModel)]="supp">
+                            </div>
+                          </div><br>
+                            <div class="row" *ngIf="showdiv=='9003'">
+                            <div class="col-sm-3">
+                                <b>Reference</b>
+                              </div>
+                              <div class="col-sm-4">
+                                  <input type="text" class="form-control" name="referen" style="width:150%;height:30px;" [(ngModel)]="ref">
+                                </div>
+                        </div>
+                      
+                  </div>
+                </div>
+          </form>
+          </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="paymentfun(payment)"><b>Post</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
+</div>
+
+<!--**************************************************************payment Modal ends**************************************************************************************-->

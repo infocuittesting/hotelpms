@@ -150,7 +150,7 @@
                         </div>
                         <div class="col-md-9">
                           <div class="form-group">            
-                            <input type="date" class="form-control input-sm" style="width:70%;height:27px;" >
+                            <input type="date" class="form-control input-sm" style="width:70%;height:27px;" [(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)">
                           </div>
                         </div>
                       </div>
@@ -214,7 +214,7 @@
                           </div>
                           <div class="col-md-9">
                             <div class="form-group">            
-                              <input type="date" class="form-control input-sm" style="width:70%;height:27px;">
+                              <input type="date" class="form-control input-sm" style="width:70%;height:27px;" [(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)">
                             </div>
                           </div>
                         </div>

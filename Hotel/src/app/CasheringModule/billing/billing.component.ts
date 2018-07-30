@@ -18,6 +18,7 @@ hist=[];
 public navigat=[];
 public navtbl=[];
 public wind=[];
+public money=[];
 resty=[];
 vaal1:any=[];
 vaal2:any=[];
@@ -59,6 +60,7 @@ public company;
 
   ngOnInit() {
 
+// posting history
     this.cashbillservice.gethistorylog()
     .subscribe((resp: any) => {
       this.house = resp.History;
@@ -69,6 +71,13 @@ public company;
 // console.log(this.hist);
 
     });
+    //currency dropdown
+    this.cashbillservice.currencydropdown()
+    .subscribe((resp: any) => {
+
+     this.money=resp.Return;
+    //  console.log(this.money);
+   });
 
 
 this.cashbillservice.inhousetobilling()
@@ -97,6 +106,15 @@ this.cashbillservice.inhousetobilling()
 
 
 }
+
+
+showdiv="9000";
+selectoption(flag){
+  console.log(flag);
+  this.showdiv=flag;
+  console.log(flag);
+}
+
 
 public room=this.session.retrieve("id");
 public name=this.session.retrieve("name");
@@ -174,4 +192,21 @@ addFieldValue() {
     this.fieldArray.push(this.newAttribute)
     this.newAttribute = {};
 }
+
+//month and year dropdown in expiry date
+private month:any;
+private year:any;
+onMonthChange(month:any){
+  this.month = month.toString();
+}
+onYearChange(year:any){
+  this.year = year.toString();
+}
+private creditcard_expiry:any;
+getcreditexpiry(){
+  this.creditcard_expiry = this.month+"/"+this.year;
+  console.log(this.creditcard_expiry);
+}
+
+
 }
