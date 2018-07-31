@@ -9,11 +9,11 @@
   
         <div class="form-group" style="width:82%;">
             <label for="room">Name</label>
-            <input type="text" class="form-control input-sm" >
+            <input type="text"name="Name" class="form-control input-sm"[(ngModel)]="Name" >
         </div>
         <div class="form-group" style="width:82%;">
             <label for="room">Start Date</label>
-            <input type="date" class="form-control input-sm">
+            <input type="date"Name="StartDate" class="form-control input-sm"[(ngModel)]="StartDate">
           </div>
         
 
@@ -23,21 +23,21 @@
   <div class ="col-md-3">
       <div class="form-group" style="width:82%;">
       <label for="room">Block Code</label>
-      <input type="text" class="form-control input-sm" >
+      <input type="text"name="BlockCode" class="form-control input-sm" [(ngModel)]="BlockCode" >
   </div>
   <div class="form-group" style="width:82%;">
       <label for="room">End Date</label>
-      <input type="date" class="form-control input-sm">
+      <input type="date"Name="Enddate" class="form-control input-sm"[(ngModel)]="EndDate">
     </div>
 
     
   </div>
   <div class ="col-md-1"></div>
   <div class ="col-md-3">
-      <div class="form-group" style="width:82%;">
-          <label for="room">Stay Date</label>
+      <!-- <div class="form-group" style="width:82%;">
+          <label for="room" disabled>Stay Date</label>
           <input type="date" class="form-control input-sm">
-        </div>
+        </div> -->
         <div class="form-group" style="width:82%;">
             <label for="name">Status</label>
           <select class="form-control input-sm" id="sel1" style="width:150px;">
@@ -58,39 +58,47 @@
     <table class="table table-bordered table-hover">
       <thead style="background-color: #0077B5;color:white;">
         <tr>
-          <th>seq</th>
-          <th>Start Date</th>
-          <th> Block Name</th>
-          <th> owner</th>
-          <th> Rm Nts</th>
-          <th> Status</th>
-          <th> Cat Status</th>
-          <th> End Date</th>
-          <th> Block Id</th>
+          <th>Seq</th>
+          <th>Blockid</th>
+          <th> StartDate</th>
+          <th> Nights</th>
+          <th> EndDate</th>
+          <th> RoomsperDay</th>
+          <th> MeetingSpaceSize</th>
+          <th> MeetingSpaceType</th>
+          <th> Attdence</th>
+          <th>BlockCode</th>
+          <th>BlockStatus</th>
+          <th>Pfid</th>
+          <th>RateCodeId</th>
+          <th>BlockName</th>
+          <th>MarketId</th>
+          <th>SourceId</th>
+          <th>Owner</th>
+          
         </tr>
       </thead>
       <tbody>
-        <tr>
-            <td>1</td>
-            <td>10/10/2018</td>
-            <td> Venki</td>
-            <td> Venki</td>
-            <td> 1</td>
-            <td> Clean</td>
-            <td> Na</td>
-            <td>10/11/2018</td>
-            <td>10</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>20/07/2018</td>
-            <td>Raja</td>
-            <td> Raja</td>
-            <td> 2</td>
-            <td> Clean</td>
-            <td> None</td>
-            <td>10/11/2018</td>
-            <td>12</td>
+        <tr *ngFor="let array of tableschanges | filterdata: Name :'block_name'|filterdata: BlockCode :'block_code'|filterdata: EndDate :'end_date'|filterdata: StartDate :'start_date';let i=index"
+         (click)="selectMembersEdit( array,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+            <td>{{i+1}}</td>
+            <td>{{array.block_id}}</td>
+            <td>{{array.start_date}}</td>
+            <td>{{array.nights}}</td>
+            <td>{{array.end_date}}</td>
+            <td>{{array.rooms_per_day}}</td>
+            <td>{{array.meeting_space_size}}</td>
+            <td>{{array.meeting_space_type}}</td>
+            <td>{{array.attendess}}</td>
+            <td>{{array.block_code}}</td>
+            <td>{{array.block_status}}</td>
+            <td>{{array.pf_id}}</td>
+            <td>{{array.ratecode_id}}</td>
+            <td>{{array.block_name}}</td>
+            <td>{{array.market_id}}</td>
+            <td>{{array.source_id}}</td>
+            <td>{{array.owner}}</td>
+            
         </tr>
       </tbody>
     </table>
@@ -105,7 +113,7 @@
     <button class="btn btn-default" style="width:100%">Events</button>
   </div>
   <div class="col-md-2">
-      <button class="btn btn-info"routerLink="/options"style="width:100%">Options</button>
+      <button class="btn btn-light"routerLink="/options"style="width:100%">Options</button>
     </div>
   <div class="col-md-2">
      <button class="btn btn-success"routerLink="/bcreate"style="width:100%">New</button>

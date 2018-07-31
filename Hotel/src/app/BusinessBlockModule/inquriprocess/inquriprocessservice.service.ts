@@ -39,4 +39,46 @@ roomtypedroupdown2():  Observable<object[]> {
     // a(JSON.stringify(body));
         return body;
     }
+    vallvall(daisy):  Observable<object[]> {   
+      console.log("vaalvallfunction",daisy)
+      const headers = new Headers({'Content-Type':'application/json'})
+      const options = new RequestOptions({ headers: headers });
+      let body = {
+        
+        "Inquiry":
+        {	
+        "start_date":daisy.RES_Arrival,
+        "nights":daisy.RES_Nights,
+        "end_date":daisy.RES_Depature,
+        "rooms_per_day":daisy.roomperday,
+        "meeting_space_size":daisy.meeting_size,
+        "meeting_space_type":daisy.meeting_size_type,
+        "attendess":daisy.attdence,
+        "pf_id":"cpy71",
+        "roomtype_one":daisy.roomtypeselection,
+        "roomtype_two":daisy.roomtype1selection,
+        "roomtype_three":daisy.roomtype2selection,
+        "roomtype_count_one":daisy.count,
+        "roomtype_count_two":daisy.count2,
+        "roomtype_count_three":daisy.count3
+          },
+       "Inquiry_grid":
+          [{
+          
+            "day":"day1",
+            "Kngn":"12",
+            "Ksbn":"",
+            "Ksbs":"",
+            "Sjsn":"",
+            "Sjss":"",
+            "Comp":"10",
+            "Kngs":"8",
+            "Com1":"",
+            "Total":"30"
+          }]
+      };
+      
+      return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_INSERT_BusinessBlock',body,options)
+         .map(this.extractData)
+    }    
 }
