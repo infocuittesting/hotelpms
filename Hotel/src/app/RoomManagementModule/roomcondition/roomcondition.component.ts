@@ -217,10 +217,24 @@ roomData1 = [];
     this.room=this.copy; 
   }
   }
-
+  new=true;
+  edit=true;
+  deleted=true;
+  public rmid;
   selectindex=null;
 selectRoomEdit(details,index){
 this.selectindex=index;
+this.rmid=details.rm_room;
+if(this.rmid=details.rm_room){
+  this.new=false;
+  this.edit=false;
+  this.deleted=false;
+}
+else{
+  this.new=true;
+  this.edit=true;
+  this.deleted=true;
+}
 this.session.store("id",details.rm_room.toString());
 
 }
