@@ -52,6 +52,7 @@ export class ReservationComponent implements OnInit {
     }
   }
 
+  
  public usera;
  public confim;
   user33={};
