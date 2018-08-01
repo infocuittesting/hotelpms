@@ -48,18 +48,57 @@ export class BillingService {
   const options = new RequestOptions({ headers: headers })
  let body={ 
   "Res_id":this.session.retrieve("id1"),
+  "res_room":this.session.retrieve("id"),
   "post_id":this.session.retrieve("posid"),
   "Posting_amount":amt,
   "Arrangement_code":ed_arcode.toString(),
   "Checkno":cqno.toString(),
   "Posting_supplement":ed_sup,
   "Posting_reference":ref,
-  "Posting_quantity":quan.toString(),
-  "res_room":this.session.retrieve("id")
+  "Posting_quantity":quan
  }
  console.log(JSON.stringify(body));
 
   return this.http.post('https://hotel360.herokuapp.com/HOTEL_CAH_POST_UPDATE_UPDATEGUESTBILLING',body,options)
+     .map(this.extractData)
+
+}
+
+expirydate(cardno,PF_Expiration_Date):  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body =
+  {
+     "res_id":this.session.retrieve("id1"),
+     "PF_Creditcard_No":cardno,
+     "PF_Expiration_Date":PF_Expiration_Date
+     
+  }
+ console.log(JSON.stringify(body));
+ return this.http.post('https://hotel360.herokuapp.com/Profile/UpdateProfileCreditcard',body,options)
+    .map(this.extractData)
+    //.catch(this.handleErrorObservable);
+}
+
+
+postbuttoninsert(selected,currency,amount,ref,supp,expdt): Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+ let body={ 
+  "res_id":this.session.retrieve("id1"),
+  "res_room":this.session.retrieve("id"),
+  "Payment_code_id":selected.toString(),
+  "currency_id":currency.toString(),
+  "Postig_amount":amount,
+  "payment_supplemet":supp,
+  "Posting_reference":ref,
+  "credicard_id":expdt.toString(), 
+ }
+ console.log(JSON.stringify(body));
+
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_CAH_POST_INSERT_UPDATEPOSTINGPAYMENT',body,options)
      .map(this.extractData)
 
 }
@@ -74,7 +113,25 @@ currencydropdown():  Observable<object[]> {
      .map(this.extractData)
 
 }
+paymentcodedropdown():  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+ 
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_CASH_PAYMENT_CODE_SELECT',options)
+     .map(this.extractData)
 
+}
+
+postingcodedropdown():  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+ 
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_CASH_BILLING_CODE_SELECT',options)
+     .map(this.extractData)
+
+}
 
 transferwindow(poscdid,postwindow):  Observable<object[]> {
        
@@ -88,6 +145,24 @@ transferwindow(poscdid,postwindow):  Observable<object[]> {
    console.log(JSON.stringify(body));
 
   return this.http.post('https://hotel360.herokuapp.com/HOTEL_CAH_POST_UPDATE_TransfertoAnotherWindow',body,options)
+     .map(this.extractData)
+
+}
+
+postingbill(poscdid,totalPos,totalamt):  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+  let body={
+    "Res_id":this.session.retrieve("id1"),
+    "res_room":this.session.retrieve("id"),
+    "bills":poscdid,
+    "Total_amount":totalamt.toString(),
+    "Total_posting":totalPos.toString()
+    }
+   console.log("final input",JSON.stringify(body));
+
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_CAH_POST_INSERT_UPDATEGUESTBILLING',body,options)
      .map(this.extractData)
 
 }
