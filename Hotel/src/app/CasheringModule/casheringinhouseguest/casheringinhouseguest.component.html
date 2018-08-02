@@ -427,7 +427,7 @@
           <div class="col-md-1"></div>
               <button type="button" class="btn btn-primary" style="width:110px;margin-left:10%;" routerLink="/billing" [disabled]=siva><b>Billing</b></button>
       
-              <button type="button" class="btn btn-Basic" style="width:110px;margin-left:2%;" data-toggle="modal" [disabled]=disone><b>C/O zero</b></button>
+              <button type="button" class="btn btn-Basic" style="width:110px;margin-left:2%;" data-toggle="modal" [disabled]=disone (click)="checkoutfun()" data-toggle="modal" data-target="#checkoutzeroalert"><b>C/O zero</b></button>
       
               <button type="button" class="btn btn-success" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#checkout" [disabled]=distwo><b>Check Out</b></button>
           
@@ -446,6 +446,35 @@
     </div>
     </div>
     <!-- *********************************************************************************************************** -->
+   
+    <!--alert after checkout zero modal-->
+    
+  <div class="modal fade" id="checkoutzeroalert" role="dialog">
+    <div class="vertical-alignment-helper">  
+  <div class="modal-dialog vertical-align-center modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Alert</b></h4>
+        </div>
+        <div class="modal-body">
+          <p>{{zerosuccessmsg}}{{zerofailuremsg}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  </div>
+  
+  
+  <!-- ******************************************alert for checkout zero ends************************************************************************* -->
+
+   
     <!-- checkout Modal -->
     <div class="modal fade" id="checkout"  role="dialog">
         <div class="vertical-alignment-helper">
@@ -470,18 +499,15 @@
                         </div>
                         <div class="col-sm-6">
                             <select style="height:30px;width:130%;" class="form-control" name="paycode" [(ngModel)]="checkout.selected" (change)="selectoption(checkout.selected)">
-                                <option value="9001">9001</option>
-                                <option value="9002">9002</option>
-                                <option value="9003">9003</option>
-                              </select>
-    
+                              <option  *ngFor="let paycodelist of paycode" [ngValue] = "paycodelist.payment_code_id">{{paycodelist.payment_code}}</option>
+                              </select>    
                             </div>
                           </div>
                           </div>
                           <div class="col-sm-3" style="color:#0077B5;">
-                              <div *ngIf="showdiv=='9001'">cash</div>
-                              <div *ngIf="showdiv=='9002'">credit card</div>
-                              <div *ngIf="showdiv=='9003'">Direct Bill</div>
+                              <div *ngIf="showdiv=='1'">cash</div>
+                              <div *ngIf="showdiv=='2'">credit card</div>
+                              <div *ngIf="showdiv=='3'">Direct Bill</div>
                               </div>
                         
                       </div><br>
@@ -492,7 +518,7 @@
                             <b>Currency</b>
                           </div>
                           <div class="col-sm-6">
-                              <select style="height:30px;width:150%;" class="form-control" [(ngModel)]="checkout.currency">
+                              <select name="cur" style="height:30px;width:150%;" class="form-control" [(ngModel)]="checkout.currency">
                                 <option *ngFor="let list of money" [ngValue]="list.transaction_currency_id">{{list.currency}}</option>
                                 </select>
                             </div>
@@ -509,7 +535,7 @@
                             <b>Amount</b>
                           </div>
                           <div class="col-sm-6">
-                              <input type="text" name="curr" class="form-control" style="width:150%;height:30px;" [(ngModel)]="checkout.amount">
+                              <input type="text" name="curr" class="form-control" style="width:150%;height:30px;" [(ngModel)]="balnc">
                           </div>
                           </div>
                         </div>
@@ -518,7 +544,7 @@
     
                     <div class="panel panel-default">
                         <div class="panel-body">
-                              <div class="row" *ngIf="showdiv=='9001'" >
+                              <div class="row" *ngIf="showdiv=='1'" >
                                 <div class="col-sm-6">
                                 <div class="col-sm-6">
                                   <b>Reference</b>
@@ -528,7 +554,7 @@
                                 </div>
                                 </div>
                               </div>
-                              <div class="row" *ngIf="showdiv=='9002'">
+                              <div class="row" *ngIf="showdiv=='2'">
                                 <div class="col-sm-6">
                                 <div class="col-sm-6">
                                   <b>Credit card No.</b>
@@ -558,7 +584,7 @@
                                     </div>
                                 </div>
                               </div>
-                              <div class="row" *ngIf="showdiv=='9003'">
+                              <div class="row" *ngIf="showdiv=='3'">
                                 <div class="col-sm-3">
                                   <b>Supplement</b>
                                 </div>
@@ -566,7 +592,7 @@
                                     <input type="text" class="form-control" name="sup" style="width:150%;height:30px;" [(ngModel)]="checkout.supp">
                                   </div>
                                 </div><br>
-                                  <div class="row" *ngIf="showdiv=='9003'">
+                                  <div class="row" *ngIf="showdiv=='3'">
                                   <div class="col-sm-3">
                                       <b>Reference</b>
                                     </div>
@@ -580,7 +606,7 @@
                 </form>
                 </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="checkoutpost(checkout)"><b>Post</b></button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="checkoutpost(checkout,balnc)" data-toggle="modal" data-target="#checkoutalert"><b>Post</b></button>
               <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
             </div>
           </div>
@@ -605,7 +631,7 @@
             <h4 class="modal-title"><b>Alert</b></h4>
           </div>
           <div class="modal-body">
-            <p>Posting payment inserted successfully</p>
+            <p>{{successmsg}}{{failuremsg}}</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>

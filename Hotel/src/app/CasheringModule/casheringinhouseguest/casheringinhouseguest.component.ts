@@ -61,13 +61,21 @@ public folio=[
     this.housetable1=this.housetable;
   }
 public money=[];
+public paycode=[];
 public housetable=[];
 public resty=[];
 public foliohis=[];
-public letter=[];
+public zerovar:any;
+public letter:any;
 public orderr=[];
 public housetable1=[];
 public window=[];
+public exprydt:any;
+public successmsg:any;
+public failuremsg:any;
+public zerosuccessmsg:any;
+public zerofailuremsg:any;
+
 disone=true
 distwo=true
 siva=true
@@ -105,6 +113,12 @@ siva=true
     this.foliohis = resp.Return;
   });
 
+  this.cashinservice.paymentcodedropdown()
+  .subscribe((resp: any) => {
+      this.paycode=resp.ReturnValue;
+       console.log(this.paycode);
+   });
+
   }
   showdiv="9000";
   selectoption(flag){
@@ -112,56 +126,60 @@ siva=true
     this.showdiv=flag;
     console.log(flag);
   }
-  
-  public checkname; 
-  selectindex=null;
-selectMembersEdit(details,index){
-this.selectindex=index;
-// condition for checkout button
-if(details.res_guest_balance!=0){
-  this.distwo=false;
-}
-else{
-  this.disone=true;
-}
-// condition for checkout zero button
-if(details.res_guest_balance==0){
-  this.disone=false;
-}
-else{
-  this.disone=true;
-}
 
-// condition for billing button
-if(details.res_guest_balance!="null"){
-  this.siva=false; 
-}
-else{
-  this.siva=true; 
-}
+public balnc=[];  
+public checkname; 
+selectindex=null;
+selectMembersEdit(details,index)
+{
+      this.selectindex=index;
+      // condition for checkout button
+      console.log("statussssssssssssssssss",details);
+      if(details.res_guest_balance!=0 && details.res_guest_status=="due out"){
+        this.distwo=false;
+      }
+      else{
+        this.disone=true;
+      }
+      // condition for checkout zero button
+      if(details.res_guest_balance==0 && details.res_guest_status=="due out"){
+        this.disone=false;
+        this.distwo=true;
+      }
+      else{
+        this.disone=true;
+      }
 
-//  console.log("res id",details.res_id)
-// if(details.res_id!=0){
-//   this.disthree=false;
-// }
-// else{
-//   this.disthree=true;
-// }
+      // condition for billing button
+      if(details.res_guest_balance!="null"){
+        this.siva=false; 
+      }
+      else{
+        this.siva=true; 
+      }
 
-this.session.store("id",details.res_room.toString());
-this.session.store("id1",details.res_id.toString());
-this.session.store("name",details.pf_firstname);
-this.session.store("cc",details.res_creditcard_number);
-this.session.store("expdate",details.res_exp_date);
-// for displaying
-// this.session.store("balanc",details.res_guest_balance);
-// this.session.store("arr",details.res_arrival);
-// this.session.store("depar",details.res_depature);
-// this.session.store("gstat",details.res_guest_status);
-// this.session.store("rtcd",details.res_rate_code);
-// this.session.store("rte",details.res_rate);
-// this.session.store("persn",details.res_adults);
-this.checkname=details.Name;
+      //  console.log("res id",details.res_id)
+      // if(details.res_id!=0){
+      //   this.disthree=false;
+      // }
+      // else{
+      //   this.disthree=true;
+      // }
+      this.balnc=details.res_guest_balance;
+      this.session.store("id",details.res_room.toString());
+      this.session.store("id1",details.res_id.toString());
+      this.session.store("name",details.pf_firstname);
+      this.session.store("cc",details.res_creditcard_number);
+      this.session.store("expdate",details.res_exp_date);
+      // for displaying
+      // this.session.store("balanc",details.res_guest_balance);
+      // this.session.store("arr",details.res_arrival);
+      // this.session.store("depar",details.res_depature);
+      // this.session.store("gstat",details.res_guest_status);
+      // this.session.store("rtcd",details.res_rate_code);
+      // this.session.store("rte",details.res_rate);
+      // this.session.store("persn",details.res_adults);
+      this.checkname=details.Name;
 }
 
 private month:any;
@@ -178,18 +196,62 @@ getcreditexpiry(){
   console.log(this.creditcard_expiry);
 }
 
-checkoutpost(arg1){
-  this.creditcard_expiry = this.month+"/"+this.year;
-  arg1.PF_Expiration_Date = this.creditcard_expiry; //PF_Expiration_Date is the name should given in webservice 
-  this.cashinservice.postbuttoninsert(arg1)
+  //Checkout button
+checkoutpost(arg1,balnc)
+  {
+    console.log("checking arguements in checkout",arg1,balnc)
+    this.creditcard_expiry = this.month+"/"+this.year;
+    console.log("before expiry",arg1.cardno,this.creditcard_expiry);
+
+    this.cashinservice.expirydate(arg1.cardno,this.creditcard_expiry)
     .subscribe((resp: any) => {
-    this.letter=resp.ReturnValue;
-})
+        this.exprydt=resp.Return_value;
+        console.log(this.exprydt);
 
 
+      this.cashinservice.checkoutbuttoninsert(arg1,balnc,this.exprydt)
+      .subscribe((resp: any) => {
+      this.letter=resp.ReturnCode;
+      if(this.letter=="RIS")
+      {
+        this.successmsg="payment was done successfully";
+      }
+      else   
+      {
+        this.failuremsg="Unable to update";
+      }
+      })
+     });  
+      
+      //refresh
+      this.cashinservice.inhousetable()
+      .subscribe((resp: any) => {
+
+      this.housetable=resp.ReturnValue;
+      // console.log(this.housetable);
+      });
 }
 
+//zero checkout
+checkoutfun(){
+  this.cashinservice.checkoutzero()
+  .subscribe((resp: any) => {
+    this.zerovar = resp.ReturnCode;
+    if(this.zerovar=="RUS"){
+      this.zerosuccessmsg="successfully checked out";
+    }
+    else{
+      this.zerofailuremsg="Unable to update";
+    }
+  });
+  //refresh
+  this.cashinservice.inhousetable()
+  .subscribe((resp: any) => {
 
+   this.housetable=resp.ReturnValue;
+   // console.log(this.housetable);
+ });
+}
 
 
 //filter data in table  using checkbox
