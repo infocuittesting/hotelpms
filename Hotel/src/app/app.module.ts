@@ -60,6 +60,7 @@ import { RominglistComponent } from './BusinessBlockModule/rominglist/rominglist
 import { BusinessCreateBlockComponent } from './BusinessBlockModule/business-create-block/business-create-block.component';
 import { InquriprocessComponent } from './BusinessBlockModule/inquriprocess/inquriprocess.component';
 import { MomentModule } from 'angular2-moment';
+import { BusinessBlockGridCurrentComponent } from './BusinessBlockModule/business-block-grid-current/business-block-grid-current.component';
 
 
 
@@ -87,6 +88,7 @@ import { MomentModule } from 'angular2-moment';
    RominglistComponent,
    BusinessCreateBlockComponent,
    InquriprocessComponent,
+   BusinessBlockGridCurrentComponent,
 
    
    
