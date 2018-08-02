@@ -134,7 +134,7 @@ selectMembersEdit(details,index)
 {
       this.selectindex=index;
       // condition for checkout button
-      console.log("statussssssssssssssssss",details.res_guest_status);
+      console.log("statussssssssssssssssss",details);
       if(details.res_guest_balance!=0 && details.res_guest_status=="due out"){
         this.distwo=false;
       }

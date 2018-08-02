@@ -157,8 +157,8 @@ postingbill(poscdid,totalPos,totalamt):  Observable<object[]> {
     "Res_id":this.session.retrieve("id1"),
     "res_room":this.session.retrieve("id"),
     "bills":poscdid,
-    "Total_amount":totalamt.toString(),
-    "Total_posting":totalPos.toString()
+    "Total_amount":totalamt,
+    "Total_posting":totalPos
     }
    console.log("final input",JSON.stringify(body));
 

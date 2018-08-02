@@ -4,25 +4,26 @@
       <br>
 <div class="container-fluid">
   <div class="jumbotron" style="background-color: #0077B5;color: white; ">
+    <form action="" id="myform">
     <div class="row">
 
         <div class="col-sm-4">
            <b> First Name</b> <div class="input-group">
                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" id="name" class="form-control" [(ngModel)]="queryString"></div>
+                <input type="text" name="firstname" id="name" class="form-control" [(ngModel)]="queryString"></div>
         </div>
   
         <div class="col-sm-4">
   
             <b>Last Name</b> <div class="input-group">
                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" id="name" class="form-control"></div>
+                <input type="text" name="Lastname" id="name" class="form-control" [(ngModel)]="query"></div>
         </div>
         
           <div class="col-sm-4">
               <b>Company</b> <div class="input-group">
                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" id="name" class="form-control"></div>
+                <input type="text" name="Company" id="name" class="form-control"></div>
   
             </div>
       
@@ -34,20 +35,20 @@
               <div class="col-lg-4">
                   <b>Contact</b> <div class="input-group">
                        <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
-                       <input type="text" class="form-control"></div>
+                       <input type="text"name="Contact" class="form-control"></div>
                </div>
   
         <div class="col-lg-4">
             <b>Arrival From</b> <div class="input-group">
                  <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                 <input type="date" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)"></div>
+                 <input type="date" name="Arrivalfrom" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)"></div>
          </div>
    
          <div class="col-lg-4">
    
              <b>Arrival To</b> <div class="input-group">
                  <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                 <input type="date" class="form-control" [(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)"></div>
+                 <input type="date" name="Arrivalto"class="form-control" [(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)"></div>
          </div>
         
   
@@ -61,7 +62,7 @@
             <div class="col-lg-4">
               <b>Group</b> <div class="input-group">
                    <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                   <input type="text" id="name" class="form-control"></div>
+                   <input type="text" name="Group" id="name" class="form-control"></div>
            </div>
            
         
@@ -69,19 +70,19 @@
         
                   <b>Source</b> <div class="input-group">
                       <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                      <input type="text" id="name" class="form-control"></div>
+                      <input type="text" name="Source" id="name" class="form-control" [(ngModel)]="qsource"></div>
               </div>
             
               <div class="col-lg-4">
                     <b>Agent</b> <div class="input-group">
                       <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                      <input type="text" id="name" class="form-control"></div>
+                      <input type="text" name="Agent" id="name" class="form-control"></div>
         
                   </div>
             
         
                 </div>  
-
+           
 <br>
 <div class="row">
 <div class="col-md-3"></div>
@@ -89,7 +90,7 @@
   <button class="btn btn-info" style="width: 100%" routerLink="/arrival">Advance  </button>    
 </div>
 <div class="col-md-2">
-  <button class="btn btn-warning" style="width: 100%">Clear </button>   
+  <button type="reset" class="btn btn-warning" style="width: 100%" >Clear </button>   
 </div>
 <div class="col-md-2">
   <button class="btn btn-success" style="width: 100%"routerLink="/reservation">Walk-in </button>   
@@ -97,6 +98,7 @@
 <div class="col-md-3"></div>
 
 </div>
+</form>
 </div>
 </div>
 <br>

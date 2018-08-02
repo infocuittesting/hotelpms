@@ -18,6 +18,8 @@ home=[];
 hist=[];
 public navigat=[];
 public navtbl=[];
+public windowbal=[];
+
 public wind=[];
 public money=[];
 public windowvar=[];
@@ -37,6 +39,8 @@ public postdetails=[];
 public showdetails=[];
 public pscd_dd=[];
 public paycode=[];
+
+
 public expdt:any;
 
 add={};
@@ -187,7 +191,10 @@ addRows(add)
 
       this.totalPos += 1;
       this.totalamt += Number(add.Amount)*Number(add.Qty);
-      console.log("totalpos and totalamt",this.totalPos,this.totalamt)
+
+    
+    
+      // console.log("totalpos and totalamt",this.totalPos,this.totalamt)
 
       this.showdetails.push({
         // "business_id":this.session.retrieve("business_id"),
@@ -204,13 +211,13 @@ addRows(add)
         "editFlag":false
       });
       this.add={};
-      console.log("banupriyaaaaaaaaaaaa",this.postdetails);
+      // console.log("postdetails",this.postdetails);
   }
 }
-saveroomDetails(postdetails,totalPos,totalamt)
+saveroomDetails(postdetails)
 {
-      console.log("postdetailssssssssssss",this.postdetails,totalPos,totalamt);
-      this.cashbillservice.postingbill(this.postdetails,totalPos,totalamt)
+      console.log("postdetailssssssssssss",this.postdetails,this.totalPos,this.totalamt);
+      this.cashbillservice.postingbill(this.postdetails,this.totalPos,this.totalamt)
       .subscribe((resp: any) => {
        this.billing=resp.ReturnCode;
        console.log("return of billing",this.billing);
@@ -257,15 +264,17 @@ ngOnInit() {
   this.cashbillservice.paymentcodedropdown()
   .subscribe((resp: any) => {
       this.paycode=resp.ReturnValue;
-       console.log(this.paycode);
+      //  console.log(this.paycode);
    });
 
   this.cashbillservice.inhousetobilling()
   .subscribe((resp: any) => {
       this.navigat = resp.ReturnValue;
       this.navtbl=resp.ReturnValue1;
-      // console.log("header",this.navigat,typeof(this.navigat));
-      // console.log("table_val",this.navtbl,typeof(this.navtbl));
+      this.windowbal=resp.ReturnValue2;
+      console.log("header",this.navigat,typeof(this.navigat));
+      console.log("table_val",this.navtbl,typeof(this.navtbl));
+      console.log("window balance",this.windowbal,typeof(this.windowbal));
 
       //seperating values for window1 and window2 
 
