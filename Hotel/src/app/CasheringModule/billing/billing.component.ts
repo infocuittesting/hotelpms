@@ -19,6 +19,7 @@ hist=[];
 public navigat=[];
 public navtbl=[];
 public windowbal=[];
+public transroom:any;
 
 public wind=[];
 public money=[];
@@ -35,6 +36,8 @@ public editfailuremsg:any;
 public editsuccessmsg:any;
 public paysuccessmsg:any;
 public payfailuremsg:any;
+public transroomsuccessmsg:any;
+public transroomfailuremsg:any;
 public PF_Expiration_Date:any;
 public postdetails=[];
 public showdetails=[];
@@ -118,6 +121,8 @@ transfertowindow(args)
     .subscribe((resp: any) => {
       this.navigat = resp.ReturnValue;
       this.navtbl=resp.ReturnValue1;
+      this.windowbal=resp.ReturnValue2;
+     
       //seperating values for window1 and window2 
       this.vaal1=[];
       this.vaal2=[];
@@ -251,6 +256,28 @@ saveroomDetails(postdetails)
       }
      });
 
+     //refresh
+     this.cashbillservice.inhousetobilling()
+     .subscribe((resp: any) => {
+       this.navigat = resp.ReturnValue;
+       this.navtbl=resp.ReturnValue1;
+       this.windowbal=resp.ReturnValue2;
+      
+       //seperating values for window1 and window2 
+       this.vaal1=[];
+       this.vaal2=[];
+       for(let seperat of this.navtbl){
+         
+         if (seperat['post_window']==1){
+           this.vaal1.push(seperat) //for window1
+         }
+         else{
+           this.vaal2.push(seperat)  //for window2
+ 
+         }
+       }
+     });
+
 }
 
 ngOnInit() {
@@ -298,9 +325,9 @@ ngOnInit() {
       this.navigat = resp.ReturnValue;
       this.navtbl=resp.ReturnValue1;
       this.windowbal=resp.ReturnValue2;
-      console.log("header",this.navigat,typeof(this.navigat));
-      console.log("table_val",this.navtbl,typeof(this.navtbl));
-      console.log("window balance",this.windowbal,typeof(this.windowbal));
+      // console.log("header",this.navigat,typeof(this.navigat));
+      // console.log("table_val",this.navtbl,typeof(this.navtbl));
+      // console.log("windows valuesssssssssssssssssssssssssssssssssssss",this.navtbl);
 
       //seperating values for window1 and window2 
 
@@ -321,6 +348,7 @@ ngOnInit() {
 
 });
 }
+
 
 
 showdiv="9000";
@@ -392,6 +420,58 @@ selectMembersEditt(detailss,indexx){
   // this.session.store("quant",detailss.posting_quantity);
   this.session.store("posid",detailss.post_id);
 }
+
+
+
+transferroom(toroomno,grppos){
+console.log(toroomno,grppos);
+//   if(grppos==true)
+//   {
+//     grppos="GP";
+//     console.log("grouped posting value",grppos);
+//   }
+// else{
+//   console.log("elseeeeeeeeeeeeeee");
+// }
+
+  console.log(toroomno,this.cqno)
+  this.cashbillservice.transferanotherroom(toroomno,grppos,this.cqno)
+  .subscribe((resp: any) => {
+   this.transroom=resp.ReturnCode;
+   if(this.transroom=="RUS")
+   {
+    this.transroomsuccessmsg="Payment was posted successfully";
+   }
+  else
+  {
+    this.transroomfailuremsg="Sorry,unable to transfer to another room";
+  }
+   
+ });
+
+//refresh
+ this.cashbillservice.inhousetobilling()
+ .subscribe((resp: any) => {
+   this.navigat = resp.ReturnValue;
+   this.navtbl=resp.ReturnValue1;
+   this.windowbal=resp.ReturnValue2;
+  
+   //seperating values for window1 and window2 
+   this.vaal1=[];
+   this.vaal2=[];
+   for(let seperat of this.navtbl){
+     
+     if (seperat['post_window']==1){
+       this.vaal1.push(seperat) //for window1
+     }
+     else{
+       this.vaal2.push(seperat)  //for window2
+
+     }
+   }
+ });
+}
+
 
 
 private fieldArray: Array<any> = [];
