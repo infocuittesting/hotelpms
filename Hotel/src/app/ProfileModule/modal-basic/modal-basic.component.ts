@@ -18,6 +18,7 @@ import { SessionStorageService } from "ngx-webstorage";
 })
 export class ModalBasicComponent implements OnInit {
 
+  
   public tables =[];
 
   public negotes =[];

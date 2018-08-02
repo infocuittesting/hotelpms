@@ -9,9 +9,9 @@ export class TracesService {
   constructor(private http: Http) { }
   Trace():  Observable<object[]> {
        
-    const headers = new Headers({'Content-Type':'application/json'})
-    const options = new RequestOptions({ headers: headers });
-    return this.http.post('https://hotel360.herokuapp.com/Hotel_RES_Get_Select_QueryGuestTraces',options)
+    // const headers = new Headers({'Content-Type':'application/json'})
+    // const options = new RequestOptions({ headers: headers });
+    return this.http.get('https://hotel360.herokuapp.com/Hotel_RES_Get_Select_QueryGuestTraces')
        .map(this.extractData)
        //.catch(this.handleErrorObservable);
   }

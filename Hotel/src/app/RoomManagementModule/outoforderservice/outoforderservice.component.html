@@ -112,7 +112,7 @@
   
   
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-12">
         <b><u>Show </u></b>
       <div class="row" id="div2">
           
@@ -132,13 +132,11 @@
           <div class="col-lg-3">
             <b style="padding-top:35px;">Out Of Service</b>
           </div>
-
+          <div class="col-lg-4">
+              <button class="btn btn-success">Clear All</button>
+            </div>
       </div>
-    </div>
-
-    <div class="col-lg-2"></div>
-
-    
+    </div>    
 
 </div>
   
@@ -274,7 +272,7 @@
   
 
 
-  <div class="modal fade" id="oosupdate" role="dialog">
+  <div class="modal fade" id="oosupdate" data-backdrop="static" data-keyboard="false" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -285,7 +283,7 @@
         </div>
         <div class="modal-body">
          <div class="row">
-           <div class="col-lg-2"><b>Room List</b></div>
+           <div class="col-lg-2"><b>Room No</b></div>
            <div class="col-lg-2">
   
             <div class="input-group">
@@ -379,7 +377,7 @@
                     <div class="col-lg-2"><b>Remarks</b></div>
                     <div class="col-lg-2">
            
-                      <textarea rows="5" cols="70" style="border-radius:4px;" [(ngModel)]="user2.rm_description"></textarea>
+                      <textarea rows="5" cols="60" style="border-radius:4px;" [(ngModel)]="user2.rm_description"></textarea>
                    </div> </div><br>
                 
   
@@ -396,7 +394,7 @@
 
 
 
-  <div class="modal fade" id="oos" role="dialog">
+  <div class="modal fade" id="oos"  role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -407,7 +405,7 @@
         </div>
         <div class="modal-body">
          <div class="row">
-           <div class="col-lg-2"><b>Room List</b></div>
+           <div class="col-lg-2"><b>Room No</b></div>
            <div class="col-lg-2">
   
             <div class="input-group">
@@ -501,7 +499,7 @@
                     <div class="col-lg-2"><b>Remarks</b></div>
                     <div class="col-lg-2">
            
-                      <textarea rows="5" cols="70" style="border-radius:4px;" [(ngModel)]="user.rm_description"></textarea>
+                      <textarea rows="5" cols="60" style="border-radius:4px;" [(ngModel)]="user.rm_description"></textarea>
                    </div> </div><br>
                 
   
