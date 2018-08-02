@@ -20,7 +20,17 @@ export class GuestservicestatusComponent implements OnInit {
 
   public  downloadPDF(){
 
-    let doc = new jsPDF();
+  let  l = {
+      orientation: 'l',
+      unit: 'mm',
+      format: 'a3',
+      compress: true,
+      fontSize: 8,
+      lineHeight: 1,
+      autoSize: false,
+      printHeaders: true
+  };
+    let doc = new jsPDF( l,'','');
 
     let specialElementHandlers = {
       '#editor':function(element, renderer){
@@ -31,7 +41,7 @@ export class GuestservicestatusComponent implements OnInit {
     let content = this.content.nativeElement;
 
     doc.fromHTML(content.innerHTML,15,15,{
-      'width':190,
+      'width':250,
       'elementHandlers': specialElementHandlers
     });
 

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
 import { Route } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SessionStorageService } from "ngx-webstorage";
-
+import * as jsPDF from 'jspdf';
 import { Router } from "@angular/router";
 import { ManagingqueueService } from "./managingqueue.service";
 @Component({
@@ -12,6 +12,39 @@ import { ManagingqueueService } from "./managingqueue.service";
   providers:[ManagingqueueService]
 })
 export class ManagingqueueComponent implements OnInit {
+  
+  @ViewChild('report') content:ElementRef;
+
+  public  downloadPDF(){
+
+  let  l = {
+      orientation: 'l',
+      unit: 'mm',
+      format: 'a3',
+      compress: true,
+      fontSize: 8,
+      lineHeight: 1,
+      autoSize: false,
+      printHeaders: true
+  };
+    let doc = new jsPDF( l,'','');
+
+    let specialElementHandlers = {
+      '#editor':function(element, renderer){
+        return true;
+      }
+    };
+
+    let content = this.content.nativeElement;
+
+    doc.fromHTML(content.innerHTML,15,15,{
+      'width':250,
+      'elementHandlers': specialElementHandlers
+    });
+
+    doc.save('test.pdf');
+  }
+
   
   constructor(private pService:ManagingqueueService,private route:Router,public session:SessionStorageService ) { 
     this.search=this.someData;
