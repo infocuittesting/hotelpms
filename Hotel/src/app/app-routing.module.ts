@@ -52,6 +52,8 @@ import { BusinessBlockSearchComponent } from './BusinessBlockModule/business-blo
 import { RominglistComponent } from './BusinessBlockModule/rominglist/rominglist.component';
 import { BusinessCreateBlockComponent } from './BusinessBlockModule/business-create-block/business-create-block.component';
 import { InquriprocessComponent } from './BusinessBlockModule/inquriprocess/inquriprocess.component'
+import { BusinessBlockGridCurrentComponent } from './BusinessBlockModule/business-block-grid-current/business-block-grid-current.component';
+
 
 
 const routes: Routes = [ { path:'individualprofile', component:IndividualprofileComponent},
@@ -95,6 +97,7 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 {path:'bcreate',component:BusinessCreateBlockComponent},
 {path:"options",component:BusinessBlockOptionsComponent},
 {path:"rominglist",component:RominglistComponent},
+{path:"grid",component:BusinessBlockGridCurrentComponent}
 ];
 
 @NgModule({
@@ -109,4 +112,4 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
   ProfileComponent,ProfilesearchComponent,SearchandeditreservationComponent,HousekeepingComponent,QueueroomComponent,RoomdiscrepanciesComponent,RoomconditionComponent
 ,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
-BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent]
+BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent]

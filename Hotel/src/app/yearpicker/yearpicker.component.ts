@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 
   <div>      
   <select class="form-control" style="width:100px;" required>
+          <option value="" disabled selected style="display: none;">Select your option</option>
           <option  *ngFor="let y of years"  [selected]="yy === y ">{{y}}</option>    
   </select>
   </div>

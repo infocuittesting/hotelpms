@@ -7,7 +7,7 @@
     <div class="row" style="margin-top:1%;">
     
     <div class="container">
-    <div class="jumbotron" style="background-color:0077B5;color:white;margin-top:10px;margin-bottom:  1%;padding-top:10px;padding-bottom:1px;width:96%;margin-left:1%;">
+    <div class="jumbotron" style="background-color:0077B5;color:white;margin-top:10px;margin-bottom:-1%;padding-top:10px;padding-bottom:1px;width:96%;margin-left:1%;">
     
           
       <form style="margin-bottom: 1px;">
@@ -104,7 +104,8 @@
                             </div>
                             <div class="col-md-9">
                               <div class="form-group">            
-                                  <select class="form-control input-sm" name="restyp" id="se" style="width:70%;height:27px;" [(ngModel)]="roomno" (ngModelChange)="onSelect(roomno)">
+                                  <select class="form-control input-sm" name="restyp" id="se" style="width:70%;height:27px;" [(ngModel)]="roomno" (ngModelChange)="onSelect(roomno)" placeholder="select">
+                                      <option value="" hidden>select value</option>
                                     <option *ngFor="let restypelist of resty" [ngValue] = "restypelist.restype_description">{{restypelist.restype_description}}</option>  
                                     </select>
                               </div>
@@ -499,6 +500,7 @@
                         </div>
                         <div class="col-sm-6">
                             <select style="height:30px;width:130%;" class="form-control" name="paycode" [(ngModel)]="checkout.selected" (change)="selectoption(checkout.selected)">
+                              <option value="" hidden>select value</option>
                               <option  *ngFor="let paycodelist of paycode" [ngValue] = "paycodelist.payment_code_id">{{paycodelist.payment_code}}</option>
                               </select>    
                             </div>
@@ -519,6 +521,7 @@
                           </div>
                           <div class="col-sm-6">
                               <select name="cur" style="height:30px;width:150%;" class="form-control" [(ngModel)]="checkout.currency">
+                                <option value="" hidden>select value</option>
                                 <option *ngFor="let list of money" [ngValue]="list.transaction_currency_id">{{list.currency}}</option>
                                 </select>
                             </div>
@@ -749,6 +752,7 @@
               </div>
               <br>
               <div class="container-fluid">
+                <div class="scroll2">
                 <div class="responsive-table">
                   <table class="table table-bordered table-hover">
                     <thead style="background-color: #0077B5;color:white;">
@@ -774,6 +778,7 @@
                       
                     
                   </table>
+                </div>
                 </div>
               </div>
             

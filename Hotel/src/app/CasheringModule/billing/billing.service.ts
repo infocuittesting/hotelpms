@@ -167,6 +167,35 @@ postingbill(poscdid,totalPos,totalamt):  Observable<object[]> {
 
 }
 
+transferanotherroom(totalamt,grppos,cqno):  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+  let body={
+    "Res_id":this.session.retrieve("id1"),
+    "Res_room":this.session.retrieve("id"),
+    "transfer_option":grppos,
+    "to_room":totalamt.toString(),
+    "checkno":cqno
+    }
+   console.log("final input",JSON.stringify(body));
+
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_CAH_POST_UPDATE_TransfertoAnotherRoom',body,options)
+     .map(this.extractData)
+
+}
+
+
+roomdropdown():  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+ 
+  return this.http.post('https://hotel360.herokuapp.com/Select_Room_No',options)
+     .map(this.extractData)
+
+}
+
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);
