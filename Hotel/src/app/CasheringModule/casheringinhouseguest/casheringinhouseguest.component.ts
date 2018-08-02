@@ -196,19 +196,47 @@ getcreditexpiry(){
   console.log(this.creditcard_expiry);
 }
 
+
+
   //Checkout button
 checkoutpost(arg1,balnc)
   {
-    console.log("checking arguements in checkout",arg1,balnc)
-    this.creditcard_expiry = this.month+"/"+this.year;
-    console.log("before expiry",arg1.cardno,this.creditcard_expiry);
-
-    this.cashinservice.expirydate(arg1.cardno,this.creditcard_expiry)
-    .subscribe((resp: any) => {
-        this.exprydt=resp.Return_value;
-        console.log(this.exprydt);
-
-
+    if(this.showdiv=='2')
+    {
+      console.log("checking arguements in checkout",arg1,balnc)
+      this.creditcard_expiry = this.month+"/"+this.year;
+      console.log("before expiry",arg1.cardno,this.creditcard_expiry);
+  
+      this.cashinservice.expirydate(arg1.cardno,this.creditcard_expiry)
+      .subscribe((resp: any) => {
+          this.exprydt=resp.Return_value;
+          console.log(this.exprydt);
+  
+  
+        this.cashinservice.checkoutbuttoninsert(arg1,balnc,this.exprydt)
+        .subscribe((resp: any) => {
+        this.letter=resp.ReturnCode;
+        if(this.letter=="RIS")
+        {
+          this.successmsg="payment was done successfully";
+        }
+        else   
+        {
+          this.failuremsg="Unable to update";
+        }
+        })
+       });  
+        
+        //refresh
+        this.cashinservice.inhousetable()
+        .subscribe((resp: any) => {
+  
+        this.housetable=resp.ReturnValue;
+        // console.log(this.housetable);
+        });
+    }
+    else
+    {
       this.cashinservice.checkoutbuttoninsert(arg1,balnc,this.exprydt)
       .subscribe((resp: any) => {
       this.letter=resp.ReturnCode;
@@ -221,15 +249,15 @@ checkoutpost(arg1,balnc)
         this.failuremsg="Unable to update";
       }
       })
-     });  
       
-      //refresh
       this.cashinservice.inhousetable()
       .subscribe((resp: any) => {
 
       this.housetable=resp.ReturnValue;
       // console.log(this.housetable);
       });
+    }
+ 
 }
 
 //zero checkout

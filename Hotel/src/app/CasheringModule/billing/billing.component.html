@@ -6,7 +6,7 @@
     <div class="row"  style="padding-top:5px;">
     
       <div class="container">
-        <div class="jumbotron jumbotron-fluid" style="background-color:0077B5;color:white;padding-top:20px;padding-bottom:1%;margin-left:5px;margin-right:1%;margin-bottom:1%;">
+        <div class="jumbotron jumbotron-fluid" style="background-color:0077B5;color:white;padding-top:20px;padding-bottom:1%;margin-left:5px;margin-right:1%;margin-bottom:1%;width:98%;">
         
                       
             <form style="margin-bottom:1px;">
@@ -101,35 +101,49 @@
         </div>
         </div>
       </div>
-  <br>
-  <!-- <div class="row">
-    <div class="col-6">
-      <p align="center"> {{name}}</p>
+ 
+
+  <div class="row" *ngFor="let window of windowbal">
+  <div class="col-md-6">
+    <div class="col-md-6">
+        <label style="margin-left:8%;">(1) {{name}}</label> 
     </div>
-    <div class="col-6">
-    </div>    
-  </div> -->
-  
-  <div class="row" *ngFor="let window of navtbl1">
-    <div class="col-md-3">
-      {{name}}
+    <div class="col-md-5"></div>
+    <div class="col-md-1" style="margin-left:-12%;">
+        <label>Balance:{{window.w1_total}}</label>
     </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-2">
-      {{window.w2_total}}
-    </div>
-    <div class="col-md-3">
-        {{name}}
-      </div>
-      <div class="col-md-1"></div>
-      <div class="col-md-2">
-        {{window.w2_total}}
-      </div>
   </div>
+
+  <div class="col-md-6">
+      <div class="col-md-6">
+          <label>(2) {{name}}</label> 
+      </div>
+      <div class="col-md-2"></div>
+      <div class="col-md-3">
+          <label>Balance:{{window.w2_total}}</label>
+      </div>
+    </div> 
+  </div>
+
+  <!-- <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+      <label> {{name}}</label>
+    </div>
+    <div class="col-sm-2">
+      <label>{{window.w1_total}}</label>
+    </div> 
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+        <label>{{name}}</label>
+    </div>   
+    <div class="col-sm-2">
+        <label>{{window.w2_total}}</label>
+      </div>  -->
+
   <div class="container">
   <div class="row">
     <div class="col-md-6">
-        <div class="container-fluid">
+        <div class="container-fluid" style="padding-right:0px;padding-left:0px;">
             <div class="scrollable3">
          <table class="table table-bordered table-hover">
           <thead style="background-color:#0077B5;color:white;font-size:14px;">
@@ -149,7 +163,7 @@
             <contextmenu #contextmenu style="width:70%;">
               <div class="dropdown open">
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer Transaction</a><br>
+                  <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer To Another Room</a><br>
                   <a class="dropdown-item" data-toggle="modal" href="#transfertowindowalert" (click)="window_button()">Transfer to another window</a><br>
                   
                   <!-- <div class="dropdown-menu">
@@ -185,7 +199,7 @@
     </div>
 
     <div class="col-md-6">
-        <div class="container" style="width:95%;margin-left:-30px;">
+        <div class="container" style="width:101%;margin-left:-30px;">
         <div class="scrollable3">
          <table class="table table-bordered table-hover">
           <thead style="background-color:#0077B5;color:white;font-size:14px;">
@@ -205,7 +219,7 @@
             <contextmenu #contextmenu style="width:70%;">
               <div class="dropdown open">
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" data-toggle="modal" href="#transfertransaction" >Transfer Transaction</a><br>
+                  <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer To Another Room</a><br>
                   <a class="dropdown-item" data-toggle="modal" href="#transfertowindowalert" (click)= "window_button()">Transfer to another window</a><br>                                  
                 
 
@@ -318,7 +332,7 @@
                       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
   
                       </button>
-                       <h3 class="modal-title" id="myModalLabel"><b>Modal title</b></h3>
+                       <h3 class="modal-title" id="myModalLabel"><b>Transaction Posting</b></h3>
   
                   </div>
                   <div class="modal-body">
@@ -586,6 +600,7 @@
              
           </div>
       </div>
+<!-- *******************************************posting history modal ends************************************************************************** -->
           
         <!--  Edit Modal -->
         <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -599,9 +614,10 @@
                              <h4 class="modal-title" id="myModalLabel"><b>Edit Transaction Details</b></h4>
         
                         </div>
+                        <form #editform="ngForm">
                         <div class="modal-body">
                           <div class="row" >
-                          <form id="editform">
+                          
   
                               <div class="row">
                                   <div class="col-sm-6">
@@ -650,7 +666,7 @@
                                       <b>Amount</b>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text"  name="editamount" class="form-control" [(ngModel)]="amt">
+                                        <input type="text"  name="editamount" class="form-control" [(ngModel)]="amt" required>
                                       </div>
                                       </div>
                            
@@ -660,7 +676,7 @@
                                     <b>Quantity</b>
                                   </div>
                                   <div class="col-sm-6" style="padding-top:5px;">
-                                      <input type="text" class="form-control" name="quantityy" [(ngModel)]="quant">
+                                      <input type="text" class="form-control" name="quantityy" [(ngModel)]="quant" required>
                                   </div>
                                 </div>
                         
@@ -722,7 +738,8 @@
                                 </div> 
                          
                                 <div class="col-md-6">
-                                  <select style="width:70%;height:100%;" name="arrcode" class="form-control" [(ngModel)]="ed_arcode">
+                                  <select style="width:70%;height:100%;" name="arrcode" class="form-control" [(ngModel)]="ed_arcode" required>
+                                      <option value="" hidden>select value</option>
                                       <option value="101">1</option>
                                       <option value="102">2</option>
                                       <option value="103">3</option>
@@ -807,8 +824,8 @@
               <b>Supplement</b>
             </div>
             <div class="col-sm-6">
-                <input type="text" name="editsupple" class="form-control" style="width:260px;" [(ngModel)]="supple">
-              </div>
+                <input type="text" name="editsupple" class="form-control" style="width:260px;" [(ngModel)]="supple" required> 
+            </div>
       </div>
       </div>
       </div>
@@ -820,7 +837,7 @@
               <b>Reference</b>
             </div>
             <div class="col-sm-6">
-                <input type="text" name="editreference" class="form-control" style="width:260px;"  [(ngModel)]="ref">
+                <input type="text" name="editreference" class="form-control" style="width:260px;"  [(ngModel)]="ref" required>
               </div>
       </div>
       </div>
@@ -835,7 +852,7 @@
               <b>Cheque No.</b>
             </div>
             <div class="col-sm-6">
-                <input type="text"name="editcheque" class="form-control" [(ngModel)]="cqno">
+                <input type="text"name="editcheque" class="form-control" [(ngModel)]="cqno" required> 
             </div>
             
            
@@ -864,14 +881,15 @@
         </div>
       </div>
 
-    </form>
+    
   </div>
 </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-success" (click)="editbilling(amt,quan,ed_arcode,supple,ref,cqno)" data-toggle="modal" data-target="#afteredit" data-dismiss="modal">OK</button>
+              <button type="button" class="btn btn-success" (click)="editbilling(amt,quan,ed_arcode,supple,ref,cqno)" data-toggle="modal" data-target="#afteredit" data-dismiss="modal" [disabled]="!editform.form.valid">OK</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               
           </div>
+        </form>
       </div>
   </div>
   </div>
@@ -913,7 +931,7 @@
     
       <!-- Modal content-->
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header" style="background: #0077B5;color: white;">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><b>Confirm Reinstate</b></h4>
         </div>
@@ -929,7 +947,8 @@
     </div>
   </div>
   </div>
-  
+  <!-- ******************************************reinstate ends*************************************************************** -->
+  <!-- transfer to another room modal -->
   <div class="modal fade" id="transfertransaction" role="dialog">
       <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
@@ -938,95 +957,72 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><b>RESLU - Transfer Type</b></h4>
+          <h4 class="modal-title"><b>Transfer To Another Room</b></h4>
         </div>
         <div class="modal-body">
          <div class="row">
-           <div class="col-sm-6">
-              <div class="panel panel-default">
-                  <div class="panel-body">
+           <div class="col-sm-10">
+              <!-- <div class="panel panel-default">
+                  <div class="panel-body"> -->
                       <form>
-                          <div class="radio" style="margin-left:15px;">
-                            <label><input type="radio" name="optradio"><b>Transfer To another Room</b></label>
-                          </div>
-                          <div class="radio" style="margin-left:15px;">
-                            <label><input type="radio" name="optradio"><b>Transfer From another Room</b></label>
-                          </div>
-                          <div class="radio" style="margin-left:15px;">
-                            <label><input type="radio" name="optradio"><b>Transfer From List of Rooms</b></label>
-                          </div>
-                        </form>
-                  
-                  </div>
-                </div>
-           </div>
-  
-           <div class="col-sm-6" style="padding-left:35px;">
-              <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="row">
-                    <div class="col-sm-3">
-  
-                    </div>
-  
-                    <div class="col-sm-3">
-                      
-                      </div>
-                    </div>   
-                  
-                    <div class="row">
-                        <div class="col-sm-1">
-                      <input type="radio" name="optradio">
-                        </div>
-      
-                        <div class="col-sm-5" style="margin-left:2%;">
-                          <label>GroupedPostings</label>
-                        </div>
-                        </div>  
-  
-                        <div class="row">
+                          <div class="row">
+                            
+                            <div class="col-sm-5"></div>
                             <div class="col-sm-1">
-                                <input type="radio" name="optradio">
+                              <input type="radio" class="form-control" name="optradio">
+                            </div>
+        
+                            <div class="col-sm-4" style="margin-left:2%;">
+                              <label style="margin-top: 7%;">GroupedPostings</label>
+                            </div>
+                          </div>  
+  
+                          <div class="row">
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-1">
+                                <input type="radio" class="form-control" name="optradio">
                             </div>
           
-                            <div class="col-sm-5" style="margin-left:2%;" >
-                                <label >EntireFolio</label> 
-                              </div>
-                            </div>  
+                            <div class="col-sm-4" style="margin-left:2%;" >
+                                <label style="margin-top: 7%;">EntireFolio</label> 
+                            </div>
+                          </div>  
   
-                            <div class="row">
-                                <div class="col-sm-1">
-                                    <input type="radio" name="optradio">
-                                </div>
-              
-                                <div class="col-sm-5" style="margin-left:2%">
-                                    <label>MarkedPostings</label> 
-                                  </div>
-                                </div>  
+                          <!-- <div class="row">
+                            <div class="col-sm-1">
+                              <input type="radio" name="optradio">
+                            </div>
+          
+                            <div class="col-sm-5" style="margin-left:2%">
+                              <label>MarkedPostings</label> 
+                            </div>
+                          </div>  
   
-                                <div class="row">
-                                    <div class="col-sm-1">
-                                        <input type="radio" name="optradio">
-                                    </div>
-                  
-                                    <div class="col-sm-5" style="margin-left:2%">
-                                        <label>PartialPostings</label> 
-                                      </div>
-                                    </div>  
+                          <div class="row">
+                            <div class="col-sm-1">
+                              <input type="radio" name="optradio">
+                            </div>
+          
+                            <div class="col-sm-5" style="margin-left:2%">
+                              <label>PartialPostings</label> 
+                            </div>
+                          </div>   -->
   
-                                    <div class="row">
-                                        <div class="col-sm-1">
-                                            <input type="radio" name="optradio">
-                                        </div>
+                          <div class="row">
+                            <div class="col-sm-5"></div>
+                            <div class="col-sm-1">
+                                <input type="radio" class="form-control" name="optradio" >
+                            </div>
                       
-                                        <div class="col-sm-5" style="margin-left:2%">
-                                            <label>CheckNumber</label>
-                                          </div>
-                                        </div>  
-                  </div>
-                </div>
-             
-            </div>
+                            <div class="col-sm-4" style="margin-left:2%">
+                              <label style="margin-top: 7%;">CheckNumber</label>
+                            </div>
+                          </div> 
+                        </form>
+                  
+                  <!-- </div>
+                </div> -->
+           </div>
   
          </div>
   
@@ -1038,16 +1034,14 @@
                     <b> </b>
                   </div>
   
-                  <div class="col-sm-3">
+                  <div class="col-sm-2" style="margin-left:2%;">
                       <b>To Room</b>
                     </div>
   
                     <div class="col-sm-6">
-                        <select style="width:50%;height:100%;">
-                            <option value="101">101</option>
-                            <option value="102">102</option>
-                            <option value="103">103</option>
-                            <option value="104">104</option>
+                        <select name="toroom" class="form-control" style="width:50%;height:100%;" [(ngModel)]="toroomno">
+                          <option value="" hidden>select value</option>  
+                          <option *ngFor="let selectroomlist of roomnum" [ngValue] = "selectroomlist.rm_room">{{selectroomlist.rm_room}} </option>
                           </select>
                     </div>
                 </div>
@@ -1060,8 +1054,8 @@
         <div class="col-sm-5">
             <div class="panel panel-default">
                 <div class="panel-body">
-                  <b>133</b><br>
-                  <b>Barker</b>
+                  <b>{{room}}</b><br>
+                  <b></b>
                 </div>
               </div>   
         </div>
@@ -1071,8 +1065,8 @@
         <div class="col-sm-5">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <b>415</b><br>
-                    <b>Archer</b>
+                    <b>{{toroomno}}</b><br>
+                    <b></b>
               </div>
               </div>
           </div>
@@ -1092,7 +1086,7 @@
     </div>
     </div>
   </div>
-  
+  <!--********************************************** transfer to another room modal******************************************************************* -->
     <!--after transfer to another room Modal -->
     <div class="modal fade" id="aftertransfer" role="dialog">
         <div class="vertical-alignment-helper">  
@@ -1100,7 +1094,7 @@
         
             <!-- Modal content-->
             <div class="modal-content">
-              <div class="modal-header">
+              <div class="modal-header" style="background: #0077B5;color: white;">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title"><b>Opera</b></h4>
               </div>
@@ -1124,7 +1118,7 @@
   
     <!-- payment  Modal content-->
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background: #0077B5;color: white;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title" >Payment </h4>
       </div>
@@ -1142,6 +1136,7 @@
                   </div>
                       <div class="col-sm-6">
                           <select style="height:30px;width:130%;" class="form-control" name="paycode" [(ngModel)]="selected" (change)="selectoption(selected)">
+                            <option value="" hidden>select value</option>
                             <option  *ngFor="let paycodelist of paycode" [ngValue] = "paycodelist.payment_code_id">{{paycodelist.payment_code}}</option>
                           </select>
 
@@ -1163,6 +1158,7 @@
                     </div>
                     <div class="col-sm-6">
                         <select name="curcy" style="height:30px;width:150%;" class="form-control" [(ngModel)]="currency">
+                          <option value="" hidden>select value</option>
                           <option *ngFor="let list of money" [ngValue]="list.transaction_currency_id">{{list.currency}}</option>
                           </select>
                       </div>
@@ -1270,7 +1266,7 @@
   
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" style="background: #0077B5;color: white;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"><b>Alert</b></h4>
       </div>

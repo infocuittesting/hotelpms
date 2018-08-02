@@ -22,6 +22,7 @@ public windowbal=[];
 
 public wind=[];
 public money=[];
+public roomnum=[];
 public windowvar=[];
 public billing:any;
 
@@ -138,6 +139,7 @@ transfertowindow(args)
 
   checkoutpost(selected,currency,amount,ref,supp,cardno)
   { 
+    if(this.showdiv=='2'){
     this.creditcard_expiry = this.month+"/"+this.year;
      //PF_Expiration_Date is the name should given in webservice 
     console.log("twodata",cardno,this.expdt)
@@ -146,13 +148,12 @@ transfertowindow(args)
         this.expdt=resp.Return_value;
          console.log("credit card expiry date",typeof(this.expdt),this.expdt);
 
-         this.cashbillservice.postbuttoninsert(selected,currency,amount,ref,supp,this.expdt)
-     
+         this.cashbillservice.postbuttoninsert(selected,currency,amount,ref,supp,this.expdt)     
          .subscribe((resp: any) => {
            console.log("payment inputs",selected,currency,amount,ref,supp,this.expdt)
    
          this.letter=resp.ReturnCode;
-         console.log("letterrrrrrrrrrrrrrrrrrrrrrrr",this.letter);
+        //  console.log("letterrrrrrrrrrrrrrrrrrrrrrrr",this.letter);
          if(this.letter=="RIS"){
            this.paysuccessmsg="payment was done successfully";
          }
@@ -161,6 +162,25 @@ transfertowindow(args)
          }
        })
      });
+    }
+
+    else
+    {
+        this.cashbillservice.postbuttoninsert(selected,currency,amount,ref,supp,this.expdt)     
+        .subscribe((resp: any) => {
+          console.log("payment inputs other than credit card",selected,currency,amount,ref,supp,this.expdt)
+
+        this.letter=resp.ReturnCode;
+      //  console.log("letterrrrrrrrrrrrrrrrrrrrrrrr",this.letter);
+        if(this.letter=="RIS"){
+          this.paysuccessmsg="payment was done successfully";
+        }
+        else{
+          this.payfailuremsg="Unable to update";
+        }
+      })
+
+    }
   }
 
 
@@ -266,6 +286,12 @@ ngOnInit() {
       this.paycode=resp.ReturnValue;
       //  console.log(this.paycode);
    });
+
+   //roomnumber dropdown
+   this.cashbillservice.roomdropdown()
+   .subscribe((resp: any) => {
+    this.roomnum=resp.ReturnValue;
+  });
 
   this.cashbillservice.inhousetobilling()
   .subscribe((resp: any) => {
