@@ -7,112 +7,43 @@
       
           <div class="row">
               <div class="col-md-4">
-                  <div class="row">
-                  <div class="col-md-4">    
-              <form class="form-inline" action="/action_page.php">
                   <label for=""> Name:</label>
-                  </form>
-              </div>   
-                  <div class="col-md-6">    
-              <form class="form-inline" action="/action_page.php">
                   <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="name" [(ngModel)]="queryString" name="name" #firstName="ngModel">
-                  
-                </form>
-                <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid" style="width:200px;">
-                   
-                    <div *ngIf=firstName.errors.pattern>name should contain only alphabets </div>
-    
-                  </div>
-              </div>
-      
-              </div>
+                  <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid" style="width:200px;">
+                  <div *ngIf=firstName.errors.pattern>name should contain only alphabets </div>
+                  </div>    
           </div>
       
               <div class="col-md-4">
-                <div class="row">
-               <div class="col-md-4">    
-               <form class="form-inline" action="/action_page.php">
-               <label for="email">Group:</label>
-                </form>
-               </div>   
-               <div class="col-md-6">    
-                <form class="form-inline" action="/action_page.php">
+               <label for="email">Group:</label>  
                <input type="text" class="form-control" id=""  name="text">
-               </form>
                </div>
-           
-               </div>
-               </div>
+
                <div class="col-md-4">
-                  <div class="row">
-                  <div class="col-md-4">    
-              <form class="form-inline" action="/action_page.php">
                   <label for="email">Room_Type:</label>
-                  </form>
-              </div>   
-                  <div class="col-md-6">    
-              <form class="form-inline" action="/action_page.php">
                   <input type="text" class="form-control" id="room_type" name="room_type" [(ngModel)]="qrtype">
-                  </form>
-              </div>
-      
-              </div>
-          </div>
+             </div>
       
           </div>
       
             <div class="row">
+
               <div class="col-md-4">
-                  <div class="row">
-                     <div class="col-md-4">    
-                         <form class="form-inline" action="/action_page.php">
                          <label for="email">Res. Type:</label>
-                          </form>
-                    </div>   
-                  <div class="col-md-6">    
-                         <form class="form-inline" action="/action_page.php">
                           <input type="text" class="form-control" id="type"  name="type" [(ngModel)]="restype">
-                          </form>
-                 </div>
-         
-                 </div>
              </div>
              
-                 <div class="col-md-4">
-                         <div class="row">
-                         <div class="col-md-4">    
-                         <form class="form-inline" action="/action_page.php">
-                         <label for="email"> VIP:</label>
-                         </form>
-                         </div>   
-                         <div class="col-md-6">    
-                         <form class="form-inline" action="/action_page.php">
-                         <input type="text" class="form-control" id="vip" name="vip">
-                         </form>
-                         </div>
-             
-                             </div>
-                         </div>
-                 <div class="col-md-4">
-                  <div class="row">
-                  <div class="col-md-4">    
-                  <form class="form-inline" action="/action_page.php">
-                  <label for="email"> Date:</label>
-                  </form>
-                  </div>   
-                  <div class="col-md-6">    
-                  <form class="form-inline" action="/action_page.php">
-                    <div class="input-group">
-                        <input id="type" type="date" class="form-control" name="date"style="width: 110%;border-radius:5px;" [(ngModel)]="qdate">
-                      </div>
-                  </form>
-                  </div>
-          
-                      </div>
-                  </div> 
+             <div class="col-md-4">
+                 <label for="email"> VIP:</label>
+                 <input type="text" class="form-control" id="vip" name="vip">
+             </div>
 
+                 <div class="col-md-4">
+                  <label for="email"> Date:</label>                 
+                 <input id="type" type="date" class="form-control" name="date"style="border-radius:5px;" [(ngModel)]="qdate">
             </div>
-      
+      </div>
+      <br>
             <div class="row">
       
  

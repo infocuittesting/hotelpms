@@ -233,7 +233,8 @@ insertNotes(input:any):  Observable<object[]> {
    "pf_id":this.session.retrieve("id"),
    "PF_Note_Type":input.PF_Note_Type,
    "PF_Note_Title":input.PF_Note_Title,
-  //  "PF_Note_Description":input.PF_Note_Description
+  "PF_Note_Description":input.PF_Note_Description,
+  "PF_Notes_Date":input.PF_Notes_Date
  }
   
  
@@ -389,7 +390,8 @@ updateNotes(input:any):  Observable<object[]> {
    "notes_id":this.session.retrieve("id2"),
    "PF_Note_Type":input.PF_Note_Type,
    "PF_Note_Title":input.PF_Note_Title,
-  //  "PF_Note_Description":input.PF_Note_Description
+   "PF_Note_Description":input.PF_Note_Description,
+   "PF_Notes_Date":input.PF_Notes_Date
  }
   
   

@@ -6,7 +6,7 @@
     <div class="row"  style="padding-top:5px;">
     
       <div class="container">
-        <div class="jumbotron jumbotron-fluid" style="background-color:0077B5;color:white;padding-top:20px;padding-bottom:1%;margin-left:5px;margin-right:1%;margin-bottom:1%;">
+        <div class="jumbotron jumbotron-fluid" style="background-color:0077B5;color:white;padding-top:20px;padding-bottom:1%;margin-left:5px;margin-right:1%;margin-bottom:1%;width:98%;">
         
                       
             <form style="margin-bottom:1px;">
@@ -18,7 +18,7 @@
                         <input type="text"  name="balance1" class="form-control input-sm" style="height:27px;width:70%;" [(ngModel)]="tryitem.res_guest_balance" disabled>
                       </div>
                      
-                  </div>
+                 </div>
                 
                 <div class="col-md-2">
                 <label for="name">Arrival</label>
@@ -101,12 +101,49 @@
         </div>
         </div>
       </div>
-  <br>
-  
+ 
+
+  <div class="row" *ngFor="let window of windowbal">
+  <div class="col-md-6">
+    <div class="col-md-6">
+        <label style="margin-left:8%;">(1) {{name}}</label> 
+    </div>
+    <div class="col-md-5"></div>
+    <div class="col-md-1" style="margin-left:-12%;">
+        <label>Balance:{{window.w1_total}}</label>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+      <div class="col-md-6">
+          <label>(2) {{name}}</label> 
+      </div>
+      <div class="col-md-2"></div>
+      <div class="col-md-3">
+          <label>Balance:{{window.w2_total}}</label>
+      </div>
+    </div> 
+  </div>
+
+  <!-- <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+      <label> {{name}}</label>
+    </div>
+    <div class="col-sm-2">
+      <label>{{window.w1_total}}</label>
+    </div> 
+    <div class="col-sm-1"></div>
+    <div class="col-sm-3">
+        <label>{{name}}</label>
+    </div>   
+    <div class="col-sm-2">
+        <label>{{window.w2_total}}</label>
+      </div>  -->
+
   <div class="container">
   <div class="row">
     <div class="col-md-6">
-        <div class="container-fluid">
+        <div class="container-fluid" style="padding-right:0px;padding-left:0px;">
             <div class="scrollable3">
          <table class="table table-bordered table-hover">
           <thead style="background-color:#0077B5;color:white;font-size:14px;">
@@ -126,14 +163,14 @@
             <contextmenu #contextmenu style="width:70%;">
               <div class="dropdown open">
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer Transaction</a><br>
-                  <a class="dropdown-item" data-toggle="dropdown" href="dropdown-toggle">Transfer to another window</a><br>
+                  <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer To Another Room</a><br>
+                  <a class="dropdown-item" data-toggle="modal" href="#transfertowindowalert" (click)="window_button()">Transfer to another window</a><br>
                   
-                  <div class="dropdown-menu">
+                  <!-- <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">Link 1</a>
                     <a class="dropdown-item" href="#">Link 2</a>
                     <a class="dropdown-item" href="#">Link 3</a>
-                  </div>
+                  </div> -->
                                   
                 </div>
               </div>
@@ -162,7 +199,7 @@
     </div>
 
     <div class="col-md-6">
-        <div class="container" style="width:95%;margin-left:-30px;">
+        <div class="container" style="width:101%;margin-left:-30px;">
         <div class="scrollable3">
          <table class="table table-bordered table-hover">
           <thead style="background-color:#0077B5;color:white;font-size:14px;">
@@ -182,15 +219,16 @@
             <contextmenu #contextmenu style="width:70%;">
               <div class="dropdown open">
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer Transaction</a><br>
-                  <a class="dropdown-item" data-toggle="dropdown" href="dropdown-toggle">Transfer to another window</a><br>
-                  
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                  </div>
-                                  
+                  <a class="dropdown-item" data-toggle="modal" href="#transfertransaction">Transfer To Another Room</a><br>
+                  <a class="dropdown-item" data-toggle="modal" href="#transfertowindowalert" (click)= "window_button()">Transfer to another window</a><br>                                  
+                
+
+
+                <!-- <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Link 1</a>
+                  <a class="dropdown-item" href="#">Link 2</a>
+                  <a class="dropdown-item" href="#">Link 3</a>
+                </div> -->
                 </div>
               </div>
             </contextmenu>
@@ -225,17 +263,17 @@
       
       <button type="button" id="post" class="btn btn-success" style="width:110px;margin-left:5%;" data-target="#postoption" data-toggle="modal"><b>post</b></button>
                 
-      <button type="button" class="btn btn-default" style="width:110px;margin-left:2%;"  data-target="#editmodal" data-toggle="modal"><b>Edit</b></button>
+      <button type="button" class="btn btn-default" style="width:110px;margin-left:2%;"  data-target="#editmodal" data-toggle="modal" [disabled]=edtvar><b>Edit</b></button>
 
-      <button type="button" class="btn btn-info" style="width:110px;margin-left:2%;" ><b>Folio</b></button>
+      <button type="button" class="btn btn-info" style="width:110px;margin-left:2%;" disabled><b>Folio</b></button>
 
       <button type="button" class="btn btn-warning" style="width:110px;margin-left:2%;" data-target="#postinghistory" data-toggle="modal"><b>History</b></button>
   
-      <button type="button" class="btn btn-secondary" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#myModal2"><b>Payment</b></button>
+      <button type="button" class="btn btn-secondary" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#paymentmodal"><b>Payment</b></button>
   
-      <button type="button" class="btn btn-primary" style="width:110px;margin-left:2%;"><b>Settlement</b></button>
+      <button type="button" class="btn btn-primary" style="width:110px;margin-left:2%;" disabled><b>Settlement</b></button>
 
-      <button type="button" class="btn btn-info" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#reinstatemodal" ><b>Reinstate</b></button>
+      <button type="button" class="btn btn-info" style="width:110px;margin-left:2%;" data-toggle="modal" data-target="#reinstatemodal" disabled><b>Reinstate</b></button>
       
       <button type="button" class="btn btn-danger" style="width:110px;margin-left:2%;" routerLink="/inhousecashering"><b>Close</b></button>
         
@@ -250,73 +288,191 @@
   </div>
    
   <!-- *********************************************************************************************************** -->
-            
+     
+  
+
+ <!--alert for Transfer to another room-->
+    
+ <div class="modal fade" id="transfertowindowalert" role="dialog">
+    <div class="vertical-alignment-helper">  
+  <div class="modal-dialog vertical-align-center modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Alert</b></h4>
+        </div>
+        <div class="modal-body">
+          <p>Which window do you want to transfer?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" [disabled]=butn1 (click)="transfertowindow('win1')">Window 1</button>
+          <button type="button" class="btn btn-info" data-dismiss="modal" [disabled]=butn2 (click)="transfertowindow('win2')">Window 2</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  </div>
+  
+  
+  <!-- ******************************************alert for Transfer to another room ends************************************************************************* -->
+
+
+
+
         <!--  post option Modal -->
   
   <div class="modal fade" id="postoption" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="vertical-alignment-helper">
-          <div class="modal-dialog vertical-align-center">
+          <div class="modal-dialog vertical-align-center modal-lg">
               <div class="modal-content">
                   <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
   
                       </button>
-                       <h3 class="modal-title" id="myModalLabel"><b>Modal title</b></h3>
+                       <h3 class="modal-title" id="myModalLabel"><b>Transaction Posting</b></h3>
   
                   </div>
                   <div class="modal-body">
-                      <div class="table-responsive">
-                      
-                        <table class="table table-striped table-bordered">
-                          <thead>
-                              <tr>
-                                  <th>Code</th>
-                                  <th>Name</th>
-                                  <th>Price</th>
-                                  <th>Action</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <tr *ngFor="let field of fieldArray; let i = index">
-                                  <td>
-                                      <input [(ngModel)]="field.code" class="form-control" type="text"  />
-                                  </td>
-                                  <td>
-                                      <input [(ngModel)]="field.name" class="form-control" type="text">
-                                  </td>
-                                  <td>
-                                      <input [(ngModel)]="field.price" class="form-control" type="text">
-                                  </td>
-                                  <!-- <td>
-                                      <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Delete</button>
-                                  </td> -->
-                              </tr>
-                              <tr>
-                                  <!-- <td>
-                                      <input class="form-control" type="text"  [(ngModel)]="newAttribute.code" />
-                                  </td>
-                                  <td>
-                                      <input class="form-control" type="text"  [(ngModel)]="newAttribute.name"  />
-                                  </td>
-                                  <td>
-                                      <input class="form-control" type="text"  [(ngModel)]="newAttribute.price" />
-                                  </td> -->
-                                  <td>
-                                      <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                        </div>
+                    <div class="row" >
+                      <div class="col-sm-12">
+                              <table class="table table-bordered tableBodyScroll">
+                                      <thead style="background-color: #337ab7;color: white;">
+                                        <tr>
+                                          <th>Code</th>
+                                          <th>Description</th>
+                                          <th>Amount</th>
+                                          <th  >Qty</th>
+                                          <th >Window</th>
+                                          <th>Arr.Code</th>
+                  
+                                          <th >Check_No</th>
+                                          <th >Supplement</th>
+                                          <th >Reference</th>
+                                          <th width=10% ></th>
+                                        </tr>
+                                      </thead>
+                                      <tbody >
+                                          <tr>
+                                              <td>
+                                                <select   style="width:100%;" [(ngModel)]="add.Code">
+                                                   <option  *ngFor="let ratecdlist of pscd_dd" [ngValue] = "ratecdlist.posting_code_description">{{ratecdlist.posting_code}}</option>
+                                                </select>
+                                              </td>
+                                              <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Code"/></td>
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Amount" /></td>
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Qty" /></td>
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Windowno" /></td>
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Arr_Code" /></td>
+                  
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Check_No" /></td>
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Supplement" /></td>
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Reference" /></td>
+                                              <td style="width: 86px;"><span>
+                                                <i style="padding-left: 34px;cursor: pointer;" (click)="addRows(add)"
+                                                class="fa fa-plus-circle" aria-hidden="true"></i>
+                                             </span></td>
+                  
+                                             </tr>
+                                            <tr *ngFor="let room of showdetails ; let i=index;">
+                  
+                                                <td><label *ngIf="room.editFlag==false">{{room.Post_code_id}}</label>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_code_id"></td>
+
+                                                <td><label *ngIf="room.editFlag==false">{{room.Post_des}}</label>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Post_des"></td>
+  
+                                                <td ><label *ngIf="room.editFlag==false">{{room.Posting_amount}}</label>
+                                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Posting_amount"></td>
+
+                                                <td ><label *ngIf="room.editFlag==false">{{room.Posting_quantity}}</label>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Posting_qty"></td>
+                          
+                                                <td><label *ngIf="room.editFlag==false">{{room.Post_window}}</label>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Post_window"></td>
+                          
+                                                <td  ><label *ngIf="room.editFlag==false">{{room.Arrangement_code}}</label>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Arrangement_code"></td>
+                          
+                                                <td ><label *ngIf="room.editFlag==false">{{room.Checkno}}</label>
+                                                  <input type="number"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Checkno"></td>
+                          
+                                                <td ><label *ngIf="room.editFlag==false">{{room.Posting_supplement}}</label>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Posting_supplement"></td>
+                          
+                                                <td ><label *ngIf="room.editFlag==false">{{room.Posting_reference}}</label>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Posting_reference"></td>
+                        
+                                                
+                                                  
+                  
+                                              </tr>
+                  
+                                      </tbody>
+                                    </table>
+                      </div>
                   </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
+                  
+                  </div>
+                  <div class="row">
+                    <table>
+                      <tr>
+                        <td class="col-sm-2" style="width:20%;">
+                            <label style="margin-left:10px;">Total Posting</label>
+                        </td>
+                        <td class="col-sm-1">
+                          <input style="width:200%;height:25px;margin-left: -131%;" type="text" [(ngModel)]="totalPos"/>
+                        </td> 
+                        <td class="col-sm-2">
+                            <label style="margin-left:17%;">Total Amount</label>
+                        </td>
+                        <td class="col-sm-1">
+                          <input style="width:200%;height:25px;" type="text" [(ngModel)]="totalamt"/>
+                        </td> 
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-3" >                 
+                        <button type="button" style="width:110px;margin-left:2%;" class="btn btn-primary" (click)="saveroomDetails()" data-toggle="modal" data-target="#postingchargealert" data-dismiss="modal">Post</button>
+                        </div>   
+                        <div class="col-sm-3" style="margin-left:4%;">
+                          <button type="button" style="width:110px;margin-left:2%;margin-bottom:20%;" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                      </tr>
+                    </table>
                   </div>
               </div>
           </div>
       </div>
   </div>
+<!-- ************************************************************posting modal ends******************************************************** -->
+<!--alert after posting modal-->
+    
+ <div class="modal fade" id="postingchargealert" role="dialog">
+  <div class="vertical-alignment-helper">  
+<div class="modal-dialog vertical-align-center modal-sm">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><b>Alert</b></h4>
+      </div>
+      <div class="modal-body">
+        <p>{{postsuccessmsg}}{{postfailuremsg}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+</div>
+
+
+<!-- ******************************************alert for posting modal ends************************************************************************* -->
+
         <!--posting history modal  -->
 
         <div class="modal fade" id="postinghistory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -332,7 +488,7 @@
                       </div>
                       <div class="modal-body">
                           <div class="container-fluid">
-                              <div class="scrollable2">
+                              <!-- <div class="scrollable2"> -->
                               <div class="table-responsive">
                                 <table class="table table-bordered  table-hover"  style="font-size:12px;">        
                                     <thead style="background-color:#0077B5;color:white;">
@@ -362,13 +518,13 @@
                                   </table>
                                   </div>
                                   </div>
-                                  </div>
+                                  <!-- </div> -->
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="container-fluid">
                                   <b>Original</b>
                                   <div class="scrollable2">
-                                  <div class="table-responsive" style="min-height:101.01%;">
+                                  <!-- <div class="table-responsive" style="min-height:101.01%;"> -->
                                     <table class="table table-bordered table-hover"  style="font-size:12px;">
                                       <thead style="background-color:#0077B5;color:white;">
                                         <tr>
@@ -398,12 +554,12 @@
                                     </div>
                                     </div>
                                     </div>
-                                  </div>
+                                  <!-- </div> -->
                                   <div class="col-md-6">
                                     <div class="container-fluid">
                                       <b>Changes</b>
                                       <div class="scrollable2">
-                                      <div class="table-responsive" style="min-height:101.01%;">
+                                      <!-- <div class="table-responsive" style="min-height:101.01%;"> -->
                                         <table class="table table-bordered table-hover"  style="font-size:12px;">
                                           <thead style="background-color:#0077B5;color:white;">
                                             <tr>
@@ -435,7 +591,7 @@
                                     </div>  
                           </div>
                           </div>
-                      </div>
+                      <!-- </div> -->
                       <div class="modal-footer">
                           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                           
@@ -444,6 +600,7 @@
              
           </div>
       </div>
+<!-- *******************************************posting history modal ends************************************************************************** -->
           
         <!--  Edit Modal -->
         <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -457,9 +614,10 @@
                              <h4 class="modal-title" id="myModalLabel"><b>Edit Transaction Details</b></h4>
         
                         </div>
+                        <form #editform="ngForm">
                         <div class="modal-body">
                           <div class="row" >
-                          <form id="editform">
+                          
   
                               <div class="row">
                                   <div class="col-sm-6">
@@ -508,7 +666,7 @@
                                       <b>Amount</b>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text"  name="editamount" class="form-control" [(ngModel)]="amt">
+                                        <input type="text"  name="editamount" class="form-control" [(ngModel)]="amt" required>
                                       </div>
                                       </div>
                            
@@ -518,7 +676,7 @@
                                     <b>Quantity</b>
                                   </div>
                                   <div class="col-sm-6" style="padding-top:5px;">
-                                      <input type="text" class="form-control" name="quantityy" [(ngModel)]="quant">
+                                      <input type="text" class="form-control" name="quantityy" [(ngModel)]="quant" required>
                                   </div>
                                 </div>
                         
@@ -580,11 +738,12 @@
                                 </div> 
                          
                                 <div class="col-md-6">
-                                  <select style="width:70%;height:100%;" name="arrcode" class="form-control" [(ngModel)]="ed_arcode">
-                                      <option value="101">101</option>
-                                      <option value="102">102</option>
-                                      <option value="103">103</option>
-                                      <option value="104">104</option>
+                                  <select style="width:70%;height:100%;" name="arrcode" class="form-control" [(ngModel)]="ed_arcode" required>
+                                      <option value="" hidden>select value</option>
+                                      <option value="101">1</option>
+                                      <option value="102">2</option>
+                                      <option value="103">3</option>
+                                      <option value="104">4</option>
                                     </select>
                                 </div>
                               </div>
@@ -665,8 +824,8 @@
               <b>Supplement</b>
             </div>
             <div class="col-sm-6">
-                <input type="text" name="editsupple" class="form-control" style="width:260px;" [(ngModel)]="supple">
-              </div>
+                <input type="text" name="editsupple" class="form-control" style="width:260px;" [(ngModel)]="supple" required> 
+            </div>
       </div>
       </div>
       </div>
@@ -678,7 +837,7 @@
               <b>Reference</b>
             </div>
             <div class="col-sm-6">
-                <input type="text" name="editreference" class="form-control" style="width:260px;"  [(ngModel)]="ref">
+                <input type="text" name="editreference" class="form-control" style="width:260px;"  [(ngModel)]="ref" required>
               </div>
       </div>
       </div>
@@ -693,7 +852,7 @@
               <b>Cheque No.</b>
             </div>
             <div class="col-sm-6">
-                <input type="text"name="editcheque" class="form-control" [(ngModel)]="cqno">
+                <input type="text"name="editcheque" class="form-control" [(ngModel)]="cqno" required> 
             </div>
             
            
@@ -722,44 +881,74 @@
         </div>
       </div>
 
-    </form>
+    
   </div>
 </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-success" (click)="editbilling(amt,quan,ed_arcode,supple,ref,cqno)">OK</button>
+              <button type="button" class="btn btn-success" (click)="editbilling(amt,quan,ed_arcode,supple,ref,cqno)" data-toggle="modal" data-target="#afteredit" data-dismiss="modal" [disabled]="!editform.form.valid">OK</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               
           </div>
+        </form>
       </div>
   </div>
   </div>
 </div>
-  
-          <!--Reinstate modal-->
-  
-          <div class="modal fade" id="reinstatemodal" role="dialog">
-              <div class="vertical-alignment-helper">  
-            <div class="modal-dialog vertical-align-center modal-sm">
-              
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><b>Confirm Reinstate</b></h4>
-                  </div>
-                  <div class="modal-body">
-                    <p>Are you sure want to reinstate? </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-                
-              </div>
+<!-- **********************************************edit modal ends********************************************************* -->
+
+<!--alert after edit posting payment Modal -->
+    <div class="modal fade" id="afteredit" role="dialog">
+      <div class="vertical-alignment-helper">  
+        <div class="modal-dialog vertical-align-center modal-sm">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><b>Alert</b></h4>
             </div>
+            <div class="modal-body">
+              <p> {{editsuccessmsg}}{{editfailuremsg}}</p>
             </div>
-  
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            </div>  
+          </div>
+        
+        </div>
+      </div>
+    </div>
+<!--****************************** after edit posting payment ends************************************************************ -->
+
+
+
+
+<!--Reinstate modal-->
+
+<div class="modal fade" id="reinstatemodal" role="dialog">
+    <div class="vertical-alignment-helper">  
+  <div class="modal-dialog vertical-align-center modal-sm">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="background: #0077B5;color: white;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b>Confirm Reinstate</b></h4>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure want to reinstate? </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  </div>
+  <!-- ******************************************reinstate ends*************************************************************** -->
+  <!-- transfer to another room modal -->
   <div class="modal fade" id="transfertransaction" role="dialog">
       <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
@@ -768,95 +957,71 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><b>RESLU - Transfer Type</b></h4>
+          <h4 class="modal-title"><b>Transfer To Another Room</b></h4>
         </div>
         <div class="modal-body">
          <div class="row">
-           <div class="col-sm-6">
-              <div class="panel panel-default">
-                  <div class="panel-body">
+           <div class="col-sm-10">
+              <!-- <div class="panel panel-default">
+                  <div class="panel-body"> -->
                       <form>
-                          <div class="radio" style="margin-left:15px;">
-                            <label><input type="radio" name="optradio"><b>Transfer To another Room</b></label>
-                          </div>
-                          <div class="radio" style="margin-left:15px;">
-                            <label><input type="radio" name="optradio"><b>Transfer From another Room</b></label>
-                          </div>
-                          <div class="radio" style="margin-left:15px;">
-                            <label><input type="radio" name="optradio"><b>Transfer From List of Rooms</b></label>
-                          </div>
-                        </form>
-                  
-                  </div>
-                </div>
-           </div>
-  
-           <div class="col-sm-6" style="padding-left:35px;">
-              <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="row">
-                    <div class="col-sm-3">
-  
-                    </div>
-  
-                    <div class="col-sm-3">
-                      
-                      </div>
-                    </div>   
-                  
-                    <div class="row">
-                        <div class="col-sm-1">
-                      <input type="radio" name="optradio">
-                        </div>
-      
-                        <div class="col-sm-5" style="margin-left:2%;">
-                          <label>GroupedPostings</label>
-                        </div>
-                        </div>  
-  
-                        <div class="row">
-                            <div class="col-sm-1">
-                                <input type="radio" name="optradio">
-                            </div>
-          
-                            <div class="col-sm-5" style="margin-left:2%;" >
-                                <label >EntireFolio</label> 
-                              </div>
-                            </div>  
+                          <div class="form-group">
+                          <div class="row">
+                            
+                            <div class="col-sm-5"></div>
+                            
+                                <label class="radio-inline" >
+                                  <input type="radio"  id="radio1" name="optradio" value="GP" [(ngModel)]="transtyp">Grouped Posting
+                                </label>
+                              
+                            
   
                             <div class="row">
-                                <div class="col-sm-1">
-                                    <input type="radio" name="optradio">
-                                </div>
-              
-                                <div class="col-sm-5" style="margin-left:2%">
-                                    <label>MarkedPostings</label> 
-                                  </div>
-                                </div>  
+                            <div class="col-sm-5"></div>
+                              
+                                  <label class="radio-inline">
+                                    <input type="radio"  id="radio2" name="optradio" value="EF" [(ngModel)]="transtyp">Enter Folio
+                                  </label>
+                                
+                            </div>  
   
-                                <div class="row">
-                                    <div class="col-sm-1">
-                                        <input type="radio" name="optradio">
-                                    </div>
+                          <!-- <div class="row">
+                            <div class="col-sm-1">
+                              <input type="radio" name="optradio">
+                            </div>
+          
+                            <div class="col-sm-5" style="margin-left:2%">
+                              <label>MarkedPostings</label> 
+                            </div>
+                          </div>  
+  
+                          <div class="row">
+                            <div class="col-sm-1">
+                              <input type="radio" name="optradio">
+                            </div>
+          
+                            <div class="col-sm-5" style="margin-left:2%">
+                              <label>PartialPostings</label> 
+                            </div>
+                          </div>   -->
+  
+                            <div class="row">
+                              
+                              <div class="col-sm-5"></div>
+                             
+                                  <label class="radio-inline">
+                                    <input type="radio" id="radio3" name="optradio" value="CN" [(ngModel)]="transtyp">CheckNumber
+                                  </label>
+                                
+                            </div>
+                           
+                          </div>
+                        </div>  
+                        </form>
                   
-                                    <div class="col-sm-5" style="margin-left:2%">
-                                        <label>PartialPostings</label> 
-                                      </div>
-                                    </div>  
-  
-                                    <div class="row">
-                                        <div class="col-sm-1">
-                                            <input type="radio" name="optradio">
-                                        </div>
-                      
-                                        <div class="col-sm-5" style="margin-left:2%">
-                                            <label>CheckNumber</label>
-                                          </div>
-                                        </div>  
-                  </div>
-                </div>
-             
-            </div>
+                  <!-- </div>
+                </div> -->
+           </div>
   
          </div>
   
@@ -868,16 +1033,14 @@
                     <b> </b>
                   </div>
   
-                  <div class="col-sm-3">
+                  <div class="col-sm-2" style="margin-left:2%;">
                       <b>To Room</b>
                     </div>
   
                     <div class="col-sm-6">
-                        <select style="width:50%;height:100%;">
-                            <option value="101">101</option>
-                            <option value="102">102</option>
-                            <option value="103">103</option>
-                            <option value="104">104</option>
+                        <select name="toroom" class="form-control" style="width:50%;height:100%;" [(ngModel)]="toroomno">
+                          <option value="" hidden>select value</option>  
+                          <option *ngFor="let selectroomlist of roomnum" [ngValue] = "selectroomlist.rm_room">{{selectroomlist.rm_room}} </option>
                           </select>
                     </div>
                 </div>
@@ -890,8 +1053,8 @@
         <div class="col-sm-5">
             <div class="panel panel-default">
                 <div class="panel-body">
-                  <b>133</b><br>
-                  <b>Barker</b>
+                  <b>{{room}}</b><br>
+                  <b></b>
                 </div>
               </div>   
         </div>
@@ -901,8 +1064,8 @@
         <div class="col-sm-5">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <b>415</b><br>
-                    <b>Archer</b>
+                    <b>{{toroomno}}</b><br>
+                    <b></b>
               </div>
               </div>
           </div>
@@ -914,7 +1077,7 @@
   
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#aftertransfer"><b>Transfer</b></button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" href="#aftertransfer" (click)="transferroom(toroomno,transtyp)"><b>Transfer</b></button>
           <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
         </div>
       </div>
@@ -922,26 +1085,202 @@
     </div>
     </div>
   </div>
-  
-    <!-- Modal -->
+  <!--********************************************** transfer to another room modal******************************************************************* -->
+    <!--after transfer to another room Modal -->
     <div class="modal fade" id="aftertransfer" role="dialog">
         <div class="vertical-alignment-helper">  
-      <div class="modal-dialog vertical-align-center modal-sm">
+          <div class="modal-dialog vertical-align-center modal-sm">
         
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title"><b>Opera</b></h4>
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header" style="background: #0077B5;color: white;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Alert</b></h4>
+              </div>
+              <div class="modal-body">
+                <p> {{transroomsuccessmsg}}{{transroomfailuremsg}}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+              </div>  
             </div>
-            <div class="modal-body">
-              <p> charge transferred </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-            </div>  
-          </div>
           
+          </div>
         </div>
       </div>
+<!--****************************** after transfer to another room ends************************************************************ -->
+
+ <!-- payment Modal in billing -->
+ <div class="modal fade" id="paymentmodal"  role="dialog">
+  <div class="vertical-alignment-helper">
+  <div class="modal-dialog vertical-align-center">
+  
+    <!-- payment  Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="background: #0077B5;color: white;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" >Payment </h4>
       </div>
+      <form #heroForm="ngForm">
+      <div class="modal-body">
+          
+          <div class="panel panel-default">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="row">
+
+                  <div class="col-sm-6">
+                    <b>Payment Code</b>
+                  </div>
+                      <div class="col-sm-6">
+                          <select style="height:30px;width:130%;" class="form-control" name="paycode" [(ngModel)]="selected" (change)="selectoption(selected)">
+                            <option value="" hidden>select value</option>
+                            <option  *ngFor="let paycodelist of paycode" [ngValue] = "paycodelist.payment_code_id">{{paycodelist.payment_code}}</option>
+                          </select>
+
+                      </div>
+                    </div>
+                    </div>
+                    <div class="col-sm-3" style="color:#0077B5;" style="margin-left: 15px;">
+                        <div *ngIf="showdiv=='1'">cash</div>
+                        <div *ngIf="showdiv=='2'">credit card</div>
+                        <div *ngIf="showdiv=='3'">Direct Bill</div>
+                    </div>
+                  
+                </div><br>
+
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="col-sm-6">
+                      <b>Currency</b>
+                    </div>
+                    <div class="col-sm-6">
+                        <select name="curcy" style="height:30px;width:150%;" class="form-control" [(ngModel)]="currency">
+                          <option value="" hidden>select value</option>
+                          <option *ngFor="let list of money" [ngValue]="list.transaction_currency_id">{{list.currency}}</option>
+                          </select>
+                      </div>
+                    </div>  
+                  </div>
+              </div>
+            </div> 
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-sm-6">
+                    <div class="col-sm-6">
+                      <b>Amount</b>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" name="curr" class="form-control" style="width:150%;height:30px;" [(ngModel)]="amount">
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                        <div class="row" *ngIf="showdiv=='1'" >
+                          <div class="col-sm-6">
+                          <div class="col-sm-6">
+                            <b>Reference</b>
+                          </div>
+                          <div class="col-sm-6">
+                              <input type="text" class="form-control" name="reff" style="width:150%;height:30px;" [(ngModel)]="ref">
+                          </div>
+                          </div>
+                        </div>
+                        <div class="row" *ngIf="showdiv=='2'">
+                          <div class="col-sm-6">
+                          <div class="col-sm-6">
+                            <b>Credit card No.</b>
+                          </div>
+                          <div class="col-sm-6">
+                              <input type="text" class="form-control" name="cardnum" style="width:150%;height:30px;" [(ngModel)]="cardno">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="col-sm-2">
+                              <b>Expiry Date</b>
+                            </div>
+                            
+                            <div class="col-sm-10">
+                              <div class="row">
+                                <div class="col-sm-6">  
+                                    <app-monthpicker (change)="onMonthChange($event.target.value)" [(ngModel)]="PF_Expiration_Month"> </app-monthpicker>
+                                </div>
+                                
+                                <div class="col-sm-6"> 
+                                    <app-yearpicker (change)="onYearChange($event.target.value)" [(ngModel)]="PF_Expiration_Year"></app-yearpicker>
+                                    {{PF_Expiration_Month}}        
+                                  <!-- <input type="text" class="form-control"  [(ngModel)]="mbc.PF_Expiration_Date" style="width:200px;"> -->
+                                </div>
+                              </div>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="row" *ngIf="showdiv=='3'">
+                          <div class="col-sm-3">
+                            <b>Supplement</b>
+                          </div>
+                          <div class="col-sm-4">
+                              <input type="text" class="form-control" name="sup" style="width:150%;height:30px;" [(ngModel)]="supp">
+                            </div>
+                          </div><br>
+                            <div class="row" *ngIf="showdiv=='9003'">
+                            <div class="col-sm-3">
+                                <b>Reference</b>
+                              </div>
+                              <div class="col-sm-4">
+                                  <input type="text" class="form-control" name="referen" style="width:150%;height:30px;" [(ngModel)]="ref">
+                                </div>
+                        </div>
+                      
+                  </div>
+                </div>
+        
+          </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="checkoutpost(selected,currency,amount,ref,supp,cardno); heroForm.reset()" data-target="#paymentalert" data-toggle="modal"><b>Post</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="heroForm.reset()" ><b>Close</b></button>
+      </div>
+    </form>
+    </div>
+    
+    
+  </div>
+</div>
+</div>
+
+<!--**************************************************************payment Modal ends**************************************************************************************-->
+ <!--alert after payment modal-->
+    
+ <div class="modal fade" id="paymentalert" role="dialog">
+  <div class="vertical-alignment-helper">  
+<div class="modal-dialog vertical-align-center modal-sm">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header" style="background: #0077B5;color: white;">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><b>Alert</b></h4>
+      </div>
+      <div class="modal-body">
+        <p>{{paysuccessmsg}}{{payfailuremsg}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+    
+  </div>
+</div>
+</div>
+
+
+<!-- ******************************************alert for payment ends************************************************************************* -->
+

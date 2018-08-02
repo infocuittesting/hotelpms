@@ -103,7 +103,7 @@ export class OutoforderserviceComponent implements OnInit {
 
 oos2=[];
 oos3;
-   roomcard=[];
+   roomcard;
    roomcard1=[];
   user={};
   user2={};
@@ -131,9 +131,9 @@ oos3;
      this.roomService.postandgetdata(inputt)
      .subscribe(( user333:any)=> {
        this.user33 = user333;
-       this.roomcard=user333.Return;
-
-       if(user333.Return == "Record Inserted Successfully"){
+       this.roomcard=user333.ReturnCode;
+       if(this.roomcard=="RIS"){
+        this.roomcard="The Out Of Order/Out Of Service is created";
         console.log("checking return value is success or not")
         this.roomService.outofOrder()
         .subscribe((resp: any) => {
@@ -173,7 +173,7 @@ oos3;
                this.oos3=user335.ReturnCode;
               //  window.location.reload();
               if(this.oos3 == "RDS"){
-                this.oos3="The OOS is delted"
+                this.oos3="The "+status+" is deleted for room "+this.deleteDataDetails;
                 console.log("checking return value is success or not")
                 this.roomService.outofOrder()
                 .subscribe((resp: any) => {
@@ -280,12 +280,13 @@ this.roomService.reasonlisting()
   }
   }
 
-  
+  status;
   selectindex=null;
   public deleteDataDetails:any;
   selectOrdersEdit(details,index){
   this.selectindex=index;
-  this.deleteDataDetails=details;
+  this.deleteDataDetails=details.rm.room;
+  this.status=details.rm_status;
   this.session.store("id1",details.rm_room.toString());
   
   }

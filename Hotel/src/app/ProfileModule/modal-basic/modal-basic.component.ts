@@ -18,6 +18,7 @@ import { SessionStorageService } from "ngx-webstorage";
 })
 export class ModalBasicComponent implements OnInit {
 
+  
   public tables =[];
 
   public negotes =[];
@@ -659,12 +660,19 @@ deletesClick(flag){
 }
 
 
-
-
+edit=true;
+delet=true;
+cid;
 selectindex=null;
 public deleteDataDetails:any;
 selectMembersCredit(details,index){
 this.selectindex=index;
+this.cid=details.cc_id;
+if(this.cid==details.cc_id)
+{
+this.edit=false;
+this.delet=false;
+}else{this.edit=true;this.delet=true;}
 this.deleteDataDetails=details;
 this.session.store("id1",details.cc_id);
 }
