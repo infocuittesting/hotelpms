@@ -103,7 +103,7 @@ export class OutoforderserviceComponent implements OnInit {
 
 oos2=[];
 oos3;
-   roomcard=[];
+   roomcard;
    roomcard1=[];
   user={};
   user2={};
@@ -131,9 +131,9 @@ oos3;
      this.roomService.postandgetdata(inputt)
      .subscribe(( user333:any)=> {
        this.user33 = user333;
-       this.roomcard=user333.Return;
-
-       if(user333.Return == "Record Inserted Successfully"){
+       this.roomcard=user333.ReturnCode;
+       if(this.roomcard=="RIS"){
+        this.roomcard="The Out Of Order/Out Of Service is created";
         console.log("checking return value is success or not")
         this.roomService.outofOrder()
         .subscribe((resp: any) => {
