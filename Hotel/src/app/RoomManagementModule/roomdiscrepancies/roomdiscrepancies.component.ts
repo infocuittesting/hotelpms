@@ -28,8 +28,8 @@ export class RoomdiscrepanciesComponent implements OnInit {
 
     let content = this.content.nativeElement;
 
-    doc.fromHTML(content.innerHTML,15,15,{
-      'width':190,
+    doc.fromHTML(content.innerHTML,10,15,{
+      'width':200,
       'elementHandlers': specialElementHandlers
     });
 

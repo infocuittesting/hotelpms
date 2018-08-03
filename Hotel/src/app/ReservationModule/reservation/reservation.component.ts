@@ -38,11 +38,34 @@ export class ReservationComponent implements OnInit {
   public marketpro =[];
   
   public user1;
-  constructor(private ReservationService:ReservationService,private route:Router,public session:SessionStorageService) { }
+  public now:Date = new Date();
+  date:any;
+  constructor(private ReservationService:ReservationService,private route:Router,public session:SessionStorageService) { 
+    // this.date = new Date().toISOString().slice(11,19);
+    setInterval(()=>{
+      this.date = new Date();
+    },1);
+  }
   clearsession(){
     this.session.clear();
   }
-   
+//getting value for expirydate and merging it in a variable   
+  private month:any;
+  private year:any;
+  onMonthChange(month:any){
+    this.month = month.toString();
+  }
+  onYearChange(year:any){
+    this.year = year.toString();
+  }
+  private creditcard_expiry:any;
+  getcreditexpiry(){
+      this.creditcard_expiry = this.month+"/"+this.year;
+      console.log(this.creditcard_expiry);
+  }
+  
+
+
   user:any={};
   //date difference 
   arriveDepartureDateFun(arrDate,depDate){
@@ -52,11 +75,17 @@ export class ReservationComponent implements OnInit {
     }
   }
 
+  
  public usera;
  public confim;
   user33={};
   submit(inputt):void {
   // console.log(inputt);
+  // this.creditcard_expiry = inputt.PF_Expiration_Month+"/"+inputt.PF_Expiration_Year
+
+  //passing creditcard expiry in inputt object
+  this.creditcard_expiry = this.month+"/"+this.year;
+  inputt.RES_Exp_Date = this.creditcard_expiry
       this.ReservationService.postandgetdata (inputt)
       .subscribe( (resp:any) => {
         
@@ -108,6 +137,7 @@ else{
 
      ngOnInit() {
     
+      console.log(this.now);
       console.log(this.Pf_language);
       this.ReservationService.getratecode()
       .subscribe((resp: any) => {

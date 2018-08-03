@@ -138,9 +138,10 @@
 
 
   <div class="container-fluid">
+      <form action="">
       <div class="panel panel-primary">
           <div class="panel-body">
-<form action="">
+
     <div class="row">
 
 
@@ -395,7 +396,7 @@
 		  <div class="col-lg-2">
 		  <div class="input-group" style="padding-left:40px;">
 		  <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
-      <input type="time" name="eta" class="form-control" style="width:176px;" [(ngModel)]="user.RES_ETA"></div>
+      <input type="datetime-local" [value]="date" name="eta" class="form-control" style="width:176px;" [(ngModel)]="user.RES_ETA"></div>
 		  </div>
 		  </div>
 		  <div class="row" style="padding-top:5px;">
@@ -416,10 +417,12 @@
 		  <div class="col-lg-2">                                                                      
 		  <b>Expire_Date</b>                                                                      
 		  </div>                                                                      
-		  <div class="col-lg-2">
-		  <div class="input-group" style="padding-left:40px;">
-		  <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
-		  <input name="expdate" type="text" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Exp_Date"></div>
+		  <div class="col-lg-1" style="margin-left: 40px;">
+          <app-monthpicker name="ExpiryDate" (change)="onMonthChange($event.target.value)" [(ngModel)]="user.PF_Expiration_Month" style="width:100%;"> </app-monthpicker>
+          </div> 
+          <div class="col-lg-1" style="margin-left: 85px;">
+          <app-yearpicker name="ExpiryDate" (change)="onYearChange($event.target.value)" [(ngModel)]="user.PF_Expiration_Year"  style="width:100%;"></app-yearpicker>
+
 		  </div>
 		  </div>                                          
 	
@@ -528,38 +531,37 @@
                
         </div>
     </div>
-  </form>
+
 </div>
 </div>
-  </div>
+<div class="row">
 
-  <div class="container-fluid">
+    <div class="col-lg-2">
 
-      <div class="row">
+    </div>
+    <div class="col-lg-2" style="padding-left:10px;">
+      <button type="button" class="btn btn-success" style="width:150px;" data-toggle="modal" data-target="#myModal" [disabled]="!loginForm.valid"><b>Save</b></button>
+    </div>
+      <div class="col-lg-2">
+        <button type="button" type="reset" class="btn btn-warning" style="width:150px;" (click)="submit(user)" data-toggle="modal" data-target="#myModal1" [disabled]="!loginForm.valid"><b>Ok</b></button>
+      </div>
 
-        <div class="col-lg-2">
-
-        </div>
         <div class="col-lg-2" style="padding-left:10px;">
-          <button type="button" class="btn btn-success" style="width:150px;" data-toggle="modal" data-target="#myModal" [disabled]="!loginForm.valid"><b>Save</b></button>
-        </div>
-          <div class="col-lg-2">
-            <button type="button" class="btn btn-warning" style="width:150px;" (click)="submit(user)" data-toggle="modal" data-target="#myModal1" [disabled]="!loginForm.valid"><b>Ok</b></button>
+            <button type="button" type="reset" class="btn btn-info" style="width:150px;" data-toggle="modal" data-target="#waitlist1" (click)="submitwait(user)"><b>Waitlist</b></button>
           </div>
 
-            <div class="col-lg-2" style="padding-left:10px;">
-                <button type="button" class="btn btn-info" style="width:150px;" data-toggle="modal" data-target="#waitlist1" (click)="submitwait(user)"><b>Waitlist</b></button>
+          <div class="col-lg-2" style="padding-left:10px;">
+              <button type="button" class="btn btn-danger" style="width:150px;" routerLink="/mains"><b>Close</b></button>
+            </div>
+
+            <div class="col-lg-2">
+
               </div>
-
-              <div class="col-lg-2" style="padding-left:10px;">
-                  <button type="button" class="btn btn-danger" style="width:150px;" routerLink="/mains"><b>Close</b></button>
-                </div>
-
-                <div class="col-lg-2">
-
-                  </div>
-      </div>
   </div>
+</form>
+  </div>
+
+
 
 </div>
 </div>
@@ -585,22 +587,26 @@
         </div>
 	  </div>
 	  
-	  <div class="modal fade" id="myModal1" role="dialog">
-        <div class="modal-dialog">
+	  <div class="modal fade" id="myModal1" role="dialog"  vertical-align="center">
+        <div class="modal-dialog" >
         
           <!-- Modal content-->
-          <div class="modal-content text-center">
+          <div class="modal-content" style="margin-top: 30%;">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Creating Reservation</h4>
+              <h4 class="modal-title" align="center">Creating Reservation</h4>
             </div>
             <div class="modal-body">
               <p align="center"><b> {{usera}}</b></p>
               <p align="center"><b> {{confim}}</b></p>
             </div>
             <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="clearsession()" >Close <i class="glyphicon glyphicon-remove"></i></button>             
-            </div>
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                    <button type="button"  class="btn btn-danger" data-dismiss="modal" (click)="clearsession()" >Close</button>             
+              </div>
+              <div class="col-md-5"></div>
+               </div>
           </div>
           
         </div>
@@ -638,7 +644,7 @@
               </div>
             </div>
             <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close <i class="glyphicon glyphicon-remove"></i></button>             
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>             
             </div>
           </div>
           
@@ -648,32 +654,24 @@
 </html>
 
               <!-- Waitlist Start-->
-              <div class="modal fade" id="waitlist1" role="dialog" align="center">
+              <div class="modal fade" id="waitlist1" role="dialog" vertical-align="center">
                   <div class="modal-dialog">
                   
                     <!-- Modal content-->
-                    <div class="modal-content ">
+                    <div class="modal-content " style="margin-top: 30%;">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title" align="center">Reservation Waitlist</h4>
                       </div>
                       <div class="modal-body">
-                        <div class="panel panel-primary" >
-          
-                          <div class="panel-body">
-
-                          <p align="center"><b>{{user1}}</b></p>                          
-                          
-                          </div>
-                        </div>
-                        
+                          <p align="center"><b>{{user1}}</b></p>                             
                       </div>
                       <div class="modal-footer">
-                        <table>
-                          <tr>
-                        <td align="right"><button type="button"  (click)="clearsession()" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
-                      </tr>
-                      </table>
+                          <div class="col-md-5"></div>
+                          <div class="col-md-2">
+                      <button type="button" (click)="clearsession()" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                    <div class="col-md-5"></div>
                       </div>
                     </div>
                     

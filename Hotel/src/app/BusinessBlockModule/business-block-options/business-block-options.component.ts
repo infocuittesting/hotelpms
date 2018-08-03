@@ -2,6 +2,12 @@ import { Component, OnInit } from '@angular/core';
 // import {DatePicker} from './datepicker';
 import {BusinessBlockOptionsService} from './business-block-options.service'
 // import { MomentModule } from 'angular2-moment';
+<<<<<<< HEAD
+=======
+import { Router } from "@angular/router";
+import { SessionStorageService } from "ngx-webstorage";
+
+>>>>>>> a2051fee493c18af2ec603c0ed77054c8f8e861a
 
 
 @Component({
@@ -12,6 +18,13 @@ import {BusinessBlockOptionsService} from './business-block-options.service'
 
 })
 export class BusinessBlockOptionsComponent implements OnInit {
+  
+
+
+  public Id = this.session.retrieve("blockid");
+  public Name = this.session.retrieve("blockname");
+  public cancelnumber;
+  public notenumber;
  public notes={};
  public cancel={};
  public return:any =[];
@@ -19,13 +32,15 @@ export class BusinessBlockOptionsComponent implements OnInit {
  public tableschanges;
  public roomtype=[];
  public reason=[];
-  constructor(private blockservice:BusinessBlockOptionsService) { }
+  constructor(private blockservice:BusinessBlockOptionsService,private route:Router,public session:SessionStorageService ) { }
  insertnotes(args){
    console.log(args);
    this.blockservice.insertbusinessblock(args)
    .subscribe((resp: any) => {
     this.return=resp.ReturnCode;
+  
     if(this.return == "RIS"){
+      this.notenumber="the note is created for block id "+this.session.retrieve("blockid");
       console.log("service working fine");
     }
     else{
@@ -39,7 +54,9 @@ export class BusinessBlockOptionsComponent implements OnInit {
   this.blockservice.cancel(input)
   .subscribe((resp:any)=>{
   this.cancelmessage=resp.ReturnCode;
+  this.cancelnumber=resp.CancellationNumber;
   if(this.cancelmessage == "RIS"){
+    this.cancelnumber="the group cancellaton number is "+this.cancelnumber;
     console.log("service working fine");
   }
   else{
@@ -63,6 +80,7 @@ export class BusinessBlockOptionsComponent implements OnInit {
  
 // }
   ngOnInit() {
+    
     this.blockservice.getchaTables1()
     .subscribe((resp: any) => {
       this.tableschanges=resp.ReturnValue;
