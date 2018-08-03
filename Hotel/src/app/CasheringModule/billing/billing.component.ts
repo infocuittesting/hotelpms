@@ -285,6 +285,24 @@ saveroomDetails(postdetails)
      });
      
 }
+
+//delete buttons
+// deleterows(index){
+//   this.showdetails.splice(index,1);
+//   this.postdetails.splice(index,1);
+
+// }
+
+//edit rows
+// editrows(index){
+//   this.showdetails[index].editFlag=true;
+//   this.postdetails[index].editFlag=true;
+// // }
+// saveButton(index){
+//   this.showdetails[index].editFlag=false;
+//   this.postdetails[index].editFlag=false;
+  
+// }
 //close button in posting payment 
 clearpost(){
   this.showdetails=[];

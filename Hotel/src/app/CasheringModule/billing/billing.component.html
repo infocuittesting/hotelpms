@@ -404,9 +404,16 @@
                           
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_reference}}</label>
                                                   <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Posting_reference"></td>
-                        
-                                                
                                                   
+                                                  
+                                                <!-- <td style="width: 86px;"><span><i style="cursor: pointer;" class="fa fa-trash" aria-hidden="true"
+                                                  (click)="deleterows(i)"></i> &nbsp;&nbsp;&nbsp;
+                                                  <i  style="cursor: pointer;"  *ngIf="room.editFlag==false" class="fa fa-pencil" aria-hidden="true"
+                                                  (click)="editrows(i)"></i>
+                                                  <i  style="cursor: pointer;" *ngIf="room.editFlag!=false" class="fa fa-check" aria-hidden="true"
+                                                  (click)="saveButton(i)"></i>
+                                                </span></td> -->
+                                                                            
                   
                                               </tr>
                   
@@ -975,19 +982,19 @@
                           <div class="form-group">
                           <div class="row">
                             
-                            <div class="col-sm-5"></div>
+                            <div class="col-sm-6"></div>
                             
                                 <label class="radio-inline" >
-                                  <input type="radio"  id="radio1" name="optradio" value="GP" [(ngModel)]="transtyp">Grouped Posting
+                                  <input type="radio"  id="radio1" name="optradio" value="GP" [(ngModel)]="transtyp" style="margin-left:-39px;">Grouped Posting
                                 </label>
                               
                             
   
                             <div class="row">
-                            <div class="col-sm-5"></div>
+                            <div class="col-sm-6"></div>
                               
                                   <label class="radio-inline">
-                                    <input type="radio"  id="radio2" name="optradio" value="EF" [(ngModel)]="transtyp">Enter Folio
+                                    <input type="radio"  id="radio2" name="optradio" value="EF" [(ngModel)]="transtyp" style="margin-left:-39px;">Enter Folio
                                   </label>
                                 
                             </div>  
@@ -1014,10 +1021,10 @@
   
                             <div class="row">
                               
-                              <div class="col-sm-5"></div>
+                              <div class="col-sm-6"></div>
                              
                                   <label class="radio-inline">
-                                    <input type="radio" id="radio3" name="optradio" value="CN" [(ngModel)]="transtyp">CheckNumber
+                                    <input type="radio" id="radio3" name="optradio" value="CN" [(ngModel)]="transtyp" style="margin-left:-39px;">CheckNumber
                                   </label>
                                 
                             </div>
