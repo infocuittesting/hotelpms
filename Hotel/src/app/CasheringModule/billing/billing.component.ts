@@ -256,6 +256,10 @@ saveroomDetails(postdetails)
       }
      });
 
+     this.showdetails=[];
+     this.postdetails=[];
+     this.totalPos=0;
+     this.totalamt=0;
      //refresh
      this.cashbillservice.inhousetobilling()
      .subscribe((resp: any) => {
@@ -271,14 +275,24 @@ saveroomDetails(postdetails)
          if (seperat['post_window']==1){
            this.vaal1.push(seperat) //for window1
          }
-         else{
+         else
+         {
            this.vaal2.push(seperat)  //for window2
  
          }
        }
+       
      });
-
+     
 }
+//close button in posting payment 
+clearpost(){
+  this.showdetails=[];
+  this.postdetails=[];
+  this.totalPos=0;
+  this.totalamt=0;
+}
+
 
 ngOnInit() {
 
