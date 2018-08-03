@@ -26,6 +26,7 @@ export class ModalBasicComponent implements OnInit {
   public negotes1 =[];
 
   public notes =[];
+  public notes1 = [];
 
   public credit =[];
 
@@ -124,7 +125,11 @@ getcreditexpiry(){
     console.log(val);
     this.negotes = this.negotes1.filter(x => x.pf_rate_code == val)
   }
-  
+
+  notesfilter(val){
+    console.log(val);
+    this.notes = this.notes1.filter(x => x.pf_note_type == val)
+  }
 
   onSelectpop(val){
     console.log(val);
@@ -139,6 +144,25 @@ getcreditexpiry(){
   onSelect2(val){
     console.log(val);
     this.prefer = this.prefer2.filter(x => x.pf_preference_group == val)
+  }
+
+  preferencefilter(args1,args2){
+    console.log(args1);
+    console.log(args2);
+    if(args1 === undefined){
+      this.prefer = this.prefer2.filter(x => x.pf_preference_group == args2)
+    }
+    else if(args2 === undefined){
+      this.prefer = this.prefer1.filter(x => x.pf_guest_preference == args1)
+    }
+    else{
+      this.prefer = this.prefer2.filter(x => x.pf_preference_group == args2,y => y.pf_guest_preference == args1)
+      // this.prefer = this.prefer1.filter(x => x.pf_guest_preference == args1)
+      console.log(this.prefer);
+    }
+    // this.prefer = this.prefer1.filter(x => x.pf_guest_preference == args1)
+    // this.prefer = this.prefer2.filter(x => x.pf_preference_group == args2)
+
   }
 //   selectedDevice = 'Master';
 //   onChange(newValue) {
@@ -411,6 +435,7 @@ notesClick(flag){
   this.pppService.getNotes(paramss)
   .subscribe((resp: any) => {
     this.notes=resp.ReturnValue;
+    this.notes1=this.notes;
    console.log(this.credit);
  
 });
@@ -701,6 +726,7 @@ this.selectindex=index;
 this.deleteDataDetails4=details;
 this.session.store("id4",details.preference_id);
 }
+
 
 
   }

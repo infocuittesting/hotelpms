@@ -148,7 +148,7 @@
         <button class="btn btn-warning" style="width:14%" routerLink="/reservation">Resv <i class="fa fa-tasks"></i></button>   
         <button class="btn btn-default disabled" style="width:10%">Details <i class="fa fa-credit-card"></i></button>   
         <button class="btn btn-info" style="width:10%"> Statistics <i class="fa fa-user"></i></button>   
-        <button class="btn btn-primary" style="width:10%"> Report <i class="fa fa-caret-square-o-down"></i></button>     
+        <button class="btn btn-primary" style="width:10%" data-toggle="modal" data-target="#report"> Report <i class="fa fa-caret-square-o-down"></i></button>     
         <button class="btn btn-danger" style="width:10%" routerLink="/mains"> Close <i class="fa fa-close"></i></button>   
         </div>
       
@@ -184,3 +184,129 @@
                 </div>
             </div>
           <!-- Checkin end -->
+
+
+    <!-- Report Start -->
+    <div  class="modal fade" id="report" data-backdrop="static" data-keyboard="false" role="dialog" #report>
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content" style="margin-left:-45%;margin-top: 10%; width:190%;" >
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Managing Queue Report</h4>
+                </div>
+                <div class="modal-body">                    
+               <div id="content" #content style="font-size:20px">
+
+                    <table class="table table-bordered " >
+                            <thead>
+                                <tr class="table table-primary"style="background-color: #0077B5;color:white; ">
+                                    <th> </th>
+                                    <th>Reservation_Id</th>
+                                    <th> Name</th>
+                                    <th> Q_Time</th>
+                                    <th> Queue</th>
+                                    <th> Queue_Date</th>
+                                    <th> Mobile_No</th>
+                                    <th> Room</th>
+                                    <th> Room_Type</th>
+                                    <th> Room_Class</th>
+                                    <th> FO_Status</th>
+                                    <th> Room_Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                          
+                                    <tr *ngFor="let checkin of search | filterdata: queryString :'pf_firstname'| filterdata: lastName : 'pf_firstname'| filterdata: roomtype : 'Room_Class'; let i = index"
+                                    (click)="selectMembersEdit(checkin,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                                      <td>  {{i+1}}</td>     
+                                      <td>  {{checkin.res_id}}</td>
+                                      <td>  {{checkin.pf_firstname}}</td>     
+                                      <td>  {{checkin.rm_qtime}}</td>     
+                                      <td>  {{checkin.rm_queue}}</td>     
+                                      <td>  {{checkin.rm_queue_date}}</td>     
+                                      <td>  {{checkin.pf_mobileno}}</td>     
+                                      <td>  {{checkin.res_room}}</td>     
+                                      <td>  {{checkin?.rm_room_type}}</td>     
+                                      <td>  {{checkin.rm_room_class}}</td>     
+                                      <td>  {{checkin.rm_fo_status}}</td>     
+                                      <td>  {{checkin.rm_room_status}}</td>                             
+                                   </tr>
+                                        <tr>
+                                      <td> <input type="checkbox"></td>      
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>                        
+                                    </tr>
+                                        <tr>
+                                      <td> <input type="checkbox"></td>      
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>                        
+                                    </tr>
+                                        <tr>
+                                       <td> <input type="checkbox"></td>          
+                                       <td></td>     
+                                       <td></td> 
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>                             
+                                    </tr>
+                                        <tr>
+                                      <td> <input type="checkbox"></td>      
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>
+                                       <td></td>     
+                                       <td></td>     
+                                       <td></td>                        
+                                    </tr>                                                            
+                            </tbody>
+                          </table>
+
+                </div> 
+        
+                     
+                    
+                     <br>        
+                </div>
+                <div class="modal-footer">
+          <table>
+            <tr>
+                    <td style="padding-left:5px;"><button type="button" class="btn btn-warning" (click)="downloadPDF()"><b>Download</b><span class="glyphicon glyphicon-file" style="padding-left:5px;"></span></button></td>
+                  <td style="padding-left:5px;"><button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button></td>
+                </tr>
+                </table>
+                </div>
+              </div>
+              
+            </div>
+          </div>         
+    <!-- Report end -->
