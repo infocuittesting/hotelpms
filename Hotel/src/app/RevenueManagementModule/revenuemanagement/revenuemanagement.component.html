@@ -18,7 +18,7 @@
                         </div>
                     </div>
         </div>
-      <div class="container-fluid" style="padding-top:20px;padding-left:50px;">
+      <div class="container-fluid" style="padding-top:-5px;padding-left:50px;">
           <ul class="nav nav-tabs">
               <li class="active"><a data-toggle="tab" href="#rateheader"><b>Rate Header</b></a></li>
               <li><a data-toggle="tab" href="#ratedetails">Rate Detail</a></li>
@@ -30,264 +30,256 @@
          <form>
           <div class="row">
           
-          <div class="col-sm-6" style="padding-top:20px;">
-                <!-- <div class="panel panel-primary">
-                    <div class="panel-body">
-                          
-                        <div class="row">
-                            <div class="col-sm-3">
-                            <b>Rate code</b>
-                            </div>
-                            <div class="col-sm-3">
-                            <select class="form-control input-sm"  style="width:150px;">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </select>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+
 
               <div class="panel panel-primary">
                   <div class="panel-body">
+                 <div class="row">
+                     <div class="col-md-7">
+
+                     
                     
                 <div class="row">
-                   
-                    <div class="col-sm-3">
+                   <div class="col-md-4">
                     <b>Rate code</b>
+                     <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" >                   
                     </div>
-                    <div class="col-sm-3">
-                            <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:150px;" [(ngModel)]="ratecodeid" >                   
+                    <div class="col-md-4">
+                    <b>Description</b>
+                     <input type="text" name="des"  class="form-control input-sm" style="width:70%;height: 27px;" >       
                     </div>
-                </div>
-
-
-            <div class="row" style="padding-top:7px;">
-                <div class="col-sm-3">
-               <b>Description</b>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">            
-                        <input type="text" name="des"  class="form-control input-sm" style="width:150px;" >
-                      </div>
-                  </div>
-              </div>
-  
-              <div class="row">
-                  <div class="col-sm-3">
+                    <div class="col-md-4">
                  <b>Rate category</b>
-                  </div>
-                  <div class="col-sm-3">
-                      <select name="ratecategoryid" class="form-control input-sm"  style="width:150px;" [(ngModel)]="rateheader.ratecategoryid">
-                          <option  *ngFor="let roomtypelist of ratecat" [ngValue] = "roomtypelist.ratecategory_id">{{roomtypelist.rate_category}}</option>
-                          
-                        </select>
+                 <select name="ratecategoryid" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.ratecategoryid">
+                        <option  *ngFor="let roomtypelist of ratecat" [ngValue] = "roomtypelist.ratecategory_id">{{roomtypelist.rate_category}}</option>    
+                      </select>  
                     </div>
-                </div>
-  
+                    </div>
+
   
                 
   
-                  <div class="row" style="padding-top:5px;">
-                      <div class="col-sm-3">
-                     <b>Begin Sell Date</b>
+                  <div class="row" >
+                        <div class="col-md-4">
+                                <b>Rate Class</b>
+                                <select name="rateclass" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.rateclass">
+                                     <option  *ngFor="let roomtypelist of rateclass" [ngValue] = "roomtypelist.rateclass"></option>  
+                                   </select>
+                                 </div>
+                      <div class="col-md-4">
+                     <b>Begin Sell Date</b>          
+                    <input name="beginselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="rateheader.beginselldate">
                       </div>
-                      <div class="col-sm-3">
-                          <div class="form-group">            
-                              <input name="beginselldate" type="date" class="form-control input-sm" style="width:150px;" [(ngModel)]="rateheader.beginselldate">
-                            </div>
-                        </div>
-                    </div>
-  
-  
-                    <div class="row" style="padding-top:5px;">
-                        <div class="col-sm-3">
+                      <div class="col-md-4">  
                        <b>End Sell Date</b>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">            
-                                <input name="endselldate" type="date" class="form-control input-sm" style="width:150px;" [(ngModel)]="rateheader.endselldate" >
-                              </div>
-                          </div>
-                      </div>
+                       <input name="endselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="rateheader.endselldate" >                           
+                        </div>  
+                    </div>
+        
   
-  
-                      <div class="row" style="padding-top:5px;">
-                          <div class="col-sm-3">
-                         <b>Market</b>
-                          </div>
-                          <div class="col-sm-3">
-                              <select name="mar" class="form-control input-sm"  style="width:150px;" [(ngModel)]="rateheader.market_id">
-                                    <option  *ngFor="let list of shop" [ngValue] = "list.market_id">{{list.market_code}}</option>  
-                                </select>
-                            </div>
-                        </div>
-  
-  
-                        <div class="row" style="padding-top:7px;">
-                            <div class="col-sm-3">
-                           <b>Source</b>
-                            </div>
-                            <div class="col-sm-3">
-                                <select name="sour1" class="form-control input-sm"  style="width:150px;" [(ngModel)]="rateheader.source_id">
-                                        <option  *ngFor="let sourlist of src" [ngValue] = "sourlist.source_id">{{sourlist.source_code}}</option> 
-                                  </select>
-                              </div>
-                          </div>
-  
-  
-                          <div class="row" style="padding-top:7px;">
-                              <div class="col-sm-3">
-                             <b>Room Types</b>
-                              </div>
-                              <div class="col-sm-3">
-                                  <select name="roomtypeid" class="form-control input-sm"  style="width:150px;" [(ngModel)]="rateheader.roomtypeid">
-                                        <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option> 
-                                    </select>
-                                </div>
-                            </div>
-  
-<!--   
-                            <div class="row" style="padding-top:5px;">
-                                <div class="col-sm-3">
-                               <b>Packages</b>
-                                </div>
-                                <div class="col-sm-3">
-                                    <select class="form-control input-sm"  style="width:150px;">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                      </select>
-                                  </div>
-                              </div> -->
-  
-  
-                                <div class="row" style="padding-top:7px;">
-                                  <div class="col-sm-3">
-                                 <b>Commmission%</b>
-                                  </div>
-                                  <div class="col-sm-3">
-                                      <div class="form-group">            
-                                          <input name="commissionpercentage" type="text" class="form-control input-sm" style="width:150px;" [(ngModel)]="rateheader.Commission_percentage">
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
 
   
+                          <div class="row" >
+                                <div class="col-md-4">   
+                                        <b>Market</b>
+                                        <select name="mar" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.market_id">
+                                        <option  *ngFor="let list of shop" [ngValue] = "list.market_id">{{list.market_code}}</option>  
+                                        </select>  
+                                    </div>                
+                                            
+                                    <div class="col-md-4">   
+                                      <b>Source</b>
+                                      <select name="sour1" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.source_id">
+                                            <option  *ngFor="let sourlist of src" [ngValue] = "sourlist.source_id">{{sourlist.source_code}}</option> 
+                                      </select>
+                                     </div>
+                            <div class="col-md-4">
+                           <b>Display Sequence</b>
+                           <select name="sour2" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.Sequence">
+                                <option  *ngFor="let sourlist of Sequence" [ngValue] = "sourlist.Sequence"></option> 
+                          </select>
+                            </div>
+                          </div>
+                          <div class="row">
+                                <div class="col-md-4">
+                                        <b>Room Types</b>
+                                        <div class="input-group">
+                                               <span class="input-group-addon" data-toggle="modal" data-target="#exampleModalCenter"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
+                                           <input name="roomtypeid" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="roomtype" type="text">
+                                                 <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
+                                             <!-- </select> -->
+                                         </div>
+                                         </div>
+                                       <div class="col-md-4">
+                                       <b>Package</b>
+                                       <select name="Package" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.Package">
+                                               <option  *ngFor="let sourlist of Package" [ngValue] = "sourlist.Package"></option> 
+                                         </select>
+                                       </div>
+                                       <div class="col-md-4">
+           
+                                         </div>
+                          </div>
+                        </div>
+<div class="col-md-5">
+        <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+<legend  style="margin-left:5px" ><b>Transaction Details</b></legend>
+
+<div class="row" >
+        <div class="col-md-6">
+       <b style="margin-left:10px">TransactionCode</b>
+       <select class="form-control input-sm"  style="width:70%;height: 27px;;margin-left:10px;">
+            <option>100</option>
+            <option>200</option>
+            <option>300</option>
+            <option>400</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+            <b style="margin-left:10px">CurrencyCode</b>
+            <select name="currencycodeid" class="form-control input-sm"  style="width:70%;height: 27px;;margin-left:10px;"  [(ngModel)]="rateheader.currencycodeid">
+                    <option  *ngFor="let moneylist of money" [ngValue] = "moneylist.transaction_currency_id">{{moneylist.currency}}</option>
+              </select>
+          </div>
+      </div>
+      <div class="row">
+            <div class="col-md-6">
+                    <b style="margin-left:10px">Pkg Tran Code</b>
+                    <select name="Tran" class="form-control input-sm"  style="width:70%;height: 27px;;margin-left:10px;"  [(ngModel)]="rateheader.Tran">
+                            <option  *ngFor="let moneylist of money" [ngValue] = "moneylist.Tran"></option>
+                      </select>
+                </div>
+                <div class="col-md-6">
+                        <label style="margin-left:35px"  >
+                                <input type="checkbox" [value]="TaxIncl" class="form-control" name="TaxIncl" style="width:15px;height:15px;margin-left:23px;" ><b>Tax Incl</b></label>
+                </div>
+      </div>
+      <div class="row">
+            <div class="col-md-6">
+                    <b style="margin-left:10px">Exchange Type</b>
+                    <select name="Exchange" class="form-control input-sm"  style="width:70%;height: 27px;;margin-left:10px;margin-bottom:3px"  [(ngModel)]="rateheader.Exchange">
+                          <option  *ngFor="let moneylist of money" [ngValue] = "moneylist.Exchange"></option>
+                    </select>
+                      </div>
+      </div></div>
+    </div>
+</div>
+<br>
+
+<div class="row">
+
+
+<div class="col-md-6">
+        <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+      <legend style="margin-left:5px" ><b>Components</b></legend>
+
+      <div class="row" >
+            <div class="col-md-1"></div>
+              <div class="col-md-2" >
+                      <label style="margin-left:-35px" >
+                      <input type="checkbox" [value]="negotiated" class="form-control" name="nego" style="width:15px;height:15px;margin-left:25px;" [(ngModel)]="rateheader.Negotiated" ><b>Negotiated</b></label>
+              </div>
+              
+              <div class="col-md-2">
+                     <label style="margin-left:-8px" >
+                      <input type="checkbox" [value]="Rate" class="form-control" name="Rate" style="width:15px;height:15px;margin-left:25px;" [(ngModel)]="rateheader.Rate" > <b>PrintRate</b></label>
+              </div>
+              <div class="col-md-2">
+                  <label style="margin-left:-15px"  >
+              <input type="checkbox" [value]="Membership" class="form-control" name="Membership" style="width:15px;height:15px;margin-left:32px;" [(ngModel)]="rateheader.Membership" ><b>Membership</b></label>
+              </div>
+              <div class="col-md-2">
+                  <label >
+                          <input type="checkbox" [value]="discount"  class="form-control" name="discount" style="width:15px;height:15px;margin-left:15px;" [(ngModel)]="rateheader.discount"><b>Discount</b> </label>        
+                 
+              </div>
+              <div class="col-md-2">
+                  <label >
+                          <input type="checkbox" [value]="Day"  class="form-control" name="Day" style="width:15px;height:15px;margin-left:15px;" [(ngModel)]="rateheader.Day"><b>DayUse</b>                   
+                  </label>
+              </div>
+            <div class="col-md-1"></div>
+              
+        </div>
+        <div class="row">   
+                <div class="col-md-1"></div>
+               
+              <div class="col-md-2">
+                  <label style="margin-left:-35px"  >
+                          <input type="checkbox" [value]="Complimentary"  class="form-control" name="Complimentary" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="rateheader.Complimentary" ><b>Complimentary</b>                    
+                  </label>
+              </div>
+              <div class="col-md-2">
+                      <label style="margin-left:-8px"  >
+                              <input type="checkbox" [value]="House"  class="form-control" name="House" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="rateheader.House" ><b>HouseUse</b>                           
+                      </label>
+                  </div>
+              <div class="col-md-2" >
+                          <label style="margin-left:-15px" >
+                                  <input type="checkbox" [value]="Suppress"  class="form-control" name="Suppress" style="width:15px;height:15px;margin-left:30px" [(ngModel)]="rateheader.Suppress"><b>SuppressRate</b>                              
+                          </label>
+              </div>
+              <div class="col-md-2">
+                      <label>
+                              <input type="checkbox" [value]="Type"  class="form-control" name="Type" style="width:15px;height:15px;margin-left:17px" [(ngModel)]="rateheader.Type"> <b>DayType</b>                            
+                      </label>
+              </div>
+              <div class="col-md-2">
+                    <label style="margin-left:-3px" >
+                            <input type="checkbox" [value]="Package"  class="form-control" name="Package" style="width:15px;height:15px;margin-left:18px" [(ngModel)]="rateheader.Package"> <b>Package</b>                            
+                    </label>
+            </div>
+
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-1"></div>
+
+  
+      </div></div>
+    </div>
+      
+<div class="col-md-6">
+
+        <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+      <legend style="margin-left:5px" ><b>Sell Controls</b></legend>
+      <div class="row" style="margin-top:-10px">
+          <div class="col-md-4">
+                <b style="margin-left:10px">MinStayThrough</b> 
+                    <input type="text" class="form-control" name="mini" style="width:70%;height: 27px;margin-left:10px" [(ngModel)]="rateheader.Minimum_stay_through">                
+          </div>
+          <div class="col-md-4">
+                <b>MaxStayThrough</b>
+                <input type="text"  class="form-control" name="max" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Maximum_stay_through">                           
+            </div>
+            <div class="col-md-4">
+                    <b>MinAdvanceBooking</b>
+                    <input type="text"  class="form-control" name="Advance" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Minimum_Advance_Booking">                        
+            </div>
+      </div>
+      <div class="row">
+            <div class="col-md-4">
+                <b style="margin-left:10px">MinOccupancy</b>
+                <input type="text"  class="form-control" name="Occupancy" style="width:70%;height: 27px;margin-left:10px;margin-bottom:3px" [(ngModel)]="rateheader.Minimum_Occupancy">
+            </div>
+            <div class="col-md-4">
+                <b>MaxiAdvanceBooking</b>
+                <input type="text"  class="form-control" name="Maximum_Advance" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Maximum_Advance_Booking">                               
+            </div>
+            <div class="col-md-4">
+                <b>MaxiOccupancy</b>
+                <input type="text"  class="form-control" name="Maximum_Occupancy" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Maximum_Occupancy">                               
+            </div>
+            
+       </div>
+       </div>
+    </div>
+</div>
         </div>
            </div> 
-          </div>
-  
-          <div class="col-sm-6" style="padding-top:20px;">
-              <!-- <div class="panel panel-primary">
-                  <div class="panel-body"> -->
-              <div class="panel panel-primary">
-                  <div class="panel-heading">Transaction Details</div>
-                  <div class="panel-body">
-                    
-                      <div class="row" style="padding-top:5px;">
-                          <div class="col-sm-3">
-                         <b>TransactionCode</b>
-                          </div>
-                          <div class="col-sm-3">
-                              <select class="form-control input-sm"  style="width:150px;">
-                                  <option>100</option>
-                                  <option>200</option>
-                                  <option>300</option>
-                                  <option>400</option>
-                                </select>
-                            </div>
-                        </div>
-  
-                        <div class="row" style="padding-top:5px;">
-                            <div class="col-sm-3">
-                           <b>CurrencyCode</b>
-                            </div>
-                            <div class="col-sm-3">
-                                <select name="currencycodeid" class="form-control input-sm"  style="width:150px;"  [(ngModel)]="rateheader.currencycodeid">
-                                        <option  *ngFor="let moneylist of money" [ngValue] = "moneylist.transaction_currency_id">{{moneylist.currency}}</option>
-                                  </select>
-                              </div>
-                          </div>
-  
-                  </div>
-                </div>
-  
-  
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Components</div>
-                    <div class="panel-body">
-                        <div class="row" style="padding-top:5px;">
-  
-                            <div class="col-sm-1">
-                                <div class="form-group">            
-                                    <input type="checkbox" [value]="negotiated" class="form-control" name="nego" style="width:15px;height:15px;" >
-                                  </div>
-                              </div>
-                            <div class="col-sm-5">
-                           <b>Negotiated</b>
-                            </div>
-                          
-                          </div>
-  
-  
-                          <div class="row" style="padding-top:5px;">
-  
-                              <div class="col-sm-1">
-                                  <div class="form-group">            
-                                      <input type="checkbox" [value]="discount" class="form-control" name="dis" style="width:15px;height:15px;" [(ngModel)]="rateheader.discoun" >
-                                    </div>
-                                </div>
-                              <div class="col-sm-5">
-                             <b>Discount</b>
-                              </div>
-                            
-                            </div>
-                    </div>
-                  </div>
-  
-  
-                  <div class="panel panel-primary">
-                      <div class="panel-heading">Sell Controls</div>
-                      <div class="panel-body">
-                          <div class="row" style="padding-top:5px;">
-                              <div class="col-sm-5">
-                                  <b>Minimum Stay Through</b>
-                                   </div>  
-                              <div class="col-sm-1">
-                                  <div class="form-group">            
-                                      <input type="text" class="form-control" name="mini" style="width:120px;" [(ngModel)]="rateheader.Minimum_stay_through">
-                                    </div>
-                                </div>
-                         
-                            
-                            </div>
 
-                            <div class="row" style="padding-top:5px;">
-                                <div class="col-sm-5">
-                                    <b>Maximum Stay Through</b>
-                                     </div>  
-                                <div class="col-sm-1">
-                                    <div class="form-group">            
-                                        <input type="text"  class="form-control" name="max" style="width:120px;" [(ngModel)]="rateheader.Maximum_stay_through">
-                                    </div>
-                                </div>
-                        
-                            
-                            </div>
-                      
-                      </div>
-                    </div>
   
-  
-            <!-- </div>
-            </div> -->
-            </div>
-  
+
           
          </div>
   
@@ -340,7 +332,7 @@
         <div id="ratedetails" class="tab-pane fade in" style="margin-top:10px;">
           <form> 
           <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-5">
                 <!-- <div class="panel panel-primary">
                     <div class="panel-body">
                             
@@ -360,289 +352,340 @@
                     </div>
                 </div> -->
 
-            <div class="panel panel-primary">
-              <div class="panel-heading">Dates</div>
+<div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">        
+            <legend style="margin-left:5px" >Dates</legend>
                   <div class="panel-body">
-                      <div class="row" style="padding-top:5px;">
-                          <div class="col-sm-5">
-                              <b>Season Code</b>
-                          </div>  
-                          <div class="col-sm-6">
+                      <div class="row" style="margin-top:-25px">
+                          <div class="col-md-3">
+                              <b>StartDate</b>
                               <div class="form-group">            
-                                  <select class="form-control input-sm" style="width:100%;">
-                                      <option>1</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                  </select>
+                                  <input type="date" class="form-control input-sm" style="width:120px;height:27px;" >
                               </div>
                           </div>
+                          <div class="col-md-3">
+                                <b style="margin-left:30px">EndDate</b>
+   
+                                <div class="form-group">            
+                                    <input type="date" class="form-control input-sm" style="width:120px;height: 27px;margin-left:28px" >
+                                </div>
+                            </div>
+                      
+                          <div class="col-md-3">
+                            <b style="margin-left:55px">SeasonCode</b>
+                     
+                        
+                            <div class="form-group">            
+                                <select class="form-control input-sm" style="width:120px;height: 27px;margin-left:55px">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+                            </div>
+                        </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                                <div class="col-sm-1">
+                                        <label for="mon"><input type="checkbox" id="mon" style="margin-left:10px;" />
+                                         MON</label>
+                                </div>
+                                <div class="col-sm-1" style="margin-left:10px;">
+                                        <label for="tue"><input type="checkbox" id="tue" style="margin-left:10px;" />
+                                         TUE</label>
+                                </div>
+                                <div class="col-sm-1" style="margin-left:10px ">
+                                        <label for="wed"><input type="checkbox" id="wed"style="margin-left:10px;" />
+                                        WED</label> 
+                                </div>
+                                <div class="col-sm-1" style="margin-left:10px ">
+                                        <label for="thur"><input type="checkbox" id="thur" style="margin-left:10px;" />
+                                         THU</label>
+                                </div>
+                                <div class="col-sm-1" style="margin-left:10px ">
+                                        <label for="fri"><input type="checkbox" id="fri" style="margin-left:10px;" />
+                                        FRI</label>
+                                </div>
+                                <div class="col-sm-1" style="margin-left:10px ">
+                                        <label for="sat"><input type="checkbox" id="sat" style="margin-left:10px;" />
+                                        SAT</label>
+                                 </div>
+                                 <div class="col-sm-1" style="margin-left:10px ">
+                                        <label for="sun"><input type="checkbox" id="sun" style="margin-left:10px;" />
+                                        SUN</label>
+                                </div>
+                        </div> -->
+                    
+                      <div class="row" >
+
                       </div>
-                  
                       
+                      <div class="row">
                       
-  
-                      <div class="row" style="padding-top:1%;">
-                          <div class="col-sm-5">
-                              <b>Start date</b>
-                          </div>  
-                          <div class="col-sm-6">
-                              <div class="form-group">            
-                                  <input type="date" class="form-control input-sm" >
-                              </div>
-                          </div>
-                      </div>
-  
-                      <div class="row" style="padding-top:1%">
-                          <div class="col-sm-5">
-                              <b>End date</b>
-                          </div>  
-                          <div class="col-sm-6">
-                              <div class="form-group">            
-                                  <input type="date" class="form-control input-sm" >
-                              </div>
-                          </div>
-                      </div>
-                      
-                          
-                      
-                  
+                            <div class="col-sm-1">
+                                    <label for="mon"><input type="checkbox" id="mon" style="margin-left:10px;" />
+                                     MON</label>
+                            </div>
+                            <div class="col-sm-1" style="margin-left:10px;">
+                                    <label for="tue"><input type="checkbox" id="tue" style="margin-left:10px;" />
+                                     TUE</label>
+                            </div>
+                            <div class="col-sm-1" style="margin-left:10px ">
+                                    <label for="wed"><input type="checkbox" id="wed"style="margin-left:10px;" />
+                                    WED</label> 
+                            </div>
+                            <div class="col-sm-1" style="margin-left:10px ">
+                                    <label for="thur"><input type="checkbox" id="thur" style="margin-left:10px;" />
+                                     THU</label>
+                            </div>
+                            <div class="col-sm-1" style="margin-left:10px ">
+                                    <label for="fri"><input type="checkbox" id="fri" style="margin-left:10px;" />
+                                    FRI</label>
+                            </div>
+                            <div class="col-sm-1" style="margin-left:10px ">
+                                    <label for="sat"><input type="checkbox" id="sat" style="margin-left:10px;" />
+                                    SAT</label>
+                             </div>
+                             <div class="col-sm-1" style="margin-left:10px ">
+                                    <label for="sun"><input type="checkbox" id="sun" style="margin-left:10px;" />
+                                    SUN</label>
+                            </div>
+                        </div>
+               
                   </div>
-            </div>
+</div>
+            
             <!-- Attribute panel -->
-  
-  
-            <div class="panel panel-primary">
-                  <div class="panel-heading">Attributes</div>
-                      <div class="panel-body">
-                          <div class="row" style="padding-top:5px;">
-                                  <div class="col-sm-5">
-                                      <b>Room Types</b>
-                                  </div>  
-                                  <div class="col-sm-6">
-                                      <div class="form-group">            
-                                          <select class="form-control input-sm" style="width:100%;">
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                          </select>
-                                      </div>
+<div class="panel panel-primary" style="border:solid 1px;border-color: lightgray"> 
+            <legend style="margin-left:5px" >Amounts</legend>
+            <div class="panel-body">
+           
+               
+                    <div class="row" style="margin-top:-25px">
+                        <div class="col-md-3">
+                            <b>1 Adults</b>
+                        
+                            <div class="form-group">            
+                                <input type="text" class="form-control input-sm" style="width:70%;height: 27px">
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                                  <b>2 Adults</b>                                   
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>                           
+                          </div>
+                          <div class="col-md-3">
+                                  <b>3 Adults</b>
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
                                   </div>
+                          </div> 
+                          <div class="col-md-3">
+                                  <b>4 Adults</b>
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                          </div>
+                          <div class="col-md-3" style="margin-top:-17px">
+                                  <b>5 Adults</b>  
+                                      <div class="form-group">            
+                                          <input type="text" class="form-control input-sm" >
+                                      </div>
+                           </div>
+                           <div class="col-md-3" style="margin-top:-17px">
+                                  <b>ExtraAdults</b>
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                              </div>
+                    </div>
+
+                
+           
+<!--  -->
+               
+
+                    <div class="row">
+                          <div class="col-md-3" style="margin-top:-17px">
+                            <b>1 child</b>
+                            <div class="form-group">            
+                                <input type="text" class="form-control input-sm" >
                             </div>
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <b>Market</b>
-                                </div>  
-                                <div class="col-sm-6">
-                                    <div class="form-group">            
-                                        <select name="mark1" class="form-control input-sm" style="width:100%;">
-                                            <option>{{rateheader.market_id}}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                
-                                <div class="col-sm-5">
-                                    <b>Source</b>
-                                </div>  
-                                <div class="col-sm-6">
-                                    <div class="form-group">            
-                                        <select name="srcsour" class="form-control input-sm" style="width:100%;">
-                                           {{rateheader.source_id}}
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                                  
-  
-                                  
-  
-                      </div>
-                  </div>
+                          </div>
+                          <div class="col-md-3" style="margin-top:-17px">
+                                  <b>2 children</b>
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                          </div>
+                          <div class="col-md-3" style="margin-top:-17px">
+                                  <b>3 children</b>
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                          </div>
+                          <div class="col-md-3" style="margin-top:-17px">
+                                  <b>4 children</b>
+                                  <div class="form-group">            
+                                      <input type="text" class="form-control input-sm" >
+                                  </div>
+                          </div>
+
+
+                    </div>
+            </div>
+</div>
+        
+
+                  
   
           </div>
   
   <!-- Amounts panel -->
-  
-          <div class="col-sm-8">
 
-              <div class="panel panel-primary">
-                  <div class="panel-heading">Amounts</div>
-                  <div class="panel-body">
-                 
-                      <div class="col-sm-6">
-                          <div class="row" style="padding-top:1%;">
-                              <div class="col-sm-4">
-                                  <b>1 Adults</b>
-                              </div>  
-                              <div class="col-sm-6">
-                                  <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
-                                  </div>
-                              </div>
-                          </div>
-  
-                          <div class="row" style="padding-top:1%;">
-                              <div class="col-sm-4">
-                                  <b>2 Adults</b>
-                              </div>  
-                              <div class="col-sm-6">
-                                  <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
-                                  </div>
-                              </div>
-                          </div>
-  
-                          <div class="row" style="padding-top:1%;">
-                              <div class="col-sm-4">
-                                  <b>3 Adults</b>
-                              </div>  
-                              <div class="col-sm-6">
-                                  <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
-                                  </div>
-                              </div>
-                          </div>
+          <div class="col-sm-7">
+
+
+                       <!-- table content -->
+                       <div class="table-responsive"  style="margin-top:0px">
+                        <div class="scroll">
                           
-                          <div class="row" style="padding-top:1%;">
-                              <div class="col-sm-4">
-                                  <b>4 Adults</b>
-                              </div>  
-                              <div class="col-sm-6">
-                                  <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
-                                  </div>
-                              </div>
-                          </div>
-  
-                          <div class="row" style="padding-top:1%;">
-                              <div class="col-sm-4">
-                                  <b>5 Adults</b>
-                              </div>  
-                              <div class="col-sm-6">
-                                  <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
-                                  </div>
-                              </div>
-                          </div>
-  
-                          <div class="row" style="padding-top:1%;">
-                              <div class="col-sm-4">
-                                  <b>Extra Adults</b>
-                              </div>  
-                              <div class="col-sm-6">
-                                  <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
-                                  </div>
-                              </div>
-                          </div>
-  
-                      </div>
-                 
-  <!--  -->
-                      <div class="col-sm-6">
-                          <div class="row"></div>
-  
-                          <div class="row" style="padding-top:1%;">
-                              <div class="col-sm-4">
-                                  <b>1 child</b>
-                              </div>  
-                              <div class="col-sm-6">
-                                  <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
-                                  </div>
-                              </div>
-                          </div>
-  
-                          <div class="row" style="padding-top:1%;">
-                              <div class="col-sm-4">
-                                  <b>2 children</b>
-                              </div>  
-                              <div class="col-sm-6">
-                                  <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
-                                  </div>
-                              </div>
-                          </div>
-  
-                          <div class="row" style="padding-top:1%;">
-                              <div class="col-sm-4">
-                                  <b>3 children</b>
-                              </div>  
-                              <div class="col-sm-6">
-                                  <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
-                                  </div>
-                              </div>
-                          </div>
-  
-                          <div class="row" style="padding-top:1%;">
-                              <div class="col-sm-4">
-                                  <b>4 children</b>
-                              </div>  
-                              <div class="col-sm-6">
-                                  <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
-                                  </div>
-                              </div>
-                          </div>
-  
-                          
-  
-                      </div>
-                      
-  
-                  </div>
-              </div>
-          </div>
+                            <table class="table table-bordered table-hover" style="width:100%;">
+                            
+                              <thead style="background-color:#0077B5;color:white;">
+                                <tr>
+                                  <th>Start</th>
+                                  <th>End</th>
+                                  <th>Room Types</th>
+                                </tr>
+                              </thead>
+                              <tbody style="font-size:12px;">
+                                  <tr>
+                                      <td>16-04-2018</td>
+                                      <td>20-04-2018</td>
+                                      <td>KNGN</td>     
+                                  </tr> 
+                                
+                                  <tr>
+                                      <td>17-04-2018</td>
+                                      <td>28-04-2018</td>
+                                      <td>KNGS</td>     
+                                  </tr> 
+              
+                                  <tr>
+                                      <td>18-04-2018</td>
+                                      <td>22-04-2018</td>
+                                      <td>SJSN</td>     
+                                  </tr> 
+                                  <tr>
+                                      <td>19-04-2018</td>
+                                      <td>20-04-2018</td>
+                                      <td>SJSS</td>     
+                                  </tr> 
+                                  <tr>
+                                        <td>19-04-2018</td>
+                                        <td>20-04-2018</td>
+                                        <td>SJSS</td>     
+                                    </tr> 
+                                    <tr>
+                                            <td>19-04-2018</td>
+                                            <td>20-04-2018</td>
+                                            <td>SJSS</td>     
+                                    </tr> 
+                                    <tr>
+                                            <td>19-04-2018</td>
+                                            <td>20-04-2018</td>
+                                            <td>SJSS</td>     
+                                    </tr> 
+                                    <tr>
+                                                    <td>19-04-2018</td>
+                                                    <td>20-04-2018</td>
+                                                    <td>SJSS</td>     
+                                    </tr> 
+                                    <tr>
+                                                        <td>19-04-2018</td>
+                                                        <td>20-04-2018</td>
+                                                        <td>SJSS</td>     
+                                    </tr> 
+                                    <tr>
+                                                            <td>19-04-2018</td>
+                                                            <td>20-04-2018</td>
+                                                            <td>SJSS</td>     
+                                    </tr> 
+                                                        <tr>
+                                                                <td>19-04-2018</td>
+                                                                <td>20-04-2018</td>
+                                                                <td>SJSS</td>     
+                                                            </tr> 
+
+                              </tbody>
+                            </table>
+                        </div>
+                          </div><br><br>
+                          <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray;margin-bottom:15px"> 
+                                <legend style="margin-left:5px" >Attributes</legend>
+                                <div class="panel-body"  style="margin-bottom:-10px;">
+                                    <div class="row" style="margin-top:-25px;">
+                                            <div class="col-md-3">
+                                                <b>RoomTypes</b>
+                                                <div class="form-group">            
+                                                    <select class="form-control input-sm" style="width:100%;">
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                  <b>Market</b>
+                                                  <div class="form-group">            
+                                                      <select name="mark1" class="form-control input-sm" style="width:100%;">
+                                                          <option>{{rateheader.market_id}}</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-3">
+                                                      <b>Source</b>
+                                                      <div class="form-group">            
+                                                          <select name="srcsour" class="form-control input-sm" style="width:100%;">
+                                                             {{rateheader.source_id}}
+                                                          </select>
+                                                      </div>
+                                                  </div>
+                                              <div class="col-md-3">
+                                                      <b>Packages</b>
+                                                      <div class="form-group">            
+                                                          <select name="Packages" class="form-control input-sm" style="width:100%;">                                                     
+                                                              </select>
+                                                      </div>
+                                              </div>
+                
+                                      </div>
+                                      <div class="row">
+                                      </div>
+                                      <div class="row">
+                                          </div>
+                                            
+                
+                                            
+                
+                                </div> </div> 
+
+              
+         
+</div>
   
           
   
       </div>
   
-      </form>  
-          <!-- table content -->
-              <div class="table-responsive">
-                <table class="table table-bordered table-hover" style="width:100%;">
-                  <thead style="background-color:#0077B5;color:white;">
-                    <tr>
-                      <th>Start</th>
-                      <th>End</th>
-                      <th>Room Types</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>16-04-2018</td>
-                          <td>20-04-2018</td>
-                          <td>KNGN</td>     
-                      </tr> 
-                    
-                      <tr>
-                          <td>17-04-2018</td>
-                          <td>28-04-2018</td>
-                          <td>KNGS</td>     
-                      </tr> 
-  
-                      <tr>
-                          <td>18-04-2018</td>
-                          <td>22-04-2018</td>
-                          <td>SJSN</td>     
-                      </tr> 
-                      <tr>
-                          <td>19-04-2018</td>
-                          <td>20-04-2018</td>
-                          <td>SJSS</td>     
-                      </tr> 
-                  </tbody>
-                </table>
-              </div>
+      </form >  
+
           
   
           <div class="col-md-2">
-              <button type="button" class="btn btn-Info" style="width:110px;" data-toggle="modal" ><b>Split</b></button>
+              <button type="button" class="btn btn-Info" style="width:110px;" data-toggle="modal" ><b>Rate Tier</b></button>
           </div>
           <div class="col-md-2">
               <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" ><b>Repeat</b></button>
@@ -714,6 +757,7 @@
   
                   <!-- table content -->
                   <div class="table-responsive">
+                      <div class="scroll">
                           <table class="table table-bordered table-hover" style="width:100%;">
                             <thead style="background-color:#0077B5;color:white;">
                               <tr>
@@ -722,7 +766,7 @@
                                   <th>End Sell Date</th>
                               </tr>
                             </thead>
-                            <tbody>                                 
+                            <tbody style="font-size: 12px">                                 
                               <tr  *ngFor="let item of ncode; let i=index">
                                   <td>{{item?.Rate_code}}</td>
                                   <td>{{item?.Begin_sell_date}}</td>
@@ -746,6 +790,7 @@
                             </tbody>
                           </table>
                       </div>
+                    </div><br>
   <!-- ************************************table content ends******************************************************* -->
   
   
@@ -817,6 +862,18 @@
                                                       </div>
                                                   </div>
                                               </div>
+                                              <div class="row">
+                                                <div class="col-sm-3" style="padding-top:1%;">
+                                                    <b>Commission Code</b>
+                                                </div>  
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">            
+                                                        <select class="form-control input-sm" style="width:100%;">
+                                                           
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
   
   
                                           </div>
@@ -824,6 +881,8 @@
                                               <button type="button" class="btn btn-success">Save</button>
                                               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>                                            
                                           </div>
+ 
+
                                       </div>
                                   </div>
                               </div>
@@ -841,4 +900,55 @@
       </div>
     </div>
   </div>
-      
+
+
+
+<!-- <****************************room type model**********************************> -->
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive">
+                    <table class="table-hover table-bordered table-striped" style="width:100%;">
+                      <thead style="background-color: #0077B5; color: white">
+                        <th>seq</th>
+                        <th> Room Type</th>
+                        <th> Description</th>
+                        <th>X</th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let siva of room" (click)="stylesan(siva)">
+                            <td>{{siva.id}}</td>
+                            <td>{{siva.type}} </td>
+                            <td>{{siva.description}}</td>
+                            <td>
+                                <div class="form-group">
+                                <div class="form-control">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="active" [(ngModel)]="">
+                                    </label>
+                                </div>
+                                </div> 
+                                
+                                
+                                 </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -357,9 +357,9 @@
                       </div>
                       <div class="modal-body">
                           <div class="container-fluid">
-                              <div class="scrollable2">
+                              <!-- <div class="scrollable2"> -->
                               <div class="table-responsive">
-                                <table class="table table-bordered  table-hover"  style="font-size:12px;">        
+                                <table class="table table-bordered table-hover"  style="font-size:12px;">        
                                     <thead style="background-color:#0077B5;color:white;">
                                       <tr>
                                         <th scope="col">Action</th>
@@ -387,13 +387,13 @@
                                   </table>
                                   </div>
                                   </div>
-                                  </div>
+                                  <!-- </div> -->
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="container-fluid">
                                   <b>Original</b>
                                   <div class="scrollable2">
-                                  <div class="table-responsive" style="min-height:101.01%;">
+                                  <!-- <div class="table-responsive" style="min-height:101.01%;"> -->
                                     <table class="table table-bordered table-hover"  style="font-size:12px;">
                                       <thead style="background-color:#0077B5;color:white;">
                                         <tr>
@@ -423,13 +423,15 @@
                                     </div>
                                     </div>
                                     </div>
-                                  </div>
+                                  <!-- </div> -->
                                   <div class="col-md-6">
                                     <div class="container-fluid">
                                       <b>Changes</b>
                                       <div class="scrollable2">
-                                      <div class="table-responsive" style="min-height:101.01%;">
-                                        <table class="table table-bordered table-hover"  style="font-size:12px;">
+                                      <!-- <div class="table-responsive" style="min-height:101.01%;"> -->
+                                        <!-- <div class="table table-fixed"> -->
+                                            <!-- <div class="col-xs-8 col-xs-offset-2 well"> -->
+                                        <table class="table table-bordered table-hover" style="font-size:12px;">
                                           <thead style="background-color:#0077B5;color:white;">
                                             <tr>
                                               <th scope="col">Action</th>
@@ -442,8 +444,9 @@
                                             </tr>
                                           </thead>
                                           <tbody *ngFor="let postitem of home">
+                                            
                                             <tr>
-                                              <th scope="row">{{postitem?.posting_action}}</th>
+                                              <th scope="row" >{{postitem?.posting_action}} </th>
                                               
                                               <td>{{postitem?.revenue_date}}</td>
                                               <td>{{postitem?.posting_date}}</td>
@@ -459,8 +462,10 @@
                                       </div>
                                     </div>  
                           </div>
-                          </div>
                       </div>
+                      <!-- </div> -->
+                          <!-- </div> -->
+                      <!-- </div> -->
                       <div class="modal-footer">
                           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                           
