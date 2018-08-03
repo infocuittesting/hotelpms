@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { Route } from "@angular/router";
-import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, NgForm,FormBuilder } from '@angular/forms';
 import { Router } from "@angular/router";
+
+
+
 
 
 import{ RevenuemanagementService } from "./revenuemanagement.service"
@@ -14,6 +17,7 @@ import{ RevenuemanagementService } from "./revenuemanagement.service"
 export class RevenuemanagementComponent implements OnInit {
 
 
+
   public ratecat=[];
   public price=[];
   public shop=[];
@@ -22,6 +26,7 @@ export class RevenuemanagementComponent implements OnInit {
   public room=[];
   public negotiatecode:any=[];
   public rateheader:any={};
+  
 
   ncode=[ { Rate_code: 'CORP', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018',ID:'1'},
   { Rate_code: 'EXTRA', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018',ID:'2'},
@@ -32,13 +37,22 @@ export class RevenuemanagementComponent implements OnInit {
   { Rate_code: 'EXTRA', Begin_sell_date: '17-07-2018',End_sell_date:'29-07-2018',ID:'2'},
 ];
 
-  constructor(private RevenuemanagementService:RevenuemanagementService,private route:Router) {
+  constructor(private RevenuemanagementService:RevenuemanagementService,private route:Router,private fb: FormBuilder) {
     this.negotiatecode = this.ncode;
    }
 
    user={};
-   rateheaderins(input){
-   console.log(input.discoun);  
+   rateheaderins(input:any){
+
+   if(input.discoun == true)
+   {
+    input.discoun="discount";
+    console.log(input.discoun)
+   }else
+   if(input.Negotiated == true){
+    input.Negotiated="Negotiated";
+     console.log(input.Negotiated)
+   }
    this.RevenuemanagementService.saverateheader(input)
    .subscribe((resp: any) => {
     this.room=resp.ReturnValue;
@@ -79,6 +93,7 @@ export class RevenuemanagementComponent implements OnInit {
 
    
   }
+  
   onSelect(val){
     // val = val.toLowerCase();
     // val = val.toLowerCase();
@@ -96,5 +111,8 @@ toggletab(tabval){
   console.log(tabval);
 
 }
-
+public roomtype;
+stylesan(details){
+  this.roomtype=details.type;
+}
 }

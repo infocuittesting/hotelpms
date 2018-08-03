@@ -256,6 +256,10 @@ saveroomDetails(postdetails)
       }
      });
 
+     this.showdetails=[];
+     this.postdetails=[];
+     this.totalPos=0;
+     this.totalamt=0;
      //refresh
      this.cashbillservice.inhousetobilling()
      .subscribe((resp: any) => {
@@ -271,14 +275,42 @@ saveroomDetails(postdetails)
          if (seperat['post_window']==1){
            this.vaal1.push(seperat) //for window1
          }
-         else{
+         else
+         {
            this.vaal2.push(seperat)  //for window2
  
          }
        }
+       
      });
-
+     
 }
+
+//delete buttons
+// deleterows(index){
+//   this.showdetails.splice(index,1);
+//   this.postdetails.splice(index,1);
+
+// }
+
+//edit rows
+// editrows(index){
+//   this.showdetails[index].editFlag=true;
+//   this.postdetails[index].editFlag=true;
+// // }
+// saveButton(index){
+//   this.showdetails[index].editFlag=false;
+//   this.postdetails[index].editFlag=false;
+  
+// }
+//close button in posting payment 
+clearpost(){
+  this.showdetails=[];
+  this.postdetails=[];
+  this.totalPos=0;
+  this.totalamt=0;
+}
+
 
 ngOnInit() {
 
