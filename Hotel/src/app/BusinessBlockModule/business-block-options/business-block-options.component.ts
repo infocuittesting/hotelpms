@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 // import {DatePicker} from './datepicker';
 import {BusinessBlockOptionsService} from './business-block-options.service'
 // import { MomentModule } from 'angular2-moment';
-<<<<<<< HEAD
-=======
 import { Router } from "@angular/router";
 import { SessionStorageService } from "ngx-webstorage";
 
->>>>>>> a2051fee493c18af2ec603c0ed77054c8f8e861a
 
 
 @Component({

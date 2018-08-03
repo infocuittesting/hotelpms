@@ -59,14 +59,10 @@ import { BusinessBlockSearchComponent } from './BusinessBlockModule/business-blo
 import { RominglistComponent } from './BusinessBlockModule/rominglist/rominglist.component';
 import { BusinessCreateBlockComponent } from './BusinessBlockModule/business-create-block/business-create-block.component';
 import { InquriprocessComponent } from './BusinessBlockModule/inquriprocess/inquriprocess.component';
-<<<<<<< HEAD
-// import { MomentModule } from 'angular2-moment';
-=======
 
 
 import { BusinessBlockGridCurrentComponent } from './BusinessBlockModule/business-block-grid-current/business-block-grid-current.component';
 
->>>>>>> a2051fee493c18af2ec603c0ed77054c8f8e861a
 
 
 
