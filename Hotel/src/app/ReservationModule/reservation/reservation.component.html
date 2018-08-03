@@ -156,7 +156,7 @@
         <div class="col-lg-2" style="padding-left:55px;">
             <div class="input-group">
                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                <input type="date" name="arrival"required class="form-control" placeholder="Enter your User Name" style="width:176px;"
+                <input type="date" [min]="date" name="arrival"required class="form-control" placeholder="Enter your User Name" style="width:176px;"
                 [(ngModel)]="user.RES_Arrival" (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #arrivaldate="ngModel"/></div>
                 <div class="alert alert-danger" *ngIf="arrivaldate.touched && !arrivaldate.valid && arrivaldate.errors.required" style="width:211px;">arrival date is required </div>
               </div>
@@ -172,7 +172,7 @@
               <div class="col-lg-2">
                   <div class="input-group" style="padding-left:40px;">
                       <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                      <input type="date" name="departure" class="form-control" placeholder="Enter your User Name" style="width:176px;" [(ngModel)]="user.RES_Depature"
+                      <input [min]="user.RES_Arrival" type="date" name="departure" class="form-control" placeholder="Enter your User Name" style="width:176px;" [(ngModel)]="user.RES_Depature"
                       (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #departuredate="ngModel" required/></div>
                       <div class="alert alert-danger" *ngIf="departuredate.touched && !departuredate.valid && departuredate.errors.required" style="width:211px;margin-left: 40px;">departure date is required </div>
                     </div>
@@ -395,8 +395,8 @@
 		  </div>                                                                
 		  <div class="col-lg-2">
 		  <div class="input-group" style="padding-left:40px;">
-		  <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
-      <input type="datetime-local" [value]="date" name="eta" class="form-control" style="width:176px;" [(ngModel)]="user.RES_ETA"></div>
+		  <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span> -->
+      <input type="text" [value]="now" name="eta" class="form-control" style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="now" disabled></div>
 		  </div>
 		  </div>
 		  <div class="row" style="padding-top:5px;">

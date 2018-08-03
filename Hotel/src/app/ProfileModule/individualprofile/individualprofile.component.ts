@@ -4,6 +4,7 @@ import { Route } from "@angular/router";
 import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { IndividualService } from "./individual.service";
 import { Router } from "@angular/router";
+import { SessionStorageService } from "ngx-webstorage";
 
 
 @Component({
@@ -27,43 +28,46 @@ public comm3=[];
 public listtype=[];
 
 
-  constructor(private IndividualService:IndividualService,private route:Router) { }
+  constructor(private IndividualService:IndividualService,private route:Router,public session:SessionStorageService) { }
 public user={};
-  individual = {};
+  public individual;
   individual1 = {};
   user33={};
   user34={};
-  submit(inputt):void {
+  // value:any;
+  submit(inputt):any {
     console.log(inputt);
       this.IndividualService.postandgetdata (inputt)
       .subscribe(( user333:any)=> {
         this.user33 = user333;
-        this.individual=user333.Return;
+        this.individual=user333.ReturnCode;
+        if(this.individual=="RIS"){
+          this.individual="The Profile is Created for "+inputt.PF_Firstname+" "+inputt.PF_Lastname;
+          // let key = "individualprofile";
+          // this.value = inputt;
+
+          // this.value = JSON.stringify(this.value);
+          // sessionStorage.setItem(key,inputt);
+          this.session.store("pf_fname",inputt.PF_Firstname);
+          this.session.store("pf_lastname",inputt.PF_Lastname);
+          this.session.store("pf_language",inputt.PF_Language);
+          this.session.store("pf_title",inputt.PF_Title);
+          this.session.store("pf_mobileno",inputt.PF_Mobileno.toString());
+          this.session.store("pf_individual_country",inputt.PF_Individual_Country);
+          this.session.store("pf_individual_vip",inputt.PF_Individual_VIP);
+      
+        }
     //   console.log("user33  "+ user333);   
       //  alert("user33  "+ user333);    
-      },
+      
+           },
                  //     error => this.errorMessage = <any>error
                      // function(response) { console.log("Success Response" + response)}
                       );  
-                      this.route.navigate(['individualprofile/']);
+                      // this.route.navigate(['reservation/']);
      }
 
 
-
-    //  update(inputt):void {
-    //   console.log(inputt);
-    //     this.IndividualService.updateIndividualProfile (inputt)
-    //     .subscribe(( user334:any)=> {
-    //       this.user34 = user334;
-    //       this.individual1=user334.Return;
-    //   //   console.log("user33  "+ user333);   
-    //     //  alert("user33  "+ user333);    
-    //     },
-    //                //     error => this.errorMessage = <any>error
-    //                    // function(response) { console.log("Success Response" + response)}
-    //                     );  
-    //                     this.route.navigate(['individualprofile/']);
-    //    }
 
      servicestatus=[];
 
@@ -92,6 +96,7 @@ public user={};
 
 ngOnInit()
 {
+  //dropdown 
   this.IndividualService.countrydropdown()
   .subscribe((resp: any) => {
    this.country=resp.ReturnValue;
