@@ -46,7 +46,7 @@ table{
 
     height:40%;
     width:100%;
-    /* overflow-x: auto; */
+    overflow-x: auto;
      overflow-y: auto; 
    }
 
