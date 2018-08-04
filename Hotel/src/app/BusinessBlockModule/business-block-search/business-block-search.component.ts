@@ -13,7 +13,9 @@ import { Router } from "@angular/router";
 export class BusinessBlockSearchComponent implements OnInit {
   public tableschanges={};
   public roomtype=[];
-
+  blockopt=true;
+  blc = true;
+  newblockbut=false;
   constructor(private blocksearch:BusinessBlockSearchService,private route:Router,public session:SessionStorageService) { }
 
   ngOnInit() {
@@ -33,20 +35,28 @@ export class BusinessBlockSearchComponent implements OnInit {
 
   
 
-  rein=true;
-cale=true;
-wait=true;
-new=false;
-profile=false;
-option=true;
+
 public reinstate;
 public Blockid;
 public blockname;
 selectindex=null;
+
   selectMembersEdit(details,index){
+
+    
     this.selectindex=index;
     this.Blockid=details.block_id;
     this.blockname=details.block_name;
+    if(this.Blockid==details.block_id){
+      this.blockopt=false;
+      this.blc=false;
+      this.newblockbut=true;
+    }
+    else{
+      this.blockopt=true;
+      this.blc=true;
+      this.newblockbut=false;
+    }
     // if(this.Blockid==details.block_id){
     //   this.new=true;
     //   this.profile=true;

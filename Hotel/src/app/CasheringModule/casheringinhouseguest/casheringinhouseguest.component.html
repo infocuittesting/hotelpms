@@ -105,7 +105,7 @@
                             <div class="col-md-9">
                               <div class="form-group">            
                                   <select class="form-control input-sm" name="restyp" id="se" style="width:70%;height:27px;" [(ngModel)]="roomno" (ngModelChange)="onSelect(roomno)" placeholder="select">
-                                      <option value="" hidden>select value</option>
+                                      <option value="" hidden></option>
                                     <option *ngFor="let restypelist of resty" [ngValue] = "restypelist.restype_description">{{restypelist.restype_description}}</option>  
                                     </select>
                               </div>
@@ -500,7 +500,7 @@
                         </div>
                         <div class="col-sm-6">
                             <select style="height:30px;width:130%;" class="form-control" name="paycode" [(ngModel)]="checkout.selected" (change)="selectoption(checkout.selected)">
-                              <option value="" hidden>select value</option>
+                              <option value="" hidden></option>
                               <option  *ngFor="let paycodelist of paycode" [ngValue] = "paycodelist.payment_code_id">{{paycodelist.payment_code}}</option>
                               </select>    
                             </div>
@@ -521,7 +521,7 @@
                           </div>
                           <div class="col-sm-6">
                               <select name="cur" style="height:30px;width:150%;" class="form-control" [(ngModel)]="checkout.currency">
-                                <option value="" hidden>select value</option>
+                                <option value="" hidden></option>
                                 <option *ngFor="let list of money" [ngValue]="list.transaction_currency_id">{{list.currency}}</option>
                                 </select>
                             </div>
@@ -723,32 +723,7 @@
                       
                   </div>
             </div>
-                <!-- <div class="row">
-                  <div class="col-md-3">
-                      <div class="custom-control custom-checkbox"style="margin-left: 5px;">
-                          <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-                          <label class="custom-control-label" for="customCheck">Check Out</label>
-                        </div>
-                  </div>
-                  <div class="col-md-3">
-                      <div class="custom-control custom-checkbox">
-                          <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-                          <label class="custom-control-label" for="customCheck">Passer By</label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-                            <label class="custom-control-label" for="customCheck">AR</label>
-                          </div>
-                      </div>
-                      <div class="col-md-3">
-                          <div class="custom-control custom-checkbox">
-                              <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-                              <label class="custom-control-label" for="customCheck">NoShow</label>
-                            </div>
-                        </div>
-                </div> -->
+           
               </div>
               <br>
               <div class="container-fluid">
