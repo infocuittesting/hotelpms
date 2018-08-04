@@ -18,13 +18,14 @@ import * as moment from 'moment';
 })
 export class ReservationComponent implements OnInit {
 
-  public PF_Firstname= this.session.retrieve("pf_fname");
-  public Pf_lastname = this.session.retrieve("pf_lastname");
-  public Pf_language = this.session.retrieve("pf_language");
-  public PF_Mobileno = this.session.retrieve("pf_mobileno");
-  public Pf_title = this.session.retrieve("pf_title");
-  public Pf_country = this.session.retrieve("pf_individual_country");
-  public Pf_vip = this.session.retrieve("pf_individual_vip");
+  public PF_Firstname;
+  public Pf_lastname; 
+  public Pf_language;
+  public PF_Mobileno;
+  public Pf_title;
+  public Pf_country;
+  public Pf_vip;
+
 
   public tableschanges =[];
   public language =[];
@@ -38,13 +39,11 @@ export class ReservationComponent implements OnInit {
   public marketpro =[];
   
   public user1;
-  public now:Date = new Date();
-  date:any;
+
+  public now:any;
+  public date:any = new Date().toJSON().split('T')[0];
   constructor(private ReservationService:ReservationService,private route:Router,public session:SessionStorageService) { 
     // this.date = new Date().toISOString().slice(11,19);
-    setInterval(()=>{
-      this.date = new Date();
-    },1);
   }
   clearsession(){
     this.session.clear();
@@ -85,7 +84,8 @@ export class ReservationComponent implements OnInit {
 
   //passing creditcard expiry in inputt object
   this.creditcard_expiry = this.month+"/"+this.year;
-  inputt.RES_Exp_Date = this.creditcard_expiry
+  inputt.RES_Exp_Date = this.creditcard_expiry;
+  inputt.RES_ETA = this.now;
       this.ReservationService.postandgetdata (inputt)
       .subscribe( (resp:any) => {
         
@@ -136,7 +136,18 @@ else{
 
 
      ngOnInit() {
-    
+       this.PF_Firstname= this.session.retrieve("pf_fname");
+       this.Pf_lastname = this.session.retrieve("pf_lastname");
+       this.Pf_language = this.session.retrieve("pf_language");
+       this.PF_Mobileno = this.session.retrieve("pf_mobileno");
+       this.Pf_title = this.session.retrieve("pf_title");
+       this.Pf_country = this.session.retrieve("pf_individual_country");
+       this.Pf_vip = this.session.retrieve("pf_individual_vip");
+    //setInterval timer for ETA input field
+    console.log(this.PF_Firstname,this.Pf_lastname,this.Pf_language,this.PF_Mobileno,this.Pf_title,this.Pf_country,this.Pf_vip);
+      setInterval(()=>{
+        this.now =  moment().format("HH:mm:ss");
+      },1000);
       console.log(this.now);
       console.log(this.Pf_language);
       this.ReservationService.getratecode()
@@ -179,5 +190,13 @@ else{
         this.marketpro=resp.ReturnValue;
       });                   
     }  
+    ngOnDestroy(){
+      //Timer clear for ETA input
+      if(this.now){
+        clearInterval(this.now);
+      }
+//Clearing session
+this.session.clear()
+    }
 }
 
