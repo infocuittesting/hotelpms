@@ -174,7 +174,7 @@ CreateBusinessBlock(block):Observable<object[]> {
              {
           
              "guranteed":"",
-             "attendess":block.attender,
+             "attenders":block.attender,
 	           "info_board":block.info_boards,
              "contract_no":block.contract,
              "onsite_name":block.onsite,

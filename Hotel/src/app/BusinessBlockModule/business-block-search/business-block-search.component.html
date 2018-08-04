@@ -90,14 +90,14 @@
             <td>{{array.meeting_space_size}}</td>
             <td>{{array.meeting_space_type}}</td> -->
             <!-- <td>{{array.attendess}}</td> -->
-            <td>{{array.block_code}}</td>
-            <td>{{array.status}}</td>
-            <td>{{array.pf_id}}</td>
-            <td>{{array.rate_description}}</td>
-            <td>{{array.block_name}}</td>
-            <td>{{array.marketgroup_description}}</td>
-            <td>{{array.sourcedescription}}</td>
-            <td>{{array.owner}}</td>
+            <td>{{array.block_code|titlecase }}</td>
+            <td>{{array.status|titlecase }}</td>
+            <td>{{array.pf_id|titlecase }}</td>
+            <td>{{array.rate_description|titlecase }}</td>
+            <td>{{array.block_name|titlecase }}</td>
+            <td>{{array.marketgroup_description|titlecase }}</td>
+            <td>{{array.sourcedescription|titlecase }}</td>
+            <td>{{array.owner|uppercase}}</td>
             
         </tr>
       </tbody>
@@ -120,7 +120,7 @@
      <button class="btn btn-success"routerLink="/bcreate"style="width:100%"[disabled]=newblockbut>New</button>
   </div>
   <div class="col-md-2">
-   <button class="btn btn-Warning"  data-toggle="modal" data-target="#myModal" style="width:100%"[disabled]=blc>Block</button>
+   <button class="btn btn-Warning"  routerLink = "/bcreate" style="width:100%" [disabled]=blc >Edit</button>
    </div>
  <div class="col-md-2">
    <button class="btn btn-Danger"style="width:100%">Close</button>

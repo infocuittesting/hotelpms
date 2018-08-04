@@ -20,7 +20,7 @@
           <b> Agent*</b>
             <div class="input-group">
               <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-                  <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
+                  <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname"[value] = "acco" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
               <span class="input-group-btn" >
                   <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
               </span>
@@ -68,7 +68,7 @@
 </div>
 
 </div>
-<label>Block ID {{blockids}}</label>
+<label>Block ID {{blockids}} </label>
 <div class="container-fluid">
     <br>
      <div class="jumbotron" style="padding-top:8px;background-color:#0077B5;color:white;padding-bottom:20px;">
@@ -87,7 +87,7 @@
 <div class="col-md-3">
     <div class="form-group" >
         <label for="room">Start Date</label>
-        <input type="date" class="form-control input-sm" name="startdate" [(ngModel)]="block.startdate">
+        <input type="date" class="form-control input-sm" name="startdate" [(ngModel)]="block.startdate"[value]="stdate">
       </div>
 </div>
   
@@ -96,7 +96,7 @@
       
       <div class="form-group">
           <label for="name">Origin</label>
-          <select class="form-control" name="origin" [(ngModel)]="block.origincode">
+          <select class="form-control" name="origin" [(ngModel)]="block.origincode" [value]="orign">
               <option value="" hidden></option> 
               <option *ngFor="let selectorigin of origin" [ngValue] ="selectorigin.id">{{selectorigin.origindescription}} </option>
           
@@ -108,7 +108,7 @@
  <div class="col-md-3">
         <div class="form-group">
           <label>Status</label>
-            <select name="state" class="form-control"[(ngModel)]="block.statusblock">
+            <select name="state" class="form-control"[(ngModel)]="block.statusblock" [value]="blstatus">
               <option value="" hidden></option> 
               <option *ngFor="let selectstatus of blockstatus" [ngValue] ="selectstatus.id">{{selectstatus.status}} </option>
               </select> 
@@ -123,7 +123,7 @@
     
         <div class="form-group" >
           <label for="name">Market</label>
-                  <select class="form-control" name="market" [(ngModel)]="block.marketcode">
+                  <select class="form-control" name="market" [(ngModel)]="block.marketcode" [value]="markgr">
                     <option value="" hidden></option> 
                     <option *ngFor="let selectmarket of market" [ngValue] ="selectmarket.id">{{selectmarket.marketgroup_description}} </option>
                 
@@ -135,13 +135,13 @@
         <div class="col-md-3">
             <div class="form-group" >
               <label for="room">End date</label>
-              <input type="date" class="form-control input-sm" name="enddate" [(ngModel)]="block.enddate">
+              <input type="date" class="form-control input-sm" name="enddate" [(ngModel)]="block.enddate" [value]="endate">
             </div> 
         </div>
           <div class="col-md-3">
           <label for="Name">Type</label>
                 <div class="form-group" >
-                    <select class="form-control" name="type" [(ngModel)] = "block.blocktypes">
+                    <select class="form-control" name="type" [(ngModel)] = "block.blocktypes"[value]="bltype">
                         <option value="" hidden></option> 
                         <option *ngFor="let selectblocktype of blocktype" [ngValue] ="selectblocktype.id">{{selectblocktype.block_type}} </option>
                     
@@ -153,7 +153,7 @@
     <div class="col-md-3">
         <div class="form-group" >
            <label for="room">Owner</label>
-           <input type="text" class="form-control input-sm" name="owner" [(ngModel)] = "block.owner">
+           <input type="text" class="form-control input-sm" name="owner" [(ngModel)] = "block.owner" [value]="ower">
          </div> 
    </div>
 </div>
@@ -161,7 +161,7 @@
   <div class="col-md-3">
       <div class="form-group" >
          <label for="name">Source</label>
-          <select class="form-control" name="source" [(ngModel)]="block.sourcecode">
+          <select class="form-control" name="source" [(ngModel)]="block.sourcecode"[value]="sources">
               <option value="" hidden></option> 
               <option *ngFor="let selectsource of source" [ngValue] ="selectsource.id">{{selectsource.sourcedescription}} </option>
           
@@ -172,7 +172,7 @@
           <div class="col-md-3">
               <div class="form-group" >
                   <label for="room">Nights</label>
-                  <input type="text" name="nights" class="form-control input-sm"[(ngModel)]="block.nights">
+                  <input type="text" name="nights" class="form-control input-sm"[(ngModel)]="block.nights"[value]="nght">
               </div>
           </div>
          
@@ -212,7 +212,7 @@
             <div class="col-md-3">
               <b>Rate Code</b>
               <div class="form-group">
-                <select class="form-control input-sm"  name="ratecode" style="margin-top: 4px;"[(ngModel)]="block.ratecodes">
+                <select class="form-control input-sm"  name="ratecode" style="margin-top: 4px;"[(ngModel)]="block.ratecodes"[value]="rates">
                     <option value="" hidden></option> 
                     <option *ngFor="let selectratecode of ratecode" [ngValue] ="selectratecode.id">{{selectratecode.ratecode}} </option>
                 
@@ -222,14 +222,14 @@
             <div class="col-md-3">
               <div class="form-group" style="width: 100%;">
                 <label for="room">CutOffDate</label>
-                <input type="date" class="form-control input-sm" name="cutoffdate" [(ngModel)]="block.cuttoff">
+                <input type="date" class="form-control input-sm" name="cutoffdate" [(ngModel)]="block.cuttoff" [value]="cutoffdte">
               </div>
             </div>
             <br>
             <div class="col-md-3">
               <div class="form-group" style="margin-top: -18px;">
                 <label for="room">CutOffDays</label>
-                <input type="text" class="form-control input-sm" name="cutoffdays" [(ngModel)]="block.cut_days">
+                <input type="text" class="form-control input-sm" name="cutoffdays" [(ngModel)]="block.cut_days" [value]="cutdays">
               </div>
             </div>
             </div>
@@ -237,7 +237,7 @@
                 <div class="col-md-3">
                    <div class="form-group" style="margin-left: 15px;">
                       <b>Reservation Type</b>
-                     <select class="form-control input-sm" name="restype" [(ngModel)]="block.restypes">
+                     <select class="form-control input-sm" name="restype" [(ngModel)]="block.restypes"[value]="resty">
                         <option value="" hidden></option> 
                         <option *ngFor="let selectrestype of restype" [ngValue] ="selectrestype.id">{{selectrestype.restype_description}} </option>
                     
@@ -247,19 +247,19 @@
                    <div class="col-md-3">
               <div class="form-group">
                 <label for="name">Packages</label>
-                <input type="text" class="form-control input-sm" name="packages" id=""[(ngModel)]="block.packagess">
+                <input type="text" class="form-control input-sm" name="packages" id=""[(ngModel)]="block.packagess" [value]="pack">
               </div>     
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="name">FollowupDate</label>
-                  <input type="date" class="form-control input-sm"[(ngModel)]="block.followdates">
+                  <input type="date" class="form-control input-sm"[(ngModel)]="block.followdates" [value]="flodate">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="name">Inventory control</label>
-                  <select class="form-control input-sm" name="Invcontrol" id=""[(ngModel)]="block.inventorys">
+                  <select class="form-control input-sm" name="Invcontrol" id=""[(ngModel)]="block.inventorys" [value]="invcl">
                       <option value="" hidden></option> 
                       <option *ngFor="let selectinventory of inventory" [ngValue] ="selectinventory.inventory_control_id">{{selectinventory.inventory_control}} </option>
                   
@@ -271,12 +271,12 @@
             <div class="row">
               <div class="col-md-3">
                 <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;"[(ngModel)]="block.print_rate">
+                  <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;"[(ngModel)]="block.print_rate" [value]="ptrrate">
                   <label class="custom-control-label" for="customCheck">Print Rate</label>
                 </div>
                 <br>
                 <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;"[(ngModel)]="block.suppress">
+                  <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;"[(ngModel)]="block.suppress" [value]="suprate">
                   <label class="custom-control-label" for="customCheck">Suppress Rate</label>
                 </div>
               </div>
@@ -307,27 +307,27 @@
                   <div class="col-md-3">
                       <div class="form-group"style="margin-left:16px;">
                         <label for="room">Attendees</label>
-                        <input type="text"class="form-control input-sm" name="attendees" [(ngModel)]="block.attender">
+                        <input type="text"class="form-control input-sm" name="attendees" [(ngModel)]="block.attender" [value]="attdes">
                       </div>
                     </div>
                 <div class="col-md-3">
                   <div class="form-group" style="margin-top:4px;">
                     <b>ContactNo</b>
-                    <input type="tel" class="form-control bfh-phone  input-sm" name="contractno" [(ngModel)]="block.contract">
+                    <input type="tel" class="form-control bfh-phone  input-sm" name="contractno" [(ngModel)]="block.contract" [value]="contract">
                   </div>
                   
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="name">Info-Board</label>
-                    <input type="text" class="form-control input-sm"name="info"[(ngModel)]="block.info_boards">
+                    <input type="text" class="form-control input-sm"name="info"[(ngModel)]="block.info_boards" [value]="inboard">
                   </div>
 
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="name">OnSiteName</label>
-                    <input type="text" class="form-control input-sm" id="" name="OnSiteName"[(ngModel)]="block.onsite">
+                    <input type="text" class="form-control input-sm" id="" name="OnSiteName"[(ngModel)]="block.onsite" [value]="onsite">
                   </div>
                 </div>
                 </div>
@@ -335,7 +335,7 @@
                   <div class="col-md-3">
                     <div class="form-group" style="margin-left: 14px;">
                     <label for="name">FollowUp Date</label>
-                    <input type="date" class="form-control input-sm" name="Fallow-Up-Date"[(ngModel)]="block.follow_dates">
+                    <input type="date" class="form-control input-sm" name="Fallow-Up-Date"[(ngModel)]="block.follow_dates" [value]="flwupdate">
                     </div>
                   </div>
                   
@@ -352,7 +352,7 @@
                   <div class="col-md-3">
                       <div class="form-group">
                         <label for="name">Payment Type</label>
-                        <select class="form-control input-sm" name="paytype" [(ngModel)]="block.payments">
+                        <select class="form-control input-sm" name="paytype" [(ngModel)]="block.payments" [value]="payments">
                             <option value="" hidden></option> 
                             <option *ngFor="let selectpayment of payment" [ngValue] ="selectpayment.id">{{selectpayment.payment_description}} </option>
                         
@@ -362,13 +362,13 @@
                     <div class="col-md-3">
                       <div class="from-group">
                       <label for="name">Commission</label>
-                      <input type="text" class="form-control input-sm " name="Comm"[(ngModel)]="block.commis">
+                      <input type="text" class="form-control input-sm " name="Comm"[(ngModel)]="block.commis" [value]="cmmion">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
                       <label for="name">RomingListDue</label>
-                      <input type="date" class="form-control input-sm" name="roaminglist"[(ngModel)]="block.roominglistdue">
+                      <input type="date" class="form-control input-sm" name="roaminglist"[(ngModel)]="block.roominglistdue" [value]="rmlistdate">
                       </div>
                     </div>
                 
@@ -378,13 +378,13 @@
                   <div class="col-md-3">
                     <div class="form-group">
                       <label for="name">Arrival Time</label>
-                      <input type="text" class="form-control input-sm" name="Arrivaltime"[(ngModel)]="block.arrival_tim">
+                      <input type="text" class="form-control input-sm" name="Arrivaltime"[(ngModel)]="block.arrival_tim" [value]="arrtime">
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="form-group">
                     <label for="name">DepartureTime</label>
-                    <input type="text" class="form-control input-sm" name="DepartureTime"[(ngModel)]="block.depature_tim">
+                    <input type="text" class="form-control input-sm" name="DepartureTime"[(ngModel)]="block.depature_tim" [value]="deptime">
                     </div>
                   </div>
                   <!-- <div class="col-md-3">
@@ -497,13 +497,13 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="name">Meeting Size</label>
-                  <input type="text" class="form-control input-sm" name="MeetingSize"[(ngModel)]="block.meetingsizes">
+                  <input type="text" class="form-control input-sm" name="MeetingSize"[(ngModel)]="block.meetingsizes" [value]="meetsp">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="name">Space Type</label>
-                  <select class="form-control input-sm" name="SqFeet"[(ngModel)]="block.space_type">
+                  <select class="form-control input-sm" name="SqFeet"[(ngModel)]="block.space_type" [value]="sztype">
                       <option value="" hidden></option> 
                       <option *ngFor="let selectsizetype of meetingsizetype" [ngValue] ="selectsizetype.id">{{selectsizetype.size_type}} </option>
                   
@@ -514,7 +514,7 @@
               <div class="col-md-3">
                   <div class="form-group">
                     <label for="name">Attendees</label>
-                    <input type="text" class="form-control input-sm" name="Attendees"[(ngModel)]="block.Attend">
+                    <input type="text" class="form-control input-sm" name="Attendees"[(ngModel)]="block.Attend" [value]="attdess1">
                   </div>
                 </div>
             </div>
@@ -570,7 +570,7 @@
                     <table class="table table-bordered table-hover"style="margin-left: 26px;input-sm">
                       <thead style="background-color: #0077B5;color:white;">
                         <tr>
-                          <th>Cal</th>
+                         <th> <button type="button" class="btn btn-default" style="width:100%;height:100%">Cal</button></th>
                           <th>Blocked</th>
                           <th>Pickup</th>
                           <th>Available</th>
@@ -578,19 +578,19 @@
                         </thead>
                           <tbody>
                             <tr>
-                            <td>RoomNights</td>
+                            <td><label>RoomNights</label></td>
                             <td>25</td>
                             <td>58.5</td>
                             <td>50.5</td>
                           </tr>
                           <tr>
-                              <td>RoomNights</td>
+                              <td>NetRevenue</td>
                               <td>25</td>
                               <td>58.5</td>
                               <td>50.5</td>
                             </tr>
                             <tr>
-                                <td>RoomNights</td>
+                                <td>NetRate</td>
                                 <td>25</td>
                                 <td>58.5</td>
                                 <td>50.5</td>
@@ -617,7 +617,7 @@
                   <button class="btn btn-info" routerLink="/options" style="width:100%" disabled>Options</button>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-success" style="width:100%"(click)="blockheader(block)">ok</button>
+                    <button class="btn btn-success" style="width:100%"(click)="blockheader(block)" (click)="editblockheader()">ok</button>
                   </div>
                   <div class="col-md-2">
                       <button class="btn btn-primary" style="width:100%">Save</button>
