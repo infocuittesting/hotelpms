@@ -60,20 +60,20 @@
         <tr>
           <th>Seq</th>
           <th>Blockid</th>
-          <th> StartDate</th>
-          <th> Nights</th>
-          <th> EndDate</th>
-          <th> RoomsperDay</th>
+          <th>StartDate</th>
+          <th>Nights</th>
+          <th>EndDate</th>
+          <!-- <th> RoomsperDay</th>
           <th> MeetingSpaceSize</th>
-          <th> MeetingSpaceType</th>
-          <th> Attdence</th>
+          <th> MeetingSpaceType</th> -->
+          <!-- <th> Attdence</th> -->
           <th>BlockCode</th>
           <th>BlockStatus</th>
-          <th>Pfid</th>
-          <th>RateCodeId</th>
+          <th>profile</th>
+          <th>RateCode</th>
           <th>BlockName</th>
-          <th>MarketId</th>
-          <th>SourceId</th>
+          <th>Market</th>
+          <th>Source</th>
           <th>Owner</th>
           
         </tr>
@@ -86,17 +86,17 @@
             <td>{{array.start_date}}</td>
             <td>{{array.nights}}</td>
             <td>{{array.end_date}}</td>
-            <td>{{array.rooms_per_day}}</td>
+            <!-- <td>{{array.rooms_per_day}}</td>
             <td>{{array.meeting_space_size}}</td>
-            <td>{{array.meeting_space_type}}</td>
-            <td>{{array.attendess}}</td>
+            <td>{{array.meeting_space_type}}</td> -->
+            <!-- <td>{{array.attendess}}</td> -->
             <td>{{array.block_code}}</td>
-            <td>{{array.block_status}}</td>
+            <td>{{array.status}}</td>
             <td>{{array.pf_id}}</td>
-            <td>{{array.ratecode_id}}</td>
+            <td>{{array.rate_description}}</td>
             <td>{{array.block_name}}</td>
-            <td>{{array.market_id}}</td>
-            <td>{{array.source_id}}</td>
+            <td>{{array.marketgroup_description}}</td>
+            <td>{{array.sourcedescription}}</td>
             <td>{{array.owner}}</td>
             
         </tr>
@@ -104,22 +104,23 @@
     </table>
   </div>
 </div>
+<br>
 <div class ="container-fluid">
   <div class="row">
     <div class="col-md-2">
-  <button class="btn btn-primary" style="width:100%">Extract</button>
+  <button class="btn btn-primary" style="width:100%" disabled>Extract</button>
 </div>
 <div class="col-md-2">
-    <button class="btn btn-default" style="width:100%">Events</button>
+    <button class="btn btn-default" style="width:100%" disabled>Events</button>
   </div>
   <div class="col-md-2">
-      <button class="btn btn-light"routerLink="/options"style="width:100%">Options</button>
+      <button class="btn btn-Danger"routerLink="/options"style="width:100%"[disabled]=blockopt>Options</button>
     </div>
   <div class="col-md-2">
-     <button class="btn btn-success"routerLink="/bcreate"style="width:100%">New</button>
+     <button class="btn btn-success"routerLink="/bcreate"style="width:100%"[disabled]=newblockbut>New</button>
   </div>
   <div class="col-md-2">
-   <button class="btn btn-Warning"  data-toggle="modal" data-target="#myModal" style="width:100%">BlockStatus</button>
+   <button class="btn btn-Warning"  data-toggle="modal" data-target="#myModal" style="width:100%"[disabled]=blc>Block</button>
    </div>
  <div class="col-md-2">
    <button class="btn btn-Danger"style="width:100%">Close</button>
