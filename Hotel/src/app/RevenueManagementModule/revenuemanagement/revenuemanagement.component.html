@@ -112,9 +112,12 @@
                                          </div>
                                        <div class="col-md-4">
                                        <b>Package</b>
-                                       <select name="Package" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.Package">
-                                               <option  *ngFor="let sourlist of Package" [ngValue] = "sourlist.Package"></option> 
-                                         </select>
+                                       <div class="input-group">
+                                            <span class="input-group-addon" data-toggle="modal" data-target="#exampleModal"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
+                                        <input name="Package1" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="type" type="text">
+                                              <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
+                                          <!-- </select> -->
+                                      </div>
                                        </div>
                                        <div class="col-md-4">
            
@@ -465,37 +468,37 @@
                             <b>1 Adults</b>
                         
                             <div class="form-group">            
-                                <input type="text" class="form-control input-sm" style="width:70%;height: 27px">
+                                <input type="text" class="form-control input-sm" style="height: 4%">
                             </div>
                           </div>
                           <div class="col-md-3">
                                   <b>2 Adults</b>                                   
                                   <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
+                                      <input type="text" class="form-control input-sm" style="height: 4%" >
                                   </div>                           
                           </div>
                           <div class="col-md-3">
                                   <b>3 Adults</b>
                                   <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
+                                      <input type="text" class="form-control input-sm" style="height: 4%">
                                   </div>
                           </div> 
                           <div class="col-md-3">
                                   <b>4 Adults</b>
                                   <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
+                                      <input type="text" class="form-control input-sm" style="height: 4%" >
                                   </div>
                           </div>
-                          <div class="col-md-3" style="margin-top:-17px">
+                          <!-- <div class="col-md-3" style="margin-top:-17px">
                                   <b>5 Adults</b>  
                                       <div class="form-group">            
                                           <input type="text" class="form-control input-sm" >
                                       </div>
-                           </div>
+                           </div> -->
                            <div class="col-md-3" style="margin-top:-17px">
                                   <b>ExtraAdults</b>
                                   <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
+                                      <input type="text" class="form-control input-sm" style="height: 4%" >
                                   </div>
                               </div>
                     </div>
@@ -509,27 +512,27 @@
                           <div class="col-md-3" style="margin-top:-17px">
                             <b>1 child</b>
                             <div class="form-group">            
-                                <input type="text" class="form-control input-sm" >
+                                <input type="text" class="form-control input-sm" style="height: 4%">
                             </div>
                           </div>
                           <div class="col-md-3" style="margin-top:-17px">
-                                  <b>2 children</b>
+                                  <b>2 child</b>
                                   <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
+                                      <input type="text" class="form-control input-sm" style="height: 4%">
                                   </div>
                           </div>
                           <div class="col-md-3" style="margin-top:-17px">
-                                  <b>3 children</b>
+                                  <b>Extrachild</b>
                                   <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
+                                      <input type="text" class="form-control input-sm" style="height: 4%" >
                                   </div>
                           </div>
-                          <div class="col-md-3" style="margin-top:-17px">
+                          <!-- <div class="col-md-3" style="margin-top:-17px">
                                   <b>4 children</b>
                                   <div class="form-group">            
                                       <input type="text" class="form-control input-sm" >
                                   </div>
-                          </div>
+                          </div> -->
 
 
                     </div>
@@ -626,18 +629,17 @@
                                 <legend style="margin-left:5px" >Attributes</legend>
                                 <div class="panel-body"  style="margin-bottom:-10px;">
                                     <div class="row" style="margin-top:-25px;">
-                                            <div class="col-md-3">
-                                                <b>RoomTypes</b>
-                                                <div class="form-group">            
-                                                    <select class="form-control input-sm" style="width:100%;">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                    </select>
-                                                </div>
+                                            <div class="col-md-2">
+                                                <b>RoomTypes</b></div>
+                                                <div class="col-md-3">
+                                                        <div class="input-group">
+                                                                <span class="input-group-addon" data-toggle="modal" data-target="#exampleModalCenter1"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
+                                                            <input name="roomtypeid" class="form-control input-sm"  style="width:140%;height: 27px;" [(ngModel)]="listtype" type="text">
+                                                                  <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
+                                                              <!-- </select> -->
+                                                          </div> 
                                             </div>
-                                            <div class="col-md-3">
+                                            <!-- <div class="col-md-3">
                                                   <b>Market</b>
                                                   <div class="form-group">            
                                                       <select name="mark1" class="form-control input-sm" style="width:100%;">
@@ -652,12 +654,17 @@
                                                              {{rateheader.source_id}}
                                                           </select>
                                                       </div>
-                                                  </div>
-                                              <div class="col-md-3">
-                                                      <b>Packages</b>
-                                                      <div class="form-group">            
-                                                          <select name="Packages" class="form-control input-sm" style="width:100%;">                                                     
-                                                              </select>
+                                                  </div> -->
+                                              <div class="col-md-2" >
+                                                      <b style="margin-left:25px"> Packages</b></div>
+                                                      <div class="col-md-3" style="margin-left: 10px">
+                                                      <div class="form-group">
+                                                            <div class="input-group">
+                                                                    <span class="input-group-addon" data-toggle="modal" data-target="#exampleModalCenter2"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
+                                                                <input name="Packagesid" class="form-control input-sm"  style="width:140%;height: 27px;" [(ngModel)]="roomtype1" type="text">
+                                                                      <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
+                                                                  <!-- </select> -->
+                                                              </div>                
                                                       </div>
                                               </div>
                 
@@ -928,17 +935,7 @@
                             <td>{{siva.id}}</td>
                             <td>{{siva.type}} </td>
                             <td>{{siva.description}}</td>
-                            <td>
-                                <div class="form-group">
-                                <div class="form-control">
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="active" [(ngModel)]="">
-                                    </label>
-                                </div>
-                                </div> 
-                                
-                                
-                                 </td>
+                            <td> <input type="checkbox" multiple> </td>
                         </tr>
                         
                       </tbody>
@@ -949,6 +946,139 @@
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
             </div>
+          </div>
+        </div>
+      </div>
+
+
+<!-- <************************* Package model ***************************************> -->
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModal"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive">
+                    <table class="table-hover table-bordered table-striped" style="width:100%;">
+                      <thead style="background-color: #0077B5; color: white">
+                        <th>Code</th>
+                        <th>Description</th>
+                        <th>currency</th>
+                        <th>X</th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let Packagemodel of revenueroom" (click)="Packagescr(Packagemodel) ">
+                                <td >{{Packagemodel.package_code}}</td>
+                                <td>{{Packagemodel.package_code_description}} </td>
+                                <td>{{Packagemodel.package_code_currency}}</td>
+                            <td> 
+                                    <input type="checkbox"  id="one">
+                                    
+                                </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>RateCode</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Repeat</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>New</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Edit</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Delete</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- <****************************** Rate Details Attribute Tab Room Types ************************> -->
+
+<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive">
+                    <table class="table-hover table-bordered table-striped" style="width:100%;">
+                      <thead style="background-color: #0077B5; color: white">
+                        <th>seq</th>
+                        <th> Room Type</th>
+                        <th> Description</th>
+                        <th>X</th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let pack of room" (click)="Attributepackselect(pack)">
+                            <td>{{pack.id}}</td>
+                            <td>{{pack.type}} </td>
+                            <td>{{pack.description}}</td>
+                            <td> <input type="checkbox" multiple> </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- <*********************************** Rate Details Attribute Tab Package ****************> -->
+
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive">
+                    <table class="table-hover table-bordered table-striped" style="width:100%;">
+                      <thead style="background-color: #0077B5; color: white">
+                        <th>seq</th>
+                        <th> Room Type</th>
+                        <th> Description</th>
+                        <th>X</th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let rmtype of room" (click)="Attributeroomselect(rmtype)">
+                            <td>{{rmtype.id}}</td>
+                            <td>{{rmtype.type}} </td>
+                            <td>{{rmtype.description}}</td>
+                            <td> <input type="checkbox" multiple> </td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+            </div>
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>RateCode</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Repeat</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>New</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Edit</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Delete</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      
+                  </div>
           </div>
         </div>
       </div>
