@@ -1,26 +1,30 @@
 <div class="row" style="width:99%;margin-left: 10px;">
   <div class="col-md-2"></div>
   <div class="col-md-10">
+    <br><br>
+     <div class="panel panel-primary" style="border:solid 1px;margin-top: -25px;border-color: lightgray">
+       <div class="panel-body">
     <div class="container-fluid">
      <br>
-      <div class="jumbotron" style="padding-top:8px;background-color:#0077B5;color:white;padding-bottom:20px;">
+    
           <form action="" #loginForm="ngForm">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-1"><label>Block ID {{blockids}} </label></div>
+        <div class="col-md-2">
             <b> Acct/corm*</b>
             <div class="input-group">
               <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-                  <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
+                  <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel" style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
               <span class="input-group-btn" >
                   <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
               </span>
           </div>
   </div>
-       <div class="col-md-3">
+       <div class="col-md-2">
           <b> Agent*</b>
             <div class="input-group">
               <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-                  <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname"[value] = "acco" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
+                  <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname"[value] = "acco" #firstName="ngModel"style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
               <span class="input-group-btn" >
                   <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
               </span>
@@ -28,63 +32,67 @@
            
        </div>
        
-       <div class="col-md-3">
+       <div class="col-md-2">
           <b> Source*</b>
           <div class="input-group">
             <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-                <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
+                <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
             <span class="input-group-btn" >
                 <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
             </span>
         </div> 
   </div>
-  <div class="col-md-3">
+  <div class="col-md-2">
     <b>Group*</b>
         <div class="input-group">
           <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-              <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
+              <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
           <span class="input-group-btn" >
               <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
           </span>
-      </div> 
-
+      </div>
  </div>
+ <div class="col-md-2">
+    <b> Contact*</b>
+    <div class="input-group">
+      <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
+          <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
+      <span class="input-group-btn" >
+          <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+      </span>
+  </div> 
+ </div>
+ <div class="col-md-1"></div>
  </div>
  <div class="row">
    
-   <div class="col-md-3">
-      <b> Contact*</b>
-      <div class="input-group">
-        <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-            <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
-        <span class="input-group-btn" >
-            <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
-        </span>
-    </div> 
-
-   </div>
+   
  </div>
 </form>
-</div>
+
 
 </div>
-<label>Block ID {{blockids}} </label>
+</div>
+</div>
+
+
+<div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+  <div class="panel-body">
 <div class="container-fluid">
-    <br>
-     <div class="jumbotron" style="padding-top:8px;background-color:#0077B5;color:white;padding-bottom:20px;">
-         <form action="" #loginForm="ngForm">
+   
+     
+ <form action="" #loginForm="ngForm">
+   <div class="col-md-1"></div>
  <div class="row">
-    <div class="col-md-3">
-       
+    <div class="col-md-2">
         <div class="form-group">
-          <label for="name">Name</label>
-            <input type="text" name="blockname" disabled [value]="block_name"> 
-  
+          <label for="name" >Name</label>
+            <input type="text"disabled class="form-control"name="blockname" [value]="block_name"> 
       </div>
 
 </div>
 
-<div class="col-md-3">
+<div class="col-md-2">
     <div class="form-group" >
         <label for="room">Start Date</label>
         <input type="date" class="form-control input-sm" name="startdate" [(ngModel)]="block.startdate"[value]="stdate">
@@ -92,7 +100,7 @@
 </div>
   
    
-   <div class="col-md-3">
+   <div class="col-md-2">
       
       <div class="form-group">
           <label for="name">Origin</label>
@@ -105,21 +113,30 @@
     </div> 
    
 </div>
- <div class="col-md-3">
+ <div class="col-md-2">
         <div class="form-group">
           <label>Status</label>
             <select name="state" class="form-control"[(ngModel)]="block.statusblock" [value]="blstatus">
               <option value="" hidden></option> 
               <option *ngFor="let selectstatus of blockstatus" [ngValue] ="selectstatus.id">{{selectstatus.status}} </option>
               </select> 
-      </div>
-       
-   </div> 
+               </div>
+              </div> 
+ <div class="col-md-2">
+            <div class="form-group" >
+                <label for="name">Source</label>
+                  <select class="form-control" name="source" [(ngModel)]="block.sourcecode"[value]="sources">
+                    <option value="" hidden></option> 
+                      <option *ngFor="let selectsource of source" [ngValue] ="selectsource.id">{{selectsource.sourcedescription}} 
+                   </option>
+                  </select> 
+                </div>
+              </div>
 
 </div>
-
+<div class="col-md-1"></div>
 <div class="row">
-<div class="col-md-3">
+<div class="col-md-2">
     
         <div class="form-group" >
           <label for="name">Market</label>
@@ -132,13 +149,20 @@
 </div>
 
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <div class="form-group" >
               <label for="room">End date</label>
               <input type="date" class="form-control input-sm" name="enddate" [(ngModel)]="block.enddate" [value]="endate">
             </div> 
         </div>
-          <div class="col-md-3">
+        <div class="col-md-2">
+            <div class="form-group" >
+                <label for="room">Nights</label>
+                <input type="text" name="nights" class="form-control input-sm"[(ngModel)]="block.nights"[value]="nght">
+            </div>
+        </div>
+         
+          <div class="col-md-2">
           <label for="Name">Type</label>
                 <div class="form-group" >
                     <select class="form-control" name="type" [(ngModel)] = "block.blocktypes"[value]="bltype">
@@ -150,35 +174,18 @@
             </div>  
 
     
-    <div class="col-md-3">
+    <div class="col-md-2">
         <div class="form-group" >
            <label for="room">Owner</label>
            <input type="text" class="form-control input-sm" name="owner" [(ngModel)] = "block.owner" [value]="ower">
          </div> 
    </div>
 </div>
-<div class="row">
-  <div class="col-md-3">
-      <div class="form-group" >
-         <label for="name">Source</label>
-          <select class="form-control" name="source" [(ngModel)]="block.sourcecode"[value]="sources">
-              <option value="" hidden></option> 
-              <option *ngFor="let selectsource of source" [ngValue] ="selectsource.id">{{selectsource.sourcedescription}} </option>
-          
-             
-            </select> 
-    </div>
-  </div>
-          <div class="col-md-3">
-              <div class="form-group" >
-                  <label for="room">Nights</label>
-                  <input type="text" name="nights" class="form-control input-sm"[(ngModel)]="block.nights"[value]="nght">
-              </div>
-          </div>
-         
- 
-</div>
+<!-- <div class="row">
+</div> -->
 </form>
+
+</div>
 </div>
 </div>
  
@@ -194,22 +201,20 @@
         </ul>
         
         <div class="tab-content">
-          <div id="Room" class="tab-pane fade in active" style="background-color: #0077B5;color: white;">
-            <!-- <h3>HOME</h3>
-            <p>Some content.</p> -->
-            <br><br>
-            
-         
+          <div id="Room" class="tab-pane fade in active" >
+          
+              <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+                <div class="panel-body">
             <div class="row" >
-                <!-- <div class="col-md-1"></div> -->
-              <div class="col-md-3">
-              <div class="form-group"style="margin-left:16px;">
+              <div class="col-md-1"></div> 
+              <div class="col-md-2">
+              <div class="form-group">
                 <label for="room">Block Code </label>
                 <input type="text"class="form-control input-sm" name="block_code" disabled [value]="block_code">
               </div>
             </div>
             
-            <div class="col-md-3">
+            <div class="col-md-2">
               <b>Rate Code</b>
               <div class="form-group">
                 <select class="form-control input-sm"  name="ratecode" style="margin-top: 4px;"[(ngModel)]="block.ratecodes"[value]="rates">
@@ -219,23 +224,25 @@
                 </select>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="form-group" style="width: 100%;">
-                <label for="room">CutOffDate</label>
+                <label for="room">CutOff Date</label>
                 <input type="date" class="form-control input-sm" name="cutoffdate" [(ngModel)]="block.cuttoff" [value]="cutoffdte">
               </div>
             </div>
             <br>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <div class="form-group" style="margin-top: -18px;">
-                <label for="room">CutOffDays</label>
+                <label for="room">CutOff Days</label>
                 <input type="text" class="form-control input-sm" name="cutoffdays" [(ngModel)]="block.cut_days" [value]="cutdays">
               </div>
             </div>
+            
             </div>
             <div class="row">
-                <div class="col-md-3">
-                   <div class="form-group" style="margin-left: 15px;">
+              <div class="col-md-1"></div>
+                <div class="col-md-2">
+                   <div class="form-group">
                       <b>Reservation Type</b>
                      <select class="form-control input-sm" name="restype" [(ngModel)]="block.restypes"[value]="resty">
                         <option value="" hidden></option> 
@@ -244,87 +251,73 @@
                      </select>
                    </div>
                   </div>
-                   <div class="col-md-3">
+                   <div class="col-md-2">
               <div class="form-group">
                 <label for="name">Packages</label>
                 <input type="text" class="form-control input-sm" name="packages" id=""[(ngModel)]="block.packagess" [value]="pack">
               </div>     
               </div>
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label for="name">FollowupDate</label>
-                  <input type="date" class="form-control input-sm"[(ngModel)]="block.followdates" [value]="flodate">
-                </div>
-              </div>
-              <div class="col-md-3">
+            
+              <div class="col-md-2">
                 <div class="form-group">
                   <label for="name">Inventory control</label>
                   <select class="form-control input-sm" name="Invcontrol" id=""[(ngModel)]="block.inventorys" [value]="invcl">
                       <option value="" hidden></option> 
                       <option *ngFor="let selectinventory of inventory" [ngValue] ="selectinventory.inventory_control_id">{{selectinventory.inventory_control}} </option>
-                  
                   </select>
                 </div>
               </div>
+              <div class="col-md-2">
+                  <div class="form-group">
+                    <label for="name">Followup Date</label>
+                    <input type="date" class="form-control input-sm"[(ngModel)]="block.followdates" [value]="flodate">
+                  </div>
+                </div>
+                <div class="col-md-2" style="margin-top: -45px;">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.print_rate" [value]="ptrrate">
+                      <label class="custom-control-label" for="customCheck">Print Rate</label>
+                    </div>
+                    <br>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.suppress" [value]="suprate">
+                      <label class="custom-control-label" for="customCheck">Suppress Rate</label>
+                    </div>
+                  </div>
               
             </div>
             <div class="row">
-              <div class="col-md-3">
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;"[(ngModel)]="block.print_rate" [value]="ptrrate">
-                  <label class="custom-control-label" for="customCheck">Print Rate</label>
-                </div>
-                <br>
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;"[(ngModel)]="block.suppress" [value]="suprate">
-                  <label class="custom-control-label" for="customCheck">Suppress Rate</label>
-                </div>
-              </div>
               
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label for="name">traceCode</label>
-                  <select class="form-control input-sm" name="tracecode" [(ngModel)]="block.tracess">
-                    <option></option>
-                    <option>traces</option>
-                    <option>traces</option>
-                    <option>trace</option>
-                  </select>
-                </div>
-              </div>
+              
+             
             </div>
-           
           </div>
-          <div id="menu1" class="tab-pane fade" style="background-color: #0077B5;color: white;" >
-            <!-- <h3>Creating</h3>
-            <p>Some content in menu 1.</p> -->
-              <br><br>
+          </div> 
+          </div>
+
+          <div id="menu1" class="tab-pane fade"  >
+              <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+              <div class="panel-body">
               <div class="continer">
             <div style="border:1px;">
               
                 <div class="row" >
-                  <!-- <div class=col-md-1></div> -->
-                  <div class="col-md-3">
+                   <div class=col-md-1></div>
+                  <div class="col-md-2">
                       <div class="form-group"style="margin-left:16px;">
                         <label for="room">Attendees</label>
                         <input type="text"class="form-control input-sm" name="attendees" [(ngModel)]="block.attender" [value]="attdes">
                       </div>
                     </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <div class="form-group" style="margin-top:4px;">
                     <b>ContactNo</b>
                     <input type="tel" class="form-control bfh-phone  input-sm" name="contractno" [(ngModel)]="block.contract" [value]="contract">
                   </div>
                   
                 </div>
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label for="name">Info-Board</label>
-                    <input type="text" class="form-control input-sm"name="info"[(ngModel)]="block.info_boards" [value]="inboard">
-                  </div>
-
-                </div>
-                <div class="col-md-3">
+                
+                <div class="col-md-2">
                   <div class="form-group">
                     <label for="name">OnSiteName</label>
                     <input type="text" class="form-control input-sm" id="" name="OnSiteName"[(ngModel)]="block.onsite" [value]="onsite">
@@ -332,24 +325,42 @@
                 </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-3">
+                  <div class="col-md-1"></div>
+                  <div class="col-md-2">
                     <div class="form-group" style="margin-left: 14px;">
                     <label for="name">FollowUp Date</label>
                     <input type="date" class="form-control input-sm" name="Fallow-Up-Date"[(ngModel)]="block.follow_dates" [value]="flwupdate">
                     </div>
                   </div>
+                  <div class="col-md-2">
+                      <div class="form-group">
+                        <label for="name">Info-Board</label>
+                        <input type="text" class="form-control input-sm"name="info"[(ngModel)]="block.info_boards" [value]="inboard">
+                      </div>
+                    </div>
+                    <div class="col-md-2" style="margin-top: 14px;">
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="checkbox"name="checkbox" style="zoom:1.5">
+                        <label for="checkbox">Gyaranti</label>
+                      </div>
+
+                    </div>
                   
                  
                
                 </div>
               </div>
           </div>
+        </div>
+        </div>
           </div>
-          <div id="menu2" class="tab-pane fade" style="background-color: #0077B5;color: white;">
+          <div id="menu2" class="tab-pane fade" >
+              <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+                <div class="panel-body">
               <div class="continer-fluid">
                 <div class="row">
-
-                  <div class="col-md-3">
+                 <div class="col-md-1"></div>
+                  <div class="col-md-2">
                       <div class="form-group">
                         <label for="name">Payment Type</label>
                         <select class="form-control input-sm" name="paytype" [(ngModel)]="block.payments" [value]="payments">
@@ -359,13 +370,13 @@
                         </select>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                       <div class="from-group">
                       <label for="name">Commission</label>
                       <input type="text" class="form-control input-sm " name="Comm"[(ngModel)]="block.commis" [value]="cmmion">
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                       <div class="form-group">
                       <label for="name">RomingListDue</label>
                       <input type="date" class="form-control input-sm" name="roaminglist"[(ngModel)]="block.roominglistdue" [value]="rmlistdate">
@@ -375,13 +386,14 @@
                   
                 </div>
                 <div class="row">
-                  <div class="col-md-3">
+                  <div class="col-md-1"></div>
+                  <div class="col-md-2">
                     <div class="form-group">
                       <label for="name">Arrival Time</label>
                       <input type="text" class="form-control input-sm" name="Arrivaltime"[(ngModel)]="block.arrival_tim" [value]="arrtime">
                     </div>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-2">
                     <div class="form-group">
                     <label for="name">DepartureTime</label>
                     <input type="text" class="form-control input-sm" name="DepartureTime"[(ngModel)]="block.depature_tim" [value]="deptime">
@@ -395,6 +407,8 @@
                   </div> -->
                 </div>
               </div>
+            </div>
+            </div>
               </div>
             
             
@@ -406,10 +420,11 @@
             <p>Some content in menu 4.</p> -->
           <div id="menu4" class="tab-pane fade">
            
-            
-          <div class="container-fluid" style="background-color: #0077B5;color: white;">
+              <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+              <div class="panel-body">
+          <div class="container-fluid" >
                 
-            <div class="row" >
+            <!-- <div class="row" >
              
               <div class="col-md-6">
                   <div class="form-group">
@@ -422,16 +437,16 @@
                             <input type=""class="form-control form-control-lg" disabled placeholder="Creating Cancelletion" name="text3">
                           </div>  
                       </div>          
-                   </div>
+                   </div> -->
             <div class="row">
-           
-            <div class="col-md-3">
+           <div class="col-md-1"></div>
+            <div class="col-md-2">
               <div class="form-group">
                 <label for="name">RoomcancelNo</label>
                 <input type="text" class="form-control input-sm">
               </div>
              </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <div class="form-group" style="width: 100%;">
               <label for="name">Reason</label>
               <select class="form-control input-sm" id="set1">
@@ -441,7 +456,7 @@
               </select>
             </div>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
 
               <div class="form-group">
                   <label for="name">CateringCancelNo</label>
@@ -449,7 +464,7 @@
                 </div>
               </div>
             
-              <div class="col-md-3">
+              <div class="col-md-2">
                   <div class="form-group" style="width:100%;">
                     <label for="name">Reason</label>
                     <select class="form-control input-sm" id="set1" >
@@ -463,13 +478,14 @@
             </div>
          
           <div class="row">
-          <div class="col-md-3">
+            <div class="col-md-1"></div>
+          <div class="col-md-2">
             <div class="form-group">
             <label for="name">Comments</label>
             <input type="text" class="form-control input-sm"  >
             </div>
           </div> 
-         <div class="col-md-3">
+         <div class="col-md-2">
             
                 <div class="form-group">
                     <label for="name">Destination</label>
@@ -477,7 +493,7 @@
                   </div>
                   
          </div>
-             <div class="col-md-3">
+             <div class="col-md-2">
               <div class="form-group">
               <label for="name">Comments</label>
               <input type="text" class="form-control input-sm ">
@@ -487,7 +503,8 @@
             
             </div>
           </div>
-        
+        </div>
+        </div>
         </div>
         <div id="menu5" class="tab-pane fade">
            
