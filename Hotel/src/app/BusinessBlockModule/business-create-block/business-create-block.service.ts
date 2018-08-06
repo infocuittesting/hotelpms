@@ -135,7 +135,7 @@ CreateBusinessBlock(block):Observable<object[]> {
   let body = {
     "Definite":
            {
-            "pf_id":"cpy71",
+            "pf_id":"cpy159",
 	          "block_status_id":block.statusblock,
             "market_id":block.marketcode,
             "source_id":block.sourcecode,
@@ -174,7 +174,7 @@ CreateBusinessBlock(block):Observable<object[]> {
              {
           
              "guranteed":"",
-             "attendess":block.attender,
+             "attenders":block.attender,
 	           "info_board":block.info_boards,
              "contract_no":block.contract,
              "onsite_name":block.onsite,

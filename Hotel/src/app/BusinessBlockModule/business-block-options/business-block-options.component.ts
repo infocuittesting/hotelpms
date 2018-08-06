@@ -37,7 +37,7 @@ export class BusinessBlockOptionsComponent implements OnInit {
     this.return=resp.ReturnCode;
   
     if(this.return == "RIS"){
-      this.notenumber="the note is created for block id "+this.session.retrieve("blockid");
+      this.notenumber="The noteS is created for block id "+this.session.retrieve("blockid");
       console.log("service working fine");
     }
     else{
@@ -53,7 +53,7 @@ export class BusinessBlockOptionsComponent implements OnInit {
   this.cancelmessage=resp.ReturnCode;
   this.cancelnumber=resp.CancellationNumber;
   if(this.cancelmessage == "RIS"){
-    this.cancelnumber="the group cancellaton number is "+this.cancelnumber;
+    this.cancelnumber="The group cancellaton number is "+this.cancelnumber;
     console.log("service working fine");
   }
   else{

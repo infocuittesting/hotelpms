@@ -28,9 +28,9 @@ public blocktype=[];
 public block:any={};
 public createblock:any;
 public blocksuccess: string;
-public blockids:any;
-public block_name:any;
-public block_code:any;
+public blockids:any=" ";
+public block_name:any=" ";
+public block_code:any=" ";
 
 // ................................................
   ngOnInit() {
@@ -142,4 +142,45 @@ this.businessblock.BlockTypedropdown()
      this.blocksuccess="something"
  }
   }
+
+// retrieve session values business blcok 
+// public ids = this.session.retrieve("blockid");
+// public blnames = this.session.retrieve("blockname");
+
+// public acco = this.session.retrieve("pf_account");
+// public stdate = this.session.retrieve("start_date");
+// public endate = this.session.retrieve("end_date");
+// public nght = this.session.retrieve("nights");
+// public orign = this.session.retrieve("origindescription");
+// public blstatus = this.session.retrieve("status");
+// public markgr = this.session.retrieve("marketgroup_description");
+// public bltype = this.session.retrieve("block_type");
+// public ower = this.session.retrieve("owner");
+// public sources = this.session.retrieve("sourcedescription");
+// public blcode = this.session.retrieve("block_code");
+// public resty = this.session.retrieve("restype_description");
+// public rates = this.session.retrieve("rate_description");
+// public pack = this.session.retrieve("packages");
+// public cutoffdte = this.session.retrieve("cutoff_date");
+// public cutdays= this.session.retrieve("cutoff_days");
+// public flodate = this.session.retrieve("follow_date");
+// public invcl = this.session.retrieve("inventory_control");
+// public ptrrate = this.session.retrieve("print_rate")
+// public suprate = this.session.retrieve("suppress_rate");
+// public attdes = this.session.retrieve("attenders");
+// public inboard = this.session.retrieve("info_board");
+// public contract = this.session.retrieve("contract_no");
+// public onsite = this.session.retrieve("onsite_name");
+// public flwupdate = this.session.retrieve("followup_date");
+// public payments = this.session.retrieve("payment_description");
+// public cmmion = this.session.retrieve("commission");
+// public rmlistdate = this.session.retrieve("rooming_list_duedate");
+// public arrtime = this.session.retrieve("arrivaltime");
+// public deptime = this.session.retrieve("depaturetime");
+// public meetsp = this.session.retrieve("meeting_space");
+// public sztype = this.session.retrieve("size_type");
+// public attdess1 = this.session.retrieve("attendess");
+// editblockheader(){
+//     sessionStorage.clear();
+// }
 }

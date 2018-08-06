@@ -53,6 +53,9 @@ import { RominglistComponent } from './BusinessBlockModule/rominglist/rominglist
 import { BusinessCreateBlockComponent } from './BusinessBlockModule/business-create-block/business-create-block.component';
 import { InquriprocessComponent } from './BusinessBlockModule/inquriprocess/inquriprocess.component'
 import { BusinessBlockGridCurrentComponent } from './BusinessBlockModule/business-block-grid-current/business-block-grid-current.component';
+import { ReservationsListComponent } from './BusinessBlockModule/reservations-list/reservations-list.component';
+import { GroupOptionsComponent } from './BusinessBlockModule/group-options/group-options.component';
+import { BlockRangeSettingComponent } from './BusinessBlockModule/block-range-setting/block-range-setting.component';
 
 
 
@@ -97,7 +100,10 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 {path:'bcreate',component:BusinessCreateBlockComponent},
 {path:"options",component:BusinessBlockOptionsComponent},
 {path:"rominglist",component:RominglistComponent},
-{path:"grid",component:BusinessBlockGridCurrentComponent}
+{path:"grid",component:BusinessBlockGridCurrentComponent},
+{path:"reservationlist",component:ReservationsListComponent},
+{path:"grouplist",component:GroupOptionsComponent},
+{path:"blockrange",component:BlockRangeSettingComponent}
 ];
 
 @NgModule({
@@ -112,4 +118,4 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
   ProfileComponent,ProfilesearchComponent,SearchandeditreservationComponent,HousekeepingComponent,QueueroomComponent,RoomdiscrepanciesComponent,RoomconditionComponent
 ,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
-BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent]
+BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent ]

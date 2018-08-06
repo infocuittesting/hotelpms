@@ -24,6 +24,7 @@ export class RevenuemanagementComponent implements OnInit {
   public src=[];
   public money=[];
   public room=[];
+  public revenueroom=[];
   public negotiatecode:any=[];
   public rateheader:any={};
   
@@ -91,6 +92,10 @@ export class RevenuemanagementComponent implements OnInit {
     this.room=resp.ReturnValue;
   });
 
+  this.RevenuemanagementService.revenuepackages()
+   .subscribe((resp: any) => {
+    this.revenueroom=resp.Return;
+  });
    
   }
   
@@ -115,4 +120,24 @@ public roomtype;
 stylesan(details){
   this.roomtype=details.type;
 }
+public type="";
+Packagescr(detailscode){
+  this.type +=(detailscode.package_code+',');
+  console.log(this.type)
+}
+
+public listtype="";
+Attributepackselect(packsel){
+  this.listtype=packsel.type;
+  console.log(this.listtype)
+}
+
+public roomtype1="";
+Attributeroomselect(roomsel){
+
+  this.roomtype1=roomsel.type;
+  console.log(this.roomtype1)
+
+}
+
 }
