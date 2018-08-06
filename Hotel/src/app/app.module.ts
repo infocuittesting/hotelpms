@@ -60,12 +60,15 @@ import { RominglistComponent } from './BusinessBlockModule/rominglist/rominglist
 import { BusinessCreateBlockComponent } from './BusinessBlockModule/business-create-block/business-create-block.component';
 import { InquriprocessComponent } from './BusinessBlockModule/inquriprocess/inquriprocess.component';
 
-import { MomentModule } from 'angular2-moment';
+
 import { BusinessBlockGridCurrentComponent } from './BusinessBlockModule/business-block-grid-current/business-block-grid-current.component';
+<<<<<<< HEAD
 import { ReservationsListComponent } from './BusinessBlockModule/reservations-list/reservations-list.component';
 import { GroupOptionsComponent } from './BusinessBlockModule/group-options/group-options.component';
 import { BlockRangeSettingComponent } from './BusinessBlockModule/block-range-setting/block-range-setting.component';
 // import { MomentModule } from 'angular2-moment';
+=======
+>>>>>>> 7a0ba65d76b62343e8c5648a589532553d5c538a
 
 
 

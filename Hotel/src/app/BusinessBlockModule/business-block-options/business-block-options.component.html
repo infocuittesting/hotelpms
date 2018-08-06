@@ -61,7 +61,7 @@
 		  <div class="modal-content">
 			<div class="modal-header">
 			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-			 <h4>Cheanges</h4>
+			 <h4>Activity Log</h4>
 			</div>
 			<div class="modal-body">
       <!-- <b align="center">{{profile}}</b> -->
@@ -199,7 +199,7 @@
                 <div class="col-md-4" style="margin-left:10px;">
                     <div class="form-group" style="width:82%;">
                         <label for="room">Block Id</label>
-                        <input type="text" class="form-control input-sm" name="Cancelletion No." [(ngModel)]="Id">
+                        <input type="text" class="form-control input-sm" name="Cancelletion No." [(ngModel)]="Id" >
                     </div>
               </div>
             </div>
@@ -226,6 +226,8 @@
             <label for="text">Destination</label>
             <select class="from-control input-sm" id="set3" style="width:150px"[(ngModel)]="cancel.Destination">
               <option>Marriot</option>
+              <option>hotelpms</option>
+              <option>hotel360</option>
               
             </select>
           </div>
@@ -392,14 +394,14 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Connect24*7</h4>
+                  <h4 class="modal-title">Cancel A Group</h4>
                 </div>
                 <div class="modal-body">
                   <p align="center">{{cancelnumber}}</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-dismiss="modal" routerLink="/rominglist">Yes <i class="glyphicon glyphicon-ok"></i></button>             
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">NO<i class="glyphicon glyphicon-remove"></i></button>             
+                    <!-- <button type="button" class="btn btn-success" data-dismiss="modal" routerLink="/rominglist">Yes <i class="glyphicon glyphicon-ok"></i></button>              -->
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close<i class="glyphicon glyphicon-remove"></i></button>             
                 </div>
               </div>
               

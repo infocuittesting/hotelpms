@@ -872,7 +872,7 @@
                        <tr>
                         <td style="padding-left:30px;"><b>Note Type</b></td>
           <td style="padding-left:15px;">
-              <select  required style="height:34px;width:250px;color:black;" >
+              <select [(ngModel)]="notetypeselection" (change)="notesfilter(notetypeselection)" name="notetypeselect" required style="height:34px;width:250px;color:black;" >
                   <option *ngFor="let notecode of note1" [ngValue] = "notecode.notetype">{{notecode.notetype}} </option>
                  </select>
               
@@ -1320,14 +1320,14 @@
                    <tr>
                        <td style="padding-left:20px;"><b>Preference</b></td>
          <td style="padding-left:15px;">
-            <select  name="filterprtypeselection" [(ngModel)]="prtypeselection" (ngModelChange)="onSelect1(prtypeselection)" required style="height:34px;color:black;">
+            <select  name="filterprtypeselection" [(ngModel)]="prtypeselection" (change)="preferencefilter(prtypeselection,pgtypeselection)" required style="height:34px;color:black;">
                 <option *ngFor="let companypreference of preference1" [ngValue] = "companypreference.preference">{{companypreference.preference}} </option>
                </select>
            </td>
          
         <td style="padding-left:50px;"><b>Preference Group</b></td>
          <td style="padding-left:15px;">
-            <select   name="filterpgtypeselection" [(ngModel)]="pgtypeselection" (ngModelChange)="onSelect2(pgtypeselection)" required style="height:34px;color:black;">
+            <select   name="filterpgtypeselection" [(ngModel)]="pgtypeselection" (change)="preferencefilter(prtypeselection,pgtypeselection)" required style="height:34px;color:black;">
                 <option *ngFor="let companypreference2 of preference2" [ngValue] = "companypreference2.prefernecegroup">{{companypreference2.prefernecegroup}} </option>
                </select>
            </td>

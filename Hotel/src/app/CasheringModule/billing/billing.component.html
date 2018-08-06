@@ -404,9 +404,16 @@
                           
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_reference}}</label>
                                                   <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Posting_reference"></td>
-                        
-                                                
                                                   
+                                                  
+                                                <!-- <td style="width: 86px;"><span><i style="cursor: pointer;" class="fa fa-trash" aria-hidden="true"
+                                                  (click)="deleterows(i)"></i> &nbsp;&nbsp;&nbsp;
+                                                  <i  style="cursor: pointer;"  *ngIf="room.editFlag==false" class="fa fa-pencil" aria-hidden="true"
+                                                  (click)="editrows(i)"></i>
+                                                  <i  style="cursor: pointer;" *ngIf="room.editFlag!=false" class="fa fa-check" aria-hidden="true"
+                                                  (click)="saveButton(i)"></i>
+                                                </span></td> -->
+                                                                            
                   
                                               </tr>
                   
@@ -423,20 +430,20 @@
                             <label style="margin-left:10px;">Total Posting</label>
                         </td>
                         <td class="col-sm-1">
-                          <input style="width:200%;height:25px;margin-left: -131%;" type="text" [(ngModel)]="totalPos"/>
+                          <input style="width:200%;height:25px;margin-left: -131%;" type="text" disabled [(ngModel)]="totalPos"/>
                         </td> 
                         <td class="col-sm-2">
                             <label style="margin-left:17%;">Total Amount</label>
                         </td>
                         <td class="col-sm-1">
-                          <input style="width:200%;height:25px;" type="text" [(ngModel)]="totalamt"/>
+                          <input style="width:200%;height:25px;" type="text" disabled [(ngModel)]="totalamt"/>
                         </td> 
                         <div class="col-sm-3"></div>
                         <div class="col-sm-3" >                 
                         <button type="button" style="width:110px;margin-left:2%;" class="btn btn-primary" (click)="saveroomDetails()" data-toggle="modal" data-target="#postingchargealert" data-dismiss="modal">Post</button>
                         </div>   
                         <div class="col-sm-3" style="margin-left:4%;">
-                          <button type="button" style="width:110px;margin-left:2%;margin-bottom:20%;" class="btn btn-danger" data-dismiss="modal">Close</button>
+                          <button type="button" style="width:110px;margin-left:2%;margin-bottom:20%;" class="btn btn-danger" data-dismiss="modal" (click)="clearpost()">Close</button>
                         </div>
                       </tr>
                     </table>
@@ -490,7 +497,7 @@
                           <div class="container-fluid">
                               <!-- <div class="scrollable2"> -->
                               <div class="table-responsive">
-                                <table class="table table-bordered  table-hover"  style="font-size:12px;">        
+                                <table class="table table-bordered table-hover"  style="font-size:12px;">        
                                     <thead style="background-color:#0077B5;color:white;">
                                       <tr>
                                         <th scope="col">Action</th>
@@ -573,8 +580,9 @@
                                             </tr>
                                           </thead>
                                           <tbody *ngFor="let postitem of home">
+                                            
                                             <tr>
-                                              <th scope="row">{{postitem?.posting_action}}</th>
+                                              <th scope="row" >{{postitem?.posting_action}} </th>
                                               
                                               <td>{{postitem?.revenue_date}}</td>
                                               <td>{{postitem?.posting_date}}</td>
@@ -968,19 +976,19 @@
                           <div class="form-group">
                           <div class="row">
                             
-                            <div class="col-sm-5"></div>
+                            <div class="col-sm-6"></div>
                             
                                 <label class="radio-inline" >
-                                  <input type="radio"  id="radio1" name="optradio" value="GP" [(ngModel)]="transtyp">Grouped Posting
+                                  <input type="radio"  id="radio1" name="optradio" value="GP" [(ngModel)]="transtyp" style="margin-left:-39px;">Grouped Posting
                                 </label>
                               
                             
   
                             <div class="row">
-                            <div class="col-sm-5"></div>
+                            <div class="col-sm-6"></div>
                               
                                   <label class="radio-inline">
-                                    <input type="radio"  id="radio2" name="optradio" value="EF" [(ngModel)]="transtyp">Enter Folio
+                                    <input type="radio"  id="radio2" name="optradio" value="EF" [(ngModel)]="transtyp" style="margin-left:-39px;">Enter Folio
                                   </label>
                                 
                             </div>  
@@ -1007,10 +1015,10 @@
   
                             <div class="row">
                               
-                              <div class="col-sm-5"></div>
+                              <div class="col-sm-6"></div>
                              
                                   <label class="radio-inline">
-                                    <input type="radio" id="radio3" name="optradio" value="CN" [(ngModel)]="transtyp">CheckNumber
+                                    <input type="radio" id="radio3" name="optradio" value="CN" [(ngModel)]="transtyp" style="margin-left:-39px;">CheckNumber
                                   </label>
                                 
                             </div>

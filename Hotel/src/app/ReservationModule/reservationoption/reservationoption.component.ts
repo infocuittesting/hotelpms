@@ -60,6 +60,21 @@ export class ReservationoptionComponent implements OnInit {
 
   constructor(private pppService:ReservationoptionService,private route:Router,public session:SessionStorageService ) { }
  
+
+  //getting value for expirydate and merging it in a variable   
+  private month:any;
+  private year:any;
+  onMonthChange(month:any){
+    this.month = month.toString();
+  }
+  onYearChange(year:any){
+    this.year = year.toString();
+  }
+  private creditcard_expiry:any;
+  getcreditexpiry(){
+      this.creditcard_expiry = this.month+"/"+this.year;
+      console.log(this.creditcard_expiry);
+  }
   
 //Alert start
 alerts={};
@@ -218,11 +233,13 @@ ic={};
 public inscredit;
 submit(inputt) {
   console.log(inputt);
+  this.creditcard_expiry = this.month+"/"+this.year;
+  inputt.pf_expiration_date = this.creditcard_expiry
     this.pppService.insertcredit(inputt)
     .subscribe( (user333:any) => {
       this.inscredit = user333.ReturnCode;
       if(this.inscredit == "RIS"){
-        this.inscredit = "Credit Card Inserted Successfully for "+this.Name;
+        this.inscredit = "Credit Card is Created for "+this.Name;
 
         let paramss={
           "pf_id":this.session.retrieve("id1"),
@@ -232,6 +249,7 @@ submit(inputt) {
            this.arrycdt=resp.ReturnValue;
            console.log(this.arrycdt)
          }); 
+         this.ic=" ";
       }
  
     });  
@@ -240,14 +258,16 @@ submit(inputt) {
 
    // insertCredit start
 ic1={}; 
-submit1(inputt):void {
+submit1(inputt) {
   console.log(inputt);
+  this.creditcard_expiry = this.month+"/"+this.year;
+  inputt.pf_expiration_date = this.creditcard_expiry
     this.pppService.insertcredit1(inputt)
     .subscribe( (user333:any) => {
       this.inscredit = user333.ReturnCode;
       if(this.inscredit == "RUS"){
         console.log(this.inscredit);
-        this.inscredit = "Credit Card Updated Successfully for "+this.Name;
+        this.inscredit = "Credit Card Updated for "+this.Name;
 
         let paramss={
           "pf_id":this.session.retrieve("id1"),
@@ -257,6 +277,7 @@ submit1(inputt):void {
            this.arrycdt=resp.ReturnValue;
            console.log(this.arrycdt)
          }); 
+         this.ic1="";
       }
  
     });  
@@ -276,7 +297,7 @@ delcredit(){
     this.delstatus=resp.ReturnCode;
     if(this.delstatus == "RDS"){
       console.log(this.delstatus);
-      this.delstatus = "Credit Card Deletes Successfully for "+this.Name;
+      this.delstatus = "Credit Card Detais is Delete for "+this.Name;
 
       let paramss={
         "pf_id":this.session.retrieve("id1"),
@@ -442,6 +463,8 @@ this.session.store("ccid",details.cc_id.toString());
 this.session.store("depid",details.deposit_id.toString());
 this.session.store("id1",details.pf_id);
 }
+
+//deposit
 public dedit=true;
 public did
 selectMembersdeposit(details,index){

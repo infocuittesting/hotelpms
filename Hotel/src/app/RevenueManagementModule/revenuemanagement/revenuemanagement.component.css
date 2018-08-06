@@ -22,3 +22,8 @@
 .panel {
     margin-bottom: 5px;
 }
+.scroll{
+    height: 35%;
+    width: 100%;
+    overflow-x:y;
+}
