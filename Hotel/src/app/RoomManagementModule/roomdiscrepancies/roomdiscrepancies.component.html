@@ -131,9 +131,9 @@
     <form> 
   <div class="col-lg-4" id="div3">
           <b><u>Show</u></b><br>
-          <input type="checkbox" [(ngModel)]="checkboxflg.checksleep" (change)="filtercheckboxData(checkboxflg.checksleep,'sleep')"><b style="padding-left:10px;">Sleeps</b><br>
-          <input type="checkbox" [(ngModel)]="checkboxflg.checkskip" (change)="filtercheckboxData(checkboxflg.checkskip,'skip')"><b style="padding-left:10px;">Skips</b><br>
-          <input type="checkbox" [(ngModel)]="checkboxflg.checkper" (change)="filtercheckboxData(checkboxflg.checkper,'person')"><b style="padding-left:10px;">Person Discrepancy</b><br>
+          <input type="checkbox" name="Sleeps" [(ngModel)]="checkboxflg.checksleep" (change)="filtercheckboxData(checkboxflg.checksleep,'sleep')"><b style="padding-left:10px;">Sleeps</b><br>
+          <input type="checkbox" name="Skips" [(ngModel)]="checkboxflg.checkskip" (change)="filtercheckboxData(checkboxflg.checkskip,'skip')"><b style="padding-left:10px;">Skips</b><br>
+          <input type="checkbox" name="Persondic" [(ngModel)]="checkboxflg.checkper" (change)="filtercheckboxData(checkboxflg.checkper,'person')"><b style="padding-left:10px;">Person Discrepancy</b><br>
   </div>
   <div class="col-lg-1"></div>
   <div class="col-lg-4">
