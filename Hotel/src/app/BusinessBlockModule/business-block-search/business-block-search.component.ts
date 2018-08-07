@@ -13,6 +13,7 @@ import { Router } from "@angular/router";
 export class BusinessBlockSearchComponent implements OnInit {
   public tableschanges={};
   public roomtype=[];
+  public statustype=[];
   blockopt=true;
   blc = true;
   newblockbut=false;
@@ -30,12 +31,17 @@ export class BusinessBlockSearchComponent implements OnInit {
     this.roomtype=resp.ReturnValue;
     // console.log(this.roomtype);
     });
+    this.blocksearch.status()
+    .subscribe((resp: any) => {
+    this.roomtype=resp.ReturnValue;
+     console.log(this.roomtype);
+    });
 
   }
 
   
 
-
+public status;
 public reinstate;
 public Blockid;
 public blockname;
