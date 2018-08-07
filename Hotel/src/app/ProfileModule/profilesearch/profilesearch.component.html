@@ -133,23 +133,23 @@
       | filterdata: postal :'pf_postalcode' |  filterdata: mobile :'pf_mobileno'; let i = index " 
       (click)="selectMembersEdit(profilesearch,i)" [ngClass]="{'backGroundColor':i==selectindex}">
        <td>{{i+1}}</td>
-       <td>{{profilesearch?.pf_id}}</td>
-       <td align="center">{{profilesearch?.pf_firstname}}</td>
-       <td  align="center">{{profilesearch?.pf_lastname}}</td>
-       <td align="center">{{profilesearch?.pf_language}}</td>
-       <td align="center">{{profilesearch?.pf_title}}</td>
+       <td>{{profilesearch?.pf_id |titlecase}}</td>
+       <td align="center">{{profilesearch?.pf_firstname |titlecase}}</td>
+       <td  align="center">{{profilesearch?.pf_lastname |titlecase}}</td>
+       <td align="center">{{profilesearch?.pf_language  |titlecase}}</td>
+       <td align="center">{{profilesearch?.pf_title |titlecase}}</td>
        <td align="center">{{profilesearch?.pf_mobileno}}</td>
-       <td align="center" >{{profilesearch?.pf_company_address}}</td>
-       <td align="center">{{profilesearch?.pf_business_address}}</td>
-       <td align="center">{{profilesearch?.pf_city}}</td>
+       <td align="center" >{{profilesearch?.pf_company_address }}</td>
+       <td align="center">{{profilesearch?.pf_business_address |titlecase}}</td>
+       <td align="center">{{profilesearch?.pf_city |titlecase}}</td>
        <td align="center">{{profilesearch?.pf_postalcode}}</td>
-       <td align="center">{{profilesearch?.pf_company_country}}</td>
-       <td align="center">{{profilesearch?.pf_company_state}}</td>
-       <td align="center">{{profilesearch?.pf_individual_vip}}</td>
-       <td align="center">{{profilesearch?.pf_nationality}}</td>
+       <td align="center">{{profilesearch?.pf_company_country |titlecase}}</td>
+       <td align="center">{{profilesearch?.pf_company_state |titlecase}}</td>
+       <td align="center">{{profilesearch?.pf_individual_vip |titlecase}}</td>
+       <td align="center">{{profilesearch?.pf_nationality |titlecase}}</td>
        <td align="center">{{profilesearch?.pf_date_of_birth}}</td>
        <td align="center">{{profilesearch?.pf_passport}}</td>
-       <td align="center">{{profilesearch?.pf_type}}</td>
+       <td align="center">{{profilesearch?.pf_type |titlecase}}</td>
        <td align="center">{{profilesearch?.pf_individual_commtype1}}</td>
        <td align="center">{{profilesearch?.pf_individual_commtype2}}</td>
        <td align="center">{{profilesearch?.pf_individual_commtype3}}</td>

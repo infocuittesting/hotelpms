@@ -138,7 +138,7 @@
 
 
   <div class="container-fluid">
-      <form action="">
+      <form #rese="ngForm">
       <div class="panel panel-primary">
           <div class="panel-body">
 
@@ -149,18 +149,19 @@
                 <div class="row" style="padding-top:5px;">
         <div class="col-lg-2">
 
-          <b>Arrival</b>
+          <label for="arrival">Arrival</label> 
 
         </div>
 
         <div class="col-lg-2" style="padding-left:55px;">
-            <div class="input-group">
+            <div class="input-group" [class.has-error]="arrivaldate.touched && arrivaldate.invalid">
                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                <input type="date" [min]="date" name="arrival"required class="form-control" placeholder="Enter your User Name" style="width:176px;"
+                <input type="date" [min]="date" name="arrival" #arrivaldate="ngModel" required class="form-control" placeholder="Enter your User Name" style="width:176px;"
                 [(ngModel)]="user.RES_Arrival" (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #arrivaldate="ngModel"/></div>
-                <div class="alert alert-danger" *ngIf="arrivaldate.touched && !arrivaldate.valid && arrivaldate.errors.required" style="width:211px;">arrival date is required </div>
+                <div *ngIf="arrivaldate.touched && !arrivaldate.valid && arrivaldate.errors?.required " ngClass="{ 'has-error' : !arrivaldate.valid && submitAttempt }"></div>
               </div>
           </div>
+
 
           <div class="row" style="padding-top:5px;">
               <div class="col-lg-2">
@@ -170,11 +171,11 @@
               </div>
       
               <div class="col-lg-2">
-                  <div class="input-group" style="padding-left:40px;">
+                  <div class="input-group" style="padding-left:40px;" [class.has-error]="departuredate.touched && departuredate.invalid">
                       <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                      <input [min]="user.RES_Arrival" type="date" name="departure" class="form-control" placeholder="Enter your User Name" style="width:176px;" [(ngModel)]="user.RES_Depature"
+                      <input [min]="user.RES_Arrival" type="date" name="departure" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Depature"
                       (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #departuredate="ngModel" required/></div>
-                      <div class="alert alert-danger" *ngIf="departuredate.touched && !departuredate.valid && departuredate.errors.required" style="width:211px;margin-left: 40px;">departure date is required </div>
+                      <div *ngIf="departuredate.touched && !departuredate.valid && departuredate.errors?.required " ngClass="{ 'has-error' : !departuredate.valid && submitAttempt }"></div>
                     </div>
                 </div>
 
@@ -211,10 +212,10 @@
          </div>
      
      	 <div class="col-lg-2">
-         <div class="input-group" style="padding-left:40px;">
+         <div class="input-group" style="padding-left:40px;" [class.has-error]="roomno.touched && roomno.invalid">
          <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-home"></i></span>
-          <input type="text" name="noofrooms" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Number_Of_Rooms"  #roomno="ngModel"></div>
-          <div class="alert alert-danger" *ngIf="roomno.touched && !roomno.valid && roomno.errors.pattern" style="width:205px;margin-left: 40px;">number of room should contain only numbers </div> 
+          <input type="text" name="noofrooms" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Number_Of_Rooms"  #roomno="ngModel" required></div>
+          <div *ngIf="roomno.touched && !roomno.valid && roomno.errors?.required  && roomno.errors.pattern" ngClass="{ 'has-error' : !roomno.valid && submitAttempt }"></div>
         </div>
          </div>
 
@@ -223,17 +224,14 @@
 		<b>Adults/Child</b>                              
 		</div>                              
 		<div class="col-lg-2">
-          <div class="input-group" style="padding-left:25px;">
-           <table>
-            <tr>
-                   
-            <td style="padding-left:15px;"> <input name="adults" type="text" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:105px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Adults"  #adult="ngModel" required></td>
-            <td style="padding-left:5px;"><input type="text" name="child" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:105px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Child" #child="ngModel" required></td>
-        </tr></table>
-            <div class="alert alert-danger" *ngIf="adult.touched && !adult.valid && adult.errors.pattern" style="width:205px;margin-left: 13px">adult should contain only numbers </div>
-            <div class="alert alert-danger" *ngIf="child.touched && !child.valid && child.errors.pattern" style="width:205px;margin-left: 13px">child should contain only numbers </div>
+          <div class="input-group" style="padding-left:40px;" [class.has-error]="adult.touched && adult.invalid">         
+          <input name="adults" type="text" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:105px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Adults"  #adult="ngModel" required>
+          <div *ngIf="adult.touched && !adult.valid && adult.errors?.required  && adult.errors.pattern" ngClass="{ 'has-error' : !adult.valid && submitAttempt }"></div>
           </div>
           </div>
+          <div class="input-group" style="padding-left:105px;">
+          <input type="text" name="child" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:105px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Child" >
+          </div>  
 		  </div>
 		  
           <div class="row" style="padding-top:5px;">
@@ -241,14 +239,12 @@
             <b>Room_Types</b>                        
 			</div>                                    
 			<div class="col-lg-2">
-			<div class="input-group" style="padding-left:40px;">
-			<select required name="roomtype" style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Room_Type" #type="ngModel">
+			<div class="input-group" style="padding-left:40px;" [class.has-error]="type.touched && type.invalid">
+			<select name="roomtype" class="form-control" style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Room_Type" #type="ngModel" required>
         <option *ngFor="let roomtypelist of roomtype" [ngValue] = "roomtypelist.type"> {{roomtypelist.type}}</option> 
-			</select>
-            </div>
-            <div class="alert alert-danger" *ngIf="type.touched && !type.valid && type.errors.required" style="width:205px;margin-left:40px;">room type is required </div>
-
-            
+      </select>
+      <div *ngIf="type.touched && !type.valid && type.errors?.required  && type.errors.pattern" ngClass="{ 'has-error' : !type.valid && submitAttempt }"></div>      
+            </div>            
 			</div>
 			</div>
 		<div class="row" style="padding-top:5px;">
@@ -270,14 +266,12 @@
 		<b>Rate_Code</b>                                                
 		</div>		
         <div class="col-lg-2">
-		<div class="input-group" style="padding-left:40px;" >
-		<select required name="ratecode"style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Rate_Code" #ratecode="ngModel">
-			
-		<option *ngFor="let tablelist of tableschanges" [ngValue] = "tablelist.ratecode"> {{tablelist.ratecode}}</option> 
-                                                                 
-		</select>
-        </div>
-        <div class="alert alert-danger" *ngIf="ratecode.touched && !ratecode.valid && ratecode.errors.required" style="width:205px;margin-left:40px;">rate code is required </div>
+		<div class="input-group" style="padding-left:40px;" [class.has-error]="ratecode.touched && ratecode.invalid">
+		<select required class="form-control" name="ratecodes"style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Rate_Code" #ratecode="ngModel">
+		<option *ngFor="let tablelist of tableschanges" [ngValue] = "tablelist.ratecode"> {{tablelist.ratecode}}</option>                                                             
+    </select>
+    <div *ngIf="ratecode.touched && !ratecode.valid && ratecode.errors?.required  && ratecode.errors.pattern" ngClass="{ 'has-error' : !ratecode.valid && submitAttempt }"></div>      
+  </div>
 		</div>
     </div>
     <div class="row" style="padding-top:5px;">
@@ -316,12 +310,12 @@
 		  <b>Res.Type</b>
 		  </div>    
 		  <div class="col-lg-2">
-          <div class="input-group" style="padding-left:40px;">
-          <select name="restype" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Res_Type" #restype_description="ngModel">
+          <div class="input-group" style="padding-left:40px;"[class.has-error]="restype_description.touched &&restype_description.invalid">
+          <select name="restype" class="form-control" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Res_Type" #restype_description="ngModel">
             <option *ngFor="let restypelist of restype" [ngValue] = "restypelist.restype_description">{{restypelist.restype_description}}</option>                                          
           </select>
+          <div *ngIf="restype_description.touched && !restype_description.valid &&restype_description.errors?.required  && restype_description.errors.pattern" ngClass="{ 'has-error' : !restype_description.valid && submitAttempt }"></div>      
           </div>
-          <div class="alert alert-danger" *ngIf="restype_description.touched && !restype_description.valid && restype_description.errors.required" style="width:205px;margin-left:40px;">res type is required </div>
 		  </div>
 		  </div>
 		  <div class="row" style="padding-top:5px;">
@@ -329,12 +323,12 @@
 		  <b>Market</b>
 		  </div>                           
 		  <div class="col-lg-2">
-		  <div class="input-group" style="padding-left:40px;">
-		  <select name="market" required style="width:216px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Market" #market="ngModel">
+		  <div class="input-group" style="padding-left:40px;" [class.has-error]="markets.touched && markets.invalid">
+		  <select name="market" required style="width:216px;height:34px;border-radius:4px;color:black;" class="form-control" [(ngModel)]="user.RES_Market" #markets="ngModel">
 		  <option *ngFor="let marketlist of marketpro" [ngValue] = "marketlist.marketgroup_description">{{marketlist.marketgroup_description}} </option>
-		  </select>
+      </select>
+      <div *ngIf="markets.touched && !markets.valid && markets.errors?.required  && markets.errors.pattern" ngClass="{ 'has-error' : !markets.valid && submitAttempt }"></div>            
           </div>
-          <div class="alert alert-danger" *ngIf="market.touched && !market.valid && market.errors.required" style="width:205px;margin-left:40px;">market field is required </div>
 		  </div>
 		  </div>
 
@@ -343,12 +337,12 @@
 		  <b>Source</b>
 		  </div>                                  
 		  <div class="col-lg-2">
-		  <div class="input-group" style="padding-left:40px;" >
-		  <select name="source" required style="width:216px;height:34px;border-radius:4px;color:black;"[(ngModel)]="user.RES_Source" #sourcedescription="ngModel">
+		  <div class="input-group" style="padding-left:40px;" [class.has-error]="sourcedescription.touched && sourcedescription.invalid" >
+		  <select name="source" required class="form-control" style="width:216px;height:34px;border-radius:4px;color:black;"[(ngModel)]="user.RES_Source" #sourcedescription="ngModel">
         <option *ngFor="let sourcelist of source" [ngValue] = "sourcelist.sourcedescription">{{sourcelist.sourcedescription}}</option>                                          
       </select>
-          </div>
-          <div class="alert alert-danger" *ngIf="sourcedescription.touched && !sourcedescription.valid && sourcedescription.errors.required" style="width:205px;margin-left:40px;">source is required </div>
+      <div *ngIf="sourcedescription.touched && !sourcedescription.valid && sourcedescription.errors?.required  && sourcedescription.errors.pattern" ngClass="{ 'has-error' : !sourcedescription.valid && submitAttempt }"></div>
+    </div>
 		  </div>
 		  </div>
 
@@ -369,14 +363,14 @@
 		  <b>Payment</b>
 		  </div>                                              
 		  <div class="col-lg-2">
-		  <div class="input-group" style="padding-left:40px;">
+		  <div class="input-group" style="padding-left:40px;" [class.has-error]="payment_description.touched && payment_description.invalid">
           <span class="input-group-addon" style="background-color:#0077B5;color:white;"data-toggle="modal" data-target="#payment"><i class="glyphicon glyphicon-option-horizontal"></i></span>
           <!-- <input type="text" required style="width:178px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Payment"> -->
-        <select name="payment" required style="width:178px;height:34px;border-radius:4px;color:black;" [(ngModel)]="user.RES_Payment" #payment_description="ngModel">  
+        <select name="payment" required style="width:178px;height:34px;border-radius:4px;color:black;" class="form-control" [(ngModel)]="user.RES_Payment" #payment_description="ngModel">  
           <option *ngFor="let paymentlist of payment" [ngValue] = "paymentlist.payment_description">{{paymentlist.payment_description}}</option>                                                                                                                                                                       
-		  </select>
-          </div>
-          <div class="alert alert-danger" *ngIf="payment_description.touched && !payment_description.valid && payment_description.errors.required" style="width:205px;">payment is required </div>
+      </select>
+      <div *ngIf="payment_description.touched && !payment_description.valid && payment_description.errors?.required  && payment_description.errors.pattern" ngClass="{ 'has-error' : !payment_description.valid && submitAttempt }"></div>            
+    </div>
 		  </div>
 		  </div>
 		  <div class="row" style="padding-top:5px;">
@@ -404,13 +398,10 @@
           <b>Credit_Card</b>
           </div>
           <div class="col-lg-2">
-          <div class="input-group" style="padding-left:40px;">
+          <div class="input-group" style="padding-left:40px;" [class.has-error]="creditcards.touched && creditcards.invalid">
           <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
-          <input name="creditcard" type="text" minlength="16" maxlength="16" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Creditcard_Number" #creditcard="ngModel"></div>
-          <div class="alert alert-danger" *ngIf="creditcard.touched && !creditcard.valid" style="width:250px;">       
-                <div *ngIf=creditcard.errors.pattern>card number should contain only numbers</div>
-                <div *ngIf=creditcard.errors.minlength>card number should contain    {{creditcard.errors.minlength.requiredLength}} digits exactly</div>
-             </div> 
+          <input name="creditcard" type="text" minlength="16" maxlength="16" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:176px;" [(ngModel)]="user.RES_Creditcard_Number" #creditcards="ngModel" required></div>
+          <div *ngIf="creditcards.touched && !creditcards.valid && creditcards.errors?.required  && creditcards.errors.pattern && creditcards.errors.length" ngClass="{ 'has-error' : !creditcards.valid && submitAttempt }"></div>             
           </div>
           </div> 
        <div class="row" style="padding-top:5px;">
@@ -543,11 +534,11 @@
       <button type="button" class="btn btn-success" style="width:150px;" data-toggle="modal" data-target="#myModal" [disabled]="!loginForm.valid"><b>Save</b></button>
     </div>
       <div class="col-lg-2">
-        <button type="button" type="reset" class="btn btn-warning" style="width:150px;" (click)="submit(user)" data-toggle="modal" data-target="#myModal1" [disabled]="!loginForm.valid"><b>Ok</b></button>
+        <button type="button" type="button" class="btn btn-warning" style="width:150px;" (click)="submit(user);rese.reset()" data-toggle="modal" data-target="#myModal1" [disabled]="!loginForm.valid"><b>Ok</b></button>
       </div>
 
         <div class="col-lg-2" style="padding-left:10px;">
-            <button type="button" type="reset" class="btn btn-info" style="width:150px;" data-toggle="modal" data-target="#waitlist1" (click)="submitwait(user)"><b>Waitlist</b></button>
+            <button type="button" type="button" class="btn btn-info" style="width:150px;" data-toggle="modal" data-target="#waitlist1" (click)="submitwait(user);rese.reset()"><b>Waitlist</b></button>
           </div>
 
           <div class="col-lg-2" style="padding-left:10px;">
