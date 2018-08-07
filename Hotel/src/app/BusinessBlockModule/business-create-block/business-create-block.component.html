@@ -508,16 +508,18 @@
         </div>
         <div id="menu5" class="tab-pane fade">
            
-            
-            <div class="container-fluid" style="background-color: #0077B5;color: white;">
+            <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
+              <div class="panel-body">
+            <div class="container-fluid" >
               <div class="row">
-              <div class="col-md-3">
+                <div class="col-md-1"></div>
+              <div class="col-md-2">
                 <div class="form-group">
                   <label for="name">Meeting Size</label>
                   <input type="text" class="form-control input-sm" name="MeetingSize"[(ngModel)]="block.meetingsizes" [value]="meetsp">
                 </div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-2">
                 <div class="form-group">
                   <label for="name">Space Type</label>
                   <select class="form-control input-sm" name="SqFeet"[(ngModel)]="block.space_type" [value]="sztype">
@@ -527,17 +529,21 @@
                   </select> 
                 </div>
               </div>
-
-              <div class="col-md-3">
+            </div>
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-2">
                   <div class="form-group">
                     <label for="name">Attendees</label>
                     <input type="text" class="form-control input-sm" name="Attendees"[(ngModel)]="block.Attend" [value]="attdess1">
                   </div>
                 </div>
-            </div>
+              </div>
+           
           </div>
+        </div>
           </div>
-        
+        </div>
          </div>
         </div>
       </div>
@@ -568,7 +574,7 @@
             </div>
         </div>
         <!-- //label for table  -->
-    <div class="row">
+    <div class="row" style="margin-top: -48px;">
       <div class="continer">
         <div class="col-md-2"></div>
         <div class="col-md-3">
@@ -585,9 +591,9 @@
            <div class="col-md-6">
               <div class="table-responsive" style="width:100%;">
                     <table class="table table-bordered table-hover"style="margin-left: 26px;input-sm">
-                      <thead style="background-color: #0077B5;color:white;">
+                      <thead >
                         <tr>
-                         <th> <button type="button" class="btn btn-default" style="width:100%;height:100%">Cal</button></th>
+                         <th> <button type="button" class="btn btn-primary" style="width:100%;height:100%">Cal</button></th>
                           <th>Blocked</th>
                           <th>Pickup</th>
                           <th>Available</th>
@@ -595,19 +601,19 @@
                         </thead>
                           <tbody>
                             <tr>
-                            <td><label>RoomNights</label></td>
+                            <label>RoomNights</label>
                             <td>25</td>
                             <td>58.5</td>
                             <td>50.5</td>
                           </tr>
                           <tr>
-                              <td>NetRevenue</td>
+                              <label>NetRevenue</label>
                               <td>25</td>
                               <td>58.5</td>
                               <td>50.5</td>
                             </tr>
                             <tr>
-                                <td>NetRate</td>
+                                <label>NetRate</label>
                                 <td>25</td>
                                 <td>58.5</td>
                                 <td>50.5</td>
