@@ -197,7 +197,20 @@ CreateBusinessBlock(block):Observable<object[]> {
      .map(this.extractData)
 
 }
+// Create Paymaster Reservation
+PaymasterReservation():Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+  let body = {
+    
+      "block_id":"1142"
+      
+  }
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_INSERT_PayMasterReservation',body,options)
+     .map(this.extractData)
 
+}
 
   private extractData(res: Response) {
     //alert('hai20')
