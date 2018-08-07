@@ -114,4 +114,13 @@ selectindex=null;
 //  this.session.store("")
 
 }
+public edlock_id;
+// EDIT BUTTON Service
+// editblockservice(blockedit){
+//   this.edlock_id = blockedit.block_id;
+  
+// }
 }
+
+
+

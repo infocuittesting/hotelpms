@@ -72,45 +72,44 @@
 
 <div class="container" style="padding-top:40px;padding-left:150px;">
     <div class="jumbotron jumbotron-fluid" style="background-color:#0077B5;color:white;">
+
 <div class="row">
 
 <div class="col-lg-1">
   <b>ForDate</b>
 </div>
 
-<div class="col-lg-2">
+<div class="col-lg-3">
     <div class="input-group">
          <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="fa fa-calendar"></i></span>
-          <input type="text" class="form-control">
+          <input name="ForDate" type="date" class="form-control" [(ngModel)]="date">
         </div>
   </div>
-<div class="col-lg-1"></div>
+
   <div class="col-lg-1">
       <b>Room</b>
     </div>
     
-    <div class="col-lg-2">
-        <select  required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="orderroom" (ngModelChange)="onSelect6(orderroom)">
+    <div class="col-lg-3">
+        <select name="Room" required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="orderroom" (ngModelChange)="onSelect6(orderroom)">
             <option *ngFor="let roomnumberlist of roomnumber" [ngValue] = "roomnumberlist.rm_room">{{roomnumberlist.rm_room}} </option>
               </select>
       </div>
 
-      <div class="col-lg-1"></div>
+     
       <div class="col-lg-1">
           <b>RoomClass</b>
         </div>
         
-        <div class="col-lg-2">
-            <select  required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="class">
+        <div class="col-lg-3">
+            <select name="RoomClass" required style="height:34px;color:black;border-radius:4px;width:100%;color:black;margin-left: 10px;" [(ngModel)]="class">
                 <option *ngFor="let roomclasslist of roomclass" [ngValue] = "roomclasslist.class">{{roomclasslist.class}} </option>
                   </select>
           </div>
 
 
 </div><br>
-  
-  
-  
+   
   <div class="row">
     <div class="col-lg-12">
         <b><u>Show </u></b>
@@ -118,7 +117,7 @@
           
           <div class="col-lg-1">
        
-              <input type="checkbox" [(ngModel)]="checkboxflg.checkordr" (change)="filtercheckboxData(checkboxflg.checkordr,'out of order')" style="width:15px;height:15px;">
+              <input name="OutOfOrder" type="checkbox" [(ngModel)]="checkboxflg.checkordr" (change)="filtercheckboxData(checkboxflg.checkordr,'out of order')" style="width:15px;height:15px;">
           </div>
           
           <div class="col-lg-3">
@@ -126,14 +125,15 @@
           </div>
           
           <div class="col-lg-1">
-              <input type="checkbox" [(ngModel)]="checkboxflg.checkser" (change)="filtercheckboxData(checkboxflg.checkser,'out of service')"  style="width:15px;height:15px;">
+              <input type="checkbox" name="OutOfService" [(ngModel)]="checkboxflg.checkser" (change)="filtercheckboxData(checkboxflg.checkser,'out of service')"  style="width:15px;height:15px;">
           </div>
           
           <div class="col-lg-3">
             <b style="padding-top:35px;">Out Of Service</b>
           </div>
-          <div class="col-lg-4">
-              <button class="btn btn-success">Clear All</button>
+          <div class="col-lg-1"></div>
+              <div class="col-lg-3">
+              <button type="button"  class="btn btn-success">Clear All</button>
             </div>
       </div>
     </div>    
@@ -162,7 +162,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let outoforderservicelist of order;let i= index;"  
+            <tr *ngFor="let outoforderservicelist of order|filterdata:date:'rm_from_date'; let i= index;"  
             (click)="selectOrdersEdit(outoforderservicelist,i)" [ngClass]="{'backGroundColor':i==selectindex}">
               <!-- <td><input type="checkbox"></td> -->
               <td>{{outoforderservicelist?.rm_room}}</td>

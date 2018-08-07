@@ -11,51 +11,28 @@
               <th>Name</th>
               <th>Arrival</th>
               <th>Departure</th>
-              <th>Prs</th>
+              <th>Nights</th>
               <th>Rmtype</th>
               <th>Room</th>
               <th>Rms</th>
-              <th>Rate</th>
+              <th>blockcode</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr *ngFor= "let resvlist of querypay "(click)="ReservationsListComponent()">
               <td>165312</td>
               <td>Hotel hover reference</td>
-              <td>8/3/2018</td>
-              <td>8/15/2018</td>
-              <td>10</td>
-              <td>kngs</td>
+              <td>{{resvlist.res_arrival}}</td>
+              <td>{{resvlist.res_depature}}</td>
+              <td>{{resvlist.res_nights}}</td>
+              <td>{{resvlist.res_room_type}}</td>
               <td>105</td>
-              <td>10.5</td>
-              <td>5000</td>
-              <td>Hood</td>
+              <td>{{resvlist.res_number_of_rooms}}</td>
+              <td>{{resvlist.res_block_code}}</td>
+              <td>{{resvlist.res_guest_status}}</td>
             </tr>
-            <tr>
-                <td>175312</td>
-                <td>Hotel hover reference</td>
-                <td>8/3/2018</td>
-                <td>8/15/2018</td>
-                <td>10</td>
-                <td>kngs</td>
-                <td>105</td>
-                <td>10.5</td>
-                <td>5000</td>
-                <td>Hood</td>
-              </tr>
-              <tr>
-                  <td>175342</td>
-                  <td>Hotel hover reference</td>
-                  <td>8/3/2018</td>
-                  <td>8/15/2018</td>
-                  <td>10</td>
-                  <td>kngs</td>
-                  <td>105</td>
-                  <td>10.5</td>
-                  <td>5000</td>
-                  <td>Hood</td>
-                </tr>
+            
           </tbody>
         </table>
       </div>
