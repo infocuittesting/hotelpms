@@ -7,27 +7,27 @@
         <table class="table table-bordered table-hover"  >
           <thead style="background-color: #0077B5;color:white;">
             <tr>
-              <th>Conf.No</th>
-              <th>Name</th>
+              <th>Reservation ID</th>
+              
               <th>Arrival</th>
               <th>Departure</th>
               <th>Nights</th>
               <th>Rmtype</th>
               <th>Room</th>
-              <th>Rms</th>
+              <th>Created By</th>
               <th>blockcode</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor= "let resvlist of querypay "(click)="ReservationsListComponent()">
-              <td>165312</td>
-              <td>Hotel hover reference</td>
+              <td>{{resvlist.res_id}}</td>
+              
               <td>{{resvlist.res_arrival}}</td>
               <td>{{resvlist.res_depature}}</td>
               <td>{{resvlist.res_nights}}</td>
               <td>{{resvlist.res_room_type}}</td>
-              <td>105</td>
+              <td>{{resvlist.created_by}}</td>
               <td>{{resvlist.res_number_of_rooms}}</td>
               <td>{{resvlist.res_block_code}}</td>
               <td>{{resvlist.res_guest_status}}</td>
