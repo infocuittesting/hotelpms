@@ -16,11 +16,7 @@ public searched=[];
 
   ngOnInit() {
 
-    this.pService.rominglist()
-.subscribe((resp: any) => {
- this.searchandedit=resp.ReturnValue;
-});
-
+  
   }
   private extractData(res: Response) {
     //alert('hai20')

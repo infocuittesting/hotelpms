@@ -34,6 +34,8 @@ public block_name:any=" ";
 public block_code:any=" ";
 public paymasters:any;
 public querypay:any;
+public queryroomrevenue;
+public payblockid;
 
 // ................................................
   ngOnInit() {
@@ -129,6 +131,14 @@ this.businessblock.BlockTypedropdown()
     else{
         block.suppress = "0"
     }
+    if(block.guranteeds == true)
+    {
+        block.guranteeds = "1"
+
+    }
+    else{
+        block.guranteeds = "0"
+    }
     this.businessblock.CreateBusinessBlock(block)
 .subscribe((resp: any) => {
     this.createblock=resp.ReturnCode;
@@ -136,6 +146,7 @@ this.businessblock.BlockTypedropdown()
     this.block_code = resp.blockcode;
     this.block_name = resp.Blockname;
      console.log(this.createblock);
+     this.session.store("blids",this.blockids.toString());
  });
  if(this.createblock=="RIS"){
     this.blocksuccess="Block Created Successfully"
@@ -146,13 +157,25 @@ this.businessblock.BlockTypedropdown()
  }
   }
 
-  CreatePaymaster(paymaster){
-      console.log("going to reservation button")
-  this.businessblock.PaymasterReservation()
+  CreatePaymaster(){
+      console.log("going to reservation button",this.blockids,typeof(this.blockids));
+    // this.payblockid = this.blockids.toString();
+    // console.log("stringvalue",typeof(this.payblockid))
+  this.businessblock.PaymasterReservation(this.blockids)
   .subscribe((resp: any) => {
       this.paymasters=resp.ReturnCode;
-       console.log(this.paymasters);
+       console.log("paymasertresponse",this.paymasters);
    });
+}
+
+RoomrevenueButton(){
+    console.log("going to calculate room revenue")
+  this.businessblock.QueryRoomRevenue()
+  .subscribe((resp: any) => {
+      this.queryroomrevenue=resp.ReturnValue;
+       console.log(this.queryroomrevenue);
+   });
+
 }
 // ReservationsListComponent(qrypay)
 // {

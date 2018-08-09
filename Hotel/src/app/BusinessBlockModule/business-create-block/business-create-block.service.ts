@@ -173,7 +173,7 @@ CreateBusinessBlock(block):Observable<object[]> {
 "Catering":
              {
           
-             "guranteed":"",
+             "guranteed":block.guranteeds,
              "attenders":block.attender,
 	           "info_board":block.info_boards,
              "contract_no":block.contract,
@@ -198,20 +198,33 @@ CreateBusinessBlock(block):Observable<object[]> {
 
 }
 // Create Paymaster Reservation
-PaymasterReservation():Observable<object[]> {
-       
+PaymasterReservation(blockids):Observable<object[]> {
+  console.log("going to service",blockids,typeof(blockids))
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers })
   let body = {
     
-      "block_id":"1142"
+      "block_id": blockids.toString()
       
   }
   return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_INSERT_PayMasterReservation',body,options)
      .map(this.extractData)
 
 }
+// Query Room Revenue
+QueryRoomRevenue():Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+  let body = {
+    
+      "block_id":"1143"
+      
+  }
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryRoomRevenue',body,options)
+     .map(this.extractData)
 
+}
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);
