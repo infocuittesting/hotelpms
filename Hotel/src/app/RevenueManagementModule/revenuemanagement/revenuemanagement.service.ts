@@ -102,14 +102,29 @@ export class RevenuemanagementService {
 
   }
 
-  deletenego():  Observable<object[]> {
+  deletenego(ratecodeid):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
-      "negotiated_code_id":"3"
+      "negotiated_code_id":ratecodeid.toString()
     }
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_DELETE_Negotiated_Rate',body,options)
+       .map(this.extractData)
+
+  }
+
+  editnego(rateecode,beginn,endsell,ratecodeid):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+    let body={
+      "rate_code_id":rateecode,
+	    "negotiate_begin_sell_date":beginn,
+	    "negotiate_end_sell_date":endsell,
+	    "negotiate_commision_code_id":ratecodeid
+    }
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_UPDATE_Negotiated_Rate',body,options)
        .map(this.extractData)
 
   }

@@ -388,36 +388,7 @@
                       
                        
                         </div>
-                        <!-- <div class="col-md-6">
-                                <div class="col-sm-1">
-                                        <label for="mon"><input type="checkbox" id="mon" style="margin-left:10px;" />
-                                         MON</label>
-                                </div>
-                                <div class="col-sm-1" style="margin-left:10px;">
-                                        <label for="tue"><input type="checkbox" id="tue" style="margin-left:10px;" />
-                                         TUE</label>
-                                </div>
-                                <div class="col-sm-1" style="margin-left:10px ">
-                                        <label for="wed"><input type="checkbox" id="wed"style="margin-left:10px;" />
-                                        WED</label> 
-                                </div>
-                                <div class="col-sm-1" style="margin-left:10px ">
-                                        <label for="thur"><input type="checkbox" id="thur" style="margin-left:10px;" />
-                                         THU</label>
-                                </div>
-                                <div class="col-sm-1" style="margin-left:10px ">
-                                        <label for="fri"><input type="checkbox" id="fri" style="margin-left:10px;" />
-                                        FRI</label>
-                                </div>
-                                <div class="col-sm-1" style="margin-left:10px ">
-                                        <label for="sat"><input type="checkbox" id="sat" style="margin-left:10px;" />
-                                        SAT</label>
-                                 </div>
-                                 <div class="col-sm-1" style="margin-left:10px ">
-                                        <label for="sun"><input type="checkbox" id="sun" style="margin-left:10px;" />
-                                        SUN</label>
-                                </div>
-                        </div> -->
+                        
                     
                       <div class="row" >
 
@@ -705,7 +676,7 @@
               <button type="button" class="btn btn-Warning" style="width:110px;" data-toggle="modal" ><b>New</b></button>
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal"  (click)="ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach)"><b>Save</b></button>
+              <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal"  (click)="ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach)" data-toggle="modal" data-target="#afteratedet"><b>Save</b></button>
           </div>
           <div class="col-md-2">
               <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal"><b>Close</b></button>
@@ -774,7 +745,7 @@
                               </tr>
                             </thead>
                             <tbody style="font-size: 12px">                                 
-                              <tr  *ngFor="let item of ncode; let i=index">
+                              <tr  *ngFor="let item of ncode; let i=index" (click)="selectMembers(item,i)" [ngClass]="{'backGroundColor':i==selectindex}">
                                   <td>{{item.rate_code}}</td>
                                   <td>{{item.negotiate_begin_sell_date}}</td>
                                   <td>{{item.negotiate_end_sell_date}}</td>     
@@ -797,106 +768,61 @@
                             </tbody>
                           </table>
                       </div>
-                    </div><br>
+                    </div>
+                </form> <br>
   <!-- ************************************table content ends******************************************************* -->
   
   
                       <div class="row" style="margin-left:10%;">
                           
                           <div class="col-md-2">
-                              <button type="button" class="btn btn-Info" style="width:110px;"><b>Detail</b></button>
+                              <button type="button" class="btn btn-Info" style="width:110px;" disabled><b>Detail</b></button>
                           </div>
                           <div class="col-md-2">
                               <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" data-target="#newnegotiated"><b>New</b></button>
                           </div>
                           <div class="col-md-2">
-                              <button type="button" class="btn btn-danger" style="width:110px;"><b>Edit</b></button>
+                              <button type="button" class="btn btn-danger" style="width:110px;"data-toggle="modal" data-target="#editnegotiated" [disabled]=edbut><b>Edit</b></button>
                           </div>
                           <div class="col-md-2">
-                              <button type="button" class="btn btn-Warning" style="width:110px;"><b>Delete </b></button>
+                              <button type="button" class="btn btn-Warning" style="width:110px;" (click)="negodel()" data-toggle="modal" data-target="#afterdelnegotiate" [disabled]=delbut><b>Delete </b></button>
                           </div>
                           <div class="col-md-2">
                               <button type="button" class="btn btn-Success" style="width:110px;"><b>Close</b></button>
                           </div>
                       </div>
   <!-- *************************************************************************************************************************** -->
-  
-  <!-- *****new negotiated modal***** -->
-                      <div class="modal fade" id="newnegotiated" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                              <div class="vertical-alignment-helper">
-                                  <div class="modal-dialog vertical-align-center">
-                                      <div class="modal-content">
-                                          <div class="modal-header">
-                                              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                          
-                                              </button>
-                                               <h3 class="modal-title" id="myModalLabel"><b>Negotiated Rates</b></h3>
-                          
-                                          </div>
-                                          <div class="modal-body">
-                                              <div class="row">
-                                                  <div class="col-sm-3" style="padding-top:1%;">
-                                                      <b>Rate Code</b>
-                                                  </div>  
-                                                  <div class="col-sm-3">
-                                                      <div class="form-group">            
-                                                          <select name="ratec" class="form-control input-sm" style="width:100%;" [(ngModel)]="user.ratecod">
-                                                            <option  *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.ratecode_id">{{ratecdlist.rate_code}}</option>                                                            
-                                                          </select>
-                                                      </div>
-                                                  </div>
-                                              </div>
-  
-  
-                                              <div class="row">
-                                                  <div class="col-sm-3">
-                                                      <b>Begin Sell Date</b>
-                                                  </div>  
-                                                  <div class="col-sm-3">
-                                                      <div class="form-group">            
-                                                          <input type="date" name="bgdt" class="form-control input-sm" [(ngModel)]="user.begin" >
-                                                      </div>
-                                                  </div>
-                                              </div>
-  
-                                              <div class="row">
-                                                  <div class="col-sm-3">
-                                                      <b>End Sell Date</b>
-                                                  </div>  
-                                                  <div class="col-sm-3">
-                                                      <div class="form-group">            
-                                                          <input type="date" name="enddt" class="form-control input-sm"  [(ngModel)]="user.endsel">
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                <div class="col-sm-3" style="padding-top:1%;">
-                                                    <b>Commission Code</b>
-                                                </div>  
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">            
-                                                        <select class="form-control input-sm" name="cc" style="width:100%;" disabled> 
-                                                           
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-  
-  
-                                          </div>
-                                          <div class="modal-footer">
-                                              <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#afternewnegotiate"  (click)="newnego(user)">Save</button>
-                                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>                                            
-                                          </div>
- 
+  <!-- alert after ratedetails insert  -->
+<div class="modal fade" id="afteratedet" role="dialog">
+    <div class="vertical-alignment-helper">  
+    <div class="modal-dialog vertical-align-center modal-sm">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><b>Rate details insert message</b></h4>
+        </div>
+        <div class="modal-body">
+            <p>{{ratedetalert}}</p>       
+        </div>
+        
+            
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+        </div>  
+        </div>
+    
+    </div>
+    </div>
+</div>
 
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
+
+<!--  **************************************************alert after ratedetails insert ends*******************************-->
+
                         
                           
-              </form> 
+           
           </div>
   <!-- *******************************************negotiated tab content ends **************************************-->
           
@@ -908,7 +834,84 @@
     </div>
   </div>
 
+  <!-- *****new negotiated modal***** -->
+  <div class="modal fade" id="newnegotiated" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+    
+                        </button>
+                         <h3 class="modal-title" id="myModalLabel"><b>Negotiated Rates</b></h3>
+    
+                    </div>
+                    <form #negoForm="ngForm">
+                    <div class="modal-body">
+                        <div class="row" style="margin-left: 15%;">
+                            <div class="col-sm-4" style="padding-top:1%;">
+                                <b>Rate Code</b>
+                            </div>  
+                            <div class="col-sm-4">
+                                <div class="form-group">            
+                                    <select name="ratec" class="form-control input-sm" style="width:100%;" [(ngModel)]="user.ratecod">
+                                      <option  *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.ratecode_id">{{ratecdlist.rate_code}}</option>                                                            
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
 
+
+                        <div class="row" style="margin-left: 15%;">
+                            <div class="col-sm-4">
+                                <b>Begin Sell Date</b>
+                            </div>  
+                            <div class="col-sm-4">
+                                <div class="form-group">            
+                                    <input type="date" name="bgdt" class="form-control input-sm" [(ngModel)]="user.begin" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-left: 15%;">
+                            <div class="col-sm-4">
+                                <b>End Sell Date</b>
+                            </div>  
+                            <div class="col-sm-4">
+                                <div class="form-group">            
+                                    <input type="date" name="enddt" class="form-control input-sm"  [(ngModel)]="user.endsel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-left: 15%;">
+                          <div class="col-sm-4" style="padding-top:1%;">
+                              <b>Commission Code</b>
+                          </div>  
+                          <div class="col-sm-4">
+                              <div class="form-group">            
+                                  <select class="form-control input-sm" name="cc" style="width:100%;" disabled> 
+                                     
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+
+
+                    </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#afternewnegotiate"  (click)="newnego(user);negoForm.reset()" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="negoForm.reset()">Close</button>                                            
+                    </div>
+
+
+                </div>
+           
+            </div>
+        </div>
+    </div>
+<!-- ******************************************************new negotiated modal ends***************************************** -->
 <!-- alert after new negotiated insert  -->
 <div class="modal fade" id="afternewnegotiate" role="dialog">
         <div class="vertical-alignment-helper">  
@@ -937,6 +940,141 @@
 
 
 <!--  **************************************************alert after new negotiated insert ends*******************************-->
+<!-- *****edit negotiated modal***** -->
+<div class="modal fade" id="editnegotiated" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+    
+                        </button>
+                         <h3 class="modal-title" id="myModalLabel"><b>Negotiated Rates</b></h3>
+    
+                    </div>
+                    <form #editForm="ngForm">
+                    <div class="modal-body">
+                        <div class="row" style="margin-left: 15%;">
+                            <div class="col-sm-4" style="padding-top:1%;">
+                                <b>Rate Code</b>
+                            </div>  
+                            <div class="col-sm-4">
+                                <div class="form-group">            
+                                    <select name="ratcodee" class="form-control input-sm" style="width:100%;" [(ngModel)]="rateecode">
+                                      <option  *ngFor="let ratcodeelist of prc" [ngValue] = "ratcodeelist.ratecode_id">{{ratcodeelist.rate_code}}</option>                                                            
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-left: 15%;">
+                            <div class="col-sm-4">
+                                <b>Begin Sell Date</b>
+                            </div>  
+                            <div class="col-sm-4">
+                                <div class="form-group">            
+                                    <input type="date" name="begdtt" class="form-control input-sm" [(ngModel)]="beginn" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-left: 15%;">
+                            <div class="col-sm-4">
+                                <b>End Sell Date</b>
+                            </div>  
+                            <div class="col-sm-4">
+                                <div class="form-group">            
+                                    <input type="date" name="enddtt" class="form-control input-sm"  [(ngModel)]="endsell">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-left: 15%;">
+                          <div class="col-sm-4" style="padding-top:1%;">
+                              <b>Commission Code</b>
+                          </div>  
+                          <div class="col-sm-4">
+                              <div class="form-group">            
+                                  <select class="form-control input-sm" name="comcod" style="width:100%;" disabled> 
+                                     
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+
+
+                    </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#aftereditnegotiate"  (click)="editnego(rateecode,beginn,endsell);editForm.reset()" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="editForm.reset()">Close</button>                                            
+                    </div>
+
+
+                </div>
+           
+            </div>
+        </div>
+    </div>
+<!-- ******************************************************edit negotiated modal ends***************************************** -->
+<!-- alert after edit negotiated   -->
+<div class="modal fade" id="aftereditnegotiate" role="dialog">
+        <div class="vertical-alignment-helper">  
+        <div class="modal-dialog vertical-align-center modal-sm">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Edit Negotiated Message  </b></h4>
+            </div>
+            <div class="modal-body">
+                <p>{{negoeditalert}}</p>
+                <!-- <p *ngIf="newnegovar!='RIS'">{{failalert}}</p> -->
+            </div>
+            
+                
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            </div>  
+            </div>
+        
+        </div>
+        </div>
+    </div>
+
+
+<!--  **************************************************alert after edit negotiated ends*******************************-->
+
+<!-- alert after delete negotiated   -->
+<div class="modal fade" id="afterdelnegotiate" role="dialog">
+        <div class="vertical-alignment-helper">  
+        <div class="modal-dialog vertical-align-center modal-sm">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Alert</b></h4>
+            </div>
+            <div class="modal-body">
+                <p>{{negodelalert}}</p>
+                <!-- <p *ngIf="newnegovar!='RIS'">{{failalert}}</p> -->
+            </div>
+            
+                
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            </div>  
+            </div>
+        
+        </div>
+        </div>
+    </div>
+
+
+<!--  **************************************************alert after delete negotiated  ends*******************************-->
 
 <!-- <****************************room type model**********************************> -->
 

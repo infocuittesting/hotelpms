@@ -63,7 +63,7 @@
                   </tr>
                 </thead>
                 <tbody style="font-size: 12px">                                 
-                    <tr *ngFor="let mainrate of mainratecode">
+                    <tr *ngFor="let mainrate of mainratecode; let i=index" (click)="selectMembers(item,i)"  [ngClass]="{'backGroundColor':i==selectindex}">
                         <td>{{mainrate.rate_code}}</td>     
                         <td>{{mainrate.rate_description}} </td>
                         <td>{{mainrate.rate_category}}</td>
@@ -77,19 +77,19 @@
         <div class="row" style="margin-left:10%;margin-top: 10px">
                         
             <div class="col-md-2">
-                <button type="button" class="btn btn-Info" style="width:110px;"><b>Ok</b></button>
+                <button type="button" class="btn btn-success" style="width:110px;" [disabled]=okbutn><b>Ok</b></button>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-Primary" style="width:110px;"><b>Copy</b></button>
+                <button type="button" class="btn btn-Primary" style="width:110px;" disabled><b>Copy</b></button>
             </div>
              <div class="col-md-2">
-                <button type="button" class="btn btn-danger" routerLink="/revenue" style="width:110px;"><b>New</b></button>
+                <button type="button" class="btn btn-Info" routerLink="/revenue" style="width:110px;"><b>New</b></button>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-danger" style="width:110px;"><b>Edit</b></button>
+                <button type="button" class="btn btn-primary" style="width:110px;" [disabled]=edbutn><b>Edit</b></button>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-danger" style="width:110px;"><b>Delete</b></button>
+                <button type="button" class="btn btn-danger" style="width:110px;" [disabled]=delbutn><b>Delete</b></button>
             </div>
             <div class="col-md-2">
                 <button type="button" class="btn btn-Warning" style="width:110px;"><b>Close</b></button>

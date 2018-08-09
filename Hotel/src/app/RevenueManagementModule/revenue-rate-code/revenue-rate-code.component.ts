@@ -39,5 +39,17 @@ export class RevenueRateCodeComponent implements OnInit {
    });
   }
 
+  selectindex=null
+  okbutn=true;
+  edbutn=true;
+  delbutn=true;
+  //select values from table on click
+  selectMembers(details,index){
+    this.okbutn=false;
+    this.edbutn=false;
+    this.delbutn=false;
+    this.selectindex=index;      
+   
+  }
 
 }
