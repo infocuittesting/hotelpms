@@ -4,61 +4,102 @@
     <br>
       <div class="container-fluid">
           <div class ="table-responsive"style="width:100%;">
-              <table class="table table-bordered table-hover"style="margin-left: 26px;input-sm">
-                <thead style="background-color: #0077B5;color:white;">
-                  <tr>
-                    <th> Reservation_Id</th>                        
-                    <th> Name</th>
-                    <th> Room</th>
-                    <th> Extension</th>
-                    <th> Room_Type</th>
-                    <th> Arrival_Date</th>
-                    <th> Departure_Date</th>
-                    <th> Nights</th>
-                    <th> Status</th>
-                    <th> Group</th>
-                    <th> Adults</th>                        
-                    <th> Child</th> 
-                    <th> Rate_Code</th>
-                    <th> Rate</th>
-                    <th> Block_Code</th>
-                    
+              <table class="table table-bordered tableBodyScroll">
+                  <thead style="background-color: #337ab7;color: white;">
+                    <tr>
+                      <th>Confirmation Number</th>
+                      <th>Name</th>
+                      <th>Arrival</th>
+                      <th >Depature</th>
+                      <th>Nights</th>
+                      <th >Room Type</th>
+                      <th>Adult</th>
+                      
+                      <th >Child</th>
+                      <th>Number of rooms</th>
+                      <th >Rooms</th>
+                      <th >Block ID</th>
+                      <th width=10% ></th>
+                    </tr>
+                  </thead>
+                  <tbody >
+                      <tr>
+
+
+                          <td><input style="width: 100%;height: 25px;" name = "confnumber" type="text" [(ngModel)]="confnumber" disabled/></td>
+                      
+                          <td><input style="width: 100%;height: 25px;"  name = "profilename" type="text" [(ngModel)]="Names"/></td>
+                          <td><input type="text" style="width: 100%;height: 25px;"  name = "arrival"  [(ngModel)]="Arrival" disabled [value]="arrive"/></td>
+                          <td><input type="text" style="width: 100%;height: 25px;"  name = "depature"  [(ngModel)]="Depature" disabled [value]="depature"/></td>
+                          <td><input style="width: 100%;height: 25px;"  name = "nights" type="text" [(ngModel)]="nights" disabled [value]="nightss" /></td>
+                       
+                          <td><input style="width: 100%;height: 25px;"  name = "roomtype" type="text" [(ngModel)]="roomtype" /></td>
+                          <td><input style="width: 100%;height: 25px;"  name = "adult" type="text" [(ngModel)]="adult" /></td>
+
+                          <td><input style="width: 100%;height: 25px;"  name = "child" type="text" [(ngModel)]="child" /></td>
+                          <td><input style="width: 100%;height: 25px;" name = "numberofrooms" type="text" [(ngModel)]="numberofrooms"/></td>
+                          
+                          <td><input style="width: 100%;height: 25px;"  name = "rooms" type="text" [(ngModel)]="rooms" disabled /></td>
+                          <td><input style="width: 100%;height: 25px;"  name = "blockid" type="text" [(ngModel)]="blockid" [value]="blockid" disabled/></td>
+                          <td style="width: 86px;"><span>
+                            <i style="padding-left: 34px;cursor: pointer;" (click)="addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid)"
+                            class="fa fa-plus-circle" aria-hidden="true"></i>
+                         </span></td>
+
+                         </tr>
+                        <tr *ngFor="let room of savedetails ; let i=index;">
+
+                            <td><label *ngIf="room.editFlag==false">{{room.confnumber}}</label>
+                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.confnumber"></td>
+                            <td><label *ngIf="room.editFlag==false">{{room.pf_firstname}}</label>
+                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.pf_firstname"></td>
+
+                            <td ><label *ngIf="room.editFlag==false">{{room.res_arrival}}</label>
+                            <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.res_arrival"[value]="res_arrival"></td>
+                            <td ><label *ngIf="room.editFlag==false">{{room.res_depature}}</label>
+                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.res_depature"[value]="res_depature"></td>
+      
+                            <td><label *ngIf="room.editFlag==false">{{room.res_nights}}</label>
+                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_nights" [value]="res_nights"></td>
+      
+                            <td  ><label *ngIf="room.editFlag==false">{{room.res_room_type}}</label>
+                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.res_room_type"></td>
+      
+                            <td ><label *ngIf="room.editFlag==false">{{room.res_adults}}</label>
+                              <input type="number"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_adults"></td>
+      
+                            <td ><label *ngIf="room.editFlag==false">{{room.res_child}}</label>
+                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_child"></td>
+      
+                            <td ><label *ngIf="room.editFlag==false">{{room.res_number_of_rooms}}</label>
+                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_number_of_rooms"></td>
                               
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let searched of searchandedit;let i=index;"
-                  (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
-                  <td>{{i+1}}</td> 
-                  <td> 2323</td>
-                  <td>2323424</td>
-                  <td> SAERASREWAR </td>
-                  <td> AEAWERWWR </td>
-                  <td>234242</td>
-                  <td>232Q4234 </td> 
-                  <td> QE3Q234 4 </td>
-                  <td> Q3433243 </td>
-                  <td>24324353 </td>
-                  <td></td>     
-                  <td> W343W434</td> 
-                  <td> DGFDRG</td>     
-                  <td> {{searched.res_rate_code}}</td>     
-                  <td> {{searched.res_rate}}</td>     
-                  <td> {{searched.res_block_code}}</td> 
-                  <td> {{searched.res_packages}}</td>     
-                  
-                  </tr>
-                  
-                 
-                </tbody>
-              </table>
+                            <td ><label *ngIf="room.editFlag==false">{{room.res_rooms}}</label>
+                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_rooms"></td>
+
+                            <td ><label *ngIf="room.editFlag==false">{{room.res_block_code}}</label>
+                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_block_code" [value]="res_block_code"></td>
+                                  
+                            <!-- <td style="width: 86px;"><span><i style="cursor: pointer;" class="fa fa-trash" aria-hidden="true"
+                              (click)="deleterows(i)"></i> &nbsp;&nbsp;&nbsp;
+                              <i  style="cursor: pointer;"  *ngIf="room.editFlag==false" class="fa fa-pencil" aria-hidden="true"
+                              (click)="editrows(i)"></i>
+                              <i  style="cursor: pointer;" *ngIf="room.editFlag!=false" class="fa fa-check" aria-hidden="true"
+                              (click)="saveButton(i)"></i>
+                            </span></td> -->
+                                                        
+
+                          </tr>
+
+                  </tbody>
+                </table>
             </div>
   
           
   </div>
   <div class="container-fluid">
     <div class="row">
-      <form>
+      <!-- <form>
         <div class="col-md-1"></div>
         <div class="col-md-2">
           <label>Reservation</label>
@@ -85,7 +126,7 @@
                             <label class="custom-control-label" for="customCheck">Search Guest Profile</label>
                           </div>
                         </div>
-                        </form>
+                        </form> -->
                
       </div>
       </div>
@@ -105,7 +146,7 @@
               <button class="btn btn-Danger" style="width:100%">BLock</button>
             </div>
             <div class="col-md-2">
-              <button class="btn btn-success" style="width:100%">save</button>
+              <button class="btn btn-success" style="width:100%"(click)="CreateGroupReservation()">save</button>
             </div>
             <div class="col-md-2">
               <button class="btn btn-Warning" style="width:100%">Close</button>
