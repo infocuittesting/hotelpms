@@ -1,0 +1,8 @@
+.scroll{
+    height: 60%;
+    width: 100%;
+    overflow-x:y;
+ }
+ .backGroundColor{
+    background-color:#D3D3D3;
+}
