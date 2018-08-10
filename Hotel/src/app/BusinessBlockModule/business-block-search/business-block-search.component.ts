@@ -34,7 +34,7 @@ export class BusinessBlockSearchComponent implements OnInit {
     this.blocksearch.status()
     .subscribe((resp: any) => {
     this.roomtype=resp.ReturnValue;
-     console.log(this.roomtype);
+    //  console.log(this.roomtype);
     });
 
   }
@@ -45,6 +45,9 @@ public status;
 public reinstate;
 public Blockid;
 public blockname;
+public startdate;
+public enddate;
+public nights;
 selectindex=null;
 
   selectMembersEdit(details,index){
@@ -53,6 +56,9 @@ selectindex=null;
     this.selectindex=index;
     this.Blockid=details.block_id;
     this.blockname=details.block_name;
+    this.startdate=details.start_date;
+    this.enddate=details.end_date;
+    this.nights=details.nights;
     if(this.Blockid==details.block_id){
       this.blockopt=false;
       this.blc=false;
@@ -78,6 +84,11 @@ selectindex=null;
 // business block valuee...............................................
    this.session.store("blockid",details.block_id.toString());
   this.session.store("blockname",details.block_name.toString());
+  this.session.store("startdate",details.start_date.toString());
+  this.session.store("enddate",details.end_date.toString());
+  this.session.store("nights",details.nights.toString());
+  
+
 //  this.session.store("pf_account",details.pf_account);
 //  this.session.store("start_date",details.start_date);
 //  this.session.store("end_date",details.end_date);
