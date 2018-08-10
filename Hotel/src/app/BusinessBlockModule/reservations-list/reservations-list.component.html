@@ -7,55 +7,32 @@
         <table class="table table-bordered table-hover"  >
           <thead style="background-color: #0077B5;color:white;">
             <tr>
-              <th>Conf.No</th>
-              <th>Name</th>
+              <th>Reservation ID</th>
+              
               <th>Arrival</th>
               <th>Departure</th>
-              <th>Prs</th>
+              <th>Nights</th>
               <th>Rmtype</th>
+              <th>Created By</th>
               <th>Room</th>
-              <th>Rms</th>
-              <th>Rate</th>
+              <th>blockcode</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>165312</td>
-              <td>Hotel hover reference</td>
-              <td>8/3/2018</td>
-              <td>8/15/2018</td>
-              <td>10</td>
-              <td>kngs</td>
-              <td>105</td>
-              <td>10.5</td>
-              <td>5000</td>
-              <td>Hood</td>
+            <tr *ngFor= "let resvlist of querypay;let i = index"  (click)="ReservationsListComponent(resvlist,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+              <td>{{resvlist.res_id}}</td>
+              
+              <td>{{resvlist.res_arrival}}</td>
+              <td>{{resvlist.res_depature}}</td>
+              <td>{{resvlist.res_nights}}</td>
+              <td>{{resvlist.res_room_type}}</td>
+              <td>{{resvlist.created_by}}</td>
+              <td>{{resvlist.res_number_of_rooms}}</td>
+              <td>{{resvlist.res_block_code}}</td>
+              <td>{{resvlist.res_guest_status}}</td>
             </tr>
-            <tr>
-                <td>175312</td>
-                <td>Hotel hover reference</td>
-                <td>8/3/2018</td>
-                <td>8/15/2018</td>
-                <td>10</td>
-                <td>kngs</td>
-                <td>105</td>
-                <td>10.5</td>
-                <td>5000</td>
-                <td>Hood</td>
-              </tr>
-              <tr>
-                  <td>175342</td>
-                  <td>Hotel hover reference</td>
-                  <td>8/3/2018</td>
-                  <td>8/15/2018</td>
-                  <td>10</td>
-                  <td>kngs</td>
-                  <td>105</td>
-                  <td>10.5</td>
-                  <td>5000</td>
-                  <td>Hood</td>
-                </tr>
+            
           </tbody>
         </table>
       </div>
@@ -134,7 +111,7 @@
               <button class="btn btn-Danger" style="width:100%">Cancel</button>
             </div>
             <div class="col-md-1">
-                <button class="btn btn-light" style="width:100%"data-toggle="modal" data-target="#groupoptions">GroupOpt</button>
+                <button class="btn btn-light" style="width:120%"data-toggle="modal" data-target="#groupoptions">GroupOpt</button>
               </div>
               <div class="col-md-1">
                   <button class="btn btn-success" style="width:100%">New</button>
@@ -171,18 +148,18 @@
                     <div class="panel-body">
                       <div class="row">
                           <div class="col-md-6">
-                              <button class="btn btn-primary" routerLink="/rominglist" style="width:100%;height: 70px;">RoomingList</button>
+                              <button class="btn btn-primary" routerLink="/rominglist" data-dismiss="modal" style="width:100%;height: 70px;">RoomingList</button>
                            </div>
                            <div class="col-md-6">
-                              <button class="btn btn-info" model-center style="width:100%;height: 70px;">CheckInGroup</button>
+                              <button class="btn btn-info" routerLink="/reservation" data-dismiss="modal" model-center style="width:100%;height: 70px;">CheckInGroup</button>
                            </div>
                       </div>
                       <div class="row">
                           <div class="col-md-6">
-                              <button class="btn btn-secondary" model-center style="width:100%;height: 70px;">RoomAssin</button>
+                              <button class="btn btn-secondary" data-dismiss="modal" model-center style="width:100%;height: 70px;">RoomAssin</button>
                            </div>
                            <div class="col-md-6">
-                              <button class="btn btn-white" model-center style="width:100%;height: 70px;">RoomStatus</button>
+                              <button class="btn btn-white" data-dismiss="modal" model-center style="width:100%;height: 70px;">RoomStatus</button>
                            </div>
                       </div>
                       <div class="row">

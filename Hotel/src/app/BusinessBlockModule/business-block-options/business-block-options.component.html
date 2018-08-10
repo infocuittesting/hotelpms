@@ -61,7 +61,8 @@
 		  <div class="modal-content">
 			<div class="modal-header">
 			  <button type="button" class="close" data-dismiss="modal">&times;</button>
-			 <h4>Activity Log</h4>
+       <h4>Activity Log</h4>
+       <p><b>[ blockname:</b><b style="color: #ffb100"> {{Name}}</b>,<b>blockid:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
 			</div>
 			<div class="modal-body">
       <!-- <b align="center">{{profile}}</b> -->
@@ -109,16 +110,17 @@
     
     <!-- second model notes -->
     <div class="modal fade" id="myModal1" role="dialog">
-      <div class="modal-dialog">
+      <div class="modal-dialog model-lg">
       
         <!--Third Modal content-->
-        <div class="modal-content"style="width:160%; margin-left:-10%;">
+        <div class="modal-content" style="width:150%">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-         <h4>Notes</h4>
+          <h4 class="modal-title">Notes</h4>
+          <p><b>[ blockname:</b><b style="color: #ffb100"> {{Name}}</b>,<b>blockid:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
         </div>
         <div class="modal-body">
-          <div class="container-fluid" style="background-color: #0077B5;" >
+          <div class="container-fluid"  >
           <div class="row" style="width: 70%;">
             <br>
               <div class="col-md-4" >
@@ -127,18 +129,10 @@
                   <input type="date" name="date"class="form-Control" [(ngModel)]="notes.notesdate">
                 </div>
               </div>
-              
-              <div class="col-md-4">
-                  <br>
-                <!-- <div class="form-group">
-                  <input type="checkbox" name="any" style="font-size: 30px;">
-                  <label for="">Internal</label>
-                </div> -->
-              </div>
               <div class="col-md-4">
                   <label for="name">Note Type</label>
                 <div class="form-group"[class.has-error]="notetype.touched && notetype.invalid">
-                  <select class="from-control"name="notetype" id="notetype"#notetype="ngModel" required style="height: 30px;width:150px" [(ngModel)]="notes.notetype" (ngModelChange)="onSelect(notes.notetype)">
+                  <select class="from-control"name="notetype" id="notetype"#notetype="ngModel" required style="height: 30px;width:181px" [(ngModel)]="notes.notetype" (ngModelChange)="onSelect(notes.notetype)">
                     isActive 
                     <option *ngFor="let option of roomtype" 
                       [ngValue]="option.id"> 
@@ -165,7 +159,8 @@
               <br>
               <div class="container" style="width:105%;margin-left:-22px;">
                 <div class="jumbotron">
-                 <textarea name="Description" id="" cols="40" rows="10"style="width: 112%;margin-top: -11px;margin-left: -50px;"[(ngModel)]="notes.description"></textarea> 
+                  <label  style="margin-top: -38px;margin-left: -51px;">Description</label>
+                 <textarea name="Description" id="" cols="10" rows="5"style="width:113%;height: 113px;margin-left:-50px;"[(ngModel)]="notes.description"></textarea> 
                 </div>
               </div>
           
@@ -183,18 +178,19 @@
       <!-- fourth model  -->
 
       <div class="modal fade" id="myModal2" role="dialog">
-          <div class="modal-dialog model-lg">
+          <div class="modal-dialog modal-lg">
           
             <!-- Modal content-->
-            <div class="modal-content" style="width:150%;">
+            <div class="modal-content" style="width:99%">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
              <h4>Cancel A Group</h4>
+             <p><b>[ blockname:</b><b style="color: #ffb100"> {{Name}}</b>,<b>blockid:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
             </div>
             <div class="modal-body">
             <!-- <b align="center">{{profile}}</b> -->
             
-            <div class="continer-fluid" style="background-color: #0077B5;color: white;">            
+            <div class="continer-fluid" >            
               <div class="row">
                 <div class="col-md-4" style="margin-left:10px;">
                     <div class="form-group" style="width:82%;">
@@ -202,24 +198,25 @@
                         <input type="text" class="form-control input-sm" name="Cancelletion No." [(ngModel)]="Id" >
                     </div>
               </div>
-            </div>
-              <div class="row">
               <div class="col-md-4" style="margin-left:10px;">
-                  <div class="form-group" style="width:82%;">
-                      <label for="name">Reason</label>
-                    <select class="form-control input-sm" id="sel1"name="Reason" style="width:150px;"[(ngModel)]="cancel.reason_id"(ngModelChange)="onSelect(cancel.reason_id)">
-                      <option *ngFor="let option of reason" 
-            [ngValue]="option.id"> 
-            {{option.reason}}
-                     </select>
-                   </div>
-            </div>
+                <div class="form-group" style="width:82%;">
+                    <label for="name">Reason</label>
+                  <select class="form-control input-sm" id="sel1"name="Reason" style="width:216px;"[(ngModel)]="cancel.reason_id"(ngModelChange)="onSelect(cancel.reason_id)">
+                    <option *ngFor="let option of reason" 
+          [ngValue]="option.id"> 
+          {{option.reason}}
+                   </select>
+                 </div>
           </div>
+            </div>
+              <!-- <div class="row">
+            
+          </div> -->
           </div>
           <div class="continer-fluid">
             <div class="jumbotron">
-                <label>Description</label>
-              <textarea name="Description"id="" col="10" row="3" name="Description"style="width: 99%;height: 13%;"[(ngModel)]="cancel.description"></textarea>
+                <label style="margin-top: -29px;">Description</label>
+              <textarea name="Description" id="" cols="10" rows="5"style="width: 99%;height: 117px;;margin-left: 3px;"[(ngModel)]="cancel.description"></textarea>
             </div>
           </div>
           <div class="from-group" style="width:150px;">

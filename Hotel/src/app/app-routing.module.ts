@@ -43,7 +43,7 @@ import { CasheringinhouseguestComponent } from './CasheringModule/casheringinhou
 
 //RevenueManagement
 import { RevenuemanagementComponent } from './RevenueManagementModule/revenuemanagement/revenuemanagement.component';
-
+import {RevenueRateCodeComponent} from './RevenueManagementModule/revenue-rate-code/revenue-rate-code.component';
 
 
 //BusinessBlockModule
@@ -94,6 +94,8 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 
 //revenuemanagement
 { path:'revenue', component:RevenuemanagementComponent},
+{ path:'revenueratecode', component:RevenueRateCodeComponent},
+
 //BusinessBLockSearch
 {path:'business',component:BusinessBlockSearchComponent},
 {path:'inquiri',component:InquriprocessComponent},
@@ -118,4 +120,4 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
   ProfileComponent,ProfilesearchComponent,SearchandeditreservationComponent,HousekeepingComponent,QueueroomComponent,RoomdiscrepanciesComponent,RoomconditionComponent
 ,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
-BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent ]
+BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,RevenueRateCodeComponent]

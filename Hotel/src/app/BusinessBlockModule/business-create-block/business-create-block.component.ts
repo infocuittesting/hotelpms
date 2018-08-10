@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { SessionStorageService } from "ngx-webstorage";
 import { Router } from "@angular/router";
 import { BusinessCreateBlockService } from './business-create-block.service'
+import { ReservationsListComponent } from '../reservations-list/reservations-list.component';
 
 @Component({
   selector: 'app-business-create-block',
@@ -31,6 +32,10 @@ public blocksuccess: string;
 public blockids:any=" ";
 public block_name:any=" ";
 public block_code:any=" ";
+public paymasters:any;
+public querypay:any;
+public queryroomrevenue;
+public payblockid;
 
 // ................................................
   ngOnInit() {
@@ -126,6 +131,14 @@ this.businessblock.BlockTypedropdown()
     else{
         block.suppress = "0"
     }
+    if(block.guranteeds == true)
+    {
+        block.guranteeds = "1"
+
+    }
+    else{
+        block.guranteeds = "0"
+    }
     this.businessblock.CreateBusinessBlock(block)
 .subscribe((resp: any) => {
     this.createblock=resp.ReturnCode;
@@ -133,6 +146,7 @@ this.businessblock.BlockTypedropdown()
     this.block_code = resp.blockcode;
     this.block_name = resp.Blockname;
      console.log(this.createblock);
+     this.session.store("blids",this.blockids.toString());
  });
  if(this.createblock=="RIS"){
     this.blocksuccess="Block Created Successfully"
@@ -142,6 +156,48 @@ this.businessblock.BlockTypedropdown()
      this.blocksuccess="something"
  }
   }
+// create paymaster for resv button.............................................
+  CreatePaymaster(){
+      console.log("going to reservation button",this.blockids,typeof(this.blockids));
+    // this.payblockid = this.blockids.toString();
+    // console.log("stringvalue",typeof(this.payblockid))
+  this.businessblock.PaymasterReservation(this.blockids)
+  .subscribe((resp: any) => {
+      this.paymasters=resp.ReturnCode;
+       console.log("paymasertresponse",this.paymasters);
+   });
+}
+
+// Caluculate room revenue button......................................
+
+RoomrevenueButton(){
+    console.log("going to calculate room revenue")
+  this.businessblock.QueryRoomRevenue()
+  .subscribe((resp: any) => {
+      this.queryroomrevenue=resp.ReturnValue;
+       console.log(this.queryroomrevenue);
+   });
+
+}
+// ReservationsListComponent(qrypay)
+// {
+//     console.log("Query going to reservation button")
+//   this.businessblock.QueryPaymasterReservation(qrypay)
+//   .subscribe((resp: any) => {
+//       this.querypay=resp.ReturnValue;
+//        console.log("queryss",this.querypay);
+//    });
+// // public arrivals = this.session.store("",)
+// this.session.store("arrivals",this.querypay.res_arrival);
+// this.session.store("depat",this.querypay.res_depature);
+// this.session.store("nght",this.querypay.res_nights);
+// this.session.store("rmtype",this.querypay.res_room_type);
+// this.session.store("blcode",this.querypay.res_block_code);
+// this.session.store("guestatus",this.querypay.res_guest_status);
+// this.session.store("numrooms",this.querypay.res_number_of_rooms);
+
+
+// }
 
 // retrieve session values business blcok 
 // public ids = this.session.retrieve("blockid");

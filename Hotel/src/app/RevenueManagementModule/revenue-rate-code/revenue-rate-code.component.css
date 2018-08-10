@@ -1,3 +1,11 @@
+.scroll{
+    height: 60%;
+    width: 100%;
+    overflow-x:y;
+ }
+ .backGroundColor{
+    background-color:#D3D3D3;
+}
 .modal {
     text-align: left;
   padding: 0!important;
@@ -18,15 +26,4 @@
     height:inherit;
     /* To center horizontally */
     margin: 0 auto;
-}
-.panel {
-    margin-bottom: 5px;
-}
-.scroll{
-    height: 35%;
-    width: 100%;
-    overflow-x:y;
-}
-.backGroundColor{
-    background-color:#D3D3D3;
-}
+}   
