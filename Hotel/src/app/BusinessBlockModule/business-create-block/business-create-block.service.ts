@@ -197,7 +197,7 @@ CreateBusinessBlock(block):Observable<object[]> {
      .map(this.extractData)
 
 }
-// Create Paymaster Reservation
+// Create Paymaster Reservation................................................................
 PaymasterReservation(blockids):Observable<object[]> {
   console.log("going to service",blockids,typeof(blockids))
   const headers = new Headers({'Content-Type':'application/json'})
@@ -211,7 +211,7 @@ PaymasterReservation(blockids):Observable<object[]> {
      .map(this.extractData)
 
 }
-// Query Room Revenue
+// Query Room Revenue......................................................................................
 QueryRoomRevenue():Observable<object[]> {
        
   const headers = new Headers({'Content-Type':'application/json'})

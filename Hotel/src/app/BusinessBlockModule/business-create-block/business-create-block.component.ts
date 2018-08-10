@@ -156,7 +156,7 @@ this.businessblock.BlockTypedropdown()
      this.blocksuccess="something"
  }
   }
-
+// create paymaster for resv button.............................................
   CreatePaymaster(){
       console.log("going to reservation button",this.blockids,typeof(this.blockids));
     // this.payblockid = this.blockids.toString();
@@ -167,6 +167,8 @@ this.businessblock.BlockTypedropdown()
        console.log("paymasertresponse",this.paymasters);
    });
 }
+
+// Caluculate room revenue button......................................
 
 RoomrevenueButton(){
     console.log("going to calculate room revenue")
