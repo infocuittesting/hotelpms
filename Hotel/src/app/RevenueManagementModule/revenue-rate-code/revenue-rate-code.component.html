@@ -11,7 +11,7 @@
                                   <b>Ratecode</b>
                                   </div>
                                   <div class="col-md-4">
-                                  <select class="form-control input-sm"  style="width:120px;height: 26px;" >
+                                  <select name="rtc" class="form-control input-sm"  style="width:120px;height: 26px;" >
   -                                  <option value="" hidden></option>
   -                                       <option *ngFor="let ratecdlist of ratcode" [ngValue] = "ratecdlist.rate_code">{{ratecdlist.rate_code}}</option>   
                                   </select>
@@ -63,7 +63,7 @@
                   </tr>
                 </thead>
                 <tbody style="font-size: 12px">                                 
-                    <tr *ngFor="let mainrate of mainratecode; let i=index" (click)="selectMembers(item,i)"  [ngClass]="{'backGroundColor':i==selectindex}">
+                    <tr *ngFor="let mainrate of mainratecode; let i=index" (click)="selectMembers(mainrate,i)"  [ngClass]="{'backGroundColor':i==selectindex}">
                         <td>{{mainrate.rate_code}}</td>     
                         <td>{{mainrate.rate_description}} </td>
                         <td>{{mainrate.rate_category}}</td>
@@ -89,7 +89,7 @@
                 <button type="button" class="btn btn-primary" style="width:110px;" [disabled]=edbutn><b>Edit</b></button>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-danger" style="width:110px;" [disabled]=delbutn><b>Delete</b></button>
+                <button type="button" class="btn btn-danger" style="width:110px;" [disabled]=delbutn data-toggle="modal" data-target="#afterdel" (click)="delratecode()" ><b>Delete</b></button>
             </div>
             <div class="col-md-2">
                 <button type="button" class="btn btn-Warning" style="width:110px;"><b>Close</b></button>
@@ -107,3 +107,32 @@
 
 
 <!-- <****************************room type model**********************************> -->
+
+<!-- alert after delete button -->
+<div class="modal fade" id="afterdel" role="dialog">
+    <div class="vertical-alignment-helper">  
+    <div class="modal-dialog vertical-align-center modal-sm">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><b>Alert</b></h4>
+        </div>
+        <div class="modal-body">
+            <p>{{delalert}}</p>
+            <!-- <p *ngIf="newnegovar!='RIS'">{{failalert}}</p> -->
+        </div>
+        
+            
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+        </div>  
+        </div>
+    
+    </div>
+    </div>
+</div>
+
+
+<!--  **************************************************alert after delete button ends*******************************-->
