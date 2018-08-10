@@ -16,7 +16,9 @@ export class BusinessBlockSearchComponent implements OnInit {
   public statustype=[];
   blockopt=true;
   blc = true;
+  grop = true;
   newblockbut=false;
+  public querylist=[];
   constructor(private blocksearch:BusinessBlockSearchService,private route:Router,public session:SessionStorageService) { }
 
   ngOnInit() {
@@ -56,11 +58,13 @@ selectindex=null;
     if(this.Blockid==details.block_id){
       this.blockopt=false;
       this.blc=false;
+      this.grop=false;
       this.newblockbut=true;
     }
     else{
       this.blockopt=true;
       this.blc=true;
+      this.grop=true;
       this.newblockbut=false;
     }
     // if(this.Blockid==details.block_id){
@@ -114,7 +118,15 @@ selectindex=null;
 //  this.session.store("")
 
 }
-public edlock_id;
+retrieveroominglist(){
+  this.blocksearch.QueryRoomingList()
+.subscribe((resp: any) => {
+    this.querylist=resp.ReturnValue;
+    console.log("working fine",this.querylist);
+
+});
+}
+// public edlock_id;
 // EDIT BUTTON Service
 // editblockservice(blockedit){
 //   this.edlock_id = blockedit.block_id;
