@@ -114,6 +114,27 @@ export class RevenuemanagementService {
 
   }
 
+  deleteratedet(ratedetidvar):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+    let body={
+      "rate_details_id": ratedetidvar
+    }
+    return this.http.post('https://hotel360.herokuapp.com/Delete_Rate_details',body,options)
+       .map(this.extractData)
+
+  }
+
+ getallvalues():  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+   
+    return this.http.get('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_SelectRatesetupAll',options)
+       .map(this.extractData)
+
+  }
   editnego(rateecode,beginn,endsell,ratecodeid):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
@@ -193,7 +214,7 @@ export class RevenuemanagementService {
 
   }
 
-  insertratedetail(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,rmid2,rmid3):  Observable<object[]> {
+  insertratedetail(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,rmid2,rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
@@ -204,13 +225,13 @@ export class RevenuemanagementService {
         "start_date":strtdt,
         "end_date":enddate,
         "days":{
-            "sun":0,
-            "mon":0,
-            "tue":0,
-            "wed":1,
-            "thu":0,
-            "fri":1,
-            "sat":1
+            "sun":sundy,
+            "mon":mondy,
+            "tue":tuesdy,
+            "wed":wednesdy,
+            "thu":thursdy,
+            "fri":fridy,
+            "sat":saturdy
         },
         "one_adult_amount":onead,
        "two_adult_amount":twoad,

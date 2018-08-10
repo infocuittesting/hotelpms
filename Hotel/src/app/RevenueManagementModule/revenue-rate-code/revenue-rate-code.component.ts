@@ -39,17 +39,51 @@ export class RevenueRateCodeComponent implements OnInit {
    });
   }
 
+
+  // delete ratecode
+  delvar:any;
+  delalert:any;
+  delratecode(){
+    console.log(this.ratecdid);
+    this.RevenueRateCodeService.deleteratecode(this.ratecdid)
+    .subscribe((resp: any) => {
+     this.delvar=resp.ReturnCode;
+     console.log("delete return values",this.delvar)
+
+     if(this.delvar=='RDS')
+     {
+     this.delalert="Ratecode deleted successfully";
+     }
+   else
+     {
+     this.delalert="can't able to delete negotiated";
+     } 
+    //  refresh
+     this.RevenueRateCodeService.selratecode()
+     .subscribe((resp: any) => {
+      this.mainratecode=resp.Rate_header;
+      console.log("maintable",this.mainratecode)
+    });
+
+   });
+
+  }
+
+
   selectindex=null
   okbutn=true;
   edbutn=true;
   delbutn=true;
+  ratecdid=[];
   //select values from table on click
   selectMembers(details,index){
     this.okbutn=false;
     this.edbutn=false;
     this.delbutn=false;
-    this.selectindex=index;      
-   
+    this.selectindex=index; 
+    console.log("detailsssssssssssssssssssss",details);
+    this.ratecdid=details.ratecode_id;     
+   console.log("ratecodeeeeeeeeeeeeeeeeeeeeeeeeee",details.ratecode_id,this.ratecdid)
   }
 
 }

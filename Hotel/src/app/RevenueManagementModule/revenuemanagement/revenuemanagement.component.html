@@ -42,16 +42,16 @@
                         <div class="row">
                             <div class="col-md-4">
                              <b>Rate code</b>
-                              <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" >                   
+                              <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" [value]="ratecode">                   
                              </div>
                              <div class="col-md-4">
                                 <b>Rate Class</b>
-                                <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" >                   
+                                <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" disabled>                   
                             </div>
          
                             <div class="col-md-4">
                                 <b>Description</b>
-                                <input type="text" name="des"  class="form-control input-sm" style="width:70%;height: 27px;" >       
+                                <input type="text" name="des"  class="form-control input-sm" style="width:70%;height: 27px;" disabled >       
                             </div>
          
                         </div>        
@@ -312,7 +312,7 @@
               <button type="button" class="btn btn-warning" style="width:9%"><b>Repeat</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
-              <button type="button" class="btn btn-danger" style="width:9%"><b>Delete</b></button>
+              <!-- <button type="button" class="btn btn-danger" style="width:9%"><b>Delete</b></button> -->
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
               <button type="button" class="btn btn-primary" style="width:9%"><b>New</b></button>
@@ -336,7 +336,7 @@
   <!-- Rate details tab content -->
   
         <div id="ratedetails" class="tab-pane fade in" style="margin-top:10px;">
-          <form> 
+          <form #ratedetForm=ngForm> 
           <div class="row">
           <div class="col-sm-5">
                 <!-- <div class="panel panel-primary">
@@ -397,31 +397,31 @@
                       <div class="row">
                       
                             <div class="col-sm-1">
-                                    <label for="mon"><input type="checkbox" id="mon" style="margin-left:10px;" />
+                                    <label for="mon"><input type="checkbox" name="mn" [value]="monday" id="mon" style="margin-left:10px;" [(ngModel)]="mondy" />
                                      MON</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px;">
-                                    <label for="tue"><input type="checkbox" id="tue" style="margin-left:10px;" />
+                                    <label for="tue"><input type="checkbox" name="tu" [value]="tuesday" id="tue" style="margin-left:10px;" [(ngModel)]="tuesdy" />
                                      TUE</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="wed"><input type="checkbox" id="wed"style="margin-left:10px;" />
+                                    <label for="wed"><input type="checkbox" name="we" [value]="wednesday" id="wed"style="margin-left:10px;" [(ngModel)]="wednesdy"/>
                                     WED</label> 
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="thur"><input type="checkbox" id="thur" style="margin-left:10px;" />
+                                    <label for="thur"><input type="checkbox" name="th" [value]="thursday" id="thur" style="margin-left:10px;" [(ngModel)]="thursdy"/>
                                      THU</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="fri"><input type="checkbox" id="fri" style="margin-left:10px;" />
+                                    <label for="fri"><input type="checkbox" name="fr" [value]="friday"  id="fri" style="margin-left:10px;" [(ngModel)]="fridy" />
                                     FRI</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="sat"><input type="checkbox" id="sat" style="margin-left:10px;" />
+                                    <label for="sat"><input type="checkbox" name="st" [value]="saturday" id="sat" style="margin-left:10px;" [(ngModel)]="saturdy"/>
                                     SAT</label>
                              </div>
                              <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="sun"><input type="checkbox" id="sun" style="margin-left:10px;" />
+                                    <label for="sun"><input type="checkbox" name="su" [value]="sunday" id="sun" style="margin-left:10px;" [(ngModel)]="sundy"/>
                                     SUN</label>
                             </div>
                         </div>
@@ -535,64 +535,11 @@
                                 </tr>
                               </thead>
                               <tbody style="font-size:12px;">
-                                  <tr>
-                                      <td>16-04-2018</td>
-                                      <td>20-04-2018</td>
-                                      <td>KNGN</td>     
-                                  </tr> 
-                                
-                                  <tr>
-                                      <td>17-04-2018</td>
-                                      <td>28-04-2018</td>
-                                      <td>KNGS</td>     
-                                  </tr> 
-              
-                                  <tr>
-                                      <td>18-04-2018</td>
-                                      <td>22-04-2018</td>
-                                      <td>SJSN</td>     
-                                  </tr> 
-                                  <tr>
-                                      <td>19-04-2018</td>
-                                      <td>20-04-2018</td>
-                                      <td>SJSS</td>     
-                                  </tr> 
-                                  <tr>
-                                        <td>19-04-2018</td>
-                                        <td>20-04-2018</td>
-                                        <td>SJSS</td>     
-                                    </tr> 
-                                    <tr>
-                                        <td>19-04-2018</td>
-                                        <td>20-04-2018</td>
-                                        <td>SJSS</td>     
-                                    </tr> 
-                                    <tr>
-                                        <td>19-04-2018</td>
-                                        <td>20-04-2018</td>
-                                        <td>SJSS</td>     
-                                    </tr> 
-                                    <tr>
-                                        <td>19-04-2018</td>
-                                        <td>20-04-2018</td>
-                                        <td>SJSS</td>     
-                                    </tr> 
-                                    <tr>
-                                        <td>19-04-2018</td>
-                                        <td>20-04-2018</td>
-                                        <td>SJSS</td>     
-                                    </tr> 
-                                    <tr>
-                                        <td>19-04-2018</td>
-                                        <td>20-04-2018</td>
-                                        <td>SJSS</td>     
-                                    </tr> 
-                                    <tr>
-                                            <td>19-04-2018</td>
-                                            <td>20-04-2018</td>
-                                            <td>SJSS</td>     
-                                    </tr> 
-
+                                <tr *ngFor="let dettable of ratedettabl; let i=index" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
+                                    <td>{{dettable.start_date}}</td>     
+                                    <td>{{dettable.end_date}} </td>
+                                    <td>{{dettable.rooms_id}}</td>
+                                </tr>
                               </tbody>
                             </table>
                         </div>
@@ -605,40 +552,24 @@
                                                 <b>RoomTypes</b></div>
                                                 <div class="col-md-3">
                                                         <div class="input-group">
-                                                                <span class="input-group-addon" data-toggle="modal" data-target="#ratedetrmtype"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
-                                                            <input name="roomtypeid" class="form-control input-sm"  style="width:140%;height: 27px;" [(ngModel)]="roomtypedet" type="text" [value]="rmtype2">
-                                                                  <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
-                                                              <!-- </select> -->
+                                                            <span class="input-group-addon" data-toggle="modal" data-target="#ratedetrmtype"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
+                                                            <input name="roomtypeid" class="form-control input-sm"  style="width:140%;height: 27px;" [(ngModel)]="roomtypedet" type="text" [value]="rmtype2" disabled>
+                                                                 
                                                           </div> 
                                             </div>
-                                            <!-- <div class="col-md-3">
-                                                  <b>Market</b>
-                                                  <div class="form-group">            
-                                                      <select name="mark1" class="form-control input-sm" style="width:100%;">
-                                                          <option>{{rateheader.market_id}}</option>
-                                                      </select>
-                                                  </div>
-                                              </div>
-                                              <div class="col-md-3">
-                                                      <b>Source</b>
-                                                      <div class="form-group">            
-                                                          <select name="srcsour" class="form-control input-sm" style="width:100%;">
-                                                             {{rateheader.source_id}}
-                                                          </select>
-                                                      </div>
-                                                  </div> -->
-                                              <div class="col-md-2" >
-                                                      <b style="margin-left:25px"> Packages</b></div>
-                                                      <div class="col-md-3" style="margin-left: 10px">
-                                                      <div class="form-group">
-                                                            <div class="input-group">
-                                                                    <span class="input-group-addon" data-toggle="modal" data-target="#ratedetpack"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
-                                                                <input name="Packagesid" class="form-control input-sm"  style="width:140%;height: 27px;" [(ngModel)]="packdet" type="text" [value]="rmcode3">
-                                                                      <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
-                                                                  <!-- </select> -->
-                                                              </div>                
-                                                      </div>
-                                              </div>
+                                            
+                                            <div class="col-md-2" >
+                                                    <b style="margin-left:25px"> Packages</b></div>
+                                                    <div class="col-md-3" style="margin-left: 10px">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" data-toggle="modal" data-target="#ratedetpack"> <i class="glyphicon glyphicon-option-horizontal" ></i>   </span>
+                                                            <input name="Packagesid" class="form-control input-sm"  style="width:140%;height: 27px;" [(ngModel)]="packdet" type="text" [value]="rmcode3" disabled>
+                                                                    <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
+                                                                <!-- </select> -->
+                                                            </div>                
+                                                    </div>
+                                            </div>
                 
                                       </div>
                                       <div class="row">
@@ -670,16 +601,16 @@
               <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" ><b>Repeat</b></button>
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal" ><b>Delete</b></button>
+              <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal" data-toggle="modal" data-target="#afteratedetdel" (click)="ratdetfun()"><b>Delete</b></button>
           </div>
           <div class="col-md-2">
               <button type="button" class="btn btn-Warning" style="width:110px;" data-toggle="modal" ><b>New</b></button>
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal"  (click)="ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach)" data-toggle="modal" data-target="#afteratedet"><b>Save</b></button>
+              <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal"  (click)="ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy);ratedetForm.reset()" data-target="#afterratedetsave"><b>Save</b></button>
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal"><b>Close</b></button>
+              <button type="button" class="btn btn-danger" style="width:110px;" (click)="ratedetForm.reset()"><b>Close</b></button>
           </div>
   
   
@@ -792,34 +723,7 @@
                           </div>
                       </div>
   <!-- *************************************************************************************************************************** -->
-  <!-- alert after ratedetails insert  -->
-<div class="modal fade" id="afteratedet" role="dialog">
-    <div class="vertical-alignment-helper">  
-    <div class="modal-dialog vertical-align-center modal-sm">
-    
-        <!-- Modal content-->
-        <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Rate details insert message</b></h4>
-        </div>
-        <div class="modal-body">
-            <p>{{ratedetalert}}</p>       
-        </div>
-        
-            
-        <div class="modal-footer">
-            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-        </div>  
-        </div>
-    
-    </div>
-    </div>
-</div>
-
-
-<!--  **************************************************alert after ratedetails insert ends*******************************-->
-
+  
                         
                           
            
@@ -833,6 +737,35 @@
       </div>
     </div>
   </div>
+  <!-- alert after ratedetails save  -->
+<div class="modal fade" id="afterratedetsave" role="dialog">
+        <div class="vertical-alignment-helper">  
+        <div class="modal-dialog vertical-align-center modal-sm">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Rate Details</b></h4>
+            </div>
+            <div class="modal-body">
+                <p>{{ratedetalert}}</p>
+                <!-- <p *ngIf="newnegovar!='RIS'">{{failalert}}</p> -->
+            </div>
+            
+                
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            </div>  
+            </div>
+        
+        </div>
+        </div>
+    </div>
+
+
+<!--  **************************************************alert after ratedetails save ends*******************************-->
+
 
   <!-- *****new negotiated modal***** -->
   <div class="modal fade" id="newnegotiated" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -1075,7 +1008,35 @@
 
 
 <!--  **************************************************alert after delete negotiated  ends*******************************-->
-
+ <!-- alert after ratedetails delete  -->
+ <div class="modal fade" id="afteratedetdel" role="dialog">
+        <div class="vertical-alignment-helper">  
+        <div class="modal-dialog vertical-align-center modal-sm">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Rate details insert message</b></h4>
+            </div>
+            <div class="modal-body">
+                <p>{{delratalert}}</p>       
+            </div>
+            
+                
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            </div>  
+            </div>
+        
+        </div>
+        </div>
+    </div>
+    
+    
+    <!--  **************************************************alert after ratedetails delete ends*******************************-->
+    
+                            
 <!-- <****************************room type model**********************************> -->
 
 <div class="modal fade" id="roomtyperatehead" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

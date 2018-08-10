@@ -37,6 +37,17 @@ export class RevenueRateCodeService {
 
   }
 
+  deleteratecode(ratecdid):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+    let body={
+      "ratecode_id": ratecdid
+    }
+    return this.http.post('https://hotel360.herokuapp.com/Delete_Rate_code',body,options)
+       .map(this.extractData)
+
+  }
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);
