@@ -23,11 +23,23 @@ export class ReservationsListComponent implements OnInit {
           
        });
   }
-    
-public querypay=[];
 
-    ReservationsListComponent()
+// Seletct reservation list.........................
+public querypay=[];
+public selectindex=null;
+public res_block_code;
+public res_arrival;
+public res_depature;
+public res_nights;
+ReservationsListComponent(resvlist,index)
     {
-        
+      this.selectindex = index;
+
+    this.session.store("blockid",resvlist.res_block_code);
+    this.session.store("arrive",resvlist.res_arrival);
+    this.session.store("depature",resvlist.res_depature);
+    this.session.store("nightss",resvlist.res_nights);
+    
+    console.log("successfully select the record",resvlist.res_block_code,typeof(resvlist.res_block_code))
 }
 }

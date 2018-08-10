@@ -15,12 +15,12 @@ export class ReservationListService {
   }
   // Query Pay Master Reservation
 QueryPaymasterReservation():Observable<object[]> {
-       
+  console.log("query going to service")
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers })
   let body = {
     
-      "block_id":"1142"
+      "block_id":this.session.retrieve("blids")
       
   }
   return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryPayMasterReservation',body,options)
