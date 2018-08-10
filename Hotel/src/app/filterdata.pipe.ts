@@ -11,7 +11,7 @@ export class FilterdataPipe implements PipeTransform {
     if (!value) return  items;
     if (value == "" || value == null) return [];
     return filter 
-     ? items.filter(e =>e[label].toLowerCase().indexOf(value) > -1 )
+     ? items.filter(e =>e[label].toLowerCase().tostring().indexOf(value) > -1 )
     : items;
    
   }
