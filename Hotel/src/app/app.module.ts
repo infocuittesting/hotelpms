@@ -98,6 +98,7 @@ import { BlockRangeSettingComponent } from './BusinessBlockModule/block-range-se
    ReservationsListComponent,
    GroupOptionsComponent,
    BlockRangeSettingComponent,
+   
 
    
    
