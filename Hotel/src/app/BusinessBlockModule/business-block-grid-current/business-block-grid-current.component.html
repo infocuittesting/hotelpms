@@ -37,9 +37,8 @@
    <!-- //table for grid -->
     
       <div class="row">
-        <div class="continer">
-          <div class="table-responsive" style="width:100%;">
-            <table class="table table-bordered table-hover" style="margin-left: 320px">
+        <div class="container">
+            <table class="table table-bordered table-hover" style="margin-left: 125px;">
               <thead style="background-color: #0077B5;color:white;">
                 <tr>
                   <th>Date</th>
@@ -51,104 +50,30 @@
                   <th>Sdbn</th>
                   <th>Sjss</th>
                   <th>Comp</th>
+                  <th>StartDate</th>
                 </tr>
               </thead>
                 <tbody>
-                  <tr>
-                    <td>2-08-2018 Sat</td>
-                    <td>15</td>
-                    <td>10</td>
-                    <td>10</td>
-                    <td>25</td>
-                    <td>10</td>
-                    <td>10</td>
-                    <td>10</td>
-                    <td>10</td>
-                  </tr>
-                  <tr>
-                      <td>Original</td>
-                      <td>15</td>
-                      <td>10</td>
-                      <td>10</td>
-                      <td>25</td>
-                      <td>10</td>
-                      <td>10</td>
-                      <td>10</td>
-                      <td>10</td>
+                    <tr *ngFor="let item of saveshow; let i=index"  >
+                     
+                      <td >{{item.roomtype_id}}</td>
+                      <td >{{item.total_rooms}}</td>
+                      <td >{{item.sunday}}</td>           
+                      <td>{{item.monday}}</td>
+                      <td>{{item.tuesday}}</td>
+                      <td>{{item.wednesday}}</td>
+                      <td>{{item.thursday }}</td>
+                      <td>{{item.friday }}</td>
+                      <td>{{item.saturday }}</td>
+                      <td>{{item.grid_startdate }}</td>
+        
+                      
                     </tr>
-                    <tr>
-                        <td>Current</td>
-                        <td>15</td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>25</td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>10</td>
-                      </tr>
-                      <tr>
-                          <td>Pickup</td>
-                          <td>15</td>
-                          <td>10</td>
-                          <td>10</td>
-                          <td>25</td>
-                          <td>10</td>
-                          <td>10</td>
-                          <td>10</td>
-                          <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>03-08-2018 Sun</td>
-                            
-                            <td>15</td>
-                            <td>10</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>25</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>Original</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>25</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>Current</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>25</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>Pickup</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>25</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>15</td>
-                        </tr>
                 </tbody>
               
             </table>
           </div>
         </div>
-      </div>
       <div class="row">
         <div class="continer-fluid">
           <div class="col-md-5"></div>
@@ -156,7 +81,7 @@
             <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" style="width:100%">Range</button>
           </div>
           <div class="col-md-2">
-              <button class="btn btn-Warning" type="button" style="width:100%">Close</button>
+              <button class="btn btn-Warning" type="button" style="width:100%" routerLink="/bcreate">Close</button>
             </div>
         </div>
       </div>

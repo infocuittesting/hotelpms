@@ -191,10 +191,73 @@ newnego(input)
 }
 
 ratedetalert:any;
-ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach){
+ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy){
+  if(mondy== true)
+  {
+    mondy="1";
+   console.log("one")
+  }else{
+    mondy="0";
+   console.log("zero")
 
+  }
+  if(tuesdy== true)
+  {
+    tuesdy="1";
+   console.log("one")
+  }else{
+    tuesdy="0";
+   console.log("zero")
+
+  }
+  if(wednesdy== true)
+  {
+    wednesdy="1";
+   console.log("one")
+  }else{
+    wednesdy="0";
+   console.log("zero")
+
+  }
+  if(thursdy== true)
+  {
+    thursdy="1";
+   console.log("one")
+  }else{
+    thursdy="0";
+   console.log("zero")
+
+  }
+  if(fridy== true)
+  {
+    fridy="1";
+   console.log("one")
+  }else{
+    fridy="0";
+   console.log("zero")
+
+  }
+  if(saturdy== true)
+  {
+    saturdy="1";
+   console.log("one")
+  }else{
+    saturdy="0";
+   console.log("zero")
+
+  }
+  if(sundy== true)
+  {
+    sundy="1";
+   console.log("one")
+  }else{
+    sundy="0";
+   console.log("zero")
+
+  }
+  console.log("insert rate detailssssssssssssssss",ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,this.rmid2,this.rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy);
   
-  this.RevenuemanagementService.insertratedetail(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,this.rmid2,this.rmid3)
+  this.RevenuemanagementService.insertratedetail(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,this.rmid2,this.rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy)
   .subscribe((resp: any) => {
    this.ratedetvar=resp.ReturnCode;
    if(this.ratedetvar=='RIS')
@@ -230,6 +293,9 @@ editnego(rateecode,beginn,endsell){
 }
 
 
+public ratedettabl=[];
+public roomtyp=[];
+public roomidd=[];
 
   ngOnInit() {
     console.log(this.ncode);
@@ -279,8 +345,16 @@ editnego(rateecode,beginn,endsell){
  .subscribe((resp: any) => {
   this.ncode=resp.Return;
 });
+
+this.RevenuemanagementService.getallvalues()
+ .subscribe((resp: any) => {
+  this.ratedettabl=resp.Rate_details;
+  this.roomtyp=resp.room_types;
+  console.log(this.roomtyp);
+  
+});
    
-  }
+}
   
   onSelect(val){
     // val = val.toLowerCase();
@@ -309,6 +383,17 @@ delbut=true;
       console.log("ratecode id for delete",this.ratecodeid);
     }
 
+//ratedetails table selection
+ratedetidvar=[];
+selectindexx=null
+    selectMembers1(detailss,indexx){     
+      this.selectindexx=indexx; 
+      this.ratedetidvar=detailss.rate_details_id;
+      console.log("ratecodeiddddddddddddddd",this.ratedetidvar);
+
+    }
+    
+
 delret:any;  
 negodelalert:any;
 //delete negotiated values
@@ -334,6 +419,33 @@ negodelalert:any;
      });      
 
     
+    }
+
+    // delete rate details
+    delratdet:any;
+    delratalert:any;
+    ratdetfun(){
+      
+      this.RevenuemanagementService.deleteratedet(this.ratedetidvar)
+      .subscribe((resp: any) => {
+      this.delratdet=resp.ReturnCode;
+      console.log(this.delratdet); 
+       if(this.delratdet=='RDS')
+        {
+        this.delratalert="RateDetails deleted successfully";
+        }
+      else
+        {
+        this.delratalert="can't able to delete negotiated";
+        } 
+
+     });      
+
+     this.RevenuemanagementService.getallvalues()
+     .subscribe((resp: any) => {
+      this.ratedettabl=resp.Rate_details; 
+      this.roomtyp=resp.room_types;   
+    });
     }
 
 // toggletab(tabval){

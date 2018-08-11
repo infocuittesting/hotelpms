@@ -72,17 +72,18 @@
 
 <div class="container" style="padding-top:40px;padding-left:150px;">
     <div class="jumbotron jumbotron-fluid" style="background-color:#0077B5;color:white;">
-
+<form #formset="ngForm">
 <div class="row">
 
 <div class="col-lg-1">
-  <b>ForDate</b>
+  <label for="fordate">ForDate</label>
 </div>
 
 <div class="col-lg-3">
-    <div class="input-group">
-         <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="fa fa-calendar"></i></span>
-          <input name="ForDate" type="date" class="form-control" [(ngModel)]="date">
+    <div class="input-group" [class.has-error]="dates.touched && dates.invalid">
+         <span class="input-group-addon" ><i class="fa fa-calendar"></i></span>
+          <input name="ForDate" type="date" class="form-control" [(ngModel)]="date" #dates="ngModel" required>
+          <div *ngIf="dates.touched && !dates.valid && dates.errors?.required " ngClass="{ 'has-error' : !dates.valid && submitAttempt }"></div>
         </div>
   </div>
 
@@ -91,9 +92,12 @@
     </div>
     
     <div class="col-lg-3">
-        <select name="Room" required style="height:34px;color:black;border-radius:4px;width:100%;color:black;" [(ngModel)]="orderroom" (ngModelChange)="onSelect6(orderroom)">
+      <div class="input-group"  [class.has-error]="rooms.touched && rooms.invalid">
+        <select name="Room" class="form-control" required style="height:34px;color:black;border-radius:4px;width:200px;color:black;" [(ngModel)]="orderroom" (ngModelChange)="onSelect6(orderroom)" #rooms="ngModel">
             <option *ngFor="let roomnumberlist of roomnumber" [ngValue] = "roomnumberlist.rm_room">{{roomnumberlist.rm_room}} </option>
               </select>
+          <div *ngIf="rooms.touched && !rooms.valid && rooms.errors?.required " ngClass="{ 'has-error' : !rooms.valid && submitAttempt }"></div>
+            </div>
       </div>
 
      
@@ -102,9 +106,12 @@
         </div>
         
         <div class="col-lg-3">
-            <select name="RoomClass" required style="height:34px;color:black;border-radius:4px;width:100%;color:black;margin-left: 10px;" [(ngModel)]="class">
+            <div class="input-group"  [class.has-error]="roomcl.touched && roomcl.invalid">
+            <select name="RoomClass" class="form-control" required style="height:34px;color:black;border-radius:4px;width:200px;color:black;margin-left: 10px;" [(ngModel)]="class" #roomcl="ngModel">
                 <option *ngFor="let roomclasslist of roomclass" [ngValue] = "roomclasslist.class">{{roomclasslist.class}} </option>
                   </select>
+          <div *ngIf="roomcl.touched && !roomcl.valid && roomcl.errors?.required " ngClass="{ 'has-error' : !roomcl.valid && submitAttempt }"></div>
+             </div>     
           </div>
 
 
@@ -133,13 +140,13 @@
           </div>
           <div class="col-lg-1"></div>
               <div class="col-lg-3">
-              <button type="button"  class="btn btn-success">Clear All</button>
+              <button type="button"  class="btn btn-success" (click)="formset.reset();level()">Clear All</button>
             </div>
       </div>
     </div>    
 
 </div>
-  
+</form> 
 
   
   

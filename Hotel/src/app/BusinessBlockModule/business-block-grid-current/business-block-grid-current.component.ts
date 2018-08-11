@@ -16,6 +16,9 @@ export class BusinessBlockGridCurrentComponent implements OnInit {
   public roomtype=[];
   public range:any=[];
   public gridvalue=[];
+  public rmtype=[];
+  public rmcount=[];
+  public rmblid;
   constructor(public blockservicegrid:BusinessBlockGridService,private route:Router,public session:SessionStorageService) { }
 
   ngOnInit() {
@@ -36,7 +39,7 @@ console.log(this.roomtype)
   }
 
   public insertgrid:any=[];
-  
+  public showdetails=[];
   
   rangegrids(input:any){
     input.grid_startdate = this.start;
@@ -92,7 +95,19 @@ console.log(this.roomtype)
     }else{
      input.saturday =0;
     }
- 
+
+ this.showdetails.push({
+  "roomtype_id":input.roomtype.toString(),
+  "total_rooms":input.totalrooms.toString(),
+  "sunday":input.sunday,
+  "monday":input.monday,
+  "tuesday":input.tuesday,
+  "wednesday":input.wednesday,
+  "thursday":input.thursday,
+  "friday":input.friday,
+  "saturday":input.saturday,
+  "grid_startdate":input.grid_startdate,
+ });
 
 let body={
 "block_id":this.session.retrieve('blockid'),
@@ -130,14 +145,20 @@ console.log("worked",this.insertgrid);
 // });
 }
 
+saveshow=[];
 savebutton(){
+  this.saveshow=this.showdetails;
   console.log("inside insertgrid value",this.insertgrid);
-  this.blockservicegrid.insertGrid(this.insertgrid)
+
+// session storage
+
   
 .subscribe( (resp:any) =>{
-  
   this.gridvalue=resp.ReturnValue;
   console.log("return valure of range screen",this.gridvalue);
+  
 });
+
 }
+
 }

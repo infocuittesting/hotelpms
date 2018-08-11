@@ -11,20 +11,30 @@ import { Router } from "@angular/router";
   providers :[BusinessBlockSearchService]
 })
 export class BusinessBlockSearchComponent implements OnInit {
-  public tableschanges={};
+  public tableschanges;
   public roomtype=[];
   public statustype=[];
   blockopt=true;
+  
+  public someData=[];
+  
+  public =[];
   blc = true;
+  grop = true;
   newblockbut=false;
-  constructor(private blocksearch:BusinessBlockSearchService,private route:Router,public session:SessionStorageService) { }
+  constructor(private blocksearch:BusinessBlockSearchService,private route:Router,public session:SessionStorageService) {this.tableschanges = this.someData }
+  onSelect(val){
+    console.log(val);
+    this.tableschanges = this.someData.filter(x => x.status == val)
+  }
 
   ngOnInit() {
      this. blocksearch.bsearchtable()
     .subscribe((resp: any) => {
       this.tableschanges=resp.ReturnValue;
+      this.someData=resp.ReturnValue;
     });
-   
+
     
     this.blocksearch.blockstatus()
     .subscribe((resp: any) => {
@@ -37,6 +47,20 @@ export class BusinessBlockSearchComponent implements OnInit {
     //  console.log(this.roomtype);
     });
 
+  }
+  // filter the from to to
+
+  filterDatefrmList(startDate,endDate){
+    if(startDate!=null && endDate!=null){
+      let selectedMembers = this.tableschanges.filter(
+        m => new Date(m.start_date) >= new Date(startDate) && new Date(m.start_date) <= new Date(endDate)
+        );
+          console.log(selectedMembers);
+          this.tableschanges = selectedMembers;
+    }else {
+      this.tableschanges = this.tableschanges;
+    }
+    
   }
 
   
@@ -62,11 +86,13 @@ selectindex=null;
     if(this.Blockid==details.block_id){
       this.blockopt=false;
       this.blc=false;
+      this.grop=false;
       this.newblockbut=true;
     }
     else{
       this.blockopt=true;
       this.blc=true;
+      this.grop=true;
       this.newblockbut=false;
     }
     // if(this.Blockid==details.block_id){
@@ -125,7 +151,15 @@ selectindex=null;
 //  this.session.store("")
 
 }
-public edlock_id;
+retrieveroominglist(){
+  this.blocksearch.QueryRoomingList()
+.subscribe((resp: any) => {
+    this.querylist=resp.ReturnValue;
+    console.log("working fine",this.querylist);
+
+});
+}
+// public edlock_id;
 // EDIT BUTTON Service
 // editblockservice(blockedit){
 //   this.edlock_id = blockedit.block_id;

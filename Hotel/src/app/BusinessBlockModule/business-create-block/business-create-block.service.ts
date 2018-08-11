@@ -197,7 +197,7 @@ CreateBusinessBlock(block):Observable<object[]> {
      .map(this.extractData)
 
 }
-// Create Paymaster Reservation
+// Create Paymaster Reservation................................................................
 PaymasterReservation(blockids):Observable<object[]> {
   console.log("going to service",blockids,typeof(blockids))
   const headers = new Headers({'Content-Type':'application/json'})
@@ -211,14 +211,14 @@ PaymasterReservation(blockids):Observable<object[]> {
      .map(this.extractData)
 
 }
-// Query Room Revenue
+// Query Room Revenue......................................................................................
 QueryRoomRevenue():Observable<object[]> {
-       
+  console.log("sucess is worked")
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers })
   let body = {
     
-      "block_id":"1143"
+      "block_id":this.session.retrieve("rmblid".toString())
       
   }
   return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryRoomRevenue',body,options)

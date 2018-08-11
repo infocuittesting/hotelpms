@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions,Headers, RequestMethod } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+import { SessionStorageService } from "ngx-webstorage";
 
 @Injectable()
 export class BusinessBlockSearchService {
 
-  constructor(private http: Http,) { 
+  constructor(private http: Http,public session:SessionStorageService) { 
 
   }
   bsearchtable():  Observable<object[]> {
@@ -38,6 +39,18 @@ status():  Observable<object[]> {
      .map(this.extractData)
 }
 
+
+// QueryRooming List screen.................................
+QueryRoomingList():  Observable<object[]> {   
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body={
+    "block_id":this.session.retrieve("blockid")
+  }
+  
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryGroupReservation',body,options)
+     .map(this.extractData)
+}
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);

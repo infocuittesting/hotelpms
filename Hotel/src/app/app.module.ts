@@ -99,7 +99,11 @@ import { RevenueRateCodeComponent } from './RevenueManagementModule/revenue-rate
    ReservationsListComponent,
    GroupOptionsComponent,
    BlockRangeSettingComponent,
+<<<<<<< HEAD
+   
+=======
    RevenueRateCodeComponent,
+>>>>>>> 09daadd6ff69a3b8617975c17137140b96a59618
 
    
    

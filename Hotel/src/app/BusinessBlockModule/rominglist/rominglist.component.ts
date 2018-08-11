@@ -14,9 +14,14 @@ export class RominglistComponent implements OnInit {
   constructor(private roomlistservice:RominglistService,public session:SessionStorageService,private route:Router) { }
 
 
-
+public roomsgrid;
   ngOnInit() {
-   
+    this.roomlistservice.QueryRoomtypeGrid()
+  .subscribe((resp: any) => {
+          this.roomsgrid=resp.ReturnValue;
+           console.log("QueryRoomtypeGrid",this.roomsgrid);
+          
+       });
   
   }
 //  Add rows in rooming list screen............................
@@ -33,6 +38,8 @@ public child;
 public numberofrooms;
 public blockid;
 public savedetails1=[];
+public roomlistselect = [];
+public totalcount = [];
 addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid)
 {
   if( roomtype!=null)

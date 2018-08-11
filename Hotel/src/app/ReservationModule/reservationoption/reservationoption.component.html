@@ -17,9 +17,14 @@
               <table>
               <tr>
               <td><b>Code</b></td>
-            <td style="padding-left:60px;"><select id="curr" [(ngModel)]="alerts.RES_Alert_Code" required style="height:30px;border-radius:4px;width:240px;color:black;">
+            <td style="padding-left:60px;">
+          <div class="input-group" [class.has-error]="creditcardno.touched && creditcardno.invalid">       
+              <select id="curr" class="form-control" [(ngModel)]="alerts.RES_Alert_Code" required style="height:30px;border-radius:4px;width:240px;color:black;">
               <option *ngFor="let alcode of clist" [ngValue] = "alcode.alertcode"> {{alcode.alertcode}} </option>
-            </select></td>
+            </select>
+            <div *ngIf="creditcardno.touched && !creditcardno.valid && creditcardno.errors?.required" ngClass="{ 'has-error' : !creditcardno.valid && submitAttempt }"></div>             
+          </div>
+          </td>
             
              <td style="padding-left:60px;"><b>Area</b></td>
             <td style="padding-left:15px;"><select id="curr" [(ngModel)]="alerts.RES_Alert_Area" required style="height:30px;border-radius:4px;width:240px;color:black;">
