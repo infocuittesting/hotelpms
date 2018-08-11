@@ -36,6 +36,8 @@ public queryroomrevenue;
 public payblockid;
 public queryedit=[];
 public blid;
+public paysucess;
+public payfailure;
   ngOnInit() {
     // block status sropdown.....................
     this.editblockservice.blockstatusdropdown()
@@ -179,6 +181,15 @@ CreatePaymaster(){
 this.editblockservice.PaymasterReservation()
 .subscribe((resp: any) => {
     this.paymasters=resp.ReturnCode;
+    if(this.paymasters=="RIS"){
+        this.paysucess="A Pay Master will be created"
+    }
+    else if(this.paymasters=="RAE"){
+        this.paysucess="Paymaster Already exist"
+    }
+    else{
+        this.paysucess="paymaster failed"
+    }
      console.log("paymasertresponse",this.paymasters);
  });
 }

@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from "@angular/router";
 import { SessionStorageService } from "ngx-webstorage";
 
+
 @Component({
   selector: 'app-outoforderservice',
   templateUrl: './outoforderservice.component.html',
@@ -184,8 +185,16 @@ oos3;
               );  
                }
     
+               level(){
+                this.roomService.outofOrder()
+                .subscribe((resp: any) => {
+                 this.order=resp.ReturnValue;
+              
+              });
+              }
 
   ngOnInit() {
+
 
     // let inputparms={
     //   "For_Date":"",

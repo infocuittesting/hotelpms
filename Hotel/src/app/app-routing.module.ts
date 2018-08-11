@@ -81,7 +81,7 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 { path:'gss', component: GuestservicestatusComponent },
 { path:'oos', component:OutoforderserviceComponent },
 { path:'roomcondn', component: RoomconditionComponent },
-
+{ path:'roommaintenance',component:RoommaintainComponent},
 
 { path:'arrival', component:ArrivalComponent },
 { path:'roomassignment', component: RoomassignmentComponent },
