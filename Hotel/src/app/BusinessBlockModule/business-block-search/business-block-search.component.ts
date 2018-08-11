@@ -15,18 +15,15 @@ export class BusinessBlockSearchComponent implements OnInit {
   public roomtype=[];
   public statustype=[];
   blockopt=true;
-  public querylist=[];
+  // public querylist=[];
   public someData=[];
   
   public =[];
   blc = true;
   grop = true;
   newblockbut=false;
-  constructor(private blocksearch:BusinessBlockSearchService,private route:Router,public session:SessionStorageService) {this.tableschanges = this.someData }
-  onSelect(val){
-    console.log(val);
-    this.tableschanges = this.someData.filter(x => x.status == val)
-  }
+  public querylist=[];
+  constructor(private blocksearch:BusinessBlockSearchService,private route:Router,public session:SessionStorageService) { }
 
   ngOnInit() {
      this. blocksearch.bsearchtable()

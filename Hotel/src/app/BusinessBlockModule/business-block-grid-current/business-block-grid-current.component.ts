@@ -151,10 +151,20 @@ savebutton(){
   console.log("inside insertgrid value",this.insertgrid);
 
 // session storage
-this.blockservicegrid.insertGrid(this.insertgrid)
+
   
-.subscribe( (resp:any) =>{
-  this.gridvalue=resp.ReturnValue;
+
+
+  this.blockservicegrid.insertGrid(this.insertgrid)
+  .subscribe( (resp:any) =>{
+  
+   this.gridvalue=resp.ReturnValue;
+   this.session.store("rmcount",resp.total_rooms);
+   this.session.store("rmtype",resp.type);
+   this.session.store("rmblid",resp.block_id);
+   console.log("sesson values come",resp.total_rooms,resp.type,resp.block_id)
+  // this.rmtype = gridvalue.type;
+
   console.log("return valure of range screen",this.gridvalue);
   
 });
