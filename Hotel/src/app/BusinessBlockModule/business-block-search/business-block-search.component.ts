@@ -17,6 +17,7 @@ export class BusinessBlockSearchComponent implements OnInit {
   blockopt=true;
   // public querylist=[];
   public someData=[];
+  public mainratecode=[];
   
   public =[];
   blc = true;
@@ -24,6 +25,11 @@ export class BusinessBlockSearchComponent implements OnInit {
   newblockbut=false;
   public querylist=[];
   constructor(private blocksearch:BusinessBlockSearchService,private route:Router,public session:SessionStorageService) { }
+  onSelcat(val){
+    console.log(val);
+    this.tableschanges = this.someData.filter(x => x.status == val)
+  }
+
 
   ngOnInit() {
      this. blocksearch.bsearchtable()
