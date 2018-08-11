@@ -56,6 +56,7 @@ import { BusinessBlockGridCurrentComponent } from './BusinessBlockModule/busines
 import { ReservationsListComponent } from './BusinessBlockModule/reservations-list/reservations-list.component';
 import { GroupOptionsComponent } from './BusinessBlockModule/group-options/group-options.component';
 import { BlockRangeSettingComponent } from './BusinessBlockModule/block-range-setting/block-range-setting.component';
+import { EditBusinessBlockComponent } from './BusinessBlockModule/edit-business-block/edit-business-block.component';
 
 
 
@@ -105,7 +106,8 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 {path:"grid",component:BusinessBlockGridCurrentComponent},
 {path:"reservationlist",component:ReservationsListComponent},
 {path:"grouplist",component:GroupOptionsComponent},
-{path:"blockrange",component:BlockRangeSettingComponent}
+{path:"blockrange",component:BlockRangeSettingComponent},
+{path:"editblock",component:EditBusinessBlockComponent},
 ];
 
 @NgModule({

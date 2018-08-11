@@ -26,6 +26,8 @@ public inventory=[];
 public ratecode=[];
 public restype=[];
 public blocktype=[];
+
+
 public block:any={};
 public createblock:any;
 public blocksuccess: string;
@@ -147,14 +149,15 @@ this.businessblock.BlockTypedropdown()
     this.block_name = resp.Blockname;
      console.log(this.createblock);
      this.session.store("blids",this.blockids.toString());
+     if(this.createblock=="RIS"){
+        this.blocksuccess="Block Created Successfully"+ this.blockids
+        console.log("outputblock",this.blocksuccess)
+     }
+     else{
+         this.blocksuccess="something"
+     }
  });
- if(this.createblock=="RIS"){
-    this.blocksuccess="Block Created Successfully"
-    console.log("outputblock",this.blocksuccess)
- }
- else{
-     this.blocksuccess="something"
- }
+ 
   }
 // create paymaster for resv button.............................................
   CreatePaymaster(){
@@ -170,15 +173,15 @@ this.businessblock.BlockTypedropdown()
 
 // Caluculate room revenue button......................................
 
-RoomrevenueButton(){
-    console.log("going to calculate room revenue")
-  this.businessblock.QueryRoomRevenue()
-  .subscribe((resp: any) => {
-      this.queryroomrevenue=resp.ReturnValue;
-       console.log(this.queryroomrevenue);
-   });
+// RoomrevenueButton(){
+//     console.log("going to calculate room revenue")
+//   this.businessblock.QueryRoomRevenue()
+//   .subscribe((resp: any) => {
+//       this.queryroomrevenue=resp.ReturnValue;
+//        console.log(this.queryroomrevenue);
+//    });
 
-}
+// }
 // ReservationsListComponent(qrypay)
 // {
 //     console.log("Query going to reservation button")

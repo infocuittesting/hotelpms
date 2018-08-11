@@ -1,4 +1,4 @@
-<div class="row" style="width:99%;margin-left: 10px;">
+<div class="row" style="width:99%;margin-left: 10px;" *ngFor="let editblock of queryedit">
   <div class="col-md-2"></div>
   <div class="col-md-10">
     <br><br>
@@ -8,8 +8,8 @@
      <br>
     
           <form action="" #loginForm="ngForm">
-      <div class="row">
-        <div class="col-md-1"><label>Block ID {{blockids}} </label></div>
+      <div class="row" >
+        <div class="col-md-1"><label>Block ID {{editblock.block_id}} </label></div>
         <div class="col-md-2">
             <b> Acct/corm*</b>
             <div class="input-group">
@@ -83,11 +83,11 @@
      
  <form action="" #loginForm="ngForm">
    <div class="col-md-1"></div>
- <div class="row">
+ <div class="row" >
     <div class="col-md-2">
         <div class="form-group">
           <label for="name" >Name</label>
-            <input type="text"disabled class="form-control"name="blockname" [value]="block_name"> 
+            <input type="text"disabled class="form-control"name="blockname" [value]="editblock.block_name"> 
       </div>
 
 </div>
@@ -95,7 +95,7 @@
 <div class="col-md-2">
     <div class="form-group" >
         <label for="room">Start Date</label>
-        <input type="date" class="form-control input-sm" name="startdate" [(ngModel)]="block.startdate"[value]="stdate">
+        <input type="date" class="form-control input-sm" name="startdate" [(ngModel)]="editblock.start_date">
       </div>
 </div>
   
@@ -104,10 +104,11 @@
       
       <div class="form-group">
           <label for="name">Origin</label>
-          <select class="form-control" name="origin" [(ngModel)]="block.origincode" [value]="orign">
-              <option value="" hidden></option> 
-              <option *ngFor="let selectorigin of origin" [ngValue] ="selectorigin.id">{{selectorigin.origindescription}} </option>
-          
+               <!-- <span style="text-align: center;"><i>{{editblock.origindescription}}</i></span> -->
+          <select class="form-control" name="origin" [(ngModel)]="editblock.origindescription" >
+              <option value="" hidden ></option> 
+              <option *ngFor="let selectorigin of origin" [ngValue] ="selectorigin.id" [selected]="editblock.origindescription == selectorigin.id">{{selectorigin.origindescription}} </option>
+          <!-- selectorigin.origindescription -->
           
             </select> 
     </div> 
@@ -116,7 +117,7 @@
  <div class="col-md-2">
         <div class="form-group">
           <label>Status</label>
-            <select name="state" class="form-control"[(ngModel)]="block.statusblock" [value]="blstatus">
+            <select name="state" class="form-control"[(ngModel)]="block.statusblock" >
               <option value="" hidden></option> 
               <option *ngFor="let selectstatus of blockstatus" [ngValue] ="selectstatus.id">{{selectstatus.status}} </option>
               </select> 
@@ -125,7 +126,7 @@
  <div class="col-md-2">
             <div class="form-group" >
                 <label for="name">Source</label>
-                  <select class="form-control" name="source" [(ngModel)]="block.sourcecode"[value]="sources">
+                  <select class="form-control" name="source" [(ngModel)]="block.sourcecode">
                     <option value="" hidden></option> 
                       <option *ngFor="let selectsource of source" [ngValue] ="selectsource.id">{{selectsource.sourcedescription}} 
                    </option>
@@ -135,12 +136,12 @@
 
 </div>
 <div class="col-md-1"></div>
-<div class="row">
+<div class="row" *ngFor="let editblock2 of queryedit">
 <div class="col-md-2">
     
         <div class="form-group" >
           <label for="name">Market</label>
-                  <select class="form-control" name="market" [(ngModel)]="block.marketcode" [value]="markgr">
+                  <select class="form-control" name="market" [(ngModel)]="block.marketcode" >
                     <option value="" hidden></option> 
                     <option *ngFor="let selectmarket of market" [ngValue] ="selectmarket.id">{{selectmarket.marketgroup_description}} </option>
                 
@@ -152,20 +153,20 @@
         <div class="col-md-2">
             <div class="form-group" >
               <label for="room">End date</label>
-              <input type="date" class="form-control input-sm" name="enddate" [(ngModel)]="block.enddate" [value]="endate">
+              <input type="date" class="form-control input-sm" name="enddate" [(ngModel)]="editblock.end_date">
             </div> 
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2" >
             <div class="form-group" >
                 <label for="room">Nights</label>
-                <input type="text" name="nights" class="form-control input-sm"[(ngModel)]="block.nights"[value]="nght">
+                <input type="text" name="nights" class="form-control input-sm"[(ngModel)]="editblock.nights" >
             </div>
         </div>
          
           <div class="col-md-2">
           <label for="Name">Type</label>
                 <div class="form-group" >
-                    <select class="form-control" name="type" [(ngModel)] = "block.blocktypes"[value]="bltype">
+                    <select class="form-control" name="type" [(ngModel)] = "block.blocktypes">
                         <option value="" hidden></option> 
                         <option *ngFor="let selectblocktype of blocktype" [ngValue] ="selectblocktype.id">{{selectblocktype.block_type}} </option>
                     
@@ -177,7 +178,7 @@
     <div class="col-md-2">
         <div class="form-group" >
            <label for="room">Owner</label>
-           <input type="text" class="form-control input-sm" name="owner" [(ngModel)] = "block.owner" [value]="ower">
+           <input type="text" class="form-control input-sm" name="owner" [(ngModel)] = "editblock.owner" >
          </div> 
    </div>
 </div>
@@ -210,14 +211,14 @@
               <div class="col-md-2">
               <div class="form-group">
                 <label for="room">Block Code </label>
-                <input type="text"class="form-control input-sm" name="block_code" disabled [value]="block_code">
+                <input type="text"class="form-control input-sm" name="block_code"[value]="editblock.block_code" disabled >
               </div>
             </div>
             
             <div class="col-md-2">
               <b>Rate Code</b>
               <div class="form-group">
-                <select class="form-control input-sm"  name="ratecode" style="margin-top: 4px;"[(ngModel)]="block.ratecodes"[value]="rates">
+                <select class="form-control input-sm"  name="ratecode" style="margin-top: 4px;"[(ngModel)]="block.ratecodes">
                     <option value="" hidden></option> 
                     <option *ngFor="let selectratecode of ratecode" [ngValue] ="selectratecode.id">{{selectratecode.ratecode}} </option>
                 
@@ -227,14 +228,14 @@
             <div class="col-md-2">
               <div class="form-group" style="width: 100%;">
                 <label for="room">CutOff Date</label>
-                <input type="date" class="form-control input-sm" name="cutoffdate" [(ngModel)]="block.cuttoff" [value]="cutoffdte">
+                <input type="date" class="form-control input-sm" name="cutoffdate" [(ngModel)]="editblock.cutoff_date" >
               </div>
             </div>
             <br>
             <div class="col-md-2">
               <div class="form-group" style="margin-top: -18px;">
                 <label for="room">CutOff Days</label>
-                <input type="text" class="form-control input-sm" name="cutoffdays" [(ngModel)]="block.cut_days" [value]="cutdays">
+                <input type="text" class="form-control input-sm" name="cutoffdays" [(ngModel)]="editblock.cutoff_days">
               </div>
             </div>
             
@@ -244,7 +245,7 @@
                 <div class="col-md-2">
                    <div class="form-group">
                       <b>Reservation Type</b>
-                     <select class="form-control input-sm" name="restype" [(ngModel)]="block.restypes"[value]="resty">
+                     <select class="form-control input-sm" name="restype" [(ngModel)]="block.restypes">
                         <option value="" hidden></option> 
                         <option *ngFor="let selectrestype of restype" [ngValue] ="selectrestype.id">{{selectrestype.restype_description}} </option>
                     
@@ -254,14 +255,14 @@
                    <div class="col-md-2">
               <div class="form-group">
                 <label for="name">Packages</label>
-                <input type="text" class="form-control input-sm" name="packages" id=""[(ngModel)]="block.packagess" [value]="pack">
+                <input type="text" class="form-control input-sm" name="packages" id=""[(ngModel)]="editblock.packages" >
               </div>     
               </div>
             
               <div class="col-md-2">
                 <div class="form-group">
                   <label for="name">Inventory control</label>
-                  <select class="form-control input-sm" name="Invcontrol" id=""[(ngModel)]="block.inventorys" [value]="invcl">
+                  <select class="form-control input-sm" name="Invcontrol" id=""[(ngModel)]="block.inventorys" >
                       <option value="" hidden></option> 
                       <option *ngFor="let selectinventory of inventory" [ngValue] ="selectinventory.inventory_control_id">{{selectinventory.inventory_control}} </option>
                   </select>
@@ -270,17 +271,17 @@
               <div class="col-md-2">
                   <div class="form-group">
                     <label for="name">Followup Date</label>
-                    <input type="date" class="form-control input-sm"[(ngModel)]="block.followdates" [value]="flodate">
+                    <input type="date" class="form-control input-sm"[(ngModel)]="editblock.follow_date" >
                   </div>
                 </div>
                 <div class="col-md-2" style="margin-top: -45px;">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.print_rate" [value]="ptrrate">
+                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.print_rate" >
                       <label class="custom-control-label" for="customCheck">Print Rate</label>
                     </div>
                     <br>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.suppress" [value]="suprate">
+                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.suppress" >
                       <label class="custom-control-label" for="customCheck">Suppress Rate</label>
                     </div>
                   </div>
@@ -306,13 +307,13 @@
                   <div class="col-md-2">
                       <div class="form-group"style="margin-left:16px;">
                         <label for="room">Attendees</label>
-                        <input type="text"class="form-control input-sm" name="attendees" [(ngModel)]="block.attender" [value]="attdes">
+                        <input type="text"class="form-control input-sm" name="attendees" [(ngModel)]="editblock.attenders">
                       </div>
                     </div>
                 <div class="col-md-2">
                   <div class="form-group" style="margin-top:4px;">
                     <b>ContactNo</b>
-                    <input type="tel" class="form-control bfh-phone  input-sm" name="contractno" [(ngModel)]="block.contract" [value]="contract">
+                    <input type="tel" class="form-control bfh-phone  input-sm" name="contractno" [(ngModel)]="editblock.contract_no" >
                   </div>
                   
                 </div>
@@ -320,7 +321,7 @@
                 <div class="col-md-2">
                   <div class="form-group">
                     <label for="name">OnSiteName</label>
-                    <input type="text" class="form-control input-sm" id="" name="OnSiteName"[(ngModel)]="block.onsite" [value]="onsite">
+                    <input type="text" class="form-control input-sm" id="" name="OnSiteName"[(ngModel)]="editblock.onsite_name" >
                   </div>
                 </div>
                 </div>
@@ -329,13 +330,13 @@
                   <div class="col-md-2">
                     <div class="form-group" style="margin-left: 14px;">
                     <label for="name">FollowUp Date</label>
-                    <input type="date" class="form-control input-sm" name="Fallow-Up-Date"[(ngModel)]="block.follow_dates" [value]="flwupdate">
+                    <input type="date" class="form-control input-sm" name="Fallow-Up-Date"[(ngModel)]="editblock.followup_date" >
                     </div>
                   </div>
                   <div class="col-md-2">
                       <div class="form-group">
                         <label for="name">Info-Board</label>
-                        <input type="text" class="form-control input-sm"name="info"[(ngModel)]="block.info_boards" [value]="inboard">
+                        <input type="text" class="form-control input-sm"name="info"[(ngModel)]="editblock.info_board">
                       </div>
                     </div>
                     <div class="col-md-2" style="margin-top: 14px;">
@@ -363,7 +364,7 @@
                   <div class="col-md-2">
                       <div class="form-group">
                         <label for="name">Payment Type</label>
-                        <select class="form-control input-sm" name="paytype" [(ngModel)]="block.payments" [value]="payments">
+                        <select class="form-control input-sm" name="paytype" [(ngModel)]="block.payments">
                             <option value="" hidden></option> 
                             <option *ngFor="let selectpayment of payment" [ngValue] ="selectpayment.id">{{selectpayment.payment_description}} </option>
                         
@@ -373,13 +374,13 @@
                     <div class="col-md-2">
                       <div class="from-group">
                       <label for="name">Commission</label>
-                      <input type="text" class="form-control input-sm " name="Comm"[(ngModel)]="block.commis" [value]="cmmion">
+                      <input type="text" class="form-control input-sm " name="Comm"[(ngModel)]="editblock.commission" >
                       </div>
                     </div>
                     <div class="col-md-2">
                       <div class="form-group">
                       <label for="name">RomingListDue</label>
-                      <input type="date" class="form-control input-sm" name="roaminglist"[(ngModel)]="block.roominglistdue" [value]="rmlistdate">
+                      <input type="date" class="form-control input-sm" name="roaminglist"[(ngModel)]="editblock.rooming_list_duedate" >
                       </div>
                     </div>
                 
@@ -390,19 +391,19 @@
                   <div class="col-md-2">
                     <div class="form-group">
                       <label for="name">Arrival Time</label>
-                      <input type="text" class="form-control input-sm" name="Arrivaltime"[(ngModel)]="block.arrival_tim" [value]="arrtime">
+                      <input type="text" class="form-control input-sm" name="Arrivaltime"[(ngModel)]="editblock.arrivaltime" >
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
                     <label for="name">DepartureTime</label>
-                    <input type="text" class="form-control input-sm" name="DepartureTime"[(ngModel)]="block.depature_tim" [value]="deptime">
+                    <input type="text" class="form-control input-sm" name="DepartureTime"[(ngModel)]="editblock.depaturetime" >
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
                     <label for="name">Total Rooms Per Day</label>
-                    <input type="text" class="form-control input-sm" name="roomsperdays"[(ngModel)]="block.roomsperday" [value]="roomsper">
+                    <input type="text" class="form-control input-sm" name="roomsperdays"[(ngModel)]="editblock.total_rooms_perday" >
                     </div>
                   </div>
                   <!-- <div class="col-md-3">
@@ -449,7 +450,7 @@
             <div class="col-md-2">
               <div class="form-group">
                 <label for="name">RoomcancelNo</label>
-                <input type="text" class="form-control input-sm">
+                <input type="text" class="form-control input-sm" [value]="editblock.room_cancel_no"disabled>
               </div>
              </div>
           <div class="col-md-2">
@@ -466,7 +467,7 @@
 
               <div class="form-group">
                   <label for="name">CateringCancelNo</label>
-                  <input type="text" class="form-control input-sm">
+                  <input type="text" class="form-control input-sm" [value]="editblock.catering_cancel_no" disabled>
                 </div>
               </div>
             
@@ -488,21 +489,21 @@
           <div class="col-md-2">
             <div class="form-group">
             <label for="name">Comments</label>
-            <input type="text" class="form-control input-sm"  >
+            <input type="text" class="form-control input-sm"[(ngModel)]="editblock.room_cancel_comments">
             </div>
           </div> 
          <div class="col-md-2">
             
                 <div class="form-group">
                     <label for="name">Destination</label>
-                    <input type="text"class="form-control input-sm">
+                    <input type="text"class="form-control input-sm"[(ngModel)]="editblock.room_cancel_destination">
                   </div>
                   
          </div>
              <div class="col-md-2">
               <div class="form-group">
               <label for="name">Comments</label>
-              <input type="text" class="form-control input-sm ">
+              <input type="text" class="form-control input-sm"[(ngModel)]="editblock.catering_comments">
               </div>
             </div>
            
@@ -522,13 +523,13 @@
               <div class="col-md-2">
                 <div class="form-group">
                   <label for="name">Meeting Size</label>
-                  <input type="text" class="form-control input-sm" name="MeetingSize"[(ngModel)]="block.meetingsizes" [value]="meetsp">
+                  <input type="text" class="form-control input-sm" name="MeetingSize"[(ngModel)]="editblock.meeting_space" >
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="form-group">
                   <label for="name">Space Type</label>
-                  <select class="form-control input-sm" name="SqFeet"[(ngModel)]="block.space_type" [value]="sztype">
+                  <select class="form-control input-sm" name="SqFeet"[(ngModel)]="block.space_type" >
                       <option value="" hidden></option> 
                       <option *ngFor="let selectsizetype of meetingsizetype" [ngValue] ="selectsizetype.id">{{selectsizetype.size_type}} </option>
                   
@@ -541,7 +542,7 @@
               <div class="col-md-2">
                   <div class="form-group">
                     <label for="name">Attendees</label>
-                    <input type="text" class="form-control input-sm" name="Attendees"[(ngModel)]="block.Attend" [value]="attdess1">
+                    <input type="text" class="form-control input-sm" name="Attendees"[(ngModel)]="editblock.attendess" >
                   </div>
                 </div>
               </div>
