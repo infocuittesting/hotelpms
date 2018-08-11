@@ -86,7 +86,7 @@
                 <button type="button" class="btn btn-Info" routerLink="/revenue" style="width:110px;"><b>New</b></button>
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary" style="width:110px;" [disabled]=edbutn><b>Edit</b></button>
+                <button type="button" class="btn btn-primary" style="width:110px;" [disabled]=edbutn routerLink="/editrevenue"><b>Edit</b></button>
             </div>
             <div class="col-md-2">
                 <button type="button" class="btn btn-danger" style="width:110px;" [disabled]=delbutn data-toggle="modal" data-target="#afterdel" (click)="delratecode()" ><b>Delete</b></button>

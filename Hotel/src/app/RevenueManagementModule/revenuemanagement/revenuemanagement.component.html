@@ -10,7 +10,7 @@
                                 <b>Rate code</b>
                                 </div>
                                 <div class="col-sm-3">
-                                <select class="form-control input-sm"  style="width:150px;" [(ngModel)]="ratecode">
+                                <select class="form-control input-sm"  style="width:150px;" [(ngModel)]="ratecode1" disabled>
                                         <option value="" hidden></option>
 -                                       <option *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.rate_code">{{ratecdlist.rate_code}}</option>
                                 </select>
@@ -42,16 +42,16 @@
                         <div class="row">
                             <div class="col-md-4">
                              <b>Rate code</b>
-                              <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" [value]="ratecode">                   
+                              <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecode">                   
                              </div>
                              <div class="col-md-4">
                                 <b>Rate Class</b>
-                                <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" disabled>                   
+                                <input type="text" name="rateclas"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" disabled>                   
                             </div>
          
                             <div class="col-md-4">
                                 <b>Description</b>
-                                <input type="text" name="des"  class="form-control input-sm" style="width:70%;height: 27px;" disabled >       
+                                <input type="text" name="des"  class="form-control input-sm" style="width:70%;height: 27px;"   [(ngModel)]="rateheader.descrp" >       
                             </div>
          
                         </div>        
@@ -321,7 +321,7 @@
               <button type="reset" class="btn btn-success" style="width:9%" (click)="rateheaderins(ratecode,rateheader);myformm.reset()" ><b>Save</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
-              <button type="button" class="btn btn-danger" style="width:9%"><b>Close</b></button>
+              <button type="button" class="btn btn-danger" style="width:9%"  routerLink="/revenueratecode" (click)="myformm.reset()"><b>Close</b></button>
               <!-- </div> -->
                                
            </div>
@@ -610,7 +610,7 @@
               <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal"  (click)="ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy);ratedetForm.reset()" data-target="#afterratedetsave"><b>Save</b></button>
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-danger" style="width:110px;" (click)="ratedetForm.reset()"><b>Close</b></button>
+              <button type="button" class="btn btn-danger" style="width:110px;" (click)="ratedetForm.reset()"  routerLink="/revenueratecode"><b>Close</b></button>
           </div>
   
   
@@ -631,8 +631,8 @@
                                                   </div>  
                                                   <div class="col-sm-3">
                                                       <div class="form-group">            
-                                                            <select name="ratecodedropdown" class="form-control input-sm" style="width:100%;" [(ngModel)]="ratecode" (change)="onSelect(ratecode)">
-                                                                <option [ngValue]="0" >select</option>    
+                                                            <select name="ratecodedropdown" class="form-control input-sm" style="width:100%;" [(ngModel)]="ratecodenego" (change)="onSelect(ratecodenego)">
+                                                                <option [value]="0" >select</option>    
                                                                 <option  *ngFor="let ratecodelist of price" [ngValue] = "ratecodelist.ratecode_id">{{ratecodelist.rate_code}}</option>                                                          
                                                             </select>
                                                       </div>
