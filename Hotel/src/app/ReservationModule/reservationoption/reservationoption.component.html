@@ -18,18 +18,23 @@
               <tr>
               <td><b>Code</b></td>
             <td style="padding-left:60px;">
-          <div class="input-group" [class.has-error]="creditcardno.touched && creditcardno.invalid">       
-              <select id="curr" class="form-control" [(ngModel)]="alerts.RES_Alert_Code" required style="height:30px;border-radius:4px;width:240px;color:black;">
+          <div class="input-group" [class.has-error]="codes.touched && codes.invalid">       
+              <select id="curr" name="code" class="form-control" [(ngModel)]="alerts.RES_Alert_Code" #codes="ngModel" required style="height:30px;border-radius:4px;width:240px;color:black;">
               <option *ngFor="let alcode of clist" [ngValue] = "alcode.alertcode"> {{alcode.alertcode}} </option>
             </select>
-            <div *ngIf="creditcardno.touched && !creditcardno.valid && creditcardno.errors?.required" ngClass="{ 'has-error' : !creditcardno.valid && submitAttempt }"></div>             
+            <div *ngIf="codes.touched && !codes.valid && codes.errors?.required" ngClass="{ 'has-error' : !codes.valid && submitAttempt }"></div>             
           </div>
           </td>
             
              <td style="padding-left:60px;"><b>Area</b></td>
-            <td style="padding-left:15px;"><select id="curr" [(ngModel)]="alerts.RES_Alert_Area" required style="height:30px;border-radius:4px;width:240px;color:black;">
+            <td style="padding-left:15px;">
+           <div class="input-group" [class.has-error]="areas.touched && areas.invalid">   
+            <select id="curr" name="Area" class="form-control" [(ngModel)]="alerts.RES_Alert_Area" #areas="ngModel" required style="height:30px;border-radius:4px;width:240px;color:black;">
             <option *ngFor="let areacode of alist" [ngValue] = "areacode.alertarea"> {{areacode.alertarea}} </option>
-            </select></td>
+            </select>
+            <div *ngIf="areas.touched && !areas.valid && areas.errors?.required" ngClass="{ 'has-error' : !areas.valid && submitAttempt }"></div>             
+          </div>
+        </td>
             
               </tr>
  
@@ -37,7 +42,8 @@
               <table>
               <tr>
               <td><b>Description</b></td>
-              <td style="padding-left:10px;"><textarea rows="5" cols="71" style="border-radius:8px;" [(ngModel)]="alerts.RES_Alert_Description">
+              <td style="padding-left:10px;">
+                <textarea rows="5" cols="71" style="border-radius:8px;" [(ngModel)]="alerts.RES_Alert_Description">
               Private Guest.Do not address guest by name.
             </textarea></td>
               </tr>
@@ -451,18 +457,23 @@
      <form action="">
     <div class="input-group">
       <div class="col-sm-6" ><b>Creditcard Type</b></div>
-      <div class="col-sm-6" style="padding-left:24px;">          
-        <select class="form-control" name="Creditcardtype" style="width:200px;" [(ngModel)]="ic.pf_card_type">
+      <div class="col-sm-6" style="padding-left:24px;">    
+          <div class="input-group" [class.has-error]="creditcardno.touched && creditcardno.invalid">       
+        <select name="Creditcardtype" style="width:200px;" [(ngModel)]="ic.pf_card_type" class="form-control" #creditcardno="ngModel" required>
         <option *ngFor="let typec of creditlist" [ngValue]="typec.creditcard_description">{{typec.creditcard_description}}</option>
           </select>
+          <div *ngIf="creditcardno.touched && !creditcardno.valid && creditcardno.errors?.required" ngClass="{ 'has-error' : !creditcardno.valid && submitAttempt }"></div>             
+        </div>
       </div>
     </div><br>
     
     <div class="input-group">
       <div class="col-sm-6"><b>Creditcard Number</b></div>
-      <div class="col-sm-6" style="padding-left:17px;">          
-        <input type="text" name="CredicardNumber" class="form-control"  [(ngModel)]="ic.pf_creditcard_no" style="width:200px;">
-      </div>
+      <div class="col-sm-6" style="padding-left:17px;"> 
+       <div class="input-group"  [class.has-error]="creditcards.touched && creditcards.invalid">
+        <input type="text" name="CredicardNumber" class="form-control"  class="form-control"  minlength="16" maxlength="16" pattern="^(0|[0-9][0-9]*)$" [(ngModel)]="ic.pf_creditcard_no" style="width:200px;" #creditcards="ngModel" required>
+        <div *ngIf="creditcards.touched && !creditcards.valid && creditcards.errors?.required  && creditcards.errors.pattern && creditcards.errors.length" ngClass="{ 'has-error' : !creditcards.validcreditcards && submitAttempt }"></div>             
+      </div> </div>
     </div><br>
     
     <div class="input-group">
@@ -506,18 +517,24 @@
      <form action="">
     <div class="input-group">
       <div class="col-sm-6" ><b>Creditcard Type</b></div>
-      <div class="col-sm-6" style="padding-left:24px;">          
-        <select name="Creditcardtype" class="form-control"  style="width:200px;" [(ngModel)]="ic1.pf_card_type">
+      <div class="col-sm-6" style="padding-left:24px;">  
+          <div class="input-group" [class.has-error]="creditcardno.touched && creditcardno.invalid">       
+        <select name="Creditcardtype" class="form-control" #creditcardno="ngModel" style="width:200px;" [(ngModel)]="ic1.pf_card_type" required>
         <option *ngFor="let typec of creditlist" [ngValue]="typec.creditcard_description">{{typec.creditcard_description}}</option>
           </select>
+          <div *ngIf="creditcardno.touched && !creditcardno.valid && creditcardno.errors?.required" ngClass="{ 'has-error' : !creditcard.valid && submitAttempt }"></div>             
+        </div>  
       </div>
     </div><br>
     
     <div class="input-group">
       <div class="col-sm-6"><b>Creditcard Number</b></div>
-      <div class="col-sm-6" style="padding-left:17px;">          
-        <input name="CredicardNumber" type="text" class="form-control"  [(ngModel)]="ic1.pf_creditcard_no" style="width:200px;">
+      <div class="col-sm-6" style="padding-left:17px;">  
+          <div class="input-group"  [class.has-error]="creditcards.touched && creditcards.invalid">           
+        <input name="CredicardNumber" type="text" class="form-control" minlength="16" maxlength="16" pattern="^(0|[0-9][0-9]*)$"  [(ngModel)]="ic1.pf_creditcard_no" style="width:200px;" #creditcards="ngModel" required>
+        <div *ngIf="creditcards.touched && !creditcards.valid && creditcards.errors?.required  && creditcards.errors.pattern && creditcards.errors.length" ngClass="{ 'has-error' : !creditcards.valid && submitAttempt }"></div>             
       </div>
+     </div>
     </div><br>
     
     <div class="input-group">
@@ -682,18 +699,19 @@
                   <label>Begin Date</label> <label style="margin-left:285px;">End Date</label>
                   <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
                   <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                  <input type="date" class="form-control" placeholder="" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_Begin_Date" style="width:160px; ">		
+                  <input type="date" [min]="Arrival" class="form-control" placeholder="" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_Begin_Date" style="width:160px; ">		
                   </div>
                   <div class="input-group" style="width:200px;margin-left:470px;margin-top:-35px;">
                   <span class="input-group-addon" id="basic-addon1" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                  <input type="date" class="form-control" placeholder="" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_End_Date">		
+                  <input type="date" [min]="fixed.Fixed_Charges_Begin_Date" [max]="Departure" class="form-control" placeholder="" aria-describedby="basic-addon1"[(ngModel)]="fixed.Fixed_Charges_End_Date">		
                   </div>
                   <br>
-                  <label>Trn.Code</label> 
-                  <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;">
-                  <select style="height:30px;width:200px;"[(ngModel)]="fixed.Fixed_Charges_Transaction_Code">
+                  <label>TransactionCode</label> 
+                  <div class="input-group" style="width:200px;margin-left:120px;margin-top:-35px;" [class.has-error]="tans.touched && tans.invalid">
+                  <select style="height:30px;width:200px;"[(ngModel)]="fixed.Fixed_Charges_Transaction_Code" required class="form-control" name="TransactionCode" #tans="ngModel">
                     <option *ngFor="let ctc of listtc" [ngValue] = "ctc.transaction_description"> {{ctc.transaction_description}} </option>
                 </select>	
+                <div *ngIf="tans.touched && !tans.valid && tans.errors?.required" ngClass="{ 'has-error' : !tans.valid && submitAttempt }"></div>             
                   </div>
                   <br>
                   <label>Article Code</label> 
@@ -1822,10 +1840,11 @@
 
                       <div class="col-md-4">                  
                     <b>Dept.Code</b>
-                    <div class="input-group">
-                     <select name="deptcode" id="curr" required style="width:200px;height:30px;border-radius:4px;"  [(ngModel)]="find.traces_dept_code">
+                    <div class="input-group" [class.has-error]="creditcardno.touched && creditcardno.invalid">
+                     <select name="deptcode" id="curr" required style="width:200px;height:30px;border-radius:4px;" class="form-control" [(ngModel)]="find.traces_dept_code" #creditcardno="ngModel">
                      <option *ngFor="let codedep of dlist" [ngValue] = "codedep.department">{{codedep.department}}</option>                                                                    
                     </select> 
+                    <div *ngIf="creditcardno.touched && !creditcardno.valid && creditcardno.errors?.required" ngClass="{ 'has-error' : !creditcard.valid && submitAttempt }"></div>             
                     </div>
                     </div>
                      <br>
@@ -1833,9 +1852,10 @@
                      <div class="row">
                       <div class="col-md-8">
                         <label>Trace_Text</label>
-                    <div class="input-group">
-                     <textarea name="des" cols="70" rows="4" style="border-radius:4px;"  [(ngModel)]="find.traces_trace_text"></textarea>
-                      </div>
+                    <div class="input-group" [class.has-error]="trace.touched && trace.invalid">
+                     <textarea name="des" cols="70" rows="4" style="border-radius:4px;" class="form-control" required #trace="ngModel"  [(ngModel)]="find.traces_trace_text"></textarea>
+                    <div *ngIf="trace.touched && !trace.valid && trace.errors?.required" ngClass="{ 'has-error' : !trace.valid && submitAttempt }"></div>             
+                  </div>
                     </div>
                     </div>
                      <br>
@@ -2164,7 +2184,7 @@
   </div><!-- column 1 for 1 row -->
   
   <div class="col-md-2 col-sm-2 col-lg-2 col-xl-2">
-  <div class="panel">
+  <div class="panel" >
   <div class="panel-body" data-toggle="modal" data-target="#queue" (click)="queueProfile()">
   <div class="text-center">
   <img src="assets/images/800px_COLOURBOX11070120.jpg" alt="change" style="border-radius:50%; border:solid 10px lightgray;">
