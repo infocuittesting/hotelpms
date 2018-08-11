@@ -15,7 +15,7 @@ export class BusinessBlockSearchComponent implements OnInit {
   public roomtype=[];
   public statustype=[];
   blockopt=true;
-  
+  public querylist=[];
   public someData=[];
   
   public =[];
