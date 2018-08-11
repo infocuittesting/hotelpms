@@ -107,7 +107,7 @@
                <!-- <span style="text-align: center;"><i>{{editblock.origindescription}}</i></span> -->
           <select class="form-control" name="origin" [(ngModel)]="editblock.origindescription" >
               <option value="" hidden ></option> 
-              <option *ngFor="let selectorigin of origin" [ngValue] ="selectorigin.id" [selected]="editblock.origindescription == selectorigin.id">{{selectorigin.origindescription}} </option>
+              <option *ngFor="let selectorigin of origin" [ngValue] ="selectorigin.id" >{{selectorigin.origindescription}} </option>
           <!-- selectorigin.origindescription -->
           
             </select> 

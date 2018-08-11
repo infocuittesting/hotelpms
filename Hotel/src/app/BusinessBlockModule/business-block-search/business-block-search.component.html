@@ -41,9 +41,8 @@
         <div class="form-group" style="width:82%;">
             <label for="name">Status</label>
           <select class="form-control input-sm" id="sel1" style="width:150px;" [(ngModel)]="status" (ngModelChange)="onSelect(status.Status)">
-             <option *ngFor="let option of roomtype" 
-             [ngValue]="option.id"> 
-             {{option.status}}></option>
+             <option *ngFor="let option of roomtype" [ngValue]="option.id"> 
+             {{option.status}}</option>
             
            </select>
          </div>

@@ -150,7 +150,7 @@ this.businessblock.BlockTypedropdown()
      console.log(this.createblock);
      this.session.store("blids",this.blockids.toString());
      if(this.createblock=="RIS"){
-        this.blocksuccess="Block Created Successfully"+ this.blockids
+        this.blocksuccess="Block Created Successfully"+" "+this.blockids
         console.log("outputblock",this.blocksuccess)
      }
      else{
@@ -160,16 +160,16 @@ this.businessblock.BlockTypedropdown()
  
   }
 // create paymaster for resv button.............................................
-  CreatePaymaster(){
-      console.log("going to reservation button",this.blockids,typeof(this.blockids));
-    // this.payblockid = this.blockids.toString();
-    // console.log("stringvalue",typeof(this.payblockid))
-  this.businessblock.PaymasterReservation(this.blockids)
-  .subscribe((resp: any) => {
-      this.paymasters=resp.ReturnCode;
-       console.log("paymasertresponse",this.paymasters);
-   });
-}
+//   CreatePaymaster(){
+//       console.log("going to reservation button",this.blockids,typeof(this.blockids));
+//     // this.payblockid = this.blockids.toString();
+//     // console.log("stringvalue",typeof(this.payblockid))
+//   this.businessblock.PaymasterReservation(this.blockids)
+//   .subscribe((resp: any) => {
+//       this.paymasters=resp.ReturnCode;
+//        console.log("paymasertresponse",this.paymasters);
+//    });
+// }
 
 // Caluculate room revenue button......................................
 

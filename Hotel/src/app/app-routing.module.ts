@@ -57,7 +57,7 @@ import { ReservationsListComponent } from './BusinessBlockModule/reservations-li
 import { GroupOptionsComponent } from './BusinessBlockModule/group-options/group-options.component';
 import { BlockRangeSettingComponent } from './BusinessBlockModule/block-range-setting/block-range-setting.component';
 import { EditBusinessBlockComponent } from './BusinessBlockModule/edit-business-block/edit-business-block.component';
-
+import { QueryReservationListComponent} from './query-reservation-list/query-reservation-list.component'
 
 
 const routes: Routes = [ { path:'individualprofile', component:IndividualprofileComponent},
@@ -108,6 +108,7 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 {path:"grouplist",component:GroupOptionsComponent},
 {path:"blockrange",component:BlockRangeSettingComponent},
 {path:"editblock",component:EditBusinessBlockComponent},
+{path:"queryreservation",component:QueryReservationListComponent},
 ];
 
 @NgModule({
