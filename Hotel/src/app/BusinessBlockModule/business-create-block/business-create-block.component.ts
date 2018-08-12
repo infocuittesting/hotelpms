@@ -38,10 +38,10 @@ public paymasters:any;
 public querypay:any;
 public queryroomrevenue;
 public payblockid;
-
+public navtag:any;
 // ................................................
   ngOnInit() {
-
+    this.session.store("navigate","Block");
     // block status sropdown.....................
     this.businessblock.blockstatusdropdown()
     .subscribe((resp: any) => {

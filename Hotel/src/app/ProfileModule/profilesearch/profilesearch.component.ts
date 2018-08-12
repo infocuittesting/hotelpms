@@ -13,11 +13,12 @@ import { SessionStorageService } from "ngx-webstorage";
 
 })
 export class ProfilesearchComponent implements OnInit {
-
+public navtag;
  
   constructor(private pService: ProfilesearchService,private route:Router,
   public session:SessionStorageService) { 
     this.profile1 = this.someData;
+  
   }
 
 
@@ -27,6 +28,15 @@ lastname:string;
 postal:string;
 mobile:string;
 
+navigatepages(){
+  this.navtag = this.session.retrieve("navigate");
+  if(this.navtag == "Rev"){
+    this.route.navigate(['reservation/']);
+  }
+  else if(this.navtag == "Block"){
+    this.route.navigate(['bcreate/']);
+  }
+}
 clear(){
 this.queryString = '';
 this.city = '';
@@ -78,6 +88,10 @@ update(inputt):void {
 
 
   ngOnInit() {
+    this.navtag= this.session.retrieve("navigate");
+    
+    console.log(this.session.retrieve("navigate"));
+
      this.pService.getprofile()
    .subscribe((resp: any) => {
    this.profile1=resp.ReturnValue;
