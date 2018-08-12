@@ -29,7 +29,7 @@ public block:any={};
 public createblock:any;
 public blocksuccess: string;
 public blockids:any;
-public block_name:any;
+public block_name:any="";
 public block_code:any;
 
 // ................................................
