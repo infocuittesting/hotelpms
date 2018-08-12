@@ -31,11 +31,6 @@ public blocktype=[];
 public block:any={};
 public createblock:any;
 public blocksuccess: string;
-<<<<<<< HEAD
-public blockids:any;
-public block_name:any="";
-public block_code:any;
-=======
 public blockids:any=" ";
 public block_name:any=" ";
 public block_code:any=" ";
@@ -43,7 +38,6 @@ public paymasters:any;
 public querypay:any;
 public queryroomrevenue;
 public payblockid;
->>>>>>> c435349d544adc8339caccf83b0764cb15a00681
 
 // ................................................
   ngOnInit() {
