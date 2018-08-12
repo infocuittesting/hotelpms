@@ -10,8 +10,9 @@
                                 <b>Rate code</b>
                                 </div>
                                 <div class="col-sm-3">
-                                <select class="form-control input-sm"  style="width:150px;" [(ngModel)]="rateheader.ratecode">
--                                    <option  *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.ratecode_id">{{ratecdlist.rate_code}}</option>
+                                <select class="form-control input-sm"  style="width:150px;" [(ngModel)]="ratecode">
+                                        <option value="" hidden></option>
+-                                       <option *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.rate_code">{{ratecdlist.rate_code}}</option>
                                 </select>
                                 </div>
                             </div>
@@ -27,54 +28,53 @@
         </ul>
         <div class="tab-content clearfix">
         <div id="rateheader" class="tab-pane fade in active" style="margin-top:10px;">
-         <form>
+         <form id="myformm">
           <div class="row">
           
 
 
-              <div class="panel panel-primary">
-                  <div class="panel-body">
-                 <div class="row">
-                     <div class="col-md-7">
-
-                     
-                    
+            <div class="panel panel-primary">
+                <div class="panel-body">
                 <div class="row">
-                   <div class="col-md-4">
-                    <b>Rate code</b>
-                     <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" >                   
-                    </div>
-                    <div class="col-md-4">
-                    <b>Description</b>
-                     <input type="text" name="des"  class="form-control input-sm" style="width:70%;height: 27px;" >       
-                    </div>
-                    <div class="col-md-4">
-                 <b>Rate category</b>
-                 <select name="ratecategoryid" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.ratecategoryid">
-                        <option  *ngFor="let roomtypelist of ratecat" [ngValue] = "roomtypelist.ratecategory_id">{{roomtypelist.rate_category}}</option>    
-                      </select>  
-                    </div>
-                    </div>
+                    <div class="col-md-7">
 
-  
-                
-  
-                  <div class="row" >
-                        <div class="col-md-4">
+                    
+                        <div class="row">
+                            <div class="col-md-4">
+                             <b>Rate code</b>
+                              <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" [value]="ratecode">                   
+                             </div>
+                             <div class="col-md-4">
                                 <b>Rate Class</b>
-                                <select name="rateclass" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.rateclass">
-                                     <option  *ngFor="let roomtypelist of rateclass" [ngValue] = "roomtypelist.rateclass"></option>  
-                                   </select>
-                                 </div>
-                      <div class="col-md-4">
-                     <b>Begin Sell Date</b>          
-                    <input name="beginselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="rateheader.beginselldate">
-                      </div>
-                      <div class="col-md-4">  
-                       <b>End Sell Date</b>
-                       <input name="endselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="rateheader.endselldate" >                           
-                        </div>  
-                    </div>
+                                <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" disabled>                   
+                            </div>
+         
+                            <div class="col-md-4">
+                                <b>Description</b>
+                                <input type="text" name="des"  class="form-control input-sm" style="width:70%;height: 27px;" disabled >       
+                            </div>
+         
+                        </div>        
+                
+
+                        <div class="row" >
+                            <div class="col-md-4">
+                                <b>Rate category</b>
+                                <select name="ratecategoryid" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.ratecategoryid">
+                                    <option value="" hidden></option>
+                                    <option  *ngFor="let roomtypelist of ratecat" [ngValue]="roomtypelist.ratecategory_id" >{{roomtypelist.rate_category}}</option>    
+                                </select>  
+                            </div>
+                            <div class="col-md-4">
+                                <b>Begin Sell Date</b>          
+                                <input name="beginselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="rateheader.beginselldate">
+                            </div>
+                            <div class="col-md-4">  
+                                <b>End Sell Date</b>
+                                <input name="endselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="rateheader.endselldate" >                           
+                            </div>  
+                        </div>
+       
         
   
 
@@ -83,19 +83,22 @@
                                 <div class="col-md-4">   
                                         <b>Market</b>
                                         <select name="mar" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.market_id">
-                                        <option  *ngFor="let list of shop" [ngValue] = "list.market_id">{{list.market_code}}</option>  
+                                            <option value="" hidden></option>
+                                            <option  *ngFor="let list of shop" [ngValue] = "list.market_id">{{list.market_code}}</option>  
                                         </select>  
                                     </div>                
                                             
                                     <div class="col-md-4">   
                                       <b>Source</b>
                                       <select name="sour1" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.source_id">
-                                            <option  *ngFor="let sourlist of src" [ngValue] = "sourlist.source_id">{{sourlist.source_code}}</option> 
+                                        <option value="" hidden></option>  
+                                        <option  *ngFor="let sourlist of src" [ngValue] = "sourlist.source_id">{{sourlist.source_code}}</option> 
                                       </select>
                                      </div>
                             <div class="col-md-4">
                            <b>Display Sequence</b>
                            <select name="sour2" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.Sequence">
+                                <option value="" hidden></option>    
                                 <option  *ngFor="let sourlist of Sequence" [ngValue] = "sourlist.Sequence"></option> 
                           </select>
                             </div>
@@ -104,17 +107,20 @@
                                 <div class="col-md-4">
                                         <b>Room Types</b>
                                         <div class="input-group">
-                                               <span class="input-group-addon" data-toggle="modal" data-target="#exampleModalCenter"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
-                                           <input name="roomtypeid" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="roomtype" type="text">
+                                               <span class="input-group-addon" data-toggle="modal" data-target="#roomtyperatehead"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
+                                           <input name="roomtypeid" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="roomtype" type="text" [value]="rmtype">
                                                  <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
                                              <!-- </select> -->
                                          </div>
                                          </div>
                                        <div class="col-md-4">
                                        <b>Package</b>
-                                       <select name="Package" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.Package">
-                                               <option  *ngFor="let sourlist of Package" [ngValue] = "sourlist.Package"></option> 
-                                         </select>
+                                       <div class="input-group">
+                                            <span class="input-group-addon" data-toggle="modal" data-target="#rateheadpack"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
+                                        <input name="Package1" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="type" type="text" [value]="rmcode">
+                                              <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
+                                          <!-- </select> -->
+                                      </div>
                                        </div>
                                        <div class="col-md-4">
            
@@ -173,7 +179,7 @@
         <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
       <legend style="margin-left:5px" ><b>Components</b></legend>
 
-      <div class="row" >
+      <div class="row">
             <div class="col-md-1"></div>
               <div class="col-md-2" >
                       <label style="margin-left:-35px" >
@@ -287,32 +293,32 @@
            <div class="row" style="margin-left:6%;">
              
              <!-- <div class="col-sm-1"> -->
-               <button type="button" class="btn btn-primary" style="width:11%;"><b>Deposit/cxl</b></button>
+               <button type="button" class="btn btn-primary" style="width:11%;" disabled><b>Deposit/cxl</b></button>
               <!-- </div> -->
   
               <!-- <div class="col-sm-1"> -->
-              <button type="button" class="btn btn-basic" style="width:9%"><b>ShortInfo</b></button>
+              <button type="button" class="btn btn-basic" style="width:9%" disabled><b>ShortInfo</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
-              <button type="button" class="btn btn-info" style="width:9%"><b>LongInfo</b></button>
+              <button type="button" class="btn btn-info" style="width:9%" disabled><b>LongInfo</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
-              <button type="button" class="btn btn-success" style="width:9%"><b>Availablity</b></button>
+              <button type="button" class="btn btn-success" style="width:9%" disabled><b>Availablity</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
-              <button type="button" class="btn btn-primary" style="width:9%"><b>Changes</b></button>
+              <button type="button" class="btn btn-primary" style="width:9%" disabled><b>Changes</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
               <button type="button" class="btn btn-warning" style="width:9%"><b>Repeat</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
-              <button type="button" class="btn btn-danger" style="width:9%"><b>Delete</b></button>
+              <!-- <button type="button" class="btn btn-danger" style="width:9%"><b>Delete</b></button> -->
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
               <button type="button" class="btn btn-primary" style="width:9%"><b>New</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
-              <button type="button" class="btn btn-success" style="width:9%" (click)="rateheaderins(rateheader)" ><b>Save</b></button>
+              <button type="reset" class="btn btn-success" style="width:9%" (click)="rateheaderins(ratecode,rateheader);myformm.reset()" ><b>Save</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
               <button type="button" class="btn btn-danger" style="width:9%"><b>Close</b></button>
@@ -330,7 +336,7 @@
   <!-- Rate details tab content -->
   
         <div id="ratedetails" class="tab-pane fade in" style="margin-top:10px;">
-          <form> 
+          <form #ratedetForm=ngForm> 
           <div class="row">
           <div class="col-sm-5">
                 <!-- <div class="panel panel-primary">
@@ -356,64 +362,33 @@
             <legend style="margin-left:5px" >Dates</legend>
                   <div class="panel-body">
                       <div class="row" style="margin-top:-25px">
-                          <div class="col-md-3">
+                        <div class="col-md-3">
+                            <b>SeasonCode</b>
+                            <div class="form-group">            
+                                <select  name="SeasonCode" class="form-control input-sm" [(ngModel)]="seasoncod"  style="width:95px;height:27px;" >
+                                    <option *ngFor="let type of arryses" [ngValue]="type.season_code_id">{{type.season_code}}</option>   
+                                    
+                                </select>
+                            </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                          <div class="col-md-4">
                               <b>StartDate</b>
                               <div class="form-group">            
-                                  <input type="date" class="form-control input-sm" style="width:120px;height:27px;" >
-                              </div>
+                                    <input type="date" name="stdt" class="form-control input-sm" [(ngModel)]="strtdt" >
+                            </div>
                           </div>
-                          <div class="col-md-3">
+                          <div class="col-md-4">
                                 <b style="margin-left:30px">EndDate</b>
-   
+                            
                                 <div class="form-group">            
-                                    <input type="date" class="form-control input-sm" style="width:120px;height: 27px;margin-left:28px" >
+                                    <input type="date" name="enddt" class="form-control input-sm"  [(ngModel)]="enddate">
                                 </div>
                             </div>
                       
-                          <div class="col-md-3">
-                            <b style="margin-left:55px">SeasonCode</b>
-                     
+                       
+                        </div>
                         
-                            <div class="form-group">            
-                                <select class="form-control input-sm" style="width:120px;height: 27px;margin-left:55px">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
-                            </div>
-                        </div>
-                        </div>
-                        <!-- <div class="col-md-6">
-                                <div class="col-sm-1">
-                                        <label for="mon"><input type="checkbox" id="mon" style="margin-left:10px;" />
-                                         MON</label>
-                                </div>
-                                <div class="col-sm-1" style="margin-left:10px;">
-                                        <label for="tue"><input type="checkbox" id="tue" style="margin-left:10px;" />
-                                         TUE</label>
-                                </div>
-                                <div class="col-sm-1" style="margin-left:10px ">
-                                        <label for="wed"><input type="checkbox" id="wed"style="margin-left:10px;" />
-                                        WED</label> 
-                                </div>
-                                <div class="col-sm-1" style="margin-left:10px ">
-                                        <label for="thur"><input type="checkbox" id="thur" style="margin-left:10px;" />
-                                         THU</label>
-                                </div>
-                                <div class="col-sm-1" style="margin-left:10px ">
-                                        <label for="fri"><input type="checkbox" id="fri" style="margin-left:10px;" />
-                                        FRI</label>
-                                </div>
-                                <div class="col-sm-1" style="margin-left:10px ">
-                                        <label for="sat"><input type="checkbox" id="sat" style="margin-left:10px;" />
-                                        SAT</label>
-                                 </div>
-                                 <div class="col-sm-1" style="margin-left:10px ">
-                                        <label for="sun"><input type="checkbox" id="sun" style="margin-left:10px;" />
-                                        SUN</label>
-                                </div>
-                        </div> -->
                     
                       <div class="row" >
 
@@ -422,31 +397,31 @@
                       <div class="row">
                       
                             <div class="col-sm-1">
-                                    <label for="mon"><input type="checkbox" id="mon" style="margin-left:10px;" />
+                                    <label for="mon"><input type="checkbox" name="mn" [value]="monday" id="mon" style="margin-left:10px;" [(ngModel)]="mondy" />
                                      MON</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px;">
-                                    <label for="tue"><input type="checkbox" id="tue" style="margin-left:10px;" />
+                                    <label for="tue"><input type="checkbox" name="tu" [value]="tuesday" id="tue" style="margin-left:10px;" [(ngModel)]="tuesdy" />
                                      TUE</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="wed"><input type="checkbox" id="wed"style="margin-left:10px;" />
+                                    <label for="wed"><input type="checkbox" name="we" [value]="wednesday" id="wed"style="margin-left:10px;" [(ngModel)]="wednesdy"/>
                                     WED</label> 
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="thur"><input type="checkbox" id="thur" style="margin-left:10px;" />
+                                    <label for="thur"><input type="checkbox" name="th" [value]="thursday" id="thur" style="margin-left:10px;" [(ngModel)]="thursdy"/>
                                      THU</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="fri"><input type="checkbox" id="fri" style="margin-left:10px;" />
+                                    <label for="fri"><input type="checkbox" name="fr" [value]="friday"  id="fri" style="margin-left:10px;" [(ngModel)]="fridy" />
                                     FRI</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="sat"><input type="checkbox" id="sat" style="margin-left:10px;" />
+                                    <label for="sat"><input type="checkbox" name="st" [value]="saturday" id="sat" style="margin-left:10px;" [(ngModel)]="saturdy"/>
                                     SAT</label>
                              </div>
                              <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="sun"><input type="checkbox" id="sun" style="margin-left:10px;" />
+                                    <label for="sun"><input type="checkbox" name="su" [value]="sunday" id="sun" style="margin-left:10px;" [(ngModel)]="sundy"/>
                                     SUN</label>
                             </div>
                         </div>
@@ -465,37 +440,37 @@
                             <b>1 Adults</b>
                         
                             <div class="form-group">            
-                                <input type="text" class="form-control input-sm" style="width:70%;height: 27px">
+                                <input type="text" name="onea" class="form-control input-sm" style="height: 4%" [(ngModel)]="onead">
                             </div>
                           </div>
                           <div class="col-md-3">
                                   <b>2 Adults</b>                                   
                                   <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
+                                      <input type="text" name="twoa" class="form-control input-sm" style="height: 4%" [(ngModel)]="twoad">
                                   </div>                           
                           </div>
                           <div class="col-md-3">
                                   <b>3 Adults</b>
                                   <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
+                                      <input type="text" name="twoa" class="form-control input-sm" style="height: 4%" [(ngModel)]="threead">
                                   </div>
                           </div> 
                           <div class="col-md-3">
                                   <b>4 Adults</b>
                                   <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
+                                      <input type="text" name="threea" class="form-control input-sm" style="height: 4%" [(ngModel)]="fourad">
                                   </div>
                           </div>
-                          <div class="col-md-3" style="margin-top:-17px">
+                          <!-- <div class="col-md-3" style="margin-top:-17px">
                                   <b>5 Adults</b>  
                                       <div class="form-group">            
                                           <input type="text" class="form-control input-sm" >
                                       </div>
-                           </div>
+                           </div> -->
                            <div class="col-md-3" style="margin-top:-17px">
                                   <b>ExtraAdults</b>
                                   <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
+                                      <input type="text" name="extraa" class="form-control input-sm" style="height: 4%" [(ngModel)]="extraad">
                                   </div>
                               </div>
                     </div>
@@ -509,27 +484,27 @@
                           <div class="col-md-3" style="margin-top:-17px">
                             <b>1 child</b>
                             <div class="form-group">            
-                                <input type="text" class="form-control input-sm" >
+                                <input type="text" name="onec" class="form-control input-sm" style="height: 4%" [(ngModel)]="onech">
                             </div>
                           </div>
                           <div class="col-md-3" style="margin-top:-17px">
-                                  <b>2 children</b>
+                                  <b>2 child</b>
                                   <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
+                                      <input type="text" name="twoc" class="form-control input-sm" style="height: 4%" [(ngModel)]="twoch">
                                   </div>
                           </div>
                           <div class="col-md-3" style="margin-top:-17px">
-                                  <b>3 children</b>
+                                  <b>Extrachild</b>
                                   <div class="form-group">            
-                                      <input type="text" class="form-control input-sm" >
+                                      <input type="text" name="extrac" class="form-control input-sm" style="height: 4%" [(ngModel)]="extrach" >
                                   </div>
                           </div>
-                          <div class="col-md-3" style="margin-top:-17px">
+                          <!-- <div class="col-md-3" style="margin-top:-17px">
                                   <b>4 children</b>
                                   <div class="form-group">            
                                       <input type="text" class="form-control input-sm" >
                                   </div>
-                          </div>
+                          </div> -->
 
 
                     </div>
@@ -560,64 +535,11 @@
                                 </tr>
                               </thead>
                               <tbody style="font-size:12px;">
-                                  <tr>
-                                      <td>16-04-2018</td>
-                                      <td>20-04-2018</td>
-                                      <td>KNGN</td>     
-                                  </tr> 
-                                
-                                  <tr>
-                                      <td>17-04-2018</td>
-                                      <td>28-04-2018</td>
-                                      <td>KNGS</td>     
-                                  </tr> 
-              
-                                  <tr>
-                                      <td>18-04-2018</td>
-                                      <td>22-04-2018</td>
-                                      <td>SJSN</td>     
-                                  </tr> 
-                                  <tr>
-                                      <td>19-04-2018</td>
-                                      <td>20-04-2018</td>
-                                      <td>SJSS</td>     
-                                  </tr> 
-                                  <tr>
-                                        <td>19-04-2018</td>
-                                        <td>20-04-2018</td>
-                                        <td>SJSS</td>     
-                                    </tr> 
-                                    <tr>
-                                            <td>19-04-2018</td>
-                                            <td>20-04-2018</td>
-                                            <td>SJSS</td>     
-                                    </tr> 
-                                    <tr>
-                                            <td>19-04-2018</td>
-                                            <td>20-04-2018</td>
-                                            <td>SJSS</td>     
-                                    </tr> 
-                                    <tr>
-                                                    <td>19-04-2018</td>
-                                                    <td>20-04-2018</td>
-                                                    <td>SJSS</td>     
-                                    </tr> 
-                                    <tr>
-                                                        <td>19-04-2018</td>
-                                                        <td>20-04-2018</td>
-                                                        <td>SJSS</td>     
-                                    </tr> 
-                                    <tr>
-                                                            <td>19-04-2018</td>
-                                                            <td>20-04-2018</td>
-                                                            <td>SJSS</td>     
-                                    </tr> 
-                                                        <tr>
-                                                                <td>19-04-2018</td>
-                                                                <td>20-04-2018</td>
-                                                                <td>SJSS</td>     
-                                                            </tr> 
-
+                                <tr *ngFor="let dettable of ratedettabl; let i=index" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
+                                    <td>{{dettable.start_date}}</td>     
+                                    <td>{{dettable.end_date}} </td>
+                                    <td>{{dettable.rooms_id}}</td>
+                                </tr>
                               </tbody>
                             </table>
                         </div>
@@ -626,40 +548,28 @@
                                 <legend style="margin-left:5px" >Attributes</legend>
                                 <div class="panel-body"  style="margin-bottom:-10px;">
                                     <div class="row" style="margin-top:-25px;">
-                                            <div class="col-md-3">
-                                                <b>RoomTypes</b>
-                                                <div class="form-group">            
-                                                    <select class="form-control input-sm" style="width:100%;">
-                                                        <option>1</option>
-                                                        <option>2</option>
-                                                        <option>3</option>
-                                                        <option>4</option>
-                                                    </select>
-                                                </div>
+                                            <div class="col-md-2">
+                                                <b>RoomTypes</b></div>
+                                                <div class="col-md-3">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" data-toggle="modal" data-target="#ratedetrmtype"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
+                                                            <input name="roomtypeid" class="form-control input-sm"  style="width:140%;height: 27px;" [(ngModel)]="roomtypedet" type="text" [value]="rmtype2" disabled>
+                                                                 
+                                                          </div> 
                                             </div>
-                                            <div class="col-md-3">
-                                                  <b>Market</b>
-                                                  <div class="form-group">            
-                                                      <select name="mark1" class="form-control input-sm" style="width:100%;">
-                                                          <option>{{rateheader.market_id}}</option>
-                                                      </select>
-                                                  </div>
-                                              </div>
-                                              <div class="col-md-3">
-                                                      <b>Source</b>
-                                                      <div class="form-group">            
-                                                          <select name="srcsour" class="form-control input-sm" style="width:100%;">
-                                                             {{rateheader.source_id}}
-                                                          </select>
-                                                      </div>
-                                                  </div>
-                                              <div class="col-md-3">
-                                                      <b>Packages</b>
-                                                      <div class="form-group">            
-                                                          <select name="Packages" class="form-control input-sm" style="width:100%;">                                                     
-                                                              </select>
-                                                      </div>
-                                              </div>
+                                            
+                                            <div class="col-md-2" >
+                                                    <b style="margin-left:25px"> Packages</b></div>
+                                                    <div class="col-md-3" style="margin-left: 10px">
+                                                    <div class="form-group">
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon" data-toggle="modal" data-target="#ratedetpack"> <i class="glyphicon glyphicon-option-horizontal" ></i>   </span>
+                                                            <input name="Packagesid" class="form-control input-sm"  style="width:140%;height: 27px;" [(ngModel)]="packdet" type="text" [value]="rmcode3" disabled>
+                                                                    <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
+                                                                <!-- </select> -->
+                                                            </div>                
+                                                    </div>
+                                            </div>
                 
                                       </div>
                                       <div class="row">
@@ -691,16 +601,16 @@
               <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" ><b>Repeat</b></button>
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal" ><b>Delete</b></button>
+              <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal" data-toggle="modal" data-target="#afteratedetdel" (click)="ratdetfun()"><b>Delete</b></button>
           </div>
           <div class="col-md-2">
               <button type="button" class="btn btn-Warning" style="width:110px;" data-toggle="modal" ><b>New</b></button>
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal" ><b>Save</b></button>
+              <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal"  (click)="ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy);ratedetForm.reset()" data-target="#afterratedetsave"><b>Save</b></button>
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal"><b>Close</b></button>
+              <button type="button" class="btn btn-danger" style="width:110px;" (click)="ratedetForm.reset()"><b>Close</b></button>
           </div>
   
   
@@ -721,10 +631,9 @@
                                                   </div>  
                                                   <div class="col-sm-3">
                                                       <div class="form-group">            
-                                                          <select name="ratecodedropdown" class="form-control input-sm" style="width:100%;" [(ngModel)]="ratecode" (change)="onSelect(ratecode)">
+                                                            <select name="ratecodedropdown" class="form-control input-sm" style="width:100%;" [(ngModel)]="ratecode" (change)="onSelect(ratecode)">
                                                                 <option [ngValue]="0" >select</option>    
-                                                                <option  *ngFor="let ratecodelist of price" [ngValue] = "ratecodelist.ratecode_id">{{ratecodelist.rate_code}}</option>
-                                                          
+                                                                <option  *ngFor="let ratecodelist of price" [ngValue] = "ratecodelist.ratecode_id">{{ratecodelist.rate_code}}</option>                                                          
                                                             </select>
                                                       </div>
                                                   </div>
@@ -767,10 +676,10 @@
                               </tr>
                             </thead>
                             <tbody style="font-size: 12px">                                 
-                              <tr  *ngFor="let item of ncode; let i=index">
-                                  <td>{{item?.Rate_code}}</td>
-                                  <td>{{item?.Begin_sell_date}}</td>
-                                  <td>{{item?.End_sell_date}}</td>     
+                              <tr  *ngFor="let item of ncode; let i=index" (click)="selectMembers(item,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                                  <td>{{item.rate_code}}</td>
+                                  <td>{{item.negotiate_begin_sell_date}}</td>
+                                  <td>{{item.negotiate_end_sell_date}}</td>     
                               </tr> 
                               <!-- <tr>
                                   <td>MICROS</td>
@@ -790,23 +699,24 @@
                             </tbody>
                           </table>
                       </div>
-                    </div><br>
+                    </div>
+                </form> <br>
   <!-- ************************************table content ends******************************************************* -->
   
   
                       <div class="row" style="margin-left:10%;">
                           
                           <div class="col-md-2">
-                              <button type="button" class="btn btn-Info" style="width:110px;"><b>Detail</b></button>
+                              <button type="button" class="btn btn-Info" style="width:110px;" disabled><b>Detail</b></button>
                           </div>
                           <div class="col-md-2">
                               <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" data-target="#newnegotiated"><b>New</b></button>
                           </div>
                           <div class="col-md-2">
-                              <button type="button" class="btn btn-danger" style="width:110px;"><b>Edit</b></button>
+                              <button type="button" class="btn btn-danger" style="width:110px;"data-toggle="modal" data-target="#editnegotiated" [disabled]=edbut><b>Edit</b></button>
                           </div>
                           <div class="col-md-2">
-                              <button type="button" class="btn btn-Warning" style="width:110px;"><b>Delete </b></button>
+                              <button type="button" class="btn btn-Warning" style="width:110px;" (click)="negodel()" data-toggle="modal" data-target="#afterdelnegotiate" [disabled]=delbut><b>Delete </b></button>
                           </div>
                           <div class="col-md-2">
                               <button type="button" class="btn btn-Success" style="width:110px;"><b>Close</b></button>
@@ -814,82 +724,9 @@
                       </div>
   <!-- *************************************************************************************************************************** -->
   
-  <!-- *****new negotiated modal***** -->
-                      <div class="modal fade" id="newnegotiated" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                              <div class="vertical-alignment-helper">
-                                  <div class="modal-dialog vertical-align-center">
-                                      <div class="modal-content">
-                                          <div class="modal-header">
-                                              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                          
-                                              </button>
-                                               <h3 class="modal-title" id="myModalLabel"><b>Negotiated Rates</b></h3>
-                          
-                                          </div>
-                                          <div class="modal-body">
-                                              <div class="row">
-                                                  <div class="col-sm-3" style="padding-top:1%;">
-                                                      <b>Rate Code</b>
-                                                  </div>  
-                                                  <div class="col-sm-3">
-                                                      <div class="form-group">            
-                                                          <select class="form-control input-sm" style="width:100%;">
-                                                             
-                                                          </select>
-                                                      </div>
-                                                  </div>
-                                              </div>
-  
-  
-                                              <div class="row">
-                                                  <div class="col-sm-3">
-                                                      <b>Begin Sell Date</b>
-                                                  </div>  
-                                                  <div class="col-sm-3">
-                                                      <div class="form-group">            
-                                                          <input type="date" class="form-control input-sm" >
-                                                      </div>
-                                                  </div>
-                                              </div>
-  
-                                              <div class="row">
-                                                  <div class="col-sm-3">
-                                                      <b>End Sell Date</b>
-                                                  </div>  
-                                                  <div class="col-sm-3">
-                                                      <div class="form-group">            
-                                                          <input type="date" class="form-control input-sm" >
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <div class="row">
-                                                <div class="col-sm-3" style="padding-top:1%;">
-                                                    <b>Commission Code</b>
-                                                </div>  
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">            
-                                                        <select class="form-control input-sm" style="width:100%;">
-                                                           
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-  
-  
-                                          </div>
-                                          <div class="modal-footer">
-                                              <button type="button" class="btn btn-success">Save</button>
-                                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>                                            
-                                          </div>
- 
-
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
                         
-  
-              </form> 
+                          
+           
           </div>
   <!-- *******************************************negotiated tab content ends **************************************-->
           
@@ -900,14 +737,312 @@
       </div>
     </div>
   </div>
+  <!-- alert after ratedetails save  -->
+<div class="modal fade" id="afterratedetsave" role="dialog">
+        <div class="vertical-alignment-helper">  
+        <div class="modal-dialog vertical-align-center modal-sm">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Rate Details</b></h4>
+            </div>
+            <div class="modal-body">
+                <p>{{ratedetalert}}</p>
+                <!-- <p *ngIf="newnegovar!='RIS'">{{failalert}}</p> -->
+            </div>
+            
+                
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            </div>  
+            </div>
+        
+        </div>
+        </div>
+    </div>
 
 
+<!--  **************************************************alert after ratedetails save ends*******************************-->
 
+
+  <!-- *****new negotiated modal***** -->
+  <div class="modal fade" id="newnegotiated" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+    
+                        </button>
+                         <h3 class="modal-title" id="myModalLabel"><b>Negotiated Rates</b></h3>
+    
+                    </div>
+                    <form #negoForm="ngForm">
+                    <div class="modal-body">
+                        <div class="row" style="margin-left: 15%;">
+                            <div class="col-sm-4" style="padding-top:1%;">
+                                <b>Rate Code</b>
+                            </div>  
+                            <div class="col-sm-4">
+                                <div class="form-group">            
+                                    <select name="ratec" class="form-control input-sm" style="width:100%;" [(ngModel)]="user.ratecod">
+                                      <option  *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.ratecode_id">{{ratecdlist.rate_code}}</option>                                                            
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-left: 15%;">
+                            <div class="col-sm-4">
+                                <b>Begin Sell Date</b>
+                            </div>  
+                            <div class="col-sm-4">
+                                <div class="form-group">            
+                                    <input type="date" name="bgdt" class="form-control input-sm" [(ngModel)]="user.begin" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-left: 15%;">
+                            <div class="col-sm-4">
+                                <b>End Sell Date</b>
+                            </div>  
+                            <div class="col-sm-4">
+                                <div class="form-group">            
+                                    <input type="date" name="enddt" class="form-control input-sm"  [(ngModel)]="user.endsel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-left: 15%;">
+                          <div class="col-sm-4" style="padding-top:1%;">
+                              <b>Commission Code</b>
+                          </div>  
+                          <div class="col-sm-4">
+                              <div class="form-group">            
+                                  <select class="form-control input-sm" name="cc" style="width:100%;" disabled> 
+                                     
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+
+
+                    </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#afternewnegotiate"  (click)="newnego(user);negoForm.reset()" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="negoForm.reset()">Close</button>                                            
+                    </div>
+
+
+                </div>
+           
+            </div>
+        </div>
+    </div>
+<!-- ******************************************************new negotiated modal ends***************************************** -->
+<!-- alert after new negotiated insert  -->
+<div class="modal fade" id="afternewnegotiate" role="dialog">
+        <div class="vertical-alignment-helper">  
+        <div class="modal-dialog vertical-align-center modal-sm">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Alert</b></h4>
+            </div>
+            <div class="modal-body">
+                <p>{{sucalert}}</p>
+                <!-- <p *ngIf="newnegovar!='RIS'">{{failalert}}</p> -->
+            </div>
+            
+                
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            </div>  
+            </div>
+        
+        </div>
+        </div>
+    </div>
+
+
+<!--  **************************************************alert after new negotiated insert ends*******************************-->
+<!-- *****edit negotiated modal***** -->
+<div class="modal fade" id="editnegotiated" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+    
+                        </button>
+                         <h3 class="modal-title" id="myModalLabel"><b>Negotiated Rates</b></h3>
+    
+                    </div>
+                    <form #editForm="ngForm">
+                    <div class="modal-body">
+                        <div class="row" style="margin-left: 15%;">
+                            <div class="col-sm-4" style="padding-top:1%;">
+                                <b>Rate Code</b>
+                            </div>  
+                            <div class="col-sm-4">
+                                <div class="form-group">            
+                                    <select name="ratcodee" class="form-control input-sm" style="width:100%;" [(ngModel)]="rateecode">
+                                      <option  *ngFor="let ratcodeelist of prc" [ngValue] = "ratcodeelist.ratecode_id">{{ratcodeelist.rate_code}}</option>                                                            
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row" style="margin-left: 15%;">
+                            <div class="col-sm-4">
+                                <b>Begin Sell Date</b>
+                            </div>  
+                            <div class="col-sm-4">
+                                <div class="form-group">            
+                                    <input type="date" name="begdtt" class="form-control input-sm" [(ngModel)]="beginn" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-left: 15%;">
+                            <div class="col-sm-4">
+                                <b>End Sell Date</b>
+                            </div>  
+                            <div class="col-sm-4">
+                                <div class="form-group">            
+                                    <input type="date" name="enddtt" class="form-control input-sm"  [(ngModel)]="endsell">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-left: 15%;">
+                          <div class="col-sm-4" style="padding-top:1%;">
+                              <b>Commission Code</b>
+                          </div>  
+                          <div class="col-sm-4">
+                              <div class="form-group">            
+                                  <select class="form-control input-sm" name="comcod" style="width:100%;" disabled> 
+                                     
+                                  </select>
+                              </div>
+                          </div>
+                      </div>
+
+
+                    </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#aftereditnegotiate"  (click)="editnego(rateecode,beginn,endsell);editForm.reset()" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="editForm.reset()">Close</button>                                            
+                    </div>
+
+
+                </div>
+           
+            </div>
+        </div>
+    </div>
+<!-- ******************************************************edit negotiated modal ends***************************************** -->
+<!-- alert after edit negotiated   -->
+<div class="modal fade" id="aftereditnegotiate" role="dialog">
+        <div class="vertical-alignment-helper">  
+        <div class="modal-dialog vertical-align-center modal-sm">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Edit Negotiated Message  </b></h4>
+            </div>
+            <div class="modal-body">
+                <p>{{negoeditalert}}</p>
+                <!-- <p *ngIf="newnegovar!='RIS'">{{failalert}}</p> -->
+            </div>
+            
+                
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            </div>  
+            </div>
+        
+        </div>
+        </div>
+    </div>
+
+
+<!--  **************************************************alert after edit negotiated ends*******************************-->
+
+<!-- alert after delete negotiated   -->
+<div class="modal fade" id="afterdelnegotiate" role="dialog">
+        <div class="vertical-alignment-helper">  
+        <div class="modal-dialog vertical-align-center modal-sm">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Alert</b></h4>
+            </div>
+            <div class="modal-body">
+                <p>{{negodelalert}}</p>
+                <!-- <p *ngIf="newnegovar!='RIS'">{{failalert}}</p> -->
+            </div>
+            
+                
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            </div>  
+            </div>
+        
+        </div>
+        </div>
+    </div>
+
+
+<!--  **************************************************alert after delete negotiated  ends*******************************-->
+ <!-- alert after ratedetails delete  -->
+ <div class="modal fade" id="afteratedetdel" role="dialog">
+        <div class="vertical-alignment-helper">  
+        <div class="modal-dialog vertical-align-center modal-sm">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Rate details insert message</b></h4>
+            </div>
+            <div class="modal-body">
+                <p>{{delratalert}}</p>       
+            </div>
+            
+                
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            </div>  
+            </div>
+        
+        </div>
+        </div>
+    </div>
+    
+    
+    <!--  **************************************************alert after ratedetails delete ends*******************************-->
+    
+                            
 <!-- <****************************room type model**********************************> -->
 
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
+<div class="modal fade" id="roomtyperatehead" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="vertical-alignment-helper"> 
+    <div class="modal-dialog vertical-align-center" role="document">
+        <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle"></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -924,31 +1059,162 @@
                         <th>X</th>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let siva of room" (click)="stylesan(siva)">
-                            <td>{{siva.id}}</td>
-                            <td>{{siva.type}} </td>
-                            <td>{{siva.description}}</td>
-                            <td>
-                                <div class="form-group">
-                                <div class="form-control">
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="active" [(ngModel)]="cbexample">
-                                    </label>
-                                </div>
-                                </div> 
-                                
-                                
-                                 </td>
+                            <tr *ngFor="let rlist of room">
+                            <td> <input type="checkbox" name="rm_type" id="" (checked)="exist(rlist)" (click)="toggleSelection(rlist)"> </td>                                
+                            <td>{{rlist.id}}</td>
+                            <td>{{rlist.type}} </td>
+                            <td>{{rlist.description}}</td>
                         </tr>
                         
                       </tbody>
                     </table>
-                  </div>
+                </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
             </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<!-- <************************* Package model ***************************************> -->
+
+
+<div class="modal fade" id="rateheadpack" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+    <div class="vertical-alignment-helper">   
+    <div class="modal-dialog vertical-align-center" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModal"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <table class="table-hover table-bordered table-striped" style="width:100%;">
+                    <thead style="background-color: #0077B5; color: white">
+                    <th>Code</th>
+                    <th>Description</th>
+                    <th>currency</th>
+                    <th>X</th>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let Packagemodel of revenueroom">
+                            <td> 
+                                <input type="checkbox"  id="one" (checked)="exist1(Packagemodel)" (click)="toggleSelection1(Packagemodel)">
+                                        
+                            </td>
+                            <td >{{Packagemodel.package_code}}</td>
+                            <td>{{Packagemodel.package_code_description}} </td>
+                            <td>{{Packagemodel.package_code_currency}}</td>
+                       
+                    </tr>
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>RateCode</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Repeat</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>New</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Edit</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Delete</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+        </div>
+        </div>
+    </div>
+    </div>  
+</div>
+<!-- <****************************** Rate Details Attribute Tab Room Types ************************> -->
+
+<div class="modal fade" id="ratedetrmtype" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="vertical-alignment-helper">    
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table-hover table-bordered table-striped" style="width:100%;">
+                        <thead style="background-color: #0077B5; color: white">
+                            <th>seq</th>
+                            <th> Room Type</th> 
+                            <th> Description</th>
+                            <th>X</th>
+                        </thead> 
+                        <tbody> 
+                            <tr *ngFor="let pack of room">
+                                <td> <input type="checkbox" (checked)="exist2(pack)" (click)="toggleSelection2(pack)"> </td>                                
+                                <td>{{pack.id}}</td>
+                                <td>{{pack.type}} </td>
+                                <td>{{pack.description}}</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+<!-- <*********************************** Rate Details Attribute Tab Package ****************> -->
+
+<div class="modal fade" id="ratedetpack" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="vertical-alignment-helper">     
+        <div class="modal-dialog vertical-align-center" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive">
+                    <table class="table-hover table-bordered table-striped" style="width:100%;">
+                      <thead style="background-color: #0077B5; color: white">
+                            <th>Code</th>
+                            <th>Description</th>
+                            <th>currency</th>
+                            <th>X</th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let rmtype of revenueroom">
+                            <td> <input type="checkbox" (checked)="exist3(rmtype)" (click)="toggleSelection3(rmtype)"> </td>                                
+                            <td >{{rmtype.package_code}}</td>
+                            <td>{{rmtype.package_code_description}} </td>
+                            <td>{{rmtype.package_code_currency}}</td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>RateCode</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Repeat</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>New</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Edit</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Delete</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      
+            </div>
           </div>
         </div>
-      </div>
+    </div> 
+ </div>

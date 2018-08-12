@@ -9,7 +9,7 @@
               <input type="date" class="form-control input-sm" name="date">
             </div>
           </div>
-          <div class="col-md-3">
+          <!-- <div class="col-md-3">
             <div class="form-group">
               <label for="Display">Display</label>
               <select class="form-control input-sm"name="Display">
@@ -18,8 +18,8 @@
                 <option>...</option>
               </select>
             </div>
-          </div>
-          <div class="col-md-3">
+          </div> -->
+          <!-- <div class="col-md-3">
             <div class="form-group">
               <label for="name">Currency</label>
               <select class="form-control input-sm" name="Currency">
@@ -29,7 +29,7 @@
               </select>
 
             </div>
-          </div>
+          </div> -->
           
     </div>
   </div>
@@ -151,11 +151,274 @@
       </div>
       <div class="row">
         <div class="continer-fluid">
+          <div class="col-md-5"></div>
           <div class="col-md-2">
-            <button class="btn btn-primary" type="button" style="width:100%">Range</button>
+            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" style="width:100%">Range</button>
           </div>
           <div class="col-md-2">
-              <button class="btn btn-Warning" type="button" style="width:100%">Close</button>
+              <button class="btn btn-Warning" type="button" style="width:100%" routerLink="/bcreate">Close</button>
             </div>
         </div>
       </div>
+
+      <!-- //BlockRangeSettings -->
+
+           <!-- // model reservation screen -->
+           <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog model-lg">
+              
+                <!-- Modal content-->
+                <div class="modal-content" style="width: 150%;">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Connect24*7</h4>
+                  </div>
+                  <div class="modal-body">
+            
+                      <div class="row">
+                          <div class="continer-fluid">
+                          <div class="col-md-2"></div>
+                          <div class="col-md-5">
+                           
+                              <div class="panel panel-primary" style="border:solid 1px; margin-left: -117px;border-color: lightgray">
+                                  <legend style="margin-left:3px;background-color: #0077B5;color:white;" >DataRange</legend>
+                                  <div class="panel-body">
+                                      <div class="row">
+                                    <div class="col-md-4"> 
+                                      <div class="form-group">
+                                      <label for="name">Form</label>
+                                      <input type="date" class="form-control input-sm" name="Form" [(ngModel)]="start">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4"> 
+                                      <div class="form-group">
+                                      <label for="name">To</label>
+                                      <input type="date" class="form-control input-sm" name="Form" [(ngModel)]="end">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4"> 
+                                      <div class="form-group">
+                                      <label for="name">Nights</label>
+                                      <input type="text" class="form-control input-sm" name="Form" [(ngModel)]="nights">
+                                    </div>
+                                  </div>
+                                      </div>
+                                     
+                                      <!-- <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="custom-control">
+                                                <input type="radio" class="custom-control-input" id="customRadio" name="example1"style="zoom:1.5" >
+                                                <label class="custom-control-label" for="customRadio">Core</label>
+                                              </div> 
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="custom-control">
+                                                <input type="radio" class="custom-control-input" id="customRadio" name="example1"style="zoom:1.5" >
+                                                <label class="custom-control-label" for="customRadio">ShoulderBegin</label>
+                                              </div> 
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="custom-control">
+                                                <input type="radio" class="custom-control-input" id="customRadio" name="example1"style="zoom:1.5" >
+                                                <label class="custom-control-label" for="customRadio">ShoulderEnd</label>
+                                              </div> 
+                                        </div>
+                                      </div> -->
+                                      <br>
+                                      <div class="row">
+                                          <div class="col-sm-1">
+                                              <label style="margin-left:-35px"  >
+                                                  <input type="checkbox" [value]="sun"  class="form-control" name="sun" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="range.sun" ><b>sun</b>                    
+                                          </label>
+                                          </div>
+                                          <div class="col-sm-1">
+                                              <label for="mon"><input type="checkbox" [value]="mon"  id="mon" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.monday"/> MON</label>
+                                          </div>
+                                          <div class="col-sm-1">
+                                              <label for="mon"><input type="checkbox" [value]="tue"  id="mon" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.tuesday"/> TUE</label>
+                                          </div>
+                                          <div class="col-sm-1">
+                                              <label for="mon"><input type="checkbox"[value]="wed"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.wednesday"/> WED</label>
+                                          </div>
+                                          <div class="col-sm-1">
+                                              <label for="mon"><input type="checkbox" [value]="thu"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.thursday"/> THU</label>
+                                          </div>
+                                          <div class="col-sm-1">
+                                              <label for="mon"><input type="checkbox"[value]="fri"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.friday"/> FRI</label>
+                                          </div>
+                                          <div class="col-sm-1">
+                                              <label for="mon"><input type="checkbox" [value]="sat"  style="margin-left:0px;zoom:1.5"[(ngModel)]="range.saturday"/> SAT</label>
+                                          </div>
+                                      </div>
+                              </div>
+                          </div>
+                     <div class="panel panel-primary" style="height: 244px;border:solid 1px; margin-left:-116px;border-color: lightgray">
+                              <legend style="margin-left:3px;background-color: #0077B5;color:white;" >RoomType</legend>
+                              <div class="panel-body">
+                                  <div class="col-md-5">
+                                    <div class="form-group">
+                                      <label for="RoomType">RoomType</label>
+                                      <select class="form-control input-sm" name="Roomtype" [(ngModel)]="range.roomtype">
+                                          <option *ngFor="let option of roomtype" 
+                                                      [ngValue]="option.id"> 
+                                                      {{option.type}}
+                                          </option>
+                                          </select> 
+                                    </div>
+                               
+                                </div>
+                                 <!-- <div class="row">
+                                  <div class="col-md-4">
+                                      <button class="btn btn-success" style="width:100%">ALL</button>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-warning" style="width:100%">NONE</button>
+                                      </div>
+                                    </div> -->
+                              
+                            </div> 
+                        </div>
+                        <div class="row">
+                            
+                        </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="panel panel-primary" style="border:solid 1px; margin-left: -27px;border-color: lightgray">
+                                <legend style="margin-left:3px;background-color: #0077B5;color:white;" >Values</legend>
+                                <div class="panel-body">
+                             
+                                  <div class="continer">
+                                    <div class="col-md-10">
+                                      <label>NO.ofRooms</label>
+                                      <div class="row">
+                                     <div class="col-md-3">
+                                       <div class="form-group"style="width: 100px;" >
+                                         <label for="name">Occupency1</label>
+                                         <input type="number" class="form-control input-sm" name="Occupency"[(ngModel)]="range.Occupency1">
+                                       </div>
+                                     </div>
+
+                                     <div class="col-md-3">
+                                        <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                          <label for="name">Rate1</label>
+                                          <input type="number" class="form-control input-sm" name="Occupency"[(ngModel)]="range.Rate1">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                          <div class="form-group"style="width: 100px;" >
+                                            <label for="name">Occupency2</label>
+                                            <input type="number" class="form-control input-sm" name="Occupency"[(ngModel)]="range.Occupency2">
+                                          </div>
+                                        </div>
+   
+                                        <div class="col-md-3">
+                                           <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                             <label for="name">Rate2</label>
+                                             <input type="number" class="form-control input-sm" name="Occupency"[(ngModel)]="range.Rate2">
+                                           </div>
+                                         </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-3">
+                                            <div class="form-group"style="width: 100px;" >
+                                              <label for="name">Occupency3</label>
+                                              <input type="number" class="form-control input-sm" name="Occupency"[(ngModel)]="range.Occupency3">
+                                            </div>
+                                          </div>
+     
+                                          <div class="col-md-3">
+                                             <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                               <label for="name">Rate3</label>
+                                               <input type="number" class="form-control input-sm" name="Occupency"[(ngModel)]="range.Rate3">
+                                             </div>
+                                           </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-3">
+                                            <div class="form-group"style="width: 100px;" >
+                                              <label for="name">Occupency4</label>
+                                              <input type="number" class="form-control input-sm" name="Occupency"[(ngModel)]="range.Occupency4">
+                                            </div>
+                                          </div>
+     
+                                          <div class="col-md-3">
+                                             <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                               <label for="name">Rate4</label>
+                                               <input type="number" class="form-control input-sm" name="Occupency"[(ngModel)]="range.Rate4">
+                                             </div>
+                                           </div>
+                                         </div>
+                                         <div class="row">
+                                            <div class="col-md-3">
+                                              <div class="form-group"style="width: 100px;" >
+                                                <label for="name">TotalRooms</label>
+                                                <input type="number" class="form-control input-sm" name="Occupency" value="{{range.Occupency4+range.Occupency3+range.Occupency2+range.Occupency1}}"  [(ngModel)]="range.totalrooms">
+                                              </div>
+                                            </div>
+       
+                                            <div class="col-md-3">
+                                               <div class="form-group"style="margin-left: 78px;width: 100px;">
+                                                 <label for="name">Addel.Rate</label>
+                                                 <input type="number" class="form-control input-sm" name="Occupency"value="{{range.Rate4+range.Rate3+range.Rate2+range.Rate1}}" [(ngModel)]="range.totalrate">
+                                               </div>
+                                             </div>
+                                           </div>
+                                           <!-- <div class="row">
+                                              <div class="col-md-3">
+                                                <div class="form-group"style="width: 149px;" >
+                                                  <label for="name">Occupency1</label>
+                                                  <input type="date" class="form-control input-sm" name="Occupency">
+                                                </div>
+                                              </div>
+                                              </div>
+                                             <div class="row">
+                                              <div class="col-md-3">
+                                                 <div class="form-group"style="margin-left: 0px;width: 100px;" >
+                                                   <label for="name">CutofDAys</label>
+                                                   <input type="text" class="form-control input-sm" name="Occupency" style="margin-left: 0px; width: 150px;">
+                                                 </div>
+                                               </div>
+                                              </div> -->
+                                         
+                                              
+                                             <!-- //buttons -->
+                                          <div class="row">
+                                          
+                                          <div class="col-md-2" style="width: 45%;">
+                                            <button class="btn btn-primary"style="width:100%;"data-dismiss="model" (click)="rangegrids(range)">Ok</button>
+                                          </div>
+                                         <div class="col-md-2" style="width: 45%;">
+                                              <button class="btn btn-success"style="width:100%;margin-left: 24px;"data-dismiss="model" (click)="savebutton()">Save</button>
+                                            
+                                            </div>
+                                           </div>
+                                           <!-- <div class="row">
+                                              <div class="col-md-2" style="width: 45%;">
+                                                <button class="btn btn-light"style="width:100%">Options</button>
+                                              </div>
+                                               </div> -->
+                                          
+                                          
+                                </div>
+                                </div>
+                                <div class="continer">
+                                   
+                                </div>
+                                  
+                       </div>   
+                        </div>
+                        </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal" >Close <i class="glyphicon glyphicon-ok"></i></button>             
+                      <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">NO<i class="glyphicon glyphicon-remove"></i></button>              -->
+                  </div>
+                </div>
+                
+              </div>
+          </div>

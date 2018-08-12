@@ -135,7 +135,7 @@ CreateBusinessBlock(block):Observable<object[]> {
   let body = {
     "Definite":
            {
-            "pf_id":"cpy71",
+            "pf_id":"cpy159",
 	          "block_status_id":block.statusblock,
             "market_id":block.marketcode,
             "source_id":block.sourcecode,
@@ -168,13 +168,14 @@ CreateBusinessBlock(block):Observable<object[]> {
              "rooming_list_duedate":block.roominglistdue,
              "arrivaltime":block.arrival_tim,
              "depaturetime":block.depature_tim,
-			       "commission":block.commis
+             "commission":block.commis,
+             "total_rooms_perday":block.roomsperday
              },
 "Catering":
              {
           
-             "guranteed":"",
-             "attendess":block.attender,
+             "guranteed":block.guranteeds,
+             "attenders":block.attender,
 	           "info_board":block.info_boards,
              "contract_no":block.contract,
              "onsite_name":block.onsite,
@@ -197,8 +198,34 @@ CreateBusinessBlock(block):Observable<object[]> {
      .map(this.extractData)
 
 }
+// Create Paymaster Reservation................................................................
+// PaymasterReservation(blockids):Observable<object[]> {
+//   console.log("going to service",blockids,typeof(blockids))
+//   const headers = new Headers({'Content-Type':'application/json'})
+//   const options = new RequestOptions({ headers: headers })
+//   let body = {
+    
+//       "block_id": blockids.toString()
+      
+//   }
+//   return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_INSERT_PayMasterReservation',body,options)
+//      .map(this.extractData)
 
+// }
+// Query Room Revenue......................................................................................
+// QueryRoomRevenue():Observable<object[]> {
+//   console.log("sucess is worked")
+//   const headers = new Headers({'Content-Type':'application/json'})
+//   const options = new RequestOptions({ headers: headers })
+//   let body = {
+    
+//       "block_id":this.session.retrieve("rmblid".toString())
+      
+//   }
+//   return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryRoomRevenue',body,options)
+//      .map(this.extractData)
 
+// }
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);

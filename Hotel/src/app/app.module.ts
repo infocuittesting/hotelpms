@@ -62,6 +62,13 @@ import { InquriprocessComponent } from './BusinessBlockModule/inquriprocess/inqu
 
 
 import { BusinessBlockGridCurrentComponent } from './BusinessBlockModule/business-block-grid-current/business-block-grid-current.component';
+import { ReservationsListComponent } from './BusinessBlockModule/reservations-list/reservations-list.component';
+import { GroupOptionsComponent } from './BusinessBlockModule/group-options/group-options.component';
+import { BlockRangeSettingComponent } from './BusinessBlockModule/block-range-setting/block-range-setting.component';
+import { RevenueRateCodeComponent } from './RevenueManagementModule/revenue-rate-code/revenue-rate-code.component';
+import { EditBusinessBlockComponent } from './BusinessBlockModule/edit-business-block/edit-business-block.component';
+import { QueryReservationListComponent } from './query-reservation-list/query-reservation-list.component';
+// import { MomentModule } from 'angular2-moment';
 
 
 
@@ -91,6 +98,12 @@ import { BusinessBlockGridCurrentComponent } from './BusinessBlockModule/busines
    BusinessCreateBlockComponent,
    InquriprocessComponent,
    BusinessBlockGridCurrentComponent,
+   ReservationsListComponent,
+   GroupOptionsComponent,
+   BlockRangeSettingComponent,
+   RevenueRateCodeComponent,
+   EditBusinessBlockComponent,
+   QueryReservationListComponent,
 
    
    

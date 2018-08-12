@@ -40,11 +40,10 @@
         </div> -->
         <div class="form-group" style="width:82%;">
             <label for="name">Status</label>
-          <select class="form-control input-sm" id="sel1" style="width:150px;">
-             <option>1</option>
-             <option>2</option>
-             <option>3</option>
-             <option>4</option>
+          <select class="form-control input-sm" id="sel1" style="width:150px;" [(ngModel)]="status" (ngModelChange)="onSelect(status.Status)">
+             <option *ngFor="let option of roomtype" [ngValue]="option.id"> 
+             {{option.status}}</option>
+            
            </select>
          </div>
     
@@ -60,20 +59,20 @@
         <tr>
           <th>Seq</th>
           <th>Blockid</th>
-          <th> StartDate</th>
-          <th> Nights</th>
-          <th> EndDate</th>
-          <th> RoomsperDay</th>
+          <th>StartDate</th>
+          <th>Nights</th>
+          <th>EndDate</th>
+          <!-- <th> RoomsperDay</th>
           <th> MeetingSpaceSize</th>
-          <th> MeetingSpaceType</th>
-          <th> Attdence</th>
+          <th> MeetingSpaceType</th> -->
+          <!-- <th> Attdence</th> -->
           <th>BlockCode</th>
           <th>BlockStatus</th>
-          <th>Pfid</th>
-          <th>RateCodeId</th>
+          <th>profile</th>
+          <th>RateCode</th>
           <th>BlockName</th>
-          <th>MarketId</th>
-          <th>SourceId</th>
+          <th>Market</th>
+          <th>Source</th>
           <th>Owner</th>
           
         </tr>
@@ -86,43 +85,44 @@
             <td>{{array.start_date}}</td>
             <td>{{array.nights}}</td>
             <td>{{array.end_date}}</td>
-            <td>{{array.rooms_per_day}}</td>
+            <!-- <td>{{array.rooms_per_day}}</td>
             <td>{{array.meeting_space_size}}</td>
-            <td>{{array.meeting_space_type}}</td>
-            <td>{{array.attendess}}</td>
-            <td>{{array.block_code}}</td>
-            <td>{{array.block_status}}</td>
-            <td>{{array.pf_id}}</td>
-            <td>{{array.ratecode_id}}</td>
-            <td>{{array.block_name}}</td>
-            <td>{{array.market_id}}</td>
-            <td>{{array.source_id}}</td>
-            <td>{{array.owner}}</td>
+            <td>{{array.meeting_space_type}}</td> -->
+            <!-- <td>{{array.attendess}}</td> -->
+            <td>{{array.block_code|titlecase }}</td>
+            <td>{{array.status|titlecase }}</td>
+            <td>{{array.pf_id|titlecase }}</td>
+            <td>{{array.rate_description|titlecase }}</td>
+            <td>{{array.block_name|titlecase }}</td>
+            <td>{{array.marketgroup_description|titlecase }}</td>
+            <td>{{array.sourcedescription|titlecase }}</td>
+            <td>{{array.owner|uppercase}}</td>
             
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+<br>
 <div class ="container-fluid">
   <div class="row">
     <div class="col-md-2">
-  <button class="btn btn-primary" style="width:100%">Extract</button>
+  <button class="btn btn-primary" style="width:100%" disabled>Extract</button>
 </div>
 <div class="col-md-2">
-    <button class="btn btn-default" style="width:100%">Events</button>
+    <button class="btn btn-default" style="width:100%" disabled>Events</button>
   </div>
   <div class="col-md-2">
-      <button class="btn btn-light"routerLink="/options"style="width:100%">Options</button>
+      <button class="btn btn-Danger"routerLink="/options"style="width:100%"[disabled]=blockopt>Options</button>
     </div>
   <div class="col-md-2">
-     <button class="btn btn-success"routerLink="/bcreate"style="width:100%">New</button>
+     <button class="btn btn-success"routerLink="/bcreate"style="width:100%"[disabled]=newblockbut>New</button>
   </div>
   <div class="col-md-2">
-   <button class="btn btn-Warning"  data-toggle="modal" data-target="#myModal" style="width:100%">BlockStatus</button>
+   <button class="btn btn-Warning"  routerLink = "/editblock" style="width:100%" [disabled]=blc >Edit</button>
    </div>
  <div class="col-md-2">
-   <button class="btn btn-Danger"style="width:100%">Close</button>
+   <button class="btn btn-Danger"style="width:100%" data-toggle="modal" data-target="#groupoptions" [disabled]=grop>Group Options</button>
  </div>
 </div>
 </div>
@@ -167,4 +167,72 @@
   </div>
 </div>
 
+
+ <!-- GroupOptionsScreen -->
+
+         <!-- // model reservation screen -->
+         <div class="modal fade" id="groupoptions" role="dialog">
+          <div class="modal-dialog model-lg">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">GroupOptions</h4>
+              </div>
+              <div class="modal-body">
+             <div class="row">
+               <!-- <legend>Group Options</legend> -->
+               <div class="col-md-10">
+                 <div class="continer-fluid">
+                  <div class="panel panel-primary" style="width: 122%;">
+                    <div class="panel-body">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <button class="btn btn-primary" routerLink="/rominglist" data-dismiss="modal" style="width:100%;height: 70px;" (click)="retrieveroominglist()">RoomingList</button>
+                           </div>
+                           <div class="col-md-6">
+                              <button class="btn btn-info" routerLink="/reservation" data-dismiss="modal" model-center style="width:100%;height: 70px;">CheckInGroup</button>
+                           </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <button class="btn btn-secondary" data-dismiss="modal" model-center style="width:100%;height: 70px;">RoomAssin</button>
+                           </div>
+                           <div class="col-md-6">
+                              <button class="btn btn-white" data-dismiss="modal" model-center style="width:100%;height: 70px;">RoomStatus</button>
+                           </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <button class="btn btn-primary" model-center style="width:100%;height: 70px;">PrintRegistrationCards</button>
+                           </div>
+                           <div class="col-md-6">
+                              <button class="btn btn-warning" model-center style="width:100%;height: 70px;">NewPostMaster</button>
+                           </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <button class="btn btn-secondary" model-center style="width:100%;height: 70px;">Delete</button>
+                           </div>
+                           <div class="col-md-6">
+                              <button class="btn btn-dark" model-center style="width:100%;height: 70px;">CutKeys</button>
+                           </div>
+                      </div>
+
+                    </div>
+                  </div>
+                 </div>
+               </div>
+             </div>                
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-danger"style="width: 115px;" data-dismiss="modal" >Close <i class="glyphicon glyphicon-ok"></i></button>             
+                  <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">NO<i class="glyphicon glyphicon-remove"></i></button>              -->
+              </div>
+            </div>
+            
+          </div>
+      </div>
+  
 

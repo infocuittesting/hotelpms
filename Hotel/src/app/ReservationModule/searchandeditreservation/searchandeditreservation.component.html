@@ -162,14 +162,14 @@
           (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
             <td>{{i+1}}</td> 
             <td> {{searched.res_id}}</td>
-            <td> {{searched.pf_firstname}}</td>
-            <td> {{searched.res_room}} </td>
+            <td> {{searched.pf_firstname|titlecase}}</td>
+            <td> {{searched.res_room }} </td>
             <td> {{searched.res_extension}} </td>
-            <td> {{searched.res_room_type}} </td>
+            <td> {{searched.res_room_type |titlecase}} </td>
             <td> {{searched.res_arrival}} </td> 
             <td> {{searched.res_depature}} </td>
             <td> {{searched.res_nights}} </td>
-            <td> {{searched.res_guest_status}} </td>
+            <td> {{searched.res_guest_status|titlecase}} </td>
             <td></td>     
             <td> {{searched.res_adults}}</td> 
             <td> {{searched.res_child}}</td>     
@@ -177,22 +177,22 @@
             <td> {{searched.res_rate}}</td>     
             <td> {{searched.res_block_code}}</td> 
             <td> {{searched.res_packages}}</td>     
-            <td> {{searched.res_rtc}}</td>     
-            <td> {{searched.res_currency}}</td>     
+            <td> {{searched.res_rtc |titlecase}}</td>     
+            <td> {{searched.res_currency |titlecase}}</td>     
             <td> {{searched.res_eta}}</td>
-            <td> {{searched.res_res_type}}</td>     
-            <td> {{searched.res_market}}</td> 
-            <td> {{searched.res_source}}</td>     
-            <td> {{searched.res_origin}}</td>     
-            <td> {{searched.res_payment}}</td>     
+            <td> {{searched.res_res_type |titlecase}}</td>     
+            <td> {{searched.res_market |titlecase}}</td> 
+            <td> {{searched.res_source |titlecase}}</td>     
+            <td> {{searched.res_origin |titlecase}}</td>     
+            <td> {{searched.res_payment |titlecase}}</td>     
             <td> {{searched.res_creditcard_number}}</td>     
             <td> {{searched.res_exp_date}}</td>     
             <td> {{searched.res_guest_balance}}</td>     
             <td> {{searched.res_disc_amount}}</td>     
             <td> {{searched.res_disc_perc}}</td>
-            <td> {{searched.res_disc_reason}}</td>     
-            <td> {{searched.res_specials}}</td>     
-            <td> {{searched.res_comments}}</td>     
+            <td> {{searched.res_disc_reason |titlecase}}</td>     
+            <td> {{searched.res_specials |titlecase}}</td>     
+            <td> {{searched.res_comments |titlecase}}</td>     
             <td> {{searched.res_item_inv}}</td>
           </tr>
                                                                                                                             
