@@ -26,6 +26,8 @@ public inventory=[];
 public ratecode=[];
 public restype=[];
 public blocktype=[];
+
+
 public block:any={};
 public createblock:any;
 public blocksuccess: string;
@@ -36,10 +38,10 @@ public paymasters:any;
 public querypay:any;
 public queryroomrevenue;
 public payblockid;
-
+public navtag:any;
 // ................................................
   ngOnInit() {
-
+    this.session.store("navigate","Block");
     // block status sropdown.....................
     this.businessblock.blockstatusdropdown()
     .subscribe((resp: any) => {
@@ -147,38 +149,39 @@ this.businessblock.BlockTypedropdown()
     this.block_name = resp.Blockname;
      console.log(this.createblock);
      this.session.store("blids",this.blockids.toString());
+     if(this.createblock=="RIS"){
+        this.blocksuccess="Block Created Successfully"+" "+this.blockids
+        console.log("outputblock",this.blocksuccess)
+     }
+     else{
+         this.blocksuccess="something"
+     }
  });
- if(this.createblock=="RIS"){
-    this.blocksuccess="Block Created Successfully"
-    console.log("outputblock",this.blocksuccess)
- }
- else{
-     this.blocksuccess="something"
- }
+ 
   }
 // create paymaster for resv button.............................................
-  CreatePaymaster(){
-      console.log("going to reservation button",this.blockids,typeof(this.blockids));
-    // this.payblockid = this.blockids.toString();
-    // console.log("stringvalue",typeof(this.payblockid))
-  this.businessblock.PaymasterReservation(this.blockids)
-  .subscribe((resp: any) => {
-      this.paymasters=resp.ReturnCode;
-       console.log("paymasertresponse",this.paymasters);
-   });
-}
+//   CreatePaymaster(){
+//       console.log("going to reservation button",this.blockids,typeof(this.blockids));
+//     // this.payblockid = this.blockids.toString();
+//     // console.log("stringvalue",typeof(this.payblockid))
+//   this.businessblock.PaymasterReservation(this.blockids)
+//   .subscribe((resp: any) => {
+//       this.paymasters=resp.ReturnCode;
+//        console.log("paymasertresponse",this.paymasters);
+//    });
+// }
 
 // Caluculate room revenue button......................................
 
-RoomrevenueButton(){
-    console.log("going to calculate room revenue")
-  this.businessblock.QueryRoomRevenue()
-  .subscribe((resp: any) => {
-      this.queryroomrevenue=resp.ReturnValue;
-       console.log(this.queryroomrevenue);
-   });
+// RoomrevenueButton(){
+//     console.log("going to calculate room revenue")
+//   this.businessblock.QueryRoomRevenue()
+//   .subscribe((resp: any) => {
+//       this.queryroomrevenue=resp.ReturnValue;
+//        console.log(this.queryroomrevenue);
+//    });
 
-}
+// }
 // ReservationsListComponent(qrypay)
 // {
 //     console.log("Query going to reservation button")

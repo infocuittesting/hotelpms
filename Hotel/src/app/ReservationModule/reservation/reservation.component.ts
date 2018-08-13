@@ -18,6 +18,7 @@ import * as moment from 'moment';
 })
 export class ReservationComponent implements OnInit {
 
+  // public navtag:any={};
   public PF_Firstname;
   public Pf_lastname; 
   public Pf_language;
@@ -134,8 +135,15 @@ else{
       });  
      }
 
+    //  loadProfile(nav){
+    //   console.log('*******************************'+nav+'*********************************');
+    //   this.session.store("navigate",nav);
+    //   this.route.navigate(['psearch/']);
+    //  }
 
      ngOnInit() {
+      //  this.navtag.navigate ="Rev";
+       this.session.store("navigate","Rev");
        this.PF_Firstname= this.session.retrieve("pf_fname");
        this.Pf_lastname = this.session.retrieve("pf_lastname");
        this.Pf_language = this.session.retrieve("pf_language");
@@ -196,7 +204,7 @@ else{
         clearInterval(this.now);
       }
 //Clearing session
-this.session.clear()
+// this.session.clear();
     }
 }
 

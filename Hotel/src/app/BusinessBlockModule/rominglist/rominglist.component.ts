@@ -40,6 +40,7 @@ public blockid;
 public savedetails1=[];
 public roomlistselect = [];
 public totalcount = [];
+public resgroup;
 addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid)
 {
   if( roomtype!=null)
@@ -100,7 +101,13 @@ CreateGroupReservation(){
   .subscribe((resp: any) => {
           this.groupresv=resp.ReturnCode;
            console.log("success reservation",this.groupresv);
-          
+           if(this.groupresv=="RIS")
+           {
+              this.resgroup="Reservation created successfully for group"
+           }
+          else{
+            this.resgroup="wrong"
+          }
        });
 }
 

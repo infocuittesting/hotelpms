@@ -20,24 +20,7 @@ export class RoomconditionService {
        //.catch(this.handleErrorObservable);
   }
 
-  // insertRoomcondition(input:any):  Observable<object[]> {
-  //   // console.log('kannu',input)     
-  //   const headers = new Headers({'Content-Type':'application/json'})
-  //   const options = new RequestOptions({ headers:headers,});
-  
-  //   let body=
-  //         {
-  //           "rm_room":this.session.retrieve("id"),
-  //          "rm_condition":input.rm_condition,
-  //         }
-  
-  //  return this.http.post('http://hotel360.herokuapp.com/Hotel_Rm_Post_Insert_Updateroomcondition',body,options)
-  //      .map(this.extractData)
-  //      //.catch(this.handleErrorObservable);
-  // }
-  
-
-  updateRoomcondition(input:any):  Observable<object[]> {
+  insertRoomcondition(input:any):  Observable<object[]> {
     // console.log('kannu',input)     
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers:headers,});
@@ -48,7 +31,24 @@ export class RoomconditionService {
            "rm_condition":input.rm_condition,
           }
   
-   return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Insert_Updateroomcondition',body,options)
+   return this.http.post('http://hotel360.herokuapp.com/Hotel_Rm_Post_Insert_Updateroomcondition',body,options)
+       .map(this.extractData)
+       //.catch(this.handleErrorObservable);
+  }
+  
+
+  updateRoomcondition(input:any):  Observable<object[]> {
+    // console.log('kannu',input)     
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers:headers,});
+  
+    let body=
+          {
+            "rm_room":this.session.retrieve("id"),
+           "rm_condition":input,
+          }
+  
+   return this.http.post('https://hotel360.herokuapp.com/hotel_rm_post_update_updateroomcondition',body,options)
        .map(this.extractData)
        //.catch(this.handleErrorObservable);
   }

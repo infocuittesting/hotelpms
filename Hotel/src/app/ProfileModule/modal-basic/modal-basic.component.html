@@ -553,7 +553,7 @@
       <div class="col-md-5"><b>Creditcard Number</b></div>
       <div class="col-md-6">    
        <div class="input-group"  [class.has-error]="creditcards.touched && creditcards.invalid">
-        <input name="Creditcardnumber" type="text" class="form-control" minlength="16" maxlength="16" pattern="^(0|[1-9][0-9]*)$" [(ngModel)]="mbc.PF_Creditcard_No" style="width:115%;border-radius:4px;" #creditcards="ngModel" required>
+        <input name="Creditcardnumber" type="text" class="form-control" minlength="16" maxlength="16" pattern="^(0|[0-9][0-9]*)$" [(ngModel)]="mbc.PF_Creditcard_No" style="width:115%;border-radius:4px;" #creditcards="ngModel" required>
         <div *ngIf="creditcards.touched && !creditcards.valid && creditcards.errors?.required  && creditcards.errors.pattern && creditcards.errors.length" ngClass="{ 'has-error' : !creditcards.valid && submitAttempt }"></div>             
       </div>
      </div> 
@@ -568,7 +568,6 @@
           <option *ngFor="let creditcardnumber of creditcard" [ngValue] = "creditcardnumber.creditcard_description" >{{creditcardnumber.creditcard_description}} </option>
             </select> 
         <div *ngIf="creditcardno.touched && !creditcardno.valid && creditcardno.errors?.required" ngClass="{ 'has-error' : !creditcard.valid && submitAttempt }"></div>             
-
      </div>
     </div>
     <!-- </div> -->
@@ -1726,7 +1725,7 @@
       <div class="col-md-5"><b>Creditcard Number</b></div>
       <div class="col-md-6">    
        <div class="input-group"  [class.has-error]="creditcards.touched && creditcards.invalid">
-        <input type="text" name="creditcardnumber" class="form-control"  minlength="16" maxlength="16" pattern="^(0|[1-9][0-9]*)$" [(ngModel)]="cu1.PF_Creditcard_No" style="border-radius:4px;" #creditcards="ngModel" required>
+        <input type="text" name="creditcardnumber" class="form-control"  minlength="16" maxlength="16" pattern="^(0|[0-9][0-9]*)$" [(ngModel)]="cu1.PF_Creditcard_No" style="border-radius:4px;" #creditcards="ngModel" required>
         <div *ngIf="creditcards.touched && !creditcards.valid && creditcards.errors?.required  && creditcards.errors.pattern && creditcards.errors.length" ngClass="{ 'has-error' : !creditcards.validcreditcards && submitAttempt }"></div>             
       </div>
       </div>
