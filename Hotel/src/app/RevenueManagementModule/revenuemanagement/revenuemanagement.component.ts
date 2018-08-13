@@ -339,6 +339,7 @@ public roomidd=[];
  this.RevenuemanagementService.NegotiatedRate()
  .subscribe((resp: any) => {
   this.ncode=resp.Return;
+  this.negotiatecode=resp.Return;
 });
 
 this.RevenuemanagementService.getallvalues()
@@ -351,19 +352,10 @@ this.RevenuemanagementService.getallvalues()
    
 }
   
-  onSelect(val){
-    // val = val.toLowerCase();
-    // val = val.toLowerCase();
-    console.log(val);
-    if(val=="0")
-    {
-      this.ncode=this.negotiatecode;
-    }
-    else{
-       this.ncode = this.negotiatecode.filter(x => x.ratecode_id == val)
-        }
-    }
-
+onSelect(val){
+  console.log(val);
+  this.ncode = this.negotiatecode.filter(x => x.rate_code == val)
+}
 
 ratecodeid=[];
 selectindex=null;

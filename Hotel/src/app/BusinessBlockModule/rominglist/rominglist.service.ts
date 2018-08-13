@@ -35,6 +35,20 @@ GroupReservation(savedetails1):Observable<object[]> {
   
   } 
 
+  QueryRoomtypeGrid():Observable<object[]> {
+    console.log("query hhhhh")
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+    let body = {
+      
+        "block_id":this.session.retrieve('blockid')
+        
+    }
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryGrid',body,options)
+       .map(this.extractData)
+  
+  }
+
 
 
   private extractData(res: Response) {

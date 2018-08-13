@@ -100,8 +100,12 @@ import { EditRevenueManagementComponent } from './RevenueManagementModule/edit-r
    ReservationsListComponent,
    GroupOptionsComponent,
    BlockRangeSettingComponent,
+
+   
+
    RevenueRateCodeComponent,
    EditRevenueManagementComponent,
+
 
    
    
