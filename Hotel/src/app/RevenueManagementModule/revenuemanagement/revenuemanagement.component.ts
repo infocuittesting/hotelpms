@@ -344,6 +344,8 @@ public roomidd=[];
  this.RevenuemanagementService.NegotiatedRate()
  .subscribe((resp: any) => {
   this.ncode=resp.Return;
+  this.negotiatecode=resp.Return;
+
 });
 
 this.RevenuemanagementService.getallvalues()
@@ -357,16 +359,8 @@ this.RevenuemanagementService.getallvalues()
 }
   
   onSelect(val){
-    // val = val.toLowerCase();
-    // val = val.toLowerCase();
-    console.log(val);
-    if(val=="0")
-    {
-      this.ncode=this.negotiatecode;
-    }
-    else{
-       this.ncode = this.negotiatecode.filter(x => x.ratecode_id == val)
-        }
+       console.log(val);
+       this.ncode = this.negotiatecode.filter(x => x.rate_code == val)
     }
 
 
@@ -415,6 +409,7 @@ negodelalert:any;
       this.RevenuemanagementService.NegotiatedRate()
       .subscribe((resp: any) => {
       this.ncode=resp.Return;
+      console.log('*********',JSON.stringify(this.negotiatecode));
       });
      });      
 

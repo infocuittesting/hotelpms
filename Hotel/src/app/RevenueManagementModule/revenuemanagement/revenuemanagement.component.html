@@ -42,8 +42,8 @@
                         <div class="row">
                             <div class="col-md-4">
                              <b>Rate code</b>
-                              <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" [value]="ratecode">                   
-                             </div>
+                              <input type="text" name="ratecodeid" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" [value]="ratecode">                   
+                            </div>
                              <div class="col-md-4">
                                 <b>Rate Class</b>
                                 <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" disabled>                   
@@ -59,13 +59,16 @@
 
                         <div class="row" >
                             <div class="col-md-4">
+                            <div class="form-group" [class.has-error]="ratecategory.touched && ratecategory.invalid">                                
                                 <b>Rate category</b>
-                                <select name="ratecategoryid" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.ratecategoryid">
+                                <select name="ratecategoryid" id="ratecategoryid" ngModel  #ratecategory="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.ratecategoryid" required>
                                     <option value="" hidden></option>
                                     <option  *ngFor="let roomtypelist of ratecat" [ngValue]="roomtypelist.ratecategory_id" >{{roomtypelist.rate_category}}</option>    
-                                </select>  
-                            </div>
+                                </select>
+                              <div *ngIf="ratecategory.touched && !ratecategory.valid && ratecategory.errors?.required " ngClass="{ 'has-error' : !ratecategory.valid && submitAttempt }">                                   
+                            </div></div></div>
                             <div class="col-md-4">
+
                                 <b>Begin Sell Date</b>          
                                 <input name="beginselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="rateheader.beginselldate">
                             </div>
@@ -80,21 +83,25 @@
 
   
                           <div class="row" >
-                                <div class="col-md-4">   
+                                <div class="col-md-4">
+                                        <div class="form-group" [class.has-error]="mar.touched && mar.invalid">                                                                       
                                         <b>Market</b>
-                                        <select name="mar" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.market_id">
+                                        <select name="mar" id="mar" ngModel  #mar="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.market_id" required>
                                             <option value="" hidden></option>
                                             <option  *ngFor="let list of shop" [ngValue] = "list.market_id">{{list.market_code}}</option>  
-                                        </select>  
-                                    </div>                
+                                        </select>
+                                        <div *ngIf="mar.touched && !mar.valid && mar.errors?.required " ngClass="{ 'has-error' : !mar.valid && submitAttempt }">                                                                             
+                                    </div></div></div>                
                                             
-                                    <div class="col-md-4">   
+                                    <div class="col-md-4">
+                                        <div class="form-group" [class.has-error]="sour1.touched && sour1.invalid">                                                                                                                  
                                       <b>Source</b>
-                                      <select name="sour1" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.source_id">
+                                      <select name="sour1" id="sour1" ngModel  #sour1="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.source_id" required>
                                         <option value="" hidden></option>  
                                         <option  *ngFor="let sourlist of src" [ngValue] = "sourlist.source_id">{{sourlist.source_code}}</option> 
                                       </select>
-                                     </div>
+                                      <div *ngIf="sour1.touched && !sour1.valid && sour1.errors?.required " ngClass="{ 'has-error' : !sour1.valid && submitAttempt }">                                                                                                                   
+                                     </div></div></div>
                             <div class="col-md-4">
                            <b>Display Sequence</b>
                            <select name="sour2" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.Sequence">
@@ -142,11 +149,13 @@
           </select>
         </div>
         <div class="col-md-6">
+                <div class="form-group" [class.has-error]="currencycodeid.touched && currencycodeid.invalid">                                                                                                                              
             <b style="margin-left:10px">CurrencyCode</b>
-            <select name="currencycodeid" class="form-control input-sm"  style="width:70%;height: 27px;;margin-left:10px;"  [(ngModel)]="rateheader.currencycodeid">
+            <select name="currencycodeid" id="currencycodeid" ngModel  #currencycodeid="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;;margin-left:10px;"  [(ngModel)]="rateheader.currencycodeid" required>
                     <option  *ngFor="let moneylist of money" [ngValue] = "moneylist.transaction_currency_id">{{moneylist.currency}}</option>
               </select>
-          </div>
+              <div *ngIf="currencycodeid.touched && !currencycodeid.valid && currencycodeid.errors?.required " ngClass="{ 'has-error' : !currencycodeid.valid && submitAttempt }">                                                                                         
+          </div></div></div>
       </div>
       <div class="row">
             <div class="col-md-6">
@@ -250,32 +259,49 @@
         <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
       <legend style="margin-left:5px" ><b>Sell Controls</b></legend>
       <div class="row" style="margin-top:-10px">
+          <div class="col-md-4" >
+              <div class="form-group" [class.has-error]="mini.touched && mini.invalid">
+                <b style="margin-left:10px">MinStayThrough</b>
+                    <input type="text" id="mini" class="form-control" pattern="^[0-9]+$" ngModel name="mini" #mini="ngModel" style="width:70%;height: 27px;margin-left:10px" [(ngModel)]="rateheader.Minimum_stay_through" required>                
+                    <div *ngIf="mini.touched && !mini.valid && mini.errors?.required " ngClass="{ 'has-error' : !mini.valid && submitAttempt }">
+                       
+                </div></div></div>
           <div class="col-md-4">
-                <b style="margin-left:10px">MinStayThrough</b> 
-                    <input type="text" class="form-control" name="mini" style="width:70%;height: 27px;margin-left:10px" [(ngModel)]="rateheader.Minimum_stay_through">                
-          </div>
-          <div class="col-md-4">
+                <div class="form-group" [class.has-error]="max.touched && max.invalid">
                 <b>MaxStayThrough</b>
-                <input type="text"  class="form-control" name="max" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Maximum_stay_through">                           
-            </div>
+                <input type="text" id="max"  class="form-control" pattern="^[0-9]+$" ngModel name="max" #max="ngModel" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Maximum_stay_through" required>
+                <div *ngIf="max.touched && !max.valid && max.errors?.required " ngClass="{ 'has-error' : !max.valid && submitAttempt }">
+                                           
+            </div></div></div>
             <div class="col-md-4">
+                    <div class="form-group" [class.has-error]="Advance.touched && Advance.invalid">
                     <b>MinAdvanceBooking</b>
-                    <input type="text"  class="form-control" name="Advance" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Minimum_Advance_Booking">                        
-            </div>
+                    <input type="text" id="Advance"  class="form-control" pattern="^[0-9]+$" ngModel name="Advance" #Advance="ngModel" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Minimum_Advance_Booking" required>                        
+                     <div *ngIf="Advance.touched && !Advance.valid && Advance.errors?.required " ngClass="{ 'has-error' : !Advance.valid && submitAttempt }">
+                    
+                </div></div></div>
       </div>
       <div class="row">
             <div class="col-md-4">
+                <div class="form-group" [class.has-error]="Occupancy.touched && Occupancy.invalid">                
                 <b style="margin-left:10px">MinOccupancy</b>
-                <input type="text"  class="form-control" name="Occupancy" style="width:70%;height: 27px;margin-left:10px;margin-bottom:3px" [(ngModel)]="rateheader.Minimum_Occupancy">
-            </div>
+                <input type="text" id="Advance" class="form-control" pattern="^[0-9]+$" ngModel name="Occupancy" #Occupancy="ngModel" style="width:70%;height: 27px;margin-left:10px;margin-bottom:3px" [(ngModel)]="rateheader.Minimum_Occupancy" required>
+                <div *ngIf="Occupancy.touched && !Occupancy.valid && Occupancy.errors?.required " ngClass="{ 'has-error' : !Occupancy.valid && submitAttempt }">
+            
+            </div></div></div>
             <div class="col-md-4">
+                <div class="form-group" [class.has-error]="Maximum_Advance.touched && Maximum_Advance.invalid">                                
                 <b>MaxiAdvanceBooking</b>
-                <input type="text"  class="form-control" name="Maximum_Advance" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Maximum_Advance_Booking">                               
-            </div>
+                <input type="text" id="Maximum_Advance" class="form-control" pattern="^[0-9]+$" ngModel name="Maximum_Advance" #Maximum_Advance="ngModel" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Maximum_Advance_Booking" required>                               
+                <div *ngIf="Maximum_Advance.touched && !Maximum_Advance.valid && Maximum_Advance.errors?.required " ngClass="{ 'has-error' : !Maximum_Advance.valid && submitAttempt }">            
+            </div></div></div>
             <div class="col-md-4">
+                <div class="form-group" [class.has-error]="Maximum_Occupancy.touched && Maximum_Occupancy.invalid">                                                
                 <b>MaxiOccupancy</b>
-                <input type="text"  class="form-control" name="Maximum_Occupancy" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Maximum_Occupancy">                               
-            </div>
+                <input type="text" id="Maximum_Occupancy" class="form-control" pattern="^[0-9]+$" ngModel name="Maximum_Occupancy" #Maximum_Occupancy="ngModel" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Maximum_Occupancy" required>                               
+                <div *ngIf="Maximum_Occupancy.touched && !Maximum_Occupancy.valid && Maximum_Occupancy.errors?.required " ngClass="{ 'has-error' : !Maximum_Occupancy.valid && submitAttempt }">            
+           
+            </div></div></div>
             
        </div>
        </div>
@@ -364,12 +390,13 @@
                       <div class="row" style="margin-top:-25px">
                         <div class="col-md-3">
                             <b>SeasonCode</b>
-                            <div class="form-group">            
-                                <select  name="SeasonCode" class="form-control input-sm" [(ngModel)]="seasoncod"  style="width:95px;height:27px;" >
-                                    <option *ngFor="let type of arryses" [ngValue]="type.season_code_id">{{type.season_code}}</option>   
-                                    
+                            <div class="form-group">
+                            <div class="form-group" [class.has-error]="SeasonCode.touched && SeasonCode.invalid">                                                                                        
+                                <select  name="SeasonCode" id="SeasonCode" class="form-control" ngModel  #SeasonCode="ngModel" class="form-control input-sm" [(ngModel)]="seasoncod"  style="width:95px;height:27px;" required>
+                                    <option *ngFor="let type of arryses" [ngValue]="type.season_code_id">{{type.season_code}}</option>                                      
                                 </select>
-                            </div>
+                                 <div *ngIf="SeasonCode.touched && !SeasonCode.valid && SeasonCode.errors?.required " ngClass="{ 'has-error' : !SeasonCode.valid && submitAttempt }">                                    
+                            </div></div></div>
                             </div>
                             <div class="col-md-1"></div>
                           <div class="col-md-4">
@@ -439,25 +466,31 @@
                         <div class="col-md-3">
                             <b>1 Adults</b>
                         
-                            <div class="form-group">            
-                                <input type="text" name="onea" class="form-control input-sm" style="height: 4%" [(ngModel)]="onead">
-                            </div>
+                            <div class="form-group">
+                            <div class="form-group" [class.has-error]="onea.touched && onea.invalid">                                                                                                                                    
+                                <input type="text" name="onea" id="onea" pattern="^[0-9]+$" class="form-control input-sm" ngModel  #onea="ngModel" style="height: 4%" [(ngModel)]="onead" required>
+                                <div *ngIf="onea.touched && !onea.valid && onea.errors?.required " ngClass="{ 'has-error' : !onea.valid && submitAttempt }">                                                                    
+                            </div></div></div>
                           </div>
                           <div class="col-md-3">
                                   <b>2 Adults</b>                                   
-                                  <div class="form-group">            
-                                      <input type="text" name="twoa" class="form-control input-sm" style="height: 4%" [(ngModel)]="twoad">
-                                  </div>                           
+                                  <div class="form-group">
+                                        <div class="form-group" [class.has-error]="twoa.touched && twoa.invalid">                                                                                                                                                                
+                                      <input type="text" name="twoa" id="twoa" pattern="^[0-9]+$" class="form-control input-sm" ngModel  #twoa="ngModel" style="height: 4%" [(ngModel)]="twoad" required>
+                                      <div *ngIf="twoa.touched && !twoa.valid && twoa.errors?.required " ngClass="{ 'has-error' : !twoa.valid && submitAttempt }">                                                                                                
+                                  </div></div></div>                          
                           </div>
                           <div class="col-md-3">
                                   <b>3 Adults</b>
-                                  <div class="form-group">            
-                                      <input type="text" name="twoa" class="form-control input-sm" style="height: 4%" [(ngModel)]="threead">
-                                  </div>
+                                  <div class="form-group">
+                                        <div class="form-group" [class.has-error]="twoaa.touched && twoaa.invalid">                                                                                                                                                                                                            
+                                      <input type="text" name="twoaa" id="twoaa" pattern="^[0-9]+$" ngModel  #twoaa="ngModel" class="form-control input-sm" style="height: 4%" [(ngModel)]="threead" required>
+                                      <div *ngIf="twoaa.touched && !twoaa.valid && twoaa.errors?.required " ngClass="{ 'has-error' : !twoaa.valid && submitAttempt }">                                                                                                                                      
+                                  </div></div></div>
                           </div> 
                           <div class="col-md-3">
                                   <b>4 Adults</b>
-                                  <div class="form-group">            
+                                  <div class="form-group">
                                       <input type="text" name="threea" class="form-control input-sm" style="height: 4%" [(ngModel)]="fourad">
                                   </div>
                           </div>
@@ -631,9 +664,9 @@
                                                   </div>  
                                                   <div class="col-sm-3">
                                                       <div class="form-group">            
-                                                            <select name="ratecodedropdown" class="form-control input-sm" style="width:100%;" [(ngModel)]="ratecode" (change)="onSelect(ratecode)">
+                                                            <select name="ratecodedropdown" class="form-control input-sm" style="width:100%;" [(ngModel)]="ratecodee" (ngModelChange)="onSelect(ratecodee)">
                                                                 <option [ngValue]="0" >select</option>    
-                                                                <option  *ngFor="let ratecodelist of price" [ngValue] = "ratecodelist.ratecode_id">{{ratecodelist.rate_code}}</option>                                                          
+                                                                <option  *ngFor="let ratecodelist of price" [ngValue] = "ratecodelist.rate_code">{{ratecodelist.rate_code}}</option>                                                          
                                                             </select>
                                                       </div>
                                                   </div>
@@ -677,9 +710,9 @@
                             </thead>
                             <tbody style="font-size: 12px">                                 
                               <tr  *ngFor="let item of ncode; let i=index" (click)="selectMembers(item,i)" [ngClass]="{'backGroundColor':i==selectindex}">
-                                  <td>{{item.rate_code}}</td>
-                                  <td>{{item.negotiate_begin_sell_date}}</td>
-                                  <td>{{item.negotiate_end_sell_date}}</td>     
+                                  <td>{{item?.rate_code}}</td>
+                                  <td>{{item?.negotiate_begin_sell_date}}</td>
+                                  <td>{{item?.negotiate_end_sell_date}}</td>     
                               </tr> 
                               <!-- <tr>
                                   <td>MICROS</td>

@@ -12,12 +12,25 @@ import{ RevenueRateCodeService } from "./revenue-rate-code.service";
 })
 export class RevenueRateCodeComponent implements OnInit {
 
-  constructor(private RevenueRateCodeService:RevenueRateCodeService,private route:Router,private fb: FormBuilder) { }
+  constructor(private RevenueRateCodeService:RevenueRateCodeService,private route:Router,private fb: FormBuilder) {
+    this.mainratecode = this.someData;
+   }
 
   public mainratecode=[];
   public ratcode=[];
   public ratecategory=[];
+  public someData = [];
 
+
+
+  onSel(val){
+    console.log(val);
+    this.mainratecode = this.someData.filter(x => x.rate_code == val)
+  }
+  onSelcat(val){
+    console.log(val);
+    this.mainratecode = this.someData.filter(x => x.rate_category == val)
+  }
 
   ngOnInit() {
     this.RevenueRateCodeService.selratecode()
@@ -25,6 +38,10 @@ export class RevenueRateCodeComponent implements OnInit {
      this.mainratecode=resp.Rate_header;
      console.log("maintable",this.mainratecode)
    });
+   this.RevenueRateCodeService.selratecode()
+   .subscribe((resp: any) => {
+    this.someData=resp.Rate_header;
+  });
 
    this.RevenueRateCodeService.ratecodedropdown()
     .subscribe((resp: any) => {

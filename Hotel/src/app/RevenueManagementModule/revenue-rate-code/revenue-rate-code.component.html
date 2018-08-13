@@ -11,7 +11,7 @@
                                   <b>Ratecode</b>
                                   </div>
                                   <div class="col-md-4">
-                                  <select name="rtc" class="form-control input-sm"  style="width:120px;height: 26px;" >
+                                  <select name="rtc" class="form-control input-sm"  [(ngModel)]="rateselfil" (ngModelChange)="onSel(rateselfil)" style="width:120px;height: 26px;" >
   -                                  <option value="" hidden></option>
   -                                       <option *ngFor="let ratecdlist of ratcode" [ngValue] = "ratecdlist.rate_code">{{ratecdlist.rate_code}}</option>   
                                   </select>
@@ -24,7 +24,7 @@
                                 <b>SellDate</b>
                               </div>
                               <div class="col-md-4">
-                                  <input name="beginselldate" type="date" class="form-control input-sm" style="width:120px;height: 27px;" >                                  
+                                  <input name="beginselldate" type="date" [(ngModel)]="seldate" class="form-control input-sm" style="width:120px;height: 27px;" >                                  
                               </div>
                             </div>
                             <div class="col-md-3">
@@ -32,9 +32,9 @@
                                   <b>RateCategory</b>
                                 </div>
                                 <div class="col-md-4" style="margin-left: 25px">
-                                  <select class="form-control input-sm"  style="width:120px;height: 26px;">
+                                  <select name="mtc" class="form-control input-sm" [(ngModel)]="ratecatfil" (ngModelChange)="onSelcat(ratecatfil)"  style="width:120px;height: 26px;">
                                     <option value="" hidden></option>
-                                    <option  *ngFor="let roomtypelist of ratecategory" [ngValue]="roomtypelist.ratecategory_id" >{{roomtypelist.rate_category}}</option>    
+                                    <option  *ngFor="let roomtypelist of ratecategory" [ngValue]="roomtypelist.rate_category" >{{roomtypelist.rate_category}}</option>    
                                     </select>
                                 </div>
                               </div>
@@ -63,12 +63,12 @@
                   </tr>
                 </thead>
                 <tbody style="font-size: 12px">                                 
-                    <tr *ngFor="let mainrate of mainratecode; let i=index" (click)="selectMembers(mainrate,i)"  [ngClass]="{'backGroundColor':i==selectindex}">
-                        <td>{{mainrate.rate_code}}</td>     
-                        <td>{{mainrate.rate_description}} </td>
-                        <td>{{mainrate.rate_category}}</td>
-                        <td>{{mainrate.begin_sell_date}}</td>
-                        <td>{{mainrate.end_sell_date}}</td>
+                    <tr *ngFor="let mainrate of mainratecode | filterdata: seldate :'begin_sell_date'; let i=index "  (click)="selectMembers(mainrate,i)"  [ngClass]="{'backGroundColor':i==selectindex}">
+                        <td>{{mainrate?.rate_code}}</td>     
+                        <td>{{mainrate?.rate_description}} </td>
+                        <td>{{mainrate?.rate_category}}</td>
+                        <td>{{mainrate?.begin_sell_date}}</td>
+                        <td>{{mainrate?.end_sell_date}}</td>
                     </tr>
                 </tbody>
               </table>
