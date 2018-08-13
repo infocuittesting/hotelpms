@@ -37,8 +37,9 @@
    <!-- //table for grid -->
     
       <div class="row">
-        <div class="container">
-            <table class="table table-bordered table-hover" style="margin-left: 125px;">
+        <div class="continer">
+          <!-- <div class="table-responsive" style="width:100%;"> -->
+            <table class="table table-bordered table-hover" style="margin-left: 320px;">
               <thead style="background-color: #0077B5;color:white;">
                 <tr>
                   <th>Date</th>
@@ -49,30 +50,103 @@
                   <th>Sjsn</th>
                   <th>Sdbn</th>
                   <th>Sjss</th>
-                  <th>Comp</th>
-                  <th>StartDate</th>
+                  <!-- <th>Comp</th> -->
                 </tr>
               </thead>
                 <tbody>
-                    <tr *ngFor="let item of saveshow; let i=index"  >
-                     
-                      <td >{{item.roomtype_id}}</td>
-                      <td >{{item.total_rooms}}</td>
-                      <td >{{item.sunday}}</td>           
-                      <td>{{item.monday}}</td>
-                      <td>{{item.tuesday}}</td>
-                      <td>{{item.wednesday}}</td>
-                      <td>{{item.thursday }}</td>
-                      <td>{{item.friday }}</td>
-                      <td>{{item.saturday }}</td>
-                      <td>{{item.grid_startdate }}</td>
-        
-                      
+                  <tr *ngFor="let grid of gridvalues;">
+                    <td>{{grid.grid_type_desc}}</td>
+                    <td>{{grid.kngn}}</td>
+                    <td>{{grid.kngs}}</td>
+                    <td>{{grid.ksbn}}</td>
+                    <td>{{grid.ksbs}}</td>
+                    <td>{{grid.sjsn}}</td>
+                    <td>{{grid.sdbn}}</td>
+                    <td>{{grid.sjss}}</td>
+                    <!-- <td>10</td> -->
+                  </tr>
+                  <!-- <tr>
+                      <td>Original</td>
+                      <td>15</td>
+                      <td>10</td>
+                      <td>10</td>
+                      <td>25</td>
+                      <td>10</td>
+                      <td>10</td>
+                      <td>10</td>
+                      <td>10</td>
                     </tr>
+                    <tr>
+                        <td>Current</td>
+                        <td>15</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>25</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>10</td>
+                      </tr>
+                      <tr>
+                          <td>Pickup</td>
+                          <td>15</td>
+                          <td>10</td>
+                          <td>10</td>
+                          <td>25</td>
+                          <td>10</td>
+                          <td>10</td>
+                          <td>10</td>
+                          <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>03-08-2018 Sun</td>
+                            
+                            <td>15</td>
+                            <td>10</td>
+                            <td>15</td>
+                            <td>10</td>
+                            <td>25</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>Original</td>
+                            <td>15</td>
+                            <td>10</td>
+                            <td>15</td>
+                            <td>10</td>
+                            <td>25</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>Current</td>
+                            <td>15</td>
+                            <td>10</td>
+                            <td>15</td>
+                            <td>10</td>
+                            <td>25</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>Pickup</td>
+                            <td>15</td>
+                            <td>10</td>
+                            <td>15</td>
+                            <td>10</td>
+                            <td>25</td>
+                            <td>15</td>
+                            <td>15</td>
+                            <td>15</td>
+                        </tr> -->
                 </tbody>
               
             </table>
-          </div>
+          <!-- </div> -->
         </div>
       <div class="row">
         <div class="continer-fluid">
@@ -111,14 +185,14 @@
                                       <div class="row">
                                     <div class="col-md-4"> 
                                       <div class="form-group">
-                                      <label for="name">Form</label>
-                                      <input type="date" class="form-control input-sm" name="Form" [(ngModel)]="start">
+                                      <label for="name">Start Date</label>
+                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="start">
                                     </div>
                                   </div>
                                   <div class="col-md-4"> 
                                       <div class="form-group">
-                                      <label for="name">To</label>
-                                      <input type="date" class="form-control input-sm" name="Form" [(ngModel)]="end">
+                                      <label for="name">End Date</label>
+                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="end">
                                     </div>
                                   </div>
                                   <div class="col-md-4"> 
@@ -183,7 +257,7 @@
                                       <label for="RoomType">RoomType</label>
                                       <select class="form-control input-sm" name="Roomtype" [(ngModel)]="range.roomtype">
                                           <option *ngFor="let option of roomtype" 
-                                                      [ngValue]="option.id"> 
+                                                      [ngValue]="option"> 
                                                       {{option.type}}
                                           </option>
                                           </select> 

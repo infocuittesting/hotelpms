@@ -20,7 +20,7 @@ QueryPaymasterReservation():Observable<object[]> {
   const options = new RequestOptions({ headers: headers })
   let body = {
     
-      "block_id":this.session.retrieve("blids")
+      "block_id":this.session.retrieve("blockid".toString())
       
   }
   return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryPayMasterReservation',body,options)

@@ -10,12 +10,12 @@ import {BusinessBlockGridService} from "./business-block-grid.service";
   providers:[BusinessBlockGridService]
 })
 export class BusinessBlockGridCurrentComponent implements OnInit {
-  public start = this.session.retrieve("startdate");
-  public end = this.session.retrieve("enddate");
-  public nights = this.session.retrieve("nights");
+  public start = this.session.retrieve("starts");
+  public end = this.session.retrieve("ends");
+  public nights = this.session.retrieve("nght");
   public roomtype=[];
   public range:any=[];
-  public gridvalue=[];
+  public gridvalues=[];
   public rmtype=[];
   public rmcount=[];
   public rmblid;
@@ -29,17 +29,22 @@ this.roomtype=resp.ReturnValue;
 console.log(this.roomtype)
 
 });
+// current grid.........................................
+this.blockservicegrid.querygridvalue()
+.subscribe((resp: any) => {
+this.gridvalues=resp.ReturnValue;
+console.log("ajith working fine",this.gridvalues)
 
+});
 
-
-    }
+  }
  selectindex=null;
     selectMembersEdit(details,index){
       this.selectindex=index; 
   }
 
   public insertgrid:any=[];
-  public showdetails=[];
+  public jio=[];
   
   rangegrids(input:any){
     input.grid_startdate = this.start;
@@ -96,22 +101,11 @@ console.log(this.roomtype)
      input.saturday =0;
     }
 
- this.showdetails.push({
-  "roomtype_id":input.roomtype.toString(),
-  "total_rooms":input.totalrooms.toString(),
-  "sunday":input.sunday,
-  "monday":input.monday,
-  "tuesday":input.tuesday,
-  "wednesday":input.wednesday,
-  "thursday":input.thursday,
-  "friday":input.friday,
-  "saturday":input.saturday,
-  "grid_startdate":input.grid_startdate,
- });
-
 let body={
-"block_id":this.session.retrieve('blockid'),
-"roomtype_id":input.roomtype.toString(),
+
+"block_id":this.session.retrieve("blids"),
+"roomtype_id":input.roomtype.id.toString(),
+"roomtype":input.roomtype.type.toString(),
 "occupancy_one":input.Occupency1.toString(),
 "occupancy_two":input.Occupency2.toString(),
 "occupancy_three":input.Occupency3.toString(),
@@ -147,7 +141,6 @@ console.log("worked",this.insertgrid);
 
 saveshow=[];
 savebutton(){
-  this.saveshow=this.showdetails;
   console.log("inside insertgrid value",this.insertgrid);
 
 // session storage
@@ -158,14 +151,15 @@ savebutton(){
   this.blockservicegrid.insertGrid(this.insertgrid)
   .subscribe( (resp:any) =>{
   
-   this.gridvalue=resp.ReturnValue;
-   this.session.store("rmcount",resp.total_rooms);
-   this.session.store("rmtype",resp.type);
-   this.session.store("rmblid",resp.block_id);
-   console.log("sesson values come",resp.total_rooms,resp.type,resp.block_id)
-  // this.rmtype = gridvalue.type;
+   this.gridvalues=resp.ReturnValue;
+  //  this.session.store("rmcount",resp.total_rooms);
+  //  this.session.store("rmtype",resp.type);
+  //  this.session.store("rmblid",resp.block_id);
+  //  console.log("sesson values come",resp.total_rooms,resp.type,resp.block_id)
+  // // this.rmtype = gridvalue.type;
 
-  console.log("return valure of range screen",this.gridvalue);
+  console.log("return valure of range screen",this.gridvalues);
+  // this.jio = this.session.retrieve("gridvalues")
   
 });
 

@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions,Headers, RequestMethod } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+import { SessionStorageService } from "ngx-webstorage";
+import { Options } from 'selenium-webdriver/edge';
 
 @Injectable()
-export class RevenuemanagementService {
+export class EditRevenueManagementService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http,public session:SessionStorageService) { }
 
   ratecategorydropdown():  Observable<object[]> {
        
@@ -84,36 +86,6 @@ export class RevenuemanagementService {
 
   }
 
-  insertnewnego(input:any): Observable<object[]> {
-       
-    const headers = new Headers({'Content-Type':'application/json'})
-    const options = new RequestOptions({ headers: headers })
-   let body={ 
-
-    "rate_code_id":input.ratecod.toString(),
-    "negotiate_begin_sell_date":input.begin,
-    "negotiate_end_sell_date":input.endsel,
-    "negotiate_commision_code_id":0
-   }
-   console.log(JSON.stringify(body));
-
-    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_POST_INSERT_NEGOTIATED',body,options)
-       .map(this.extractData)
-
-  }
-
-  deletenego(ratecodeid):  Observable<object[]> {
-       
-    const headers = new Headers({'Content-Type':'application/json'})
-    const options = new RequestOptions({ headers: headers })
-    let body={
-      "negotiated_code_id":ratecodeid.toString()
-    }
-    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_DELETE_Negotiated_Rate',body,options)
-       .map(this.extractData)
-
-  }
-
   deleteratedet(ratedetidvar):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
@@ -135,42 +107,34 @@ export class RevenuemanagementService {
        .map(this.extractData)
 
   }
-  editnego(rateecode,beginn,endsell,ratecodeid):  Observable<object[]> {
+
+
+  allvalues():  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
-      "rate_code_id":rateecode,
-	    "negotiate_begin_sell_date":beginn,
-	    "negotiate_end_sell_date":endsell,
-	    "negotiate_commision_code_id":ratecodeid
+      "ratecode_id":this.session.retrieve("ratecodeedit")
     }
-    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_UPDATE_Negotiated_Rate',body,options)
-       .map(this.extractData)
-
-  }
-
-  NegotiatedRate():  Observable<object[]> {
-       
-    const headers = new Headers({'Content-Type':'application/json'})
-    const options = new RequestOptions({ headers: headers })
-   
-    return this.http.get('http://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_SELECT_Negotiated_Rate',options)
+    console.log("binding values ratecodeeeeeeeee",JSON.stringify(body));
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_UpdateRatecodeSetup ',body,options)
        .map(this.extractData)
 
   }
   
-  saverateheader(ratecode,cat_id,rmid,rmid1,input:any): Observable<object[]> {
+  updaterateheader(cat_id,rmid,rmid1,input:any): Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
    let body=
    {
     "rate_code_details":{
-      "rate_code":ratecode  ,
-      "rate_description":input.descrp,
-      "rate_category_id":input.ratecategoryid
+      "rate_code":""  ,
+      "rate_description":"abcdefg",
+      "rate_category_id":input.ratecategoryid,
+      "ratecode_id":25
     },
+    "rateheader_id":121,
     "begin_sell_date":input.beginselldate,
     "end_sell_date":input.endselldate,
     "market_id":input.market_id.toString(),
@@ -178,20 +142,23 @@ export class RevenuemanagementService {
       "display_sequence":3,
       "room_types":rmid,
       "package":rmid1,
+      "packages_id":27,
       "sell_controls":{
         "min_stay":input.Minimum_stay_through,
         "max_stay":input.Maximum_stay_through,
         "min_advance_book":input.Minimum_Advance_Booking,
         "max_advance_book":input.Maximum_Advance_Booking,
         "min_occupancy":input.Minimum_Occupancy,
-        "max_occupancy":input.Maximum_Occupancy
+        "max_occupancy":input.Maximum_Occupancy,
+        "sell_id":18
       },
       "transaction_details":{
         "tranction_code_id":3,
         "pkg_tranction_code_id":3,
           "currency_code_id":4,
           "exchange_type_id":3,
-          "tax_inc":3
+          "tax_inc":3,
+          "tranction_detail_id":12
       },
       "components":{
           "package":input.Package,
@@ -203,7 +170,8 @@ export class RevenuemanagementService {
           "print_rate":input.Rate,
           "day_type":input.Type,
           "discount":input.discount,
-          "membership":input.Membership
+          "membership":input.Membership,
+          "components_id":10
       }
   }
   
@@ -214,13 +182,13 @@ export class RevenuemanagementService {
 
   }
 
-  insertratedetail(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,rmid2,rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy):  Observable<object[]> {
+  updateratedetail(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,rmid2,rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
     
-        "ratecode_id":ratecode,
+        "rate_details_id":86,
         "season_code_id":seasoncod,
         "start_date":strtdt,
         "end_date":enddate,
@@ -228,11 +196,12 @@ export class RevenuemanagementService {
             "sun":sundy,
             "mon":mondy,
             "tue":tuesdy,
-            "wed":wednesdy,
+            "wed":wednesdy, 
             "thu":thursdy,
             "fri":fridy,
             "sat":saturdy
         },
+        "rate_days_id":10,
         "one_adult_amount":onead,
        "two_adult_amount":twoad,
        "three_adult_amount":threead,
@@ -242,7 +211,9 @@ export class RevenuemanagementService {
        "two_child_amount":twoch,
        "extra_child_amount":extrach,
        "room_types":rmid2,
+       "rooms_id":20,
        "package":rmid3,
+       "packages_id":19,
        "rate_tier_id":0
     }
  
@@ -259,4 +230,5 @@ export class RevenuemanagementService {
     console.log(JSON.stringify(body));
         return body;
     }
+
 }

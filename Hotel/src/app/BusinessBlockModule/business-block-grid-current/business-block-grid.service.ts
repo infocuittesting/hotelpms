@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions,Headers, RequestMethod } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+import { SessionStorageService } from "ngx-webstorage";
 
 @Injectable()
 export class BusinessBlockGridService {
 
-  constructor(private http: Http,) { }
+  constructor(private http: Http,public session:SessionStorageService) { }
 
 //RoomTypeDroup down
 roomtype():  Observable<object[]> {   
@@ -17,12 +18,29 @@ roomtype():  Observable<object[]> {
      .map(this.extractData)
 
 }
-//okbutton
-insertGrid(params):Observable<object[]> {   
+//savebutton
+insertGrid(params):Observable<object[]> {  
+  console.log("varuthuuuu",params) 
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers });
+  let body_input = {
+    "grid":params
+  }
   
-  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_INSERT_Grid',params,options)
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_INSERT_Grid',body_input,options)
+     .map(this.extractData)
+
+}
+
+querygridvalue():  Observable<object[]> {   
+  console.log("opennnnnnnnnnnnnnnnnnnnnn")
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body={
+              "block_id":this.session.retrieve("blockid".toString())
+  }
+  
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryGrid',body,options)
      .map(this.extractData)
 
 }
