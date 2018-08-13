@@ -4,47 +4,37 @@
   <div class="col-md-10">
      <!-- <div class="row"> --> 
        
-    <div class="container-fluid" style="background-color: #0077B5;color: white; margin-left: 18px;margin-top: 20px;">
-      <div class="col-md-1"></div>
-    <div class ="col-md-3">
-  
-        <div class="form-group" style="width:82%;">
-            <label for="room">Name</label>
-            <input type="text"name="Name" class="form-control input-sm"[(ngModel)]="Name" >
-        </div>
-        <div class="form-group" style="width:82%;">
-            <label for="room">Start Date</label>
-            <input type="date"Name="StartDate" class="form-control input-sm"[(ngModel)]="StartDate">
-          </div>
-        
-
-  
-  </div>
-  <div class ="col-md-1"></div>
-  <div class ="col-md-3">
-      <div class="form-group" style="width:82%;">
-      <label for="room">Block Code</label>
-      <input type="text"name="BlockCode" class="form-control input-sm" [(ngModel)]="BlockCode" >
-  </div>
-  <div class="form-group" style="width:82%;">
-      <label for="room">End Date</label>
-      <input type="date"Name="Enddate" class="form-control input-sm"[(ngModel)]="EndDate">
-    </div>
-
-    
-  </div>
-  <div class ="col-md-1"></div>
-  <div class ="col-md-3">
-      <!-- <div class="form-group" style="width:82%;">
-          <label for="room" disabled>Stay Date</label>
-          <input type="date" class="form-control input-sm">
-        </div> -->
-        <div class="form-group" style="width:82%;">
-            <label for="name">Status</label>
-          <select class="form-control input-sm" id="sel1" style="width:150px;" [(ngModel)]="status" (ngModelChange)="onSelect(status.Status)">
-             <option *ngFor="let option of roomtype" [ngValue]="option.id"> 
+    <div class="container-fluid" style="background-color:  white; margin-left: 18px;margin-top: 20px;">
+     <div class="panel panel-primary" style="margin-left: -16px;">
+       <div class="panel-body">
+      <div class="row">
+          <div class="col-md-1"><label for="room" style="margin-top: 26px;margin-left: 35px;">Name</label></div>
+          <div class ="col-md-3">
+              
+              <div class="form-group" style="width:82%;" [class.has-error]="name.touched && name.invalid">
+                  <input type="text" id="Names" name="Names" style="margin-top: 24px;" class="form-control input-sm" [(ngModel)]="Name" #name="ngModel" required>
+                  <div *ngIf="name.touched && !name.valid && name.errors?.required " ngClass="{ 'has-error' : !name.valid && submitAttempt }">
+                </div>
+              </div>
+            </div>
+          <div class="col-md-1"><label for="room" style="margin-top: 27px;">Start Date</label></div>
+          <div class="col-lg-3">
+             <div class="input-group" style="margin-top: 20px;"[class.has-error]="Arrivalfrom.touched && Arrivalfrom.invalid">
+                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+                 <input type="date"id="Arrivalfrom" name="Arrivalfrom" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)" #Arrivalfrom="ngModel" required></div>
+                 <div *ngIf="Arrivalfrom.touched && !Arrivalfrom.valid && Arrivalfrom.errors?.required " ngClass="{ 'has-error' : !Arrivalfrom.valid && submitAttempt }">
+                </div>
+         </div>
+              <div class ="col-md-1"><label for="name" style="margin-top: 26px;margin-left: 20px;">Status</label></div>
+              <div class ="col-md-3">
+             <div class="form-group" style="width:82%;"[class.has-error]="Status.touched && Status.invalid">
+          <select class="form-control input-sm" id="Status" style="width:222px;margin-top: 23px;" [(ngModel)]="status" (ngModelChange)="onSelcat(status)"#Status="ngModel" required>
+            <div *ngIf="Status.touched && !Status.valid && Status.errors?.required " ngClass="{ 'has-error' : !Status.valid && submitAttempt }">
+            </div>
+            <option *ngFor="let option of roomtype" 
+             [ngValue]="option.status"> 
              {{option.status}}</option>
-          
+            
            </select>
          </div>
     
