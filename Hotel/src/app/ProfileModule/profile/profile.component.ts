@@ -27,13 +27,16 @@ export class ProfileComponent implements OnInit {
 public user={};
  
   user33={};
-  profile = {};
+  public profile;
   submit(inputt):void {
     console.log(inputt);
       this.ProfileService.postandgetdata (inputt)
       .subscribe(( user333:any)=> {
         this.user33 = user333;
-        this.profile=user333.Return;
+        this.profile=user333.ReturnCode;
+        if(this.profile=="RIS"){
+          this.profile="The Company Profile is Created";
+        }
       
     //   console.log("user33  "+ user333);   
       //  alert("user33  "+ user333);    
