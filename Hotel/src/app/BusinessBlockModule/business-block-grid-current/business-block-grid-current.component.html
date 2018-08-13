@@ -38,8 +38,8 @@
     
       <div class="row">
         <div class="continer">
-          <div class="table-responsive" style="width:100%;">
-            <table class="table table-bordered table-hover" style="margin-left: 320px">
+          <!-- <div class="table-responsive" style="width:100%;"> -->
+            <table class="table table-bordered table-hover" style="margin-left: 320px;">
               <thead style="background-color: #0077B5;color:white;">
                 <tr>
                   <th>Date</th>
@@ -50,22 +50,22 @@
                   <th>Sjsn</th>
                   <th>Sdbn</th>
                   <th>Sjss</th>
-                  <th>Comp</th>
+                  <!-- <th>Comp</th> -->
                 </tr>
               </thead>
                 <tbody>
-                  <tr>
-                    <td>2-08-2018 Sat</td>
-                    <td>15</td>
-                    <td>10</td>
-                    <td>10</td>
-                    <td>25</td>
-                    <td>10</td>
-                    <td>10</td>
-                    <td>10</td>
-                    <td>10</td>
+                  <tr *ngFor="let grid of gridvalues;">
+                    <td>{{grid.grid_type}}</td>
+                    <td>{{grid.kngn}}</td>
+                    <td>{{grid.kngs}}</td>
+                    <td>{{grid.ksbn}}</td>
+                    <td>{{grid.ksbs}}</td>
+                    <td>{{grid.sjsn}}</td>
+                    <td>{{grid.sdbn}}</td>
+                    <td>{{grid.sjss}}</td>
+                    <!-- <td>10</td> -->
                   </tr>
-                  <tr>
+                  <!-- <tr>
                       <td>Original</td>
                       <td>15</td>
                       <td>10</td>
@@ -142,11 +142,11 @@
                             <td>15</td>
                             <td>15</td>
                             <td>15</td>
-                        </tr>
+                        </tr> -->
                 </tbody>
               
             </table>
-          </div>
+          <!-- </div> -->
         </div>
       </div>
       <div class="row">
@@ -228,7 +228,7 @@
                                       <div class="row">
                                           <div class="col-sm-1">
                                               <label style="margin-left:-35px"  >
-                                                  <input type="checkbox" [value]="sun"  class="form-control" name="sun" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="range.sun" ><b>sun</b>                    
+                                                  <input type="checkbox" [value]="sun"  class="form-control" name="sun" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="range.sun" ><b>SUN</b>                    
                                           </label>
                                           </div>
                                           <div class="col-sm-1">

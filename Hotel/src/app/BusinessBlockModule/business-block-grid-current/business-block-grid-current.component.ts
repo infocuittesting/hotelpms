@@ -15,7 +15,7 @@ export class BusinessBlockGridCurrentComponent implements OnInit {
   public nights = this.session.retrieve("nght");
   public roomtype=[];
   public range:any=[];
-  public gridvalue=[];
+  public gridvalues=[];
   public rmtype=[];
   public rmcount=[];
   public rmblid;
@@ -146,14 +146,14 @@ savebutton(){
   this.blockservicegrid.insertGrid(this.insertgrid)
   .subscribe( (resp:any) =>{
   
-   this.gridvalue=resp.ReturnValue;
+   this.gridvalues=resp.ReturnValue;
   //  this.session.store("rmcount",resp.total_rooms);
   //  this.session.store("rmtype",resp.type);
   //  this.session.store("rmblid",resp.block_id);
   //  console.log("sesson values come",resp.total_rooms,resp.type,resp.block_id)
   // // this.rmtype = gridvalue.type;
 
-  console.log("return valure of range screen",this.gridvalue);
+  console.log("return valure of range screen",this.gridvalues);
   
 });
 
