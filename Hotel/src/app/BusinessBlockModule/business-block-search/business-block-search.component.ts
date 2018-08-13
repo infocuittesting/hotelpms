@@ -129,14 +129,7 @@ selectindex=null;
 //  this.session.store("")
 
 }
-retrieveroominglist(){
-  this.blocksearch.QueryRoomingList()
-.subscribe((resp: any) => {
-    this.querylist=resp.ReturnValue;
-    console.log("working fine",this.querylist);
 
-});
-}
 // public edlock_id;
 // EDIT BUTTON Service
 // editblockservice(blockedit){

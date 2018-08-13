@@ -2,15 +2,17 @@ import { Component, OnInit, Input  } from '@angular/core';
 import { Route } from "@angular/router";
 import { FormsModule, ReactiveFormsModule, NgForm,FormBuilder } from '@angular/forms';
 import { Router } from "@angular/router";
-import{ RevenuemanagementService } from "./revenuemanagement.service"
-@Component({
-  selector: 'app-revenuemanagement',
-  templateUrl: './revenuemanagement.component.html',
-  styleUrls: ['./revenuemanagement.component.css'],
-  providers:[ RevenuemanagementService ]
-})
-export class RevenuemanagementComponent implements OnInit {
+import {EditRevenueManagementService} from './edit-revenue-management.service';
+import { SessionStorageService } from "ngx-webstorage";
 
+
+@Component({
+  selector: 'app-edit-revenue-management',
+  templateUrl: './edit-revenue-management.component.html',
+  styleUrls: ['./edit-revenue-management.component.css'],
+  providers:[EditRevenueManagementService]
+})
+export class EditRevenueManagementComponent implements OnInit {
 
   public arryses=[];
   public ratecat=[];
@@ -43,7 +45,7 @@ export class RevenuemanagementComponent implements OnInit {
   // { Rate_code: 'EXTRA', Begin_sell_date: '17-07-2018',End_sell_date:'29-07-2018',ID:'2'},
 ];
 
-  constructor(private RevenuemanagementService:RevenuemanagementService,private route:Router,private fb: FormBuilder) {
+  constructor(private EditRevenuemanagement:EditRevenueManagementService,public session:SessionStorageService,private route:Router,private fb: FormBuilder) {
     this.negotiatecode = this.ncode;
    }
 
@@ -54,96 +56,98 @@ export class RevenuemanagementComponent implements OnInit {
     }
 
 
+
+
    user={};
    cat_id:any;
    rateheadalert:any;
-   rateheaderins(ratecode,input:any){
-    
-    if(input.discount == true)
+   rateheaderins(input:any){
+    console.log("banuuuuuuuuuuuuuuuuuuu",input)
+    if(input.discount == 1)
     {
-     input.discount="1";
-     console.log("one")
+     input.discount=1;
+     console.log("one", input.discount)
     }else{
-     input.discount="0";
-     console.log("zero")
+     input.discount=0;
+     console.log("zero", input.discount)
  
     }
-    if(input.Negotiated == true)
+    if(input.Negotiated == 1)
     {
-     input.Negotiated="1";
-     console.log("one")
+     input.Negotiated=1;
+     console.log("one",input.discount)
     }else{
-     input.Negotiated="0";
-     console.log("zero")
+     input.Negotiated=0;
+     console.log("zero",input.discount)
  
     }
-    if(input.Rate == true)
+    if(input.Rate == 1)
     {
-     input.Rate="1";
-     console.log("one")
+     input.Rate=1;
+     console.log("one",input.discount)
     }else{
-     input.Rate="0";
-     console.log("zero")
+     input.Rate=0;
+     console.log("zero",input.discount)
     }
-    if(input.Membership == true)
+    if(input.Membership == 1)
     {
-     input.Membership="1";
-     console.log("one")
+     input.Membership=1;
+     console.log("one",input.discount)
     }else{
-     input.Membership="0";
-     console.log("zero")
+     input.Membership=0;
+     console.log("zero",input.discount)
     }
-    if(input.Day == true)
+    if(input.Day == 1)
     {
-     input.Day="1";
-     console.log("one")
+     input.Day= 1;
+     console.log("one",input.discount)
     }else{
-     input.Day="0";
-     console.log("zero")
+     input.Day=0;
+     console.log("zero",input.discount)
     }
-    if(input.Complimentary == true)
+    if(input.Complimentary == 1)
     {
-     input.Complimentary="1";
-     console.log("one")
+     input.Complimentary=1;
+     console.log("one",input.discount)
     }else{
-     input.Complimentary="0";
-     console.log("zero")
+     input.Complimentary=0;
+     console.log("zero",input.discount)
     }
-    if(input.House == true)
+    if(input.House == 1)
     {
-     input.House="1";
-     console.log("one")
+     input.House=1;
+     console.log("one",input.discount)
     }else{
-     input.House="0";
-     console.log("zero")
+     input.House=0;
+     console.log("zero",input.discount)
     }
-    if(input.Suppress == true)
+    if(input.Suppress == 1)
     {
-     input.Suppress="1";
-     console.log("one")
+     input.Suppress=1;
+     console.log("one",input.discount)
     }else{
-     input.Suppress="0";
-     console.log("zero")
+     input.Suppress=0;
+     console.log("zero",input.discount)
     }
     
-    if(input.Type == true)
+    if(input.Type == 1)
     {
-     input.Type="1";
-     console.log("one")
+     input.Type=1;
+     console.log("one",input.discount)
     }else{
-     input.Type="0";
-     console.log("zero")
+     input.Type=0;
+     console.log("zero",input.discount)
     }
-    if(input.Package == true)
+    if(input.Package == 1)
     {
-     input.Package="1";
-     console.log("one")
+     input.Package=1;
+     console.log("one",input.discount)
     }else{
-     input.Package="0";
-     console.log("zero")
+     input.Package=0;
+     console.log("zero",input.discount)
     }
 
-   this.RevenuemanagementService.saverateheader(ratecode,this.cat_id,this.rmid,this.rmid1,input)
+   this.EditRevenuemanagement.updaterateheader(this.cat_id,this.rmid,this.rmid1,input)
    .subscribe((resp: any) => {
     this.savehead=resp.ReturnValue;
     if(this.savehead=='RIS')
@@ -159,31 +163,6 @@ export class RevenuemanagementComponent implements OnInit {
  console.log(this.savehead);
 }
 
-newnego(input)
-{
-  console.log("from html",input);
-  this.RevenuemanagementService.insertnewnego(input)
-    .subscribe((resp: any) => {
-     this.newnegovar=resp.ReturnCode;
-     console.log("newnegotiated outputttttttttt",typeof(this.newnegovar),this.newnegovar);
-
-     console.log("sucalert and fail",this.sucalert,this.failalert);
-     if(this.newnegovar=='RIS')
-     {
-       this.sucalert="negotiated created successfully";
-     }
-     else 
-     {
-       this.sucalert="sorry,currently can't able to create negotiated rate";
-     }
-     this.RevenuemanagementService.NegotiatedRate()
-    .subscribe((resp: any) => {
-     this.ncode=resp.Return;
-   });
-   });
- 
- 
-}
 
 ratedetalert:any;
 ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy){
@@ -252,7 +231,7 @@ ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,
   }
   console.log("insert rate detailssssssssssssssss",ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,this.rmid2,this.rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy);
   
-  this.RevenuemanagementService.insertratedetail(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,this.rmid2,this.rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy)
+  this.EditRevenuemanagement.updateratedetail(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,this.rmid2,this.rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy)
   .subscribe((resp: any) => {
    this.ratedetvar=resp.ReturnCode;
    if(this.ratedetvar=='RIS')
@@ -267,86 +246,58 @@ ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,
  
 }
 
-editvar:any;
-negoeditalert:any;
-// edit negotiated values
-editnego(rateecode,beginn,endsell){
-  this.RevenuemanagementService.editnego(rateecode,beginn,endsell,this.ratecodeid)
-    .subscribe((resp: any) => {
-     this.editvar=resp.ReturnCode;
-     if(this.editvar=='RUS')
-     {
-     this.negoeditalert="negotiated updated successfully";
-     }
-     else
-     {
-     this.negoeditalert="can't able to update";
-     }
-
-   });
-
-}
-
 
 public ratedettabl=[];
 public roomtyp=[];
 public roomidd=[];
+public rateheadbind=[];
+public ratedetbind=[];
 
   ngOnInit() {
     console.log(this.ncode);
-    this.RevenuemanagementService.ratecategorydropdown()
+    this.EditRevenuemanagement.ratecategorydropdown()
     .subscribe((resp: any) => {
      this.ratecat=resp.Return;
    });
 
-   this.RevenuemanagementService.ratecodedropdown()
+   this.EditRevenuemanagement.ratecodedropdown()
     .subscribe((resp: any) => {
      this.price=resp.Return;
      this.prc=resp.Return;
    });
 
-   this.RevenuemanagementService.marketdropdown()
+   this.EditRevenuemanagement.marketdropdown()
     .subscribe((resp: any) => {
      this.shop=resp.Return;
    });
 
-   this.RevenuemanagementService.sourcedropdown()
+   this.EditRevenuemanagement.sourcedropdown()
     .subscribe((resp: any) => {
      this.src=resp.Return;
    });
 
-   this.RevenuemanagementService.currencydropdown()
+   this.EditRevenuemanagement.currencydropdown()
     .subscribe((resp: any) => {
      this.money=resp.Return;
    });
 
-   this.RevenuemanagementService.roomtypesdropdown()
+   this.EditRevenuemanagement.roomtypesdropdown()
    .subscribe((resp: any) => {
     this.room=resp.ReturnValue;
   });
 
-  this.RevenuemanagementService.revenuepackages()
+  this.EditRevenuemanagement.revenuepackages()
    .subscribe((resp: any) => {
     this.revenueroom=resp.Return;
   });
 
  
-  this.RevenuemanagementService.seasoncode()
+  this.EditRevenuemanagement.seasoncode()
   .subscribe((resp: any) => {
    this.arryses=resp.Return;
  });
 
- this.RevenuemanagementService.NegotiatedRate()
- .subscribe((resp: any) => {
-  this.ncode=resp.Return;
-  this.negotiatecode=resp.Return;
-<<<<<<< HEAD
-
-=======
->>>>>>> 10d395d821a89ad12841b56fd1a86166ad9c0cba
-});
-
-this.RevenuemanagementService.getallvalues()
+this.EditRevenuemanagement.getallvalues()
  .subscribe((resp: any) => {
   this.ratedettabl=resp.Rate_details;
   this.roomtyp=resp.room_types;
@@ -354,20 +305,27 @@ this.RevenuemanagementService.getallvalues()
   
 });
    
+this.EditRevenuemanagement.allvalues()
+.subscribe((resp: any) => {
+ this.rateheadbind=resp.Rate_header;
+ this.ratedetbind=resp.Rate_details;
+ console.log("return values",this.rateheadbind, this.ratedetbind)
+});
 }
   
-<<<<<<< HEAD
   onSelect(val){
-       console.log(val);
-       this.ncode = this.negotiatecode.filter(x => x.rate_code == val)
+    // val = val.toLowerCase();
+    // val = val.toLowerCase();
+    console.log(val);
+    if(val=="0")
+    {
+      this.ncode=this.negotiatecode;
+    }
+    else{
+       this.ncode = this.negotiatecode.filter(x => x.ratecode_id == val)
+        }
     }
 
-=======
-onSelect(val){
-  console.log(val);
-  this.ncode = this.negotiatecode.filter(x => x.rate_code == val)
-}
->>>>>>> 10d395d821a89ad12841b56fd1a86166ad9c0cba
 
 ratecodeid=[];
 selectindex=null;
@@ -391,42 +349,13 @@ selectindexx=null
       console.log("ratecodeiddddddddddddddd",this.ratedetidvar);
 
     }
-    
-
-delret:any;  
-negodelalert:any;
-//delete negotiated values
-    negodel(){
-      console.log(this.ratecodeid)
-      this.RevenuemanagementService.deletenego(this.ratecodeid)
-      .subscribe((resp: any) => {
-      this.delret=resp.ReturnCode;
-      console.log(this.delret); 
-       if(this.delret=='RDS')
-        {
-        this.negodelalert="negotiated deleted successfully";
-        }
-      else
-        {
-        this.negodelalert="can't able to delete negotiated";
-        } 
-
-      this.RevenuemanagementService.NegotiatedRate()
-      .subscribe((resp: any) => {
-      this.ncode=resp.Return;
-      console.log('*********',JSON.stringify(this.negotiatecode));
-      });
-     });      
-
-    
-    }
 
     // delete rate details
     delratdet:any;
     delratalert:any;
     ratdetfun(){
       
-      this.RevenuemanagementService.deleteratedet(this.ratedetidvar)
+      this.EditRevenuemanagement.deleteratedet(this.ratedetidvar)
       .subscribe((resp: any) => {
       this.delratdet=resp.ReturnCode;
       console.log(this.delratdet); 
@@ -441,7 +370,7 @@ negodelalert:any;
 
      });      
 
-     this.RevenuemanagementService.getallvalues()
+     this.EditRevenuemanagement.getallvalues()
      .subscribe((resp: any) => {
       this.ratedettabl=resp.Rate_details; 
       this.roomtyp=resp.room_types;   

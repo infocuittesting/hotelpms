@@ -7,11 +7,12 @@ import { Options } from 'selenium-webdriver/edge';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 @Injectable()
-export class BusinessCreateBlockService {
+export class EditBusinessBlockService {
 
   constructor(private http: Http,public session:SessionStorageService) { }
-  // blockstatus dropdown.....................
-  blockstatusdropdown():Observable<object[]> {
+
+   // blockstatus dropdown.....................
+   blockstatusdropdown():Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
@@ -127,105 +128,64 @@ BlockTypedropdown():Observable<object[]> {
      .map(this.extractData)
 
 }
-// create businessBlock................................
-CreateBusinessBlock(block):Observable<object[]> {
-  console.log("servicets",block)
+
+
+  Editblock(block):  Observable<object[]> {   
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers });
+    let body={
+
+    }
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_UPDATE_BusinessBlockDefinite',body,options)
+       .map(this.extractData)
+  }
+  
+
+  QueryEditblock():  Observable<object[]> {   
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers });
+    let body={
+        "block_id":this.session.retrieve("blockid".toString())
+    }
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_EditBusinessBlockSearch',body,options)
+       .map(this.extractData)
+  }
+  // Query Room Revenue......................................................................................
+QueryRoomRevenue():Observable<object[]> {
+  console.log("sucess is worked")
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers })
   let body = {
-    "Definite":
-           {
-            "pf_id":"cpy159",
-	          "block_status_id":block.statusblock,
-            "market_id":block.marketcode,
-            "source_id":block.sourcecode,
-            "owner":block.owner,
-            "origin_id":block.origincode,
-	          "start_date":block.startdate,
-	          "end_date":block.enddate,
-            "nights":block.nights,
-	          "block_type":block.blocktypes
-            },
-"Rooms":   {
-            
-            "res_type_id":block.restypes,
-            "cutoff_date":block.cuttoff,
-            "cutoff_days":block.cut_days,
-            " inventory_control_id ":block.inventorys,
-            "ratecode_id":block.ratecodes,
-            "print_rate":block.print_rate,
-			      "suppress_rate":block.suppress,
-			      "packages":block.packagess,
-            "trace_code":block.tracess,
-            "follow_date":block.followdates
-			     
-            },
-"Block_details":
-             {
-             
-             
-             "payments_id":block.payments,
-             "rooming_list_duedate":block.roominglistdue,
-             "arrivaltime":block.arrival_tim,
-             "depaturetime":block.depature_tim,
-             "commission":block.commis,
-             "total_rooms_perday":block.roomsperday
-             },
-"Catering":
-             {
-          
-             "guranteed":block.guranteeds,
-             "attenders":block.attender,
-	           "info_board":block.info_boards,
-             "contract_no":block.contract,
-             "onsite_name":block.onsite,
-             
-			       "followup_date":block.follow_dates
-			      
-			 
-             },
-
-"block_meeting":
-                {
-				     "meeting_space":block.meetingsizes,
-				     " meeting_space_type_id ":block.space_type,
-				     "attendess":block.Attend
-				}
-}
-  
- 
-  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_INSERT_BusinessBlockDefinite ',body,options)
+    
+      "block_id":this.session.retrieve("blockid".toString())
+      
+  }
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryRoomRevenue',body,options)
      .map(this.extractData)
 
 }
+
 // Create Paymaster Reservation................................................................
-// PaymasterReservation(blockids):Observable<object[]> {
-//   console.log("going to service",blockids,typeof(blockids))
-//   const headers = new Headers({'Content-Type':'application/json'})
-//   const options = new RequestOptions({ headers: headers })
-//   let body = {
+PaymasterReservation():Observable<object[]> {
+  // console.log("going to service",blockids,typeof(blockids))
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+  let body = {
     
-//       "block_id": blockids.toString()
+      "block_id": this.session.retrieve("blockid".toString())
       
-//   }
-//   return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_INSERT_PayMasterReservation',body,options)
-//      .map(this.extractData)
+  }
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_INSERT_PayMasterReservation',body,options)
+     .map(this.extractData)
 
-// }
-// Query Room Revenue......................................................................................
-// QueryRoomRevenue():Observable<object[]> {
-//   console.log("sucess is worked")
-//   const headers = new Headers({'Content-Type':'application/json'})
-//   const options = new RequestOptions({ headers: headers })
-//   let body = {
-    
-//       "block_id":this.session.retrieve("rmblid".toString())
-      
-//   }
-//   return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryRoomRevenue',body,options)
-//      .map(this.extractData)
+}
 
-// }
+
+
+
+
+
+
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);
