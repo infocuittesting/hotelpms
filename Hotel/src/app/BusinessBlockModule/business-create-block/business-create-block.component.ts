@@ -39,6 +39,9 @@ public querypay:any;
 public queryroomrevenue;
 public payblockid;
 public navtag:any;
+public start;
+public end;
+public night;
 // ................................................
   ngOnInit() {
     this.session.store("navigate","Block");
@@ -141,7 +144,12 @@ this.businessblock.BlockTypedropdown()
     else{
         block.guranteeds = "0"
     }
+
+    this.start=block.startdate;
+    this.end=block.enddate;
+    this.night=block.nights;
     this.businessblock.CreateBusinessBlock(block)
+   
 .subscribe((resp: any) => {
     this.createblock=resp.ReturnCode;
     this.blockids = resp.Blockid;
@@ -149,6 +157,10 @@ this.businessblock.BlockTypedropdown()
     this.block_name = resp.Blockname;
      console.log(this.createblock);
      this.session.store("blids",this.blockids.toString());
+     this.session.store("starts",this.start.toString());
+     this.session.store("ends",this.end.toString());
+     this.session.store("nght",this.night.toString());
+     console.log("hooooooooo",this.blockids.toString(),this.start.toString(),this.end.toString(),this.night.toString())
      if(this.createblock=="RIS"){
         this.blocksuccess="Block Created Successfully"+" "+this.blockids
         console.log("outputblock",this.blocksuccess)
