@@ -44,6 +44,7 @@ import { CasheringinhouseguestComponent } from './CasheringModule/casheringinhou
 //RevenueManagement
 import { RevenuemanagementComponent } from './RevenueManagementModule/revenuemanagement/revenuemanagement.component';
 import {RevenueRateCodeComponent} from './RevenueManagementModule/revenue-rate-code/revenue-rate-code.component';
+import { EditRevenueManagementComponent } from './RevenueManagementModule/edit-revenue-management/edit-revenue-management.component';
 
 
 //BusinessBlockModule
@@ -96,6 +97,7 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 //revenuemanagement
 { path:'revenue', component:RevenuemanagementComponent},
 { path:'revenueratecode', component:RevenueRateCodeComponent},
+{ path:'editrevenue', component:EditRevenueManagementComponent},
 
 //BusinessBLockSearch
 {path:'business',component:BusinessBlockSearchComponent},
@@ -123,4 +125,4 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
   ProfileComponent,ProfilesearchComponent,SearchandeditreservationComponent,HousekeepingComponent,QueueroomComponent,RoomdiscrepanciesComponent,RoomconditionComponent
 ,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
-BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,RevenueRateCodeComponent]
+BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,RevenueRateCodeComponent,EditRevenueManagementComponent]
