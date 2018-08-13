@@ -21,8 +21,11 @@ roomtype():  Observable<object[]> {
 insertGrid(params):Observable<object[]> {   
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers });
+  let body_input = {
+    "grid":params
+  }
   
-  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_INSERT_Grid',params,options)
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_INSERT_Grid',body_input,options)
      .map(this.extractData)
 
 }

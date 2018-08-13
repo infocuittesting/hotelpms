@@ -58,7 +58,7 @@ import { ReservationsListComponent } from './BusinessBlockModule/reservations-li
 import { GroupOptionsComponent } from './BusinessBlockModule/group-options/group-options.component';
 import { BlockRangeSettingComponent } from './BusinessBlockModule/block-range-setting/block-range-setting.component';
 import { EditBusinessBlockComponent } from './BusinessBlockModule/edit-business-block/edit-business-block.component';
-import { QueryReservationListComponent} from './query-reservation-list/query-reservation-list.component'
+import { QueryReservationListComponent} from './BusinessBlockModule/query-reservation-list/query-reservation-list.component'
 
 
 const routes: Routes = [ { path:'individualprofile', component:IndividualprofileComponent},

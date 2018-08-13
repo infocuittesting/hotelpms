@@ -141,7 +141,7 @@
     
         <div class="form-group" >
           <label for="name">Market</label>
-                  <select class="form-control" name="market" [(ngModel)]="block.marketcode" >
+                  <select class="form-control" name="market" [(ngModel)]="editblock.marketgroup_description" >
                     <option value="" hidden></option> 
                     <option *ngFor="let selectmarket of market" [ngValue] ="selectmarket.id">{{selectmarket.marketgroup_description}} </option>
                 
