@@ -66,6 +66,9 @@ import { ReservationsListComponent } from './BusinessBlockModule/reservations-li
 import { GroupOptionsComponent } from './BusinessBlockModule/group-options/group-options.component';
 import { BlockRangeSettingComponent } from './BusinessBlockModule/block-range-setting/block-range-setting.component';
 import { RevenueRateCodeComponent } from './RevenueManagementModule/revenue-rate-code/revenue-rate-code.component';
+import { EditRevenueManagementComponent } from './RevenueManagementModule/edit-revenue-management/edit-revenue-management.component';
+import { EditBusinessBlockComponent } from './BusinessBlockModule/edit-business-block/edit-business-block.component';
+import { QueryReservationListComponent } from './BusinessBlockModule/query-reservation-list/query-reservation-list.component';
 // import { MomentModule } from 'angular2-moment';
 
 
@@ -99,7 +102,14 @@ import { RevenueRateCodeComponent } from './RevenueManagementModule/revenue-rate
    ReservationsListComponent,
    GroupOptionsComponent,
    BlockRangeSettingComponent,
+
    
+
+   RevenueRateCodeComponent,
+   EditRevenueManagementComponent,
+   RevenueRateCodeComponent,
+   EditBusinessBlockComponent,
+   QueryReservationListComponent,
 
    
    
