@@ -55,7 +55,7 @@
               </thead>
                 <tbody>
                   <tr *ngFor="let grid of gridvalues;">
-                    <td>{{grid.grid_type}}</td>
+                    <td>{{grid.grid_type_desc}}</td>
                     <td>{{grid.kngn}}</td>
                     <td>{{grid.kngs}}</td>
                     <td>{{grid.ksbn}}</td>
@@ -186,14 +186,14 @@
                                       <div class="row">
                                     <div class="col-md-4"> 
                                       <div class="form-group">
-                                      <label for="name">Form</label>
-                                      <input type="date" class="form-control input-sm" name="Form" [(ngModel)]="start">
+                                      <label for="name">Start Date</label>
+                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="start">
                                     </div>
                                   </div>
                                   <div class="col-md-4"> 
                                       <div class="form-group">
-                                      <label for="name">To</label>
-                                      <input type="date" class="form-control input-sm" name="Form" [(ngModel)]="end">
+                                      <label for="name">End Date</label>
+                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="end">
                                     </div>
                                   </div>
                                   <div class="col-md-4"> 

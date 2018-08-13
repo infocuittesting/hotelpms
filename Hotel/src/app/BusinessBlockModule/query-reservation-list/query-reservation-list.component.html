@@ -7,7 +7,7 @@
               <table class="table table-bordered tableBodyScroll">
                   <thead style="background-color: #337ab7;color: white;">
                     <tr>
-                      <!-- <th>seq</th> -->
+                      <th>seq</th>
                       <th>Confirmation Number</th>
                       <th>Name</th>
                       <th>Arrival</th>
@@ -26,7 +26,7 @@
                   <tbody>
                     <tr *ngFor="let array of querylist ;let i=index"
                       [ngClass]="{'backGroundColor':i==selectindex}">
-                        <!-- <td>{{i+1}}</td> -->
+                        <td>{{i+1}}</td>
                         <td>{{array.res_confnumber}}</td>
                         <td>{{array.pf_firstname}}</td>
                         <td>{{array.res_arrival}}</td>
@@ -54,7 +54,7 @@
           <!-- button................................. -->
           
 <div class ="container-fluid">
-  <div class="row">
+  <div class="row" style="margin-left: 248px;">
                         <!-- <div class="col-md-2">
                       <button class="btn btn-primary" style="width:100%" disabled>Extract</button>
                     </div> -->

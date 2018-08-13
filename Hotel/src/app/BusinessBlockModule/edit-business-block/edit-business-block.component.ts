@@ -122,6 +122,8 @@ this.editblockservice.QueryEditblock()
 
   }
 
+ 
+// edit lbock....................................................
   blockheader(block){
     if(block.print_rate == true)
     {
@@ -193,5 +195,18 @@ this.editblockservice.PaymasterReservation()
      console.log("paymasertresponse",this.paymasters);
  });
 }
+
+// grid current.......................................
+// public gridvalues:any = [];
+// selectgrid_data(){
+//   console.log("Nowwwwwwwwww")
+//   this.editblockservice.select_grid_data()
+  
+//   .subscribe((resp: any) => {
+//   this.gridvalues=resp.ReturnValue;
+//   this.session.store("gridvalues",this.gridvalues)
+//   console.log("hi daisyyyyy",this.gridvalues)
+//   });
+// }
 
 }
