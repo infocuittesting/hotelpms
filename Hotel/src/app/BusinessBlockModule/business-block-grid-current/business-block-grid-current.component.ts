@@ -100,7 +100,6 @@ console.log("ajith working fine",this.gridvalues)
     }else{
      input.saturday =0;
     }
- 
 
 let body={
 
@@ -141,6 +140,7 @@ console.log("worked",this.insertgrid);
 // });
 }
 
+saveshow=[];
 savebutton(){
   console.log("inside insertgrid value",this.insertgrid);
 
@@ -165,6 +165,5 @@ savebutton(){
 });
 
 }
-
 
 }

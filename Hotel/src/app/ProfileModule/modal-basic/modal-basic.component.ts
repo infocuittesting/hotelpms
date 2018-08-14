@@ -573,7 +573,7 @@ deletepreferClick(){
 
   //Date and time
   setInterval(()=>{
-    this.now =  moment().format("d-MMM-YYYY HH:mm:ss");
+    this.now =  moment().format("DD-MMM-YYYY HH:mm:ss");
   },1000); 
 
 this.pppService.ratecodedropdown()
