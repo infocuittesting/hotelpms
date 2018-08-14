@@ -125,7 +125,8 @@ let body={
 "friday":input.friday,
 "saturday":input.saturday,
 "grid_startdate":input.grid_startdate,
-"grid_enddate":input.grid_enddate
+"grid_enddate":input.grid_enddate,
+"available_rooms":input.totalrooms.toString()
 }
 
 

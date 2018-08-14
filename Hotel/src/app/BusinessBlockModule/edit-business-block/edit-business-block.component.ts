@@ -38,6 +38,8 @@ public queryedit=[];
 public blid;
 public paysucess;
 public payfailure;
+public queryroomtype;
+public roomtype1;
   ngOnInit() {
     // block status sropdown.....................
     this.editblockservice.blockstatusdropdown()
@@ -123,41 +125,40 @@ this.editblockservice.QueryEditblock()
   }
 
  
-// edit lbock....................................................
-  blockheader(block){
-    if(block.print_rate == true)
-    {
-        block.print_rate = "1"
-    }
-    else
-    {
-        block.print_rate = "0"
-    }
-    if(block.suppress == true)
-    {
-        block.suppress = "1"
-    }
-    else{
-        block.suppress = "0"
-    }
-    if(block.guranteeds == true)
-    {
-        block.guranteeds = "1"
+// edit lbock screen....................................................
+editblockheader(editblock){
+    // if(block.print_rate == true)
+    // {
+    //     block.print_rate = "1"
+    // }
+    // else
+    // {
+    //     block.print_rate = "0"
+    // }
+    // if(block.suppress == true)
+    // {
+    //     block.suppress = "1"
+    // }
+    // else{
+    //     block.suppress = "0"
+    // }
+    // if(block.guranteeds == true)
+    // {
+    //     block.guranteeds = "1"
 
-    }
-    else{
-        block.guranteeds = "0"
-    }
-    this.editblockservice.Editblock(block)
+    // }
+    // else{
+    //     block.guranteeds = "0"
+    // }
+    console.log("go to ok button",editblock)
+    this.editblockservice.Edit_grid_data(editblock)
 .subscribe((resp: any) => {
     this.createblock=resp.ReturnCode;
-    this.blockids = resp.Blockid;
-    this.block_code = resp.blockcode;
-    this.block_name = resp.Blockname;
+ 
      console.log(this.createblock);
-     this.session.store("blids",this.blockids.toString());
-     if(this.createblock=="RIS"){
-        this.blocksuccess="Block Created Successfully"+ this.blockids
+    //  this.session.store("blids",this.blockids.toString());
+     if(this.createblock=="RUS"){
+        this.blocksuccess="Block Updated Successfully"
         console.log("outputblock",this.blocksuccess)
      }
      else{

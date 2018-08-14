@@ -179,6 +179,88 @@ PaymasterReservation():Observable<object[]> {
      .map(this.extractData)
 
 }
+
+Edit_grid_data(block):Observable<object[]> {
+   console.log("going to service",block,typeof(block))
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+  let body = {
+    
+      // "block_id": this.session.retrieve("blockid".toString())
+      "Definite":
+           {
+             "block_id":this.session.retrieve("blockid".toString()),
+	           "block_status_id":"1",
+             "market_id":"",
+             "source_id":"",
+             "owner":"",
+             "origin_id":"",
+	           "start_date":"",
+	           "end_date":block.end_date,
+	           "nights":block.nights,
+	          "block_type":""
+            },
+     "Rooms":   {
+            "block_id":this.session.retrieve("blockid".toString()),
+            "res_type_id":"",
+            "cutoff_date":block.cutoff_date,
+            "cutoff_days":block.cutoff_days,
+            "inventory_control_id ":"",
+            "ratecode_id":"",
+            "print_rate":"",
+			      "suppress_rate":"",
+			      "packages":block.packages,
+		       	
+			      "follow_date":""
+			
+            },
+       "Block_details":
+             {
+             "block_id":this.session.retrieve("blockid".toString()),
+             "payments_id":"",
+             "rooming_list_duedate":block.rooming_list_duedate,
+             "arrivaltime":block.arrivaltime,
+             "depaturetime":block.depaturetime,
+		      	 "commission":block.commission,
+			       "total_rooms_perday":block.total_rooms_perday
+             },
+        "Catering":
+             {
+             "block_id":this.session.retrieve("blockid".toString()),
+             "guranteed":"",
+             "attenders":"",
+			       "info_board":"",
+			       "contract_no":"",
+			       "onsite_name":"",
+			       "owner_id":"",
+			       "followup_date":block.follow_date
+             },
+        "block_meeting":
+                {
+				     "block_id":this.session.retrieve("blockid".toString()),
+				     "meeting_space":"",
+				     " meeting_space_type_id ":"",
+				     "attendess":""
+			      	},
+       "Catering Cancel":
+             {
+             "block_id":this.session.retrieve("blockid".toString()),
+             "catering_reason_id":"",
+             "catering_comments":""
+             },
+       "Room Cancel":
+              {
+              "block_id":this.session.retrieve("blockid".toString()),
+              "room_cancel_reason":"",
+              "room_cancel_comments":"",
+              "room_cancel_destination":""
+              }
+      
+  }
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_UPDATE_BusinessBlockDefinite',body,options)
+     .map(this.extractData)
+
+}
 // select_grid_data():  Observable<object[]> {   
 //   const headers = new Headers({'Content-Type':'application/json'})
 //   const options = new RequestOptions({ headers: headers });
