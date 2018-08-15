@@ -181,7 +181,7 @@ PaymasterReservation():Observable<object[]> {
 }
 
 Edit_grid_data(block):Observable<object[]> {
-   console.log("going to service",block,typeof(block))
+   console.log("going to service",block)
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers })
   let body = {
@@ -193,9 +193,9 @@ Edit_grid_data(block):Observable<object[]> {
 	           "block_status_id":"1",
              "market_id":"",
              "source_id":"",
-             "owner":"",
+             "owner":block.owner,
              "origin_id":"",
-	           "start_date":"",
+	           "start_date":block.start_date,
 	           "end_date":block.end_date,
 	           "nights":block.nights,
 	          "block_type":""
@@ -207,11 +207,11 @@ Edit_grid_data(block):Observable<object[]> {
             "cutoff_days":block.cutoff_days,
             "inventory_control_id ":"",
             "ratecode_id":"",
-            "print_rate":"",
-			      "suppress_rate":"",
+            "print_rate":block.print_rate,
+			      "suppress_rate":block.suppress,
 			      "packages":block.packages,
 		       	
-			      "follow_date":""
+			      "follow_date":block.follow_date
 			
             },
        "Block_details":
@@ -227,20 +227,20 @@ Edit_grid_data(block):Observable<object[]> {
         "Catering":
              {
              "block_id":this.session.retrieve("blockid".toString()),
-             "guranteed":"",
-             "attenders":"",
-			       "info_board":"",
-			       "contract_no":"",
-			       "onsite_name":"",
+             "guranteed":block.guranteeds,
+             "attenders":block.attenders,
+			       "info_board":block.info_board,
+			       "contract_no":block.contract_no,
+			       "onsite_name":block.onsite_name,
 			       "owner_id":"",
-			       "followup_date":block.follow_date
+			       "followup_date":block.followup_date
              },
         "block_meeting":
                 {
 				     "block_id":this.session.retrieve("blockid".toString()),
-				     "meeting_space":"",
+				     "meeting_space":block.meeting_space,
 				     " meeting_space_type_id ":"",
-				     "attendess":""
+				     "attendess":block.attendess
 			      	},
        "Catering Cancel":
              {
