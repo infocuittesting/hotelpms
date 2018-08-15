@@ -38,8 +38,15 @@ table{
    .table-responsive {
 
     height:40%;
-    width:100%;
+    width:101%;
     /* overflow-x: auto; */
+     overflow-y: auto; 
+   }
+   .scroll2 {
+
+    height:40%;
+    width:100%;
+    overflow-x: auto;
      overflow-y: auto; 
    }
 

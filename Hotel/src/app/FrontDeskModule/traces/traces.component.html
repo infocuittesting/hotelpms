@@ -5,84 +5,39 @@
 <div class="container-fluid">
   <div class="jumbotron" style="background-color: #0077B5;color: white; ">
       <div class="row">
+
        <div class="col-md-4">
-               <div class="row">
-                  <div class="col-md-4">    
-                      <form class="form-inline" action="/action_page.php">
-                      <label for="email"> Name:</label>
-                       </form>
-                 </div>   
-      
-               <div class="col-md-6">    
-                      <form class="form-inline" action="/action_page.php">
-                       <input type="text" class="form-control" id="email" placeholder="Enter Name" name="email">
-                       </form>
-              </div>
 
-              </div>
-          </div>
-          <div class="col-md-4">
-                <div class="row">
-                <div class="col-md-4">    
-            <form class="form-inline" action="/action_page.php">
-                <label for="email">Date:</label>
-                </form>
-            </div>   
-                <div class="col-md-6">    
-            <form class="form-inline" action="/action_page.php">
-                <input type="date" class="form-control" id="email" placeholder="Enter First Name" name="email"[(ngModel)]="usersss.PF_Firstname">
-                </form>
-            </div>
+        <label for="email"> Name:</label>
+        <input type="text" class="form-control" id="email" placeholder="Enter Name" name="email">
+       </div>
 
-            </div>
+      <div class="col-md-4">
+         <label for="email">Date:</label>
+        <input type="date" class="form-control" id="email" name="date">
         </div>          
 
-          <div class="col-md-4">   
-                  <form class="form-inline" action="/action_page.php">
-                   <input type="checkbox" class="form-control" id="email"  name="email"[(ngModel)]="usersss.RM_Room_Type">
-                  <label for="email">Resolved</label>
-                  <input type="checkbox" class="form-control" id="email"  name="email"[(ngModel)]="usersss.RM_Room_Type" style="margin-left:2%;">
-                  <label for="email">Unresolved</label>
-                  </form>
-                 </div>
+        <div class="col-md-4">
+
+                <label for="email">Department:</label>
+                <select class="form-control"  name="Department" id="">
+                    <option value=""> HouseKeeping </option>
+
+                </select>
+        </div>
           
       </div>
       <br>
       <div class="row">
-        <div class="col-md-4">
-                <div class="row">
-                <div class="col-md-4">    
-            <form class="form-inline" action="/action_page.php">
-                <label for="email">Department:</label>
-                </form>
-            </div>   
-                <div class="col-md-6">    
-            <form class="form-group" action="/action_page.php">
-                <!-- <input type="text" class="form-control" id="email" placeholder="Enter First Name" name="email"[(ngModel)]="usersss.RM_Room"> -->
-                <select class="form-control"  name="Department" id="" [(ngModel)]="usersss.RM_Room" style="color: black;width: 145%;">
-                    <option value=""> HouseKeeping </option>
-
-                </select>
-                </form>
-            </div>
-
-            </div>
+        <div class="col-md-4">                  
+             <label class="checkbox-inline" for="resolve"> <input type="checkbox" style="zoom:1" id="resolve"  name="resolve">Resolved</label>
         </div>
-
-     <div class="col-md-8">
-            <div class="row">
-                    <div class="col-md-2"></div>
-
-                     <div class="col-md-3">
-                      <button class="btn btn-success" style="width: 100%">All </button>  
-                    </div>
-
-
-                    
-                    </div>
-        </div>
-
-       
+       <div class="col-md-4">
+            <label class="checkbox-inline" for="unresolve"><input type="checkbox" style="zoom:1" id="unresolve"  name="unresolve"> Unresolved</label>
+       </div>
+       <div class="col-md-2">
+             <button class="btn btn-success" style="width: 100%">All </button>  
+        </div>       
 
     </div>
 
@@ -90,27 +45,27 @@
 
 <br>
 
-<table class="table table-bordered table-striped">
+<table class="table table-bordered  tableBodyScroll">
   <thead>
       <tr class="table table-primary" style="background-color: #0077B5;color: white; ">
-          <th> </th>
-          <th> Name</th> 
-          <th> Date</th>         
-          <th> Time</th>
-          <th> Department</th>
-          <th> Resolved On</th>
-          <th> Resolved By</th>
+          <th style="width:140px;">Seq</th>
+          <th style="width:138px;"> Name</th> 
+          <th style="width:138px;"> Date</th>         
+          <th style="width:140px;"> Time</th>
+          <th style="width:140px;"> Department</th>
+          <th style="width:139px;"> Resolved On</th>
+          <th style="width:155px;"> Resolved By</th>
       </tr>
   </thead>
   <tbody>
-          <tr> 
-             <td><input type="checkbox"></td>    
-             <td> </td>        
-             <td> </td>         
-             <td> </td>   
-             <td> </td>  
-             <td> </td>     
-             <td> </td>                        
+          <tr *ngFor="let list of gettrace let i=index" > 
+             <td>{{i+1}}</td>    
+             <td>{{list.pf_firstname}}</td>        
+             <td>{{list.traces_date}}</td>         
+             <td>{{list.traces_time}}</td>   
+             <td>{{list.traces_dept_code}}</td>  
+             <td>{{list.resloved_on}}</td>     
+             <td>{{list.resloved_by}}</td>                        
           </tr>
               <tr>    
              <td><input type="checkbox"></td>                

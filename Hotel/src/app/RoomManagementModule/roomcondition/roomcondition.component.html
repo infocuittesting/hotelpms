@@ -1,3 +1,27 @@
+<<<<<<< HEAD
+=======
+<!-- Alertinsert for roomcondition response -->
+
+   <div class="modal fade" id="insertroomcondition" role="dialog">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4>Connect 24/7 Hotel</h4>
+        </div>
+        <div class="modal-body">
+        <p align="center">{{newroom}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+        </div>
+      </div>
+      
+    </div>
+  </div> 
+
+
+>>>>>>> 9d37cce63b6845157583c99c7b0074d1795f3dae
 
      <!---Alertupdate for roomcondition response-->
 
@@ -11,7 +35,7 @@
            <h4>Connect 24/7 Hotel</h4>
           </div>
           <div class="modal-body">
-          <b align="center">{{newroom1}}</b>
+          <p align="center">{{newroom1}}</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
@@ -34,7 +58,7 @@
                <h4>Connect 24/7 Hotel</h4>
               </div>
               <div class="modal-body">
-              <b align="center">{{newroom2}}</b>
+              <p align="center">{{newroom2}}</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
@@ -142,17 +166,17 @@
         <button type="button" class="btn btn-success" style="width:100%;" routerLink="/reservation"><b>Resv.</b></button>
       </div>
       <div class="col-lg-2">
-          <button type="button" class="btn btn-primary" style="width:100%;" data-toggle="modal" data-target="#new"><b>New</b></button>
+          <button type="button" class="btn btn-primary" style="width:100%;" data-toggle="modal" data-target="#new" [disabled]=new><b>New</b></button>
         </div>
         <div class="col-lg-2">
     
-            <button type="button" class="btn btn-success" style="width:100%;" data-toggle="modal" data-target="#newupdate"><b>Edit</b></button>
+            <button type="button" class="btn btn-success" style="width:100%;" data-toggle="modal" data-target="#newupdate" [disabled]=edit><b>Edit</b></button>
           </div>
           <div class="col-lg-2">
-              <button type="button" class="btn btn-danger" style="width:100%;" (click)="delete(user1)" data-toggle="modal" data-target="#deleteroomcondition" data-dismiss="modal"><b>Delete</b></button>
+              <button type="button" class="btn btn-warning" style="width:100%;" (click)="delete(user1)" [disabled]=deleted data-toggle="modal" data-target="#deleteroomcondition" data-dismiss="modal"><b>Delete</b></button>
             </div>
             <div class="col-lg-2">
-                <button type="button" class="btn btn-danger" style="width:100%;"><b>Close</b></button>
+                <button type="button" class="btn btn-danger" style="width:100%;" routerLink="/mains"><b>Close</b></button>
               </div>
                               
               <div class="col-lg-1">
@@ -182,19 +206,19 @@
 <div class="col-lg-4">
   <div class="input-group">
       <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
-      <input type="text" class="form-control" style="width:220px;"  [(ngModel)]="user1.rm_condition">
+      <input type="text" name="roomcondition" class="form-control" style="width:220px;"  [(ngModel)]="user1.rm_condition">
       </div>
 </div>
 
         </div><br>
 
         <div class="row" style="padding-left:20px;">
-         <textarea rows="5" cols="85" style="border-radius:4px;"></textarea>
+         <textarea rows="5" cols="77" style="border-radius:4px;"></textarea>
         </div>
       </div>
       <div class="modal-footer">
           <!-- <button type="button" class="btn btn-success" data-dismiss="modal" (click)="submit(user1)" data-toggle="modal" data-target="#insertroomcondition" data-dismiss="modal"><b>Ok</b></button> -->
-          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="submit(user1)"><b>Ok</b></button>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#insertroomcondition" data-dismiss="modal" (click)="submit(user1)"><b>Ok</b></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
       </div>
     </div>
@@ -211,7 +235,7 @@
     <div class="modal-content">
       <div class="modal-header" style="background-color:#0077B5;color:white;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Room Conditions-New</h4>
+        <h4 class="modal-title">Room Conditions-Edit</h4>
       </div>
       <div class="modal-body">
        
@@ -223,18 +247,18 @@
 <div class="col-lg-4">
   <div class="input-group">
       <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
-      <input type="text" class="form-control" style="width:220px;"  [(ngModel)]="user1.rm_condition">
+      <input type="text" class="form-control" style="width:220px;"  [(ngModel)]="rmc">
       </div>
 </div>
 
         </div><br>
 
         <div class="row" style="padding-left:20px;">
-         <textarea rows="5" cols="85" style="border-radius:4px;"></textarea>
+         <textarea rows="5" cols="75" style="border-radius:4px;"></textarea>
         </div>
       </div>
       <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="update(user1)" data-toggle="modal" data-target="#updateroomcondition" data-dismiss="modal"><b>Ok</b></button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="update(rmc)" data-toggle="modal" data-target="#updateroomcondition"><b>Ok</b></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
       </div>
     </div>

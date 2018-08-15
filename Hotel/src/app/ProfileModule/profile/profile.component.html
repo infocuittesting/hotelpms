@@ -57,8 +57,10 @@
 	  <b>Account</b>
 	</div>
 		<div class="col-lg-3">
-		<div class="input-group">
-			<input type="text" id="account" name="account" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Account"></div>
+		<div class="input-group" [class.has-error]="accounts.touched && accounts.invalid">
+			<input type="text" id="account" name="account" pattern="^[ A-Za-z0-9_@./#&+-]*$" class="form-control" style="width:250px;" [(ngModel)]="user.PF_Account" #accounts="ngModel" required>
+			<div *ngIf="accounts.touched && !accounts.valid && accounts.errors?.required && accounts.errors.pattern " ngClass="{ 'has-error' : !accounts.valid && submitAttempt }"></div>
+		</div>
 	  </div>
 	</div><br>
 	
@@ -164,11 +166,13 @@
 	<div class="col-lg-3">
 	<b>Type</b>
 	</div>
-	<div class="col-lg-3">
-	
-		<select name="type" required style="height:34px;width:250px;"  [(ngModel)]="user.PF_Type">
+	<div class="col-lg-3" >
+		<div class="input-group" [class.has-error]="Types1.touched && Types1.invalid">
+		<select name="Type" class="form-control" style="height:34px;width:250px;"  [(ngModel)]="user.PF_Type" #Types1="ngModel" required>
 			<option *ngFor="let companyprofiletype1 of type" [ngValue] = "companyprofiletype1.profiletype">{{companyprofiletype1.profiletype}} </option>
 		 </select>
+		 <div *ngIf="Types1.touched && !Types1.valid && Types1.errors?.required" ngClass="{ 'has-error' : !Types1.valid && submitAttempt }"></div>                                
+		</div>
 	   </div>
 	</div>
 	
@@ -198,49 +202,51 @@
 	
 
 	<div class="row" style="padding-top:5px;">
-	<div class="col-lg-3">	
-	<b>Communications</b>
-	</div>
-	<div class="col-lg-3">
-			<select name="Communications" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Company_Commtype1">
-					<option *ngFor="let individualcommunication of comm1" [ngValue] = "individualcommunication.commtype">{{individualcommunication.commtype}} </option>
-			</select>
-	</div>
-	<div class="col-lg-3">
-			<div class="input-group">
-					<input type="text"name="com" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Company_Communication1">
-				</div>
-	</div>
-	</div>
+		<div class="col-lg-3">                                          
+		  <b>Communications</b>
+		  </div>
+		  <div class="col-lg-3">                                             
+			  <select name="Comm1" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Individual_Communication1">
+				<option value="Home"> Home </option>                                             
+		</select>
+	  </div>
+		  <div class="col-lg-3">
+			  <div class="input-group" [class.has-error]="communitype1.touched && communitype1.invalid">
+				  <input type="text" name="commtype" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Individual_Commtype1" #communitype1="ngModel" required>
+			<div *ngIf="communitype1.touched && !communitype1.valid && communitype1.errors?.required && communitype1.errors.pattern " ngClass="{ 'has-error' : !communitype1.valid && submitAttempt }"></div>
+		  </div>
+		  </div> 
+		  </div>
 
-	<div class="row" style="padding-top:5px;">
-			<div class="col-lg-3"></div>
-			<div class="col-lg-3">
-					<select name="comm1" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Company_Commtype2">
-							<option *ngFor="let individualcommunication1 of comm2" [ngValue] = "individualcommunication1.commtype">{{individualcommunication1.commtype}} </option> 
-					</select>
-			</div>
-			<div class="col-lg-3">
-					<div class="input-group">
-							<input type="text" name="com1" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Company_Communication2">
-						</div>
-			</div>
-	</div>		
-	
+		  <div class="row" style="padding-top:5px;">
+			  <div class="col-lg-3"></div>
+			  <div class="col-lg-3">
+				  <select name="comm2"  required style="height:34px;width:118px;" [(ngModel)]="user.PF_Individual_Communication2">
+				  <option value="Business"> Business</option>
+				</select>
+			  </div>
+			  <div class="col-lg-3">
+				  <div class="input-group" [class.has-error]="communitype2.touched && communitype2.invalid">
+					  <input type="text" name="com2" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Individual_Commtype2" #communitype2="ngModel" required>
+			<div *ngIf="communitype2.touched && !communitype2.valid && communitype2.errors?.required && communitype2.errors.pattern " ngClass="{ 'has-error' : !communitype2.valid && submitAttempt }"></div>
+		  </div>
+			  </div>
+		  </div>
 
-	<div class="row" style="padding-top:5px;">
-			<div class="col-lg-3"></div>
-			<div class="col-lg-3">
-					<select name="comm2" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Company_Commtype3">
-							<option *ngFor="let individualcommunication2 of comm3" [ngValue] = "individualcommunication2.commtype">{{individualcommunication2.commtype}} </option>
-						</select>
-			</div>
-			<div class="col-lg-3">
-					<div class="input-group">
-							<input type="text" name="com2"class="form-control" style="width:118px;" [(ngModel)]="user.PF_Company_Communication3">
-						</div>
-			</div>
-	</div>		
+		  <div class="row" style="padding-top:5px;">
+			  <div class="col-lg-3"></div>
+			  <div class="col-lg-3">
+				  <select name="comm3" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Individual_Communication3">
+				  <option>Email</option>
+					 </select>
+			  </div>
+			  <div class="col-lg-3">
+				  <div class="input-group" [class.has-error]="communitype3.touched && communitype3.invalid">
+					  <input type="email"name="com3" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Individual_Commtype3" #communitype3="ngModel" required>
+			<div *ngIf="communitype3.touched && !communitype3.valid && communitype3.errors?.required && communitype3.errors.pattern " ngClass="{ 'has-error' : !communitype3.valid && submitAttempt }"></div>
+		  </div>
+			  </div>
+		  </div>		
 
 	</div>
 	

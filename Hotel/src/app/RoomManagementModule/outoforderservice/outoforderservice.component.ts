@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from "@angular/router";
 import { SessionStorageService } from "ngx-webstorage";
 
+
 @Component({
   selector: 'app-outoforderservice',
   templateUrl: './outoforderservice.component.html',
@@ -102,8 +103,8 @@ export class OutoforderserviceComponent implements OnInit {
    }
 
 oos2=[];
-oos3=[];
-   roomcard=[];
+oos3;
+   roomcard;
    roomcard1=[];
   user={};
   user2={};
@@ -131,9 +132,9 @@ oos3=[];
      this.roomService.postandgetdata(inputt)
      .subscribe(( user333:any)=> {
        this.user33 = user333;
-       this.roomcard=user333.Return;
-
-       if(user333.Return == "Record Inserted Successfully"){
+       this.roomcard=user333.ReturnCode;
+       if(this.roomcard=="RIS"){
+        this.roomcard="The Out Of Order/Out Of Service is created";
         console.log("checking return value is success or not")
         this.roomService.outofOrder()
         .subscribe((resp: any) => {
@@ -170,9 +171,10 @@ oos3=[];
              this.roomService.deleteoutoforder(inputt)
              .subscribe(( user335:any)=> {
                this.user35 = user335;
-               this.oos3=user335.Return;
+               this.oos3=user335.ReturnCode;
               //  window.location.reload();
-              if(user335.Return == "Record Deleted Successfully"){
+              if(this.oos3 == "RDS"){
+                this.oos3="The "+status+" is deleted for room "+this.deleteDataDetails;
                 console.log("checking return value is success or not")
                 this.roomService.outofOrder()
                 .subscribe((resp: any) => {
@@ -183,8 +185,16 @@ oos3=[];
               );  
                }
     
+               level(){
+                this.roomService.outofOrder()
+                .subscribe((resp: any) => {
+                 this.order=resp.ReturnValue;
+              
+              });
+              }
 
   ngOnInit() {
+
 
     // let inputparms={
     //   "For_Date":"",
@@ -279,12 +289,13 @@ this.roomService.reasonlisting()
   }
   }
 
-  
+  status;
   selectindex=null;
   public deleteDataDetails:any;
   selectOrdersEdit(details,index){
   this.selectindex=index;
-  this.deleteDataDetails=details;
+  this.deleteDataDetails=details.rm.room;
+  this.status=details.rm_status;
   this.session.store("id1",details.rm_room.toString());
   
   }

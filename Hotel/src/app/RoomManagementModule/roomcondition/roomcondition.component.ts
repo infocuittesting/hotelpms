@@ -20,12 +20,12 @@ export class RoomconditionComponent implements OnInit {
   }
   public room:any = [
   ];
-
+rm_condition;
 user33=[];
 user1={};
-newroom=[];
+newroom:any;
 newroom1:any=[];
-newroom2=[];
+newroom2:any=[];
 user34:any={};
 user35={};
 
@@ -44,24 +44,22 @@ roomData1 = [];
   condition=[];
   class=[];
 
-  // submit(inputt):void {
+  submit(inputt):void {
 
 
-  //     this.pService.insertRoomcondition(inputt)
-  //     .subscribe(( user333:any)=> {
-  //       this.user33 = user333;
-  //       this.newroom=user333.Return;
-        // window.location.reload();
-      //   if(user333.Return == "Record Inserted Successfully"){
-      //     console.log("checking return value is success or not")
-      //     this.pService. getroomcondition()
-      //     .subscribe((resp: any) => {
-      //     this.room = resp.ReturnValue;
-      // });
-      //   }
-      // },
-      //  );  
-      //   }
+      this.pService.insertRoomcondition(inputt)
+      .subscribe(( user333:any)=> {
+        this.newroom=user333.ReturnCode;
+        if(this.newroom == "RIS"){
+         this.newroom =" The Room Condition is Generated for "+this.rmid;
+          this.pService. getroomcondition()
+          .subscribe((resp: any) => {
+          this.room = resp.ReturnValue;
+      });
+        } 
+      },
+       );  
+        }
 
 
         update(inputt){
@@ -69,17 +67,15 @@ roomData1 = [];
         
             this.pService.updateRoomcondition(inputt)
             .subscribe(( user334:any)=> {
-              this.user34 = user334;
-              this.newroom1=user334.Return;
-              if(user334.Return == "Record Inserted Successfully"){
-                console.log("checking return value is success or not")
-                this.pService.getroomcondition()
-                .subscribe((resp: any) => {
-                this.room=resp.ReturnValue;
-                });
+              this.newroom1=user334.ReturnCode;
+              if(this.newroom1== "RUS"){
+             this.newroom1="Room condition is Changed for "+this.rmid;
               }
-              }
-             );
+              this.pService.getroomcondition()
+              .subscribe((resp: any) => {
+              this.room=resp.ReturnValue;
+              });
+              });
               }
 
 
@@ -88,9 +84,10 @@ roomData1 = [];
                      this.pService.deleteroomcondition(inputt)
                      .subscribe(( user337:any)=> {
                        this.user35 = user337;
-                       this.newroom2=user337.Return;
-                       if(user337.Return == "Record Deleted Successfully"){
-                        console.log("checking return value is success or not")
+                       this.newroom2=user337.ReturnCode;
+                       if(this.newroom2 == "RDS"){
+                         this.newroom2="The "+this.rmid+" Room Condition is Deleted";
+                        
                         this.pService.getroomcondition()
                         .subscribe((resp: any) => {
                         this.room=resp.ReturnValue;
@@ -105,19 +102,8 @@ roomData1 = [];
     this.pService.getroomcondition()
     .subscribe((resp: any) => {
     this.room=resp.ReturnValue;
-   
-    });
-
-    this.pService.getroomcondition()
-    .subscribe((resp: any) => {
     this.roomData=resp.ReturnValue;
-   
-    });
-
-    this.pService.getroomcondition()
-    .subscribe((resp: any) => {
     this.roomData1=resp.ReturnValue;
-   
     });
 
     this.pService.roomdropdown()
@@ -169,10 +155,31 @@ roomData1 = [];
     this.room=this.copy; 
   }
   }
-
+  new=true;
+  edit=true;
+  deleted=true;
+  public rmid;
+  public rmc;
   selectindex=null;
 selectRoomEdit(details,index){
 this.selectindex=index;
+this.rmid=details.rm_room;
+this.rmc=details.rm_condition;
+if((this.rmid=details.rm_room) && (this.rmc == null)){
+  this.new=false;
+}
+else{
+  this.new=true;
+}
+
+if((this.rmid=details.rm_room) && (this.rmc!=null)){
+  this.edit=false;
+  this.deleted=false;
+}
+else{
+  this.edit=true;
+  this.deleted=true;
+}
 this.session.store("id",details.rm_room.toString());
 
 }

@@ -43,7 +43,8 @@ import { CasheringinhouseguestComponent } from './CasheringModule/casheringinhou
 
 //RevenueManagement
 import { RevenuemanagementComponent } from './RevenueManagementModule/revenuemanagement/revenuemanagement.component';
-
+import {RevenueRateCodeComponent} from './RevenueManagementModule/revenue-rate-code/revenue-rate-code.component';
+import { EditRevenueManagementComponent } from './RevenueManagementModule/edit-revenue-management/edit-revenue-management.component';
 
 
 //BusinessBlockModule
@@ -52,6 +53,12 @@ import { BusinessBlockSearchComponent } from './BusinessBlockModule/business-blo
 import { RominglistComponent } from './BusinessBlockModule/rominglist/rominglist.component';
 import { BusinessCreateBlockComponent } from './BusinessBlockModule/business-create-block/business-create-block.component';
 import { InquriprocessComponent } from './BusinessBlockModule/inquriprocess/inquriprocess.component'
+import { BusinessBlockGridCurrentComponent } from './BusinessBlockModule/business-block-grid-current/business-block-grid-current.component';
+import { ReservationsListComponent } from './BusinessBlockModule/reservations-list/reservations-list.component';
+import { GroupOptionsComponent } from './BusinessBlockModule/group-options/group-options.component';
+import { BlockRangeSettingComponent } from './BusinessBlockModule/block-range-setting/block-range-setting.component';
+import { EditBusinessBlockComponent } from './BusinessBlockModule/edit-business-block/edit-business-block.component';
+import { QueryReservationListComponent} from './BusinessBlockModule/query-reservation-list/query-reservation-list.component'
 
 
 const routes: Routes = [ { path:'individualprofile', component:IndividualprofileComponent},
@@ -75,7 +82,7 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 { path:'gss', component: GuestservicestatusComponent },
 { path:'oos', component:OutoforderserviceComponent },
 { path:'roomcondn', component: RoomconditionComponent },
-
+{ path:'roommaintenance',component:RoommaintainComponent},
 
 { path:'arrival', component:ArrivalComponent },
 { path:'roomassignment', component: RoomassignmentComponent },
@@ -89,12 +96,21 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 
 //revenuemanagement
 { path:'revenue', component:RevenuemanagementComponent},
+{ path:'revenueratecode', component:RevenueRateCodeComponent},
+{ path:'editrevenue', component:EditRevenueManagementComponent},
+
 //BusinessBLockSearch
 {path:'business',component:BusinessBlockSearchComponent},
 {path:'inquiri',component:InquriprocessComponent},
 {path:'bcreate',component:BusinessCreateBlockComponent},
 {path:"options",component:BusinessBlockOptionsComponent},
 {path:"rominglist",component:RominglistComponent},
+{path:"grid",component:BusinessBlockGridCurrentComponent},
+{path:"reservationlist",component:ReservationsListComponent},
+{path:"grouplist",component:GroupOptionsComponent},
+{path:"blockrange",component:BlockRangeSettingComponent},
+{path:"editblock",component:EditBusinessBlockComponent},
+{path:"queryreservation",component:QueryReservationListComponent},
 ];
 
 @NgModule({
@@ -109,4 +125,4 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
   ProfileComponent,ProfilesearchComponent,SearchandeditreservationComponent,HousekeepingComponent,QueueroomComponent,RoomdiscrepanciesComponent,RoomconditionComponent
 ,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
-BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent]
+BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,RevenueRateCodeComponent,EditRevenueManagementComponent]

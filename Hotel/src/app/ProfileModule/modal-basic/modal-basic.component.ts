@@ -4,6 +4,7 @@ import { ProfilesearchService } from '../profilesearch/profilesearch.service';
 
 import { Route } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import * as moment from 'moment';
 
 
 import { Router } from "@angular/router";
@@ -18,6 +19,7 @@ import { SessionStorageService } from "ngx-webstorage";
 })
 export class ModalBasicComponent implements OnInit {
 
+  public now:any;
   public tables =[];
 
   public negotes =[];
@@ -25,6 +27,7 @@ export class ModalBasicComponent implements OnInit {
   public negotes1 =[];
 
   public notes =[];
+  public notes1 = [];
 
   public credit =[];
 
@@ -70,7 +73,7 @@ getcreditexpiry(){
     user2:any = {};
     user21 = {};
     profile1 =[];
-    profile2 =[];
+    profile2;
     user1 ={};
     user3 ={};
     user5 ={};
@@ -123,7 +126,11 @@ getcreditexpiry(){
     console.log(val);
     this.negotes = this.negotes1.filter(x => x.pf_rate_code == val)
   }
-  
+
+  notesfilter(val){
+    console.log(val);
+    this.notes = this.notes1.filter(x => x.pf_note_type == val)
+  }
 
   onSelectpop(val){
     console.log(val);
@@ -138,6 +145,25 @@ getcreditexpiry(){
   onSelect2(val){
     console.log(val);
     this.prefer = this.prefer2.filter(x => x.pf_preference_group == val)
+  }
+
+  preferencefilter(args1,args2){
+    console.log(args1);
+    console.log(args2);
+    if(args1 === undefined){
+      this.prefer = this.prefer2.filter(x => x.pf_preference_group == args2)
+    }
+    else if(args2 === undefined){
+      this.prefer = this.prefer1.filter(x => x.pf_guest_preference == args1)
+    }
+    else{
+      this.prefer = this.prefer2.filter(x => x.pf_preference_group == args2,y => y.pf_guest_preference == args1)
+      // this.prefer = this.prefer1.filter(x => x.pf_guest_preference == args1)
+      console.log(this.prefer);
+    }
+    // this.prefer = this.prefer1.filter(x => x.pf_guest_preference == args1)
+    // this.prefer = this.prefer2.filter(x => x.pf_preference_group == args2)
+
   }
 //   selectedDevice = 'Master';
 //   onChange(newValue) {
@@ -239,7 +265,7 @@ getcreditexpiry(){
 
 
        notesinsert(inputt):void {
-
+        inputt.PF_Notes_Date= this.now;
         console.log(inputt);
           this.pppService.insertNotes(inputt)
           .subscribe(( user335:any)=> {
@@ -256,6 +282,7 @@ getcreditexpiry(){
          notesupdate(inputt):void {
 
           console.log(inputt);
+          inputt.PF_Notes_Date= this.now;
             this.pppService.updateNotes(inputt)
             .subscribe(( user235:any)=> {
               this.user25 = user235;
@@ -410,6 +437,7 @@ notesClick(flag){
   this.pppService.getNotes(paramss)
   .subscribe((resp: any) => {
     this.notes=resp.ReturnValue;
+    this.notes1=this.notes;
    console.log(this.credit);
  
 });
@@ -542,7 +570,12 @@ deletepreferClick(){
 
   ngOnInit() 
  {
-  
+
+  //Date and time
+  setInterval(()=>{
+    this.now =  moment().format("d-MMM-YYYY HH:mm:ss");
+  },1000); 
+
 this.pppService.ratecodedropdown()
    .subscribe((resp: any) => {
      this.rate=resp.ReturnValue;
@@ -648,47 +681,98 @@ deletesClick(flag){
   this.pppService.deleterecordDelete(paramss)
   .subscribe((resp: any) => {
     this.profile1=resp.ReturnValue;
-   this.profile2=resp.Return;
+   this.profile2=resp.ReturnCode;
+   if(this.profile2=="RDS"){
+    this.profile2="The profile is Deleted";
+   }
     // console.log("creditcard details");
     //  console.log(this.credit);
  
 });
 }
 
-
-
-
+//select Credit card
+edit=true;
+delet=true;
+cid;
 selectindex=null;
 public deleteDataDetails:any;
 selectMembersCredit(details,index){
 this.selectindex=index;
+this.cid=details.cc_id;
+if(this.cid==details.cc_id)
+{
+this.edit=false;
+this.delet=false;
+}else{this.edit=true;this.delet=true;}
 this.deleteDataDetails=details;
 this.session.store("id1",details.cc_id);
 }
 
-
+// Notes Select Edit and Delete
 selectindex1=null;
 public deleteDataDetails1:any;
+public noteid;
+noteedit=true;
+notedelete=true;
 selectMembersNotes(details,index){
+this.noteid=details.notes_id;
+if(this.noteid==details.notes_id){
+  this.noteedit=false;
+  this.notedelete=false;
+}else{
+  this.noteedit=true;
+  this.notedelete=true;
+}
 this.selectindex=index;
 this.deleteDataDetails1=details;
 this.session.store("id2",details.notes_id);
 }
 
+//select Negotes
 selectindex2=null;
+negoteid;
+negoteedit=true;
+negotedelete=true;
 public deleteDataDetails2:any;
 selectMembersNegotes(details,index){
+  this.negoteid=details.negotiate_id;
+  if(this.negoteid==details.negotiate_id){
+    this.negoteedit=false;
+    this.negotedelete=false;
+  }else{
+    this.noteedit=true;
+    this.notedelete=true;
+  }
 this.selectindex=index;
 this.deleteDataDetails2=details;
 this.session.store("id3",details.negotiate_id);
 }
 
+//preferences modal select
 selectindex3=null;
+prefid;
+prefedit=true;
+prefdelete=true;
 public deleteDataDetails4:any;
 selectMembersPrefer(details,index){
+  this.prefid=details.negotiate_id;
+  if(this.prefid==details.negotiate_id){
+    this.prefedit=false;
+    this.prefdelete=false;
+  }else{
+    this.prefedit=true;
+    this.prefdelete=true;
+  }
 this.selectindex=index;
 this.deleteDataDetails4=details;
 this.session.store("id4",details.preference_id);
+}
+ngOnDestroy(){
+  //Timer clear for ETA input
+  if(this.now){
+    clearInterval(this.now);
+  }
 }
 
 

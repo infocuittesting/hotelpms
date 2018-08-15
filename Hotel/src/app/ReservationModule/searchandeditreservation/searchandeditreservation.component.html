@@ -20,25 +20,26 @@
    <div class="col-md-10">
   <div class="container-fluid" style="padding-top:40px;">
   <div class="jumbotron" style="padding-top:10px;background-color:#0077B5;color:white;padding-bottom:20px;">
+    <form action="">
    <div class="row">
 
       <div class="col-sm-4">
          <b> First Name</b> <div class="input-group">
               <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-              <input type="text" id="name" class="form-control" [(ngModel)]="queryString"></div>
+              <input type="text" id="name" name="FirstName" class="form-control" [(ngModel)]="queryString"></div>
       </div>
 
       <div class="col-sm-4">
 
           <b>Last Name</b> <div class="input-group">
               <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-              <input type="text" id="name" class="form-control"[(ngModel)]="query"></div>
+              <input type="text" id="name" name="LastName" class="form-control"[(ngModel)]="query"></div>
       </div>
 	  
       <div class="col-lg-4">    
         <b>Source</b> <div class="input-group">
             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-            <input type="text" id="name" class="form-control" [(ngModel)]="qsource"></div>
+            <input type="text" id="name" name="Source" class="form-control" [(ngModel)]="qsource"></div>
     </div>
   
         </div>
@@ -48,25 +49,22 @@
             <div class="col-lg-4">
                 <b>Contact</b> <div class="input-group">
                      <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
-                     <input type="text" class="form-control"></div>
+                     <input type="text" name="Contact" class="form-control"></div>
              </div>
 
       <div class="col-lg-4">
           <b>Arrival From</b> <div class="input-group">
                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-               <input type="date" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)"></div>
+               <input type="date" name="Arrivalfrom" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)"></div>
        </div>
  
        <div class="col-lg-4">
  
            <b>Arrival To</b> <div class="input-group">
                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-               <input type="date" class="form-control"[(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)"></div>
+               <input type="date" name="Arrivalto" class="form-control"[(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)"></div>
        </div>
 	  
-
-    
-
         </div>
 
 
@@ -75,19 +73,19 @@
           <div class="col-lg-4">
             <b>Group</b> <div class="input-group">
                  <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                 <input type="text" id="name" class="form-control"></div>
+                 <input type="text" id="name" name="Group" class="form-control"></div>
          </div>
          <div class="col-sm-4">
           <b>Company</b> <div class="input-group">
             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-            <input type="text" id="name" class="form-control"></div>
+            <input type="text" id="name" name="Company" class="form-control"></div>
 
         </div>
 
             <div class="col-lg-4">
                   <b>Agent</b> <div class="input-group">
                     <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                    <input type="text" id="name" class="form-control"></div>
+                    <input type="text" id="name" name="Agent" class="form-control"></div>
       
                 </div>
           
@@ -107,13 +105,13 @@
             </div>
 
             <div class="col-lg-2">
-              <button type="button" class="btn btn-warning" style="width:100%;"><b>Clear</b></button>
+              <button type="reset"  class="btn btn-warning" style="width:100%;"><b>Clear</b></button>
             </div>            
 
            <div class="col-lg-4">
             </div>
        </div>
-
+      </form>
   </div>
   </div>
 
@@ -122,7 +120,7 @@
       <table class="table table-bordered table-hover">
         <thead>
             <tr class="table table-primary" style="background-color: #0077B5;color: white">
-                  <th> </th>
+                  <th> Seq</th>
                   <th> Reservation_Id</th>                        
                   <th> Name</th>
                   <th> Room</th>
@@ -164,14 +162,14 @@
           (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
             <td>{{i+1}}</td> 
             <td> {{searched.res_id}}</td>
-            <td> {{searched.pf_firstname}}</td>
-            <td> {{searched.res_room}} </td>
+            <td> {{searched.pf_firstname|titlecase}}</td>
+            <td> {{searched.res_room }} </td>
             <td> {{searched.res_extension}} </td>
-            <td> {{searched.res_room_type}} </td>
+            <td> {{searched.res_room_type |titlecase}} </td>
             <td> {{searched.res_arrival}} </td> 
             <td> {{searched.res_depature}} </td>
             <td> {{searched.res_nights}} </td>
-            <td> {{searched.res_guest_status}} </td>
+            <td> {{searched.res_guest_status|titlecase}} </td>
             <td></td>     
             <td> {{searched.res_adults}}</td> 
             <td> {{searched.res_child}}</td>     
@@ -179,22 +177,22 @@
             <td> {{searched.res_rate}}</td>     
             <td> {{searched.res_block_code}}</td> 
             <td> {{searched.res_packages}}</td>     
-            <td> {{searched.res_rtc}}</td>     
-            <td> {{searched.res_currency}}</td>     
+            <td> {{searched.res_rtc |titlecase}}</td>     
+            <td> {{searched.res_currency |titlecase}}</td>     
             <td> {{searched.res_eta}}</td>
-            <td> {{searched.res_res_type}}</td>     
-            <td> {{searched.res_market}}</td> 
-            <td> {{searched.res_source}}</td>     
-            <td> {{searched.res_origin}}</td>     
-            <td> {{searched.res_payment}}</td>     
+            <td> {{searched.res_res_type |titlecase}}</td>     
+            <td> {{searched.res_market |titlecase}}</td> 
+            <td> {{searched.res_source |titlecase}}</td>     
+            <td> {{searched.res_origin |titlecase}}</td>     
+            <td> {{searched.res_payment |titlecase}}</td>     
             <td> {{searched.res_creditcard_number}}</td>     
             <td> {{searched.res_exp_date}}</td>     
             <td> {{searched.res_guest_balance}}</td>     
             <td> {{searched.res_disc_amount}}</td>     
             <td> {{searched.res_disc_perc}}</td>
-            <td> {{searched.res_disc_reason}}</td>     
-            <td> {{searched.res_specials}}</td>     
-            <td> {{searched.res_comments}}</td>     
+            <td> {{searched.res_disc_reason |titlecase}}</td>     
+            <td> {{searched.res_specials |titlecase}}</td>     
+            <td> {{searched.res_comments |titlecase}}</td>     
             <td> {{searched.res_item_inv}}</td>
           </tr>
                                                                                                                             
@@ -240,6 +238,7 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title"> Reservation Cancel</h4>
           </div>
+          <form action="">
           <div class="modal-body">
             <div class="row">
               <div class="col-lg-3"></div>
@@ -258,7 +257,7 @@
                   <div class="row">
                       <div class="col-lg-2"> <label for="">Reason Description</label></div>
                       <div class="col-lg-10">
-                        <textarea name="" id="" cols=" 38" rows="3" [(ngModel)]="cans.Cancel_description"></textarea>
+                        <textarea name="ReasonDes" id="" cols=" 38" rows="3" [(ngModel)]="cans.Cancel_description"></textarea>
                       </div>
                     </div>                  
                 </form>
@@ -266,9 +265,10 @@
             </div>
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-success" style="padding-left:5px;" data-toggle="modal" data-target="#cancel1" data-dismiss="modal" (click)="subcancel(cans)"><b>Ok</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
+              <button type="button" type="reset" class="btn btn-success" style="padding-left:5px;" data-toggle="modal" data-target="#cancel1" data-dismiss="modal" (click)="subcancel(cans)"><b>Ok</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
               <button type="button" class="btn btn-danger" style="padding-left:5px;"data-dismiss="modal"><b>Close</b><span class="glyphicon glyphicon-remove" style="padding-left:5px;"></span></button>
           </div>
+        </form>
         </div>
         
       </div>

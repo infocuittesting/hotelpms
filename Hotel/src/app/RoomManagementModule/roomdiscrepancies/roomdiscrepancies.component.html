@@ -1,7 +1,7 @@
 
   <div class="modal fade" id="myModal" role="dialog" #myModal>
     <div class="modal-dialog">
-    <div class="modal-content" style="width:150%;">
+    <div class="modal-content" style="width:150%;margin-left:-20%;margin-top: 20%;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Modal Header</h4>
@@ -128,12 +128,12 @@
 <div class="container" style="padding-top:40px;padding-left:200px;">
   <div class="jumbotron jumbotron-fluid" style="padding-top:20px;background-color:#0077B5;color:white;">
   <div class="row">
-     
+    <form> 
   <div class="col-lg-4" id="div3">
           <b><u>Show</u></b><br>
-          <input type="checkbox" [(ngModel)]="checkboxflg.checksleep" (change)="filtercheckboxData(checkboxflg.checksleep,'sleep')"><b style="padding-left:10px;">Sleeps</b><br>
-          <input type="checkbox" [(ngModel)]="checkboxflg.checkskip" (change)="filtercheckboxData(checkboxflg.checkskip,'skip')"><b style="padding-left:10px;">Skips</b><br>
-          <input type="checkbox" [(ngModel)]="checkboxflg.checkper" (change)="filtercheckboxData(checkboxflg.checkper,'person')"><b style="padding-left:10px;">Person Discrepancy</b><br>
+          <input type="checkbox" name="Sleeps" [(ngModel)]="checkboxflg.checksleep" (change)="filtercheckboxData(checkboxflg.checksleep,'sleep')"><b style="padding-left:10px;">Sleeps</b><br>
+          <input type="checkbox" name="Skips" [(ngModel)]="checkboxflg.checkskip" (change)="filtercheckboxData(checkboxflg.checkskip,'skip')"><b style="padding-left:10px;">Skips</b><br>
+          <input type="checkbox" name="Persondic" [(ngModel)]="checkboxflg.checkper" (change)="filtercheckboxData(checkboxflg.checkper,'person')"><b style="padding-left:10px;">Person Discrepancy</b><br>
   </div>
   <div class="col-lg-1"></div>
   <div class="col-lg-4">
@@ -164,10 +164,18 @@
       </div>
   
   </div>
-  <div class="col-lg-2"></div>
+  <div class="col-lg-2">
+    <div class="row">
+      <div class="col-lg-2"></div><br><br>
+      <div class="col-lg-2"></div><br><br>
+      <div class="col-lg-2">
+        <button type="reset" class="btn btn-success"> Clear All</button>
+      </div>
+    </div>
+  </div>
   
  
-  
+</form>
   </div>
   
   
@@ -183,12 +191,14 @@
             <tr>
               <!-- <th>S.No</th>   -->
               <th>Room</th>
-              <th>Room Type</th>
-              <th>Room Status</th>
-              <th>HK Status</th>
-              <th>FO Status</th>
-              <th>FO Persons</th>
-             <th>HK Persons</th>
+              <th>RoomType</th>
+              <th>RoomStatus</th>
+              <th>Floor</th>
+              <th>RoomClass</th>
+              <th>HKStatus</th>
+              <th>FOStatus</th>
+              <th>FOPersons</th>
+             <th>HKPersons</th>
               <th>Discrepancy</th>
               
               
@@ -200,6 +210,8 @@
               <td>{{roomdiscrepencies?.rm_room}}</td>
               <td>{{roomdiscrepencies?.rm_room_type}}</td>
                <td>{{roomdiscrepencies?.rm_room_status}}</td>
+               <td>{{roomdiscrepencies?.rm_floor}}</td>
+               <td>{{roomdiscrepencies?.rm_room_class}}</td>
                <td>{{roomdiscrepencies?.rm_hk_status}}</td>
                <td>{{roomdiscrepencies?.rm_fo_status}}</td>
               <td>{{roomdiscrepencies?.rm_fo_person}}</td>
@@ -297,7 +309,7 @@
                 <button type="button" class="btn btn-success" style="width:100%;" (click)="submit(user)" ><b>Save</b></button>
               </div>
               <div class="col-lg-2">
-                  <button type="button" class="btn btn-danger" style="width:100%;"><b>Close</b></button>
+                  <button type="button" class="btn btn-danger" style="width:100%;" routerLink="/mains"><b>Close</b></button>
                 </div>
                                 
   
