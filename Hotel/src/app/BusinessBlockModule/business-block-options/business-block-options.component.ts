@@ -4,6 +4,7 @@ import {BusinessBlockOptionsService} from './business-block-options.service'
 // import { MomentModule } from 'angular2-moment';
 import { Router } from "@angular/router";
 import { SessionStorageService } from "ngx-webstorage";
+import * as moment from 'moment';
 
 
 
@@ -29,6 +30,7 @@ export class BusinessBlockOptionsComponent implements OnInit {
  public tableschanges;
  public roomtype=[];
  public reason=[];
+ public now;
   constructor(private blockservice:BusinessBlockOptionsService,private route:Router,public session:SessionStorageService ) { }
  insertnotes(args){
    console.log(args);
@@ -37,7 +39,7 @@ export class BusinessBlockOptionsComponent implements OnInit {
     this.return=resp.ReturnCode;
   
     if(this.return == "RIS"){
-      this.notenumber="The noteS is created for block id "+this.session.retrieve("blockid");
+      this.notenumber="The notes is created for block id "+this.session.retrieve("blockid");
       console.log("service working fine");
     }
     else{
@@ -94,6 +96,10 @@ this.blockservice.reason()
 this.reason=resp.ReturnValue;
 
 });
+//Date and time
+setInterval(()=>{
+  this.now =  moment().format("DD-MMM-YYYY HH:mm:ss");
+},1000);
 
   
 }

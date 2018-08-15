@@ -14,7 +14,7 @@
             <b> Acct/corm*</b>
             <div class="input-group">
               <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-                  <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel" style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
+                  <input type="text" name="accountscom" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="editblock.pf_account" [value]="editblock.pf_account" disabled >
               <span class="input-group-btn" >
                   <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
               </span>
@@ -107,7 +107,7 @@
                <!-- <span style="text-align: center;"><i>{{editblock.origindescription}}</i></span> -->
           <select class="form-control" name="origin" [(ngModel)]="editblock.origindescription" >
               <option value="" hidden ></option> 
-              <option *ngFor="let selectorigin of origin" [ngValue] ="selectorigin.id" >{{selectorigin.origindescription}} </option>
+              <option *ngFor="let selectorigin of origin" [ngValue] ="selectorigin.origindescription" >{{selectorigin.origindescription}} </option>
           <!-- selectorigin.origindescription -->
           
             </select> 
@@ -117,18 +117,18 @@
  <div class="col-md-2">
         <div class="form-group">
           <label>Status</label>
-            <select name="state" class="form-control"[(ngModel)]="block.statusblock" >
+            <select name="state" class="form-control"[(ngModel)]="editblock.status" >
               <option value="" hidden></option> 
-              <option *ngFor="let selectstatus of blockstatus" [ngValue] ="selectstatus.id">{{selectstatus.status}} </option>
+              <option *ngFor="let selectstatus of blockstatus" [ngValue] ="selectstatus.status">{{selectstatus.status}} </option>
               </select> 
                </div>
               </div> 
  <div class="col-md-2">
             <div class="form-group" >
                 <label for="name">Source</label>
-                  <select class="form-control" name="source" [(ngModel)]="block.sourcecode">
+                  <select class="form-control" name="source" [(ngModel)]="editblock.sourcedescription">
                     <option value="" hidden></option> 
-                      <option *ngFor="let selectsource of source" [ngValue] ="selectsource.id">{{selectsource.sourcedescription}} 
+                      <option *ngFor="let selectsource of source" [ngValue] ="selectsource.sourcedescription">{{selectsource.sourcedescription}} 
                    </option>
                   </select> 
                 </div>
@@ -143,7 +143,7 @@
           <label for="name">Market</label>
                   <select class="form-control" name="market" [(ngModel)]="editblock.marketgroup_description" >
                     <option value="" hidden></option> 
-                    <option *ngFor="let selectmarket of market" [ngValue] ="selectmarket.id">{{selectmarket.marketgroup_description}} </option>
+                    <option *ngFor="let selectmarket of market" [ngValue] ="selectmarket.marketgroup_description">{{selectmarket.marketgroup_description}} </option>
                 
               </select>
       </div>
@@ -166,9 +166,9 @@
           <div class="col-md-2">
           <label for="Name">Type</label>
                 <div class="form-group" >
-                    <select class="form-control" name="type" [(ngModel)] = "block.blocktypes">
+                    <select class="form-control" name="type" [(ngModel)] = "editblock.block_type">
                         <option value="" hidden></option> 
-                        <option *ngFor="let selectblocktype of blocktype" [ngValue] ="selectblocktype.id">{{selectblocktype.block_type}} </option>
+                        <option *ngFor="let selectblocktype of blocktype" [ngValue] ="selectblocktype.block_type">{{selectblocktype.block_type}} </option>
                     
                       </select> 
               </div>
@@ -218,9 +218,9 @@
             <div class="col-md-2">
               <b>Rate Code</b>
               <div class="form-group">
-                <select class="form-control input-sm"  name="ratecode" style="margin-top: 4px;"[(ngModel)]="block.ratecodes">
+                <select class="form-control input-sm"  name="ratecode" style="margin-top: 4px;"[(ngModel)]="editblock.rate_description">
                     <option value="" hidden></option> 
-                    <option *ngFor="let selectratecode of ratecode" [ngValue] ="selectratecode.id">{{selectratecode.ratecode}} </option>
+                    <option *ngFor="let selectratecode of ratecode" [ngValue] ="selectratecode.rate_description">{{selectratecode.ratecode}} </option>
                 
                 </select>
               </div>
@@ -245,9 +245,9 @@
                 <div class="col-md-2">
                    <div class="form-group">
                       <b>Reservation Type</b>
-                     <select class="form-control input-sm" name="restype" [(ngModel)]="block.restypes">
+                     <select class="form-control input-sm" name="restype" [(ngModel)]="editblock.restype_description">
                         <option value="" hidden></option> 
-                        <option *ngFor="let selectrestype of restype" [ngValue] ="selectrestype.id">{{selectrestype.restype_description}} </option>
+                        <option *ngFor="let selectrestype of restype" [ngValue] ="selectrestype.restype_description">{{selectrestype.restype_description}} </option>
                     
                      </select>
                    </div>
@@ -262,9 +262,9 @@
               <div class="col-md-2">
                 <div class="form-group">
                   <label for="name">Inventory control</label>
-                  <select class="form-control input-sm" name="Invcontrol" id=""[(ngModel)]="block.inventorys" >
+                  <select class="form-control input-sm" name="Invcontrol" id=""[(ngModel)]="editblock.inventory_control" >
                       <option value="" hidden></option> 
-                      <option *ngFor="let selectinventory of inventory" [ngValue] ="selectinventory.inventory_control_id">{{selectinventory.inventory_control}} </option>
+                      <option *ngFor="let selectinventory of inventory" [ngValue] ="selectinventory.inventory_control">{{selectinventory.inventory_control}} </option>
                   </select>
                 </div>
               </div>
@@ -276,12 +276,12 @@
                 </div>
                 <div class="col-md-2" style="margin-top: -45px;">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.print_rate" >
+                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="editblock.print_rate" >
                       <label class="custom-control-label" for="customCheck">Print Rate</label>
                     </div>
                     <br>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.suppress" >
+                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="editblock.suppress_rate" >
                       <label class="custom-control-label" for="customCheck">Suppress Rate</label>
                     </div>
                   </div>
@@ -341,7 +341,7 @@
                     </div>
                     <div class="col-md-2" style="margin-top: 14px;">
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="checkbox"name="checkbox" style="zoom:1.5" [(ngModel)]="block.guranteeds">
+                        <input type="checkbox" class="custom-control-input" id="checkbox"name="checkbox" style="zoom:1.5" [(ngModel)]="editblock.guranteed">
                         <label for="checkbox">Guranteed</label>
                       </div>
 
@@ -364,9 +364,9 @@
                   <div class="col-md-2">
                       <div class="form-group">
                         <label for="name">Payment Type</label>
-                        <select class="form-control input-sm" name="paytype" [(ngModel)]="block.payments">
+                        <select class="form-control input-sm" name="paytype" [(ngModel)]="editblock.payment_description">
                             <option value="" hidden></option> 
-                            <option *ngFor="let selectpayment of payment" [ngValue] ="selectpayment.id">{{selectpayment.payment_description}} </option>
+                            <option *ngFor="let selectpayment of payment" [ngValue] ="selectpayment.payment_description">{{selectpayment.payment_description}} </option>
                         
                         </select>
                       </div>
@@ -456,9 +456,9 @@
           <div class="col-md-2">
             <div class="form-group" style="width: 100%;">
               <label for="name">Reason</label>
-              <select class="form-control input-sm" id="set1">
+              <select class="form-control input-sm" id="set1"[(ngModel)]="editblock.room_cancel_reason">
                   <option value="" hidden></option> 
-                  <option *ngFor="let selectcancelreason of cancelreason" [ngValue] ="selectcancelreason.id">{{selectcancelreason.reason}} </option>
+                  <option *ngFor="let selectcancelreason of cancelreason" [ngValue] ="selectcancelreason.room_cancel_reason">{{selectcancelreason.reason}} </option>
               
               </select>
             </div>
@@ -474,9 +474,9 @@
               <div class="col-md-2">
                   <div class="form-group" style="width:100%;">
                     <label for="name">Reason</label>
-                    <select class="form-control input-sm" id="set1" >
+                    <select class="form-control input-sm" id="set1"[(ngModel)]="editblock.catering_reason_id" >
                         <option value="" hidden></option> 
-                        <option *ngFor="let selectcateringreason of cancelreason" [ngValue] ="selectcateringreason.id">{{selectcateringreason.reason}} </option>
+                        <option *ngFor="let selectcateringreason of cancelreason" [ngValue] ="selectcateringreason.catering_reason_id">{{selectcateringreason.reason}} </option>
                     
                     </select>
                   </div>
@@ -529,9 +529,9 @@
               <div class="col-md-2">
                 <div class="form-group">
                   <label for="name">Space Type</label>
-                  <select class="form-control input-sm" name="SqFeet"[(ngModel)]="block.space_type" >
+                  <select class="form-control input-sm" name="SqFeet"[(ngModel)]="editblock.size_type" >
                       <option value="" hidden></option> 
-                      <option *ngFor="let selectsizetype of meetingsizetype" [ngValue] ="selectsizetype.id">{{selectsizetype.size_type}} </option>
+                      <option *ngFor="let selectsizetype of meetingsizetype" [ngValue] ="selectsizetype.size_type">{{selectsizetype.size_type}} </option>
                   
                   </select> 
                 </div>
@@ -641,13 +641,13 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width:100%" (click)="CreatePaymaster()">Resv</button>
               </div>
               <div class="col-md-2">
-                  <button class="btn btn-primary"type="button" style="width:100%" routerLink="/grid">Grid</button>
+                  <button class="btn btn-primary"type="button" style="width:100%"   routerLink="/grid">Grid</button>
                 </div>
                 <div class="col-md-2">
                   <button class="btn btn-info" routerLink="/options" style="width:100%" disabled>Options</button>
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-success" style="width:100%"  data-toggle="modal" data-target="#myModal4" (click)="blockheader(block)" >ok</button>
+                    <button class="btn btn-success" style="width:100%"  data-toggle="modal" data-target="#myModal4" (click)="editblockheader(editblock)">ok</button>
                   </div>
                   <div class="col-md-2">
                       <button class="btn btn-primary" style="width:100%">Save</button>

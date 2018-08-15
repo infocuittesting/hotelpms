@@ -43,6 +43,7 @@
               <thead style="background-color: #0077B5;color:white;">
                 <tr>
                   <th>Date</th>
+                  <th>Type</th>
                   <th>Kngn</th>
                   <th>Kngs</th>
                   <th>Ksbn</th>
@@ -55,7 +56,8 @@
               </thead>
                 <tbody>
                   <tr *ngFor="let grid of gridvalues;">
-                    <td>{{grid.grid_type}}</td>
+                    <td>{{grid.curnt_date}}</td>
+                    <td>{{grid.grid_type_desc}}</td>
                     <td>{{grid.kngn}}</td>
                     <td>{{grid.kngs}}</td>
                     <td>{{grid.ksbn}}</td>
@@ -148,7 +150,6 @@
             </table>
           <!-- </div> -->
         </div>
-      </div>
       <div class="row">
         <div class="continer-fluid">
           <div class="col-md-5"></div>
@@ -186,14 +187,14 @@
                                       <div class="row">
                                     <div class="col-md-4"> 
                                       <div class="form-group">
-                                      <label for="name">Form</label>
-                                      <input type="date" class="form-control input-sm" name="Form" [(ngModel)]="start">
+                                      <label for="name">Start Date</label>
+                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="start">
                                     </div>
                                   </div>
                                   <div class="col-md-4"> 
                                       <div class="form-group">
-                                      <label for="name">To</label>
-                                      <input type="date" class="form-control input-sm" name="Form" [(ngModel)]="end">
+                                      <label for="name">End Date</label>
+                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="end">
                                     </div>
                                   </div>
                                   <div class="col-md-4"> 
@@ -227,9 +228,7 @@
                                       <br>
                                       <div class="row">
                                           <div class="col-sm-1">
-                                              <label style="margin-left:-35px"  >
-                                                  <input type="checkbox" [value]="sun"  class="form-control" name="sun" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="range.sun" ><b>SUN</b>                    
-                                          </label>
+                                            <label for="sun"><input type="checkbox" [value]="mon"  id="sun" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.sunday"/> SUN</label>
                                           </div>
                                           <div class="col-sm-1">
                                               <label for="mon"><input type="checkbox" [value]="mon"  id="mon" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.monday"/> MON</label>

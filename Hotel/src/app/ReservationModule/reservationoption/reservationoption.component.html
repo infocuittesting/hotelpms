@@ -148,15 +148,16 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <!-- <h4 class="modal-title">Modal Header</h4> -->
         </div>
-        <div class="modal-body" style="max-height: 75%; overflow-y:scroll;">
-          <div class="container-fluid"  style="width:80%;margin-left: 20px;">
-            <div class="jumbotron jumbotron-fluid" style="width:120%;padding-top:20px;height:auto;">
-            
-       <div id="content" #content style="margin-left:20px;margin-top:100px;margin-right:20px;font-size:20px;">
-            <div class="text-center">
-              <p>Reservation Confirmation Letter</p>
-            </div>          
+        <div class="modal-body" id="content" #content style="max-height: 75%; overflow-y:scroll;">
+          <div class="container">      
+           <div class="jumbotron jumbotron-fluid" style="background-color: #0077B5;color: white;width: 90%;" > 
+               <h3 style="margin-left: 0px"> Konnect247</h3>
+               <p align="right" style="margin-top: -20px"><sup><small> Confirmation Number: {{conf}}</small></sup></p>
+           </div>         
             <br>
+            <div class="text-left">
+              <p><span class="badges badges-success">&#10004;</span>  Thanks, {{Name}}</p>
+            </div>
             <div class="text-left">
               <p><b>To,</b></p>
               <p> {{Name}}</p>
@@ -185,9 +186,9 @@
   <p>Thanks and Regards,</p>
    <p>Reservation Agent</p>
 </div>
-          </div> 
+          
 
-             </div>
+             
              </div>
              <br>        
         </div>

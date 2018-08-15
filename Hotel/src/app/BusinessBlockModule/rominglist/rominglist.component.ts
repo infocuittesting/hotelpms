@@ -13,17 +13,34 @@ export class RominglistComponent implements OnInit {
 
   constructor(private roomlistservice:RominglistService,public session:SessionStorageService,private route:Router) { }
 
-
-public roomsgrid;
+public room_type_count=[];
+public roomsgrid=[];
+public roomtype_one=[];
+public total_count:any;
+public i:any;
+public show_room_type=[];
   ngOnInit() {
     this.roomlistservice.QueryRoomtypeGrid()
   .subscribe((resp: any) => {
-          this.roomsgrid=resp.ReturnValue;
-           console.log("QueryRoomtypeGrid",this.roomsgrid);
+          this.roomsgrid=resp.Return_value;
+       
+          // console.log("type",item[].available_rooms)
+          for (var item of this.roomsgrid){
+                //  console.log("type",this.i.type)  
+                console.log("item",item)  
+                console.log("type",item.available_rooms)
+                this.room_type_count.push(item.type,item.available_rooms) 
+                this.show_room_type.push(item.type)
+                console.log("diiiiiiiiiii",this.show_room_type)
+          }
+          console.log("QueryRoomtypeGrid",this.roomsgrid);
+          console.log("list",this.room_type_count)
           
-       });
+       });  
   
   }
+  
+  
 //  Add rows in rooming list screen............................
 public affFlagg=false;
 public savedetails=[];
@@ -41,9 +58,50 @@ public savedetails1=[];
 public roomlistselect = [];
 public totalcount = [];
 public resgroup;
+public l:number;
+public j:number;
+public k:number;
+size(roomtype){
+  console.log("selected room type",roomtype)
+  if (this.room_type_count[0] == roomtype){
+    console.log("roomtype",roomtype,this.room_type_count.indexOf(roomtype))
+    this.room_type_count[this.room_type_count.indexOf(roomtype)+1] = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]-1  
+    if (this.room_type_count[this.room_type_count.indexOf(roomtype)+1] == 0 ){
+      this.show_room_type.splice(this.show_room_type.indexOf(roomtype),1);
+      this.room_type_count.splice(this.room_type_count.indexOf(roomtype),this.room_type_count.indexOf(roomtype)+2);
+      // this.i = this.room_type_count.indexOf(roomtype)+2     
+      // console.log(this.i)
+    }
+  }
+  else if(this.room_type_count[2] == roomtype){
+    console.log("roomtype",roomtype)
+    this.room_type_count[this.room_type_count.indexOf(roomtype)+1] = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]-1
+    if (this.room_type_count[this.room_type_count.indexOf(roomtype)+1] == 0 ){
+      this.show_room_type.splice(this.show_room_type.indexOf(roomtype),1);
+      this.room_type_count.splice(this.room_type_count.indexOf(roomtype),this.room_type_count.indexOf(roomtype)+2);
+
+      // console.log(";alksdjfa;lskdsdkj")
+   }
+  }
+  else if(this.room_type_count[4] == roomtype){
+    console.log("roomtype",roomtype)
+    this.room_type_count[this.room_type_count.indexOf(roomtype)+1] = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]-1
+    if (this.room_type_count[this.room_type_count.indexOf(roomtype)+1] == 0 ){
+      this.show_room_type.splice(this.show_room_type.indexOf(roomtype),1);
+      this.room_type_count.splice(this.room_type_count.indexOf(roomtype),this.room_type_count.indexOf(roomtype)+2);
+       
+      // console.log(";alksdjfa;lskdsdkj")
+   }
+  }
+  
+  console.log("list1111",this.room_type_count)
+}
 addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid)
 {
   if( roomtype!=null)
+  // for(let i=1; i<=total_count; i++){
+  //   console.log("total conunt",total_count)
+  //   console.log("rooom typesss",roomtype)
   {
  
 
@@ -74,7 +132,7 @@ addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid
           "pf_firstname":Names,
           
       });  
-
+    
       console.log("retrieve id",this.session.retrieve("blockid"));  
       // this.add={};
       this.Arrival="";

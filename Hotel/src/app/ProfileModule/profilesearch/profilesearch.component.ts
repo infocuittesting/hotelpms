@@ -186,6 +186,8 @@ this.session.store("pf_title",details.pf_title);
 this.session.store("pf_mobileno",details.pf_mobileno.toString());
 this.session.store("pf_individual_country",details.pf_individual_country);
 this.session.store("pf_individual_vip",details.pf_individual_vip);
+this.session.store("pf_accounts",details.pf_account);
+console.log("guruuuuuuuuuuu",details.pf_account);
 }
   
 

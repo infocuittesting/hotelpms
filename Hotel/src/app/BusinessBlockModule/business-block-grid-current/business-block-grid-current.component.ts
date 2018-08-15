@@ -29,17 +29,22 @@ this.roomtype=resp.ReturnValue;
 console.log(this.roomtype)
 
 });
+// current grid.........................................
+this.blockservicegrid.querygridvalue()
+.subscribe((resp: any) => {
+this.gridvalues=resp.ReturnValue;
+console.log("ajith working fine",this.gridvalues)
 
+});
 
-
-    }
+  }
  selectindex=null;
     selectMembersEdit(details,index){
       this.selectindex=index; 
   }
 
   public insertgrid:any=[];
-  
+  public jio=[];
   
   rangegrids(input:any){
     input.grid_startdate = this.start;
@@ -95,11 +100,10 @@ console.log(this.roomtype)
     }else{
      input.saturday =0;
     }
- 
 
 let body={
 
-"block_id":this.session.retrieve('blids'),
+"block_id":this.session.retrieve("blids"),
 "roomtype_id":input.roomtype.id.toString(),
 "roomtype":input.roomtype.type.toString(),
 "occupancy_one":input.Occupency1.toString(),
@@ -120,7 +124,8 @@ let body={
 "friday":input.friday,
 "saturday":input.saturday,
 "grid_startdate":input.grid_startdate,
-"grid_enddate":input.grid_enddate
+"grid_enddate":input.grid_enddate,
+"available_rooms":input.totalrooms.toString()
 }
 
 
@@ -135,6 +140,7 @@ console.log("worked",this.insertgrid);
 // });
 }
 
+saveshow=[];
 savebutton(){
   console.log("inside insertgrid value",this.insertgrid);
 
@@ -154,10 +160,10 @@ savebutton(){
   // // this.rmtype = gridvalue.type;
 
   console.log("return valure of range screen",this.gridvalues);
+  // this.jio = this.session.retrieve("gridvalues")
   
 });
 
 }
-
 
 }

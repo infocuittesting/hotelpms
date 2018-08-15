@@ -12,7 +12,7 @@ import { ReservationsListComponent } from '../reservations-list/reservations-lis
   providers:[BusinessCreateBlockService]
 })
 export class BusinessCreateBlockComponent implements OnInit {
-
+    public acc_com;
   constructor(private businessblock: BusinessCreateBlockService, public session:SessionStorageService,private route:Router) { }
 // declare variable....................................
 public blockstatus=[];
@@ -42,9 +42,15 @@ public navtag:any;
 public start;
 public end;
 public night;
+
+
 // ................................................
   ngOnInit() {
+    // this.session.clear("gridvalues");
     this.session.store("navigate","Block");
+   
+    this.acc_com =this.session.retrieve("pf_accounts");
+console.log("come to block",this.acc_com);
     // block status sropdown.....................
     this.businessblock.blockstatusdropdown()
     .subscribe((resp: any) => {
@@ -118,6 +124,15 @@ this.businessblock.BlockTypedropdown()
      console.log(this.blocktype);
  });
   }
+// public gridvalues:any = [];
+//   selectgrid_data(){
+//     this.businessblock.select_grid_data()
+//     .subscribe((resp: any) => {
+//     this.gridvalues=resp.ReturnValue;
+//     this.session.store("gridvalues",this.gridvalues)
+//     console.log(this.gridvalues)
+//     });
+//   }
 
 
   blockheader(block){
@@ -148,6 +163,7 @@ this.businessblock.BlockTypedropdown()
     this.start=block.startdate;
     this.end=block.enddate;
     this.night=block.nights;
+    
     this.businessblock.CreateBusinessBlock(block)
    
 .subscribe((resp: any) => {
@@ -157,12 +173,13 @@ this.businessblock.BlockTypedropdown()
     this.block_name = resp.Blockname;
      console.log(this.createblock);
      this.session.store("blids",this.blockids.toString());
-     this.session.store("starts",this.start.toString());
-     this.session.store("ends",this.end.toString());
-     this.session.store("nght",this.night.toString());
-     console.log("hooooooooo",this.blockids.toString(),this.start.toString(),this.end.toString(),this.night.toString())
+    this.session.store("starts",this.start.toString());
+    this.session.store("ends",this.end.toString());
+    this.session.store("nght",this.night.toString());
+    console.log("hooooooooo",this.blockids.toString(),this.start.toString(),this.end.toString(),this.night.toString())
+   
      if(this.createblock=="RIS"){
-        this.blocksuccess="Block Created Successfully"+" "+this.blockids
+        this.blocksuccess="Block Created Successfully"+" "+this.blockids.toString()
         console.log("outputblock",this.blocksuccess)
      }
      else{
@@ -171,6 +188,7 @@ this.businessblock.BlockTypedropdown()
  });
  
   }
+  
 // create paymaster for resv button.............................................
 //   CreatePaymaster(){
 //       console.log("going to reservation button",this.blockids,typeof(this.blockids));
@@ -254,4 +272,5 @@ this.businessblock.BlockTypedropdown()
 // editblockheader(){
 //     sessionStorage.clear();
 // }
+
 }

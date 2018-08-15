@@ -10,7 +10,7 @@
 			 <h4>Connect 24/7 Hotel</h4>
 			</div>
 			<div class="modal-body">
-			<b align="center">{{profile}}</b>
+			<p align="center">{{profile}}</p>
 			</div>
 			<div class="modal-footer">
 			  <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
@@ -206,13 +206,13 @@
 		  <b>Communications</b>
 		  </div>
 		  <div class="col-lg-3">                                             
-			  <select name="Comm1" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Individual_Communication1">
-				<option value="Home"> Home </option>                                             
+			  <select name="Comm1" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Company_Communication1">
+				<option> Home </option>                                             
 		</select>
 	  </div>
 		  <div class="col-lg-3">
 			  <div class="input-group" [class.has-error]="communitype1.touched && communitype1.invalid">
-				  <input type="text" name="commtype" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Individual_Commtype1" #communitype1="ngModel" required>
+				  <input type="text" name="commtype" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Company_Commtype1" #communitype1="ngModel" required>
 			<div *ngIf="communitype1.touched && !communitype1.valid && communitype1.errors?.required && communitype1.errors.pattern " ngClass="{ 'has-error' : !communitype1.valid && submitAttempt }"></div>
 		  </div>
 		  </div> 
@@ -221,13 +221,13 @@
 		  <div class="row" style="padding-top:5px;">
 			  <div class="col-lg-3"></div>
 			  <div class="col-lg-3">
-				  <select name="comm2"  required style="height:34px;width:118px;" [(ngModel)]="user.PF_Individual_Communication2">
-				  <option value="Business"> Business</option>
+				  <select name="comm2"  required style="height:34px;width:118px;" [(ngModel)]="user.PF_Company_Communication2">
+				  <option> Business</option>
 				</select>
 			  </div>
 			  <div class="col-lg-3">
 				  <div class="input-group" [class.has-error]="communitype2.touched && communitype2.invalid">
-					  <input type="text" name="com2" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Individual_Commtype2" #communitype2="ngModel" required>
+					  <input type="text" name="com2" pattern="^(0|[1-9][0-9]*)$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Company_Commtype2" #communitype2="ngModel" required>
 			<div *ngIf="communitype2.touched && !communitype2.valid && communitype2.errors?.required && communitype2.errors.pattern " ngClass="{ 'has-error' : !communitype2.valid && submitAttempt }"></div>
 		  </div>
 			  </div>
@@ -236,13 +236,13 @@
 		  <div class="row" style="padding-top:5px;">
 			  <div class="col-lg-3"></div>
 			  <div class="col-lg-3">
-				  <select name="comm3" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Individual_Communication3">
+				  <select name="comm3" required style="height:34px;width:118px;" [(ngModel)]="user.PF_Company_Communication3">
 				  <option>Email</option>
 					 </select>
 			  </div>
 			  <div class="col-lg-3">
 				  <div class="input-group" [class.has-error]="communitype3.touched && communitype3.invalid">
-					  <input type="email"name="com3" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Individual_Commtype3" #communitype3="ngModel" required>
+					  <input type="email"name="com3" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" class="form-control" style="width:118px;" [(ngModel)]="user.PF_Company_Commtype3" #communitype3="ngModel" required>
 			<div *ngIf="communitype3.touched && !communitype3.valid && communitype3.errors?.required && communitype3.errors.pattern " ngClass="{ 'has-error' : !communitype3.valid && submitAttempt }"></div>
 		  </div>
 			  </div>
