@@ -19,54 +19,6 @@ export class RoomconditionComponent implements OnInit {
     this.room = this.roomData1;
   }
   public room:any = [
-
-    // {
-    //   "rm_room": "121",
-    //   "rm_room_type": "dulex",
-    //   "rm_room_status": "dirty",
-    //   "rm_fo_status": "vaccant",
-    //   "rm_features": "lf_qr_ns",
-    //   "rm_room_condition": "deep",
-    //   },
-
-
-    //   {
-    //     "rm_room": "121",
-    //     "rm_room_type": "dulex",
-    //     "rm_room_status": "dirty",
-    //     "rm_fo_status": "due out",
-    //     "rm_features": "lf_qr_ns",
-    //     "rm_room_condition": "deep",
-    //     },
-
-    //     {
-    //       "rm_room": "121",
-    //       "rm_room_type": "dulex",
-    //       "rm_room_status": "dirty",
-    //       "rm_fo_status": "not reserved",
-    //       "rm_features": "lf_qr_ns",
-    //       "rm_room_condition": "deep",
-    //       },
-
-    //       {
-    //         "rm_room": "121",
-    //         "rm_room_type": "dulex",
-    //         "rm_room_status": "dirty",
-    //         "rm_fo_status": "occupied",
-    //         "rm_features": "lf_qr_ns",
-    //         "rm_room_condition": "deep",
-    //         },
-
-    //         {
-    //           "rm_room": "121",
-    //           "rm_room_type": "dulex",
-    //           "rm_room_status": "dirty",
-    //           "rm_fo_status": "vaccant",
-    //           "rm_features": "lf_qr_ns",
-    //           "rm_room_condition": "deep",
-    //           }
-
-
   ];
 rm_condition;
 user33=[];
