@@ -116,6 +116,7 @@ selectindex=null;
   this.session.store("startdate",details.start_date.toString());
   this.session.store("enddate",details.end_date.toString());
   this.session.store("nights",details.nights.toString());
+  this.session.store("businessDet",details);
   
 
 //  this.session.store("pf_account",details.pf_account);
