@@ -160,7 +160,7 @@ savebutton(){
   // // this.rmtype = gridvalue.type;
 
   console.log("return valure of range screen",this.gridvalues);
-  // this.jio = this.session.retrieve("gridvalues")
+  // this.gridvalues = this.session.retrieve("gridvalues")
   
 });
 

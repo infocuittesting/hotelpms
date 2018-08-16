@@ -180,84 +180,12 @@ PaymasterReservation():Observable<object[]> {
 
 }
 
-Edit_grid_data(block):Observable<object[]> {
-   console.log("going to service",block)
+Edit_grid_data(params:any):Observable<object[]> {
+   console.log("going to service",params)
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers })
-  let body = {
-    
-      // "block_id": this.session.retrieve("blockid".toString())
-      "Definite":
-           {
-             "block_id":this.session.retrieve("blockid".toString()),
-	           "block_status_id":"1",
-             "market_id":"",
-             "source_id":"",
-             "owner":block.owner,
-             "origin_id":"",
-	           "start_date":block.start_date,
-	           "end_date":block.end_date,
-	           "nights":block.nights,
-	          "block_type":""
-            },
-     "Rooms":   {
-            "block_id":this.session.retrieve("blockid".toString()),
-            "res_type_id":"",
-            "cutoff_date":block.cutoff_date,
-            "cutoff_days":block.cutoff_days,
-            "inventory_control_id ":"",
-            "ratecode_id":"",
-            "print_rate":block.print_rate,
-			      "suppress_rate":block.suppress,
-			      "packages":block.packages,
-		       	
-			      "follow_date":block.follow_date
-			
-            },
-       "Block_details":
-             {
-             "block_id":this.session.retrieve("blockid".toString()),
-             "payments_id":"",
-             "rooming_list_duedate":block.rooming_list_duedate,
-             "arrivaltime":block.arrivaltime,
-             "depaturetime":block.depaturetime,
-		      	 "commission":block.commission,
-			       "total_rooms_perday":block.total_rooms_perday
-             },
-        "Catering":
-             {
-             "block_id":this.session.retrieve("blockid".toString()),
-             "guranteed":block.guranteeds,
-             "attenders":block.attenders,
-			       "info_board":block.info_board,
-			       "contract_no":block.contract_no,
-			       "onsite_name":block.onsite_name,
-			       "owner_id":"",
-			       "followup_date":block.followup_date
-             },
-        "block_meeting":
-                {
-				     "block_id":this.session.retrieve("blockid".toString()),
-				     "meeting_space":block.meeting_space,
-				     " meeting_space_type_id ":"",
-				     "attendess":block.attendess
-			      	},
-       "Catering Cancel":
-             {
-             "block_id":this.session.retrieve("blockid".toString()),
-             "catering_reason_id":"",
-             "catering_comments":""
-             },
-       "Room Cancel":
-              {
-              "block_id":this.session.retrieve("blockid".toString()),
-              "room_cancel_reason":"",
-              "room_cancel_comments":"",
-              "room_cancel_destination":""
-              }
-      
-  }
-  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_UPDATE_BusinessBlockDefinite',body,options)
+  
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_UPDATE_BusinessBlockDefinite',params,options)
      .map(this.extractData)
 
 }
