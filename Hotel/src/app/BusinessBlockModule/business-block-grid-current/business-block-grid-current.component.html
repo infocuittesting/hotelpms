@@ -50,6 +50,7 @@
               <thead style="background-color: #0077B5;color:white;">
                 <tr>
                   <th>Date</th>
+                  <th>Type</th>
                   <th>Kngn</th>
                   <th>Kngs</th>
                   <th>Ksbn</th>
@@ -62,6 +63,7 @@
               </thead>
                 <tbody>
                   <tr *ngFor="let grid of gridvalues;">
+                    <td>{{grid.curnt_date}}</td>
                     <td>{{grid.grid_type_desc}}</td>
                     <td>{{grid.kngn}}</td>
                     <td>{{grid.kngs}}</td>
