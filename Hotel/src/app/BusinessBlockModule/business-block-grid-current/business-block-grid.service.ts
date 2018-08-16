@@ -33,7 +33,7 @@ insertGrid(params):Observable<object[]> {
 }
 
 querygridvalue():  Observable<object[]> {   
-  console.log("opennnnnnnnnnnnnnnnnnnnnn")
+  console.log("opennnnnnnnnnnnnnnnnnnnnn",this.session.retrieve("blockid".toString()))
   const headers = new Headers({'Content-Type':'application/json'})
   const options = new RequestOptions({ headers: headers });
   let body={

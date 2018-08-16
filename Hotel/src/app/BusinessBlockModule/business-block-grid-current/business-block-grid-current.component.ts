@@ -135,6 +135,16 @@ console.log("worked",this.insertgrid);
 // this.blockservicegrid.insertGrid(this.insertgrid)
 // .subscribe( (resp:any) =>{
   
+  input.Occupency1 = "";
+  input.Occupency2 = "";
+  input.Occupency3= "";
+  input.Occupency4 = "";
+  input.totalrooms = "";
+  input.Rate1 = "";
+  input.Rate2 = "";
+  input.Rate3 = "";
+  input.Rate4 = "";
+  input.addrates = "";
 //   this.gridvalue=resp.ReturnValue;
 //   console.log("return valure of range screen",this.gridvalue);
 // });
