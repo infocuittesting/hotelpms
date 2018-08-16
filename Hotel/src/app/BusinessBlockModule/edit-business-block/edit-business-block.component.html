@@ -16,7 +16,7 @@
               <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
                   <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel" style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
               <span class="input-group-btn" >
-                  <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+                  <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;"><i class="glyphicon glyphicon-option-horizontal"></i></button>
               </span>
           </div>
   </div>
@@ -26,7 +26,7 @@
               <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
                   <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname"[value] = "acco" #firstName="ngModel"style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
               <span class="input-group-btn" >
-                  <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+                  <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;"><i class="glyphicon glyphicon-option-horizontal"></i></button>
               </span>
           </div>
            
@@ -38,7 +38,7 @@
             <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
                 <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
             <span class="input-group-btn" >
-                <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+                <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;"><i class="glyphicon glyphicon-option-horizontal"></i></button>
             </span>
         </div> 
   </div>
@@ -48,7 +48,7 @@
           <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
               <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
           <span class="input-group-btn" >
-              <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+              <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;"><i class="glyphicon glyphicon-option-horizontal"></i></button>
           </span>
       </div>
  </div>
@@ -58,7 +58,7 @@
       <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
           <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
       <span class="input-group-btn" >
-          <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+          <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;"><i class="glyphicon glyphicon-option-horizontal"></i></button>
       </span>
   </div> 
  </div>
@@ -195,7 +195,7 @@
           <li class="active"><a data-toggle="tab" href="#Room">Room</a></li>
           <li><a data-toggle="tab" href="#menu1">Catering</a></li>
           <li><a data-toggle="tab" href="#menu2">Details</a></li>
-          <li><a data-toggle="tab" href="#menu4">Cancel</a></li>
+        
           <li><a data-toggle="tab" href="#menu5">Meeting</a></li>
 
 
@@ -596,7 +596,7 @@
       <div class="continer-fluid">
         <div class="col-md-2"></div>
            <div class="col-md-6">
-              <div class="table-responsive" style="width:100%;">
+             
                     <table class="table table-bordered table-hover"style="margin-left: 26px;input-sm">
                       <thead >
                         <tr>
@@ -627,7 +627,7 @@
                               </tr>
                           </tbody>
                           </table>
-              </div>
+              
            </div>
          </div> 
         </div>
@@ -637,6 +637,7 @@
       <div class="col-md-2"></div>
       <div class="col-md-10">
         <div class="container-fluid">
+          <div class="col-md-1"></div>
               <div class="col-md-2">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width:100%" (click)="CreatePaymaster()">Resv</button>
               </div>
@@ -649,9 +650,7 @@
                 <div class="col-md-2">
                     <button class="btn btn-success" style="width:100%"  data-toggle="modal" data-target="#myModal4" (click)="blockheader(block)" >ok</button>
                   </div>
-                  <div class="col-md-2">
-                      <button class="btn btn-primary" style="width:100%">Save</button>
-                    </div>
+                  
                     <div class="col-md-2">
                       <button class="btn btn-warning" style="width:100%">Close</button>
                     </div>

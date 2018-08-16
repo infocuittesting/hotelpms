@@ -63,13 +63,14 @@
   </div>
    </div>
 
-<br><br>
 
-<div class="container-fluid">
+
+<div class="container-fluid" >
   
   <div class ="table-responsive">
-    <table class="table table-bordered table-hover">
-      <thead style="background-color: #0077B5;color:white;">
+    <table class="table table-bordered table-hover" style="width:99%;">
+
+      <thead style="background-color: #0077B5;color:white; width:99%;"  >
         <tr>
           <th>Seq</th>
           <th>Blockid</th>
@@ -84,7 +85,7 @@
           <th>BlockStatus</th>
           <th>profile</th>
           <th>RateCode</th>
-          <th>BlockName</th>
+          <th style="width:200px">BlockName</th>
           <th>Market</th>
           <th>Source</th>
           <th>Owner</th>
@@ -107,7 +108,7 @@
             <td>{{array.status|titlecase }}</td>
             <td>{{array.pf_id|titlecase }}</td>
             <td>{{array.rate_description|titlecase }}</td>
-            <td>{{array.block_name|titlecase }}</td>
+            <td style="width:200px">{{array.block_name|titlecase }}</td>
             <td>{{array.marketgroup_description|titlecase }}</td>
             <td>{{array.sourcedescription|titlecase }}</td>
             <td>{{array.owner|uppercase}}</td>
