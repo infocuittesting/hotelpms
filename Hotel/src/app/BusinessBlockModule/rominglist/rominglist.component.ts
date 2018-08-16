@@ -66,9 +66,10 @@ size(roomtype){
   if (this.room_type_count[0] == roomtype){
     console.log("roomtype",roomtype,this.room_type_count.indexOf(roomtype))
     this.room_type_count[this.room_type_count.indexOf(roomtype)+1] = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]-1  
+    this.roomsgrid[0].available_rooms = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]  
     if (this.room_type_count[this.room_type_count.indexOf(roomtype)+1] == 0 ){
       this.show_room_type.splice(this.show_room_type.indexOf(roomtype),1);
-      this.room_type_count.splice(this.room_type_count.indexOf(roomtype),this.room_type_count.indexOf(roomtype)+2);
+      // this.room_type_count.splice(this.room_type_count.indexOf(roomtype),this.room_type_count.indexOf(roomtype)+2);
       // this.i = this.room_type_count.indexOf(roomtype)+2     
       // console.log(this.i)
     }
@@ -76,9 +77,11 @@ size(roomtype){
   else if(this.room_type_count[2] == roomtype){
     console.log("roomtype",roomtype)
     this.room_type_count[this.room_type_count.indexOf(roomtype)+1] = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]-1
+    this.roomsgrid[1].available_rooms = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]  
+
     if (this.room_type_count[this.room_type_count.indexOf(roomtype)+1] == 0 ){
       this.show_room_type.splice(this.show_room_type.indexOf(roomtype),1);
-      this.room_type_count.splice(this.room_type_count.indexOf(roomtype),this.room_type_count.indexOf(roomtype)+2);
+      // this.room_type_count.splice(this.room_type_count.indexOf(roomtype),this.room_type_count.indexOf(roomtype)+2);
 
       // console.log(";alksdjfa;lskdsdkj")
    }
@@ -86,15 +89,28 @@ size(roomtype){
   else if(this.room_type_count[4] == roomtype){
     console.log("roomtype",roomtype)
     this.room_type_count[this.room_type_count.indexOf(roomtype)+1] = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]-1
+    this.roomsgrid[2].available_rooms = this.room_type_count[this.room_type_count.indexOf(roomtype)+1]  
+
     if (this.room_type_count[this.room_type_count.indexOf(roomtype)+1] == 0 ){
       this.show_room_type.splice(this.show_room_type.indexOf(roomtype),1);
-      this.room_type_count.splice(this.room_type_count.indexOf(roomtype),this.room_type_count.indexOf(roomtype)+2);
+      // this.room_type_count.splice(this.room_type_count.indexOf(roomtype),this.room_type_count.indexOf(roomtype)+2);
        
       // console.log(";alksdjfa;lskdsdkj")
    }
   }
   
   console.log("list1111",this.room_type_count)
+  console.log("final room grid.********8",this.roomsgrid)
+}
+
+public update_rooms=[];
+UpdateRoomingList(){
+  this.roomlistservice.updateroom(this.roomsgrid)
+  .subscribe((resp: any) => {
+    this.update_rooms=resp.ReturnCode;
+    console.log("return of update_rooms",this.update_rooms)
+  });
+
 }
 addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid)
 {

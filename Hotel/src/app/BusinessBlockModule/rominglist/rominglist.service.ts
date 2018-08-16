@@ -22,6 +22,33 @@ GroupReservation(savedetails1):Observable<object[]> {
        .map(this.extractData)
   
   } 
+  updateroom(roomsgrid):Observable<object[]> {
+    // console.log("", )
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+    let body = {
+    "block_id":this.session.retrieve("blockid"),
+    "data": roomsgrid
+    // [
+    //        {
+    //            "roomtype_id": 2,
+    //            "available_rooms": 6
+    //        },
+    //        {
+    //            "roomtype_id": 4,
+    //            "available_rooms": 4
+    //        },
+    //        {
+    //            "roomtype_id": 6,
+    //            "available_rooms": 4
+    //        }
+    //    ]
+    }
+    
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_UPDATE_UpdateRoomingList_Roomtype',body,options)
+       .map(this.extractData)
+  
+  } 
 
   QueryRoomtypeGrid():Observable<object[]> {
     console.log("query hhhhh")
