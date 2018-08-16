@@ -126,75 +126,76 @@ this.editblockservice.QueryEditblock()
 
  
 // edit lbock screen....................................................
-editblockheader(editblock){
-    // if(block.print_rate == true)
-    // {
-    //     block.print_rate = "1"
-    // }
-    // else
-    // {
-    //     block.print_rate = "0"
-    // }
-    // if(block.suppress == true)
-    // {
-    //     block.suppress = "1"
-    // }
-    // else{
-    //     block.suppress = "0"
-    // }
-    // if(block.guranteeds == true)
-    // {
-    //     block.guranteeds = "1"
+editblockheader(block){
+    console.log("go to ok button",block)
+//     if(block.print_rate == true)
+//     {
+//         block.print_rate = "1"
+//     }
+//     else
+//     {
+//         block.print_rate = "0"
+//     }
+//     if(block.suppress == true)
+//     {
+//         block.suppress = "1"
+//     }
+//     else{
+//         block.suppress = "0"
+//     }
+//     if(block.guranteeds == true)
+//     {
+//         block.guranteeds = "1"
 
-    // }
-    // else{
-    //     block.guranteeds = "0"
-    // }
-    console.log("go to ok button",editblock)
-    this.editblockservice.Edit_grid_data(editblock)
-.subscribe((resp: any) => {
-    this.createblock=resp.ReturnCode;
+//     }
+//     else{
+//         block.guranteeds = "0"
+//     }
+    
+//     this.editblockservice.Edit_grid_data(block)
+// .subscribe((resp: any) => {
+//     this.createblock=resp.ReturnCode;
  
-     console.log(this.createblock);
-    //  this.session.store("blids",this.blockids.toString());
-     if(this.createblock=="RUS"){
-        this.blocksuccess="Block Updated Successfully"
-        console.log("outputblock",this.blocksuccess)
-     }
-     else{
-         this.blocksuccess="something"
-     }
- });
+//      console.log(this.createblock);
+//     //  this.session.store("blids",this.blockids.toString());
+//      if(this.createblock=="RUS"){
+//         this.blocksuccess="Block Updated Successfully"
+//         console.log("outputblock",this.blocksuccess)
+//      }
+//      else{
+//          this.blocksuccess="something"
+//      }
+//  });
  
-  }
-// Query Room Revenue Button
-  RoomrevenueButton(){
-    console.log("going to calculate room revenue")
-  this.editblockservice.QueryRoomRevenue()
-  .subscribe((resp: any) => {
-      this.queryroomrevenue=resp.ReturnValue;
-       console.log(this.queryroomrevenue);
-   });
-}
+//   }
+// // Query Room Revenue Button
+//   RoomrevenueButton(){
+//     console.log("going to calculate room revenue")
+//   this.editblockservice.QueryRoomRevenue()
+//   .subscribe((resp: any) => {
+//       this.queryroomrevenue=resp.ReturnValue;
+//        console.log(this.queryroomrevenue);
+//    });
+// }
 
-CreatePaymaster(){
-    // console.log("going to reservation button",this.blockids,typeof(this.blockids));
-  // this.payblockid = this.blockids.toString();
-  // console.log("stringvalue",typeof(this.payblockid))
-this.editblockservice.PaymasterReservation()
-.subscribe((resp: any) => {
-    this.paymasters=resp.ReturnCode;
-    if(this.paymasters=="RIS"){
-        this.paysucess="A Pay Master will be created"
-    }
-    else if(this.paymasters=="RAE"){
-        this.paysucess="Paymaster Already exist"
-    }
-    else{
-        this.paysucess="paymaster failed"
-    }
-     console.log("paymasertresponse",this.paymasters);
- });
+// CreatePaymaster(){
+//     // console.log("going to reservation button",this.blockids,typeof(this.blockids));
+//   // this.payblockid = this.blockids.toString();
+//   // console.log("stringvalue",typeof(this.payblockid))
+// this.editblockservice.PaymasterReservation()
+// .subscribe((resp: any) => {
+//     this.paymasters=resp.ReturnCode;
+//     if(this.paymasters=="RIS"){
+//         this.paysucess="A Pay Master will be created"
+//     }
+//     else if(this.paymasters=="RAE"){
+//         this.paysucess="Paymaster Already exist"
+//     }
+//     else{
+//         this.paysucess="paymaster failed"
+//     }
+//      console.log("paymasertresponse",this.paymasters);
+//  });
 }
 
 // grid current.......................................
