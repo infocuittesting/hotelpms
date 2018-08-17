@@ -34,6 +34,8 @@ export class EditRevenueManagementComponent implements OnInit {
   public negotiatecode:any=[];
   public rateheader:any={};
   public funct=[];
+  public databindvalues=[];
+
  
   public ncode=[ 
   //   { Rate_code: 'CORP', Begin_sell_date: '16-07-2018',End_sell_date:'19-07-2018',ID:'1'},
@@ -47,6 +49,7 @@ export class EditRevenueManagementComponent implements OnInit {
 
   constructor(private EditRevenuemanagement:EditRevenueManagementService,public session:SessionStorageService,private route:Router,private fb: FormBuilder) {
     this.negotiatecode = this.ncode;
+   
    }
 
    funcat(roomtypelist){
@@ -54,184 +57,89 @@ export class EditRevenueManagementComponent implements OnInit {
     this.funct=roomtypelist.rate_class;
     console.log("function catttttttttttttt",this.funct);
     }
-
-
+    public currentTab:any=1;
+    tabname(args){
+      this.currentTab = args;
+      console.log(this.currentTab);
+    }
 
 
    user={};
    cat_id:any;
    rateheadalert:any;
-   rateheaderins(input:any){
-    console.log("banuuuuuuuuuuuuuuuuuuu",input)
-    if(input.discount == 1)
-    {
-     input.discount=1;
-     console.log("one", input.discount)
-    }else{
-     input.discount=0;
-     console.log("zero", input.discount)
- 
-    }
-    if(input.Negotiated == 1)
-    {
-     input.Negotiated=1;
-     console.log("one",input.discount)
-    }else{
-     input.Negotiated=0;
-     console.log("zero",input.discount)
- 
-    }
-    if(input.Rate == 1)
-    {
-     input.Rate=1;
-     console.log("one",input.discount)
-    }else{
-     input.Rate=0;
-     console.log("zero",input.discount)
-    }
-    if(input.Membership == 1)
-    {
-     input.Membership=1;
-     console.log("one",input.discount)
-    }else{
-     input.Membership=0;
-     console.log("zero",input.discount)
-    }
-    if(input.Day == 1)
-    {
-     input.Day= 1;
-     console.log("one",input.discount)
-    }else{
-     input.Day=0;
-     console.log("zero",input.discount)
-    }
-    if(input.Complimentary == 1)
-    {
-     input.Complimentary=1;
-     console.log("one",input.discount)
-    }else{
-     input.Complimentary=0;
-     console.log("zero",input.discount)
-    }
-    if(input.House == 1)
-    {
-     input.House=1;
-     console.log("one",input.discount)
-    }else{
-     input.House=0;
-     console.log("zero",input.discount)
-    }
-    if(input.Suppress == 1)
-    {
-     input.Suppress=1;
-     console.log("one",input.discount)
-    }else{
-     input.Suppress=0;
-     console.log("zero",input.discount)
-    }
-    
-    if(input.Type == 1)
-    {
-     input.Type=1;
-     console.log("one",input.discount)
-    }else{
-     input.Type=0;
-     console.log("zero",input.discount)
-    }
-    if(input.Package == 1)
-    {
-     input.Package=1;
-     console.log("one",input.discount)
-    }else{
-     input.Package=0;
-     console.log("zero",input.discount)
-    }
-
-   this.EditRevenuemanagement.updaterateheader(this.cat_id,this.rmid,this.rmid1,input)
-   .subscribe((resp: any) => {
-    this.savehead=resp.ReturnValue;
-    if(this.savehead=='RIS')
-     {
-       this.rateheadalert="rateheader created successfully";
-     }
-     else 
-     {
-       this.rateheadalert="sorry,currently can't able to update";
-     }
-
-  });
- console.log(this.savehead);
-}
-
+   public cond;
+  
 
 ratedetalert:any;
-ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy){
+
+ratedetins(ratecodedrop,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy,tab){
+  this.cond = this.session.retrieve("ratecodenav");
   if(mondy== true)
   {
     mondy="1";
-   console.log("one")
+  //  console.log("one")
   }else{
     mondy="0";
-   console.log("zero")
+  //  console.log("zero")
 
   }
   if(tuesdy== true)
   {
     tuesdy="1";
-   console.log("one")
+  //  console.log("one")
   }else{
     tuesdy="0";
-   console.log("zero")
+  //  console.log("zero")
 
   }
   if(wednesdy== true)
   {
     wednesdy="1";
-   console.log("one")
+  //  console.log("one")
   }else{
     wednesdy="0";
-   console.log("zero")
+  //  console.log("zero")
 
   }
   if(thursdy== true)
   {
     thursdy="1";
-   console.log("one")
+  //  console.log("one")
   }else{
     thursdy="0";
-   console.log("zero")
+  //  console.log("zero")
 
   }
   if(fridy== true)
   {
     fridy="1";
-   console.log("one")
+  //  console.log("one")
   }else{
     fridy="0";
-   console.log("zero")
+  //  console.log("zero")
 
   }
   if(saturdy== true)
   {
     saturdy="1";
-   console.log("one")
+  //  console.log("one")
   }else{
     saturdy="0";
-   console.log("zero")
+  //  console.log("zero")
 
   }
   if(sundy== true)
   {
     sundy="1";
-   console.log("one")
+  //  console.log("one")
   }else{
     sundy="0";
-   console.log("zero")
+  //  console.log("zero")
 
   }
-  console.log("insert rate detailssssssssssssssss",ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,this.rmid2,this.rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy);
-  
-  this.EditRevenuemanagement.updateratedetail(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,this.rmid2,this.rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy)
+  console.log("insert rate detailssssssssssssssss",seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy,this.rmid2);
+  if(this.cond == "New"){
+  this.EditRevenuemanagement.ratedetins(ratecodedrop,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy,this.rmid2,this.currentTab)
   .subscribe((resp: any) => {
    this.ratedetvar=resp.ReturnCode;
    if(this.ratedetvar=='RIS')
@@ -243,7 +151,22 @@ ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,
     this.ratedetalert="can't able to create ratedetails";
     }
   });
- 
+}
+else{
+    this.EditRevenuemanagement.updateratedetail(this.ratedetail,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,this.rmid2,this.rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy,this.currentTab)
+    .subscribe((resp: any) => {
+     this.ratedetvar=resp.ReturnCode;
+    
+     if(this.ratedetvar=='RUS')
+      {
+      this.ratedetalert="ratedetails updated successfully";
+      }
+      else
+      {
+      this.ratedetalert="can't able to create ratedetails";
+      }
+    });
+  }
 }
 
 
@@ -341,12 +264,23 @@ delbut=true;
     }
 
 //ratedetails table selection
+ratedetail:any={};
 ratedetidvar=[];
 selectindexx=null
     selectMembers1(detailss,indexx){     
       this.selectindexx=indexx; 
-      this.ratedetidvar=detailss.rate_details_id;
-      console.log("ratecodeiddddddddddddddd",this.ratedetidvar);
+      this.ratedetail.ratedetailid =detailss.rate_details_id;
+      this.ratedetail.roomsid = detailss.rooms_id;
+      this.ratedetail.packageid = detailss.packages_id;
+      this.ratedetail.ratedaysid = detailss.rate_days_id;
+      this.ratedetail.ratetierid=detailss.rate_tier_id;
+      
+      // this.session.store("ratedaysid",detailss.rate_days_id);  
+      // this.session.store("roomsid",detailss.rooms_id);  
+      // this.session.store("packagesid",detailss.packages_id);  
+      //this.session.store("ratetierid",detailss.rate_tier_id);  
+
+      console.log("ratecodeiddddddddddddddd",detailss.rate_days_id,detailss.rooms_id,detailss.packages_id,detailss.rate_days_id);
 
     }
 
@@ -382,77 +316,6 @@ selectindexx=null
 
 // }
 
-//selecting values from multiple checkboxes in roomtype(rateheader)
-selected=[];
-selected_id=[];
-selected_type=[];
-idx:any;
-public rmid:any;
-public rmtype:any;
-exist(item){
- this.selected.indexOf(item)>-1;
-}
-
-
-toggleSelection(item){
- this.idx=this.selected.indexOf(item);
- // this.room_type += item.type
- console.log("string",item.type)
- if(this.idx>-1){
-   this.selected.splice(this.idx,1);
-   this.selected_id.splice(this.idx,1);
-   this.selected_type.splice(this.idx,1);
-
- }
- else{
-   this.selected.push(item);
-   this.selected_id.push(item.id);
-  this.selected_type.push(item.type);
-
- }
- this.rmtype=this.selected_type.toString();
-this.rmid=this.selected_id;
-console.log("selected id",this.rmid);
-console.log("selected type",this.rmtype.toString());
-
-}
-
-//selecting values from multiple checkboxes in package(rateheader)
-selected1=[];
-selected_id1=[];
-selected_code=[];
-idx1:any;
-public rmid1:any;
-public rmcode:any;
-exist1(item){
- this.selected1.indexOf(item)>-1;
-}
-
-
-toggleSelection1(item){
- this.idx1=this.selected1.indexOf(item);
- // this.room_type += item.type
- console.log("string",item.type)
- if(this.idx1>-1){
-   this.selected1.splice(this.idx1,1);
-   this.selected_id1.splice(this.idx1,1);
-   this.selected_code.splice(this.idx1,1);
-
- }
- else{
-   this.selected1.push(item);
-   this.selected_id1.push(item.package_code_id);
-  this.selected_code.push(item.package_code);
-
- }
- this.rmcode=this.selected_code.toString();
-this.rmid1=this.selected_id1;
-console.log("selected id",this.rmid1);
-console.log("selected code",this.rmcode.toString());
-
-}
-
-
 //selecting values from multiple checkboxes in roomtype(ratedetails)
 selected2=[];
 selected_id2=[];
@@ -487,16 +350,14 @@ console.log("selected id",this.rmid2);
 console.log("selected type",this.rmtype2.toString());
 
 }
-
-//selecting values from multiple checkboxes in package(ratedetails)
 selected3=[];
 selected_id3=[];
-selected_code3=[];
+selected_type3=[];
 idx3:any;
 public rmid3:any;
-public rmcode3:any;
+public rmtype3:any;
 exist3(item){
- this.selected3.indexOf(item)>-1;
+ this.selected2.indexOf(item)>-1;
 }
 
 
@@ -507,20 +368,22 @@ toggleSelection3(item){
  if(this.idx3>-1){
    this.selected3.splice(this.idx3,1);
    this.selected_id3.splice(this.idx3,1);
-   this.selected_code3.splice(this.idx3,1);
+   this.selected_type3.splice(this.idx3,1);
 
  }
  else{
    this.selected3.push(item);
-   this.selected_id3.push(item.package_code_id);
-  this.selected_code3.push(item.package_code);
+   this.selected_id3.push(item.id);
+  this.selected_type3.push(item.type);
 
  }
- this.rmcode3=this.selected_code3.toString();
+ this.rmtype3=this.selected_type3.toString();
 this.rmid3=this.selected_id3;
 console.log("selected id",this.rmid3);
-console.log("selected code",this.rmcode3.toString());
+console.log("selected type",this.rmtype3.toString());
 
 }
-
 }
+
+// rate tier  update function 
+

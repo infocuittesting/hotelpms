@@ -38,7 +38,7 @@ export class ReservationoptionComponent implements OnInit {
   public Discreasons=this.session.retrieve("Discreasons");
   public DiscAmount=this.session.retrieve("DiscAmount");
   public Currency=this.session.retrieve("Currency");
-  
+  public house:any;
   public tableschanges =[];
   public alist =[];
   public clist =[];
@@ -61,6 +61,72 @@ export class ReservationoptionComponent implements OnInit {
   constructor(private pppService:ReservationoptionService,private route:Router,public session:SessionStorageService ) { }
  
 
+    //filter data in table  using checkbox
+    checkboxflg=[];
+    count=0;
+    copy=[];
+    filtercheckboxList:any=[];
+    filtercheckboxData(ngmodel, flag) {
+      if (ngmodel == true) {
+           this.filtercheckboxList.push(flag);
+      }else{
+        for(var i=0;i<this.filtercheckboxList.length;i++){
+          if(flag==this.filtercheckboxList[i]){
+            this.filtercheckboxList.splice(i,1);
+            break;
+          }
+        }
+      }
+      //final list for table
+      if(this.filtercheckboxList!=null && this.filtercheckboxList.length>0){
+       
+        if(this.count==0){
+          this.count++;
+       this.copy =JSON.parse(JSON.stringify(this.house))
+        }
+      this.house=[];
+      console.log("this.filtercheckboxList   ----"+this.filtercheckboxList);
+      for(var j=0;j<this.copy.length;j++){
+        if(this.filtercheckboxList.includes(this.copy[j].rm_room_status)){
+          this.house.push(this.copy[j]);
+        }
+      }
+    }else{
+      this.house=this.copy; 
+    }
+    }
+
+    filtercheckboxData1(ngmodel, flag) {
+      if (ngmodel == true) {
+           this.filtercheckboxList.push(flag);
+      }else{
+        for(var i=0;i<this.filtercheckboxList.length;i++){
+          if(flag==this.filtercheckboxList[i]){
+            this.filtercheckboxList.splice(i,1);
+            break;
+          }
+        }
+      }
+      //final list for table
+      if(this.filtercheckboxList!=null && this.filtercheckboxList.length>0){
+       
+        if(this.count==0){
+          this.count++;
+       this.copy =JSON.parse(JSON.stringify(this.house))
+        }
+      this.house=[];
+      console.log("this.filtercheckboxList   ----"+this.filtercheckboxList);
+      for(var j=0;j<this.copy.length;j++){
+        if(this.filtercheckboxList.includes(this.copy[j].rm_fo_status)){
+          this.house.push(this.copy[j]);
+        }
+      }
+    }else{
+      this.house=this.copy; 
+    }
+    }
+  
+
   //getting value for expirydate and merging it in a variable   
   private month:any;
   private year:any;
@@ -75,6 +141,8 @@ export class ReservationoptionComponent implements OnInit {
       this.creditcard_expiry = this.month+"/"+this.year;
       console.log(this.creditcard_expiry);
   }
+  
+
   
 //Alert start
 alerts={};
@@ -143,6 +211,17 @@ waitls:any={};
 public waitlist;
 submitwait(input){
 this.pppService.waitli(input)
+.subscribe((user333:any )=> {
+  this.waitlist = user333.ReturnCode;
+  if(this.waitlist=="RIS"){
+    this.waitlist=" Waitlist Reason is created for "+this.Name;
+  }
+});
+}
+//waitlist start
+
+submitroom(input){
+this.pppService.Roommove(input)
 .subscribe((user333:any )=> {
   this.waitlist = user333.ReturnCode;
   if(this.waitlist=="RIS"){
@@ -347,7 +426,11 @@ submitrate():void {
    
 privil:any;
   ngOnInit() {
-    
+    this.pppService.gethousekeepingdata()
+    .subscribe((resp: any) => {
+      this.house = resp.ReturnValue;
+
+    });
     this.privil =[ { val:false, values:"No Post"},{ val:false, values:"Authourized Direct Bill"},
     { val:false, values:"Pre Stay Charging"}]
 
@@ -445,6 +528,14 @@ privil:any;
    
 
   }
+  // room move
+  public rmroom;
+  selectindexs=null;
+  selected( detailed,index){
+this.selectindexs=index;
+this.rmroom=detailed.rm_room;
+  }
+  //credit card
   deletes=true;
   edits=true;
 public credid;   

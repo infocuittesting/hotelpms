@@ -11,6 +11,17 @@ export class ReservationoptionService {
     private http: Http,public session:SessionStorageService
   ) { }
 
+  //room move table
+  gethousekeepingdata():  Observable<object[]> {
+       
+    // const headers = new Headers({'Content-Type':'application/json'})
+    // const options = new RequestOptions({ headers: headers });
+   
+  
+    return this.http.get('https://hotel360.herokuapp.com/Hotel_Rm_Post_Select_QueryRoomList')
+       .map(this.extractData)
+       //.catch(this.handleErrorObservable);
+  }
   // Alert 
 alert(input:any):  Observable<object[]> {    
   const headers = new Headers();
@@ -94,6 +105,20 @@ waitli(input:any):  Observable<object[]> {
 "RES_Waitlist_Description":input.RES_Waitlist_Description
  }
    return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_INSERT_WaitlistReason',par,options)
+      .map(this.extractData)
+}
+
+//room move
+Roommove(input:any):  Observable<object[]> {    
+  const headers = new Headers();
+   headers.append('Content-Type','application/json');
+   const options = new RequestOptions({ headers: headers });
+   let par={
+"Res_id":this.session.retrieve("id"),
+"Res_unique_id":this.session.retrieve("uniq"),
+"Res_room":input.toString()
+   }
+   return this.http.post('https://hotel360.herokuapp.com/HOTEL_RES_POST_UPDATE_RoomMove',par,options)
       .map(this.extractData)
 }
 
