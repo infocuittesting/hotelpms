@@ -102,9 +102,6 @@ import { QueryReservationListComponent } from './BusinessBlockModule/query-reser
    ReservationsListComponent,
    GroupOptionsComponent,
    BlockRangeSettingComponent,
-<<<<<<< HEAD
-   RevenueRateCodeComponent,
-=======
 
    
 
@@ -113,7 +110,6 @@ import { QueryReservationListComponent } from './BusinessBlockModule/query-reser
    RevenueRateCodeComponent,
    EditBusinessBlockComponent,
    QueryReservationListComponent,
->>>>>>> 10d395d821a89ad12841b56fd1a86166ad9c0cba
 
    
    

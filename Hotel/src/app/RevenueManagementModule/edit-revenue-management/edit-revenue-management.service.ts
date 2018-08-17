@@ -93,6 +93,7 @@ export class EditRevenueManagementService {
     let body={
       "rate_details_id": ratedetidvar
     }
+    console.log("delllllllllllllllllllll",ratedetidvar);
     return this.http.post('https://hotel360.herokuapp.com/Delete_Rate_details',body,options)
        .map(this.extractData)
 
@@ -117,11 +118,11 @@ export class EditRevenueManagementService {
       "ratecode_id":this.session.retrieve("ratecodeedit")
     }
     console.log("binding values ratecodeeeeeeeee",JSON.stringify(body));
-    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_UpdateRatecodeSetup ',body,options)
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_UpdateRatecodeSetup',body,options)
        .map(this.extractData)
 
   }
-  
+
   updaterateheader(cat_id,rmid,rmid1,input:any): Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
@@ -182,13 +183,13 @@ export class EditRevenueManagementService {
 
   }
 
-  updateratedetail(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,rmid2,rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy):  Observable<object[]> {
+  updateratedetail(ratedetail,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,rmid2,rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy,tab):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
     
-        "rate_details_id":86,
+        "rate_details_id":ratedetail.ratedetailid,
         "season_code_id":seasoncod,
         "start_date":strtdt,
         "end_date":enddate,
@@ -201,7 +202,7 @@ export class EditRevenueManagementService {
             "fri":fridy,
             "sat":saturdy
         },
-        "rate_days_id":10,
+        "rate_days_id":ratedetail.ratedaysid,
         "one_adult_amount":onead,
        "two_adult_amount":twoad,
        "three_adult_amount":threead,
@@ -211,12 +212,51 @@ export class EditRevenueManagementService {
        "two_child_amount":twoch,
        "extra_child_amount":extrach,
        "room_types":rmid2,
-       "rooms_id":20,
-       "package":rmid3,
-       "packages_id":19,
-       "rate_tier_id":0
+       "rooms_id":ratedetail.roomsid ,
+       "package":"",
+       "packages_id":ratedetail.packageid,
+       "rate_tier_id":tab
     }
- 
+    console.log(JSON.stringify(body));
+
+    return this.http.post('http://hotel360.herokuapp.com/HOTEL_REM_POST_UPDATE_RATE_DETAILS',body,options)
+       .map(this.extractData)
+
+  }
+  ratedetins(ratecodedrop,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy,rmid2,tab):  Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+    let body={
+    
+      "ratecode_id":ratecodedrop,
+      "season_code_id":seasoncod,
+      "start_date":strtdt,
+      "end_date":enddate,
+      "days":{
+          "sun":sundy,
+          "mon":mondy,
+          "tue":tuesdy,
+          "wed":wednesdy,
+          "thu":thursdy,
+          "fri":fridy,
+          "sat":saturdy
+      },
+      "one_adult_amount":onead,
+     "two_adult_amount":twoad,
+     "three_adult_amount":threead,
+     "four_adult_amount":fourad,
+     "extra_adult_amount":extraad,
+     "one_child_amount":onech,
+     "two_child_amount":twoch,
+     "extra_child_amount":extrach,
+     "room_types":rmid2,
+     "package":[0],
+     "rate_tier_id":tab
+  }
+
+  
+  console.log(JSON.stringify(body));
     return this.http.post('http://hotel360.herokuapp.com/HOTEL_REM_POST_INSERT_RATE_DETAILS',body,options)
        .map(this.extractData)
 

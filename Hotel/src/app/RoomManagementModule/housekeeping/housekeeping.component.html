@@ -28,7 +28,7 @@
                   </tr>
                 </thead>
                 <!-- <tbody> -->
-                  <tr *ngFor="let housekeepinglist of house ; let i = index ">
+                  <tr *ngFor="let housekeepinglist of house ; let i = index">
                     <td>{{i+1}}</td>
                     <td>{{housekeepinglist.rm_room}}</td>
                     <td>{{housekeepinglist.rm_room_type}}</td>
@@ -249,6 +249,7 @@
 <tbody>
 <tr *ngFor="let housekeepinglist of house | filterdata: queryString : 'rm_room_status' | filterdata: queryString : 'rm_fo_status'; let i = index "
 (click)="selectMembersEdit(housekeepinglist,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+  
   <td>{{i+1}}</td>
   <td>{{housekeepinglist.rm_room}}</td>
   <td>{{housekeepinglist.rm_room_type}}</td>
