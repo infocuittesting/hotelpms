@@ -24,6 +24,8 @@
     "@angular/router": "^5.2.0",
     "@types/jspdf": "^1.1.31",
     "angular-fixed-table-header": "^0.2.1",
+    "angular-hotkeys-light": "^1.1.1",
+    "angular2-hotkeys": "^2.1.2",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "jspdf": "^1.4.1",
