@@ -97,7 +97,7 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 //revenuemanagement
 { path:'revenue', component:RevenuemanagementComponent},
 { path:'revenueratecode', component:RevenueRateCodeComponent},
-{ path:'editrevenue', component:EditRevenueManagementComponent},
+{ path:'ratetier', component:EditRevenueManagementComponent},
 
 //BusinessBLockSearch
 {path:'business',component:BusinessBlockSearchComponent},

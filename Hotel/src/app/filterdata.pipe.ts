@@ -10,13 +10,11 @@ export class FilterdataPipe implements PipeTransform {
     if (!items) return [];
     if (!value) return  items;
     if (value == "" || value == null) return [];
-    // return filter 
-// <<<<<<< HEAD
-//      ? items.filter(e =>e[label].toLowerCase().tostring().indexOf(value) > -1 )
-// =======
-//      ? items.filter(e =>e[label].toString().toLowerCase().indexOf(value)> -1 )
-// >>>>>>> 9d37cce63b6845157583c99c7b0074d1795f3dae
-//     : items;
+    return filter
+     ? items.filter(e =>e[label].toString().toLowerCase().indexOf(value)> -1 )
+    : items;
+ 
+  }
    
   }
 
@@ -32,5 +30,5 @@ export class FilterdataPipe implements PipeTransform {
   //   }
   //   return items;
   // }
-}
+
 

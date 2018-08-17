@@ -4,7 +4,7 @@
     <div class="continer-fluid">
       <br>
       <div class="table-responsive">
-        <table class="table table-bordered table-hover"  >
+        <table class="table table-bordered table-hover" style="width:98%;margin-left: 14px;"  >
           <thead style="background-color: #0077B5;color:white;">
             <tr>
               <th>Reservation ID</th>
@@ -39,89 +39,27 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-2"></div>
-  <label style="margin-left: 27px;">S&C RoomType</label>
-</div>
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="continer-fluid">
-        <div class="table-responsive">
-          <table class="table table-responsive table-hover" style="margin-left: 21px;">
-            <thead style="background-color: #0077B5;color:white;">
-              <tr>
-                <th>Date</th>
-                <th>Kngn</th>
-                <th>kngs</th>
-                <th>Tdbn</th>
-                <th>Tdbs</th>
-                <th>Ksbn</th>
-                <th>Osnn</th>
-                <th>Xstn</th>
-                <th>Xsts</th>
-                <th>Osns</th>
-                <th>Ksbs</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>8/3/2018</td>
-                <td>10</td>
-                <td>10</td>
-                <td>10</td>
-                <td>15</td>
-                <td>12</td>
-                <td>14</td>
-                <td>12</td>
-                <td>18</td>
-                <td>0</td>
-             
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    
       <div class="continer-fluid">
         <br>
           <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-10">
-          <div class="col-md-2">
-            <div class="form-group">
-              <label for="name"></label>
-              <select class="form-control input-sm" name="" placeholder="Avalable">
-                <option>Ave</option>
-                <option>Wait</option>
-                <option>SomeMOreTime</option>
-              </select>
-            </div>
-          </div>
-        <div class="col-md-1">
-          <button class="btn btn-primary" style="width:100%">Profile</button>
-        </div>
-        <div class="col-md-1">
-            <button class="btn btn-info" style="width:100%">Options</button>
-          </div>
-          <div class="col-md-1">
-              <button class="btn btn-primary" style="width:100%">Checkin</button>
-            </div>
-          <div class="col-md-1">
-              <button class="btn btn-Danger" style="width:100%">Cancel</button>
-            </div>
+          <div classs="col-md-2"></div>
+          <div class="col-md-2"></div>
+          
             <div class="col-md-1">
-                <button class="btn btn-light" style="width:120%"data-toggle="modal" data-target="#groupoptions"[disabled]=gro>GroupOpt</button>
+                <button class="btn btn-primary" style="width:120%"data-toggle="modal" data-target="#groupoptions"[disabled]=gro>GroupOpt</button>
+
               </div>
-              <div class="col-md-1">
-                  <button class="btn btn-success" style="width:100%">New</button>
+              <div class="col-md-2">
+                  <button class="btn btn-success"routerLink="/business" style="width:100%">New</button>
                 </div>
-                <div class="col-md-1">
-                    <button class="btn btn-body" style="width:100%">Edit</button>
+                <div class="col-md-2">
+                    <button class="btn btn-body"routerLink="/bcreate" style="width:100%">Edit</button>
                   </div>
 
-                  <div class="col-md-1">
-                      <button class="btn btn-danger" style="width:100%">Close</button>
+                  <div class="col-md-2">
+                      <button class="btn btn-danger"routerLink="/mains" style="width:100%">Close</button>
                     </div>
       </div>
       </div>
@@ -151,15 +89,15 @@
                               <button class="btn btn-primary" routerLink="/rominglist" data-dismiss="modal" style="width:100%;height: 70px;">RoomingList</button>
                            </div>
                            <div class="col-md-6">
-                              <button class="btn btn-info" routerLink="/reservation" data-dismiss="modal" model-center style="width:100%;height: 70px;">CheckInGroup</button>
+                              <button class="btn btn-info" routerLink="/reservation" disabled data-dismiss="modal" model-center style="width:100%;height: 70px;">CheckInGroup</button>
                            </div>
                       </div>
                       <div class="row">
                           <div class="col-md-6">
-                              <button class="btn btn-secondary" data-dismiss="modal" model-center style="width:100%;height: 70px;">RoomAssin</button>
+                              <button class="btn btn-secondary" data-dismiss="modal" disabled model-center style="width:100%;height: 70px;">RoomAssin</button>
                            </div>
                            <div class="col-md-6">
-                              <button class="btn btn-white" data-dismiss="modal" model-center style="width:100%;height: 70px;">RoomStatus</button>
+                              <button class="btn btn-white" data-dismiss="modal" disabled model-center style="width:100%;height: 70px;">RoomStatus</button>
                            </div>
                       </div>
                       <div class="row">
@@ -167,15 +105,15 @@
                               <button class="btn btn-primary" model-center style="width:100%;height: 70px;">PrintRegistrationCards</button>
                            </div>
                            <div class="col-md-6">
-                              <button class="btn btn-warning" model-center style="width:100%;height: 70px;">NewPostMaster</button>
+                              <button class="btn btn-warning" disabled model-center style="width:100%;height: 70px;">NewPostMaster</button>
                            </div>
                       </div>
                       <div class="row">
                           <div class="col-md-6">
-                              <button class="btn btn-secondary" model-center style="width:100%;height: 70px;">Delete</button>
+                              <button class="btn btn-secondary" disabled model-center style="width:100%;height: 70px;">Delete</button>
                            </div>
                            <div class="col-md-6">
-                              <button class="btn btn-dark" model-center style="width:100%;height: 70px;">CutKeys</button>
+                              <button class="btn btn-dark" disabled model-center style="width:100%;height: 70px;">CutKeys</button>
                            </div>
                       </div>
 
