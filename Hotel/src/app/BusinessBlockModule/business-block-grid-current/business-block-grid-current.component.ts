@@ -100,7 +100,6 @@ console.log("ajith working fine",this.gridvalues)
     }else{
      input.saturday =0;
     }
- 
 
 let body={
 
@@ -125,7 +124,8 @@ let body={
 "friday":input.friday,
 "saturday":input.saturday,
 "grid_startdate":input.grid_startdate,
-"grid_enddate":input.grid_enddate
+"grid_enddate":input.grid_enddate,
+"available_rooms":input.totalrooms.toString()
 }
 
 
@@ -135,11 +135,22 @@ console.log("worked",this.insertgrid);
 // this.blockservicegrid.insertGrid(this.insertgrid)
 // .subscribe( (resp:any) =>{
   
+  input.Occupency1 = "";
+  input.Occupency2 = "";
+  input.Occupency3= "";
+  input.Occupency4 = "";
+  input.totalrooms = "";
+  input.Rate1 = "";
+  input.Rate2 = "";
+  input.Rate3 = "";
+  input.Rate4 = "";
+  input.addrates = "";
 //   this.gridvalue=resp.ReturnValue;
 //   console.log("return valure of range screen",this.gridvalue);
 // });
 }
 
+saveshow=[];
 savebutton(){
   console.log("inside insertgrid value",this.insertgrid);
 
@@ -159,11 +170,10 @@ savebutton(){
   // // this.rmtype = gridvalue.type;
 
   console.log("return valure of range screen",this.gridvalues);
-  // this.jio = this.session.retrieve("gridvalues")
+  // this.gridvalues = this.session.retrieve("gridvalues")
   
 });
 
 }
-
 
 }

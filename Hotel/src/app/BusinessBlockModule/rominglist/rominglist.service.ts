@@ -16,21 +16,36 @@ GroupReservation(savedetails1):Observable<object[]> {
     const options = new RequestOptions({ headers: headers })
     let body = savedetails1 
       
-        // [
-        //     {
-        //     "res_arrival":savedetails.res_arrival,
-        //     "res_depature":savedetails.res_depature,
-        //     "res_nights":savedetails.res_nights,
-        //     "res_adults":savedetails.res_adults,
-        //     "res_child":savedetails.res_child,
-        //     "res_number_of_rooms":savedetails.res_number_of_rooms,
-        //     "res_room_type":savedetails.res_room_type,
-        //     "res_block_code":this.session.retrieve("blockid"),
-        //     "pf_firstname":savedetails.pf_firstname
-        //     }
-        // ]   
+       
     
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_INSERT_GroupReservations',body,options)
+       .map(this.extractData)
+  
+  } 
+  updateroom(roomsgrid):Observable<object[]> {
+    // console.log("", )
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+    let body = {
+    "block_id":this.session.retrieve("blockid"),
+    "data": roomsgrid
+    // [
+    //        {
+    //            "roomtype_id": 2,
+    //            "available_rooms": 6
+    //        },
+    //        {
+    //            "roomtype_id": 4,
+    //            "available_rooms": 4
+    //        },
+    //        {
+    //            "roomtype_id": 6,
+    //            "available_rooms": 4
+    //        }
+    //    ]
+    }
+    
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_UPDATE_UpdateRoomingList_Roomtype',body,options)
        .map(this.extractData)
   
   } 
@@ -44,11 +59,20 @@ GroupReservation(savedetails1):Observable<object[]> {
         "block_id":this.session.retrieve('blockid')
         
     }
-    return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryGrid',body,options)
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_SelectRoomingList_Roomtype',body,options)
        .map(this.extractData)
   
   }
+query_grid_data():  Observable<object[]> {   
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers });
+    let body={
+                "block_id":this.session.retrieve("blockid")
+    }
+      return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryGrid',body,options)
+     .map(this.extractData)
 
+}
 
 
   private extractData(res: Response) {
