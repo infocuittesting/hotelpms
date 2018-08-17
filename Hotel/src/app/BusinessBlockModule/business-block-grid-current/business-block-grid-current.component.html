@@ -9,8 +9,7 @@
             <div class="col-md-1"><label for="name">Date</label></div>
           <div class="col-md-3">
             <div class="form-group" style="margin-left: -7px;width: 215px;">
-              
-              <input type="date" class="form-control input-sm" name="date" style="margin-left: -38px;">
+              <input type="date" class="form-control input-sm" name="date" style="margin-left: -38px;" [(ngModel)]="date">
             </div>
           </div>
           <!-- <div class="col-md-3">
@@ -62,7 +61,7 @@
                 </tr>
               </thead>
                 <tbody>
-                  <tr *ngFor="let grid of gridvalues;">
+                  <tr *ngFor="let grid of gridvalues | filterdata: date :'curnt_date'; ">
                     <td>{{grid.curnt_date}}</td>
                     <td>{{grid.grid_type_desc}}</td>
                     <td>{{grid.kngn}}</td>
@@ -74,84 +73,6 @@
                     <td>{{grid.sjss}}</td>
                     <!-- <td>10</td> -->
                   </tr>
-                  <!-- <tr>
-                      <td>Original</td>
-                      <td>15</td>
-                      <td>10</td>
-                      <td>10</td>
-                      <td>25</td>
-                      <td>10</td>
-                      <td>10</td>
-                      <td>10</td>
-                      <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>Current</td>
-                        <td>15</td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>25</td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>10</td>
-                      </tr>
-                      <tr>
-                          <td>Pickup</td>
-                          <td>15</td>
-                          <td>10</td>
-                          <td>10</td>
-                          <td>25</td>
-                          <td>10</td>
-                          <td>10</td>
-                          <td>10</td>
-                          <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>03-08-2018 Sun</td>
-                            
-                            <td>15</td>
-                            <td>10</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>25</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>Original</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>25</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>Current</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>25</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>Pickup</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>15</td>
-                            <td>10</td>
-                            <td>25</td>
-                            <td>15</td>
-                            <td>15</td>
-                            <td>15</td>
-                        </tr> -->
                 </tbody>
               
             </table>
@@ -179,7 +100,7 @@
                 <div class="modal-content" style="width: 150%;">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Connect24*7</h4>
+                    <h4 class="modal-title">Block Range</h4>
                   </div>
                   <div class="modal-body">
             
@@ -189,7 +110,7 @@
                           <div class="col-md-5">
                            
                               <div class="panel panel-primary" style="border:solid 1px; margin-left: -117px;border-color: lightgray">
-                                  <legend style="margin-left:0px;background-color: #808080;color:white;" >DataRange</legend>
+                                  <legend style="margin-left:0px;background-color: #0077B5;color:white" >Date Range</legend>
                                   <div class="panel-body">
                                       <div class="row">
                                     <div class="col-md-4"> 
@@ -259,7 +180,7 @@
                               </div>
                           </div>
                      <div class="panel panel-primary" style="height: 244px;border:solid 1px; margin-left:-116px;border-color: lightgray">
-                              <legend style="margin-left:0px;background-color: #808080;color:white;" >RoomType</legend>
+                              <legend style="margin-left:0px;background-color: #0077B5;color:white" >Room Type</legend>
                               <div class="panel-body">
                                   <div class="col-md-5">
                                     <div class="form-group">
@@ -293,16 +214,16 @@
                         </div>
                         <div class="col-md-5">
                             <div class="panel panel-primary" style="border:solid 1px; margin-left: -27px;border-color: lightgray">
-                                <legend style="margin-left:0px;background-color: #808080;color:white;" >Values</legend>
+                                <legend style="margin-left:0px;background-color: #0077B5;color:white" >Occupancy</legend>
                                 <div class="panel-body">
                              
                                   <div class="continer">
                                     <div class="col-md-10">
-                                      <label>NO.ofRooms</label>
+                                      <label>No.of Rooms</label>
                                       <div class="row">
                                      <div class="col-md-3">
                                        <div class="form-group"style="width: 100px;" >
-                                         <label for="name">Occupency1</label>
+                                         <label for="name">Occupancy1</label>
                                          <input type="number" class="form-control input-sm" name="Occupency"[(ngModel)]="range.Occupency1">
                                        </div>
                                      </div>
@@ -317,7 +238,7 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                           <div class="form-group"style="width: 100px;" >
-                                            <label for="name">Occupency2</label>
+                                            <label for="name">Occupancy2</label>
                                             <input type="number" class="form-control input-sm" name="Occupency"[(ngModel)]="range.Occupency2">
                                           </div>
                                         </div>
@@ -332,7 +253,7 @@
                                        <div class="row">
                                           <div class="col-md-3">
                                             <div class="form-group"style="width: 100px;" >
-                                              <label for="name">Occupency3</label>
+                                              <label for="name">Occupancy3</label>
                                               <input type="number" class="form-control input-sm" name="Occupency"[(ngModel)]="range.Occupency3">
                                             </div>
                                           </div>
@@ -347,7 +268,7 @@
                                        <div class="row">
                                           <div class="col-md-3">
                                             <div class="form-group"style="width: 100px;" >
-                                              <label for="name">Occupency4</label>
+                                              <label for="name">Occupancy4</label>
                                               <input type="number" class="form-control input-sm" name="Occupency"[(ngModel)]="range.Occupency4">
                                             </div>
                                           </div>
@@ -362,14 +283,14 @@
                                          <div class="row">
                                             <div class="col-md-3">
                                               <div class="form-group"style="width: 100px;" >
-                                                <label for="name">TotalRooms</label>
+                                                <label for="name">Total Rooms</label>
                                                 <input type="number" class="form-control input-sm" name="Occupency" value="{{range.Occupency4+range.Occupency3+range.Occupency2+range.Occupency1}}"  [(ngModel)]="range.totalrooms">
                                               </div>
                                             </div>
        
                                             <div class="col-md-3">
                                                <div class="form-group"style="margin-left: 78px;width: 100px;">
-                                                 <label for="name">Addel.Rate</label>
+                                                 <label for="name">Add.Rate</label>
                                                  <input type="number" class="form-control input-sm" name="Occupency"value="{{range.Rate4+range.Rate3+range.Rate2+range.Rate1}}" [(ngModel)]="range.totalrate">
                                                </div>
                                              </div>
