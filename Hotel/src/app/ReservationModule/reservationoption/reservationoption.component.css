@@ -39,3 +39,10 @@ height:175px;
 .backgroundcolor{
 	background-color: lightgrey;
 }
+
+.table-responsive {
+
+    height:40%;
+    width:100%;
+     overflow-y: auto; 
+   }

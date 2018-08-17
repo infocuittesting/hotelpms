@@ -30,11 +30,21 @@ public selectindex=null;
 public res_block_code;
 public res_arrival;
 public res_depature;
+public blockid;
+public rmtype;
 public res_nights;
+gro = true;
 ReservationsListComponent(resvlist,index)
-    {
+  {
       this.selectindex = index;
-
+    this.blockid = resvlist.res_block_code;
+    this.rmtype  = resvlist.res_room_type;
+    if(this.blockid == resvlist.res_block_code && this.rmtype == "PM"){
+       this.gro = false;
+    }
+    else{
+      this.gro = true;
+    }
     this.session.store("blockid",resvlist.res_block_code);
     this.session.store("arrive",resvlist.res_arrival);
     this.session.store("depature",resvlist.res_depature);

@@ -121,30 +121,30 @@
         </div>
         <div class="modal-body">
           <div class="container-fluid"  >
+            <form action="">
           <div class="row" style="width: 70%;">
             <br>
               <div class="col-md-4" >
                   <label for=""> Date</label>
                 <div class="form-group">
-                  <input type="date" name="date"class="form-Control" [(ngModel)]="notes.notesdate">
+                  <input type="text" [value]="now" name="Date" [(ngModel)]="now"class="form-Control" [(ngModel)]="notes.notesdate">
                 </div>
               </div>
               <div class="col-md-4">
                   <label for="name">Note Type</label>
-                <div class="form-group"[class.has-error]="notetype.touched && notetype.invalid">
-                  <select class="from-control"name="notetype" id="notetype"#notetype="ngModel" required style="height: 30px;width:181px" [(ngModel)]="notes.notetype" (ngModelChange)="onSelect(notes.notetype)">
-                    isActive 
-                    <option *ngFor="let option of roomtype" 
-                      [ngValue]="option.id"> 
-                      {{option.notetype}}
-                  </option>
+                <div class="form-group" [class.has-error]="Any.touched && Any.invalid">
+                  <select class="from-control" name="name" id="name" style="height: 30px;width:181px" [(ngModel)]="notes.notetype" (ngModelChange)="onSelect(notes.notetype)" #Any="ngModel" required>
+                    <option *ngFor="let option of roomtype" [ngValue]="option.id">{{option.notetype}}</option>
                   </select>
+                  <div *ngIf="Any.touched && !Any.valid && Any.errors?.required " ngClass="{ 'has-error' : !Any.valid && submitAttempt }">
+                    </div>
                 </div>
                 
               </div>
             </div>
-            <span class="help-block" *ngIf="notetype.touched && notetype.touched && notetype.errors?.requried">
-                Is Active is Required
+          </form>
+            <span class="help-block" >
+             
               </span>
               <div class="row">
                 <div class="col-md-8">
@@ -181,7 +181,7 @@
           <div class="modal-dialog modal-lg">
           
             <!-- Modal content-->
-            <div class="modal-content" style="width:99%">
+            <div class="modal-content" style="width:99%;">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
              <h4>Cancel A Group</h4>
@@ -195,7 +195,7 @@
                 <div class="col-md-4" style="margin-left:10px;">
                     <div class="form-group" style="width:82%;">
                         <label for="room">Block Id</label>
-                        <input type="text" class="form-control input-sm" name="Cancelletion No." [(ngModel)]="Id" >
+                        <input type="text" disabled class="form-control input-sm" name="Cancelletion No." [(ngModel)]="Id" >
                     </div>
               </div>
               <div class="col-md-4" style="margin-left:10px;">
@@ -243,7 +243,7 @@
         <div class="modal-dialog">
         
           <!-- Modal content-->
-          <div class="modal-content">
+          <div class="modal-content" style="width: 99%;margin-top: 31%;">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
            <h4>Connect 24/7 Hotel</h4>
@@ -388,7 +388,7 @@
             <div class="modal-dialog">
             
               <!-- Modal content-->
-              <div class="modal-content">
+              <div class="modal-content"  style="width: 99%;margin-top: 31%;">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                   <h4 class="modal-title">Cancel A Group</h4>

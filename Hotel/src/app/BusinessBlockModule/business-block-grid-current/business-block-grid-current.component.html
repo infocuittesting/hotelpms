@@ -3,10 +3,14 @@
     <div class="col-md-10">
       <br>
         <div class="continer-fluid">
+         <div class="panel panel-primary" style="margin-left: 162px;margin-right: 187px;">
+           <div class="panel-body">
+          <div class="row">
+            <div class="col-md-1"><label for="name">Date</label></div>
           <div class="col-md-3">
-            <div class="form-group">
-              <label for="name">Date</label>
-              <input type="date" class="form-control input-sm" name="date">
+            <div class="form-group" style="margin-left: -7px;width: 215px;">
+              
+              <input type="date" class="form-control input-sm" name="date" style="margin-left: -38px;">
             </div>
           </div>
           <!-- <div class="col-md-3">
@@ -33,16 +37,20 @@
           
     </div>
   </div>
+  </div>
+  </div>
+</div>
 </div>
    <!-- //table for grid -->
     
       <div class="row">
         <div class="continer">
-          <div class="table-responsive" style="width:100%;">
-            <table class="table table-bordered table-hover" style="margin-left: 320px">
+          <!-- <div class="table-responsive" style="width:100%;"> -->
+            <table class="table table-bordered table-hover" style="margin-left: 461px;width: 62%">
               <thead style="background-color: #0077B5;color:white;">
                 <tr>
                   <th>Date</th>
+                  <th>Type</th>
                   <th>Kngn</th>
                   <th>Kngs</th>
                   <th>Ksbn</th>
@@ -50,22 +58,23 @@
                   <th>Sjsn</th>
                   <th>Sdbn</th>
                   <th>Sjss</th>
-                  <th>Comp</th>
+                  <!-- <th>Comp</th> -->
                 </tr>
               </thead>
                 <tbody>
-                  <tr>
-                    <td>2-08-2018 Sat</td>
-                    <td>15</td>
-                    <td>10</td>
-                    <td>10</td>
-                    <td>25</td>
-                    <td>10</td>
-                    <td>10</td>
-                    <td>10</td>
-                    <td>10</td>
+                  <tr *ngFor="let grid of gridvalues;">
+                    <td>{{grid.curnt_date}}</td>
+                    <td>{{grid.grid_type_desc}}</td>
+                    <td>{{grid.kngn}}</td>
+                    <td>{{grid.kngs}}</td>
+                    <td>{{grid.ksbn}}</td>
+                    <td>{{grid.ksbs}}</td>
+                    <td>{{grid.sjsn}}</td>
+                    <td>{{grid.sdbn}}</td>
+                    <td>{{grid.sjss}}</td>
+                    <!-- <td>10</td> -->
                   </tr>
-                  <tr>
+                  <!-- <tr>
                       <td>Original</td>
                       <td>15</td>
                       <td>10</td>
@@ -142,13 +151,12 @@
                             <td>15</td>
                             <td>15</td>
                             <td>15</td>
-                        </tr>
+                        </tr> -->
                 </tbody>
               
             </table>
-          </div>
+          <!-- </div> -->
         </div>
-      </div>
       <div class="row">
         <div class="continer-fluid">
           <div class="col-md-5"></div>
@@ -181,19 +189,19 @@
                           <div class="col-md-5">
                            
                               <div class="panel panel-primary" style="border:solid 1px; margin-left: -117px;border-color: lightgray">
-                                  <legend style="margin-left:3px;background-color: #0077B5;color:white;" >DataRange</legend>
+                                  <legend style="margin-left:0px;background-color: #808080;color:white;" >DataRange</legend>
                                   <div class="panel-body">
                                       <div class="row">
                                     <div class="col-md-4"> 
                                       <div class="form-group">
-                                      <label for="name">Form</label>
-                                      <input type="date" class="form-control input-sm" name="Form" [(ngModel)]="start">
+                                      <label for="name">Start Date</label>
+                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="start">
                                     </div>
                                   </div>
                                   <div class="col-md-4"> 
                                       <div class="form-group">
-                                      <label for="name">To</label>
-                                      <input type="date" class="form-control input-sm" name="Form" [(ngModel)]="end">
+                                      <label for="name">End Date</label>
+                                      <input type="date" style="width: 107%;" class="form-control input-sm" name="Form" [(ngModel)]="end">
                                     </div>
                                   </div>
                                   <div class="col-md-4"> 
@@ -227,9 +235,7 @@
                                       <br>
                                       <div class="row">
                                           <div class="col-sm-1">
-                                              <label style="margin-left:-35px"  >
-                                                  <input type="checkbox" [value]="sun"  class="form-control" name="sun" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="range.sun" ><b>sun</b>                    
-                                          </label>
+                                            <label for="sun"><input type="checkbox" [value]="mon"  id="sun" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.sunday"/> SUN</label>
                                           </div>
                                           <div class="col-sm-1">
                                               <label for="mon"><input type="checkbox" [value]="mon"  id="mon" style="margin-left:0px;zoom:1.5"[(ngModel)]="range.monday"/> MON</label>
@@ -253,7 +259,7 @@
                               </div>
                           </div>
                      <div class="panel panel-primary" style="height: 244px;border:solid 1px; margin-left:-116px;border-color: lightgray">
-                              <legend style="margin-left:3px;background-color: #0077B5;color:white;" >RoomType</legend>
+                              <legend style="margin-left:0px;background-color: #808080;color:white;" >RoomType</legend>
                               <div class="panel-body">
                                   <div class="col-md-5">
                                     <div class="form-group">
@@ -287,7 +293,7 @@
                         </div>
                         <div class="col-md-5">
                             <div class="panel panel-primary" style="border:solid 1px; margin-left: -27px;border-color: lightgray">
-                                <legend style="margin-left:3px;background-color: #0077B5;color:white;" >Values</legend>
+                                <legend style="margin-left:0px;background-color: #808080;color:white;" >Values</legend>
                                 <div class="panel-body">
                              
                                   <div class="continer">

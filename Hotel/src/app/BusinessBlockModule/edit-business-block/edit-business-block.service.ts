@@ -180,6 +180,25 @@ PaymasterReservation():Observable<object[]> {
 
 }
 
+Edit_grid_data(params:any):Observable<object[]> {
+   console.log("going to service",params)
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+  
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_UPDATE_BusinessBlockDefinite',params,options)
+     .map(this.extractData)
+
+}
+// select_grid_data():  Observable<object[]> {   
+//   const headers = new Headers({'Content-Type':'application/json'})
+//   const options = new RequestOptions({ headers: headers });
+//   let body={
+//               "block_id":this.session.retrieve("blockid")
+//   }
+//     return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryGrid',body,options)
+//    .map(this.extractData)
+
+// }
 
 
 

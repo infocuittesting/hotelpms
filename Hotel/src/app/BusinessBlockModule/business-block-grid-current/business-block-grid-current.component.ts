@@ -15,7 +15,7 @@ export class BusinessBlockGridCurrentComponent implements OnInit {
   public nights = this.session.retrieve("nght");
   public roomtype=[];
   public range:any=[];
-  public gridvalue=[];
+  public gridvalues=[];
   public rmtype=[];
   public rmcount=[];
   public rmblid;
@@ -29,17 +29,22 @@ this.roomtype=resp.ReturnValue;
 console.log(this.roomtype)
 
 });
+// current grid.........................................
+this.blockservicegrid.querygridvalue()
+.subscribe((resp: any) => {
+this.gridvalues=resp.ReturnValue;
+console.log("ajith working fine",this.gridvalues)
 
+});
 
-
-    }
+  }
  selectindex=null;
     selectMembersEdit(details,index){
       this.selectindex=index; 
   }
 
   public insertgrid:any=[];
-  
+  public jio=[];
   
   rangegrids(input:any){
     input.grid_startdate = this.start;
@@ -95,11 +100,10 @@ console.log(this.roomtype)
     }else{
      input.saturday =0;
     }
- 
 
 let body={
 
-"block_id":this.session.retrieve('blids'),
+"block_id":this.session.retrieve("blids"),
 "roomtype_id":input.roomtype.id.toString(),
 "roomtype":input.roomtype.type.toString(),
 "occupancy_one":input.Occupency1.toString(),
@@ -120,7 +124,8 @@ let body={
 "friday":input.friday,
 "saturday":input.saturday,
 "grid_startdate":input.grid_startdate,
-"grid_enddate":input.grid_enddate
+"grid_enddate":input.grid_enddate,
+"available_rooms":input.totalrooms.toString()
 }
 
 
@@ -130,11 +135,22 @@ console.log("worked",this.insertgrid);
 // this.blockservicegrid.insertGrid(this.insertgrid)
 // .subscribe( (resp:any) =>{
   
+  input.Occupency1 = "";
+  input.Occupency2 = "";
+  input.Occupency3= "";
+  input.Occupency4 = "";
+  input.totalrooms = "";
+  input.Rate1 = "";
+  input.Rate2 = "";
+  input.Rate3 = "";
+  input.Rate4 = "";
+  input.addrates = "";
 //   this.gridvalue=resp.ReturnValue;
 //   console.log("return valure of range screen",this.gridvalue);
 // });
 }
 
+saveshow=[];
 savebutton(){
   console.log("inside insertgrid value",this.insertgrid);
 
@@ -146,18 +162,18 @@ savebutton(){
   this.blockservicegrid.insertGrid(this.insertgrid)
   .subscribe( (resp:any) =>{
   
-   this.gridvalue=resp.ReturnValue;
+   this.gridvalues=resp.ReturnValue;
   //  this.session.store("rmcount",resp.total_rooms);
   //  this.session.store("rmtype",resp.type);
   //  this.session.store("rmblid",resp.block_id);
   //  console.log("sesson values come",resp.total_rooms,resp.type,resp.block_id)
   // // this.rmtype = gridvalue.type;
 
-  console.log("return valure of range screen",this.gridvalue);
+  console.log("return valure of range screen",this.gridvalues);
+  // this.gridvalues = this.session.retrieve("gridvalues")
   
 });
 
 }
-
 
 }

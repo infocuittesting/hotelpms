@@ -135,7 +135,7 @@ CreateBusinessBlock(block):Observable<object[]> {
   let body = {
     "Definite":
            {
-            "pf_id":"cpy159",
+            "pf_id":this.session.retrieve("id".toString()),
 	          "block_status_id":block.statusblock,
             "market_id":block.marketcode,
             "source_id":block.sourcecode,
@@ -198,6 +198,16 @@ CreateBusinessBlock(block):Observable<object[]> {
      .map(this.extractData)
 
 }
+// select_grid_data():  Observable<object[]> {   
+//     const headers = new Headers({'Content-Type':'application/json'})
+//     const options = new RequestOptions({ headers: headers });
+//     let body={
+//                 "block_id":this.session.retrieve("blids")
+//     }
+//       return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_QueryGrid',body,options)
+//      .map(this.extractData)
+
+// }
 // Create Paymaster Reservation................................................................
 // PaymasterReservation(blockids):Observable<object[]> {
 //   console.log("going to service",blockids,typeof(blockids))

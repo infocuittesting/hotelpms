@@ -11,22 +11,33 @@ import { Router } from "@angular/router";
   providers :[BusinessBlockSearchService]
 })
 export class BusinessBlockSearchComponent implements OnInit {
-  public tableschanges={};
+  public tableschanges;
   public roomtype=[];
   public statustype=[];
   blockopt=true;
+  // public querylist=[];
+  public someData=[];
+  public mainratecode=[];
+  
+  public =[];
   blc = true;
   grop = true;
   newblockbut=false;
   public querylist=[];
   constructor(private blocksearch:BusinessBlockSearchService,private route:Router,public session:SessionStorageService) { }
+  onSelcat(val){
+    console.log(val);
+    this.tableschanges = this.someData.filter(x => x.status == val)
+  }
+
 
   ngOnInit() {
      this. blocksearch.bsearchtable()
     .subscribe((resp: any) => {
       this.tableschanges=resp.ReturnValue;
+      this.someData=resp.ReturnValue;
     });
-   
+
     
     this.blocksearch.blockstatus()
     .subscribe((resp: any) => {
@@ -39,6 +50,20 @@ export class BusinessBlockSearchComponent implements OnInit {
     //  console.log(this.roomtype);
     });
 
+  }
+  // filter the from to to
+
+  filterDatefrmList(startDate,endDate){
+    if(startDate!=null && endDate!=null){
+      let selectedMembers = this.tableschanges.filter(
+        m => new Date(m.start_date) >= new Date(startDate) && new Date(m.start_date) <= new Date(endDate)
+        );
+          console.log(selectedMembers);
+          this.tableschanges = selectedMembers;
+    }else {
+      this.tableschanges = this.tableschanges;
+    }
+    
   }
 
   
@@ -91,6 +116,7 @@ selectindex=null;
   this.session.store("startdate",details.start_date.toString());
   this.session.store("enddate",details.end_date.toString());
   this.session.store("nights",details.nights.toString());
+  this.session.store("businessDet",details);
   
 
 //  this.session.store("pf_account",details.pf_account);
