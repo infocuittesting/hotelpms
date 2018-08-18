@@ -1,4 +1,6 @@
+<div  >
 <div class="row" style="width:99%;">
+    
     <div class="col-md-2"></div>
     <div class="col-md-10">
         <div class="container-fluid" style="padding-top:20px;padding-left:50px;">
@@ -10,9 +12,9 @@
                                 <b>Rate code</b>
                                 </div>
                                 <div class="col-sm-3">
-                                <select class="form-control input-sm"  style="width:150px;" [(ngModel)]="ratecode">
+                                <select name="Ratecode" class="form-control input-sm" required style="width:150px;" [(ngModel)]="ratecodedrop">
                                         <option value="" hidden></option>
--                                       <option *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.rate_code">{{ratecdlist.rate_code}}</option>
+-                                       <option *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.ratecode_id">{{ratecdlist.rate_code}}</option>
                                 </select>
                                 </div>
                             </div>
@@ -33,8 +35,8 @@
           
 
 
-            <div class="panel panel-primary">
-                <div class="panel-body">
+            <div class="panel panel-primary" >
+                <div class="panel-body" style="margin-bottom: -10px">
                 <div class="row">
                     <div class="col-md-7">
 
@@ -42,16 +44,16 @@
                         <div class="row">
                             <div class="col-md-4">
                              <b>Rate code</b>
-                              <input type="text" name="ratecodeid" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" [value]="ratecode">                   
+                              <input type="text" name="ratecodeid" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecode" [value]="ratecode">                   
                             </div>
                              <div class="col-md-4">
                                 <b>Rate Class</b>
-                                <input type="text" name="ratecodeid"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" disabled>                   
+                                <input type="text" name="ratecls"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" disabled>                   
                             </div>
          
                             <div class="col-md-4">
                                 <b>Description</b>
-                                <input type="text" name="des"  class="form-control input-sm" style="width:70%;height: 27px;" disabled >       
+                                <input type="text" name="des"  class="form-control input-sm" style="width:70%;height: 27px;"   [(ngModel)]="editblock.descrp">       
                             </div>
          
                         </div>        
@@ -61,7 +63,7 @@
                             <div class="col-md-4">
                             <div class="form-group" [class.has-error]="ratecategory.touched && ratecategory.invalid">                                
                                 <b>Rate category</b>
-                                <select name="ratecategoryid" id="ratecategoryid" ngModel  #ratecategory="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.ratecategoryid" required>
+                                <select name="ratecategoryid" id="ratecategoryid" ngModel  #ratecategory="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="editblock.ratecategoryid" required>
                                     <option value="" hidden></option>
                                     <option  *ngFor="let roomtypelist of ratecat" [ngValue]="roomtypelist.ratecategory_id" >{{roomtypelist.rate_category}}</option>    
                                 </select>
@@ -70,11 +72,11 @@
                             <div class="col-md-4">
 
                                 <b>Begin Sell Date</b>          
-                                <input name="beginselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="rateheader.beginselldate">
+                                <input name="beginselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="editblock.beginselldate">
                             </div>
                             <div class="col-md-4">  
                                 <b>End Sell Date</b>
-                                <input name="endselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="rateheader.endselldate" >                           
+                                <input name="endselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="editblock.endselldate" >                           
                             </div>  
                         </div>
        
@@ -86,7 +88,7 @@
                                 <div class="col-md-4">
                                         <div class="form-group" [class.has-error]="mar.touched && mar.invalid">                                                                       
                                         <b>Market</b>
-                                        <select name="mar" id="mar" ngModel  #mar="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.market_id" required>
+                                        <select name="mar" id="mar" ngModel  #mar="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="editblock.market_id" required>
                                             <option value="" hidden></option>
                                             <option  *ngFor="let list of shop" [ngValue] = "list.market_id">{{list.market_code}}</option>  
                                         </select>
@@ -96,7 +98,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group" [class.has-error]="sour1.touched && sour1.invalid">                                                                                                                  
                                       <b>Source</b>
-                                      <select name="sour1" id="sour1" ngModel  #sour1="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.source_id" required>
+                                      <select name="sour1" id="sour1" ngModel  #sour1="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="editblock.source_id" required>
                                         <option value="" hidden></option>  
                                         <option  *ngFor="let sourlist of src" [ngValue] = "sourlist.source_id">{{sourlist.source_code}}</option> 
                                       </select>
@@ -104,7 +106,7 @@
                                      </div></div></div>
                             <div class="col-md-4">
                            <b>Display Sequence</b>
-                           <select name="sour2" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="rateheader.Sequence">
+                           <select name="sour2" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="editblock.Sequence">
                                 <option value="" hidden></option>    
                                 <option  *ngFor="let sourlist of Sequence" [ngValue] = "sourlist.Sequence"></option> 
                           </select>
@@ -115,7 +117,7 @@
                                         <b>Room Types</b>
                                         <div class="input-group">
                                                <span class="input-group-addon" data-toggle="modal" data-target="#roomtyperatehead"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
-                                           <input name="roomtypeid" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="roomtype" type="text" [value]="rmtype">
+                                           <input name="roomtypeid" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="editblock.roomtype" type="text" [value]="rmtype" disabled>
                                                  <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
                                              <!-- </select> -->
                                          </div>
@@ -123,8 +125,8 @@
                                        <div class="col-md-4">
                                        <b>Package</b>
                                        <div class="input-group">
-                                            <span class="input-group-addon" data-toggle="modal" data-target="#rateheadpack"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
-                                        <input name="Package1" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="type" type="text" [value]="rmcode">
+                                            <span class="input-group-addon" data-toggle="modal" data-target="#rateheadpack"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span> 
+                                        <input name="Package1" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="editblock.type" type="text" [value]="rmcode" disabled>
                                               <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
                                           <!-- </select> -->
                                       </div>
@@ -151,7 +153,7 @@
         <div class="col-md-6">
                 <div class="form-group" [class.has-error]="currencycodeid.touched && currencycodeid.invalid">                                                                                                                              
             <b style="margin-left:10px">CurrencyCode</b>
-            <select name="currencycodeid" id="currencycodeid" ngModel  #currencycodeid="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;;margin-left:10px;"  [(ngModel)]="rateheader.currencycodeid" required>
+            <select name="currencycodeid" id="currencycodeid" ngModel  #currencycodeid="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;;margin-left:10px;"  [(ngModel)]="editblock.currencycodeid" required>
                     <option  *ngFor="let moneylist of money" [ngValue] = "moneylist.transaction_currency_id">{{moneylist.currency}}</option>
               </select>
               <div *ngIf="currencycodeid.touched && !currencycodeid.valid && currencycodeid.errors?.required " ngClass="{ 'has-error' : !currencycodeid.valid && submitAttempt }">                                                                                         
@@ -172,7 +174,7 @@
       <div class="row">
             <div class="col-md-6">
                     <b style="margin-left:10px">Exchange Type</b>
-                    <select name="Exchange" class="form-control input-sm"  style="width:70%;height: 27px;;margin-left:10px;margin-bottom:3px"  [(ngModel)]="rateheader.Exchange">
+                    <select name="Exchange" class="form-control input-sm"  style="width:70%;height: 27px;;margin-left:10px;margin-bottom:3px"  [(ngModel)]="editblock.Exchange">
                           <option  *ngFor="let moneylist of money" [ngValue] = "moneylist.Exchange"></option>
                     </select>
                       </div>
@@ -192,25 +194,25 @@
             <div class="col-md-1"></div>
               <div class="col-md-2" >
                       <label style="margin-left:-35px" >
-                      <input type="checkbox" [value]="negotiated" class="form-control" name="nego" style="width:15px;height:15px;margin-left:25px;" [(ngModel)]="rateheader.Negotiated" ><b>Negotiated</b></label>
+                      <input type="checkbox" [value]="negotiated" class="form-control" name="nego" style="width:15px;height:15px;margin-left:25px;" [(ngModel)]="editblock.Negotiated" ><b>Negotiated</b></label>
               </div>
               
               <div class="col-md-2">
                      <label style="margin-left:-8px" >
-                      <input type="checkbox" [value]="Rate" class="form-control" name="Rate" style="width:15px;height:15px;margin-left:25px;" [(ngModel)]="rateheader.Rate" > <b>PrintRate</b></label>
+                      <input type="checkbox" [value]="Rate" class="form-control" name="Rate" style="width:15px;height:15px;margin-left:25px;" [(ngModel)]="editblock.Rate" > <b>PrintRate</b></label>
               </div>
               <div class="col-md-2">
                   <label style="margin-left:-15px"  >
-              <input type="checkbox" [value]="Membership" class="form-control" name="Membership" style="width:15px;height:15px;margin-left:32px;" [(ngModel)]="rateheader.Membership" ><b>Membership</b></label>
+              <input type="checkbox" [value]="Membership" class="form-control" name="Membership" style="width:15px;height:15px;margin-left:32px;" [(ngModel)]="editblock.Membership" ><b>Membership</b></label>
               </div>
               <div class="col-md-2">
                   <label >
-                          <input type="checkbox" [value]="discount"  class="form-control" name="discount" style="width:15px;height:15px;margin-left:15px;" [(ngModel)]="rateheader.discount"><b>Discount</b> </label>        
+                          <input type="checkbox" [value]="discount"  class="form-control" name="discount" style="width:15px;height:15px;margin-left:15px;" [(ngModel)]="editblock.discount"><b>Discount</b> </label>        
                  
               </div>
               <div class="col-md-2">
                   <label >
-                          <input type="checkbox" [value]="Day"  class="form-control" name="Day" style="width:15px;height:15px;margin-left:15px;" [(ngModel)]="rateheader.Day"><b>DayUse</b>                   
+                          <input type="checkbox" [value]="Day"  class="form-control" name="Day" style="width:15px;height:15px;margin-left:15px;" [(ngModel)]="editblock.Day"><b>DayUse</b>                   
                   </label>
               </div>
             <div class="col-md-1"></div>
@@ -221,27 +223,27 @@
                
               <div class="col-md-2">
                   <label style="margin-left:-35px"  >
-                          <input type="checkbox" [value]="Complimentary"  class="form-control" name="Complimentary" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="rateheader.Complimentary" ><b>Complimentary</b>                    
+                          <input type="checkbox" [value]="Complimentary"  class="form-control" name="Complimentary" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="editblock.Complimentary" ><b>Complimentary</b>                    
                   </label>
               </div>
               <div class="col-md-2">
                       <label style="margin-left:-8px"  >
-                              <input type="checkbox" [value]="House"  class="form-control" name="House" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="rateheader.House" ><b>HouseUse</b>                           
+                              <input type="checkbox" [value]="House"  class="form-control" name="House" style="width:15px;height:15px;margin-left:25px" [(ngModel)]="editblock.House" ><b>HouseUse</b>                           
                       </label>
                   </div>
               <div class="col-md-2" >
                           <label style="margin-left:-15px" >
-                                  <input type="checkbox" [value]="Suppress"  class="form-control" name="Suppress" style="width:15px;height:15px;margin-left:30px" [(ngModel)]="rateheader.Suppress"><b>SuppressRate</b>                              
+                                  <input type="checkbox" [value]="Suppress"  class="form-control" name="Suppress" style="width:15px;height:15px;margin-left:30px" [(ngModel)]="editblock.Suppress"><b>SuppressRate</b>                              
                           </label>
               </div>
               <div class="col-md-2">
                       <label>
-                              <input type="checkbox" [value]="Type"  class="form-control" name="Type" style="width:15px;height:15px;margin-left:17px" [(ngModel)]="rateheader.Type"> <b>DayType</b>                            
+                              <input type="checkbox" [value]="Type"  class="form-control" name="Type" style="width:15px;height:15px;margin-left:17px" [(ngModel)]="editblock.Type"> <b>DayType</b>                            
                       </label>
               </div>
               <div class="col-md-2">
                     <label style="margin-left:-3px" >
-                            <input type="checkbox" [value]="Package"  class="form-control" name="Package" style="width:15px;height:15px;margin-left:18px" [(ngModel)]="rateheader.Package"> <b>Package</b>                            
+                            <input type="checkbox" [value]="Package"  class="form-control" name="Package" style="width:15px;height:15px;margin-left:18px" [(ngModel)]="editblock.Package"> <b>Package</b>                            
                     </label>
             </div>
 
@@ -262,43 +264,43 @@
           <div class="col-md-4" >
               <div class="form-group" [class.has-error]="mini.touched && mini.invalid">
                 <b style="margin-left:10px">MinStayThrough</b>
-                    <input type="text" id="mini" class="form-control" pattern="^[0-9]+$" ngModel name="mini" #mini="ngModel" style="width:70%;height: 27px;margin-left:10px" [(ngModel)]="rateheader.Minimum_stay_through" required>                
+                    <input type="text" id="mini" class="form-control" pattern="^[0-9]+$" ngModel name="mini" #mini="ngModel" style="width:70%;height: 27px;margin-left:10px" [(ngModel)]="editblock.Minimum_stay_through" required>                
                     <div *ngIf="mini.touched && !mini.valid && mini.errors?.required " ngClass="{ 'has-error' : !mini.valid && submitAttempt }">
                        
                 </div></div></div>
           <div class="col-md-4">
                 <div class="form-group" [class.has-error]="max.touched && max.invalid">
                 <b>MaxStayThrough</b>
-                <input type="text" id="max"  class="form-control" pattern="^[0-9]+$" ngModel name="max" #max="ngModel" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Maximum_stay_through" required>
+                <input type="text" id="max"  class="form-control" pattern="^[0-9]+$" ngModel name="max" #max="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Maximum_stay_through" required>
                 <div *ngIf="max.touched && !max.valid && max.errors?.required " ngClass="{ 'has-error' : !max.valid && submitAttempt }">
                                            
             </div></div></div>
             <div class="col-md-4">
                     <div class="form-group" [class.has-error]="Advance.touched && Advance.invalid">
                     <b>MinAdvanceBooking</b>
-                    <input type="text" id="Advance"  class="form-control" pattern="^[0-9]+$" ngModel name="Advance" #Advance="ngModel" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Minimum_Advance_Booking" required>                        
+                    <input type="text" id="Advance"  class="form-control" pattern="^[0-9]+$" ngModel name="Advance" #Advance="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Minimum_Advance_Booking" required>                        
                      <div *ngIf="Advance.touched && !Advance.valid && Advance.errors?.required " ngClass="{ 'has-error' : !Advance.valid && submitAttempt }">
                     
                 </div></div></div>
       </div>
-      <div class="row">
-            <div class="col-md-4">
+      <div class="row" >
+            <div class="col-md-4" style="margin-top: -13px">
                 <div class="form-group" [class.has-error]="Occupancy.touched && Occupancy.invalid">                
                 <b style="margin-left:10px">MinOccupancy</b>
-                <input type="text" id="Advance" class="form-control" pattern="^[0-9]+$" ngModel name="Occupancy" #Occupancy="ngModel" style="width:70%;height: 27px;margin-left:10px;margin-bottom:3px" [(ngModel)]="rateheader.Minimum_Occupancy" required>
+                <input type="text" id="Advance" class="form-control" pattern="^[0-9]+$" ngModel name="Occupancy" #Occupancy="ngModel" style="width:70%;height: 27px;margin-left:10px;margin-bottom:3px" [(ngModel)]="editblock.Minimum_Occupancy" required>
                 <div *ngIf="Occupancy.touched && !Occupancy.valid && Occupancy.errors?.required " ngClass="{ 'has-error' : !Occupancy.valid && submitAttempt }">
             
             </div></div></div>
-            <div class="col-md-4">
+            <div class="col-md-4" style="margin-top: -13px">
                 <div class="form-group" [class.has-error]="Maximum_Advance.touched && Maximum_Advance.invalid">                                
                 <b>MaxiAdvanceBooking</b>
-                <input type="text" id="Maximum_Advance" class="form-control" pattern="^[0-9]+$" ngModel name="Maximum_Advance" #Maximum_Advance="ngModel" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Maximum_Advance_Booking" required>                               
+                <input type="text" id="Maximum_Advance" class="form-control" pattern="^[0-9]+$" ngModel name="Maximum_Advance" #Maximum_Advance="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Maximum_Advance_Booking" required>                               
                 <div *ngIf="Maximum_Advance.touched && !Maximum_Advance.valid && Maximum_Advance.errors?.required " ngClass="{ 'has-error' : !Maximum_Advance.valid && submitAttempt }">            
             </div></div></div>
-            <div class="col-md-4">
+            <div class="col-md-4" style="margin-top: -13px">
                 <div class="form-group" [class.has-error]="Maximum_Occupancy.touched && Maximum_Occupancy.invalid">                                                
                 <b>MaxiOccupancy</b>
-                <input type="text" id="Maximum_Occupancy" class="form-control" pattern="^[0-9]+$" ngModel name="Maximum_Occupancy" #Maximum_Occupancy="ngModel" style="width:70%;height: 27px;" [(ngModel)]="rateheader.Maximum_Occupancy" required>                               
+                <input type="text" id="Maximum_Occupancy" class="form-control" pattern="^[0-9]+$" ngModel name="Maximum_Occupancy" #Maximum_Occupancy="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Maximum_Occupancy" required>                               
                 <div *ngIf="Maximum_Occupancy.touched && !Maximum_Occupancy.valid && Maximum_Occupancy.errors?.required " ngClass="{ 'has-error' : !Maximum_Occupancy.valid && submitAttempt }">            
            
             </div></div></div>
@@ -344,7 +346,7 @@
               <button type="button" class="btn btn-primary" style="width:9%"><b>New</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
-              <button type="reset" class="btn btn-success" style="width:9%" (click)="rateheaderins(ratecode,rateheader);myformm.reset()" ><b>Save</b></button>
+              <button type="button" class="btn btn-success" style="width:9%" (click)="rateheaderins(ratecode,editblock)" ><b>Save</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
               <button type="button" class="btn btn-danger" style="width:9%"><b>Close</b></button>
@@ -392,7 +394,7 @@
                             <b>SeasonCode</b>
                             <div class="form-group">
                             <div class="form-group" [class.has-error]="SeasonCode.touched && SeasonCode.invalid">                                                                                        
-                                <select  name="SeasonCode" id="SeasonCode" class="form-control" ngModel  #SeasonCode="ngModel" class="form-control input-sm" [(ngModel)]="seasoncod"  style="width:95px;height:27px;" required>
+                                <select  name="SeasonCode" id="SeasonCode" class="form-control"  #SeasonCode="ngModel" class="form-control input-sm" [(ngModel)]="user.seasoncod"  style="width:95px;height:27px;" required>
                                     <option *ngFor="let type of arryses" [ngValue]="type.season_code_id">{{type.season_code}}</option>                                      
                                 </select>
                                  <div *ngIf="SeasonCode.touched && !SeasonCode.valid && SeasonCode.errors?.required " ngClass="{ 'has-error' : !SeasonCode.valid && submitAttempt }">                                    
@@ -402,14 +404,14 @@
                           <div class="col-md-4">
                               <b>StartDate</b>
                               <div class="form-group">            
-                                    <input type="date" name="stdt" class="form-control input-sm" [(ngModel)]="strtdt" >
+                                    <input type="date" name="stdt" class="form-control input-sm" [(ngModel)]="user.strtdt" >
                             </div>
                           </div>
                           <div class="col-md-4">
                                 <b style="margin-left:30px">EndDate</b>
                             
                                 <div class="form-group">            
-                                    <input type="date" name="enddt" class="form-control input-sm"  [(ngModel)]="enddate">
+                                    <input type="date" name="enddt" class="form-control input-sm"  [(ngModel)]="user.enddate">
                                 </div>
                             </div>
                       
@@ -424,31 +426,31 @@
                       <div class="row">
                       
                             <div class="col-sm-1">
-                                    <label for="mon"><input type="checkbox" name="mn" [value]="monday" id="mon" style="margin-left:10px;" [(ngModel)]="mondy" />
+                                    <label for="mon"><input type="checkbox" name="mn" [value]="monday" id="mon" style="margin-left:10px;" [(ngModel)]="user.mondy" />
                                      MON</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px;">
-                                    <label for="tue"><input type="checkbox" name="tu" [value]="tuesday" id="tue" style="margin-left:10px;" [(ngModel)]="tuesdy" />
+                                    <label for="tue"><input type="checkbox" name="tu" [value]="tuesday" id="tue" style="margin-left:10px;" [(ngModel)]="user.tuesdy" />
                                      TUE</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="wed"><input type="checkbox" name="we" [value]="wednesday" id="wed"style="margin-left:10px;" [(ngModel)]="wednesdy"/>
+                                    <label for="wed"><input type="checkbox" name="we" [value]="wednesday" id="wed"style="margin-left:10px;" [(ngModel)]="user.wednesdy"/>
                                     WED</label> 
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="thur"><input type="checkbox" name="th" [value]="thursday" id="thur" style="margin-left:10px;" [(ngModel)]="thursdy"/>
+                                    <label for="thur"><input type="checkbox" name="th" [value]="thursday" id="thur" style="margin-left:10px;" [(ngModel)]="user.thursdy"/>
                                      THU</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="fri"><input type="checkbox" name="fr" [value]="friday"  id="fri" style="margin-left:10px;" [(ngModel)]="fridy" />
+                                    <label for="fri"><input type="checkbox" name="fr" [value]="friday"  id="fri" style="margin-left:10px;" [(ngModel)]="user.fridy" />
                                     FRI</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="sat"><input type="checkbox" name="st" [value]="saturday" id="sat" style="margin-left:10px;" [(ngModel)]="saturdy"/>
+                                    <label for="sat"><input type="checkbox" name="st" [value]="saturday" id="sat" style="margin-left:10px;" [(ngModel)]="user.saturdy"/>
                                     SAT</label>
                              </div>
                              <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="sun"><input type="checkbox" name="su" [value]="sunday" id="sun" style="margin-left:10px;" [(ngModel)]="sundy"/>
+                                    <label for="sun"><input type="checkbox" name="su" [value]="sunday" id="sun" style="margin-left:10px;" [(ngModel)]="user.sundy"/>
                                     SUN</label>
                             </div>
                         </div>
@@ -468,7 +470,7 @@
                         
                             <div class="form-group">
                             <div class="form-group" [class.has-error]="onea.touched && onea.invalid">                                                                                                                                    
-                                <input type="text" name="onea" id="onea" pattern="^[0-9]+$" class="form-control input-sm" ngModel  #onea="ngModel" style="height: 4%" [(ngModel)]="onead" required>
+                                <input type="text" name="onea" id="onea" pattern="^[0-9]+$" class="form-control input-sm" ngModel  #onea="ngModel" style="height: 4%" [(ngModel)]="user.onead" required>
                                 <div *ngIf="onea.touched && !onea.valid && onea.errors?.required " ngClass="{ 'has-error' : !onea.valid && submitAttempt }">                                                                    
                             </div></div></div>
                           </div>
@@ -476,7 +478,7 @@
                                   <b>2 Adults</b>                                   
                                   <div class="form-group">
                                         <div class="form-group" [class.has-error]="twoa.touched && twoa.invalid">                                                                                                                                                                
-                                      <input type="text" name="twoa" id="twoa" pattern="^[0-9]+$" class="form-control input-sm" ngModel  #twoa="ngModel" style="height: 4%" [(ngModel)]="twoad" required>
+                                      <input type="text" name="twoa" id="twoa" pattern="^[0-9]+$" class="form-control input-sm" ngModel  #twoa="ngModel" style="height: 4%" [(ngModel)]="user.twoad" required>
                                       <div *ngIf="twoa.touched && !twoa.valid && twoa.errors?.required " ngClass="{ 'has-error' : !twoa.valid && submitAttempt }">                                                                                                
                                   </div></div></div>                          
                           </div>
@@ -484,14 +486,14 @@
                                   <b>3 Adults</b>
                                   <div class="form-group">
                                         <div class="form-group" [class.has-error]="twoaa.touched && twoaa.invalid">                                                                                                                                                                                                            
-                                      <input type="text" name="twoaa" id="twoaa" pattern="^[0-9]+$" ngModel  #twoaa="ngModel" class="form-control input-sm" style="height: 4%" [(ngModel)]="threead" required>
+                                      <input type="text" name="twoaa" id="twoaa" pattern="^[0-9]+$" ngModel  #twoaa="ngModel" class="form-control input-sm" style="height: 4%" [(ngModel)]="user.threead" required>
                                       <div *ngIf="twoaa.touched && !twoaa.valid && twoaa.errors?.required " ngClass="{ 'has-error' : !twoaa.valid && submitAttempt }">                                                                                                                                      
                                   </div></div></div>
                           </div> 
                           <div class="col-md-3">
                                   <b>4 Adults</b>
                                   <div class="form-group">
-                                      <input type="text" name="threea" class="form-control input-sm" style="height: 4%" [(ngModel)]="fourad">
+                                      <input type="text" name="threea" class="form-control input-sm" style="height: 4%" [(ngModel)]="user.fourad">
                                   </div>
                           </div>
                           <!-- <div class="col-md-3" style="margin-top:-17px">
@@ -503,7 +505,7 @@
                            <div class="col-md-3" style="margin-top:-17px">
                                   <b>ExtraAdults</b>
                                   <div class="form-group">            
-                                      <input type="text" name="extraa" class="form-control input-sm" style="height: 4%" [(ngModel)]="extraad">
+                                      <input type="text" name="extraa" class="form-control input-sm" style="height: 4%" [(ngModel)]="user.extraad">
                                   </div>
                               </div>
                     </div>
@@ -517,19 +519,19 @@
                           <div class="col-md-3" style="margin-top:-17px">
                             <b>1 child</b>
                             <div class="form-group">            
-                                <input type="text" name="onec" class="form-control input-sm" style="height: 4%" [(ngModel)]="onech">
+                                <input type="text" name="onec" class="form-control input-sm" style="height: 4%" [(ngModel)]="user.onech">
                             </div>
                           </div>
                           <div class="col-md-3" style="margin-top:-17px">
                                   <b>2 child</b>
                                   <div class="form-group">            
-                                      <input type="text" name="twoc" class="form-control input-sm" style="height: 4%" [(ngModel)]="twoch">
+                                      <input type="text" name="twoc" class="form-control input-sm" style="height: 4%" [(ngModel)]="user.twoch">
                                   </div>
                           </div>
                           <div class="col-md-3" style="margin-top:-17px">
                                   <b>Extrachild</b>
                                   <div class="form-group">            
-                                      <input type="text" name="extrac" class="form-control input-sm" style="height: 4%" [(ngModel)]="extrach" >
+                                      <input type="text" name="extrac" class="form-control input-sm" style="height: 4%" [(ngModel)]="user.extrach" >
                                   </div>
                           </div>
                           <!-- <div class="col-md-3" style="margin-top:-17px">
@@ -569,8 +571,8 @@
                               </thead>
                               <tbody style="font-size:12px;">
                                 <tr *ngFor="let dettable of ratedettabl; let i=index" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
-                                    <td>{{dettable.start_date}}</td>     
-                                    <td>{{dettable.end_date}} </td>
+                                    <td>{{dettable.begin_sell_date}}</td>     
+                                    <td>{{dettable.end_sell_date}} </td>
                                     <td>{{dettable.rooms_id}}</td>
                                 </tr>
                               </tbody>
@@ -628,7 +630,7 @@
           
   
           <div class="col-md-2">
-              <button type="button" class="btn btn-Info" style="width:110px;" data-toggle="modal" ><b>Rate Tier</b></button>
+              <button type="button" class="btn btn-Info" style="width:110px;" data-toggle="modal" routerLink="/ratetier"><b>Rate Tier</b></button>
           </div>
           <div class="col-md-2">
               <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" ><b>Repeat</b></button>
@@ -640,10 +642,11 @@
               <button type="button" class="btn btn-Warning" style="width:110px;" data-toggle="modal" ><b>New</b></button>
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal"  (click)="ratedetins(ratecode,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy);ratedetForm.reset()" data-target="#afterratedetsave"><b>Save</b></button>
+            <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal"  (click)="ratedetins(ratecodedrop,user,roomtypedet,packdet);ratedetForm.reset()" data-target="#afterratedetsave"><b>Save</b></button>
+            <!-- <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal" data-target="#afterratedetsave" (click)="ratedetins(editblockdetails);ratedetForm.reset()" ><b>Save</b></button> -->
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-danger" style="width:110px;" (click)="ratedetForm.reset()"><b>Close</b></button>
+              <button type="button" class="btn btn-danger" style="width:110px;" (click)="ratedetForm.reset()" routerLink="/revenue"><b>Close</b></button>
           </div>
   
   
@@ -769,7 +772,7 @@
       </div>
       </div>
     </div>
-  </div>
+  </div></div>
   <!-- alert after ratedetails save  -->
 <div class="modal fade" id="afterratedetsave" role="dialog">
         <div class="vertical-alignment-helper">  

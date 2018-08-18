@@ -298,7 +298,7 @@ export class EditBusinessBlockComponent implements OnInit {
              console.log("paymasertresponse",this.paymasters);
          });
 
-
+        }
     // grid current.......................................
     // public gridvalues:any = [];
     // selectgrid_data(){
@@ -312,5 +312,6 @@ export class EditBusinessBlockComponent implements OnInit {
     //   });
     // }
 
-}
+
+
 }

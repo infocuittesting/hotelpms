@@ -90,6 +90,7 @@ export class RevenueRateCodeComponent implements OnInit {
   edbutn=true;
   delbutn=true;
   ratecdid=[];
+  
   //select values from table on click
   selectMembers(details,index){
     this.okbutn=false;
@@ -98,8 +99,27 @@ export class RevenueRateCodeComponent implements OnInit {
     this.selectindex=index; 
     console.log("detailsssssssssssssssssssss",details);
     this.ratecdid=details.ratecode_id;   
-    this.session.store("ratecodeedit",details.ratecode_id);  
+    this.session.store("ratecodeedit",details.ratecode_id);
+    console.log("*************",details.ratecode_id)  
+    this.session.store("rateheaderid",details.rateheader_id);  
+    this.session.store("packagesid",details.packages_id);  
+    this.session.store("roomsid",details.rooms_id);  
+    this.session.store("tranctioncodeid",details.tranction_code_id);  
+    this.session.store("sellid",details.sell_id);  
+    this.session.store("componentsid",details.components_id);  
+    
+    
    console.log("ratecodeeeeeeeeeeeeeeeeeeeeeeeeee",details.ratecode_id,this.ratecdid)
+  }
+
+  loadrevenue(params){
+    
+    if(params == "New"){
+      this.session.store("ratecodenav",params);
+    }else if(params == "Edit"){
+      this.session.store("ratecodenav",params);
+    }
+    this.route.navigate(['revenue/']);
   }
 
 }
