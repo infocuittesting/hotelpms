@@ -113,11 +113,14 @@ selectindex=null;
 // business block valuee...............................................
    this.session.store("blockid",details.block_id.toString());
   this.session.store("blockname",details.block_name.toString());
-  this.session.store("startdate",details.start_date.toString());
-  this.session.store("enddate",details.end_date.toString());
-  this.session.store("nights",details.nights.toString());
+    this.session.store("starts",details.start_date.toString());
+  this.session.store("ends",details.end_date.toString());
+  this.session.store("nght",details.nights.toString());
+  // this.session.store("startdate",details.start_date.toString());
+  // this.session.store("enddate",details.end_date.toString());
+  // this.session.store("nights",details.nights.toString());
   this.session.store("businessDet",details);
-  
+  console.log("start date and end date",details.start_date.toString(),details.end_date.toString(),details.nights.toString())
 
 //  this.session.store("pf_account",details.pf_account);
 //  this.session.store("start_date",details.start_date);
