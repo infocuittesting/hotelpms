@@ -89,7 +89,7 @@ house = [
 
 fromroom=[];
 toroom=[];
-roomlist=[];
+roomlist;
 roomlist1=[];
 user23={};
 user24={};
@@ -211,8 +211,9 @@ selectandClearAll(flag){
   public changeroomlist: string;
 
   public changeroom: number;
-  sample(flag) {
+  roomstatusradio(flag) {
     this.commonflag = flag;
+    console.log(this.commonflag);
 
   }  
   public searchandedit;
@@ -232,77 +233,99 @@ selectandClearAll(flag){
 
   }
 
-  housekeepingstatus(inputt) {
-
-    console.log(inputt);
+  public updateroomstatus:any={};
+  housekeepingstatus(hsid,inputt) {
+// ***********************************
+    console.log("hsid",hsid,inputt);
     if (this.commonflag == 'roomlist') {
-      // let inputparms = {
-      //   'RM_Room_Status': 'input.RM_Room_Status',
-      //   'RM_Room':'input.RM_Room'
-      //   // 'Room_List': this.changeroomlist
-      // }
-
-      // this.roomService.getroomlist()
-      //   .subscribe((resp: any) => {
-      //     this.house = resp.ReturnValue;
-      //   });
-
-      this.roomService.getroomlist (inputt)
-      .subscribe(( user233:any)=> {
-        
-        this.user23 = user233;
-        this.roomlist=user233.Return;
-        if(user233.Return == "Record Updated Successfully"){
-          console.log("checking return value is success or not")
-          this.roomService.gethousekeepingdata()
-          .subscribe((resp: any) => {
-          this.house = resp.ReturnValue;
-      });
+      
+      if(hsid.includes(",")){
+        console.log("More than One value is there");
+        this.updateroomstatus =
+        {
+          "Room_List":hsid,
+           "RM_Room_Status":inputt.RM_Room_Status
+    
         }
-    //  location.reload()  
-      },
-       );  
+      }
+      else{
+        console.log(" One value is there");
+        this.updateroomstatus =
+        {
+          "RM_Room":hsid,
+           "RM_Room_Status":inputt.RM_Room_Status
+    
+        }
+      }
     }
 
     else if (this.commonflag == 'fromtoroom') {
-
-      // let inputparms = {
-      //   'RM_Room_Status': inputt.RM_Room_Status,
-      //   'From_Room':'input.RM_Room'
-      //   // 'Room_List': this.changeroom
-      // }
-
-      this.roomService.getlist (inputt)
-      .subscribe(( user234:any)=> {
-        this.user24 = user234;
-        this.roomlist=user234.Return;
-        if(user234.Return == "Record Updated Successfully"){
-          console.log("checking return value is success or not")
-          this.roomService.gethousekeepingdata()
-          .subscribe((resp: any) => {
-          this.house = resp.ReturnValue;
-      });
-        }
-        
-        //  location.reload()
-      },
-       ); 
-
+      this.updateroomstatus =
+      {
+         "RM_Room_Status":inputt.RM_Room_Status,
+         "From_Room":inputt.From_Room.toString(),
+         "To_Room":inputt.To_Room.toString()
+      }
     }
+    //calling service
+    this.roomService.getroomlist (this.updateroomstatus)
+    .subscribe(( user233:any)=> {
+      
+      this.user23 = user233;
+      this.roomlist=user233.ReturnCode;
+      if(this.roomlist == "RUS"){
+        this.roomlist="The Room Status is changed to "+inputt.RM_Room_Status;
+        this.roomService.gethousekeepingdata()
+        .subscribe((resp: any) => {
+        this.house = resp.ReturnValue;
+        
+        });
+      }
+  //  location.reload()  
+    });
+      //clearing selected
+  this.selected_id =[];
 }
 public ok=true;
-public hsid;
-  selectindex=null;
-  selectMembersEdit(details,index){
-  this.selectindex=index;
-  this.hsid=details.rm_room.toString();
-  if(this.hsid=details.rm_room){
-    this.ok=false;
-  }else{
-    this.ok=true;
-  }
-  }
+public roomid;
+//selecting values from multiple checkboxes in roomtype(rateheader)
+selected=[];
+public hsid:any=[];
+idx:any;
+selected_id=[];
+exist(item){
+ this.selected.indexOf(item)>-1;
+}
 
 
+toggleSelection(item){
+
+ this.idx=this.selected.indexOf(item);
+ console.log(this.idx);
+ // this.room_type += item.type
+
+ if(this.idx>-1){
+   this.selected.splice(this.idx,1);
+   this.selected_id.splice(this.idx,1);
+ }
+ else{
+   this.selected.push(item);
+   this.selected_id.push(item.rm_room);
+
+ }
+this.hsid=this.selected_id.toString();
+ console.log("multiple selecttttttttttt",this.hsid);
+ // this.hsid=this.hsid;
+ this.roomid=item.rm_room.toString();
+ if(this.roomid=item.rm_room){
+   this.ok=false;
+ }else{
+   this.ok=true;
+ }
+}
+ clearall(){
+         //clearing selected
+  this.selected_id =[];
+ }
 
 }

@@ -23,18 +23,12 @@ export class HousekeepingService {
            //.catch(this.handleErrorObservable);
       }
             
-      getroomlist(input:any):  Observable<object[]> {
+      getroomlist(body):  Observable<object[]> {
        
         const headers = new Headers({'Content-Type':'application/json'})
         const options = new RequestOptions({ headers: headers });
-        let body =
-        {
-           "RM_Room_Status":input.RM_Room_Status,
-           "RM_Room":input.RM_Room
-    
-        }
-        
-       
+     
+       console.log(body);
         return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Update_Updateroomstatus',body,options)
            .map(this.extractData)
            //.catch(this.handleErrorObservable);
@@ -47,26 +41,6 @@ export class HousekeepingService {
         
        
         return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Select_Queryhousekeepinglist',insertdata,options)
-           .map(this.extractData)
-           //.catch(this.handleErrorObservable);
-      }
-
-
-      getlist(input:any):  Observable<object[]> {
-       
-        const headers = new Headers({'Content-Type':'application/json'})
-        const options = new RequestOptions({ headers: headers });
-
-        let body =
-        {
-           "RM_Room_Status":input.RM_Room_Status,
-           "From_Room":input.From_Room.toString(),
-           "To_Room":input.To_Room.toString()
-    
-        }
-        
-       
-        return this.http.post('https://hotel360.herokuapp.com/Hotel_Rm_Post_Update_Updateroomstatus',body,options)
            .map(this.extractData)
            //.catch(this.handleErrorObservable);
       }

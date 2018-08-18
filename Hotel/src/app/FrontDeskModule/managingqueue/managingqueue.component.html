@@ -6,7 +6,8 @@
         <div class="jumbotron" style="background-color: #0077B5;color: white; ">
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-1"></div>
+                <div class="col-md-2">
                         <label for="email">First Name:</label>                
                         <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="name" [(ngModel)]="queryString" name="name" #firstName="ngModel">
                         <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid" style="width:205px;">                   
@@ -14,7 +15,7 @@
                         </div>    
                 </div>
       
-             <div class="col-md-4">
+             <div class="col-md-2">
                             <label for="email">Last Name:</label>
                              <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="email" [(ngModel)]="lastName" name="email" #LastNAMEE="ngModel">
                              <div class="alert alert-danger" *ngIf="LastNAMEE.touched && !LastNAMEE.valid" style="width:205px;">
@@ -22,27 +23,23 @@
                              </div> 
                 </div>
       
-                <div class="col-md-4">
+                <div class="col-md-2">
                                    <label for="email">Room Type:</label>
-                                    <select name="roomtypetemp" class="form-control" id="email" [(ngModel)]="roomtype" (ngModelChange)="onSelect(roomtype)" style="width: 200px;">
+                                    <select name="roomtypetemp" class="form-control" id="email" [(ngModel)]="roomtype" (ngModelChange)="onSelect(roomtype)">
                                     <option *ngFor="let rooms of list" [ngValue]="rooms.type">{{rooms.type}}</option>    
                                     </select>   
                        </div>
-                
-            </div>
-            <br>
-            <div class="row">
-              <div class="col-md-4">
-                      <label for="email">Room:</label>
-                      <input type="text" class="form-control" id="email"  name="email">
+                 <div class="col-md-2">
+                   <label for="email">Room:</label>
+                   <input type="text" class="form-control" id="email"  name="email">
               </div>
-      
-           <div class="col-md-4">
-                          <label for="email">Room Class:</label>
-                           <input type="text" class="form-control" id="email" name="email" [(ngModel)]="roomclass">    
-              </div>
-      
-          </div>     
+              <div class="col-md-2">
+                <label for="email">Room Class:</label>
+                 <input type="text" class="form-control" id="email" name="email" [(ngModel)]="roomclass">    
+    </div>
+    <div class="col-md-1"></div>
+
+            </div>   
       </div>
       
       <br>
