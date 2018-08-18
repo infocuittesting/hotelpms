@@ -19,24 +19,29 @@ styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnDestroy{
   title = 'Highlight Table Row on Hover';
-  hotkeyCtrlLeft: Hotkey | Hotkey[];
+  hotkeyf4: Hotkey | Hotkey[];
   hotkeyCtrlRight: Hotkey | Hotkey[];
   hotkeyCtrlalt : Hotkey | Hotkey[];
   hotkeyCtrl : Hotkey | Hotkey[];
-  hotkeyfunction3 : Hotkey | Hotkey[];
+  hotkeyctrlh : Hotkey | Hotkey[];
+  hotkeycontrlaltd : Hotkey | Hotkey[];
+  hotkeyshiftf6 : Hotkey | Hotkey[];
+  
   
   constructor(private AppService:AppService,private route:Router,public hotkeyservice:HotkeysService) {
-    this.hotkeyCtrlLeft = hotkeyservice.add(new Hotkey('ctrl+left', this.ctrlLeftPressed));
+    this.hotkeyf4 = hotkeyservice.add(new Hotkey('f4', this.f4Pressed));
     console.log("success to call the function")
-    this.hotkeyCtrlLeft = hotkeyservice.add(new Hotkey('ctrl+right', this.ctrlRightPressed));
-    this.hotkeyCtrlRight = hotkeyservice.add(new Hotkey('ctrl+alt', this.ctrlAltPressed));
+    this.hotkeyCtrlRight = hotkeyservice.add(new Hotkey('ctrl+right', this.ctrlRightPressed));
+    this.hotkeyCtrlalt = hotkeyservice.add(new Hotkey('ctrl+alt', this.ctrlAltPressed));
     this.hotkeyCtrl = hotkeyservice.add(new Hotkey('ctrl+l', this.ctrloPressed));
-    this.hotkeyfunction3 = hotkeyservice.add(new Hotkey('f3', this.f3Pressed));
+    this.hotkeyctrlh = hotkeyservice.add(new Hotkey('ctrl+alt+h', this.ctrlhPressed));
+    this.hotkeycontrlaltd = hotkeyservice.add(new Hotkey('ctrl+alt+d', this.ctrlaltdPressed));
+    this.hotkeyshiftf6 = hotkeyservice.add(new Hotkey('shift+f6', this.shiftf6Pressed));
 
    }
-
-   ctrlLeftPressed = (event: KeyboardEvent, combo: string): boolean => {
-    this.title = 'ctrl+left pressed';
+// new reservation
+   f4Pressed = (event: KeyboardEvent, combo: string): boolean => {
+    this.title = 'f4 pressed';
     this.route.navigate(['reservation/']);
     console.log("control left is worked")
     return true;
@@ -60,20 +65,36 @@ export class AppComponent implements OnDestroy{
     console.log("control daisy is worked")
     return true;
   }
-
-  f3Pressed = (event: KeyboardEvent, combo: string): boolean => {
-    this.title = 'f3 pressed';
+// housekeeping search
+ctrlhPressed = (event: KeyboardEvent, combo: string): boolean => {
+    this.title = 'ctrl alt h pressed';
     this.route.navigate(['housekeeping/']);
     console.log("control housekeeping search is worked")
     return true;
   }
+// dash board
+  ctrlaltdPressed = (event: KeyboardEvent, combo: string): boolean => {
+    this.title = 'ctrl alt d pressed';
+    this.route.navigate(['mains/']);
+    console.log("control dashboard  is worked")
+    return true;
+  }
+// quick block
+  shiftf6Pressed = (event: KeyboardEvent, combo: string): boolean => {
+    this.title = 'shift f6 pressed';
+    this.route.navigate(['bcreate/']);
+    console.log("control quick block  is worked")
+    return true;
+  }
 
   ngOnDestroy() {
-    this.hotkeyservice.remove(this.hotkeyCtrlLeft);
+    this.hotkeyservice.remove(this.hotkeyf4);
     this.hotkeyservice.remove(this.hotkeyCtrlRight);
     this.hotkeyservice.remove(this.hotkeyCtrlalt);
     this.hotkeyservice.remove(this.hotkeyCtrl);
-    this.hotkeyservice.remove(this.hotkeyfunction3);
+    this.hotkeyservice.remove(this.hotkeyctrlh);
+    this.hotkeyservice.remove(this.hotkeycontrlaltd);
+    this.hotkeyservice.remove(this.hotkeyshiftf6);
   }
 
 
