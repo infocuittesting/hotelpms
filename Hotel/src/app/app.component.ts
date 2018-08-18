@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import {Http} from "@angular/http";
 import { AppService } from "./app.service";
 import { Router} from "@angular/router";
-// import {HotkeyModule} from 'angular2-hotkeys';
-import { HotkeysService, Hotkey } from 'angular2-hotkeys';
+import {HotkeysService, Hotkey} from 'angular2-hotkeys';
+
 //import { IndividualprofileComponent } from './individualprofile/individualprofile.component';
 
 
@@ -17,6 +17,7 @@ import { HotkeysService, Hotkey } from 'angular2-hotkeys';
 styleUrls: ['./app.component.css'],
   providers:[AppService]
 })
+
 export class AppComponent implements OnDestroy{
   title = 'Highlight Table Row on Hover';
   hotkeyf4: Hotkey | Hotkey[];
@@ -96,6 +97,7 @@ ctrlhPressed = (event: KeyboardEvent, combo: string): boolean => {
     this.hotkeyservice.remove(this.hotkeycontrlaltd);
     this.hotkeyservice.remove(this.hotkeyshiftf6);
   }
-
-
 }
+
+
+

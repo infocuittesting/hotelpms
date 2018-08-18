@@ -44,6 +44,24 @@ roomtype():  Observable<object[]> {
      .map(this.extractData)
      //.catch(this.handleErrorObservable);
 }
+roomdropdown():  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+ 
+  return this.http.post('https://hotel360.herokuapp.com/Select_Room_No',options)
+     .map(this.extractData)
+
+}
+roomclassdropdown():  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+ 
+  return this.http.post('https://hotel360.herokuapp.com/Select_Class',options)
+     .map(this.extractData)
+
+}
 
  private extractData(res: Response) {
   //alert('hai20')
