@@ -312,25 +312,25 @@ export class RevenuemanagementService {
     
         "ratecode_id":ratecodedrop,
         "season_code_id":input.seasoncod,
-        "start_date":input.strtdt,
-        "end_date":input.enddate,
+        "start_date":input.start_date,
+        "end_date":input.end_date,
         "days":{
-            "sun":input.sundy,
-            "mon":input.mondy,
-            "tue":input.tuesdy,
-            "wed":input.wednesdy,
-            "thu":input.thursdy,
-            "fri":input.fridy,
-            "sat":input.saturdy
+            "sun":input.sun,
+            "mon":input.mon,
+            "tue":input.tue,
+            "wed":input.wed,
+            "thu":input.thu,
+            "fri":input.fri,
+            "sat":input.sat
         },
-        "one_adult_amount":input.onead,
-       "two_adult_amount":input.twoad,
-       "three_adult_amount":input.threead,
-       "four_adult_amount":input.fourad,
-       "extra_adult_amount":input.extraad,
-       "one_child_amount":input.onech,
-       "two_child_amount":input.twoch,
-       "extra_child_amount":input.extrach,
+        "one_adult_amount":input.one_adult_amount,
+       "two_adult_amount":input.two_adult_amount,
+       "three_adult_amount":input.three_adult_amount,
+       "four_adult_amount":input.four_adult_amount,
+       "extra_adult_amount":input.extra_adult_amount,
+       "one_child_amount":input.one_child_amount,
+       "two_child_amount":input.two_child_amount,
+       "extra_child_amount":input.extra_child_amount,
        "room_types":rmid2,
        "package":rmid3,
        "rate_tier_id":0
@@ -343,7 +343,7 @@ export class RevenuemanagementService {
  
 
 
-  updateratedetail(ratedetail,user,rmid2,rmid3):  Observable<object[]> {
+  updateratedetail(ratedetail,user:any,rmid2,rmid3):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
@@ -351,26 +351,26 @@ export class RevenuemanagementService {
     
         "rate_details_id":ratedetail.ratedetailid,
         "season_code_id":user.seasoncod,
-        "start_date":user.strtdt,
-        "end_date":user.enddate,
+        "start_date":user.start_date,
+        "end_date":user.end_date,
         "days":{
-            "sun":user.sundy,
-            "mon":user.mondy,
-            "tue":user.tuesdy,
-            "wed":user.wednesdy, 
-            "thu":user.thursdy,
-            "fri":user.fridy,
-            "sat":user.saturdy
+            "sun":user.sun,
+            "mon":user.mon,
+            "tue":user.tue,
+            "wed":user.wed, 
+            "thu":user.thu,
+            "fri":user.fri,
+            "sat":user.sat
         },
         "rate_days_id":ratedetail.ratedaysid,
-        "one_adult_amount":user.onead,
-       "two_adult_amount":user.twoad,
-       "three_adult_amount":user.threead,
-       "four_adult_amount":user.fourad,
-       "extra_adult_amount":user.extraad,
-       "one_child_amount":user.onech,
-       "two_child_amount":user.twoch,
-       "extra_child_amount":user.extrach,
+        "one_adult_amount":user.one_adult_amount,
+       "two_adult_amount":user.two_adult_amount,
+       "three_adult_amount":user.three_adult_amount,
+       "four_adult_amount":user.four_adult_amount,
+       "extra_adult_amount":user.extra_adult_amount,
+       "one_child_amount":user.one_child_amount,
+       "two_child_amount":user.two_child_amount,
+       "extra_child_amount":user.extra_child_amount,
        "room_types":rmid2,
        "rooms_id":ratedetail.roomsid ,
        "package":rmid3,
