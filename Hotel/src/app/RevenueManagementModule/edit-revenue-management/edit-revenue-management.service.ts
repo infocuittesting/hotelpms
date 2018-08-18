@@ -99,12 +99,14 @@ export class EditRevenueManagementService {
 
   }
 
- getallvalues():  Observable<object[]> {
+  getallvalues():  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
-   
-    return this.http.get('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_SelectRatesetupAll',options)
+    let body={
+      "ratecode_id":this.session.retrieve("ratecodeedit")
+    }
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_UpdateRatecodeSetup',body,options)
        .map(this.extractData)
 
   }
@@ -183,34 +185,34 @@ export class EditRevenueManagementService {
 
   }
 
-  updateratedetail(ratedetail,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,rmid2,rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy,tab):  Observable<object[]> {
+  updateratedetail(ratedetail,rmid2,rmid3,tab,editratedetaills:any):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
     
         "rate_details_id":ratedetail.ratedetailid,
-        "season_code_id":seasoncod,
-        "start_date":strtdt,
-        "end_date":enddate,
+        "season_code_id":editratedetaills.seasoncod,
+        "start_date":editratedetaills.start_date,
+        "end_date":editratedetaills.end_date,
         "days":{
-            "sun":sundy,
-            "mon":mondy,
-            "tue":tuesdy,
-            "wed":wednesdy, 
-            "thu":thursdy,
-            "fri":fridy,
-            "sat":saturdy
+            "sun":editratedetaills.sun,
+            "mon":editratedetaills.mon,
+            "tue":editratedetaills.tue,
+            "wed":editratedetaills.wed, 
+            "thu":editratedetaills.thu,
+            "fri":editratedetaills.fri,
+            "sat":editratedetaills.sat
         },
-        "rate_days_id":ratedetail.ratedaysid,
-        "one_adult_amount":onead,
-       "two_adult_amount":twoad,
-       "three_adult_amount":threead,
-       "four_adult_amount":fourad,
-       "extra_adult_amount":extraad,
-       "one_child_amount":onech,
-       "two_child_amount":twoch,
-       "extra_child_amount":extrach,
+        "rate_days_id":ratedetail.rate_days_id,
+        "one_adult_amount":editratedetaills.one_adult_amount,
+       "two_adult_amount":editratedetaills.two_adult_amount,
+       "three_adult_amount":editratedetaills.three_adult_amount,
+       "four_adult_amount":editratedetaills.four_adult_amount,
+       "extra_adult_amount":editratedetaills.extra_adult_amount,
+       "one_child_amount":editratedetaills.one_child_amount,
+       "two_child_amount":editratedetaills.two_child_amount,
+       "extra_child_amount":editratedetaills.extra_child_amount,
        "room_types":rmid2,
        "rooms_id":ratedetail.roomsid ,
        "package":"",
@@ -223,33 +225,44 @@ export class EditRevenueManagementService {
        .map(this.extractData)
 
   }
-  ratedetins(ratecodedrop,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy,rmid2,tab):  Observable<object[]> {
+  databindvalues():  Observable<object[]> {
+    console.log("servicessssssssssssssssssssss")
+ const headers = new Headers({'Content-Type':'application/json'})
+ const options = new RequestOptions({ headers: headers })
+ let body={
+   "ratecode_id":this.session.retrieve("ratecodeedit")
+ }
+ return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_UpdateRatecodeSetup',body,options)
+    .map(this.extractData)
+
+}
+  ratedetins(ratecodedrop,rmid2,tab,editratedetaills:any):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
     
       "ratecode_id":ratecodedrop,
-      "season_code_id":seasoncod,
-      "start_date":strtdt,
-      "end_date":enddate,
+      "season_code_id":editratedetaills.seasoncod,
+      "start_date":editratedetaills.start_date,
+      "end_date":editratedetaills.end_date,
       "days":{
-          "sun":sundy,
-          "mon":mondy,
-          "tue":tuesdy,
-          "wed":wednesdy,
-          "thu":thursdy,
-          "fri":fridy,
-          "sat":saturdy
+          "sun":editratedetaills.sun,
+          "mon":editratedetaills.mon,
+          "tue":editratedetaills.tue,
+          "wed":editratedetaills.wed,
+          "thu":editratedetaills.thu,
+          "fri":editratedetaills.fri,
+          "sat":editratedetaills.sat
       },
-      "one_adult_amount":onead,
-     "two_adult_amount":twoad,
-     "three_adult_amount":threead,
-     "four_adult_amount":fourad,
-     "extra_adult_amount":extraad,
-     "one_child_amount":onech,
-     "two_child_amount":twoch,
-     "extra_child_amount":extrach,
+      "one_adult_amount":editratedetaills.one_adult_amount,
+     "two_adult_amount":editratedetaills.two_adult_amount,
+     "three_adult_amount":editratedetaills.three_adult_amount,
+     "four_adult_amount":editratedetaills.four_adult_amount,
+     "extra_adult_amount":editratedetaills.extra_adult_amount,
+     "one_child_amount":editratedetaills.one_child_amount,
+     "two_child_amount":editratedetaills.two_child_amount,
+     "extra_child_amount":editratedetaills.extra_child_amount,
      "room_types":rmid2,
      "package":[0],
      "rate_tier_id":tab
