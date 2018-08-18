@@ -49,7 +49,8 @@ export class ManagingqueueComponent implements OnInit {
   constructor(private pService:ManagingqueueService,private route:Router,public session:SessionStorageService ) { 
     this.search=this.someData;
   }
-
+public class1;  
+public room;
 public search = [];
 public list=[];
 someData = []
@@ -61,7 +62,18 @@ onSelect(val){
   this.search = this.someData.filter(x => x.rm_room_type == val.toLowerCase())
   console.log(this.search);
 }
-
+roomno;
+onSelected(val){
+  console.log(val);
+  this.search = this.someData.filter(x => x.res_room == val)
+  console.log(this.search);
+}
+roomclass
+onSelectclass(val){
+  console.log(val.toLowerCase());
+  this.search = this.someData.filter(x => x.rm_room_class == val.toLowerCase())
+  console.log(this.search);
+}
   //checkin
   status={};
 
@@ -94,6 +106,16 @@ checkinProfile(){
  this.pService.roomtype()
  .subscribe((resp: any) => {
   this.list=resp.ReturnValue;
+});
+
+this.pService.roomdropdown()
+.subscribe((resp: any) => {
+ this.room=resp.ReturnValue;
+});
+
+this.pService.roomclassdropdown()
+.subscribe((resp: any) => {
+ this.class1=resp.ReturnValue;
 });
 
 }
