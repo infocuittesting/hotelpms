@@ -98,6 +98,10 @@ user={};
 
   constructor(private roomService: HousekeepingService, private route: Router,public session:SessionStorageService) { }
 
+  public rmid:any;
+  public rmtype:any;
+
+  
   ngOnInit() {
 
 
