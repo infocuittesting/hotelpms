@@ -15,9 +15,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
- <div class="row" style="width:99%">
-   <div class="col-md-2"></div>
-   <div class="col-md-10">
+    <div class="wrapper">
+    
+      
+        <!-- Right side column. Contains the navbar and content of the page -->
+        <div class="content-wrapper">
   <div class="container-fluid" style="padding-top:40px;">
   <div class="jumbotron" style="padding-top:10px;background-color:#0077B5;color:white;padding-bottom:20px;">
     <form action="">
@@ -160,10 +162,10 @@
                 </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let searched of searchandedit|filterdata: queryString :'pf_firstname'|filterdata: query :'pf_firstname'|filterdata: qsource :'res_source' ; let i = index" 
-          (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
-          <!-- <tr *ngFor="let searched of (searchandedit|filterdata: queryString) ; let i = index" 
+          <!-- <tr *ngFor="let searched of searchandedit|filterdata: queryString :'pf_firstname'|filterdata: query :'pf_firstname'|filterdata: qsource :'res_source' ; let i = index" 
           (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}"> -->
+          <tr *ngFor="let searched of (searchandedit|filterdata: queryString:pf_firstname) ; let i = index" 
+          (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
             <td>{{i+1}}</td> 
             <td> {{searched.pf_firstname|titlecase}}</td>
             <td> {{searched.res_arrival}} </td> 
