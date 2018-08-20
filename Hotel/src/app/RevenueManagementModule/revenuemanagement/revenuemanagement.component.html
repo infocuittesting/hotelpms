@@ -12,9 +12,9 @@
                                 <b>Rate code</b>
                                 </div>
                                 <div class="col-sm-3">
-                                <select name="Ratecode" class="form-control input-sm" required style="width:150px;" [(ngModel)]="ratecodedrop">
+                                <select name="Ratecode" class="form-control input-sm" required style="width:150px;" [(ngModel)]="editblock.ratecodedrop" [disabled]=ratecodedis>
                                         <option value="" hidden></option>
--                                       <option *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.ratecode_id">{{ratecdlist.rate_code}}</option>
+-                                       <option *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.ratecode_id" >{{ratecdlist.rate_code}}</option>
                                 </select>
                                 </div>
                             </div>
@@ -346,7 +346,7 @@
               <button type="button" class="btn btn-primary" style="width:9%"><b>New</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
-              <button type="button" class="btn btn-success" style="width:9%" (click)="rateheaderins(ratecode,editblock)" ><b>Save</b></button>
+              <button type="reset" class="btn btn-success" style="width:9%" data-toggle="modal" data-target="#tetmodel" (click)="rateheaderins(ratecode,editblock);myformm.reset()"><b>Save</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
               <button type="button" class="btn btn-danger" style="width:9%"><b>Close</b></button>
@@ -394,7 +394,7 @@
                             <b>SeasonCode</b>
                             <div class="form-group">
                             <div class="form-group" [class.has-error]="SeasonCode.touched && SeasonCode.invalid">                                                                                        
-                                <select  name="SeasonCode" id="SeasonCode" class="form-control"  #SeasonCode="ngModel" class="form-control input-sm" [(ngModel)]="user.seasoncod"  style="width:95px;height:27px;" required>
+                                <select  name="SeasonCodee" id="SeasonCode" class="form-control"  #SeasonCode="ngModel" class="form-control input-sm" [(ngModel)]="editratedetail.seasoncod"  style="width:95px;height:27px;" required>
                                     <option *ngFor="let type of arryses" [ngValue]="type.season_code_id">{{type.season_code}}</option>                                      
                                 </select>
                                  <div *ngIf="SeasonCode.touched && !SeasonCode.valid && SeasonCode.errors?.required " ngClass="{ 'has-error' : !SeasonCode.valid && submitAttempt }">                                    
@@ -404,14 +404,14 @@
                           <div class="col-md-4">
                               <b>StartDate</b>
                               <div class="form-group">            
-                                    <input type="date" name="stdt" class="form-control input-sm" [(ngModel)]="user.strtdt" >
+                                    <input type="date" name="stdt" class="form-control input-sm" [(ngModel)]="editratedetail.start_date" >
                             </div>
                           </div>
                           <div class="col-md-4">
                                 <b style="margin-left:30px">EndDate</b>
                             
                                 <div class="form-group">            
-                                    <input type="date" name="enddt" class="form-control input-sm"  [(ngModel)]="user.enddate">
+                                    <input type="date" name="enddt" class="form-control input-sm"  [(ngModel)]="editratedetail.end_date">
                                 </div>
                             </div>
                       
@@ -426,31 +426,31 @@
                       <div class="row">
                       
                             <div class="col-sm-1">
-                                    <label for="mon"><input type="checkbox" name="mn" [value]="monday" id="mon" style="margin-left:10px;" [(ngModel)]="user.mondy" />
+                                    <label for="mon"><input type="checkbox" name="mn" [value]="monday" id="mon" style="margin-left:10px;" [(ngModel)]="editratedetail.mon" />
                                      MON</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px;">
-                                    <label for="tue"><input type="checkbox" name="tu" [value]="tuesday" id="tue" style="margin-left:10px;" [(ngModel)]="user.tuesdy" />
+                                    <label for="tue"><input type="checkbox" name="tu" [value]="tuesday" id="tue" style="margin-left:10px;" [(ngModel)]="editratedetail.tue" />
                                      TUE</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="wed"><input type="checkbox" name="we" [value]="wednesday" id="wed"style="margin-left:10px;" [(ngModel)]="user.wednesdy"/>
+                                    <label for="wed"><input type="checkbox" name="we" [value]="wednesday" id="wed"style="margin-left:10px;" [(ngModel)]="editratedetail.wed"/>
                                     WED</label> 
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="thur"><input type="checkbox" name="th" [value]="thursday" id="thur" style="margin-left:10px;" [(ngModel)]="user.thursdy"/>
+                                    <label for="thur"><input type="checkbox" name="th" [value]="thursday" id="thur" style="margin-left:10px;" [(ngModel)]="editratedetail.thu"/>
                                      THU</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="fri"><input type="checkbox" name="fr" [value]="friday"  id="fri" style="margin-left:10px;" [(ngModel)]="user.fridy" />
+                                    <label for="fri"><input type="checkbox" name="fr" [value]="friday"  id="fri" style="margin-left:10px;" [(ngModel)]="editratedetail.fri" />
                                     FRI</label>
                             </div>
                             <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="sat"><input type="checkbox" name="st" [value]="saturday" id="sat" style="margin-left:10px;" [(ngModel)]="user.saturdy"/>
+                                    <label for="sat"><input type="checkbox" name="st" [value]="saturday" id="sat" style="margin-left:10px;" [(ngModel)]="editratedetail.sat"/>
                                     SAT</label>
                              </div>
                              <div class="col-sm-1" style="margin-left:10px ">
-                                    <label for="sun"><input type="checkbox" name="su" [value]="sunday" id="sun" style="margin-left:10px;" [(ngModel)]="user.sundy"/>
+                                    <label for="sun"><input type="checkbox" name="su" [value]="sunday" id="sun" style="margin-left:10px;" [(ngModel)]="editratedetail.sun"/>
                                     SUN</label>
                             </div>
                         </div>
@@ -470,7 +470,7 @@
                         
                             <div class="form-group">
                             <div class="form-group" [class.has-error]="onea.touched && onea.invalid">                                                                                                                                    
-                                <input type="text" name="onea" id="onea" pattern="^[0-9]+$" class="form-control input-sm" ngModel  #onea="ngModel" style="height: 4%" [(ngModel)]="user.onead" required>
+                                <input type="text" name="onea" id="onea" pattern="^[0-9]+$" class="form-control input-sm" ngModel  #onea="ngModel" style="height: 4%" [(ngModel)]="editratedetail.one_adult_amount" required>
                                 <div *ngIf="onea.touched && !onea.valid && onea.errors?.required " ngClass="{ 'has-error' : !onea.valid && submitAttempt }">                                                                    
                             </div></div></div>
                           </div>
@@ -478,7 +478,7 @@
                                   <b>2 Adults</b>                                   
                                   <div class="form-group">
                                         <div class="form-group" [class.has-error]="twoa.touched && twoa.invalid">                                                                                                                                                                
-                                      <input type="text" name="twoa" id="twoa" pattern="^[0-9]+$" class="form-control input-sm" ngModel  #twoa="ngModel" style="height: 4%" [(ngModel)]="user.twoad" required>
+                                      <input type="text" name="twoa" id="twoa" pattern="^[0-9]+$" class="form-control input-sm" ngModel  #twoa="ngModel" style="height: 4%" [(ngModel)]="editratedetail.two_adult_amount" required>
                                       <div *ngIf="twoa.touched && !twoa.valid && twoa.errors?.required " ngClass="{ 'has-error' : !twoa.valid && submitAttempt }">                                                                                                
                                   </div></div></div>                          
                           </div>
@@ -486,14 +486,14 @@
                                   <b>3 Adults</b>
                                   <div class="form-group">
                                         <div class="form-group" [class.has-error]="twoaa.touched && twoaa.invalid">                                                                                                                                                                                                            
-                                      <input type="text" name="twoaa" id="twoaa" pattern="^[0-9]+$" ngModel  #twoaa="ngModel" class="form-control input-sm" style="height: 4%" [(ngModel)]="user.threead" required>
+                                      <input type="text" name="twoaa" id="twoaa" pattern="^[0-9]+$" ngModel  #twoaa="ngModel" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.three_adult_amount" required>
                                       <div *ngIf="twoaa.touched && !twoaa.valid && twoaa.errors?.required " ngClass="{ 'has-error' : !twoaa.valid && submitAttempt }">                                                                                                                                      
                                   </div></div></div>
                           </div> 
                           <div class="col-md-3">
                                   <b>4 Adults</b>
                                   <div class="form-group">
-                                      <input type="text" name="threea" class="form-control input-sm" style="height: 4%" [(ngModel)]="user.fourad">
+                                      <input type="text" name="threea" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.four_adult_amount">
                                   </div>
                           </div>
                           <!-- <div class="col-md-3" style="margin-top:-17px">
@@ -505,7 +505,7 @@
                            <div class="col-md-3" style="margin-top:-17px">
                                   <b>ExtraAdults</b>
                                   <div class="form-group">            
-                                      <input type="text" name="extraa" class="form-control input-sm" style="height: 4%" [(ngModel)]="user.extraad">
+                                      <input type="text" name="extraa" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.extra_adult_amount">
                                   </div>
                               </div>
                     </div>
@@ -519,19 +519,19 @@
                           <div class="col-md-3" style="margin-top:-17px">
                             <b>1 child</b>
                             <div class="form-group">            
-                                <input type="text" name="onec" class="form-control input-sm" style="height: 4%" [(ngModel)]="user.onech">
+                                <input type="text" name="onec" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.one_child_amount">
                             </div>
                           </div>
                           <div class="col-md-3" style="margin-top:-17px">
                                   <b>2 child</b>
                                   <div class="form-group">            
-                                      <input type="text" name="twoc" class="form-control input-sm" style="height: 4%" [(ngModel)]="user.twoch">
+                                      <input type="text" name="twoc" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.two_child_amount">
                                   </div>
                           </div>
                           <div class="col-md-3" style="margin-top:-17px">
                                   <b>Extrachild</b>
                                   <div class="form-group">            
-                                      <input type="text" name="extrac" class="form-control input-sm" style="height: 4%" [(ngModel)]="user.extrach" >
+                                      <input type="text" name="extrac" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.extra_child_amount" >
                                   </div>
                           </div>
                           <!-- <div class="col-md-3" style="margin-top:-17px">
@@ -571,8 +571,8 @@
                               </thead>
                               <tbody style="font-size:12px;">
                                 <tr *ngFor="let dettable of ratedettabl; let i=index" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
-                                    <td>{{dettable.begin_sell_date}}</td>     
-                                    <td>{{dettable.end_sell_date}} </td>
+                                    <td>{{dettable.start_date}}</td>     
+                                    <td>{{dettable.end_date}} </td>
                                     <td>{{dettable.rooms_id}}</td>
                                 </tr>
                               </tbody>
@@ -588,7 +588,7 @@
                                                 <div class="col-md-3">
                                                         <div class="input-group">
                                                             <span class="input-group-addon" data-toggle="modal" data-target="#ratedetrmtype"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>
-                                                            <input name="roomtypeid" class="form-control input-sm"  style="width:140%;height: 27px;" [(ngModel)]="roomtypedet" type="text" [value]="rmtype2" disabled>
+                                                            <input name="roomtypeid" class="form-control input-sm"  style="width:140%;height: 27px;" [(ngModel)]="editratedetail.roomtypedet" type="text" [value]="rmtype2" disabled>
                                                                  
                                                           </div> 
                                             </div>
@@ -599,7 +599,7 @@
                                                     <div class="form-group">
                                                         <div class="input-group">
                                                             <span class="input-group-addon" data-toggle="modal" data-target="#ratedetpack"> <i class="glyphicon glyphicon-option-horizontal" ></i>   </span>
-                                                            <input name="Packagesid" class="form-control input-sm"  style="width:140%;height: 27px;" [(ngModel)]="packdet" type="text" [value]="rmcode3" disabled>
+                                                            <input name="Packagesid" class="form-control input-sm"  style="width:140%;height: 27px;" [(ngModel)]="editratedetail.packdet" type="text" [value]="rmcode3" disabled>
                                                                     <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
                                                                 <!-- </select> -->
                                                             </div>                
@@ -642,7 +642,7 @@
               <button type="button" class="btn btn-Warning" style="width:110px;" data-toggle="modal" ><b>New</b></button>
           </div>
           <div class="col-md-2">
-            <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal"  (click)="ratedetins(ratecodedrop,user,roomtypedet,packdet);ratedetForm.reset()" data-target="#afterratedetsave"><b>Save</b></button>
+            <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal"  (click)="ratedetins(ratecodedrop,editratedetail);ratedetForm.reset()" data-target="#afterratedetsave"><b>Save</b></button>
             <!-- <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal" data-target="#afterratedetsave" (click)="ratedetins(editblockdetails);ratedetForm.reset()" ><b>Save</b></button> -->
           </div>
           <div class="col-md-2">
@@ -1208,7 +1208,34 @@
         </div>
     </div>  
 </div>
+
+<!-- <**************update model************> -->
+<div class="modal fade" id="tetmodel" role="dialog">
+    <div class="vertical-alignment-helper">  
+    <div class="modal-dialog vertical-align-center modal-sm">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"><b>Rate details insert message</b></h4>
+        </div>
+        <div class="modal-body">
+            <p>{{ratedetalert}}</p>       
+        </div>
+        
+            
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+        </div>  
+        </div>
+    
+    </div>
+    </div>
+</div>
+
 <!-- <*********************************** Rate Details Attribute Tab Package ****************> -->
+
 
 <div class="modal fade" id="ratedetpack" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="vertical-alignment-helper">     

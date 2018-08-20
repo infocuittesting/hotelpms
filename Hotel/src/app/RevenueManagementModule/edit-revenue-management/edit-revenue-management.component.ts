@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule, NgForm,FormBuilder } from '@angular/f
 import { Router } from "@angular/router";
 import {EditRevenueManagementService} from './edit-revenue-management.service';
 import { SessionStorageService } from "ngx-webstorage";
+import { DISABLED } from '@angular/forms/src/model';
 
 
 @Component({
@@ -64,7 +65,7 @@ export class EditRevenueManagementComponent implements OnInit {
     }
 
 
-   user={};
+  editratedetaills:any={};
    cat_id:any;
    rateheadalert:any;
    public cond;
@@ -72,74 +73,68 @@ export class EditRevenueManagementComponent implements OnInit {
 
 ratedetalert:any;
 
-ratedetins(ratecodedrop,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy,tab){
+ratedetins(ratecodedrop,editratedetaills,tab){
   this.cond = this.session.retrieve("ratecodenav");
-  if(mondy== true)
-  {
-    mondy="1";
-  //  console.log("one")
-  }else{
-    mondy="0";
-  //  console.log("zero")
+  if (editratedetaills.mon == true) {
+    editratedetaills.mon = "1";
+    
+  } else {
+    editratedetaills="0";
 
   }
-  if(tuesdy== true)
-  {
-    tuesdy="1";
-  //  console.log("one")
-  }else{
-    tuesdy="0";
-  //  console.log("zero")
+  if (editratedetaills.tue == true) {
+    editratedetaills.tue = "1";
+    
+  } else {
+    editratedetaills.tue = "0";
+    
 
   }
-  if(wednesdy== true)
-  {
-    wednesdy="1";
-  //  console.log("one")
-  }else{
-    wednesdy="0";
-  //  console.log("zero")
+  if (editratedetaills.wed == true) {
+    editratedetaills.wed = "1";
+    
+  } else {
+    editratedetaills.wed = "0";
+    
 
   }
-  if(thursdy== true)
-  {
-    thursdy="1";
-  //  console.log("one")
-  }else{
-    thursdy="0";
-  //  console.log("zero")
+  if (editratedetaills.thu == true) {
+    editratedetaills.thu = "1";
+    
+  } else {
+    editratedetaills.thu = "0";
+    
 
   }
-  if(fridy== true)
-  {
-    fridy="1";
-  //  console.log("one")
-  }else{
-    fridy="0";
-  //  console.log("zero")
+  if (editratedetaills.fri == true) {
+    editratedetaills.fri = "1";
+   
+  } else {
+    editratedetaills.fri = "0";
+    
 
   }
-  if(saturdy== true)
-  {
-    saturdy="1";
-  //  console.log("one")
-  }else{
-    saturdy="0";
-  //  console.log("zero")
+  if (editratedetaills.sat == true) {
+    editratedetaills.sat = "1";
+   
+  } else {
+    editratedetaills.sat = "0";
+    
 
   }
-  if(sundy== true)
-  {
-    sundy="1";
-  //  console.log("one")
-  }else{
-    sundy="0";
-  //  console.log("zero")
+  if (editratedetaills.sun == true) {
+    editratedetaills.sun = "1";
+   
+  } else {
+    editratedetaills.sun = "0";
+    
 
   }
-  console.log("insert rate detailssssssssssssssss",seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy,this.rmid2);
+  console.log("insert rate detailssssssssssssssss",);
+
+  console.log("insert rate detailssssssssssssssss",this.rmid2);
   if(this.cond == "New"){
-  this.EditRevenuemanagement.ratedetins(ratecodedrop,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy,this.rmid2,this.currentTab)
+  this.EditRevenuemanagement.ratedetins(ratecodedrop,this.rmid2,this.currentTab,editratedetaills)
   .subscribe((resp: any) => {
    this.ratedetvar=resp.ReturnCode;
    if(this.ratedetvar=='RIS')
@@ -153,7 +148,7 @@ ratedetins(ratecodedrop,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extr
   });
 }
 else{
-    this.EditRevenuemanagement.updateratedetail(this.ratedetail,seasoncod,strtdt,enddate,onead,twoad,threead,fourad,extraad,onech,twoch,extrach,this.rmid2,this.rmid3,mondy,tuesdy,wednesdy,thursdy,fridy,saturdy,sundy,this.currentTab)
+    this.EditRevenuemanagement.updateratedetail(this.ratedetail,this.rmid2,this.rmid3,this.currentTab,editratedetaills)
     .subscribe((resp: any) => {
      this.ratedetvar=resp.ReturnCode;
     
@@ -175,12 +170,62 @@ public roomtyp=[];
 public roomidd=[];
 public rateheadbind=[];
 public ratedetbind=[];
+editblock:any = {};
+ratecodedis=true;
 
   ngOnInit() {
     console.log(this.ncode);
     this.EditRevenuemanagement.ratecategorydropdown()
     .subscribe((resp: any) => {
      this.ratecat=resp.Return;
+   });
+   this.EditRevenuemanagement.databindvalues()
+   .subscribe((resp: any) => {
+     console.log("consoleeeeeeeeeeeeeeeee" +this.session.retrieve("ratecodenav") )
+     if (this.session.retrieve("ratecodenav") == "New") {   
+       this.edit_data_bind = [];
+       this.ratecodedis=false; 
+       
+     } else {
+       this.edit_data_bind = resp.Rate_header[0];
+       this.editblock.ratecode =  this.edit_data_bind.rate_code;
+       this.editblock.descrp =  this.edit_data_bind.rate_description;
+       this.editblock.beginselldate =  this.edit_data_bind.begin_sell_date;
+       this.editblock.endselldate =  this.edit_data_bind.end_sell_date;
+       this.editblock.ratecategoryid =  this.edit_data_bind.ratecategory_id;
+       this.editblock.market_id =  this.edit_data_bind.market_id;
+       this.editblock.source_id =  this.edit_data_bind.source_id;
+       this.editblock.Minimum_stay_through =  this.edit_data_bind.min_stay;
+       this.editblock.Maximum_stay_through =  this.edit_data_bind.max_stay;
+       this.editblock.Minimum_Advance_Booking =  this.edit_data_bind.min_advance_book;
+       this.editblock.Minimum_Occupancy =  this.edit_data_bind.max_occupancy;
+       this.editblock.Maximum_Advance_Booking =  this.edit_data_bind.max_advance_book;
+       this.editblock.Maximum_Occupancy =  this.edit_data_bind.min_occupancy;
+
+       this.editblock.Negotiated =  this.edit_data_bind.negotiated;
+       this.editblock.Rate =  this.edit_data_bind.print_rate;
+       this.editblock.Membership =  this.edit_data_bind.membership;
+       this.editblock.discount =  this.edit_data_bind.discount;
+       this.editblock.Day =  this.edit_data_bind.day_use;
+       this.editblock.Complimentary =  this.edit_data_bind.complimentary;
+       this.editblock.House =  this.edit_data_bind.house_use;
+       this.editblock.Suppress =  this.edit_data_bind.suppress_rate;
+       this.editblock.Type =  this.edit_data_bind.day_type;
+       this.editblock.Package =  this.edit_data_bind.package;
+       
+
+
+
+       this.edit_data_bind = resp.Rate_header_room_types[0];
+       this.editblock.roomtype =  this.edit_data_bind.room_type;
+       
+       this.edit_data_bind = resp.Rate_header_packages[0];
+       this.editblock.type =  this.edit_data_bind.package_code;
+
+
+
+     }
+
    });
 
    this.EditRevenuemanagement.ratecodedropdown()
@@ -220,13 +265,13 @@ public ratedetbind=[];
    this.arryses=resp.Return;
  });
 
-this.EditRevenuemanagement.getallvalues()
- .subscribe((resp: any) => {
-  this.ratedettabl=resp.Rate_details;
-  this.roomtyp=resp.room_types;
-  console.log(this.roomtyp);
+// this.EditRevenuemanagement.getallvalues()
+//  .subscribe((resp: any) => {
+//   this.ratedettabl=resp.Rate_details;
+//   this.roomtyp=resp.room_types;
+//   console.log(this.roomtyp);
   
-});
+// });
    
 this.EditRevenuemanagement.allvalues()
 .subscribe((resp: any) => {
@@ -265,9 +310,40 @@ delbut=true;
 
 //ratedetails table selection
 ratedetail:any={};
+public edit_data_binding:any = [];
+public edit_data_bind:any = [];
 ratedetidvar=[];
+room_types=[];
 selectindexx=null
-    selectMembers1(detailss,indexx){     
+    selectMembers1(detailss,indexx)
+      {
+        if (this.session.retrieve("ratecodenav") == "New") {   
+          this.edit_data_bind = {};
+        }
+        else{
+        this.editratedetaills.seasoncod = detailss.season_code;
+        this.editratedetaills.start_date = detailss.start_date;
+        this.editratedetaills.end_date = detailss.end_date;
+        this.editratedetaills.mon = detailss.mon;
+        this.editratedetaills.tue = detailss.tue;
+        this.editratedetaills.wed = detailss.wed;
+        this.editratedetaills.thu = detailss.thu;
+        this.editratedetaills.fri = detailss.fri;
+        this.editratedetaills.sat = detailss.sat;
+        this.editratedetaills.sun = detailss.sun;
+        this.editratedetaills.one_adult_amount = detailss.one_adult_amount;
+        this.editratedetaills.two_adult_amount = detailss.two_adult_amount;
+        this.editratedetaills.three_adult_amount = detailss.three_adult_amount;
+        this.editratedetaills.four_adult_amount = detailss.four_adult_amount;
+        this.editratedetaills.extra_adult_amount = detailss.extra_adult_amount;
+        this.editratedetaills.one_child_amount = detailss.one_child_amount;
+        this.editratedetaills.two_child_amount = detailss.two_child_amount;
+        this.editratedetaills.extra_child_amount = detailss.extra_child_amount;
+        this.editratedetaills.packdet = detailss.packages_id;
+        // this.editratedetaills.roomtypedet = detailss.rooms_id;
+        console.log("ratecodeiddddddddddddddd"+ JSON.stringify(this.editratedetaills));
+        }
+           
       this.selectindexx=indexx; 
       this.ratedetail.ratedetailid =detailss.rate_details_id;
       this.ratedetail.roomsid = detailss.rooms_id;
@@ -303,12 +379,17 @@ selectindexx=null
         } 
 
      });      
-
      this.EditRevenuemanagement.getallvalues()
      .subscribe((resp: any) => {
-      this.ratedettabl=resp.Rate_details; 
-      this.roomtyp=resp.room_types;   
-    });
+       console.log("select ratedetailssssssssss",this.ratedettabl)
+       this.ratedettabl = resp.Rate_details;
+       //this.ratedettabll = resp.Return;
+       this.room_types = resp.room_types;
+
+       this.roomtyp = resp.room_types;
+       console.log("select ratedetails",this.ratedettabl,this.roomtyp)
+       console.log("select ratedetailssssssssss",this.ratedettabl,this.room_types)
+     });
     }
 
 // toggletab(tabval){
