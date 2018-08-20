@@ -18,104 +18,92 @@
  <div class="row" style="width:99%">
    <div class="col-md-2"></div>
    <div class="col-md-10">
-  <div class="container-fluid" style="padding-top:40px;">
-  <div class="jumbotron" style="padding-top:10px;background-color:#0077B5;color:white;padding-bottom:20px;">
+  <div class="container-fluid" style="padding-top:20px;padding-left: 58px;">
+    <div class="panel panel-primary">
+      <div class="panel-body" style="max-height: 245px;">
+   <div  style="padding-top:10px;padding-bottom:20px;">
     <form action="">
    <div class="row">
 
-      <div class="col-sm-4">
+      <div class="col-sm-3">
          <b> First Name</b> <div class="input-group">
               <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
               <input type="text" id="name" name="FirstName" class="form-control" [(ngModel)]="queryString"></div>
       </div>
 
-      <div class="col-sm-4">
+      <div class="col-sm-3">
 
           <b>Last Name</b> <div class="input-group">
               <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
               <input type="text" id="name" name="LastName" class="form-control"[(ngModel)]="query"></div>
       </div>
 	  
-      <div class="col-lg-4">    
+      <div class="col-lg-3">    
         <b>Source</b> <div class="input-group">
             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
             <input type="text" id="name" name="Source" class="form-control" [(ngModel)]="qsource"></div>
-    </div>
+     </div>
+
+        <div class="col-lg-3">
+        <b>Contact</b> <div class="input-group">
+             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
+             <input type="text" name="Contact" class="form-control"></div>
+        </div>
   
         </div>
 
-        <div class="row" style="padding-top:10px;">
+        <div class="row" style="padding-top:20px;">
 
-            <div class="col-lg-4">
-                <b>Contact</b> <div class="input-group">
-                     <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
-                     <input type="text" name="Contact" class="form-control"></div>
-             </div>
+            
 
-      <div class="col-lg-4">
+      <div class="col-lg-3">
           <b>Arrival From</b> <div class="input-group">
                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
                <input type="date" name="Arrivalfrom" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)"></div>
        </div>
  
-       <div class="col-lg-4">
+       <div class="col-lg-3">
  
            <b>Arrival To</b> <div class="input-group">
                <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
                <input type="date" name="Arrivalto" class="form-control"[(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)"></div>
+       </div>   
+       <div class="col-lg-3">
+          <b>Group</b> <div class="input-group">
+               <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
+               <input type="text" id="name" name="Group" class="form-control"></div>
        </div>
-	  
+       <div class="col-sm-3">
+        <b>Company</b> <div class="input-group">
+          <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
+          <input type="text" id="name" name="Company" class="form-control"></div>
+
+      </div>
         </div>
-
-
         <div class="row" style="padding-top:10px;">
-
-          <div class="col-lg-4">
-            <b>Group</b> <div class="input-group">
-                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                 <input type="text" id="name" name="Group" class="form-control"></div>
-         </div>
-         <div class="col-sm-4">
-          <b>Company</b> <div class="input-group">
-            <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-            <input type="text" id="name" name="Company" class="form-control"></div>
-
-        </div>
-
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                   <b>Agent</b> <div class="input-group">
                     <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
                     <input type="text" id="name" name="Agent" class="form-control"></div>
-      
-                </div>
-          
-      
-              </div>
-
-    
-              
-
-<br>
-	     <div class="row">
-
-          <div class="col-lg-4">
-            </div>
-            <div class="col-lg-2">
-                 <button type="button" class="btn btn-success" routerLink="/advancedsearch" style="width:100%;"><b>Advanced</b></button>
-            </div>
-
-            <div class="col-lg-2">
-              <button type="reset"  class="btn btn-warning" style="width:100%;"><b>Clear</b></button>
-            </div>            
-
-           <div class="col-lg-4">
-            </div>
+               </div>
+               <br>
+               <div class="col-lg-2">
+                  <button type="button" class="btn btn-success" routerLink="/advancedsearch" style="width:100%;"><b>Advanced</b></button>
+             </div>
+ 
+             <div class="col-lg-2">
+               <button type="reset"  class="btn btn-warning" style="width:100%;"><b>Clear</b></button>
+             </div> 
        </div>
+      <br>
+	   
       </form>
   </div>
+</div>
+</div>
   </div>
-
-  <div class="container-fluid">
+<br>
+  <div class="container-fluid" style="padding-left: 58px;">
     <div class="table-responsive">
       <table class="table table-bordered table-hover ">
         <thead>
@@ -202,8 +190,8 @@
   </div>
   <br>
   <div class="container-fluid">
-   <div class="row">
-    
+   <div class="row" style="margin-left: 49px;">
+    <div class="col-md-1"></div>
         <button type="button" class="btn btn-primary"routerLink="/reservation" style="width:140px;margin-left: 15px;"  [disabled]=new ><b>New</b></button>
         
               <button type="button" class="btn btn-danger"  style="width:140px;margin-left: 5px;" data-toggle="modal" data-target="#cancel" data-dismiss="modal" [disabled]=cale><b>Cancel</b></button>

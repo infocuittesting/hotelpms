@@ -68,26 +68,26 @@
 <div class="container-fluid" >
   
   <div class ="table-responsive">
-    <table class="table table-bordered table-hover" style="width:99%;">
+    <table class="table table-bordered table-hover">
 
       <thead style="background-color: #0077B5;color:white; width:99%;"  >
         <tr>
-          <th>Seq</th>
-          <th>Blockid</th>
-          <th>StartDate</th>
-          <th>Nights</th>
-          <th>EndDate</th>
+          <th style="width:80px">Seq</th>
+          <th style="width:80px">Blockid</th>
+          <th style="width:100px">StartDate</th>
+          <th style="width:80px">Nights</th>
+          <th style="width:100px">EndDate</th>
           <!-- <th> RoomsperDay</th>
           <th> MeetingSpaceSize</th>
           <th> MeetingSpaceType</th> -->
           <!-- <th> Attdence</th> -->
-          <th>BlockCode</th>
-          <th>BlockStatus</th>
-          <th>profile</th>
-          <th>RateCode</th>
+          <th style="width:100px">BlockCode</th>
+          <th style="width:120px">BlockStatus</th>
+          <th style="width:100px">profile</th>
+          <th style="width:100px">RateCode</th>
           <th style="width:200px">BlockName</th>
-          <th>Market</th>
-          <th>Source</th>
+          <th style="width:100px">Market</th>
+          <th style="width:100px">Source</th>
           <th>Owner</th>
           
         </tr>
@@ -95,22 +95,22 @@
       <tbody>
         <tr *ngFor="let array of tableschanges | filterdata: Name :'block_name'|filterdata: BlockCode :'block_code';let i=index"
          (click)="selectMembersEdit( array,i)" [ngClass]="{'backGroundColor':i==selectindex}">
-            <td>{{i+1}}</td>
-            <td>{{array.block_id}}</td>
-            <td>{{array.start_date}}</td>
-            <td>{{array.nights}}</td>
-            <td>{{array.end_date}}</td>
+            <td style="width:80px">{{i+1}}</td>
+            <td style="width:80px">{{array.block_id}}</td>
+            <td style="width:100px">{{array.start_date}}</td>
+            <td style="width:80px">{{array.nights}}</td>
+            <td style="width:100px">{{array.end_date}}</td>
             <!-- <td>{{array.rooms_per_day}}</td>
             <td>{{array.meeting_space_size}}</td>
             <td>{{array.meeting_space_type}}</td> -->
             <!-- <td>{{array.attendess}}</td> -->
-            <td>{{array.block_code|titlecase }}</td>
-            <td>{{array.status|titlecase }}</td>
-            <td>{{array.pf_id|titlecase }}</td>
-            <td>{{array.rate_description|titlecase }}</td>
+            <td style="width:100px">{{array.block_code|titlecase }}</td>
+            <td style="width:120px">{{array.status|titlecase }}</td>
+            <td style="width:100px">{{array.pf_id|titlecase }}</td>
+            <td style="width:100px">{{array.rate_description|titlecase }}</td>
             <td style="width:200px">{{array.block_name|titlecase }}</td>
-            <td>{{array.marketgroup_description|titlecase }}</td>
-            <td>{{array.sourcedescription|titlecase }}</td>
+            <td style="width:100px">{{array.marketgroup_description|titlecase }}</td>
+            <td style="width:100px">{{array.sourcedescription|titlecase }}</td>
             <td>{{array.owner|uppercase}}</td>
             
         </tr>

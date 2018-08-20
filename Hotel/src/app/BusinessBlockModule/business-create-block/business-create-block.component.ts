@@ -4,6 +4,8 @@ import { SessionStorageService } from "ngx-webstorage";
 import { Router } from "@angular/router";
 import { BusinessCreateBlockService } from './business-create-block.service'
 import { ReservationsListComponent } from '../reservations-list/reservations-list.component';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-business-create-block',
@@ -42,6 +44,16 @@ public navtag:any;
 public start;
 public end;
 public night;
+user:any={};
+
+
+//date
+arriveDepartureDateFun(arrDate,depDate){
+    if(arrDate!=null && depDate!=null){
+  const daydiff = moment(arrDate).diff(moment(depDate), "days");
+  this.user.RES_Nights=Math.abs(daydiff);
+    }
+  }
 
 
 // ................................................

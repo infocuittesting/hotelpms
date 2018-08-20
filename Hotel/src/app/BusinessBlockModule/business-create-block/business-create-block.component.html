@@ -92,19 +92,28 @@
 
 </div>
 
-<div class="col-md-2">
-    <div class="form-group" >
-        <label for="room">Start Date</label>
-        <input type="date" class="form-control input-sm" name="startdate" [(ngModel)]="block.startdate"[value]="stdate">
-      </div>
-</div>
+
+    <!-- <div class="col-lg-3"style="margin-top: 25px;">
+
+      <b>Start Date</b>
+
+    </div> -->
+
+    <div class="col-md-2" style="padding-left:55px;margin-top: 18px;margin-left: -36px;">
+        <div class="input-group" style="margin-top: 5px; margin-left: -12px;">
+            <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+            <input type="date" name="arrival"required class="form-control" placeholder="Enter your User Name" style="width:176px;"
+            [(ngModel)]="user.RES_Arrival" (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #arrivaldate="ngModel"/></div>
+            <div class="alert alert-danger" *ngIf="arrivaldate.touched && !arrivaldate.valid && arrivaldate.errors.required" style="width:211px;">arrival date is required </div>
+          </div>
+      
   
    
    <div class="col-md-2">
       
       <div class="form-group">
-          <label for="name">Origin</label>
-          <select class="form-control" name="origin" [(ngModel)]="block.origincode" [value]="orign">
+          <label for="name" style="margin-left: 42px;">Origin</label>
+          <select class="form-control" name="origin" [(ngModel)]="block.origincode" [value]="orign" style="margin-left: 45px;">
               <option value="" hidden></option> 
               <option *ngFor="let selectorigin of origin" [ngValue] ="selectorigin.id">{{selectorigin.origindescription}} </option>
           
@@ -115,15 +124,15 @@
 </div>
  <div class="col-md-2">
         <div class="form-group">
-          <label>Status</label>
-            <select name="state" class="form-control"[(ngModel)]="block.statusblock" [value]="blstatus">
+          <label style="margin-left: 31px;">Status</label>
+            <select name="state" class="form-control"[(ngModel)]="block.statusblock" [value]="blstatus" style="margin-left: 35px;">
               <option value="" hidden></option> 
               <option *ngFor="let selectstatus of blockstatus" [ngValue] ="selectstatus.id">{{selectstatus.status}} </option>
               </select> 
                </div>
               </div> 
  <div class="col-md-2">
-            <div class="form-group" >
+            <div class="form-group" style="margin-left: 38px; width: 184px;" >
                 <label for="name">Source</label>
                   <select class="form-control" name="source" [(ngModel)]="block.sourcecode"[value]="sources">
                     <option value="" hidden></option> 
@@ -149,18 +158,35 @@
 </div>
 
 
-        <div class="col-md-2">
-            <div class="form-group" >
-              <label for="room">End date</label>
-              <input type="date" class="form-control input-sm" name="enddate" [(ngModel)]="block.enddate" [value]="endate">
-            </div> 
-        </div>
-        <div class="col-md-2">
-            <div class="form-group" >
-                <label for="room">Nights</label>
-                <input type="text" name="nights" class="form-control input-sm"[(ngModel)]="block.nights"[value]="nght">
-            </div>
-        </div>
+
+    <!-- <div class="col-lg-3" style="margin-top: 17px;">
+
+      <b>End Date</b>
+
+    </div> -->
+
+    <div class="col-md-2">
+        <div class="input-group" style="padding-left: 6px;;margin-top: 23px; margin-left: -11px;">
+            <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
+            <input type="date" name="departure" class="form-control" placeholder="Enter your User Name" style="width:176px;" [(ngModel)]="user.RES_Depature"
+            (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #departuredate="ngModel" required/></div>
+            <div class="alert alert-danger" *ngIf="departuredate.touched && !departuredate.valid && departuredate.errors.required" style="width:211px;margin-left: 40px;">departure date is required </div>
+          </div>
+     
+      
+      
+          <!-- <div class="col-lg-2" style="margin-top: 23px;">
+              
+            <b>Nights</b>
+              
+          </div> -->
+              
+              <div class="col-md-2">
+               <div class="input-group" style="padding-left:8px;margin-top: 23px;">
+                  <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-home"></i></span>
+                  <input type="text" name="nights" class="form-control" style="width:160px" [(ngModel)]="user.RES_Nights" /></div>
+               </div>
+              
          
           <div class="col-md-2">
           <label for="Name">Type</label>
@@ -177,7 +203,7 @@
     <div class="col-md-2">
         <div class="form-group" >
            <label for="room">Owner</label>
-           <input type="text" class="form-control input-sm" name="owner" [(ngModel)] = "block.owner" [value]="ower">
+           <input type="text" class="form-control input-sm" name="owner" [(ngModel)] = "block.owner" [value]="ower" style="height: 34px;">
          </div> 
    </div>
 </div>
@@ -204,7 +230,7 @@
           <div id="Room" class="tab-pane fade in active" >
           
               <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
-                <div class="panel-body">
+                <div class="panel-body" style="max-height: 165px;">
             <div class="row" >
               <div class="col-md-1"></div> 
               <div class="col-md-2">
