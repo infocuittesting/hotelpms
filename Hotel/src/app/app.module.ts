@@ -69,7 +69,7 @@ import { RevenueRateCodeComponent } from './RevenueManagementModule/revenue-rate
 import { EditRevenueManagementComponent } from './RevenueManagementModule/edit-revenue-management/edit-revenue-management.component';
 import { EditBusinessBlockComponent } from './BusinessBlockModule/edit-business-block/edit-business-block.component';
 import { QueryReservationListComponent } from './BusinessBlockModule/query-reservation-list/query-reservation-list.component';
-// import { MomentModule } from 'angular2-moment';
+import {HotkeyModule} from 'angular2-hotkeys'; 
 
 
 
@@ -110,7 +110,7 @@ import { QueryReservationListComponent } from './BusinessBlockModule/query-reser
    RevenueRateCodeComponent,
    EditBusinessBlockComponent,
    QueryReservationListComponent,
-
+  
    
    
   ],
@@ -123,7 +123,8 @@ import { QueryReservationListComponent } from './BusinessBlockModule/query-reser
     ReactiveFormsModule,
     Ng2Webstorage,
     AppRoutingModule,
-    ContextmenuModule
+    ContextmenuModule,
+    HotkeyModule.forRoot()
 
   ],
   providers: [AppService,IndividualService,ReservationService,ProfileService,ModalService,TracesService],
