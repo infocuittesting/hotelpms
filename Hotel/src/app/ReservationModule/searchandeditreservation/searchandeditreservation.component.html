@@ -15,23 +15,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<<<<<<< HEAD
-    <div class="wrapper">
-    
-      
-        <!-- Right side column. Contains the navbar and content of the page -->
-        <div class="content-wrapper">
-  <div class="container-fluid" style="padding-top:40px;">
-  <div class="jumbotron" style="padding-top:10px;background-color:#0077B5;color:white;padding-bottom:20px;">
-=======
- <div class="row" style="width:99%">
-   <div class="col-md-2"></div>
-   <div class="col-md-10">
-  <div class="container-fluid" style="padding-top:20px;padding-left: 58px;">
+  <div class="wrapper">
+    <div class="content-wrapper">
+  <div class="container-fluid" style="padding-top:20px;">
     <div class="panel panel-primary">
       <div class="panel-body" style="max-height: 245px;">
    <div  style="padding-top:10px;padding-bottom:20px;">
->>>>>>> 063f27e841895fb30b14efc1325bf835bb298602
     <form action="">
    <div class="row">
 
@@ -112,29 +101,37 @@
 </div>
 </div>
   </div>
-<br>
-  <div class="container-fluid" style="padding-left: 58px;">
-    <div class="table-responsive">
-      <table class="table table-bordered table-hover ">
+  <div style="margin-left:90%"> 
+<span>
+  <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
+  [ngClass]="{disabling:showMore!=true}" (click)="showLessBut()"></i>
+
+  <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer"
+  [ngClass]="{disabling:showMore!=false}" (click)="showMoreBut()"></i>
+</span>
+</div> 
+  <div class="container-fluid" >
+
+      <table class="table table-bordered table-hover tableBodyScroll">
         <thead>
             <tr class="table table-primary" style="background-color: #0077B5;color: white">
-                  <th> Seq</th>                      
-                  <th> Name</th>
-                  <th> Arrival_Date</th>
-                  <th> Departure_Date</th>
-                  <th> Nights</th>
-                  <th> Status</th>
-                  <th> Room_Type</th>
-                  <th> Adults</th>                        
-                  <th> Child</th>
-                  <th> Block_Code</th>
-                  <th> Rate_Code</th>                    
-                  <th> Room</th>
-                  <th> Resv_Type</th>
-                  <th> Confirmation_Number</th>
-                  <th> CreditCard_Number</th>            
-                  <th> Exp_Date</th>            
-                  <th> Rate</th>
+                  <th style="width:50px"> Seq</th>                      
+                  <th style="width:180px"> Name</th>
+                  <th style="width:110px"> Arrival_Date</th>
+                  <th style="width:130px"> Departure_Date</th>
+                  <th style="width:75px" *ngIf="showMore!=true"> Nights</th>
+                  <th style="width:100px" *ngIf="showMore!=true"> Room_Type</th>
+                  <th style="width:60px" *ngIf="showMore!=true"> Adults</th>                        
+                  <th style="width:60px" *ngIf="showMore!=true"> Child</th>
+                  <th style="width:85px" *ngIf="showMore!=true"> Status</th>
+                  <th style="width:110px" *ngIf="showMore!=true"> Block_Code</th>
+                  <th *ngIf="showMore!=true"> Rate_Code</th>                    
+                  <th style="width:60px"  *ngIf="showMore==true"> Room</th>
+                  <th style="width:100px" *ngIf="showMore==true"> Resv_Type</th>
+                  <th style="width:130px" *ngIf="showMore==true"> Confirm_No</th>
+                  <th style="width:155px" *ngIf="showMore==true"> CreditCard</th>            
+                  <th style="width:90px" *ngIf="showMore==true"> Exp_Date</th>            
+                  <th *ngIf="showMore==true"> Rate</th>
 <!-- 
                   <th> Extension</th>
 
@@ -160,25 +157,25 @@
         <tbody>
           <!-- <tr *ngFor="let searched of searchandedit|filterdata: queryString :'pf_firstname'|filterdata: query :'pf_firstname'|filterdata: qsource :'res_source' ; let i = index" 
           (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}"> -->
-          <tr *ngFor="let searched of (searchandedit|filterdata: queryString:pf_firstname) ; let i = index" 
+          <tr *ngFor="let searched of (searchandedit|filterdata: queryString) ; let i = index" 
           (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
-            <td>{{i+1}}</td> 
-            <td> {{searched.pf_firstname|titlecase}}</td>
-            <td> {{searched.res_arrival}} </td> 
-            <td> {{searched.res_depature}} </td>
-            <td> {{searched.res_nights}} </td>
-            <td> {{searched.res_guest_status|titlecase}} </td>
-            <td> {{searched.res_room_type |titlecase}} </td>
-            <td> {{searched.res_adults}}</td> 
-            <td> {{searched.res_child}}</td>     
-            <td> {{searched.res_block_code}}</td> 
-            <td> {{searched.res_rate_code}}</td>     
-            <td> {{searched.res_room }} </td>
-            <td> {{searched.res_res_type |titlecase}}</td>     
-            <td> {{searched.res_confnumber}} </td>
-            <td> {{searched.res_creditcard_number}}</td>     
-            <td> {{searched.res_exp_date}}</td>     
-            <td> {{searched.res_rate}}</td>     
+            <td style="width:50px">{{i+1}}</td> 
+            <td style="width:180px"> {{searched.pf_firstname|titlecase}}</td>
+            <td style="width:110px"> {{searched.res_arrival}} </td> 
+            <td style="width:130px"> {{searched.res_depature}} </td>
+            <td style="width:75px" *ngIf="showMore!=true"> {{searched.res_nights}} </td>
+            <td style="width:100px" *ngIf="showMore!=true"> {{searched.res_room_type |titlecase}} </td>
+            <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_adults}}</td> 
+            <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_child}}</td>
+            <td style="width:85px" *ngIf="showMore!=true"> {{searched.res_guest_status|titlecase}} </td>     
+            <td style="width:110px" *ngIf="showMore!=true"> {{searched.res_block_code}}</td> 
+            <td *ngIf="showMore!=true"> {{searched.res_rate_code}}</td>     
+            <td style="width:60px"  *ngIf="showMore==true"> {{searched.res_room }} </td>
+            <td style="width:100px" *ngIf="showMore==true"> {{searched.res_res_type |titlecase}}</td>     
+            <td style="width:130px" *ngIf="showMore==true"> {{searched.res_confnumber}} </td>
+            <td style="width:155px" *ngIf="showMore==true"> {{searched.res_creditcard_number}}</td>     
+            <td style="width:90px" *ngIf="showMore==true"> {{searched.res_exp_date}}</td>     
+            <td *ngIf="showMore==true"> {{searched.res_rate}}</td>     
 <!-- 
             <td></td>     
             <td> {{searched.res_packages}}</td>     
@@ -200,12 +197,11 @@
                                                                                                                             
         </tbody>
       </table>
-      </div>
+
   </div>
   <br>
   <div class="container-fluid">
-   <div class="row" style="margin-left: 49px;">
-    <div class="col-md-1"></div>
+   <div class="row" >
         <button type="button" class="btn btn-primary"routerLink="/reservation" style="width:140px;margin-left: 15px;"  [disabled]=new ><b>New</b></button>
         
               <button type="button" class="btn btn-danger"  style="width:140px;margin-left: 5px;" data-toggle="modal" data-target="#cancel" data-dismiss="modal" [disabled]=cale><b>Cancel</b></button>
