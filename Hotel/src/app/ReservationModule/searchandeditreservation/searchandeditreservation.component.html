@@ -155,10 +155,10 @@
                 </tr>
         </thead>
         <tbody>
-          <!-- <tr *ngFor="let searched of searchandedit|filterdata: queryString :'pf_firstname'|filterdata: query :'pf_firstname'|filterdata: qsource :'res_source' ; let i = index" 
-          (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}"> -->
-          <tr *ngFor="let searched of (searchandedit|filterdata: queryString) ; let i = index" 
+          <tr *ngFor="let searched of searchandedit|filterdata: queryString :'pf_firstname'|filterdata: query :'pf_firstname'|filterdata: qsource :'res_source' ; let i = index" 
           (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+          <!-- <tr *ngFor="let searched of (searchandedit|filterdata: queryString) ; let i = index" 
+          (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}"> -->
             <td style="width:50px">{{i+1}}</td> 
             <td style="width:180px"> {{searched.pf_firstname|titlecase}}</td>
             <td style="width:110px"> {{searched.res_arrival}} </td> 

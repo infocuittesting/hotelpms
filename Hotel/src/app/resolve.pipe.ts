@@ -21,9 +21,9 @@ export class ResolvePipe implements PipeTransform {
       if(value == "unresolved"){
         if(item[label] == null) return item;
       }
-      else{
-        return items;
-      }
+      // else{
+      //   return items;
+      // }
         
       
       // console.log(items == null);
