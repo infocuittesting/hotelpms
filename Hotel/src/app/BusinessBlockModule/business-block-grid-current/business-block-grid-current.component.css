@@ -1,6 +1,6 @@
 tbody {
     display:block;
-    height:400px;
+    height:300px;
     overflow:auto;
 }
 thead, tbody tr {
@@ -9,6 +9,6 @@ thead, tbody tr {
     table-layout:fixed;
 }
 thead {
-    width: calc( 100% - 0em )
+    width: calc( 100% - 1em )
 }
 

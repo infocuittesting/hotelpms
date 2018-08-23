@@ -18,6 +18,8 @@ export class BusinessBlockSearchComponent implements OnInit {
   // public querylist=[];
   public someData=[];
   public mainratecode=[];
+  public showMore;
+
   
   public =[];
   blc = true;
@@ -50,7 +52,16 @@ export class BusinessBlockSearchComponent implements OnInit {
     //  console.log(this.roomtype);
     });
 
+  }//show more
+  showMoreBut(){
+    this.showMore=true;
   }
+  //show less
+  showLessBut(){
+    this.showMore=false;
+  }
+
+
   // filter the from to to
 
   filterDatefrmList(startDate,endDate){
