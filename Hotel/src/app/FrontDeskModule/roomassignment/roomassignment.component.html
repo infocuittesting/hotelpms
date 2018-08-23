@@ -58,92 +58,62 @@
            </div>
       
       </div>
-      <br>
-      <div class="table-responsive">
-      <table class="table table-bordered table-hover">
-        <thead>
-      
+      <div style="margin-left:90%"> 
+        <span>
+          <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
+          [ngClass]="{disabling:showMore!=true}" (click)="showLessBut()"></i>
+        
+          <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer"
+          [ngClass]="{disabling:showMore!=false}" (click)="showMoreBut()"></i>
+        </span>
+        </div> 
+
+      <table class="table table-bordered table-hover tableBodyScroll">
+        <thead>    
             <tr class="table table-primary" style="background-color: #0077B5;color: white ">
-              <th> </th>  
-              <th> Hk_Status</th>
-              <th> Room_Status</th>            
-              <th> Name</th>
-              <th> Room</th>
-              <th> Extension </th>
-              <th> Room_Type </th>
-              <th> Arrival_Date</th>
-              <th> Departure_Date </th>
-              <th> Nights </th>
-              <th> Status </th>
-              <th> Group </th>
-              <th> Adults </th>                        
-              <th> Child </th>
-              <th> Rate_Code </th>
-              <th> Rate </th>
-              <th> Block_Code </th>
-              <th> Packages </th>
-              <th> Rtc </th>
-              <th> Currency </th>
-              <th> ETA </th>
-              <th> Resv_Type </th>
-              <th> Market </th>
-              <th> Source </th>            
-              <th> Origin </th>            
-              <th> Payment </th>            
-              <th> CreditCard_Number </th>            
-              <th> Exp_Date </th>            
-              <th> Guest_Balance </th>            
-              <th> Disc_Amount </th>            
-              <th> Disc_perc </th>  
-              <th> Disc_Reason </th>            
-              <th> Specilals </th>            
-              <th> Comments </th>            
-              <th> Item_Inv </th>            
-                        
+              <th style="width:40px"> Seq</th>             
+              <th style="width:170px"> Name</th>
+              <th style="width:60px"> Room</th>
+              <th style="width:90px"> Hk_Status</th>
+              <th style="width:115px"> Room_Status</th> 
+              <th style="width:105px" *ngIf="showMore!=true"> Arrival_Date</th>
+              <th style="width:130px" *ngIf="showMore!=true"> Departure_Date </th>
+              <th style="width:60px" *ngIf="showMore!=true"> Nights </th>
+              <th style="width:60px" *ngIf="showMore!=true"> Adults </th>                        
+              <th style="width:60px" *ngIf="showMore!=true"> Child </th>
+              <th style="width:60px" *ngIf="showMore!=true"> Rate </th>
+              <th *ngIf="showMore!=true"> Room_Type </th>
+              <th style="width:90px" *ngIf="showMore==true"> Status </th>
+              <th style="width:110px" *ngIf="showMore==true"> Block_Code </th>
+              <th style="width:110px" *ngIf="showMore==true"> Resv_Type </th>         
+              <th style="width:150px" *ngIf="showMore==true"> CreditCard </th>            
+              <th *ngIf="showMore==true"> Exp_Date </th>                       
             </tr>
         </thead>
         <tbody>
               <tr *ngFor="let searched of searchandedit | filterdata: restype :'res_res_type' | filterdata: queryString :'pf_firstname'| filterdata: qdate :'res_arrival'| filterdata: qrtype :'res_room_type'; let i = index"
                (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
-                      <td> {{i+1}}</td> 
-                      <td> {{searched.rm_hk_status}}</td>
-                      <td> {{searched.rm_room_status}}</td>
-                      <td>  {{searched.pf_firstname}}</td>
-                      <td> {{searched.res_room}} </td>
-                      <td> {{searched.res_extension}} </td>
-                      <td> {{searched.res_room_type}} </td>
-                      <td> {{searched.res_arrival}} </td> 
-                      <td> {{searched.res_depature}} </td>
-                      <td> {{searched.res_nights}} </td>
-                      <td> {{searched.res_guest_status}} </td>
-                      <td></td>     
-                      <td> {{searched.res_adults}}</td> 
-                      <td> {{searched.res_child}}</td>     
-                      <td> {{searched.res_rate_code}}</td>     
-                      <td> {{searched.res_rate}}</td>     
-                      <td> {{searched.res_block_code}}</td> 
-                      <td> {{searched.res_packages}}</td>     
-                      <td> {{searched.res_rtc}}</td>     
-                      <td> {{searched.res_currency}}</td>     
-                      <td> {{searched.res_eta}}</td>
-                      <td> {{searched.res_res_type}}</td>     
-                      <td> {{searched.res_market}}</td> 
-                      <td> {{searched.res_source}}</td>     
-                      <td> {{searched.res_origin}}</td>     
-                      <td> {{searched.res_payment}}</td>     
-                      <td> {{searched.res_creditcard_number}}</td>     
-                      <td> {{searched.res_exp_date}}</td>     
-                      <td> {{searched.res_guest_balance}}</td>     
-                      <td> {{searched.res_disc_amount}}</td>     
-                      <td> {{searched.res_disc_perc}}</td>
-                      <td> {{searched.res_disc_reason}}</td>     
-                      <td> {{searched.res_specials}}</td>     
-                      <td> {{searched.res_comments}}</td>     
-                      <td> {{searched.res_item_inv}}</td>
+                      <td style="width:40px"> {{i+1}}</td> 
+                      <td style="width:170px">  {{searched.pf_firstname}}</td>
+                      <td style="width:60px"> {{searched.res_room}} </td>
+                      <td style="width:90px"> {{searched.rm_hk_status}}</td>
+                      <td style="width:115px"> {{searched.rm_room_status}}</td>
+                      <td style="width:105px" *ngIf="showMore!=true"> {{searched.res_arrival}} </td> 
+                      <td style="width:130px" *ngIf="showMore!=true"> {{searched.res_depature}} </td>
+                      <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_nights}} </td>
+                      <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_adults}}</td> 
+                      <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_child}}</td>
+                      <td style="width:60px" *ngIf="showMore!=true"> {{searched.res_rate}}</td>     
+                      <td *ngIf="showMore!=true"> {{searched.res_room_type}} </td>
+                      <td style="width:90px" *ngIf="showMore==true"> {{searched.res_guest_status}} </td>            
+                      <td style="width:110px" *ngIf="showMore==true"> {{searched.res_block_code}}</td> 
+                      <td style="width:110px" *ngIf="showMore==true"> {{searched.res_res_type}}</td>          
+                      <td style="width:150px" *ngIf="showMore==true"> {{searched.res_creditcard_number}}</td>     
+                      <td *ngIf="showMore==true"> {{searched.res_exp_date}}</td>     
                     </tr>
       
         </tbody>
-      </table></div>
+      </table>
       <br>
       
       <div>

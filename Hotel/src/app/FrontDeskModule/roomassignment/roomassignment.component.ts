@@ -15,7 +15,15 @@ export class RoomassignmentComponent implements OnInit {
 
  public searchandedit =[];
   constructor(private RoomassignmentService:RoomassignmentService,private route:Router,public session:SessionStorageService) { }
-
+  showMore;
+    //show more
+    showMoreBut(){
+      this.showMore=true;
+    }
+    //show less
+    showLessBut(){
+      this.showMore=false;
+    }
   // Room Unassign
   public status;
   unassignProfile(){
