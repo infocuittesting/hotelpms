@@ -11,11 +11,25 @@ export class TracesComponent implements OnInit {
 
   constructor(private TracesService:TracesService) { }
 public gettrace;
+checkboxValue;
+checkValue;
+
   ngOnInit() {
     this.TracesService.Trace()
     .subscribe((resp: any) => {
      this.gettrace=resp.ReturnValue;
    });
   }
-
+  newFunction()
+  {
+    if(this.checkboxValue==true){
+      this.checkboxValue= "resolved";
+    }
+  }
+  fuc(){
+    if(this.checkValue==true)
+    {
+      this.checkValue="unresolved"
+    }
+  }
 }

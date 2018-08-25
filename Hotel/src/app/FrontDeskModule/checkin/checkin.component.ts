@@ -17,7 +17,15 @@ export class CheckinComponent implements OnInit {
   public searchandedit =[];
 
   constructor(private checkinService:CheckinService,private route:Router,public session:SessionStorageService) { }
-
+  showMore;
+    //show more
+    showMoreBut(){
+      this.showMore=true;
+    }
+    //show less
+    showLessBut(){
+      this.showMore=false;
+    }
 // between dates arrival
 filterDatefrmList(startDate,endDate){
   if(startDate!=null && endDate!=null){

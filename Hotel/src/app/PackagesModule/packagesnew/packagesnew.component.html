@@ -1,0 +1,269 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-10">
+    <div class="container-fluid">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#packageheader"><b>Package Header</b></a></li>
+            <li><a data-toggle="tab" href="#packagedetails">Package Detail</a></li>
+      </ul>
+      <div class="tab-content clearfix">
+          <div id="packageheader" class="tab-pane fade in active" style="margin-top:10px;">
+            <div class="panel panel-primary">
+              <div class="panel-body">
+                <form action="">
+                <div class="row">
+                  <div class="col-md-3">
+                      <label for="code">Code</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="Code"id="code" >
+                    </div>
+                  </div>
+                 
+                  <div class="col-md-3">
+                      <label for="short">Short Description</label>
+                    <div class="input-group">
+                      <input type="text" name="ShortDescription" id="short" class="form-control" >
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-3">
+                      <label for="forecastgroup">Forecast Group</label>
+                    <div class="input-group">
+                      <select name="ForeCast" id="forecastgroup" style="height:34px;width: 200px;">
+                        <option value="">None to select</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="description">Description</label>
+                    <div class="input-group">
+                      <textarea name="Description" id="description" rows="1" style="height:34px;width: 200px;"></textarea>
+                    </div>
+                  </div>
+                </div>
+               </form>
+              </div>
+            </div>
+            <div class="panel panel-primary">
+              <div class="panel-body">
+                <legend>Transaction Details</legend>
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="codes">Code</label>
+                    <div class="input-group">
+                        <select name="Codess" id="codes" style="height:34px;width: 200px;">
+                            <option value="">None</option>
+                          </select>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="tax">Tax Inclusive</label>
+                    <div class="input-group">
+                        <input type="checkbox" name="Tax" id="tax" style="zoom: 1.5;">
+                    </div>        
+                  </div>
+                  <div class="col-md-3">
+                      <label for="currency">Currency</label>
+                      <div class="input-group">
+                          <select name="Currency" id="currency" style="height:34px;width: 200px;">
+                              <option value="">USD</option>
+                            </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="alternates">Alternates</label>
+                        <div class="input-group">
+                            <select name="Alternates" id="alternates" style="height:34px;width: 200px;">
+                                <option value="">All </option>
+                              </select>
+                        </div>
+                      </div>  
+                </div>
+                <br>
+                <legend>Attributes</legend>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="include">Included in Rate</label>
+                        <div class="input-group">
+                            <input type="radio" name="Included" id="include" style="zoom: 1.5;">
+                        </div>        
+                      </div>
+                      <div class="col-md-3">
+                          <label for="sell">Sell Separate</label>
+                          <div class="input-group">
+                              <input type="checkbox" name="Sell" id="sell" style="zoom: 1.5;">
+                          </div>        
+                        </div>
+                        <div class="col-md-3">
+                            <label for="from">Valid From</label>
+                          <div class="input-group">
+                            <input type="text" class="form-control" name="From"id="from" >
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="post">Posting Rhythm</label>
+                          <div class="input-group">
+                            <select name="Posting" id="post" style="height:34px;width: 200px;">
+                              <option value="">None to select</option>
+                            </select>
+                          </div>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="add">Add Rate separate Line</label>
+                        <div class="input-group">
+                            <input type="radio" name="Add" id="add" style="zoom: 1.5;">
+                        </div>        
+                      </div>
+                      <div class="col-md-3">
+                          <label for="posts">Post Next Day</label>
+                          <div class="input-group">
+                              <input type="checkbox" name="Pos" id="posts" style="zoom: 1.5;">
+                          </div>        
+                        </div>
+                        <div class="col-md-3">
+                            <label for="to">Valid To</label>
+                          <div class="input-group">
+                            <input type="text" class="form-control" name="To"id="to" >
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="cal">Calculation Rule</label>
+                          <div class="input-group">
+                            <select name="Calculation" id="cal" style="height:34px;width: 200px;">
+                              <option value="">None to select</option>
+                            </select>
+                          </div>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="item">Item Inventory</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" name="Item"id="item" >
+                        <span class="input-group-btn" >
+                            <button class="btn btn-default" style="height:34px"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+                          </span>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-2"><button type="button" class="btn btn-info" style="width:100%">Save</button> </div>
+                <div class="col-md-2"><button type="button" class="btn btn-danger" style="width:100%" >Close</button> </div>
+                <div class="col-md-4"></div>
+            </div>
+          </div>
+          <div id="packagedetails" class="tab-pane fade in" style="margin-top:10px;">
+              <div class="panel panel-primary">
+                <div class="panel-body">
+                  <div class="row">
+                      <div class="col-md-2">
+                          <label for="package">Package Code</label>
+                        <div class="input-group">
+                            <select name="Package" id="package" style="height:34px;width: 170px;">
+                                <option value="">None to select</option>
+                              </select>
+                        </div>
+                      </div>                  
+                    <div class="col-md-2">
+                        <label for="season">Season Code</label>
+                      <div class="input-group">
+                          <select name="Season" id="season" style="height:34px;width: 150px;">
+                              <option value="">None to select</option>
+                            </select>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="start">Start Date</label>
+                      <div class="input-group">
+                        <input type="date" class="form-control" name="Start" id="start" style="width: 150px;">
+                      </div>
+                    </div> 
+                    <div class="col-md-2">
+                        <label for="end">End Date</label>
+                      <div class="input-group">
+                        <input type="date" class="form-control" name="End" id="end"  style="width: 150px;">
+                      </div>
+                    </div>  
+                    <div class="col-md-2">
+                        <label for="price">Price</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" name="Price"id="price" style="width: 150px;" >
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="allowance">Allowance</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" name="Allowance"id="allowance" style="width: 150px;" >
+                      </div>
+                    </div> 
+                                                                                      
+                  </div>
+                </div>
+              </div>
+              <table class="table table-bordered table-hover tableBodyScroll">
+                <thead>
+                 <tr class="table table-primary" style="background-color: #0077B5;color: white">
+                  <th>Start</th>
+                  <th>End</th>
+                  <th>Price</th>
+                  <th>Allowance</th>
+                 </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>22-08-2018</td>
+                    <td>24-08-2018</td>
+                    <td>60.00</td>
+                    <td> </td>
+                  </tr>
+                  <tr>
+                      <td>22-08-2018</td>
+                      <td>24-08-2018</td>
+                      <td>60.00</td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                        <td>22-08-2018</td>
+                        <td>24-08-2018</td>
+                        <td>60.00</td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                          <td>22-08-2018</td>
+                          <td>24-08-2018</td>
+                          <td>60.00</td>
+                          <td> </td>
+                        </tr>
+                        <tr>
+                            <td>22-08-2018</td>
+                            <td>24-08-2018</td>
+                            <td>60.00</td>
+                            <td> </td>
+                          </tr>                                                            
+               </tbody>
+              </table>
+              <div class="row">
+                <div class="col-md-3">
+                 <button type="button" class="btn btn-success" style="width:100%">New</button> 
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-warning" style="width:100%">Delete</button> 
+                   </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-info" style="width:100%">Save</button> 
+                  </div>   
+                  <div class="col-md-3">
+                      <button type="button" class="btn btn-danger" style="width:100%">Close</button> 
+                     </div>                           
+              </div>
+            </div>
+      </div>
+
+    </div>
+  </div>
+</div>

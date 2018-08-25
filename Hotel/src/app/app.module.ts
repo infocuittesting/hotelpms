@@ -69,7 +69,11 @@ import { RevenueRateCodeComponent } from './RevenueManagementModule/revenue-rate
 import { EditRevenueManagementComponent } from './RevenueManagementModule/edit-revenue-management/edit-revenue-management.component';
 import { EditBusinessBlockComponent } from './BusinessBlockModule/edit-business-block/edit-business-block.component';
 import { QueryReservationListComponent } from './BusinessBlockModule/query-reservation-list/query-reservation-list.component';
-import {HotkeyModule} from 'angular2-hotkeys'; 
+import {HotkeyModule} from 'angular2-hotkeys';
+import { ResolvePipe } from './resolve.pipe';
+//packages Module
+import { PackagesComponent } from './PackagesModule/packages/packages.component';
+import { PackagesnewComponent } from './PackagesModule/packagesnew/packagesnew.component'; 
 
 
 
@@ -110,6 +114,9 @@ import {HotkeyModule} from 'angular2-hotkeys';
    RevenueRateCodeComponent,
    EditBusinessBlockComponent,
    QueryReservationListComponent,
+   ResolvePipe,
+   PackagesComponent,
+   PackagesnewComponent,
   
    
    

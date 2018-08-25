@@ -1,9 +1,10 @@
+<div class="scorll">
 <div class="row" style="width:99%;margin-left: 10px;">
   <div class="col-md-2"></div>
   <div class="col-md-10">
     <br><br>
-     <div class="panel panel-primary" style="border:solid 1px;margin-top: -25px;border-color: lightgray">
-       <div class="panel-body">
+     <div class="panel panel-primary" style="border:solid 1px;margin-top: -29px;border-color: lightgray">
+       <div class="panel-body" style="margin-top: -31px;max-height: 113px;">
     <div class="container-fluid">
      <br>
     
@@ -76,33 +77,30 @@
 </div>
 
 
-<div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
-  <div class="panel-body">
+<div class="panel panel-primary" style="border:solid 1px;border-color: lightgray;margin-top: -15px;">
+  <div class="panel-body" style="margin-top: -7px; max-height: 158px;">
 <div class="container-fluid">
    
      
  <form action="" #loginForm="ngForm">
-   <div class="col-md-1"></div>
+  
  <div class="row">
     <div class="col-md-2">
         <div class="form-group">
-          <label for="name" >Name</label>
-            <input type="text"disabled class="form-control"name="blockname" [value]="block_name"> 
+          <label for="name" style="margin-left: 59px;">Block Name</label>
+            <input type="text" class="form-control"name="blockname" [value]="block_name" style="margin-left: 59px;"> 
       </div>
 
 </div>
 
 
-    <!-- <div class="col-lg-3"style="margin-top: 25px;">
+    
 
-      <b>Start Date</b>
-
-    </div> -->
-
-    <div class="col-md-2" style="padding-left:55px;margin-top: 18px;margin-left: -36px;">
-        <div class="input-group" style="margin-top: 5px; margin-left: -12px;">
+    <div class="col-md-2" style="padding-left:55px;margin-top: 18px;margin-left: -18px;">
+        <label style="margin-top: -16px;margin-left: 32px;">Start Date</label>
+        <div class="input-group" style="margin-top: -2px; margin-left: 35px;">
             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-            <input type="date" name="arrival"required class="form-control" placeholder="Enter your User Name" style="width:176px;"
+            <input type="date" name="arrival"required class="form-control" placeholder="Enter your User Name" style="width:157px;"
             [(ngModel)]="user.RES_Arrival" (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #arrivaldate="ngModel"/></div>
             <div class="alert alert-danger" *ngIf="arrivaldate.touched && !arrivaldate.valid && arrivaldate.errors.required" style="width:211px;">arrival date is required </div>
           </div>
@@ -112,10 +110,10 @@
    <div class="col-md-2">
       
       <div class="form-group">
-          <label for="name" style="margin-left: 42px;">Origin</label>
-          <select class="form-control" name="origin" [(ngModel)]="block.origincode" [value]="orign" style="margin-left: 45px;">
+          <label for="name" style="margin-left: 120px;">Origin</label>
+          <select class="form-control" name="origin" [(ngModel)]="block.origincode" [value]="orign" style="margin-left: 121px;width: 157px;">
               <option value="" hidden></option> 
-              <option *ngFor="let selectorigin of origin" [ngValue] ="selectorigin.id">{{selectorigin.origindescription}} </option>
+              <option *ngFor="let select of origin" [ngValue] ="select.id">{{select.origindescription}} </option>
           
           
             </select> 
@@ -124,17 +122,17 @@
 </div>
  <div class="col-md-2">
         <div class="form-group">
-          <label style="margin-left: 31px;">Status</label>
-            <select name="state" class="form-control"[(ngModel)]="block.statusblock" [value]="blstatus" style="margin-left: 35px;">
+          <label style="margin-left: 131px;">Status</label>
+            <select name="state" class="form-control"[(ngModel)]="block.statusblock" [value]="blstatus" style="margin-left: 133px;">
               <option value="" hidden></option> 
               <option *ngFor="let selectstatus of blockstatus" [ngValue] ="selectstatus.id">{{selectstatus.status}} </option>
               </select> 
                </div>
               </div> 
  <div class="col-md-2">
-            <div class="form-group" style="margin-left: 38px; width: 184px;" >
+            <div class="form-group" style="margin-left: 131px; width: 184px;" >
                 <label for="name">Source</label>
-                  <select class="form-control" name="source" [(ngModel)]="block.sourcecode"[value]="sources">
+                  <select class="form-control" name="source" [(ngModel)]="block.sourcecode"[value]="sources" style="width: 148px;">
                     <option value="" hidden></option> 
                       <option *ngFor="let selectsource of source" [ngValue] ="selectsource.id">{{selectsource.sourcedescription}} 
                    </option>
@@ -148,8 +146,8 @@
 <div class="col-md-2">
     
         <div class="form-group" >
-          <label for="name">Market</label>
-                  <select class="form-control" name="market" [(ngModel)]="block.marketcode" [value]="markgr">
+          <label for="name" style="margin-left: -41px;">Market</label>
+                  <select class="form-control" name="market" [(ngModel)]="block.marketcode" [value]="markgr" style="margin-left: -43px;">
                     <option value="" hidden></option> 
                     <option *ngFor="let selectmarket of market" [ngValue] ="selectmarket.id">{{selectmarket.marketgroup_description}} </option>
                 
@@ -159,36 +157,30 @@
 
 
 
-    <!-- <div class="col-lg-3" style="margin-top: 17px;">
-
-      <b>End Date</b>
-
-    </div> -->
+   
 
     <div class="col-md-2">
-        <div class="input-group" style="padding-left: 6px;;margin-top: 23px; margin-left: -11px;">
+      <label style="margin-left: -42px;">End Date</label>
+        <div class="input-group" style="padding-left: 6px;;margin-top: -1px; margin-left: -50px;">
             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-            <input type="date" name="departure" class="form-control" placeholder="Enter your User Name" style="width:176px;" [(ngModel)]="user.RES_Depature"
+            <input type="date" name="departure" class="form-control" placeholder="Enter your User Name" style="width:157px;" [(ngModel)]="user.RES_Depature"
             (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #departuredate="ngModel" required/></div>
             <div class="alert alert-danger" *ngIf="departuredate.touched && !departuredate.valid && departuredate.errors.required" style="width:211px;margin-left: 40px;">departure date is required </div>
           </div>
      
       
-      
-          <!-- <div class="col-lg-2" style="margin-top: 23px;">
-              
-            <b>Nights</b>
-              
-          </div> -->
+    
+        
               
               <div class="col-md-2">
-               <div class="input-group" style="padding-left:8px;margin-top: 23px;">
+                <label>Nights</label>
+               <div class="input-group" style="padding-left:-8px;margin-top: 0px;">
                   <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-home"></i></span>
-                  <input type="text" name="nights" class="form-control" style="width:160px" [(ngModel)]="user.RES_Nights" /></div>
+                  <input type="text" name="nights" class="form-control" style="width:122px" [(ngModel)]="user.RES_Nights" /></div>
                </div>
               
          
-          <div class="col-md-2">
+          <div class="col-md-2" style="margin-left: 13px;">
           <label for="Name">Type</label>
                 <div class="form-group" >
                     <select class="form-control" name="type" [(ngModel)] = "block.blocktypes"[value]="bltype">
@@ -201,7 +193,7 @@
 
     
     <div class="col-md-2">
-        <div class="form-group" >
+        <div class="form-group" style="margin-left: 3px;width: 148px;">
            <label for="room">Owner</label>
            <input type="text" class="form-control input-sm" name="owner" [(ngModel)] = "block.owner" [value]="ower" style="height: 34px;">
          </div> 
@@ -229,8 +221,8 @@
         <div class="tab-content">
           <div id="Room" class="tab-pane fade in active" >
           
-              <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
-                <div class="panel-body" style="max-height: 165px;">
+              <div class="panel panel-primary" style="border:solid 1px; border-color: lightgray; ">
+                <div class="panel-body" >
             <div class="row" >
               <div class="col-md-1"></div> 
               <div class="col-md-2">
@@ -578,6 +570,29 @@
         </div>
          </div>
         </div>
+
+        <div class="container-fluid" style="margin-top: -4px;">
+            <div class="row" style="margin-left: 145px;">
+                    <div class="col-md-2">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width:100%" disabled>Resv</button>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary"type="button" style="width:100%" (click)="selectgrid_data()" routerLink="/grid">Grid</button>
+                  </div>
+                  <div class="col-md-2">
+                    <button class="btn btn-info" routerLink="/options" style="width:100%" disabled>Options</button>
+                  </div>
+                  <div class="col-md-2">
+                      <button class="btn btn-success" style="width:100%"  data-toggle="modal" data-target="#myModal4" (click)="blockheader(block)" >save</button>
+                    </div>
+                    <!-- <div class="col-md-2">
+                        <button class="btn btn-primary" style="width:100%">Save</button>
+                      </div> -->
+                      <div class="col-md-2">
+                        <button class="btn btn-warning" style="width:100%">Close</button>
+                      </div>
+              </div>
+            </div>
       </div>
     
       
@@ -606,7 +621,7 @@
             </div>
         </div>
         <!-- //label for table  -->
-    <div class="row" style="margin-top: -48px;">
+    <!-- <div class="row" style="margin-top: -48px;">
       <div class="continer">
         <div class="col-md-2"></div>
         <div class="col-md-3">
@@ -614,10 +629,10 @@
         <label style="margin-left: 25px;">Rooms Revenue </label>
       </div>
       </div>
-    </div>
+    </div> -->
      
       <!-- table for revenue -->
-      <div class="row">
+      <!-- <div class="row">
       <div class="continer-fluid">
         <div class="col-md-2"></div>
            <div class="col-md-6">
@@ -655,37 +670,10 @@
              
            </div>
          </div> 
-        </div>
-    <br>
+        </div> -->
+    
     <!-- //buttons -->
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-10">
-        <div class="container-fluid">
-          <div class="row" style="margin-left: 165px;">
-                  <div class="col-md-2">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" style="width:100%" disabled>Resv</button>
-              </div>
-              <div class="col-md-2">
-                  <button class="btn btn-primary"type="button" style="width:100%" (click)="selectgrid_data()" routerLink="/grid">Grid</button>
-                </div>
-                <div class="col-md-2">
-                  <button class="btn btn-info" routerLink="/options" style="width:100%" disabled>Options</button>
-                </div>
-                <div class="col-md-2">
-                    <button class="btn btn-success" style="width:100%"  data-toggle="modal" data-target="#myModal4" (click)="blockheader(block)" >ok</button>
-                  </div>
-                  <!-- <div class="col-md-2">
-                      <button class="btn btn-primary" style="width:100%">Save</button>
-                    </div> -->
-                    <div class="col-md-2">
-                      <button class="btn btn-warning" style="width:100%">Close</button>
-                    </div>
-            </div>
-          </div>
 
-          </div>
-          </div>
 
           <!-- //model for grid button -->
           
@@ -730,4 +718,5 @@
     </div>
 
   </div>
+</div>
 </div>

@@ -3,22 +3,22 @@
   <div class=" col-md-2"></div>
   <div class="col-md-10">
      <!-- <div class="row"> --> 
-       
+     <form #ClearAll="ngForm">  
     <div class="container-fluid" style="background-color:  white; margin-left: 18px;margin-top: 20px;">
-     <div class="panel panel-primary" style="margin-left: -16px;">
-       <div class="panel-body">
+     <div class="panel panel-primary" style="margin-left: -16px; margin-top: -10px; ">
+       <div class="panel-body" style="max-height: 126px;margin-top: -15px;">
       <div class="row">
-          <div class="col-md-1"><label for="room" style="margin-top: 26px;margin-left: 35px;">Name</label></div>
+          <div class="col-md-2"><label for="room" style="margin-top: 26px;margin-left: -11px;">Block Name</label></div>
           <div class ="col-md-3">
               
               <div class="form-group" style="width:82%;" [class.has-error]="name.touched && name.invalid">
-                  <input type="text" id="Names" name="Names" style="margin-top: 24px;" class="form-control input-sm" [(ngModel)]="Name" #name="ngModel" required>
+                  <input type="text" id="Names" name="Names" style="margin-top: 24px;margin-left: -91px;" class="form-control input-sm" [(ngModel)]="Name" #name="ngModel" required>
                   <div *ngIf="name.touched && !name.valid && name.errors?.required " ngClass="{ 'has-error' : !name.valid && submitAttempt }">
                 </div>
               </div>
             </div>
-          <div class="col-md-1"><label for="room" style="margin-top: 27px;">Start Date</label></div>
-          <div class="col-lg-3">
+          <div class="col-md-2"><label for="room" style="margin-top: 27px;margin-left: -134px;">Start Date</label></div>
+          <div class="col-lg-3" style="margin-left: -233px;">
              <div class="input-group" style="margin-top: 20px;"[class.has-error]="Arrivalfrom.touched && Arrivalfrom.invalid">
                  <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
                  <input type="date"id="Arrivalfrom" name="Arrivalfrom" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)" #Arrivalfrom="ngModel" required></div>
@@ -27,10 +27,8 @@
          </div>
               <div class ="col-md-1"><label for="name" style="margin-top: 26px;margin-left: 20px;">Status</label></div>
               <div class ="col-md-3">
-             <div class="form-group" style="width:82%;"[class.has-error]="Status.touched && Status.invalid">
-          <select class="form-control input-sm" id="Status" style="width:222px;margin-top: 23px;" [(ngModel)]="status" (ngModelChange)="onSelcat(status)"#Status="ngModel" required>
-            <div *ngIf="Status.touched && !Status.valid && Status.errors?.required " ngClass="{ 'has-error' : !Status.valid && submitAttempt }">
-            </div>
+             <div class="form-group" style="width:82%;">
+          <select class="form-control input-sm" id="Status" style="width:222px;margin-top: 23px;" [(ngModel)]="status" (ngModelChange)="onSelcat(status)" #Status="ngModel" required>
             <option *ngFor="let option of roomtype" 
              [ngValue]="option.status"> 
              {{option.status}}</option>
@@ -41,16 +39,16 @@
   </div>
       </div>
      <div class="row">
-        <div class ="col-md-1"> <label for="room">Block Code</label></div>
-    <div class ="col-md-3">
+        <div class ="col-md-2"> <label for="room">Block Code</label></div>
+    <div class ="col-md-3" style="margin-left: -89px;">
       <div class="form-group" style="width:82%;"[class.has-error]="Block.touched && Block.invalid">
       <input type="text"name="BlockCode"id="BlockCode" class="form-control input-sm" [(ngModel)]="BlockCode" #Block="ngModel" required >
       <div *ngIf="Block.touched && !Block.valid && Block.errors?.required " ngClass="{ 'has-error' : !Block.valid && submitAttempt }">
       </div>
   </div>
    </div>
-   <div class="col-md-1"><label for="room">End Date</label></div>
-   <div class="col-lg-3">
+   <div class="col-md-2 "><label for="room" style="margin-left: -42px;">End Date</label></div>
+   <div class="col-lg-3" style="margin-left: -141px;">
  
      <div class="input-group"[class.has-error]="Arrivalto.touched && Arrivalto.invalid">
         <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -58,65 +56,77 @@
         <div *ngIf="Arrivalto.touched && !Arrivalto.valid && Arrivalto.errors?.required " ngClass="{ 'has-error' : !Arrivalto.valid && submitAttempt }">
         </div>
       </div>
+      <div class="col-md-3">
+        <button class="btn btn-Aqua" style="width:100%;margin-left: 86px;" (click)="ClearAll.reset()">Clear All</button>
+      </div>
      </div>
     </div>
   </div>
    </div>
+  </form>
 
 
 
-<div class="container-fluid" >
-  
-  <div class ="table-responsive">
-    <table class="table table-bordered table-hover">
+<div class="container=container-fluid"  >
+    <div style="margin-left: 95%">
+        <span>
+            <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
+            [ngClass]="{disabling:showMore!=true}" (click)="showLessBut()"></i>
+          
+            <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer"
+            [ngClass]="{disabling:showMore!=false}" (click)="showMoreBut()"></i>
+          </span>
 
-      <thead style="background-color: #0077B5;color:white; width:99%;"  >
+    </div>
+ 
+    <table class="table table-bordered table-hover tableBodyScroll" >  
+      <thead style="background-color: #0077B5;color:white; "  >
         <tr>
-          <th style="width:80px">Seq</th>
+          <th style="width:40px">Seq</th>
           <th style="width:80px">Blockid</th>
           <th style="width:100px">StartDate</th>
-          <th style="width:80px">Nights</th>
+          <th style="width:65px">Nights</th>
           <th style="width:100px">EndDate</th>
           <!-- <th> RoomsperDay</th>
           <th> MeetingSpaceSize</th>
           <th> MeetingSpaceType</th> -->
           <!-- <th> Attdence</th> -->
           <th style="width:100px">BlockCode</th>
-          <th style="width:120px">BlockStatus</th>
-          <th style="width:100px">profile</th>
-          <th style="width:100px">RateCode</th>
-          <th style="width:200px">BlockName</th>
-          <th style="width:100px">Market</th>
-          <th style="width:100px">Source</th>
-          <th>Owner</th>
+          <th style="width:100px">BlockStatus</th>
+          <th style="width:80px">profile</th>
+          <th style="width:90px" >RateCode</th>
+          <th style="width: 150px" *ngIf="showMore!=true">BlockName</th>
+          <th *ngIf="showMore!=true">Market</th>
+          <th style="width: 120px"*ngIf="showMore==true">Source</th>
+          <th *ngIf="showMore==true">Owner</th>
           
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let array of tableschanges | filterdata: Name :'block_name'|filterdata: BlockCode :'block_code';let i=index"
          (click)="selectMembersEdit( array,i)" [ngClass]="{'backGroundColor':i==selectindex}">
-            <td style="width:80px">{{i+1}}</td>
+            <td style="width:40px">{{i+1}}</td>
             <td style="width:80px">{{array.block_id}}</td>
             <td style="width:100px">{{array.start_date}}</td>
-            <td style="width:80px">{{array.nights}}</td>
+            <td style="width:65px">{{array.nights}}</td>
             <td style="width:100px">{{array.end_date}}</td>
             <!-- <td>{{array.rooms_per_day}}</td>
             <td>{{array.meeting_space_size}}</td>
             <td>{{array.meeting_space_type}}</td> -->
             <!-- <td>{{array.attendess}}</td> -->
             <td style="width:100px">{{array.block_code|titlecase }}</td>
-            <td style="width:120px">{{array.status|titlecase }}</td>
-            <td style="width:100px">{{array.pf_id|titlecase }}</td>
-            <td style="width:100px">{{array.rate_description|titlecase }}</td>
-            <td style="width:200px">{{array.block_name|titlecase }}</td>
-            <td style="width:100px">{{array.marketgroup_description|titlecase }}</td>
-            <td style="width:100px">{{array.sourcedescription|titlecase }}</td>
-            <td>{{array.owner|uppercase}}</td>
+            <td style="width:100px">{{array.status|titlecase }}</td>
+            <td style="width:80px">{{array.pf_id|titlecase }}</td>
+            <td style="width:90px">{{array.rate_description|titlecase }}</td>
+            <td style="width:150px" *ngIf="showMore!=true">{{array.block_name|titlecase }}</td>
+            <td *ngIf="showMore!=true">{{array.marketgroup_description|titlecase }}</td>
+            <td  style="width: 120px"*ngIf="showMore==true">{{array.sourcedescription|titlecase }}</td>
+            <td *ngIf="showMore==true">{{array.owner|uppercase}}</td>
             
         </tr>
       </tbody>
     </table>
-  </div>
+ 
 </div>
 <br>
 <div class ="container-fluid">

@@ -43,6 +43,7 @@ console.log("ajith working fine",this.gridvalues)
       this.selectindex=index; 
   }
 
+
   public insertgrid:any=[];
   public jio=[];
   

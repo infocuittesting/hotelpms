@@ -71,9 +71,7 @@ public user={};
  });
 }
 
-cleardata(){
-  this.user=' ';
-}
+
 ngOnInit()
 {
 
