@@ -5,19 +5,24 @@
     <div class="col-md-10">
         <div class="container-fluid" style="padding-top:20px;padding-left:50px;">
                 <div class="panel panel-primary">
-                        <div class="panel-body">
-                                
-                            <div class="row">
-                                <div class="col-sm-3">
-                                <b>Rate code</b>
-                                </div>
-                                <div class="col-sm-3">
-                                <select name="Ratecode" class="form-control input-sm" required style="width:150px;" [(ngModel)]="editblock.ratecodedrop" [disabled]=ratecodedis>
-                                        <option value="" hidden></option>
--                                       <option *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.ratecode_id" >{{ratecdlist.rate_code}}</option>
-                                </select>
-                                </div>
-                            </div>
+                        <div class="panel-body" style="margin-bottom: -15px">
+                                <div class="row">
+                                        <div class="col-sm-3">
+                                        <b>Rate code</b>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <select name="rtc" class="form-control input-sm"  [(ngModel)]="editblock.ratecodedrop"  style="width:120px;height: 26px;" >
+                                                    <option value="" hidden></option>
+                                                    <option *ngFor="let rtcod of price" [ngValue] = "rtcod.ratecodedrop">{{rtcod.ratecodedrop}}</option>  
+                                                </select>
+                                        
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                        {{editblock.ratecodedrop}} 
+                                        </div>
+                                    </div>
                         </div>
                     </div>
         </div>
@@ -30,13 +35,13 @@
         </ul>
         <div class="tab-content clearfix">
         <div id="rateheader" class="tab-pane fade in active" style="margin-top:10px;">
-         <form id="myformm">
+         <form id="myformm" #myformm="ngForm" >
           <div class="row">
           
 
 
             <div class="panel panel-primary" >
-                <div class="panel-body" style="margin-bottom: -10px">
+                <div class="panel-body" style="margin-bottom: -10px;margin-right: -9px">
                 <div class="row">
                     <div class="col-md-7">
 
@@ -48,7 +53,7 @@
                             </div>
                              <div class="col-md-4">
                                 <b>Rate Class</b>
-                                <input type="text" name="ratecls"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeid" disabled>                   
+                                <input type="text" name="ratecls"  class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="ratecodeidd" disabled>                   
                             </div>
          
                             <div class="col-md-4">
@@ -63,7 +68,7 @@
                             <div class="col-md-4">
                             <div class="form-group" [class.has-error]="ratecategory.touched && ratecategory.invalid">                                
                                 <b>Rate category</b>
-                                <select name="ratecategoryid" id="ratecategoryid" ngModel  #ratecategory="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="editblock.ratecategoryid" required>
+                                <select name="ratecategoryid" id="ratecategoryid"   #ratecategory="ngModel" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="editblock.ratecategoryid" required>
                                     <option value="" hidden></option>
                                     <option  *ngFor="let roomtypelist of ratecat" [ngValue]="roomtypelist.ratecategory_id" >{{roomtypelist.rate_category}}</option>    
                                 </select>
@@ -72,11 +77,11 @@
                             <div class="col-md-4">
 
                                 <b>Begin Sell Date</b>          
-                                <input name="beginselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="editblock.beginselldate">
+                                <input name="beginselldate" type="date" [min]="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="editblock.beginselldate">
                             </div>
                             <div class="col-md-4">  
                                 <b>End Sell Date</b>
-                                <input name="endselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="editblock.endselldate" >                           
+                                <input name="endselldate" [min]="editblock.beginselldate" type="date" class="form-control input-sm" style="width:70%;height: 27px;" [(ngModel)]="editblock.endselldate" >                           
                             </div>  
                         </div>
        
@@ -107,8 +112,13 @@
                             <div class="col-md-4">
                            <b>Display Sequence</b>
                            <select name="sour2" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="editblock.Sequence">
-                                <option value="" hidden></option>    
-                                <option  *ngFor="let sourlist of Sequence" [ngValue] = "sourlist.Sequence"></option> 
+                                
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>    
+                            <!-- <option value="" hidden></option>    
+                                <option  *ngFor="let sourlist of Sequence" [ngValue] = "sourlist.Sequence"></option>  -->
                           </select>
                             </div>
                           </div>
@@ -143,7 +153,8 @@
 <div class="row" >
         <div class="col-md-6">
        <b style="margin-left:10px">TransactionCode</b>
-       <select class="form-control input-sm"  style="width:70%;height: 27px;;margin-left:10px;">
+       <select name="tran" class="form-control input-sm"  style="width:70%;height: 27px;;margin-left:10px;" [(ngModel)]="editblock.tran">
+            
             <option>100</option>
             <option>200</option>
             <option>300</option>
@@ -270,7 +281,7 @@
                 </div></div></div>
           <div class="col-md-4">
                 <div class="form-group" [class.has-error]="max.touched && max.invalid">
-                <b>MaxStayThrough</b>
+                <b>MinOccupancy</b>
                 <input type="text" id="max"  class="form-control" pattern="^[0-9]+$" ngModel name="max" #max="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Maximum_stay_through" required>
                 <div *ngIf="max.touched && !max.valid && max.errors?.required " ngClass="{ 'has-error' : !max.valid && submitAttempt }">
                                            
@@ -284,22 +295,22 @@
                 </div></div></div>
       </div>
       <div class="row" >
-            <div class="col-md-4" style="margin-top: -13px">
+            <div class="col-md-4" style="margin-top: -13px;margin-bottom: -10px;">
                 <div class="form-group" [class.has-error]="Occupancy.touched && Occupancy.invalid">                
-                <b style="margin-left:10px">MinOccupancy</b>
+                <b style="margin-left:10px">MaxStayThrough</b> 
                 <input type="text" id="Advance" class="form-control" pattern="^[0-9]+$" ngModel name="Occupancy" #Occupancy="ngModel" style="width:70%;height: 27px;margin-left:10px;margin-bottom:3px" [(ngModel)]="editblock.Minimum_Occupancy" required>
                 <div *ngIf="Occupancy.touched && !Occupancy.valid && Occupancy.errors?.required " ngClass="{ 'has-error' : !Occupancy.valid && submitAttempt }">
             
             </div></div></div>
             <div class="col-md-4" style="margin-top: -13px">
                 <div class="form-group" [class.has-error]="Maximum_Advance.touched && Maximum_Advance.invalid">                                
-                <b>MaxiAdvanceBooking</b>
+                <b>MaxiOccupancy</b>
                 <input type="text" id="Maximum_Advance" class="form-control" pattern="^[0-9]+$" ngModel name="Maximum_Advance" #Maximum_Advance="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Maximum_Advance_Booking" required>                               
                 <div *ngIf="Maximum_Advance.touched && !Maximum_Advance.valid && Maximum_Advance.errors?.required " ngClass="{ 'has-error' : !Maximum_Advance.valid && submitAttempt }">            
             </div></div></div>
             <div class="col-md-4" style="margin-top: -13px">
                 <div class="form-group" [class.has-error]="Maximum_Occupancy.touched && Maximum_Occupancy.invalid">                                                
-                <b>MaxiOccupancy</b>
+                <b>MaxiAdvanceBooking</b>
                 <input type="text" id="Maximum_Occupancy" class="form-control" pattern="^[0-9]+$" ngModel name="Maximum_Occupancy" #Maximum_Occupancy="ngModel" style="width:70%;height: 27px;" [(ngModel)]="editblock.Maximum_Occupancy" required>                               
                 <div *ngIf="Maximum_Occupancy.touched && !Maximum_Occupancy.valid && Maximum_Occupancy.errors?.required " ngClass="{ 'has-error' : !Maximum_Occupancy.valid && submitAttempt }">            
            
@@ -318,7 +329,7 @@
          </div>
   
          <div class="container-fluid">
-           <div class="row" style="margin-left:6%;">
+           <div class="row" style="margin-left:6%;text-align: center" >
              
              <!-- <div class="col-sm-1"> -->
                <button type="button" class="btn btn-primary" style="width:11%;" disabled><b>Deposit/cxl</b></button>
@@ -337,19 +348,19 @@
               <button type="button" class="btn btn-primary" style="width:9%" disabled><b>Changes</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
-              <button type="button" class="btn btn-warning" style="width:9%"><b>Repeat</b></button>
+              <!-- <button type="button" class="btn btn-warning" style="width:9%" disabled><b>Repeat</b></button> -->
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
               <!-- <button type="button" class="btn btn-danger" style="width:9%"><b>Delete</b></button> -->
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
-              <button type="button" class="btn btn-primary" style="width:9%"><b>New</b></button>
+              <!-- <button type="button" class="btn btn-primary" style="width:9%" disabled><b>New</b></button> -->
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
-              <button type="reset" class="btn btn-success" style="width:9%" data-toggle="modal" data-target="#tetmodel" (click)="rateheaderins(ratecode,editblock);myformm.reset()"><b>Save</b></button>
+              <button type="button" class="btn btn-success" style="width:9%" (click)="rateheaderins(ratecode,editblock);" data-toggle="modal" data-target="#insertrateheadermodel" [disabled]="!myformm.valid"><b>Save</b></button>
               <!-- </div> -->
               <!-- <div class="col-sm-1"> -->
-              <button type="button" class="btn btn-danger" style="width:9%"><b>Close</b></button>
+              <button type="button" class="btn btn-danger" style="width:9%" routerLink="/revenueratecode"><b>Close</b></button>
               <!-- </div> -->
                                
            </div>
@@ -391,10 +402,10 @@
                   <div class="panel-body">
                       <div class="row" style="margin-top:-25px">
                         <div class="col-md-3">
-                            <b>SeasonCode</b>
+                            <b style="margin-left: -10px">SeasonCode</b>
                             <div class="form-group">
                             <div class="form-group" [class.has-error]="SeasonCode.touched && SeasonCode.invalid">                                                                                        
-                                <select  name="SeasonCodee" id="SeasonCode" class="form-control"  #SeasonCode="ngModel" class="form-control input-sm" [(ngModel)]="editratedetail.seasoncod"  style="width:95px;height:27px;" required>
+                                <select  name="SeasonCodee" id="SeasonCode" class="form-control"  #SeasonCode="ngModel" class="form-control input-sm" [(ngModel)]="editratedetail.seasoncod"  style="width:115px;height:30px;margin-left:-10px" required>
                                     <option *ngFor="let type of arryses" [ngValue]="type.season_code_id">{{type.season_code}}</option>                                      
                                 </select>
                                  <div *ngIf="SeasonCode.touched && !SeasonCode.valid && SeasonCode.errors?.required " ngClass="{ 'has-error' : !SeasonCode.valid && submitAttempt }">                                    
@@ -402,16 +413,16 @@
                             </div>
                             <div class="col-md-1"></div>
                           <div class="col-md-4">
-                              <b>StartDate</b>
+                              <b style="margin-left: -17px;">StartDate</b>
                               <div class="form-group">            
-                                    <input type="date" name="stdt" class="form-control input-sm" [(ngModel)]="editratedetail.start_date" >
+                                    <input type="date" name="stdt" [min]="date" class="form-control input-sm" [(ngModel)]="editratedetail.start_date" style="width: 130px;margin-left: -20px;">
                             </div>
                           </div>
                           <div class="col-md-4">
                                 <b style="margin-left:30px">EndDate</b>
                             
                                 <div class="form-group">            
-                                    <input type="date" name="enddt" class="form-control input-sm"  [(ngModel)]="editratedetail.end_date">
+                                    <input type="date" name="enddt" [min]="editratedetail.start_date" class="form-control input-sm"  [(ngModel)]="editratedetail.end_date" style="width: 130px;margin-left: -20px;">
                                 </div>
                             </div>
                       
@@ -493,8 +504,10 @@
                           <div class="col-md-3">
                                   <b>4 Adults</b>
                                   <div class="form-group">
-                                      <input type="text" name="threea" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.four_adult_amount">
-                                  </div>
+                                        <div class="form-group" [class.has-error]="threea.touched && threea.invalid">
+                                      <input type="text" name="threea" id="twoaa" #threea="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.four_adult_amount" required>
+                                      <div *ngIf="threea.touched && !threea.valid && threea.errors?.required " ngClass="{ 'has-error' : !threea.valid && submitAttempt }">
+                                    </div></div></div>
                           </div>
                           <!-- <div class="col-md-3" style="margin-top:-17px">
                                   <b>5 Adults</b>  
@@ -504,9 +517,11 @@
                            </div> -->
                            <div class="col-md-3" style="margin-top:-17px">
                                   <b>ExtraAdults</b>
-                                  <div class="form-group">            
-                                      <input type="text" name="extraa" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.extra_adult_amount">
-                                  </div>
+                                  <div class="form-group">
+                                        <div class="form-group" [class.has-error]="extraa.touched && extraa.invalid">            
+                                      <input type="text" name="extraa" id="extraa" #extraa="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.extra_adult_amount" required>
+                                      <div *ngIf="extraa.touched && !extraa.valid && extraa.errors?.required " ngClass="{ 'has-error' : !extraa.valid && submitAttempt }">
+                                    </div></div></div>
                               </div>
                     </div>
 
@@ -518,21 +533,28 @@
                     <div class="row">
                           <div class="col-md-3" style="margin-top:-17px">
                             <b>1 child</b>
-                            <div class="form-group">            
-                                <input type="text" name="onec" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.one_child_amount">
-                            </div>
+                            <div class="form-group">  
+                                <div class="form-group" [class.has-error]="onec.touched && onec.invalid">                                                      
+                                <input type="text" name="onec" id="onec" #onec="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.one_child_amount" required>
+                                <div *ngIf="onec.touched && !onec.valid && onec.errors?.required " ngClass="{ 'has-error' : !onec.valid && submitAttempt }">                            
+                            
+                            </div></div></div>
                           </div>
                           <div class="col-md-3" style="margin-top:-17px">
                                   <b>2 child</b>
-                                  <div class="form-group">            
-                                      <input type="text" name="twoc" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.two_child_amount">
-                                  </div>
+                                <div class="form-group">
+                                       <div class="form-group" [class.has-error]="twoc.touched && twoc.invalid">                                                                                                        
+                                      <input type="text" name="twoc" id="twoc" #twoc="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.two_child_amount" required >
+                                      <div *ngIf="twoc.touched && !twoc.valid && twoc.errors?.required " ngClass="{ 'has-error' : !twoc.valid && submitAttempt }">                                                              
+                                </div></div></div>
                           </div>
                           <div class="col-md-3" style="margin-top:-17px">
                                   <b>Extrachild</b>
-                                  <div class="form-group">            
-                                      <input type="text" name="extrac" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.extra_child_amount" >
-                                  </div>
+                                  <div class="form-group">
+                                       <div class="form-group" [class.has-error]="extrac.touched && extrac.invalid">                                                                                                                                                          
+                                      <input type="text" name="extrac" id="extrac" #extrac="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetail.extra_child_amount" required>
+                                      <div *ngIf="extrac.touched && !extrac.valid && extrac.errors?.required " ngClass="{ 'has-error' : !extrac.valid && submitAttempt }">                                                                                                
+                                    </div></div></div>
                           </div>
                           <!-- <div class="col-md-3" style="margin-top:-17px">
                                   <b>4 children</b>
@@ -558,7 +580,7 @@
 
                        <!-- table content -->
                        <div class="table-responsive"  style="margin-top:0px">
-                        <div class="scroll">
+                        <div >
                           
                             <table class="table table-bordered table-hover" style="width:100%;">
                             
@@ -628,26 +650,23 @@
       </form >  
 
           
-  
+            <div class="row">
           <div class="col-md-2">
               <button type="button" class="btn btn-Info" style="width:110px;" data-toggle="modal" routerLink="/ratetier"><b>Rate Tier</b></button>
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" ><b>Repeat</b></button>
+              <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" (click)="repeating()" ><b>Repeat</b></button>
           </div>
           <div class="col-md-2">
               <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal" data-toggle="modal" data-target="#afteratedetdel" (click)="ratdetfun()"><b>Delete</b></button>
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-Warning" style="width:110px;" data-toggle="modal" ><b>New</b></button>
-          </div>
-          <div class="col-md-2">
-            <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal"  (click)="ratedetins(ratecodedrop,editratedetail);ratedetForm.reset()" data-target="#afterratedetsave"><b>Save</b></button>
+            <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal" (click)="ratedetins(ratecodedrop,editratedetail);ratedetForm.reset()" data-target="#afterratedetsave"><b>Save</b></button>
             <!-- <button type="button" class="btn btn-Success" style="width:110px;" data-toggle="modal" data-target="#afterratedetsave" (click)="ratedetins(editblockdetails);ratedetForm.reset()" ><b>Save</b></button> -->
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-danger" style="width:110px;" (click)="ratedetForm.reset()" routerLink="/revenue"><b>Close</b></button>
-          </div>
+              <button type="button" class="btn btn-danger" style="width:110px;" (click)="ratedetForm.reset()" routerLink="/revenueratecode"><b>Close</b></button>
+          </div></div>
   
   
   
@@ -655,9 +674,10 @@
   <!-- **************************************rate details tab ends ************************************************-->
   <!-- negotiated tab content -->
           <div id="negotiated" class="tab-pane fade in" style="margin-top:2%;">
-              <form> 
+                <form id="ratecode" #ratecodeform=ngForm>
                   <div class="panel panel-primary">
-                          <div class="panel-body">
+                          <div class="panel-body" style="margin-bottom:  -10px">
+                                
                               <div class="row">
                                   <div class="col-sm-6">
                                           <div class="row" style="padding-top:1%;">
@@ -676,18 +696,20 @@
                                               </div>
                                   </div>
   
-                                  <div class="col-sm-6">
+                                  <div class="col-sm-6" style="margin-left: -200px;">
                                       <div class="row" style="margin-top:1%;">
                                           <div class="col-md-6">
                                               <div class="row" style="margin-top:1%;">
-                                                  <div class="col-md-2"></div>
+                                                  
                                                   <div class="col-md-1">
                                                       <input type="checkbox" class="form-control input-sm" style="width:15px;height:15px;">
                                                   </div>
                                                   <div class="col-md-8">
                                                   <div class="form-group">            
                                                       <label for="room">Show inactive</label>
+                                                      <button type="reset" class="btn btn-Primary" style="margin-left: 120px;margin-top: -30px;" (click)="clear();"><b>ClearAll</b></button>
                                                   </div>
+
                                                   </div>
                                               </div>
                                           </div>
@@ -749,13 +771,13 @@
                               <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" data-target="#newnegotiated"><b>New</b></button>
                           </div>
                           <div class="col-md-2">
-                              <button type="button" class="btn btn-danger" style="width:110px;"data-toggle="modal" data-target="#editnegotiated" [disabled]=edbut><b>Edit</b></button>
+                              <button type="button" class="btn btn-danger" style="width:110px;"data-toggle="modal" data-target="#editnegotiated" ><b>Edit</b></button>
                           </div>
                           <div class="col-md-2">
                               <button type="button" class="btn btn-Warning" style="width:110px;" (click)="negodel()" data-toggle="modal" data-target="#afterdelnegotiate" [disabled]=delbut><b>Delete </b></button>
                           </div>
                           <div class="col-md-2">
-                              <button type="button" class="btn btn-Success" style="width:110px;"><b>Close</b></button>
+                              <button type="button" class="btn btn-Success" style="width:110px;" routerLink="/revenueratecode"><b>Close</b></button>
                           </div>
                       </div>
   <!-- *************************************************************************************************************************** -->
@@ -838,7 +860,7 @@
                             </div>  
                             <div class="col-sm-4">
                                 <div class="form-group">            
-                                    <input type="date" name="bgdt" class="form-control input-sm" [(ngModel)]="user.begin" >
+                                    <input type="date" [min]="date" name="bgdt" class="form-control input-sm" [(ngModel)]="user.begin" >
                                 </div>
                             </div>
                         </div>
@@ -849,7 +871,7 @@
                             </div>  
                             <div class="col-sm-4">
                                 <div class="form-group">            
-                                    <input type="date" name="enddt" class="form-control input-sm"  [(ngModel)]="user.endsel">
+                                    <input type="date" name="enddt" [min]="user.begin" class="form-control input-sm"  [(ngModel)]="user.endsel">
                                 </div>
                             </div>
                         </div>
@@ -919,19 +941,19 @@
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
     
                         </button>
-                         <h3 class="modal-title" id="myModalLabel"><b>Negotiated Rates</b></h3>
+                         <h3 class="modal-title" id="myModalLabel" style="text-align: center"><b>Negotiated Rates</b></h3>
     
                     </div>
                     <form #editForm="ngForm">
                     <div class="modal-body">
                         <div class="row" style="margin-left: 15%;">
                             <div class="col-sm-4" style="padding-top:1%;">
-                                <b>Rate Code</b>
+                                <b style="margin-left: 45px;">Rate Code</b>
                             </div>  
                             <div class="col-sm-4">
                                 <div class="form-group">            
-                                    <select name="ratcodee" class="form-control input-sm" style="width:100%;" [(ngModel)]="rateecode">
-                                      <option  *ngFor="let ratcodeelist of prc" [ngValue] = "ratcodeelist.ratecode_id">{{ratcodeelist.rate_code}}</option>                                                            
+                                    <select name="ratcodee" class="form-control input-sm" style="width:100%;" [(ngModel)]="bgsd.rateecode">
+                                      <option  *ngFor="let ratcodeelist of price" [ngValue] = "ratcodeelist.ratecode_id">{{ratcodeelist.rate_code}}</option>                                                            
                                     </select>
                                 </div>
                             </div>
@@ -940,28 +962,28 @@
 
                         <div class="row" style="margin-left: 15%;">
                             <div class="col-sm-4">
-                                <b>Begin Sell Date</b>
+                                <b style="margin-left: 10px;">Begin Sell Date</b>
                             </div>  
                             <div class="col-sm-4">
                                 <div class="form-group">            
-                                    <input type="date" name="begdtt" class="form-control input-sm" [(ngModel)]="beginn" >
+                                    <input type="date" [min]="date" name="begdtt" class="form-control input-sm" [(ngModel)]="bgsd.beginn" >
                                 </div>
                             </div>
                         </div>
 
                         <div class="row" style="margin-left: 15%;">
                             <div class="col-sm-4">
-                                <b>End Sell Date</b>
+                                <b style="margin-left: 22px;">End Sell Date</b>
                             </div>  
                             <div class="col-sm-4">
                                 <div class="form-group">            
-                                    <input type="date" name="enddtt" class="form-control input-sm"  [(ngModel)]="endsell">
+                                    <input type="date" name="enddtt" [min]="bgsd.beginn" class="form-control input-sm"  [(ngModel)]="bgsd.endsell">
                                 </div>
                             </div>
                         </div>
                         <div class="row" style="margin-left: 15%;">
                           <div class="col-sm-4" style="padding-top:1%;">
-                              <b>Commission Code</b>
+                              <b style="margin-left: -10px;">Commission Code</b>
                           </div>  
                           <div class="col-sm-4">
                               <div class="form-group">            
@@ -976,7 +998,7 @@
                     </div>
                     </form>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#aftereditnegotiate"  (click)="editnego(rateecode,beginn,endsell);editForm.reset()" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#aftereditnegotiate"  (click)="editnego(bgsd);editForm.reset()" data-dismiss="modal">Save</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="editForm.reset()">Close</button>                                            
                     </div>
 
@@ -1025,10 +1047,10 @@
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><b>Alert</b></h4>
+                <h4 class="modal-title" style="text-align: center"><b>Alert</b></h4>
             </div>
             <div class="modal-body">
-                <p>{{negodelalert}}</p>
+                <p style="text-align: center">{{negodelalert}}</p>
                 <!-- <p *ngIf="newnegovar!='RIS'">{{failalert}}</p> -->
             </div>
             
@@ -1053,7 +1075,7 @@
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><b>Rate details insert message</b></h4>
+                <h4 class="modal-title"><b>Rate details Delete message</b></h4>
             </div>
             <div class="modal-body">
                 <p>{{delratalert}}</p>       
@@ -1080,34 +1102,35 @@
     <div class="modal-dialog vertical-align-center" role="document">
         <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal" >
+            
                 <span aria-hidden="true">&times;</span>
               </button>
-            </div>
+              <h4 class="modal-title" id="exampleModalLongTitle" style="text-align: center;margin-bottom: -10px;">Select Room Types</h4>
+              
+            </div> 
             <div class="modal-body">
               <div class="table-responsive">
                     <table class="table-hover table-bordered table-striped" style="width:100%;">
                       <thead style="background-color: #0077B5; color: white">
-                        <th>seq</th>
+                        <th>X</th>
                         <th> Room Type</th>
                         <th> Description</th>
-                        <th>X</th>
+                       
                       </thead>
                       <tbody>
                             <tr *ngFor="let rlist of room">
                             <td> <input type="checkbox" name="rm_type" id="" (checked)="exist(rlist)" (click)="toggleSelection(rlist)"> </td>                                
-                            <td>{{rlist.id}}</td>
+                            <!-- <td>{{rlist.id}}</td> -->
                             <td>{{rlist.type}} </td>
                             <td>{{rlist.description}}</td>
                         </tr>
                         
                       </tbody>
                     </table>
-                </div>
+                </div>  
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
             </div>
         </div>
@@ -1124,8 +1147,8 @@
     <div class="modal-dialog vertical-align-center" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModal"></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <h4 class="modal-title" id="exampleModal" style="text-align: center;margin-bottom: -30px;">Select Packages</h4>
+            <button type="button" class="close" data-dismiss="modal">
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
@@ -1133,10 +1156,11 @@
             <div class="table-responsive">
                 <table class="table-hover table-bordered table-striped" style="width:100%;">
                     <thead style="background-color: #0077B5; color: white">
+                    <th>X</th>
                     <th>Code</th>
                     <th>Description</th>
                     <th>currency</th>
-                    <th>X</th>
+                    
                     </thead>
                     <tbody>
                     <tr *ngFor="let Packagemodel of revenueroom">
@@ -1155,12 +1179,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>RateCode</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Repeat</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>New</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Edit</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Delete</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
 
         </div>
         </div>
@@ -1174,7 +1193,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                <h4 class="modal-title" id="exampleModalLongTitle" style="text-align: center;margin-top: -10px;margin-bottom: -30px;">Select Room types</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1183,15 +1202,16 @@
                 <div class="table-responsive">
                     <table class="table-hover table-bordered table-striped" style="width:100%;">
                         <thead style="background-color: #0077B5; color: white">
-                            <th>seq</th>
+                            <th>X</th>
+                            
                             <th> Room Type</th> 
                             <th> Description</th>
-                            <th>X</th>
+                            
                         </thead> 
                         <tbody> 
                             <tr *ngFor="let pack of room">
                                 <td> <input type="checkbox" (checked)="exist2(pack)" (click)="toggleSelection2(pack)"> </td>                                
-                                <td>{{pack.id}}</td>
+                               
                                 <td>{{pack.type}} </td>
                                 <td>{{pack.description}}</td>
                             </tr>
@@ -1201,7 +1221,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
                 <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
                 </div>
             </div>
@@ -1210,7 +1230,7 @@
 </div>
 
 <!-- <**************update model************> -->
-<div class="modal fade" id="tetmodel" role="dialog">
+<div class="modal fade" id="insertrateheadermodel" role="dialog">
     <div class="vertical-alignment-helper">  
     <div class="modal-dialog vertical-align-center modal-sm">
     
@@ -1218,15 +1238,15 @@
         <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Rate details insert message</b></h4>
+            <h4 class="modal-title"><b>Rate Header message</b></h4>
         </div>
         <div class="modal-body">
-            <p>{{ratedetalert}}</p>       
+            <p>{{rateheadalert}}</p>       
         </div>
         
             
         <div class="modal-footer">
-            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            <button type="reset" class="btn btn-info" data-dismiss="modal" (click)="myformm.reset()">OK</button>
         </div>  
         </div>
     
@@ -1242,7 +1262,7 @@
         <div class="modal-dialog vertical-align-center" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+              <h4 class="modal-title" id="exampleModalLongTitle" style="margin-bottom: -30px;margin-top: -10px;text-align: center">Select Packages</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -1251,10 +1271,11 @@
               <div class="table-responsive">
                     <table class="table-hover table-bordered table-striped" style="width:100%;">
                       <thead style="background-color: #0077B5; color: white">
+                            <th>X</th>
                             <th>Code</th>
                             <th>Description</th>
                             <th>currency</th>
-                            <th>X</th>
+                            
                       </thead>
                       <tbody>
                         <tr *ngFor="let rmtype of revenueroom">
@@ -1269,12 +1290,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>RateCode</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Repeat</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>New</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Edit</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Delete</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
       
             </div>
           </div>

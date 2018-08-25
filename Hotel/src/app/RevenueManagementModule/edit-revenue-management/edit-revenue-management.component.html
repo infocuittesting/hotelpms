@@ -10,18 +10,22 @@
                                 <b>Rate code</b>
                                 </div>
                                 <div class="col-sm-3">
-                                <select class="form-control input-sm"  style="width:150px;" [(ngModel)]="ratecodedrop" [disabled]=ratecodedis>
+                                <select class="form-control input-sm"  style="width:150px;" [(ngModel)]="editratedetaills.ratecodedrop" >
   -                                    <option  *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.ratecode_id">{{ratecdlist.rate_code}}</option>
                                 </select>
                                 </div>
+                                <div class="col-sm-3" style="margin-left: -90px">
+                                        {{editblock.ratecodedrop}} 
+                                        </div>
                             </div>
+                            
                         </div>
                     </div>
         </div>
       <div class="container-fluid" style="padding-top:-5px;padding-left:50px;"> 
   <!-- Rate details tab content -->
   <ul class="nav nav-tabs">
-          <li class="active" (click)="tabname(1);ratetabb.reset()"><a data-toggle="tab" href="#1-5Days" ><b>1-5Days</b></a></li>
+          <li class="active" (click)="tabname(1);ratetabb.reset()"><a data-toggle="tab" href="#1-5Days" ><b>1-6Days</b></a></li>
           <li  (click)="tabname(2);ratetabb.reset()"><a data-toggle="tab" href="#1-5Days">7-13Days</a></li>
           <li (click)="tabname(3);ratetabb.reset()" ><a data-toggle="tab" href="#1-5Days" >14-20Days</a></li>
           <li  (click)="tabname(4);ratetabb.reset()"><a data-toggle="tab" href="#1-5Days">21+Days</a></li>
@@ -72,14 +76,14 @@
                           <div class="col-md-4">
                               <b>StartDate</b>
                               <div class="form-group">            
-                                    <input type="date" name="stdt" class="form-control input-sm" [(ngModel)]="editratedetaills.start_date" >
+                                    <input type="date" name="stdt" [min]="date" class="form-control input-sm" [(ngModel)]="editratedetaills.start_date" >
                             </div>
                           </div>
                           <div class="col-md-4">
                                 <b style="margin-left:30px">EndDate</b>
                             
                                 <div class="form-group">            
-                                    <input type="date" name="enddt" class="form-control input-sm"  [(ngModel)]="editratedetaills.end_date">
+                                    <input type="date" name="enddt" [min]="editratedetaills.start_date" class="form-control input-sm"  [(ngModel)]="editratedetaills.end_date">
                                 </div>
                             </div>
                       
@@ -165,27 +169,36 @@
                         <div class="col-md-3">
                             <b>1 Adults</b>
                         
-                            <div class="form-group">            
-                                <input type="text" name="1adul" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.one_adult_amount">
+                            <div class="form-group">
+                                <div class="form-group" [class.has-error]="onead.touched && onead.invalid">                                                                                                                                    
+                                <input type="text" name="1adul"  id="onead" #onead="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.one_adult_amount" required>
+                                <div *ngIf="onead.touched && !onead.valid && onead.errors?.required " ngClass="{ 'has-error' : !onead.valid && submitAttempt }">                                                              
+                            </div></div>
                             </div>
                           </div>
                           <div class="col-md-3">
                                   <b>2 Adults</b>                                   
-                                  <div class="form-group">            
-                                      <input type="text" name="twoadd" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.two_adult_amount">
-                                  </div>                           
+                                  <div class="form-group">
+                                     <div class="form-group" [class.has-error]="twoadd.touched && twoadd.invalid">                                                                                                                                                                                      
+                                      <input type="text" name="twoadd" id="twoadd" #twoadd="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.two_adult_amount" required>
+                                   <div *ngIf="twoadd.touched && !twoadd.valid && twoadd.errors?.required " ngClass="{ 'has-error' : !twoadd.valid && submitAttempt }">                                                                                               
+                                    </div> </div></div>                          
                           </div>
                           <div class="col-md-3">
                                   <b>3 Adults</b>
-                                  <div class="form-group">            
-                                      <input type="text" name="threead" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.three_adult_amount">
-                                  </div>
+                                  <div class="form-group">
+                                     <div class="form-group" [class.has-error]="threead.touched && threead.invalid">                                                                                                                                                                                                                                        
+                                      <input type="text" name="threead" id="threead" #threead="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.three_adult_amount" required>
+                                      <div *ngIf="threead.touched && !threead.valid && threead.errors?.required " ngClass="{ 'has-error' : !threead.valid && submitAttempt }">                                                                                                                                 
+                                    </div></div></div>
                           </div> 
                           <div class="col-md-3">
                                   <b>4 Adults</b>
-                                  <div class="form-group">            
-                                      <input type="text" name="fouradu" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.four_adult_amount">
-                                  </div>
+                                  <div class="form-group">
+                                     <div class="form-group" [class.has-error]="fouradu.touched && fouradu.invalid">                                                                                                                                                                                                                                                                                          
+                                      <input type="text" name="fouradu" id="fouradu" #fouradu="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.four_adult_amount" required>
+                                      <div *ngIf="fouradu.touched && !fouradu.valid && fouradu.errors?.required " ngClass="{ 'has-error' : !fouradu.valid && submitAttempt }">                                                                                                                                                                       
+                                  </div></div></div>
                           </div>
                           <!-- <div class="col-md-3" style="margin-top:-17px">
                                   <b>5 Adults</b>  
@@ -195,9 +208,11 @@
                            </div> -->
                            <div class="col-md-3" style="margin-top:-17px">
                                   <b>ExtraAdults</b>
-                                  <div class="form-group">            
-                                      <input type="text" name="extra" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.extra_adult_amount">
-                                  </div>
+                                  <div class="form-group">
+                                     <div class="form-group" [class.has-error]="extra.touched && extra.invalid">                                                                                                                                                                                                                                                                                                                                            
+                                      <input type="text" name="extra" id="extra" #extra="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.extra_adult_amount" required>
+                                      <div *ngIf="extra.touched && !extra.valid && extra.errors?.required " ngClass="{ 'has-error' : !extra.valid && submitAttempt }">                                                                                                                                                                                                             
+                                  </div></div></div>
                               </div>
                     </div>
   
@@ -209,21 +224,27 @@
                     <div class="row">
                           <div class="col-md-3" style="margin-top:-17px">
                             <b>1 child</b>
-                            <div class="form-group">            
-                                <input type="text" name="onechild" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.one_child_amount">
-                            </div>
+                            <div class="form-group">
+                                <div class="form-group" [class.has-error]="onechild.touched && onechild.invalid">                                                                                                                                                                                                                                                                                                                                                                                        
+                                <input type="text" name="onechild" id="onechild" #onechild="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.one_child_amount" required>
+                                <div *ngIf="onechild.touched && !onechild.valid && onechild.errors?.required " ngClass="{ 'has-error' : !onechild.valid && submitAttempt }">                                                                                                                                                                                                                                         
+                            </div></div></div>
                           </div>
                           <div class="col-md-3" style="margin-top:-17px">
                                   <b>2 child</b>
-                                  <div class="form-group">            
-                                      <input type="text" name="twochildd" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.two_child_amount">
-                                  </div>
+                                  <div class="form-group">
+                                      <div class="form-group" [class.has-error]="twochildd.touched && twochildd.invalid">                                                                                                                                                                                                                                                                                                                                                                                                                                          
+                                      <input type="text" name="twochildd" id="twochildd" #twochildd="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%" [(ngModel)]="editratedetaills.two_child_amount" required >
+                                      <div *ngIf="twochildd.touched && !twochildd.valid && twochildd.errors?.required " ngClass="{ 'has-error' : !twochildd.valid && submitAttempt }">                                                                                                                                                                                                                                                                           
+                                    </div></div></div>
                           </div>
                           <div class="col-md-3" style="margin-top:-17px">
                                   <b>Extrachild</b>
-                                  <div class="form-group">            
-                                      <input type="text" name="extrachild" class="form-control input-sm" style="height: 4%"  [(ngModel)]="editratedetaills.extra_child_amount">
-                                  </div>
+                                  <div class="form-group">
+                                        <div class="form-group" [class.has-error]="extrachild.touched && extrachild.invalid">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                      <input type="text" name="extrachild" id="extrachild" #extrachild="ngModel" pattern="^[0-9]+$" class="form-control input-sm" style="height: 4%"  [(ngModel)]="editratedetaills.extra_child_amount" required>
+                                      <div *ngIf="extrachild.touched && !extrachild.valid && extrachild.errors?.required " ngClass="{ 'has-error' : !extrachild.valid && submitAttempt }">                                                                                                                                                                                                                                                                                                             
+                                    </div></div></div>
                           </div>
                           <!-- <div class="col-md-3" style="margin-top:-17px">
                                   <b>4 children</b>
@@ -338,14 +359,14 @@
               <button type="button" class="btn btn-Warning" style="width:110px;" data-toggle="modal" ><b>New</b></button>
           </div>
           <div class="col-md-2">
-                <button type="reset" class="btn btn-Success" style="width:110px;" data-toggle="modal" data-target="#tetmodel" (click)="ratedetins(ratecodedrop,editratedetaills);ratedetForm.reset()" ><b>Save</b></button>              
+                <button type="reset" class="btn btn-Success" style="width:110px;" data-toggle="modal" data-target="#tetmodel"  [disabled]="!ratetabb.valid" (click)="ratedetins(editratedetaills);" ><b>Save</b></button>              
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal" ><b>Close</b></button>
+              <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal" routerLink="/revenue"><b>Close</b></button>
           </div>
   
   
-        </form >  
+        </form >
         </div>
         
 
@@ -356,7 +377,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                <h4 class="modal-title" id="exampleModalLongTitle" style="text-align: center;margin-bottom: -30px;">Select Room Types</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -365,15 +386,15 @@
                 <div class="table-responsive">
                     <table class="table-hover table-bordered table-striped" style="width:100%;">
                         <thead style="background-color: #0077B5; color: white">
-                            <th>seq</th>
+                            <th>X</th>
                             <th> Room Type</th> 
                             <th> Description</th>
-                            <th>X</th>
+                            
                         </thead> 
                         <tbody> 
                             <tr *ngFor="let pack of room">
                                 <td> <input type="checkbox" (checked)="exist2(pack)" (click)="toggleSelection2(pack)"> </td>                                
-                                <td>{{pack.id}}</td>
+                                
                                 <td>{{pack.type}} </td>
                                 <td>{{pack.description}}</td>
                             </tr>
@@ -383,7 +404,6 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
                 </div>
             </div>
@@ -432,7 +452,7 @@
       </div>
   
     </div>
-  </div>
+  </div>  
   
 
   <!-- alert after ratedetails save  -->
@@ -447,7 +467,7 @@
         <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Rate details insert message</b></h4>
+            <h4 class="modal-title"><b>Rate Tier message</b></h4>
         </div>
         <div class="modal-body">
             <p>{{ratedetalert}}</p>       
@@ -455,7 +475,7 @@
         
             
         <div class="modal-footer">
-            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+            <button type="reset" class="btn btn-info" data-dismiss="modal" (click)="ratetabb.reset()">OK</button>
         </div>  
         </div>
     
