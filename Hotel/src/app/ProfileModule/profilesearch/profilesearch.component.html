@@ -2,10 +2,12 @@
  <div class="row" style="width: 99%;">
   <div class="col-md-2"></div>
   <div class="col-md-10">
+  <div class="panel panel-primary" style="margin-left: 16px;margin-top: 10px;">
+  <div class="panel-body" >
  <div class="container-fluid" style="padding-top:50px;">
- <div class="jumbotron" style="padding-top:10px;background-color:#0077B5;color:white;padding-bottom:20px;">
+ <div  style="padding-top:10px;padding-bottom:20px;">
   <!-- <form #f="ngForm">    -->
-     <div class="row">
+     <div class="row" style="margin-top: -75px">
 
      <div class="col-sm-4">
         <b>First Name</b> <div class="input-group">
@@ -23,7 +25,7 @@
      <div class="col-sm-4">
            <b>Mobile No</b> <div class="input-group">
              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
-             <input type="text" class="form-control" [(ngModel)]="mobile"></div>
+             <input type="text" class="form-control" [(ngModel)]="mobile" style="width: 90%"></div>
 
          </div>
    
@@ -32,7 +34,7 @@
 
    
    
-   <div class="row" style="padding-top:10px;">
+   <div class="row" style="padding-top:10px;margin-top: -10px;">
    
    <div class="col-lg-4">
     <b>City</b> <div class="input-group">
@@ -67,14 +69,14 @@
 
 
 
-<div class="row" style="padding-top:20px;">
+<div class="row" style="padding-top:0px;margin-bottom: -20px">
 
-<div class="col-lg-3">
+<div class="col-lg-4">
  
 <input type="checkbox"><b style="padding-left:5px;">Neg.Rates</b>
 </div>
-
-<div class="col-lg-3">
+<!-- <div class="col-lg-3"></div> -->
+<div class="col-lg-4">
  
    <input type="checkbox"><b style="padding-left:5px;">Show Inactive</b>
  </div>
@@ -83,10 +85,10 @@
    <!-- <button type="button" class="btn btn-warning" routerLink="/stables"><b>Search</b><span class="glyphicon glyphicon-search" style="padding-left:5px;"></span></button> -->
 </div>
 
- <div class="col-lg-2">
+ <div class="col-lg-4">
 <button type="reset" class="btn btn-success" (click)="clear()"><b>Clear</b></button>
 </div> 
-</div>
+</div></div></div>
   <!-- </form>  -->
  </div>
 

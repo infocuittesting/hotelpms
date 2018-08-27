@@ -34,7 +34,7 @@ export class EditRevenueManagementService {
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
    
-    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_POST_SELECT_RATECODE',options)
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_SelectRatesetupAll',options)
        .map(this.extractData)
 
   }
@@ -86,14 +86,14 @@ export class EditRevenueManagementService {
 
   }
 
-  deleteratedet(ratedetidvar):  Observable<object[]> {
+  deleteratedet(deleteids):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
-      "rate_details_id": ratedetidvar
+      "rate_details_id": deleteids
     }
-    console.log("delllllllllllllllllllll",ratedetidvar);
+    console.log("delllllllllllllllllllll",deleteids);
     return this.http.post('https://hotel360.herokuapp.com/Delete_Rate_details',body,options)
        .map(this.extractData)
 
@@ -185,7 +185,7 @@ export class EditRevenueManagementService {
 
   }
 
-  updateratedetail(ratedetail,rmid2,rmid3,tab,editratedetaills:any):  Observable<object[]> {
+  updateratedetail(ratedetail,rmid2,rmid3,tab,editratedetaills:any,ratedaysid):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
@@ -202,9 +202,9 @@ export class EditRevenueManagementService {
             "wed":editratedetaills.wed, 
             "thu":editratedetaills.thu,
             "fri":editratedetaills.fri,
-            "sat":editratedetaills.sat
+            "sat":editratedetaills.sat,
         },
-        "rate_days_id":ratedetail.rate_days_id,
+        "rate_days_id":ratedaysid,
         "one_adult_amount":editratedetaills.one_adult_amount,
        "two_adult_amount":editratedetaills.two_adult_amount,
        "three_adult_amount":editratedetaills.three_adult_amount,
@@ -236,13 +236,13 @@ export class EditRevenueManagementService {
     .map(this.extractData)
 
 }
-  ratedetins(ratecodedrop,rmid2,tab,editratedetaills:any):  Observable<object[]> {
+  ratedetins(rmid2,tab,editratedetaills:any):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
     
-      "ratecode_id":ratecodedrop,
+      "ratecode_id":editratedetaills.ratecodedrop,
       "season_code_id":editratedetaills.seasoncod,
       "start_date":editratedetaills.start_date,
       "end_date":editratedetaills.end_date,
