@@ -5,12 +5,14 @@
     <div class="cotainer-fluid">
       <div class="panel panel-primary">
         <div class="panel-body">
-          <form action="">
+          <form action="" #cleann="ngForm">
             <div class="row">
               <div class="col-md-1"><label for="code">Code</label></div>
               <div class="col-md-3">
                 <div class="input-group">
-                  <input type="text" class="form-control" id="code" name="Code" >
+                  <select class="form-control" id="code" name="Code" [(ngModel)]="codes" (ngModelChange)="onSelect(codes)" style="width:200px;">
+                    <option *ngFor="let drop of sort" [ngValue]="drop.package_code">{{drop.package_code}}</option>
+                  </select>
                 </div>
               </div>
               <div class="col-md-4">
@@ -19,56 +21,48 @@
                 </div>
               </div>
               <div class="col-md-4">
-                <button class="btn btn-success" type="button"> Clear All </button>
+                <button class="btn btn-success" type="reset" (click)="clean();cleann.reset()"> Clear All </button>
               </div>
             </div>
           </form>
         </div>
       </div>
-      <table class="table table-bordered table-hover tableBodyScroll">
+      <table class="table table-bordered table-hover">
         <thead>
           <tr class="table table-primary" style="background-color: #0077B5;color: white">
-            <th>Code</th>
+            <th> seq </th>
+            <th>Package Code</th>
+            <th> Sell Separate</th>
             <th>Description</th>
             <th>Currency</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>BKFST2</td>
-            <td>BreakFast for 2 $30 </td>
-            <td>USD</td>
+          <tr *ngFor="let item of pack; let i=index" (click)="selectMembersEdit(searched,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+            <td>{{i+1}}</td>
+            <td>{{item?.package_code}}</td>
+            <td>{{item?.sell_separate}}</td>
+            <td>{{item?.short_description}} </td>
+            <td>{{item?.currency}}</td>
           </tr>
-          <tr>
-              <td>BKFST2</td>
-              <td>BreakFast for 2 $30 </td>
-              <td>USD</td>
+          <tr style="height:34px">
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
             </tr>
-          <tr>
-           <td>BKFST2</td>
-           <td>BreakFast for 2 $30 </td>
-           <td>USD</td>
-          </tr>
-          <tr>
-              <td>BKFST2</td>
-              <td>BreakFast for 2 $30 </td>
-              <td>USD</td>
+            <tr style="height:34px">
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
             </tr>
-            <tr>
-                <td>BKFST2</td>
-                <td>BreakFast for 2 $30 </td>
-                <td>USD</td>
-              </tr>
-              <tr>
-                  <td>BKFST2</td>
-                  <td>BreakFast for 2 $30 </td>
-                  <td>USD</td>
-                </tr>
-                <tr>
-                    <td>BKFST2</td>
-                    <td>BreakFast for 2 $30 </td>
-                    <td>USD</td>
-                  </tr>                
+            <tr style="height:34px">
+              <td> </td>
+              <td> </td>
+              <td> </td>
+              <td> </td>
+            </tr>                
         </tbody>
       </table>
       <div class="row">
@@ -85,7 +79,7 @@
                 <button class="btn btn-info" type="button" style="width:100%" >Edit</button>
             </div>
             <div class="col-md-2">
-                <button class="btn btn-warning" type="button" style="width:100%" >Delete</button>
+                <button class="btn btn-warning" type="button" style="width:100%" data-toggle="modal" data-target="#packdel" (click)="delete()" >Delete</button>
             </div>
             <div class="col-md-2">
                 <button class="btn btn-danger" type="button" style="width:100%" >close</button>
@@ -94,3 +88,29 @@
     </div>
   </div>
 </div>
+
+              <!-- Package Delete Start-->
+              <div class="modal fade" id="packdel" role="dialog" vertical-align="center">
+                  <div class="modal-dialog">
+                  
+                    <!-- Modal content-->
+                    <div class="modal-content " style="margin-top: 30%;">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" align="center">Package Deleted</h4>
+                      </div>
+                      <div class="modal-body">
+                          <p align="center"><b>{{delpack}}</b></p>                             
+                      </div>
+                      <div class="modal-footer">
+                          <div class="col-md-5"></div>
+                          <div class="col-md-2">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                    <div class="col-md-5"></div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+               <!-- Package Detete End-->  
