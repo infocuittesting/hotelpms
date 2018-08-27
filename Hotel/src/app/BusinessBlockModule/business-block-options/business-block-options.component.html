@@ -133,7 +133,7 @@
               <div class="col-md-4">
                   <label for="name">Note Type</label>
                 <div class="form-group" [class.has-error]="Any.touched && Any.invalid">
-                  <select class="from-control" name="name" id="name" style="height: 30px;width:181px" [(ngModel)]="notes.notetype" (ngModelChange)="onSelect(notes.notetype)" #Any="ngModel" required>
+                  <select class="from-control" name="Note" id="name" style="height: 30px;width:181px" [(ngModel)]="notes.notetype" (ngModelChange)="onSelect(notes.notetype)" #Any="ngModel" required>
                     <option *ngFor="let option of roomtype" [ngValue]="option.id">{{option.notetype}}</option>
                   </select>
                   <div *ngIf="Any.touched && !Any.valid && Any.errors?.required " ngClass="{ 'has-error' : !Any.valid && submitAttempt }">
