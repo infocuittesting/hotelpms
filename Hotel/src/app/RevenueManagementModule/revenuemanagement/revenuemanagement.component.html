@@ -12,9 +12,9 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <div class="form-group">
-                                                <select name="rtc" class="form-control input-sm"  [(ngModel)]="editblock.ratecodedrop"  style="width:120px;height: 26px;" >
+                                                <select name="rtc" class="form-control input-sm"  [(ngModel)]="ratecodedrop"  style="width:120px;height: 26px;" >
                                                     <option value="" hidden></option>
-                                                    <option *ngFor="let rtcod of price" [ngValue] = "rtcod.ratecodedrop">{{rtcod.ratecodedrop}}</option>  
+                                                    <option *ngFor="let rtcod of price" [ngValue] = "rtcod.ratecode_id">{{rtcod.rate_code}}</option>  
                                                 </select>
                                         
                                             </div>
@@ -580,7 +580,7 @@
 
                        <!-- table content -->
                        <div class="table-responsive"  style="margin-top:0px">
-                        <div >
+                        <div>
                           
                             <table class="table table-bordered table-hover" style="width:100%;">
                             

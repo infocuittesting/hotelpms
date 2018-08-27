@@ -271,6 +271,7 @@
                        <!-- table content -->
                        <div class="table-responsive"  style="margin-top:0px">
                         <div class="scroll">
+                            <div *ngIf="currentTab" >
                           
                             <table class="table table-bordered table-hover" style="width:100%;">
                             
@@ -290,6 +291,7 @@
                               </tbody>
                             </table>
                         </div>
+                    </div>
                           </div><br><br>
                           <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray;margin-bottom:15px"> 
                                 <legend style="margin-left:5px" >Attributes</legend>
@@ -353,7 +355,7 @@
               <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" ><b>Repeat</b></button>
           </div>
           <div class="col-md-2">
-              <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal" (click)="ratdetfun()"><b>Delete</b></button>
+              <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal"  data-target="#deletetet" (click)="ratdetfun()"><b>Delete</b></button>
           </div>
           <div class="col-md-2">
               <button type="button" class="btn btn-Warning" style="width:110px;" data-toggle="modal" ><b>New</b></button>
@@ -505,4 +507,28 @@
     </div>
     </div>
 </div>
+
+<div class="modal fade" id="deletetet" role="dialog">
+        <div class="vertical-alignment-helper">  
+        <div class="modal-dialog vertical-align-center modal-sm">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><b>Rate Tier message</b></h4>
+            </div>
+            <div class="modal-body">
+                <p>{{ratedetalert}}</p>       
+            </div>
+            
+                
+            <div class="modal-footer">
+                <button type="reset" class="btn btn-info" data-dismiss="modal" (click)="ratetabb.reset()">OK</button>
+            </div>  
+            </div>
+        
+        </div>
+        </div>
+    </div>
   

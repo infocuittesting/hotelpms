@@ -30,10 +30,10 @@
       <br>
       <div class="row">
         <div class="col-md-4">                  
-             <label class="checkbox-inline" for="resolve"> <input type="checkbox" style="zoom:1" id="resolve"  name="resolve">Resolved</label>
+             <label class="checkbox-inline" for="resolve"> <input type="checkbox" style="zoom:1" id="resolve"  name="resolve" [(ngModel)]="checkboxValue" (change)="newFunction()">Resolved</label>
         </div>
        <div class="col-md-4">
-            <label class="checkbox-inline" for="unresolve"><input type="checkbox" style="zoom:1" id="unresolve"  name="unresolve"> Unresolved</label>
+            <label class="checkbox-inline" for="unresolve"><input type="checkbox" style="zoom:1" id="unresolve"  name="unresolve" [(ngModel)]="checkValue" (change)="fuc()"> Unresolved</label>
        </div>
        <div class="col-md-2">
              <button class="btn btn-success" style="width: 100%">All </button>  
@@ -58,7 +58,7 @@
       </tr>
   </thead>
   <tbody>
-          <tr *ngFor="let list of gettrace let i=index" > 
+          <tr *ngFor="let list of gettrace|resolve:checkboxValue:'resloved_on'|resolve:checkValue:'resloved_on'; let i=index" > 
              <td>{{i+1}}</td>    
              <td>{{list.pf_firstname}}</td>        
              <td>{{list.traces_date}}</td>         

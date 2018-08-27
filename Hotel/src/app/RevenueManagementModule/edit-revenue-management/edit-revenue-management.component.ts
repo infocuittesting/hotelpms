@@ -38,6 +38,7 @@ export class EditRevenueManagementComponent implements OnInit {
   public rateheader:any={};
   public funct=[];
   public databindvalues=[];
+  tierFlag=0;
 
  
   public ncode=[ 
@@ -329,6 +330,7 @@ public edit_data_binding:any = [];
 public edit_data_bind:any = [];
 ratedetidvar=[];
 room_types=[];
+deleteids=[];
 selectindexx=null
     selectMembers1(detailss,indexx)
       {
@@ -360,6 +362,7 @@ selectindexx=null
         }
            
       this.selectindexx=indexx; 
+      this.deleteids = detailss.rate_details_id;
       this.ratedetail.ratedetailid =detailss.rate_details_id;
       this.ratedetail.roomsid = detailss.rooms_id;
       this.ratedetail.packageid = detailss.packages_id;
@@ -380,13 +383,13 @@ selectindexx=null
     delratalert:any;
     ratdetfun(){
       
-      this.EditRevenuemanagement.deleteratedet(this.ratedetidvar)
+      this.EditRevenuemanagement.deleteratedet(this.deleteids)
       .subscribe((resp: any) => {
       this.delratdet=resp.ReturnCode;
       console.log(this.delratdet); 
        if(this.delratdet=='RDS')
         {
-        this.delratalert="RateDetails Tier successfully";
+        this.delratalert="RateTier deleted successfully";
         }
       else
         {

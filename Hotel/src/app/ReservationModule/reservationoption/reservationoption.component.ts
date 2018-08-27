@@ -587,7 +587,7 @@ public  downloadPDF(){
     'elementHandlers': specialElementHandlers
   });
 
-  doc.save('test.pdf');
+  doc.save('a4.pdf');
 }
 }
 

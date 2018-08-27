@@ -73,8 +73,15 @@ public options = [];
   console.log(val);
   this.profile1 = this.someData.filter(x => x.pf_type == val)
 }
-
-
+showMore;
+  //show more
+  showMoreBut(){
+    this.showMore=true;
+  }
+  //show less
+  showLessBut(){
+    this.showMore=false;
+  }
 update(inputt):void {
 
   console.log(inputt);

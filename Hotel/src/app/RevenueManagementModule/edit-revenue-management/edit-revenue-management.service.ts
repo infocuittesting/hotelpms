@@ -86,14 +86,14 @@ export class EditRevenueManagementService {
 
   }
 
-  deleteratedet(ratedetidvar):  Observable<object[]> {
+  deleteratedet(deleteids):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
-      "rate_details_id": ratedetidvar
+      "rate_details_id": deleteids
     }
-    console.log("delllllllllllllllllllll",ratedetidvar);
+    console.log("delllllllllllllllllllll",deleteids);
     return this.http.post('https://hotel360.herokuapp.com/Delete_Rate_details',body,options)
        .map(this.extractData)
 

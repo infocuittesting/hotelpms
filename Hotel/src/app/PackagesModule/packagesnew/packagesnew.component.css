@@ -1,11 +1,6 @@
-table{
-
-    font-size:16px;
-   
-   }
-   .tableBodyScroll tbody {
+.tableBodyScroll tbody {
     display:block;
-    max-height:250px;
+    max-height:300px;
     overflow-y:scroll;
     table-layout:fixed;
     }
@@ -13,8 +8,4 @@ table{
     display:table;
     width:100%;
     table-layout:fixed;
-    }  
-   
-   .backgroundcolor{
-    background-color: lightgrey;
-}
+    }

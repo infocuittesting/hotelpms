@@ -4,8 +4,8 @@
     <div class="col-md-10">
       <br>
       <br>
-      <div class="panel panel-primary" style="border:solid 1px;margin-top: -25px;border-color: lightgray">
-        <div class="panel-body">
+      <div class="panel panel-primary" style="border:solid 1px;margin-top: -28px;border-color: lightgray">
+        <div class="panel-body" style="margin-top: -22px;max-height: 102px;">
           <div class="container-fluid">
             <br>
 
@@ -95,8 +95,8 @@
       </div>
 
 
-      <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray">
-        <div class="panel-body">
+      <div class="panel panel-primary" style="border:solid 1px;border-color: lightgray" style="margin-top: -8px;">
+        <div class="panel-body" style="max-height: 156px;">
           <div class="container-fluid">
 
 
@@ -106,7 +106,7 @@
                 <div class="col-md-2">
                   <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" disabled class="form-control" name="blockname" [value]="editblock.block_name">
+                    <input type="text" disabled class="form-control" name="blockname" [value]="editblock.block_name" style="height: 30px;">
                   </div>
 
                 </div>
@@ -124,7 +124,7 @@
                   <div class="form-group">
                     <label for="name">Origin</label>
                     <!-- <span style="text-align: center;"><i>{{editblock.origindescription}}</i></span> -->
-                    <select class="form-control" name="origin" [(ngModel)]="editblock.origindescription">
+                    <select class="form-control" name="origin" [(ngModel)]="editblock.origindescription" style="height: 30px;">
                       <option value="" hidden></option>
                       <option *ngFor="let selectorigin of origin" [ngValue]="selectorigin.origindescription">{{selectorigin.origindescription}} </option>
                       <!-- selectorigin.origindescription -->
@@ -136,7 +136,7 @@
                 <div class="col-md-2">
                   <div class="form-group">
                     <label>Status</label>
-                    <select name="state" class="form-control" [(ngModel)]="editblock.status">
+                    <select name="state" class="form-control" [(ngModel)]="editblock.status" style="height: 30px;">
                       <option value="" hidden></option>
                       <option *ngFor="let selectstatus of blockstatus" [ngValue]="selectstatus.status">{{selectstatus.status}} </option>
                     </select>
@@ -145,7 +145,7 @@
                 <div class="col-md-2">
                   <div class="form-group">
                     <label for="name">Source</label>
-                    <select class="form-control" name="source" [(ngModel)]="editblock.sourcedescription">
+                    <select class="form-control" name="source" [(ngModel)]="editblock.sourcedescription" style="height: 30px;">
                       <option value="" hidden></option>
                       <option *ngFor="let selectsource of source" [ngValue]="selectsource.sourcedescription">{{selectsource.sourcedescription}}
                       </option>
@@ -160,7 +160,7 @@
 
                   <div class="form-group">
                     <label for="name">Market</label>
-                    <select class="form-control" name="market" [(ngModel)]="editblock.marketgroup_description">
+                    <select class="form-control" name="market" [(ngModel)]="editblock.marketgroup_description" style="height: 30px;">
                       <option value="" hidden></option>
                       <option *ngFor="let selectmarket of market" [ngValue]="selectmarket.marketgroup_description">{{selectmarket.marketgroup_description}} </option>
 
@@ -185,7 +185,7 @@
                 <div class="col-md-2">
                   <label for="Name">Type</label>
                   <div class="form-group">
-                    <select class="form-control" name="type" [(ngModel)]="editblock.block_type">
+                    <select class="form-control" name="type" [(ngModel)]="editblock.block_type" style="height: 30px;">
                       <option value="" hidden></option>
                       <option *ngFor="let selectblocktype of blocktype" [ngValue]="selectblocktype.block_type">{{selectblocktype.block_type}} </option>
 
@@ -197,7 +197,7 @@
                 <div class="col-md-2">
                   <div class="form-group">
                     <label for="room">Owner</label>
-                    <input type="text" class="form-control input-sm" name="owner" [(ngModel)]="editblock.owner">
+                    <input type="text" class="form-control input-sm" name="owner" [(ngModel)]="editblock.owner" style="height: 30px;">
                   </div>
                 </div>
               </div>
@@ -688,7 +688,7 @@
           <button class="btn btn-info" routerLink="/options" style="width:100%" disabled>Options</button>
         </div>
         <div class="col-md-2">
-          <button class="btn btn-success" style="width:100%" data-toggle="modal" data-target="#myModal4" (click)="editblockheader(editblock)">ok</button>
+          <button class="btn btn-success" style="width:100%" data-toggle="modal" data-target="#myModal4" (click)="editblockheader(editblock)">Save</button>
         </div>
        
         <div class="col-md-2">

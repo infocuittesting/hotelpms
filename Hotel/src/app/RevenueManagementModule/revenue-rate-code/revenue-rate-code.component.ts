@@ -85,16 +85,20 @@ export class RevenueRateCodeComponent implements OnInit {
   }
 
 
-  selectindex=null
+  selectindex=null;
   okbutn=true;
   edbutn=true;
   edbutns=false;
   delbutn=true;
   ratecdid=[];
   public deleteid;
+  flag=false;
   
   //select values from table on click
   selectMembers(details,index){
+    if(this.flag==false){
+
+    this.flag=true;
     this.okbutn=false;
     this.edbutn=false;
     this.edbutns=true;
@@ -114,7 +118,14 @@ export class RevenueRateCodeComponent implements OnInit {
     
     
    console.log("ratecodeeeeeeeeeeeeeeeeeeeeeeeeee",details.ratecode_id,this.ratecdid)
+  }else{
+    this.flag=false;
+    this.selectindex=null;
+    this.edbutns=false;
+    this.edbutn=true;
+
   }
+}
 
   loadrevenue(params){
     

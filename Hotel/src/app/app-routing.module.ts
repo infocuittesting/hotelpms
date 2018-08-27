@@ -60,6 +60,10 @@ import { BlockRangeSettingComponent } from './BusinessBlockModule/block-range-se
 import { EditBusinessBlockComponent } from './BusinessBlockModule/edit-business-block/edit-business-block.component';
 import { QueryReservationListComponent} from './BusinessBlockModule/query-reservation-list/query-reservation-list.component'
 
+//Packages Module
+import { PackagesComponent } from './PackagesModule/packages/packages.component'; 
+import { PackagesnewComponent } from './PackagesModule/packagesnew/packagesnew.component'; 
+
 
 const routes: Routes = [ { path:'individualprofile', component:IndividualprofileComponent},
 { path:'reservation', component: ReservationComponent },
@@ -111,6 +115,9 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 {path:"blockrange",component:BlockRangeSettingComponent},
 {path:"editblock",component:EditBusinessBlockComponent},
 {path:"queryreservation",component:QueryReservationListComponent},
+//packages Module
+{path:"packages",component:PackagesComponent},
+{path:"packagecodenew",component:PackagesnewComponent},
 ];
 
 @NgModule({
@@ -125,4 +132,4 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
   ProfileComponent,ProfilesearchComponent,SearchandeditreservationComponent,HousekeepingComponent,QueueroomComponent,RoomdiscrepanciesComponent,RoomconditionComponent
 ,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
-BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,RevenueRateCodeComponent,EditRevenueManagementComponent]
+BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent]
