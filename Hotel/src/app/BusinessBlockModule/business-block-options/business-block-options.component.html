@@ -1,4 +1,4 @@
-<div class="row" style="width:99%;">
+<div class="row" style="width:99%; margin-top: 43px;">
   <div class="col-md-2"></div>
   <div class="col-md-10">
     <div class="col-md-2"></div>
@@ -113,27 +113,31 @@
       <div class="modal-dialog model-lg">
       
         <!--Third Modal content-->
-        <div class="modal-content" style="width:150%">
-        <div class="modal-header">
+        <div class="modal-content" style="width:116%;margin-left: -19px;">
+        <div class="modal-header" style="margin-top: -16px;">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Notes</h4>
           <p><b>[ blockname:</b><b style="color: #ffb100"> {{Name}}</b>,<b>blockid:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="max-height: 416px;">
           <div class="container-fluid"  >
             <form action="">
-          <div class="row" style="width: 70%;">
+          <div class="row" style="width: 70%; margin-top: -31px;">
             <br>
               <div class="col-md-4" >
                   <label for=""> Date</label>
                 <div class="form-group">
-                  <input type="text" [value]="now" name="Date" [(ngModel)]="now"class="form-Control" [(ngModel)]="notes.notesdate">
+                  <input type="text" [value]="now" name="Date" [(ngModel)]="now"class="form-Control" [(ngModel)]="notes.notesdate" style="width: 141%;">
                 </div>
               </div>
               <div class="col-md-4">
-                  <label for="name">Note Type</label>
+                  <label for="name" style="margin-left: 33px;">Note Type</label>
                 <div class="form-group" [class.has-error]="Any.touched && Any.invalid">
+<<<<<<< HEAD
                   <select class="from-control" name="Note" id="name" style="height: 30px;width:181px" [(ngModel)]="notes.notetype" (ngModelChange)="onSelect(notes.notetype)" #Any="ngModel" required>
+=======
+                  <select class="from-control" name="name" id="name" style="height: 30px;width:181px;margin-left: 33px" [(ngModel)]="notes.notetype" (ngModelChange)="onSelect(notes.notetype)" #Any="ngModel" required>
+>>>>>>> d85f209e7b016e54711bb804df5e4f684abccb53
                     <option *ngFor="let option of roomtype" [ngValue]="option.id">{{option.notetype}}</option>
                   </select>
                   <div *ngIf="Any.touched && !Any.valid && Any.errors?.required " ngClass="{ 'has-error' : !Any.valid && submitAttempt }">
@@ -147,26 +151,26 @@
              
               </span>
               <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-8" style="margin-top: -22px;">
                     <label for="name">Title</label>
                   <div class="from-group">
-                    <input type="text" class="from-control input-sm" name="title"style="width:500px;margin-left: 0px;"[(ngModel)]="notes.title">
+                    <input type="text" class="from-control input-sm" name="title"style="width:364px;margin-left: 0px;"[(ngModel)]="notes.title">
                   </div>
                 </div>
               </div>
               <br>
             </div>
               <br>
-              <div class="container" style="width:105%;margin-left:-22px;">
+              <div class="container" style="width:107%;margin-left:-22px; margin-top: -29px;">
                 <div class="jumbotron">
                   <label  style="margin-top: -38px;margin-left: -51px;">Description</label>
-                 <textarea name="Description" id="" cols="10" rows="5"style="width:113%;height: 113px;margin-left:-50px;"[(ngModel)]="notes.description"></textarea> 
+                 <textarea name="Description" id="" cols="4" rows="1"style="width:113%;height: 69px;margin-left:-50px;"[(ngModel)]="notes.description"></textarea> 
                 </div>
               </div>
           
         
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer" style="margin-top: -47px;">
           <button type="button" class="btn btn-success" data-dismiss="modal" style="width:100px;" (click)="insertnotes(notes)" data-toggle="modal" data-target="#myModal4"><b>ok  </b></button>
           <button type="button" class="btn btn-danger" data-dismiss="modal"style="width:100px;"><b>Close</b></button>
         </div>
@@ -181,8 +185,8 @@
           <div class="modal-dialog modal-lg">
           
             <!-- Modal content-->
-            <div class="modal-content" style="width:99%;">
-            <div class="modal-header">
+            <div class="modal-content" style="width:84%;margin-left: 60px;">
+            <div class="modal-header" style="margin-top: -16px;">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
              <h4>Cancel A Group</h4>
              <p><b>[ blockname:</b><b style="color: #ffb100"> {{Name}}</b>,<b>blockid:</b> <b style="color: #ffb100">{{Id}}</b>]</p>
@@ -191,7 +195,7 @@
             <!-- <b align="center">{{profile}}</b> -->
             
             <div class="continer-fluid" >            
-              <div class="row">
+              <div class="row" style="margin-top: -13px;">
                 <div class="col-md-4" style="margin-left:10px;">
                     <div class="form-group" style="width:82%;">
                         <label for="room">Block Id</label>
@@ -216,10 +220,10 @@
           <div class="continer-fluid">
             <div class="jumbotron">
                 <label style="margin-top: -29px;">Description</label>
-              <textarea name="Description" id="" cols="10" rows="5"style="width: 99%;height: 117px;;margin-left: 3px;"[(ngModel)]="cancel.description"></textarea>
+              <textarea name="Description" id="" cols="10" rows="5"style="width: 99%;height: 65px;;margin-left: 3px;"[(ngModel)]="cancel.description"></textarea>
             </div>
           </div>
-          <div class="from-group" style="width:150px;">
+          <div class="from-group" style="width:150px; margin-top: -31px;">
             <label for="text">Destination</label>
             <select class="from-control input-sm" id="set3" style="width:150px"[(ngModel)]="cancel.Destination">
               <option>Marriot</option>
