@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
   providers :[BusinessBlockSearchService]
 })
 export class BusinessBlockSearchComponent implements OnInit {
-  public tableschanges;
+  public tableschanges=[];
   public roomtype=[];
   public statustype=[];
   blockopt=true;
@@ -26,11 +26,13 @@ export class BusinessBlockSearchComponent implements OnInit {
   grop = true;
   newblockbut=false;
   public querylist=[];
-  constructor(private blocksearch:BusinessBlockSearchService,private route:Router,public session:SessionStorageService) { }
-  onSelcat(val){
-    console.log(val);
-    this.tableschanges = this.someData.filter(x => x.status == val)
-  }
+  constructor(private blocksearch:BusinessBlockSearchService,private route:Router,public session:SessionStorageService) {this.tableschanges=this.someData }
+  // onSelcat(val){
+  //   console.log(val);
+  //   this.tableschanges = this.someData.filter(x => x.status == val)
+  // }
+
+ 
 
 
   ngOnInit() {
@@ -52,7 +54,14 @@ export class BusinessBlockSearchComponent implements OnInit {
     //  console.log(this.roomtype);
     });
 
-  }//show more
+  }
+  
+  
+  onSel(val){
+    console.log(val);
+    this.tableschanges = this.someData.filter(x => x.status == val)
+  }
+  //show more
   showMoreBut(){
     this.showMore=true;
   }

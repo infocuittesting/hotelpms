@@ -28,6 +28,8 @@ public inventory=[];
 public ratecode=[];
 public restype=[];
 public blocktype=[];
+editblock:any = {};
+public selected1=[];
 
 
 public block:any={};
@@ -44,6 +46,7 @@ public navtag:any;
 public start;
 public end;
 public night;
+public revenueroom=[];
 user:any={};
 
 
@@ -102,6 +105,12 @@ this.businessblock.cancelreasondropdown()
 .subscribe((resp: any) => {
     this.cancelreason=resp.ReturnValue;
      console.log(this.cancelreason);
+ });
+ //packages
+ this.businessblock.revenuepackages()
+ .subscribe((resp: any) => {
+   this.revenueroom = resp.Return;
+   console.log("package value",this.revenueroom)
  });
 
 //  Meetingspacetpye dropdown......................
@@ -198,8 +207,39 @@ this.businessblock.BlockTypedropdown()
          this.blocksuccess="something"
      }
  });
- 
   }
+ 
+  selected_id1 = [];
+  selected_code = [];
+  idx1: any;
+  public rmid1:any;
+  public rmcodes:any;
+  exist1(item) {
+    this.selected1.indexOf(item) > -1;
+  }
+  toggleSelection1(item) {
+    this.idx1 = this.selected1.indexOf(item);
+    // this.room_type += item.type
+    console.log("string", item)
+    if (this.idx1 > -1) {
+      this.selected1.splice(this.idx1, 1);
+      this.selected_id1.splice(this.idx1, 1);
+      this.selected_code.splice(this.idx1, 1);
+
+    }
+    else {
+      this.selected1.push(item);
+      this.selected_id1.push(item.package_code_id);
+      this.selected_code.push(item.package_code);
+
+    }
+    this.rmcodes = this.selected_code.toString();
+    this.rmid1 = this.selected_id1.toString();
+    console.log("selected id", this.rmid1);
+    console.log("selected code", this.rmcodes);
+
+  }
+  
   
 // create paymaster for resv button.............................................
 //   CreatePaymaster(){
@@ -285,4 +325,7 @@ this.businessblock.BlockTypedropdown()
 //     sessionStorage.clear();
 // }
 
+// roompackages(){
+  
+// }
 }

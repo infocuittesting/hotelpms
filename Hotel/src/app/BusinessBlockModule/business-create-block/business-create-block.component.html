@@ -88,7 +88,7 @@
     <div class="col-md-2">
         <div class="form-group">
           <label for="name" style="margin-left: 59px;">Block Name</label>
-            <input type="text" class="form-control"name="blockname" [value]="block_name" style="margin-left: 59px;"> 
+            <input type="text" class="form-control" name="block" [value]="block_name" style="margin-left: 59px;"> 
       </div>
 
 </div>
@@ -102,7 +102,7 @@
             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
             <input type="date" name="arrival"required class="form-control" placeholder="Enter your User Name" style="width:157px;"
             [(ngModel)]="user.RES_Arrival" (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #arrivaldate="ngModel"/></div>
-            <div class="alert alert-danger" *ngIf="arrivaldate.touched && !arrivaldate.valid && arrivaldate.errors.required" style="width:211px;">arrival date is required </div>
+     
           </div>
       
   
@@ -269,14 +269,27 @@
                      </select>
                    </div>
                   </div>
-                   <div class="col-md-2">
+                   <!-- <div class="col-md-2">
               <div class="form-group">
+                  <span class="input-group-addon" data-toggle="modal" data-target="#rateheadpack"> <i class="glyphicon glyphicon-option-horizontal"></i>   </span>  
                 <label for="name">Packages</label>
-                <input type="text" class="form-control input-sm" name="packages" id=""[(ngModel)]="block.packagess" [value]="pack">
+               <input name="Package1" class="form-control input-sm"  style="width:70%;height: 27px;" [(ngModel)]="editblock.type" type="text" [value]="rmcode" disabled>
+                <input type="text" class="form-control input-sm" name="packages"
+                 id=""[(ngModel)]="block.packagess" [value]="pack"> 
               </div>     
-              </div>
+              </div> -->
+              <div class="col-md-3">
+                  <b>Package</b>
+                  <div class="input-group">
+                   <span class="input-group-addon" data-toggle="modal" data-target="#rateheadpack" > <i class="glyphicon glyphicon-option-horizontal"></i>   </span> 
+                  <input type="text"  class="form-control input-sm" name="packages"  style="width:59%;height: 27px;" [(ngModel)]="editblock.type"   [value]="rmcodes" > 
+                   <!-- <input name="omg" class="form-control input-sm" [(ngModel)]="editblock.types" type="text" [value]="rmcodes" [(ngModel)]="editblock.type"> -->
+                         <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
+                     <!-- </select> -->
+                 </div>
+                  </div>
             
-              <div class="col-md-2">
+              <div class="col-md-2" style="margin-left: -87px;    margin-top: -5px;">
                 <div class="form-group">
                   <label for="name">Inventory control</label>
                   <select class="form-control input-sm" name="Invcontrol" id=""[(ngModel)]="block.inventorys" [value]="invcl">
@@ -288,7 +301,7 @@
               <div class="col-md-2">
                   <div class="form-group">
                     <label for="name">Followup Date</label>
-                    <input type="date" class="form-control input-sm"[(ngModel)]="block.followdates" [value]="flodate">
+                    <input type="date" class="form-control input-sm"[(ngModel)]="block.followdates" [value]="flodate" style="margin-top: -5px;">
                   </div>
                 </div>
                 <div class="col-md-2" style="margin-top: -45px;">
@@ -589,7 +602,7 @@
                         <button class="btn btn-primary" style="width:100%">Save</button>
                       </div> -->
                       <div class="col-md-2">
-                        <button class="btn btn-warning" style="width:100%">Close</button>
+                        <button class="btn btn-warning" routerLink="/mains" style="width:100%">Close</button>
                       </div>
               </div>
             </div>
@@ -719,4 +732,55 @@
 
   </div>
 </div>
+</div>
+
+<!-- package model -->
+
+<div class="modal fade" id="rateheadpack" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+    <div class="vertical-alignment-helper">   
+    <div class="modal-dialog vertical-align-center" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModal"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <table class="table-hover table-bordered table-striped" style="width:100%;">
+                    <thead style="background-color: #0077B5; color: white">
+                    <th>Code</th>
+                    <th>Description</th>
+                    <th>currency</th>
+                    <th>X</th>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let Packagemodel of revenueroom">
+                            <td> 
+                                <input type="checkbox" name="checdetailsll" id="one" (checked)="exist1(Packagemodel)" (click)="toggleSelection1(Packagemodel)">
+                                        
+                            </td>
+                            <td >{{Packagemodel.package_code}}</td>
+                            <td>{{Packagemodel.package_code_description}} </td>
+                            <td>{{Packagemodel.package_code_currency}}</td>
+                       
+                    </tr>
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>RateCode</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Repeat</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>New</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Edit</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" disabled>Delete</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+
+        </div>
+        </div>
+    </div>
+    </div>  
 </div>
