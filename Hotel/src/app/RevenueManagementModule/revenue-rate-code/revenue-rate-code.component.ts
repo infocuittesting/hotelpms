@@ -43,7 +43,7 @@ export class RevenueRateCodeComponent implements OnInit {
   });
    this.RevenueRateCodeService.ratecodedropdown()
     .subscribe((resp: any) => {
-     this.ratcode=resp.Return;
+     this.ratcode=resp.Rate_header;
      console.log("ratecode",this.ratcode)
    });
 
@@ -67,7 +67,7 @@ export class RevenueRateCodeComponent implements OnInit {
 
      if(this.delvar=='RDS')
      {
-     this.delalert="Ratecode deleted successfully";
+     this.delalert=""+this.deleteid+" Ratecode deleted successfully";
      }
    else
      {
@@ -85,18 +85,26 @@ export class RevenueRateCodeComponent implements OnInit {
   }
 
 
-  selectindex=null
+  selectindex=null;
   okbutn=true;
   edbutn=true;
+  edbutns=false;
   delbutn=true;
   ratecdid=[];
+  public deleteid;
+  flag=false;
   
   //select values from table on click
   selectMembers(details,index){
+    if(this.flag==false){
+
+    this.flag=true;
     this.okbutn=false;
     this.edbutn=false;
+    this.edbutns=true;
     this.delbutn=false;
     this.selectindex=index; 
+    this.deleteid=details.rate_code;
     console.log("detailsssssssssssssssssssss",details);
     this.ratecdid=details.ratecode_id;   
     this.session.store("ratecodeedit",details.ratecode_id);
@@ -110,7 +118,14 @@ export class RevenueRateCodeComponent implements OnInit {
     
     
    console.log("ratecodeeeeeeeeeeeeeeeeeeeeeeeeee",details.ratecode_id,this.ratecdid)
+  }else{
+    this.flag=false;
+    this.selectindex=null;
+    this.edbutns=false;
+    this.edbutn=true;
+
   }
+}
 
   loadrevenue(params){
     
@@ -120,6 +135,13 @@ export class RevenueRateCodeComponent implements OnInit {
       this.session.store("ratecodenav",params);
     }
     this.route.navigate(['revenue/']);
+  }
+  clear(){
+    this.RevenueRateCodeService.selratecode()
+    .subscribe((resp: any) => {
+     this.mainratecode=resp.Rate_header;
+     this.mainratecode
+   });
   }
 
 }

@@ -874,19 +874,20 @@
         <div class="modal-body">
             <div>
                 <br>
-                    <table style=" width:95%; margin-left: 2%; border: 1px solid lightgray;height:70px;background-color:#0077B5;color:white;">
+                    <table style=" width:95%; margin-left: 2%; height:70px;">
                        <tr>
-                        <td style="padding-left:30px;"><b>Note Type</b></td>
+                         <td></td>
+                        <td style="padding-left:130px"><b>Note Type</b></td>
           <td style="padding-left:15px;">
-              <select [(ngModel)]="notetypeselection" (change)="notesfilter(notetypeselection)" name="notetypeselect" required style="height:34px;width:250px;color:black;" >
+              <select [(ngModel)]="notetypeselection" (change)="notesfilter(notetypeselection)" name="notetypeselect" required style="height:34px;width:250px;color:black;margin-right: 290px;" >
                   <option *ngFor="let notecode of note1" [ngValue] = "notecode.notetype">{{notecode.notetype}} </option>
                  </select>
               
         </td>
           
           
-          <td><b>Internal Only</b></td>
-          <td><input type="checkbox" style="width:20px;height:20px;"></td>
+          <td><b style="margin-left: -303px;">Internal Only</b></td>
+          <td><input type="checkbox" style="width:20px;height:20px;margin-left: -250px"></td>
           
           
           
@@ -1100,7 +1101,7 @@
           
           <!-- Modal body -->
           <div class="modal-body">
-              <table style=" border: 1px solid lightgray;background-color:#0077B5;color:white;">
+              <table >
                         
                   <tr>
                   <td style="padding-left:30px;"><b>Rate Code</b></td>

@@ -1,63 +1,57 @@
-.modal {
+/* .modal {
     text-align: left;
   padding: 0!important;
-}
-.vertical-alignment-helper {
+} */
+/* .vertical-alignment-helper {
     display:table;
     height: 100%;
     width: 100%;
-}
-.vertical-align-center {
-    /* To center vertically */
+} */
+
+/* .vertical-align-center {
+   
     display: table-cell;
     vertical-align: middle;
-}
-.modal-content {
+} */
+
+/* .modal-content { */
     /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
-    width:inherit;
-    height:inherit;
-    /* To center horizontally */
+    /* width:inherit;
+    height:inherit; 
     margin: 0 auto;
-}
+} */
 
-.scrollhid{
+/* .scrollhid{
     overflow-x: hidden;
-}
-
+} */
 .backGroundColor{
     background-color:lightgrey;
 }
-hr{
+/* hr{
     margin-top:5px !important;
     margin-bottom: 5px !important;
-}
+} */
 .form-control{
     height:30px;
 }
-.table-responsive {
+/* .table-responsive {
 
-    height:20%;
+    height:45%;
     width:100%;
     overflow-x: auto;
      overflow-y: auto; 
-   }
-   .scrollable {
+   } */
+   /* .scrollable {
     height: 20%;
     width: 100%;
     overflow-y: auto; 
-}
-.scrollable2{
+} */
 
-    height:20%;
+   /* .scrollable3{
+
+    height:60%;
     width:100%;
     overflow-x: auto;
     overflow-y: auto;
-   }
-   .scrollable3{
-
-    height:50%;
-    width:100%;
-    overflow-x: auto;
-    overflow-y: auto;
-   }
+   } */
    

@@ -1,16 +1,18 @@
 
-<div class="scrollhid">
+<!-- <div class="scrollhid" style="overflow-x: hidden;"> -->
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-10">
     <div class="row"  style="padding-top:5px;">
     
       <div class="container">
-        <div class="jumbotron jumbotron-fluid" style="background-color:0077B5;color:white;padding-top:20px;padding-bottom:1%;margin-left:5px;margin-right:1%;margin-bottom:1%;width:98%;">
+        <div class="panel panel-primary" style="border-color: lightgray;margin-left: 15px;margin-right: 22px;margin-bottom: 10px">
+          <div class="panel-body" style="    margin-bottom: -45px;margin-top: -13px;">
+        <div class="jumbotron jumbotron-fluid" style="background-color: white;padding-top:20px;padding-bottom:1%;margin-left:5px;margin-right:1%;width:98%;">
         
                       
-            <form style="margin-bottom:1px;">
-                <div class="row" *ngFor="let tryitem of navigat;let i=index">
+            <form style="margin-bottom:1px;margin-left: -155px;margin-bottom: -20px;">
+                <div class="row" *ngFor="let tryitem of navigat;let i=index" style="margin-top: -20px;margin-right: -217px">
                   <div class="col-md-1"></div>
                   <div class="col-md-2">
                     <label for="room">Balance</label>
@@ -55,39 +57,39 @@
       
               </div>
       
-               <div class="row" *ngFor="let secondatmpt of navigat;let i=index">
+               <div class="row" *ngFor="let secondatmpt of navigat;let i=index" style="margin-right: -217px">
                 <div class="col-md-1"></div>
                 
                 <div class="col-md-2">
-                    <label for="room">Status</label>
+                    <label for="room" style="margin-top: -15px">Status</label>
                 <div class="form-group">
                   <input type="text" name="bilstat" class="form-control input-sm" style="height:27px;width:70%;" [(ngModel)]="secondatmpt.res_guest_status" disabled>
                 </div>
               </div>
                 
               <div class="col-md-2">
-                  <label for="name">Departure</label>
+                  <label for="name" style="margin-top: -15px">Departure</label>
                 <div class="form-group">            
                   <input type="text" name="bildep" class="form-control input-sm" style="width:70%;height:27px;" [(ngModel)]="secondatmpt.res_depature" disabled>
                 </div>
               </div>
       
               <div class="col-md-2">
-                  <label for="group">Group</label>
+                  <label for="group" style="margin-top: -15px">Group</label>
                 <div class="form-group">           
                   <input type="text" name="bilgrp" class="form-control input-sm" style="height:27px;width:70%;" disabled>
                 </div>
               </div>
                
               <div class="col-md-2">
-                  <label for="group">Rate</label>
+                  <label for="group" style="margin-top: -15px">Rate</label>
                 <div class="form-group">           
                   <input type="text" name="bilrat" class="form-control input-sm" style="height:27px;width:70%;" [(ngModel)]="secondatmpt.res_rate" disabled>
                 </div>
               </div>
       
               <div class="col-md-2">
-                  <label for="company">Room Type</label>
+                  <label for="company" style="margin-top: -15px">Room Type</label>
                  <div class="form-group">            
                   <input type="text" name="bilrmtyp" class="form-control input-sm" style="height:27px;width:70%;" [(ngModel)]="secondatmpt.res_room_type" disabled> 
                 </div>
@@ -99,28 +101,28 @@
                
               </form>
         </div>
-        </div>
+        </div></div></div>
       </div>
  
 
   <div class="row" *ngFor="let window of windowbal">
   <div class="col-md-6">
     <div class="col-md-6">
-        <label style="margin-left:8%;">(1) {{name}}</label> 
+        <label style="margin-left:8%;margin-top: -10px;">(1) {{name}}</label> 
     </div>
     <div class="col-md-5"></div>
-    <div class="col-md-1" style="margin-left:-12%;">
+    <div class="col-md-1" style="margin-left:-12%;margin-top: -10px;">
         <label>Balance:{{window.w1_total}}</label>
     </div>
   </div>
 
   <div class="col-md-6">
       <div class="col-md-6">
-          <label>(2) {{name}}</label> 
+          <label style="margin-top: -10px;">(2) {{name}}</label> 
       </div>
       <div class="col-md-2"></div>
       <div class="col-md-3">
-          <label>Balance:{{window.w2_total}}</label>
+          <label style="margin-top: -10px;">Balance:{{window.w2_total}}</label>
       </div>
     </div> 
   </div>
@@ -144,7 +146,7 @@
   <div class="row">
     <div class="col-md-6">
         <div class="container-fluid" style="padding-right:0px;padding-left:0px;">
-            <div class="scrollable3">
+            <div class="scrollable3" style="height:60%;width:100%;overflow-x: auto;overflow-y: auto;">
          <table class="table table-bordered table-hover">
           <thead style="background-color:#0077B5;color:white;font-size:14px;">
             <tr>
@@ -200,7 +202,7 @@
 
     <div class="col-md-6">
         <div class="container" style="width:101%;margin-left:-30px;">
-        <div class="scrollable3">
+        <div class="scrollable3" style="height:60%;width:100%;overflow-x: auto;overflow-y: auto;">
          <table class="table table-bordered table-hover">
           <thead style="background-color:#0077B5;color:white;font-size:14px;">
             <tr>
@@ -285,7 +287,7 @@
 </div>
     </div>
     </div>
-  </div>
+  <!-- </div> -->
    
   <!-- *********************************************************************************************************** -->
      
@@ -293,12 +295,12 @@
 
  <!--alert for Transfer to another room-->
     
- <div class="modal fade" id="transfertowindowalert" role="dialog">
-    <div class="vertical-alignment-helper">  
-  <div class="modal-dialog vertical-align-center modal-sm">
+ <div class="modal fade" style="text-align: left;padding: 0!important;" id="transfertowindowalert" role="dialog">
+    <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">  
+  <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
     
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><b>Alert</b></h4>
@@ -324,15 +326,15 @@
 
         <!--  post option Modal -->
   
-  <div class="modal fade" id="postoption" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="vertical-alignment-helper">
-          <div class="modal-dialog vertical-align-center modal-lg">
-              <div class="modal-content">
+  <div class="modal fade" style="text-align: left;padding: 0!important;" id="postoption" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+          <div class="modal-dialog vertical-align-center modal-lg" style="display: table-cell;vertical-align: middle;">
+              <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
                   <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
   
                       </button>
-                       <h3 class="modal-title" id="myModalLabel"><b>Transaction Posting</b></h3>
+                       <h3 class="modal-title" id="myModalLabel" style="text-align: center"><b >Transaction Posting</b></h3>
   
                   </div>
                   <div class="modal-body">
@@ -382,37 +384,37 @@
                                                   <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_code_id"></td>
 
                                                 <td><label *ngIf="room.editFlag==false">{{room.Post_des}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Post_des"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Post_des"></td>
   
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_amount}}</label>
-                                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Posting_amount"></td>
+                                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Posting_amount"></td>
 
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_quantity}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Posting_qty"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Posting_quantity"></td>
                           
                                                 <td><label *ngIf="room.editFlag==false">{{room.Post_window}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Post_window"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_window"></td>
                           
                                                 <td  ><label *ngIf="room.editFlag==false">{{room.Arrangement_code}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Arrangement_code"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Arrangement_code"></td>
                           
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Checkno}}</label>
-                                                  <input type="number"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Checkno"></td>
+                                                  <input type="number"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Checkno"></td>
                           
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_supplement}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Posting_supplement"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Posting_supplement"></td>
                           
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_reference}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Posting_reference"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Posting_reference"></td>
                                                   
                                                   
-                                                <!-- <td style="width: 86px;"><span><i style="cursor: pointer;" class="fa fa-trash" aria-hidden="true"
+                                                <td style="width: 86px;"><span><i style="cursor: pointer;" class="fa fa-trash" aria-hidden="true"
                                                   (click)="deleterows(i)"></i> &nbsp;&nbsp;&nbsp;
                                                   <i  style="cursor: pointer;"  *ngIf="room.editFlag==false" class="fa fa-pencil" aria-hidden="true"
-                                                  (click)="editrows(i)"></i>
+                                                  (click)="editrows(i,room)"></i>
                                                   <i  style="cursor: pointer;" *ngIf="room.editFlag!=false" class="fa fa-check" aria-hidden="true"
-                                                  (click)="saveButton(i)"></i>
-                                                </span></td> -->
+                                                  (click)="saveButton(i,room)"></i>
+                                                </span></td>
                                                                             
                   
                                               </tr>
@@ -455,12 +457,12 @@
 <!-- ************************************************************posting modal ends******************************************************** -->
 <!--alert after posting modal-->
     
- <div class="modal fade" id="postingchargealert" role="dialog">
-  <div class="vertical-alignment-helper">  
-<div class="modal-dialog vertical-align-center modal-sm">
+ <div class="modal fade" style="text-align: left;padding: 0!important;" id="postingchargealert" role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">  
+<div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
   
     <!-- Modal content-->
-    <div class="modal-content">
+    <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"><b>Alert</b></h4>
@@ -482,21 +484,21 @@
 
         <!--posting history modal  -->
 
-        <div class="modal fade" id="postinghistory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" style="text-align: left;padding: 0!important;" id="postinghistory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
          
               <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
+                  <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
                       <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
       
                           </button>
-                           <h3 class="modal-title" id="myModalLabel"><b>Posting History</b></h3>
+                           <h3 class="modal-title" id="myModalLabel" style="text-align: center;margin-top: -15px;"><b>Posting History</b></h3>
       
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body" style="margin-top: -15px;">
                           <div class="container-fluid">
                               <!-- <div class="scrollable2"> -->
-                              <div class="table-responsive">
+                              <div class="table-responsive" style=" height:45%;width:100%;overflow-x:auto;overflow-y:auto;">                                                             
                                 <table class="table table-bordered table-hover"  style="font-size:12px;">        
                                     <thead style="background-color:#0077B5;color:white;">
                                       <tr>
@@ -509,7 +511,8 @@
                                         <th scope="col">Description</th>
                                       </tr>
                                     </thead>
-                                    <tbody *ngFor="let firstitem of house">
+                                    <tbody *ngFor="let firstitem of house; let i=index"  (click)="selecthistory(firstitem,i)"  
+                                    [ngClass]="{'backGroundColor':i==selectind}">
                                       <tr>
                                         <th scope="row">{{firstitem?.posting_action}}</th>
                                         
@@ -522,15 +525,16 @@
                                       </tr>
 
                                     </tbody>
-                                  </table>
+                                  </table><br>
                                   </div>
                                   </div>
                                   <!-- </div> -->
+                                  <br>
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="container-fluid">
                                   <b>Original</b>
-                                  <div class="scrollable2">
+                                  <div style="height:20%;width:107%;overflow-x:auto;overflow-y:auto;">
                                   <!-- <div class="table-responsive" style="min-height:101.01%;"> -->
                                     <table class="table table-bordered table-hover"  style="font-size:12px;">
                                       <thead style="background-color:#0077B5;color:white;">
@@ -544,8 +548,8 @@
                                           <th scope="col">Description</th>
                                         </tr>
                                       </thead>
-                                      <tbody *ngFor="let hisitem of hist">
-                                        <tr>
+                                      <tbody>
+                                        <tr  *ngFor="let hisitem of hist1;">
                                           <th scope="row">{{hisitem?.posting_action}}</th>
                                           
                                           <td>{{hisitem?.revenue_date}}</td>
@@ -565,7 +569,7 @@
                                   <div class="col-md-6">
                                     <div class="container-fluid">
                                       <b>Changes</b>
-                                      <div class="scrollable2">
+                                      <div style="height:20%;width:106%;overflow-x:auto;overflow-y:auto;margin-left:-25px;">                                                                                                   
                                       <!-- <div class="table-responsive" style="min-height:101.01%;"> -->
                                         <table class="table table-bordered table-hover"  style="font-size:12px;">
                                           <thead style="background-color:#0077B5;color:white;">
@@ -579,11 +583,10 @@
                                               <th scope="col">Description</th>
                                             </tr>
                                           </thead>
-                                          <tbody *ngFor="let postitem of home">
+                                          <tbody *ngFor="let postitem of home1">
                                             
                                             <tr>
-                                              <th scope="row" >{{postitem?.posting_action}} </th>
-                                              
+                                              <th scope="row" >{{postitem?.posting_action}} </th>                                              
                                               <td>{{postitem?.revenue_date}}</td>
                                               <td>{{postitem?.posting_date}}</td>
                                               <td>{{postitem?.user_role}}</td>
@@ -611,11 +614,11 @@
 <!-- *******************************************posting history modal ends************************************************************************** -->
           
         <!--  Edit Modal -->
-        <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="vertical-alignment-helper">
-                <div class="modal-dialog vertical-align-center">
-                    <div class="modal-content">
-                        <div class="modal-header" style="background: #0077B5;color: white;">
+        <div class="modal fade" style="text-align: left;padding: 0!important;" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+                <div class="modal-dialog vertical-align-center" style="display: table-cell;vertical-align: middle;">
+                    <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+                        <div class="modal-header" style="background: #0077B5;color: white;margin-bottom: -12px;text-align: center;margin-top: -10px;height: 46px;">
                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
         
                             </button>
@@ -634,7 +637,7 @@
                                       <b>Room</b>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" name="editroom" class="form-control" [(ngModel)]="room" disabled>
+                                        <input type="text" name="editroom" class="form-control" [(ngModel)]="room" style="width:160px;" disabled>
                                       </div>
                               </div>
                               </div>
@@ -647,12 +650,12 @@
                                       <b>Name</b>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" name="editname" class="form-control" [(ngModel)]="name" disabled>
+                                        <input type="text" name="editname" class="form-control" [(ngModel)]="name"  style="width:160px;" disabled>
                                       </div>
                               </div>
                               </div>
                             </div>
-                              <hr>
+                              <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
   
                               <div class="row">
                                   <div class="col-sm-6">
@@ -661,12 +664,12 @@
                                       <b>Code</b>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" name="editcode" class="form-control" [(ngModel)]="poscd" disabled> 
+                                        <input type="text" name="editcode" class="form-control" [(ngModel)]="poscd" style="width:160px;" disabled> 
                                       </div>
                                       </div>
                               </div>
                             </div>
-                              <hr>
+                              <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
                                   <div class="row">
                                     <div class="col-md-6">
                                   <div class="form-group">
@@ -674,7 +677,7 @@
                                       <b>Amount</b>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text"  name="editamount" class="form-control" [(ngModel)]="amt" required>
+                                        <input type="text"  name="editamount" class="form-control" [(ngModel)]="amt" style="width:160px;" required>
                                       </div>
                                       </div>
                            
@@ -684,7 +687,7 @@
                                     <b>Quantity</b>
                                   </div>
                                   <div class="col-sm-6" style="padding-top:5px;">
-                                      <input type="text" class="form-control" name="quantityy" [(ngModel)]="quant" required>
+                                      <input type="text" class="form-control" name="quantityy" [(ngModel)]="quant" style="width:160px;" required>
                                   </div>
                                 </div>
                         
@@ -707,7 +710,7 @@
                                     </div>
                                  </div>
                                 </div>
-                              </div><hr>
+                              </div><hr style="margin-top:5px !important;margin-bottom: 5px !important;">
   
                       <div class="row">
                           
@@ -717,7 +720,7 @@
                                       <b>Cashier</b>
                                     </div>
                                     <div class="col-sm-6" >
-                                      <input type="text" name="editcash" class="form-control" disabled>
+                                      <input type="text" name="editcash" class="form-control" style="width:160px;" disabled>
                                     </div>
                               </div>
                                 
@@ -729,7 +732,7 @@
                                           <b>Folio.No</b>
                                         </div>
                                         <div class="col-sm-6" style="padding-top:5px;">
-                                          <input type="text" name="editfolio" class="form-control" disabled>
+                                          <input type="text" name="editfolio" class="form-control" style="width:160px;" disabled>
                                         </div>
                                   </div>
   
@@ -757,7 +760,7 @@
                               </div>
                             </div>
                            </div>
-                      <hr>
+                      <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
   
                       <div class="row">
                           <div class="col-sm-6">
@@ -784,7 +787,7 @@
                       </div>
                       </div>
                       </div>
-  <hr>
+  <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
   <div class="row">
       <div class="col-sm-6">
     <div class="form-group">
@@ -792,7 +795,7 @@
           <b>Article</b>
         </div>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="article" style="width:260px;" disabled>
+            <input type="text" class="form-control" name="article" style="width:160px;" disabled>
           </div>
   </div>
   </div>
@@ -806,7 +809,7 @@
           <b>Credit Card No.</b>
         </div>
         <div class="col-sm-6" style="padding-top:5px;">
-            <input type="text" name="editcredit" class="form-control" [(ngModel)]="creditcd" disabled>
+            <input type="text" name="editcredit" class="form-control" style="width:160px;" [(ngModel)]="creditcd" disabled>
         </div>
         <br>
       </div>           
@@ -815,11 +818,11 @@
     <div class="col-md-6">
       <div class="form-group">
         <div class="col-md-4" style="padding-top:5px;">
-          <label>Exp.Date</label>
+          <label style="margin-left: 10px;">Exp.Date</label>
         </div> 
      
         <div class="col-md-6" style="padding-top:5px;">
-          <input type="text" name="editexpdate" class="form-control" [(ngModel)]="creditexpdt" disabled>
+          <input type="text" name="editexpdate" class="form-control" [(ngModel)]="creditexpdt" style="margin-left: 10px;" disabled>
         </div>
       </div>
     </div>
@@ -832,7 +835,7 @@
               <b>Supplement</b>
             </div>
             <div class="col-sm-6">
-                <input type="text" name="editsupple" class="form-control" style="width:260px;" [(ngModel)]="supple" required> 
+                <input type="text" name="editsupple" class="form-control" style="width:160px;" [(ngModel)]="supple" required> 
             </div>
       </div>
       </div>
@@ -845,10 +848,19 @@
               <b>Reference</b>
             </div>
             <div class="col-sm-6">
-                <input type="text" name="editreference" class="form-control" style="width:260px;"  [(ngModel)]="ref" required>
+                <input type="text" name="editreference" class="form-control" style="width:160px;"  [(ngModel)]="ref" required>
               </div>
-      </div>
-      </div>
+      </div></div>
+      <div class="form-group">
+          <div class="col-md-3">
+            <label style="margin-left: 25px;">Covers</label>
+          </div> 
+   
+          <div class="col-md-6">
+              <input type="text" name="editcovers" class="form-control" style="width: 40%;margin-left: 124px;margin-top: -30px;">
+          </div>
+        </div>
+      
       </div>
   
   
@@ -860,10 +872,13 @@
               <b>Cheque No.</b>
             </div>
             <div class="col-sm-6">
-                <input type="text"name="editcheque" class="form-control" [(ngModel)]="cqno" required> 
+                <input type="text"name="editcheque" class="form-control" [(ngModel)]="cqno" style="width:160px;" required> 
             </div>
-            
-           
+            <div class="form-group">
+                <div class="col-md-6" style="margin-left: 421px;margin-top: -33px;">
+            <button type="button" class="btn btn-success" (click)="editbilling(amt,quan,ed_arcode,supple,ref,cqno)" data-toggle="modal" data-target="#afteredit" data-dismiss="modal" [disabled]="!editform.form.valid">OK</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div></div>
             </div>
                      
                      
@@ -871,15 +886,7 @@
   
      
       <div class="col-md-6">
-          <div class="form-group">
-            <div class="col-md-3">
-              <label>Covers</label>
-            </div> 
-     
-            <div class="col-md-6">
-                <input type="text" name="editcovers" class="form-control">
-            </div>
-          </div>
+
         </div>
       </div>
                       
@@ -892,11 +899,10 @@
     
   </div>
 </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-success" (click)="editbilling(amt,quan,ed_arcode,supple,ref,cqno)" data-toggle="modal" data-target="#afteredit" data-dismiss="modal" [disabled]="!editform.form.valid">OK</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <!-- <div class="modal-footer">
+
               
-          </div>
+          </div> -->
         </form>
       </div>
   </div>
@@ -905,12 +911,12 @@
 <!-- **********************************************edit modal ends********************************************************* -->
 
 <!--alert after edit posting payment Modal -->
-    <div class="modal fade" id="afteredit" role="dialog">
-      <div class="vertical-alignment-helper">  
-        <div class="modal-dialog vertical-align-center modal-sm">
+    <div class="modal fade" style="text-align: left;padding: 0!important;" id="afteredit" role="dialog">
+      <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">  
+        <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;"> 
       
           <!-- Modal content-->
-          <div class="modal-content">
+          <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h4 class="modal-title"><b>Alert</b></h4>
@@ -933,12 +939,12 @@
 
 <!--Reinstate modal-->
 
-<div class="modal fade" id="reinstatemodal" role="dialog">
-    <div class="vertical-alignment-helper">  
-  <div class="modal-dialog vertical-align-center modal-sm">
+<div class="modal fade" style="text-align: left;padding: 0!important;" id="reinstatemodal" role="dialog">
+    <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">  
+  <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
     
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
         <div class="modal-header" style="background: #0077B5;color: white;">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><b>Confirm Reinstate</b></h4>
@@ -957,15 +963,15 @@
   </div>
   <!-- ******************************************reinstate ends*************************************************************** -->
   <!-- transfer to another room modal -->
-  <div class="modal fade" id="transfertransaction" role="dialog">
-      <div class="vertical-alignment-helper">
-    <div class="modal-dialog vertical-align-center">
+  <div class="modal fade" style="text-align: left;padding: 0!important;" id="transfertransaction" role="dialog">
+      <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center" style="display: table-cell;vertical-align: middle;">
     
       <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+        <div class="modal-header" style="background: #0077B5;color: white;">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><b>Transfer To Another Room</b></h4>
+          <h4 class="modal-title" style="text-align: center;"><b>Transfer To Another Room</b></h4>
         </div>
         <div class="modal-body">
          <div class="row">
@@ -974,24 +980,24 @@
                   <div class="panel-body"> -->
                       <form>
                           <div class="form-group">
-                          <div class="row">
+                          <div class="row" style="margin-left: 10px">
                             
-                            <div class="col-sm-6"></div>
+                            <div class="col-md-3">
                             
                                 <label class="radio-inline" >
-                                  <input type="radio"  id="radio1" name="optradio" value="GP" [(ngModel)]="transtyp" style="margin-left:-39px;">Grouped Posting
-                                </label>
+                                  <input type="radio"  id="radio1" name="optradio" value="GP" [(ngModel)]="transtyp" style="margin-left:-39px;"><b>GroupedPosting</b>
+                                </label></div>
                               
                             
   
-                            <div class="row">
-                            <div class="col-sm-6"></div>
+                            
+                            <div class="col-md-3">
                               
                                   <label class="radio-inline">
-                                    <input type="radio"  id="radio2" name="optradio" value="EF" [(ngModel)]="transtyp" style="margin-left:-39px;">Enter Folio
-                                  </label>
+                                    <input type="radio"  id="radio2" name="optradio" value="EF" [(ngModel)]="transtyp" style="margin-left:10px;"> <b style="margin-left: 50px">EnterFolio</b>
+                                  </label></div>
                                 
-                            </div>  
+                            
   
                           <!-- <div class="row">
                             <div class="col-sm-1">
@@ -1013,15 +1019,15 @@
                             </div>
                           </div>   -->
   
-                            <div class="row">
+                            
                               
-                              <div class="col-sm-6"></div>
+                              <div class="col-md-3">
                              
                                   <label class="radio-inline">
-                                    <input type="radio" id="radio3" name="optradio" value="CN" [(ngModel)]="transtyp" style="margin-left:-39px;">CheckNumber
-                                  </label>
+                                    <input type="radio" id="radio3" name="optradio" value="CN" [(ngModel)]="transtyp" style="margin-left:50px;"><b style="margin-left: 90px">CheckNumber</b>
+                                  </label></div>
                                 
-                            </div>
+                           
                            
                           </div>
                         </div>  
@@ -1095,12 +1101,12 @@
   </div>
   <!--********************************************** transfer to another room modal******************************************************************* -->
     <!--after transfer to another room Modal -->
-    <div class="modal fade" id="aftertransfer" role="dialog">
-        <div class="vertical-alignment-helper">  
-          <div class="modal-dialog vertical-align-center modal-sm">
+    <div class="modal fade" style="text-align: left;padding: 0!important;" id="aftertransfer" role="dialog">
+        <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">  
+          <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
         
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
               <div class="modal-header" style="background: #0077B5;color: white;">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title"><b>Alert</b></h4>
@@ -1119,15 +1125,15 @@
 <!--****************************** after transfer to another room ends************************************************************ -->
 
  <!-- payment Modal in billing -->
- <div class="modal fade" id="paymentmodal"  role="dialog">
-  <div class="vertical-alignment-helper">
-  <div class="modal-dialog vertical-align-center">
+ <div class="modal fade" style="text-align: left;padding: 0!important;" id="paymentmodal"  role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+  <div class="modal-dialog vertical-align-center" style="display: table-cell;vertical-align: middle;">
   
     <!-- payment  Modal content-->
-    <div class="modal-content">
-      <div class="modal-header" style="background: #0077B5;color: white;">
+    <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+      <div class="modal-header" >
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" >Payment </h4>
+        <h4 class="modal-title" style="text-align: center">Payment </h4>
       </div>
       <form #heroForm="ngForm">
       <div class="modal-body">
@@ -1161,15 +1167,16 @@
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="col-sm-6">
-                      <b>Currency</b>
+                      <b style="margin-left: 17px;">Currency</b>
                     </div>
                     <div class="col-sm-6">
-                        <select name="curcy" style="height:30px;width:150%;" class="form-control" [(ngModel)]="currency">
+                        <select name="curcy" style="height:30px;width:150%;" class="form-control" [(ngModel)]="currency" (change)="selectoption1(currency)">
                           <option value="" hidden>select value</option>
                           <option *ngFor="let list of money" [ngValue]="list.transaction_currency_id">{{list.currency}}</option>
                           </select>
                       </div>
                     </div>  
+                   
                   </div>
               </div>
             </div> 
@@ -1179,11 +1186,17 @@
                   <div class="row">
                     <div class="col-sm-6">
                     <div class="col-sm-6">
-                      <b>Amount</b>
+                      <b style="margin-left: 20px;">Amount</b>
                     </div>
                     <div class="col-sm-6">
                         <input type="text" name="curr" class="form-control" style="width:150%;height:30px;" [(ngModel)]="amount">
                     </div>
+                    </div>
+                    <div class="col-sm-3" style="color:#0077B5;" style="margin-left: 15px;">
+                      <div *ngIf="showdivv=='1'">RUB</div>
+                      <div *ngIf="showdivv=='2'">EUR</div>
+                      <div *ngIf="showdivv=='3'">USD</div>
+                      <div *ngIf="showdivv=='4'">INR</div>
                     </div>
                   </div>
                 </div>
@@ -1194,7 +1207,7 @@
                         <div class="row" *ngIf="showdiv=='1'" >
                           <div class="col-sm-6">
                           <div class="col-sm-6">
-                            <b>Reference</b>
+                            <b style="margin-left: 8px;">Reference</b>
                           </div>
                           <div class="col-sm-6">
                               <input type="text" class="form-control" name="reff" style="width:150%;height:30px;" [(ngModel)]="ref">
@@ -1218,8 +1231,8 @@
                             
                             <div class="col-sm-10">
                               <div class="row">
-                                <div class="col-sm-6">  
-                                    <app-monthpicker (change)="onMonthChange($event.target.value)" [(ngModel)]="PF_Expiration_Month"> </app-monthpicker>
+                                <div class="col-sm-6" >  
+                                    <app-monthpicker (change)="onMonthChange($event.target.value)" [(ngModel)]="PF_Expiration_Month" > </app-monthpicker>
                                 </div>
                                 
                                 <div class="col-sm-6"> 
@@ -1236,7 +1249,7 @@
                             <b>Supplement</b>
                           </div>
                           <div class="col-sm-4">
-                              <input type="text" class="form-control" name="sup" style="width:150%;height:30px;" [(ngModel)]="supp">
+                              <input type="text" class="form-control" name="sup" style="width:90%;height:30px;" [(ngModel)]="supp">
                             </div>
                           </div><br>
                             <div class="row" *ngIf="showdiv=='9003'">
@@ -1252,9 +1265,9 @@
                 </div>
         
           </div>
-      <div class="modal-footer">
+      <div class="modal-footer" style="margin-top: -36px;">
           <button type="button" class="btn btn-success" data-dismiss="modal" (click)="checkoutpost(selected,currency,amount,ref,supp,cardno); heroForm.reset()" data-target="#paymentalert" data-toggle="modal"><b>Post</b></button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="heroForm.reset()" ><b>Close</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="close();heroForm.reset()" ><b>Close</b></button>
       </div>
     </form>
     </div>
@@ -1267,12 +1280,12 @@
 <!--**************************************************************payment Modal ends**************************************************************************************-->
  <!--alert after payment modal-->
     
- <div class="modal fade" id="paymentalert" role="dialog">
-  <div class="vertical-alignment-helper">  
-<div class="modal-dialog vertical-align-center modal-sm">
+ <div class="modal fade" style="text-align: left;padding: 0!important;" id="paymentalert" role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">  
+<div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
   
     <!-- Modal content-->
-    <div class="modal-content">
+    <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
       <div class="modal-header" style="background: #0077B5;color: white;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"><b>Alert</b></h4>

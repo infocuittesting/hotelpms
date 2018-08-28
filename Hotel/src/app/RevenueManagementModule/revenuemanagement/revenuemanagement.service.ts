@@ -34,11 +34,11 @@ export class RevenuemanagementService {
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
    
-    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_POST_SELECT_RATECODE',options)
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_SELECT_SelectRatesetupAll',options)
        .map(this.extractData)
 
   }
-
+  
   marketdropdown():  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
@@ -97,7 +97,7 @@ export class RevenuemanagementService {
     "negotiate_end_sell_date":input.endsel,
     "negotiate_commision_code_id":0
    }
-   console.log(JSON.stringify(body));
+   console.log("negooooooooooooooooooo"+JSON.stringify(body));
 
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_POST_INSERT_NEGOTIATED',body,options)
        .map(this.extractData)
@@ -116,15 +116,17 @@ export class RevenuemanagementService {
 
   }
 
-  deleteratedet(ratedetidvar):  Observable<object[]> {
+  deleteratedet(deleteids):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
-      "rate_details_id": ratedetidvar
+      "rate_details_id": deleteids
     }
+    console.log("rate_details_iddddddddddddddddddddd"+deleteids)
     return this.http.post('https://hotel360.herokuapp.com/Delete_Rate_details',body,options)
        .map(this.extractData)
+       
 
   }
  
@@ -165,15 +167,15 @@ export class RevenuemanagementService {
 
   }
   
-  editnego(rateecode,beginn,endsell,ratecodeid):  Observable<object[]> {
+  editnego(bgsd:any,rateecode):  Observable<object[]> {
        
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
     let body={
       "rate_code_id":rateecode,
-	    "negotiate_begin_sell_date":beginn,
-	    "negotiate_end_sell_date":endsell,
-	    "negotiate_commision_code_id":ratecodeid
+	    "negotiate_begin_sell_date":bgsd.beginn,
+	    "negotiate_end_sell_date":bgsd.endsell,
+	    "negotiate_commision_code_id":0
     }
     return this.http.post('https://hotel360.herokuapp.com/HOTEL_REM_POST_UPDATE_Negotiated_Rate',body,options)
        .map(this.extractData)
