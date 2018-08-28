@@ -108,10 +108,10 @@ siva=true
   });
 
 
-  this.cashinservice.foliohistory()
-  .subscribe((resp: any) => {
-    this.foliohis = resp.Return;
-  });
+  // this.cashinservice.foliohistory()
+  // .subscribe((resp: any) => {
+  //   this.foliohis = resp.Return;
+  // });
 
   this.cashinservice.paymentcodedropdown()
   .subscribe((resp: any) => {
@@ -120,13 +120,20 @@ siva=true
    });
 
   }
-  showdiv="9000";
+  showdiv="900";
   selectoption(flag){
     console.log(flag);
     this.showdiv=flag;
     console.log(flag);
   }
 
+  showdivv="0";
+  selectoption1(flag)
+  {
+    console.log("showdivv",flag);
+    this.showdivv=flag;
+    console.log(flag);
+  }
 public balnc=[];  
 public checkname; 
 selectindex=null;
@@ -237,7 +244,7 @@ checkoutpost(arg1,balnc)
     }
     else
     {
-      this.cashinservice.checkoutbuttoninsert(arg1,balnc,this.exprydt)
+      this.cashinservice.checkoutbuttoninsert1(arg1,balnc)
       .subscribe((resp: any) => {
       this.letter=resp.ReturnCode;
       if(this.letter=="RIS")
@@ -257,7 +264,13 @@ checkoutpost(arg1,balnc)
       // console.log(this.housetable);
       });
     }
- 
+    this.showdiv="900";
+    this.showdivv="0";
+}
+
+close(){
+  this.showdiv="900";
+    this.showdivv="0";
 }
 
 //zero checkout

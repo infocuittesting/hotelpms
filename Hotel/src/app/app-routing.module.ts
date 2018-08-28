@@ -38,6 +38,7 @@ import { ManagingqueueComponent } from './FrontDeskModule/managingqueue/managing
 
 //Cashering
 import { BillingComponent } from './CasheringModule/billing/billing.component';
+import { FoliohistoryComponent } from './CasheringModule/foliohistory/foliohistory.component';
 import { CasheringinhouseguestComponent } from './CasheringModule/casheringinhouseguest/casheringinhouseguest.component';
 
 
@@ -97,6 +98,7 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 //cashering
 { path:'inhousecashering', component: CasheringinhouseguestComponent },
 { path:'billing', component: BillingComponent },
+{ path:'foliohis', component: FoliohistoryComponent },
 
 //revenuemanagement
 { path:'revenue', component:RevenuemanagementComponent},
@@ -132,4 +134,4 @@ export const routingComponents = [IndividualprofileComponent,ReservationComponen
   ProfileComponent,ProfilesearchComponent,SearchandeditreservationComponent,HousekeepingComponent,QueueroomComponent,RoomdiscrepanciesComponent,RoomconditionComponent
 ,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
-BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent]
+BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent,FoliohistoryComponent]
