@@ -142,6 +142,7 @@ public resid;
 public name;
 selectindex=null;
 selectMembersEdit(details,index){
+console.log(details)  
 this.selectindex=index;
 this.reinstate=details.res_guest_status;
 this.resid=details.res_id;

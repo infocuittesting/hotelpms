@@ -174,7 +174,7 @@
   <div class="col-md-2"></div>
   <div class="col-md-10">
 <div class="container-fluid" style="padding-top:50px;">
-<div class="jumbotron jumbotron-fluid" style="padding-top:20px;background-color:#0077B5;color:white;">
+<div class="jumbotron jumbotron-fluid" style="padding-top:20px;">
 <div class="row">
 <div class="col-lg-6">
 <b><u>Room Status</u></b>
@@ -250,7 +250,7 @@
 <tr *ngFor="let housekeepinglist of house | filterdata: queryString : 'rm_room_status' | filterdata: queryString : 'rm_fo_status'; let i = index "
 (click)="selectMembersEdit(housekeepinglist,i)" [ngClass]="{'backGroundColor':i==selectindex}">
   
-  <td>{{i+1}}</td>
+  <td><input type="checkbox" (checked)="exist(housekeepinglist)" (click)="toggleSelection(housekeepinglist)"></td>
   <td>{{housekeepinglist.rm_room}}</td>
   <td>{{housekeepinglist.rm_room_type}}</td>
   <td>{{housekeepinglist.rm_room_status}}</td>
