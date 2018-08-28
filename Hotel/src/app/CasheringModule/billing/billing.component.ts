@@ -194,18 +194,38 @@ close(){
     this.showdivv="0";
 }
 
-
+public codeidarr=[];
   //add rows in post screen
 public affFlagg=false;
 addRows(add)
 {
   if(add.Code!=null && add.Amount!=null && add.Qty!=null && add.Windowno!=null )
   {
- 
+    
+  this.codeidarr = this.pscd_dd.filter(
+           orgn => orgn.posting_code_description === add.Code);
+
+           console.log("codeeeee_desssss",this.codeidarr,this.codeidarr[0].posting_code_id);
+      // console.log("totalpos and totalamt",this.totalPos,this.totalamt)
+
+      this.showdetails.push({
+        // "business_id":this.session.retrieve("business_id"),
+        "Post_code_id":this.codeidarr[0].posting_code,
+        "Post_des":add.Code,
+        "Posting_amount":add.Amount,
+        "Posting_quantity":add.Qty,
+        "Post_window":add.Windowno,
+        "Arrangement_code":add.Arr_Code,
+        "Checkno":add.Check_No,
+        "Posting_supplement":add.Supplement,
+        "Posting_reference":add.Reference,
+        "emp_id":"2",
+        "editFlag":false
+      });
 
       this.postdetails.push({
         // "business_id":this.session.retrieve("business_id"),
-        "Post_code_id":"1",
+        "Post_code_id":this.codeidarr[0].posting_code_id,
         // "Post_des":add.Description,
         "Posting_amount":add.Amount,
         "Posting_quantity":add.Qty,
@@ -222,24 +242,6 @@ addRows(add)
       this.totalPos += 1;
       this.totalamt += Number(add.Amount)*Number(add.Qty);
 
-    
-    
-      // console.log("totalpos and totalamt",this.totalPos,this.totalamt)
-
-      this.showdetails.push({
-        // "business_id":this.session.retrieve("business_id"),
-        "Post_code_id":"5000",
-        "Post_des":add.Code,
-        "Posting_amount":add.Amount,
-        "Posting_quantity":add.Qty,
-        "Post_window":add.Windowno,
-        "Arrangement_code":add.Arr_Code,
-        "Checkno":add.Check_No,
-        "Posting_supplement":add.Supplement,
-        "Posting_reference":add.Reference,
-        "emp_id":"2",
-        "editFlag":false
-      });
       this.add={};
       // console.log("postdetails",this.postdetails);
   }
@@ -291,23 +293,34 @@ saveroomDetails(postdetails)
      
 }
 
-//delete buttons
-// deleterows(index){
-//   this.showdetails.splice(index,1);
-//   this.postdetails.splice(index,1);
+// delete buttons
+deleterows(index){
+  this.showdetails.splice(index,1);
+  this.postdetails.splice(index,1);
 
-// }
+}
 
-//edit rows
-// editrows(index){
-//   this.showdetails[index].editFlag=true;
-//   this.postdetails[index].editFlag=true;
-// // }
-// saveButton(index){
-//   this.showdetails[index].editFlag=false;
-//   this.postdetails[index].editFlag=false;
+// edit rows
+editrows(index,room){
+  console.log("showpostroom",room)
+  this.showdetails[index].editFlag=true;
+  // this.postdetails[index].editFlag=true;
+  this.postdetails.splice(index,1);
+}
+del_key:any;
+saveButton(index,room){
+  console.log("room details savebutton",room)
+
+  this.del_key = "editFlag"
+  delete this.room[this.del_key];
+  console.log("room details savebutton after delete flag",room)
+
+  this.postdetails.push(room)
+  this.showdetails[index].editFlag=false;
+  this.postdetails[index].editFlag=false;
   
-// }
+  
+}
 //close button in posting payment 
 clearpost(){
   this.showdetails=[];
@@ -325,9 +338,9 @@ ngOnInit() {
       this.house = resp.History;
       this.home = resp.Changes;
       this.hist = resp.Original;
-      console.log("house",this.house);
-      console.log("original",this.home);
-      console.log("changes",this.hist);
+      console.log("house",this.house,typeof(this.house));
+      console.log("original",this.home,typeof(this.home));
+      console.log("changes",this.hist,typeof(this.hist));
 
     });
   //currency dropdown
@@ -388,13 +401,23 @@ ngOnInit() {
 
 //on selecting history record
 public logg_id
+public home1=[];
+public hist1=[];
 selectind=null;
 selecthistory(det,i){
+  this.home1=[];
+  this.hist1=[];
   this.selectind=i;
   console.log(det,typeof(det))
-  this.logg_id=det.log_id;
-  // this.home1 = resp.Changes;
-  // this.hist1 = resp.Original;
+  this.logg_id=det.log_link_id;
+  console.log("link_id",this.logg_id)
+  this.home1.push(this.home.find(j => j.log_link_id === this.logg_id));
+  this.hist1.push(this.hist.find(j => j.log_link_id === this.logg_id));
+  console.log("home1",this.home1,typeof(this.home1))
+  console.log("hist1",this.hist1,typeof(this.hist1))
+  
+
+  // let item1 = array.find(i => i.id === 1);
 }
 
 //show payment type with condition 

@@ -14,7 +14,7 @@ export class FoliohistoryService {
     const headers = new Headers({'Content-Type':'application/json'})
     const options = new RequestOptions({ headers: headers })
    
-    return this.http.post('https://hotel360.herokuapp.com/HOTEL_CAH_POST_FOLIO_HISTORY',options)
+    return this.http.get('https://hotel360.herokuapp.com/HOTEL_CAH_POST_FOLIO_HISTORY',options)
        .map(this.extractData)
 
   }
