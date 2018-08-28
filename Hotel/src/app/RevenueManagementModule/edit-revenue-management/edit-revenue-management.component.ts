@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import {EditRevenueManagementService} from './edit-revenue-management.service';
 import { SessionStorageService } from "ngx-webstorage";
 import { DISABLED } from '@angular/forms/src/model';
+import * as moment from 'moment';
+
 
 
 @Component({
@@ -36,6 +38,7 @@ export class EditRevenueManagementComponent implements OnInit {
   public rateheader:any={};
   public funct=[];
   public databindvalues=[];
+  tierFlag=0;
 
  
   public ncode=[ 
@@ -48,6 +51,7 @@ export class EditRevenueManagementComponent implements OnInit {
   // { Rate_code: 'EXTRA', Begin_sell_date: '17-07-2018',End_sell_date:'29-07-2018',ID:'2'},
 ];
 
+public date:any = new Date().toJSON().split('T')[0];
   constructor(private EditRevenuemanagement:EditRevenueManagementService,public session:SessionStorageService,private route:Router,private fb: FormBuilder) {
     this.negotiatecode = this.ncode;
    
@@ -73,7 +77,7 @@ export class EditRevenueManagementComponent implements OnInit {
 
 ratedetalert:any;
 
-ratedetins(ratecodedrop,editratedetaills,tab){
+ratedetins(editratedetaills,tab){
   this.cond = this.session.retrieve("ratecodenav");
   if (editratedetaills.mon == true) {
     editratedetaills.mon = "1";
@@ -134,12 +138,12 @@ ratedetins(ratecodedrop,editratedetaills,tab){
 
   console.log("insert rate detailssssssssssssssss",this.rmid2);
   if(this.cond == "New"){
-  this.EditRevenuemanagement.ratedetins(ratecodedrop,this.rmid2,this.currentTab,editratedetaills)
+  this.EditRevenuemanagement.ratedetins(this.rmid2,this.currentTab,editratedetaills)
   .subscribe((resp: any) => {
    this.ratedetvar=resp.ReturnCode;
    if(this.ratedetvar=='RIS')
     {
-    this.ratedetalert="ratedetails created successfully";
+    this.ratedetalert="ratetier created successfully";
     }
     else
     {
@@ -148,13 +152,13 @@ ratedetins(ratecodedrop,editratedetaills,tab){
   });
 }
 else{
-    this.EditRevenuemanagement.updateratedetail(this.ratedetail,this.rmid2,this.rmid3,this.currentTab,editratedetaills)
+    this.EditRevenuemanagement.updateratedetail(this.ratedetail,this.rmid2,this.rmid3,this.currentTab,editratedetaills,this.ratedetail.ratedaysid)
     .subscribe((resp: any) => {
      this.ratedetvar=resp.ReturnCode;
     
      if(this.ratedetvar=='RUS')
       {
-      this.ratedetalert="ratedetails updated successfully";
+      this.ratedetalert="ratetier updated successfully";
       }
       else
       {
@@ -188,7 +192,11 @@ ratecodedis=true;
        
      } else {
        this.edit_data_bind = resp.Rate_header[0];
+       this.price = resp.Rate_header[0];
+
+       this.editblock.ratecodedrop =  this.edit_data_bind.rate_code;
        this.editblock.ratecode =  this.edit_data_bind.rate_code;
+
        this.editblock.descrp =  this.edit_data_bind.rate_description;
        this.editblock.beginselldate =  this.edit_data_bind.begin_sell_date;
        this.editblock.endselldate =  this.edit_data_bind.end_sell_date;
@@ -230,8 +238,8 @@ ratecodedis=true;
 
    this.EditRevenuemanagement.ratecodedropdown()
     .subscribe((resp: any) => {
-     this.price=resp.Return;
-     this.prc=resp.Return;
+     this.price=resp.Rate_header;
+     //this.prc=resp.Return;
    });
 
    this.EditRevenuemanagement.marketdropdown()
@@ -272,7 +280,15 @@ ratecodedis=true;
 //   console.log(this.roomtyp);
   
 // });
-   
+this.EditRevenuemanagement.getallvalues()
+.subscribe((resp: any) => {
+  this.ratedettabl = resp.Rate_details;
+  //this.ratedettabl = resp.room_types[0];
+  //this.ratedettabl = resp.room_types;
+  console.log("oooooooooooooooo"+this.ratedettabl);
+
+});
+
 this.EditRevenuemanagement.allvalues()
 .subscribe((resp: any) => {
  this.rateheadbind=resp.Rate_header;
@@ -314,6 +330,7 @@ public edit_data_binding:any = [];
 public edit_data_bind:any = [];
 ratedetidvar=[];
 room_types=[];
+deleteids=[];
 selectindexx=null
     selectMembers1(detailss,indexx)
       {
@@ -345,6 +362,7 @@ selectindexx=null
         }
            
       this.selectindexx=indexx; 
+      this.deleteids = detailss.rate_details_id;
       this.ratedetail.ratedetailid =detailss.rate_details_id;
       this.ratedetail.roomsid = detailss.rooms_id;
       this.ratedetail.packageid = detailss.packages_id;
@@ -356,7 +374,7 @@ selectindexx=null
       // this.session.store("packagesid",detailss.packages_id);  
       //this.session.store("ratetierid",detailss.rate_tier_id);  
 
-      console.log("ratecodeiddddddddddddddd",detailss.rate_days_id,detailss.rooms_id,detailss.packages_id,detailss.rate_days_id);
+      console.log("daysiddddddddddddd",this.ratedetail.ratedaysid,detailss.rooms_id,detailss.packages_id,detailss.rate_days_id);
 
     }
 
@@ -365,17 +383,17 @@ selectindexx=null
     delratalert:any;
     ratdetfun(){
       
-      this.EditRevenuemanagement.deleteratedet(this.ratedetidvar)
+      this.EditRevenuemanagement.deleteratedet(this.deleteids)
       .subscribe((resp: any) => {
       this.delratdet=resp.ReturnCode;
       console.log(this.delratdet); 
        if(this.delratdet=='RDS')
         {
-        this.delratalert="RateDetails deleted successfully";
+        this.delratalert="RateTier deleted successfully";
         }
       else
         {
-        this.delratalert="can't able to delete negotiated";
+        this.delratalert="can't able to delete Tier";
         } 
 
      });      

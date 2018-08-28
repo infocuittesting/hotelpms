@@ -171,9 +171,9 @@ transfertowindow(args)
 
     else
     {
-        this.cashbillservice.postbuttoninsert(selected,currency,amount,ref,supp,this.expdt)     
+        this.cashbillservice.postbuttoninsert1(selected,currency,amount,ref,supp)     
         .subscribe((resp: any) => {
-          console.log("payment inputs other than credit card",selected,currency,amount,ref,supp,this.expdt)
+          console.log("payment inputs other than credit card",selected,currency,amount,ref,supp)
 
         this.letter=resp.ReturnCode;
       //  console.log("letterrrrrrrrrrrrrrrrrrrrrrrr",this.letter);
@@ -186,8 +186,13 @@ transfertowindow(args)
       })
 
     }
+    this.showdiv="900";
+    this.showdivv="0";
   }
-
+close(){
+  this.showdiv="900";
+    this.showdivv="0";
+}
 
 
   //add rows in post screen
@@ -320,9 +325,9 @@ ngOnInit() {
       this.house = resp.History;
       this.home = resp.Changes;
       this.hist = resp.Original;
-      // console.log(this.house);
-      // console.log(this.home);
-      // console.log(this.hist);
+      console.log("house",this.house);
+      console.log("original",this.home);
+      console.log("changes",this.hist);
 
     });
   //currency dropdown
@@ -381,13 +386,32 @@ ngOnInit() {
 });
 }
 
+//on selecting history record
+public logg_id
+selectind=null;
+selecthistory(det,i){
+  this.selectind=i;
+  console.log(det,typeof(det))
+  this.logg_id=det.log_id;
+  // this.home1 = resp.Changes;
+  // this.hist1 = resp.Original;
+}
 
-
-showdiv="9000";
+//show payment type with condition 
+showdiv="900";
 selectoption(flag)
 {
   console.log("showdiv",flag);
   this.showdiv=flag;
+  console.log(flag);
+}
+//show currency type with condition 
+
+showdivv="0";
+selectoption1(flag)
+{
+  console.log("showdivv",flag);
+  this.showdivv=flag;
   console.log(flag);
 }
 
