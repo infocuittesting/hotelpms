@@ -19,7 +19,7 @@ export class BusinessBlockSearchComponent implements OnInit {
   public someData=[];
   public mainratecode=[];
   public showMore;
-
+ 
   
   public =[];
   blc = true;
@@ -68,7 +68,11 @@ export class BusinessBlockSearchComponent implements OnInit {
   //show less
   showLessBut(){
     this.showMore=false;
-  }
+  } 
+  
+
+  // select unselect table
+ 
 
 
   // filter the from to to
@@ -96,8 +100,11 @@ public startdate;
 public enddate;
 public nights;
 selectindex=null;
+flag=false;
 
   selectMembersEdit(details,index){
+if(this.flag==false){
+  this.flag=true;
 
     
     this.selectindex=index;
@@ -112,12 +119,13 @@ selectindex=null;
       this.grop=false;
       this.newblockbut=true;
     }
-    else{
-      this.blockopt=true;
-      this.blc=true;
-      this.grop=true;
-      this.newblockbut=false;
-    }
+  }else{
+    this.flag=false;
+    this.blockopt=true;
+    this.blc=true;
+    this.grop=true;
+    this.newblockbut=false;
+  }
     // if(this.Blockid==details.block_id){
     //   this.new=true;
     //   this.profile=true;
