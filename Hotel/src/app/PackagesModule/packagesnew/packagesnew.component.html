@@ -16,21 +16,21 @@
                   <div class="col-md-3">
                       <label for="codes">Code</label>
                     <div class="input-group">
-                      <input type="text" class="form-control" name="Code"id="codes" [(ngModel)]="user.package_code">
+                      <input type="text" class="form-control" name="Code"id="codes" [(ngModel)]="packtables.packagecode">
                     </div>
                   </div>
                  
                   <div class="col-md-3">
                       <label for="short">Short Description</label>
                     <div class="input-group">
-                      <input type="text" name="ShortDescription" id="short" class="form-control" [(ngModel)]="user.short_description">
+                      <input type="text" name="ShortDescription" id="short" class="form-control" [(ngModel)]="packtables.short_description">
                     </div>
                   </div>
                   
                   <div class="col-md-3">
                       <label for="forecastgroup">Forecast Group</label>
                     <div class="input-group">
-                      <select name="ForeCast" id="forecastgroup" style="height:34px;width: 200px;" [(ngModel)]="user.forecast_code_id" >
+                      <select name="ForeCast" id="forecastgroup" style="height:34px;width: 200px;" [(ngModel)]="packtables.forecast_code_id" >
                         <option *ngFor="let list of foredropdown" [ngValue]="list.forecast_group_id">{{list.forecast_group_description}}</option>
                       </select>
                     </div>
@@ -38,7 +38,7 @@
                   <div class="col-md-3">
                     <label for="description">Description</label>
                     <div class="input-group">
-                      <textarea name="Description" id="description" rows="1" style="height:34px;width: 200px;"[(ngModel)]="user.description"></textarea>
+                      <textarea name="Description" id="description" rows="1" style="height:34px;width: 200px;"[(ngModel)]="packtables.description"></textarea>
                     </div>
                   </div>
                 </div>
@@ -52,7 +52,7 @@
                   <div class="col-md-3">
                     <label for="codes">Code</label>
                     <div class="input-group">
-                        <select name="Codess" id="codes" style="height:34px;width: 200px;" [(ngModel)]="user.transaction_code_id">
+                        <select name="Codess" id="codes" style="height:34px;width: 200px;" [(ngModel)]="packtables.transaction_code_id">
                             <option *ngFor="let item of transactiondropdown" [ngValue]="item.transaction_code_id">{{item.transaction_code_description}}</option>
                           </select>
                     </div>
@@ -66,7 +66,7 @@
                   <div class="col-md-3">
                       <label for="currency">Currency</label>
                       <div class="input-group">
-                          <select name="Currency" id="currency" style="height:34px;width: 200px;" [(ngModel)]="user.currency_id">
+                          <select name="Currency" id="currency" style="height:34px;width: 200px;" [(ngModel)]="packtables.currencys">
                               <option *ngFor="let datalist of currdropdown" [ngValue]="datalist.id">{{datalist.currency}}</option>
                             </select>
                       </div>
@@ -74,7 +74,7 @@
                     <div class="col-md-3">
                         <label >Alternates</label>
                         <div class="input-group">
-                            <input name="Alternative"  class="form-control" style="height:34px;width:201px" [(ngModel)]="user.Alternates" [value]="Altername">
+                            <input name="Alternative"  class="form-control" style="height:34px;width:201px" [(ngModel)]="packtables.Alternates" [value]="Altername">
                             <span class="input-group-btn" >
                               <button class="btn btn-default" style="height:34px" data-toggle="modal" data-target="#Alter" ><i class="glyphicon glyphicon-option-horizontal"></i></button>
                             </span>
@@ -87,25 +87,25 @@
                     <div class="col-md-3">
                         <label >Included in Rate</label>
                         <div class="input-group">
-                            <input type="radio" name="optradio"  style="zoom: 1.5;" [(ngModel)]="attributes_id" value=1>
+                            <input type="radio" name="optradio"  style="zoom: 1.5;" [(ngModel)]="packtables.attributes_id" value=1>
                         </div>        
                       </div>
                       <div class="col-md-3">
                           <label for="sell">Sell Separate</label>
                           <div class="input-group">
-                              <input type="checkbox" name="Sell" id="sell" style="zoom: 1.5;" [(ngModel)]="sell_separate" (change)="newFunction()" >
+                              <input type="checkbox" name="Sell" id="sell" style="zoom: 1.5;" [(ngModel)]="packtables.sell_separate">
                           </div>        
                         </div>
                         <div class="col-md-3">
                             <label for="from">Valid From</label>
                           <div class="input-group">
-                            <input type="time" class="form-control" name="From"id="from" [(ngModel)]="user.valid_time_from" >
+                            <input type="time" class="form-control" name="From"id="from" [(ngModel)]="packtables.validtimefrom" >
                           </div>
                         </div>
                         <div class="col-md-3">
                             <label for="post">Posting Rhythm</label>
                           <div class="input-group">
-                            <select name="Posting" id="post" style="height:34px;width: 200px;" [(ngModel)]="user.posting_rhythm_id" >
+                            <select name="Posting" id="post" style="height:34px;width: 200px;" [(ngModel)]="packtables.postingrhythm" >
                               <option *ngFor="let arrlist of rhythmdropdown" [ngValue]="arrlist.posting_rhythm_id">{{arrlist.posting_rhythm_desctiption}}</option>
                             </select>
                           </div>
@@ -115,25 +115,25 @@
                     <div class="col-md-3">
                         <label>Add Rate separate Line</label>
                         <div class="input-group">
-                            <input type="radio" name="optradio" style="zoom: 1.5;" [(ngModel)]="attributes_id" value=2>
+                            <input type="radio" name="optradio" style="zoom: 1.5;" [(ngModel)]="packtables.attributes_id" value=2>
                         </div>        
                       </div>
                       <div class="col-md-3">
                           <label for="posts">Post Next Day</label>
                           <div class="input-group">
-                              <input type="checkbox" name="Pos" id="posts" style="zoom: 1.5;" [(ngModel)]="post_next_day" (change)="newFun()" >
+                              <input type="checkbox" name="Pos" id="posts" style="zoom: 1.5;" [(ngModel)]="packtables.post_next_day">
                           </div>        
                         </div>
                         <div class="col-md-3">
                             <label for="to">Valid To</label>
                           <div class="input-group">
-                            <input type="time" class="form-control" name="To"id="to" [(ngModel)]="user.valid_time_to">
+                            <input type="time" class="form-control" name="To"id="to" [(ngModel)]="packtables.valid_time_to">
                           </div>
                         </div>
                         <div class="col-md-3">
                             <label for="cal">Calculation Rule</label>
                           <div class="input-group">
-                            <select name="Calculation" id="cal" style="height:34px;width: 200px;" [(ngModel)]="user.calculate_rule_id" >
+                            <select name="Calculation" id="cal" style="height:34px;width: 200px;" [(ngModel)]="packtables.calculateruleid" >
                               <option *ngFor="let datas of calculatedropdown" [ngValue]="datas.calculate_rule_id">{{datas.calculate_rule_description}}</option>
                             </select>
                           </div>
@@ -143,7 +143,7 @@
                     <div class="col-md-3">
                         <label for="item">Item Inventory</label>
                       <div class="input-group">
-                        <input type="text" class="form-control" name="Item"id="item" [(ngModel)]="user.item_inventory_selected_id" [value]="iventryname">
+                        <input type="text" class="form-control" name="Item"id="item" [(ngModel)]="packtables.item_inventory_selected_id" [value]="iventryname">
                         <span class="input-group-btn" >
                             <button class="btn btn-default" style="height:34px" data-toggle="modal" data-target="#Iteminventory" ><i class="glyphicon glyphicon-option-horizontal"></i></button>
                           </span>
@@ -154,8 +154,8 @@
             </div>
             <div class="row">
                 <div class="col-md-4"></div>
-                <div class="col-md-2"><button type="button" class="btn btn-info" style="width:100%" data-toggle="modal" data-target="#packheader" (click)="submit(user,post_next_day,sell_separate,attributes_id);pacform.reset()">Save</button> </div>
-                <div class="col-md-2"><button type="button" class="btn btn-danger" style="width:100%" >Close</button> </div>
+                <div class="col-md-2"><button type="button" class="btn btn-info" style="width:100%" data-toggle="modal" data-target="#packheader" (click)="submit(packtables);pacform.reset()">Save</button> </div>
+                <div class="col-md-2"><button type="button" class="btn btn-danger" style="width:100%" routerLink="/packages">Close</button> </div>
                 <div class="col-md-4"></div>
             </div>
             </form>
@@ -164,13 +164,13 @@
            <!-- ********************* Packages Details ************************** -->
           <div id="packagedetails" class="tab-pane fade in" style="margin-top:10px;">
             <form action="" #detail="ngForm">
-              <div class="panel panel-primary">
+              <div class="panel panel-primary" >
                 <div class="panel-body">
                   <div class="row">
                       <div class="col-md-2">
                           <label for="package">Package Code</label>
                         <div class="input-group">
-                            <input name="Package" id="package" style="height:34px;width: 170px;" [(ngModel)]="val.package_code_id">
+                            <input name="Package" id="package" style="height:34px;width: 170px;" [(ngModel)]="val.package_code_id" >
                         </div>
                       </div>                  
                     <div class="col-md-2">
@@ -212,58 +212,42 @@
               <table class="table table-bordered table-hover tableBodyScroll">
                 <thead>
                  <tr class="table table-primary" style="background-color: #0077B5;color: white">
-                  <th>Start</th>
-                  <th>End</th>
-                  <th>Price</th>
+                  <th style="width:40px"> seq</th>
+                  <th style="width:250px">Season Code</th>
+                  <th style="width:200px">Start</th>
+                  <th style="width:200px">End</th>
+                  <th style="width:200px">Price</th>
                   <th>Allowance</th>
                  </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of packtable">
-                    <td>{{item.start_date}}</td>
-                    <td>{{item.end_date}}</td>
-                    <td>{{item.price}}</td>
+                  <tr *ngFor="let item of packtable; let i=index" (click)="select(item,i)" [ngClass]="{'backGroundColor':i==selectindex}">
+                    <td style="width:40px">{{i+1}}</td>
+                    <td style="width:250px">{{item.season_code_description}}</td>
+                    <td style="width:200px">{{item.start_date}}</td>
+                    <td style="width:200px">{{item.end_date}}</td>
+                    <td style="width:200px">{{item.price}}</td>
                     <td>{{item.allowance}} </td>
                   </tr>
-                  <tr>
-                      <td> </td>
-                      <td> </td>
-                      <td> </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                      </tr>
-                      <tr>
-                          <td> </td>
-                          <td> </td>
-                          <td> </td>
-                          <td> </td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                          </tr>                                                            
+                                                            
                </tbody>
               </table>
-              <div class="row">
+              <div class="row" style="text-align:center">
                 <div class="col-md-3">
-                 <button type="button" class="btn btn-success" style="width:100%">New</button> 
+                 <!-- <button type="button" class="btn btn-success" style="width:100%">New</button>  -->
                 </div>
-                <div class="col-md-3">
-                    <button type="button" class="btn btn-warning" style="width:100%">Delete</button> 
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-warning" style="width:100%" (click)="delepackdetail()" data-toggle="modal" data-target="#deletepackdetail">Delete</button> 
                    </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <button type="button" class="btn btn-info" style="width:100%" data-toggle="modal" data-target="#packdetail" (click)="packsub(val);detail.reset()">Save</button> 
                   </div>   
-                  <div class="col-md-3">
-                      <button type="button" class="btn btn-danger" style="width:100%">Close</button> 
-                     </div>                           
+                  <div class="col-md-2">
+                      <button type="button" class="btn btn-danger" style="width:100%" routerLink="/packages">Close</button> 
+                     </div>   
+                   <div class="col-md-3">
+                 <!-- <button type="button" class="btn btn-success" style="width:100%">New</button>  -->
+                </div>                              
               </div>
             </form>
             </div>
@@ -411,3 +395,29 @@
                 </div>
               </div>
              <!-- Package Details End-->             
+
+              <!-- Package Details Start-->
+              <div class="modal fade" id="deletepackdetail" role="dialog" vertical-align="center">
+                  <div class="modal-dialog">
+                  
+                    <!-- Modal content-->
+                    <div class="modal-content " style="margin-top: 30%;">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title" align="center">Package Detail Deleted</h4>
+                      </div>
+                      <div class="modal-body">
+                          <p align="center"><b>{{delpackdetails}}</b></p>                             
+                      </div>
+                      <div class="modal-footer">
+                          <div class="col-md-5"></div>
+                          <div class="col-md-2">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                    <div class="col-md-5"></div>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+               <!-- Package Details End-->               

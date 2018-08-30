@@ -384,37 +384,37 @@
                                                   <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_code_id"></td>
 
                                                 <td><label *ngIf="room.editFlag==false">{{room.Post_des}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Post_des"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Post_des"></td>
   
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_amount}}</label>
-                                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Posting_amount"></td>
+                                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Posting_amount"></td>
 
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_quantity}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Posting_qty"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Posting_quantity"></td>
                           
                                                 <td><label *ngIf="room.editFlag==false">{{room.Post_window}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Post_window"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_window"></td>
                           
                                                 <td  ><label *ngIf="room.editFlag==false">{{room.Arrangement_code}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Arrangement_code"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Arrangement_code"></td>
                           
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Checkno}}</label>
-                                                  <input type="number"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Checkno"></td>
+                                                  <input type="number"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Checkno"></td>
                           
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_supplement}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Posting_supplement"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Posting_supplement"></td>
                           
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_reference}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Posting_reference"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Posting_reference"></td>
                                                   
                                                   
-                                                <!-- <td style="width: 86px;"><span><i style="cursor: pointer;" class="fa fa-trash" aria-hidden="true"
+                                                <td style="width: 86px;"><span><i style="cursor: pointer;" class="fa fa-trash" aria-hidden="true"
                                                   (click)="deleterows(i)"></i> &nbsp;&nbsp;&nbsp;
                                                   <i  style="cursor: pointer;"  *ngIf="room.editFlag==false" class="fa fa-pencil" aria-hidden="true"
-                                                  (click)="editrows(i)"></i>
+                                                  (click)="editrows(i,room)"></i>
                                                   <i  style="cursor: pointer;" *ngIf="room.editFlag!=false" class="fa fa-check" aria-hidden="true"
-                                                  (click)="saveButton(i)"></i>
-                                                </span></td> -->
+                                                  (click)="saveButton(i,room)"></i>
+                                                </span></td>
                                                                             
                   
                                               </tr>
@@ -548,8 +548,8 @@
                                           <th scope="col">Description</th>
                                         </tr>
                                       </thead>
-                                      <tbody *ngFor="let hisitem of hist1">
-                                        <tr>
+                                      <tbody>
+                                        <tr  *ngFor="let hisitem of hist1;">
                                           <th scope="row">{{hisitem?.posting_action}}</th>
                                           
                                           <td>{{hisitem?.revenue_date}}</td>
@@ -586,8 +586,7 @@
                                           <tbody *ngFor="let postitem of home1">
                                             
                                             <tr>
-                                              <th scope="row" >{{postitem?.posting_action}} </th>
-                                              
+                                              <th scope="row" >{{postitem?.posting_action}} </th>                                              
                                               <td>{{postitem?.revenue_date}}</td>
                                               <td>{{postitem?.posting_date}}</td>
                                               <td>{{postitem?.user_role}}</td>

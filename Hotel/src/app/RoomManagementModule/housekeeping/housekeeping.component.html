@@ -247,7 +247,7 @@
 <tr *ngFor="let housekeepinglist of house | filterdata: queryString : 'rm_room_status' | filterdata: queryString : 'rm_fo_status'; let i = index "
 (click)="selectMembersEdit(housekeepinglist,i)" [ngClass]="{'backGroundColor':i==selectindex}">
   
-  <td style="width:30px">{{i+1}}</td>
+  <td><input type="checkbox" (checked)="exist(housekeepinglist)" (click)="toggleSelection(housekeepinglist)"></td>
   <td>{{housekeepinglist.rm_room}}</td>
   <td>{{housekeepinglist.rm_room_type}}</td>
   <td>{{housekeepinglist.rm_room_status}}</td>

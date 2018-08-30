@@ -91,6 +91,7 @@ siva=true
    .subscribe((resp: any) => {
 
     this.housetable=resp.ReturnValue;
+    this.orderr=this.housetable;
     // console.log(this.housetable);
   });
 
@@ -232,15 +233,16 @@ checkoutpost(arg1,balnc)
           this.failuremsg="Unable to update";
         }
         })
+         //refresh
+         this.cashinservice.inhousetable()
+         .subscribe((resp: any) => {
+   
+         this.housetable=resp.ReturnValue;
+         // console.log(this.housetable);
+         });
        });  
         
-        //refresh
-        this.cashinservice.inhousetable()
-        .subscribe((resp: any) => {
-  
-        this.housetable=resp.ReturnValue;
-        // console.log(this.housetable);
-        });
+       
     }
     else
     {
@@ -255,14 +257,15 @@ checkoutpost(arg1,balnc)
       {
         this.failuremsg="Unable to update";
       }
-      })
-      
       this.cashinservice.inhousetable()
       .subscribe((resp: any) => {
 
       this.housetable=resp.ReturnValue;
       // console.log(this.housetable);
       });
+      })
+      
+      
     }
     this.showdiv="900";
     this.showdivv="0";
@@ -333,6 +336,7 @@ filtercheckboxData(ngmodel, flag) {
 //dropdown filter
 onSelect(val){
   console.log(val);
+  console.log("orderrrrrrrrrrrr",this.orderr)
   this.housetable = this.orderr.filter(x => x.res_res_type == val)
 } 
 
