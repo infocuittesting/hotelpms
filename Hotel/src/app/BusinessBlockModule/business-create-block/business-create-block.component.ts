@@ -6,7 +6,6 @@ import { BusinessCreateBlockService } from './business-create-block.service'
 import { ReservationsListComponent } from '../reservations-list/reservations-list.component';
 import * as moment from 'moment';
 
-
 @Component({
   selector: 'app-business-create-block',
   templateUrl: './business-create-block.component.html',
@@ -28,8 +27,6 @@ public inventory=[];
 public ratecode=[];
 public restype=[];
 public blocktype=[];
-editblock:any = {};
-public selected1=[];
 
 
 public block:any={};
@@ -45,28 +42,48 @@ public payblockid;
 public navtag:any;
 public start;
 public end;
+public account_company;
+public agent_val;
 public night;
+public source_val;
+public contact_val;
+public group_val;
+public pfids;
+public totalroomsperday;
 public revenueroom=[];
-user:any={};
-
 
 //date
 arriveDepartureDateFun(arrDate,depDate){
     if(arrDate!=null && depDate!=null){
   const daydiff = moment(arrDate).diff(moment(depDate), "days");
-  this.user.RES_Nights=Math.abs(daydiff);
+  this.block.nights=Math.abs(daydiff);
     }
   }
-
 
 // ................................................
   ngOnInit() {
     // this.session.clear("gridvalues");
     this.session.store("navigate","Block");
-   
-    this.acc_com =this.session.retrieve("pf_accounts");
-console.log("come to block",this.acc_com);
+    this.account_company =this.session.retrieve("pf_accounts");
+    console.log("come to the compa", this.account_company)
+    this.agent_val = this.session.retrieve("agentval");
+    console.log("come to the agent", this.agent_val)
+    this.source_val = this.session.retrieve("sourceval");
+    console.log("source val",this.source_val )
+    this.contact_val = this.session.retrieve("Contactval");
+    console.log("contact val",this.contact_val )
+    this.group_val = this.session.retrieve("Groupval");
+    console.log("grop val",this.group_val )
+    this.pfids =this.session.retrieve("id");
+console.log("come to block",this.pfids);
     // block status sropdown.....................
+    this.session.clear("agentval");
+    this.session.clear("pf_accounts");
+    this.session.clear("sourceval");
+    this.session.clear("Contactval");
+    this.session.clear("Groupval"); 
+    
+
     this.businessblock.blockstatusdropdown()
     .subscribe((resp: any) => {
         this.blockstatus=resp.ReturnValue;
@@ -154,6 +171,27 @@ this.businessblock.BlockTypedropdown()
 //     console.log(this.gridvalues)
 //     });
 //   }
+// companynavigate(){
+//     this.session.store("navigate","Block");
+//    console.log("got to compaony")
+    
+// }
+
+// agentnavigate(){
+//     this.session.store("navigate","agentBlock");
+//    console.log("gadgfafasf")
+//     // this.acc_com =this.session.retrieve("pf_accounts");
+// }
+// sourcenavigate(){
+//     this.session.store("navigate2","sourceBlock");
+   
+//     // this.acc_com =this.session.retrieve("pf_accounts");
+// }
+// groupnavigate(){
+//     this.session.store("navigate3","groupBlock");
+   
+//     // this.acc_com =this.session.retrieve("pf_accounts");
+// }
 
 
   blockheader(block){
@@ -184,19 +222,22 @@ this.businessblock.BlockTypedropdown()
     this.start=block.startdate;
     this.end=block.enddate;
     this.night=block.nights;
-    
+    this.totalroomsperday = block.roomsperday;
     this.businessblock.CreateBusinessBlock(block)
-   
+    
+
 .subscribe((resp: any) => {
     this.createblock=resp.ReturnCode;
     this.blockids = resp.Blockid;
     this.block_code = resp.blockcode;
-    this.block_name = resp.Blockname;
+ 
+    // this.block_name = resp.Blockname;
      console.log(this.createblock);
      this.session.store("blockid",this.blockids.toString());
     this.session.store("starts",this.start.toString());
     this.session.store("ends",this.end.toString());
     this.session.store("nght",this.night.toString());
+    this.session.store("total_room_peray", this.totalroomsperday.toString())
     console.log("hooooooooo",this.blockids.toString(),this.start.toString(),this.end.toString(),this.night.toString())
    
      if(this.createblock=="RIS"){
@@ -207,13 +248,15 @@ this.businessblock.BlockTypedropdown()
          this.blocksuccess="something"
      }
  });
-  }
  
+  }
+
   selected_id1 = [];
   selected_code = [];
   idx1: any;
   public rmid1:any;
   public rmcodes:any;
+  public selected1=[];
   exist1(item) {
     this.selected1.indexOf(item) > -1;
   }
@@ -325,7 +368,4 @@ this.businessblock.BlockTypedropdown()
 //     sessionStorage.clear();
 // }
 
-// roompackages(){
-  
-// }
 }

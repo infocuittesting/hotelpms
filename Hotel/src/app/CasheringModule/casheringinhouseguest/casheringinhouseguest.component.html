@@ -18,8 +18,10 @@
                       <label for="room">Room</label>
                     </div>
                     <div class="col-md-9">
-                      <div class="form-group" >            
-                        <input type="text" class="form-control input-sm" [(ngModel)]="mainroom" name="room" style="height:27px;width: 83%;">
+                      <div class="form-group" [class.has-error]="roomval.dirty && !roomval.valid">            
+                        <input type="text" class="form-control input-sm" [(ngModel)]="mainroom"  pattern="^[0-9]+$" #roomval="ngModel"  name="room" style="height:27px;width: 83%;">
+                        <div *ngIf="roomval.dirty && !roomval.valid && roomval.errors.pattern " ngClass="{ 'has-error' : !roomval.valid && submitAttempt }">                                                                                                
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -31,8 +33,10 @@
                         <label for="room">Name</label>
                       </div>
                       <div class="col-md-9">
-                        <div class="form-group">            
-                          <input type="text" class="form-control input-sm" [(ngModel)]="mainpersonname" name="personname" style="height:27px;width: 83%;">
+                        <div class="form-group" [class.has-error]="nameval.dirty && !nameval.valid">            
+                          <input type="text" class="form-control input-sm" [(ngModel)]="mainpersonname" pattern="[a-zA-Z][a-zA-Z ]*"  #nameval="ngModel" name="personname" style="height:27px;width: 83%;">
+                          <div *ngIf="nameval.dirty && !nameval.valid && nameval.errors.pattern " ngClass="{ 'has-error' : !nameval.valid && submitAttempt }">                                                                                                
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -393,8 +397,8 @@
       <br>
       
       <div class="container">
-          <div class="table-responsive" style="margin-top:-30px;height:50%;width:101%;overflow-y:auto;">
-        <table class="table table-bordered table-hover" style="width:96%;">
+
+        <table class="table table-bordered table-hover tableBodyScroll" style="width:96%;">
           <thead style="background-color:#0077B5;color:white;">
             <tr>
               <th>Room</th>
@@ -407,10 +411,10 @@
               <th>ResType</th>
             </tr>
           </thead>
-          <tbody *ngFor="let dell of housetable |filterdata: mainpersonname :'pf_firstname' |  filterdata: mainroom :'res_room'|  filterdata: company :'Company';let i=index " (click)="selectMembersEdit(dell,i)"  
-          [ngClass]="{'backGroundColor':i==selectindex}" style="padding-top:2px;padding-bottom:2px;padding-left:2px;padding-right:2px;font-size:small;">
+          <tbody>
   
-          <tr>
+          <tr  *ngFor="let dell of housetable |filterdata: mainpersonname :'pf_firstname' |  filterdata: mainroom :'res_room'|  filterdata: company :'Company';let i=index " (click)="selectMembersEdit(dell,i)"  
+          [ngClass]="{'backGroundColor':i==selectindex}">
             <td >{{dell?.res_room}}</td>
             <td>{{dell?.pf_firstname}}</td>
           
@@ -426,7 +430,7 @@
                   
           </tbody>
         </table>
-        </div>
+   
       </div>
       
       

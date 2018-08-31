@@ -41,10 +41,19 @@ export class EditBusinessBlockComponent implements OnInit {
     public queryroomtype;
     public roomtype1;
     public editblock: any;
+    public travelpf;
     public businessDetails: any;
     selecteddesc: any;
     Orginselecteddesc: any;
     selecteddetail: any;
+    public travelagent;
+    public profile_types;
+    public acc_com;
+    public account_name;
+    public Travel_Agent;
+    public source_name;
+    public Contact_name;
+    public Group_name;
     ngOnInit() {
         // block status sropdown.....................
         this.editblockservice.blockstatusdropdown()
@@ -69,7 +78,7 @@ export class EditBusinessBlockComponent implements OnInit {
 
         // Origin dropdown.........................
         this.businessDetails = this.session.retrieve("businessDet");
-        this.selecteddesc = this.businessDetails.origin_id;
+        // this.selecteddesc = this.businessDetails.origin_id;
         this.editblockservice.origindropdown()
             .subscribe((resp: any) => {
                 this.origin = resp.ReturnValue;
@@ -124,6 +133,24 @@ export class EditBusinessBlockComponent implements OnInit {
         this.editblockservice.QueryEditblock()
             .subscribe((resp: any) => {
                 this.queryedit = resp.ReturnValue;
+                this.profile_types = resp.profiletype;
+                this.account_name = resp.accountname;
+                if(this.profile_types == "company"){
+                      this.acc_com = this.account_name;
+                      console.log("company account name")
+                }
+                else if(this.profile_types == "Travel Agent"){
+                       this.Travel_Agent = this.account_name;
+                }
+                else if(this.profile_types == "Source"){
+                    this.source_name = this.account_name;
+               }
+             else if(this.profile_types == "Contact"){
+                this.Contact_name = this.account_name;
+               }
+               else if(this.profile_types == "Group"){
+                this.Group_name = this.account_name;
+               }
                 // this.blid=this.queryedit.block_id;
                 console.log(this.queryedit);
             });
@@ -188,7 +215,8 @@ export class EditBusinessBlockComponent implements OnInit {
         this.Inventorydetails = this.inventory.filter(
             inventoryde => inventoryde.inventory_control   === block.inventory_control );  
         this.ratecodedetails = this.ratecode.filter(
-            rateco => rateco.rate_description   === block.rate_description );  
+            rateco => rateco.ratecode   === block.ratecode );  
+            // console.log("rate code is worked",this.ratecodedetails[0].id)
         this.paymentdetails = this.payment.filter(
             paymnt => paymnt.payment_description   === block.payment_description );  
         this.meetingspacedetails = this.meetingsizetype.filter(

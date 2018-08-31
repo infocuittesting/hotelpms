@@ -148,7 +148,8 @@ CreateBusinessBlock(block):Observable<object[]> {
     "Definite":
            {
             "pf_id":this.session.retrieve("id".toString()),
-	          "block_status_id":block.statusblock,
+            "block_status_id":block.statusblock,
+            "block_name":block.blocknames,
             "market_id":block.marketcode,
             "source_id":block.sourcecode,
             "owner":block.owner,
@@ -167,7 +168,7 @@ CreateBusinessBlock(block):Observable<object[]> {
             "ratecode_id":block.ratecodes,
             "print_rate":block.print_rate,
 			      "suppress_rate":block.suppress,
-			      "packages":block.packagess,
+			      "packages":"tttty",
             "trace_code":block.tracess,
             "follow_date":block.followdates
 			     
