@@ -295,7 +295,7 @@ public totalcount;
 editrangegrids(editgrid)
 {
 console.log("edit the grid screen value",editgrid);
-this.totalcount = editgrid.occupancy_one+editgrid.occupancy_two+editgrid.occupancy_three+editgrid.rate_four
+this.totalcount = editgrid.occupancy_one+editgrid.occupancy_two+editgrid.occupancy_three+editgrid.occupancy_four
 console.log("total count",this.totalcount )
 if(editgrid.sunday == true)
 {
