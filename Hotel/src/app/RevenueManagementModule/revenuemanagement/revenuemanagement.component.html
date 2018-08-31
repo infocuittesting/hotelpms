@@ -569,8 +569,8 @@
                                   <th>Room Types</th>
                                 </tr>
                               </thead>
-                              <tbody style="font-size:12px;">
-                                <tr *ngFor="let dettable of ratedettabl; let i=index" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
+                              <tbody style="font-size:12px;" *ngFor="let dettable of ratedettabl; let i=index">
+                                <tr  *ngIf="dettable.rate_tier_id == 0" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
                                     <td>{{dettable.start_date}}</td>     
                                     <td>{{dettable.end_date}} </td>
                                     <td>{{dettable.rooms_id}}</td>
@@ -634,8 +634,15 @@
               <button type="button" class="btn btn-Info" style="width:110px;" data-toggle="modal" routerLink="/ratetier"><b>Rate Tier</b></button>
           </div>
           <div class="col-md-2">
+<<<<<<< HEAD
+              <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" (click)="repeating(editratedetail)" ><b>Repeat</b></button>
+=======
               <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" ><b>Repeat</b></button>
+>>>>>>> c80fcd14d802c5a9da44975c3aa81897cb06b655
           </div>
+          <div class="col-md-2">
+                <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" (click)="repeatingpaste()" ><b>paste</b></button>
+            </div>
           <div class="col-md-2">
               <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal" data-toggle="modal" data-target="#afteratedetdel" (click)="ratdetfun()"><b>Delete</b></button>
           </div>

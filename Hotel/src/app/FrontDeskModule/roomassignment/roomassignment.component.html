@@ -3,62 +3,56 @@
         <div class="col-md-10">
             <br>
       <div class="container-fluid">
-        <div class="jumbotron" style="background-color: #0077B5;color: white; ">
+        <div class="panel panel-primary" style="border-color: lightgray;">
+            <div class="panel-body">
       
-          <div class="row">
-              <div class="col-md-4">
-                  <label for=""> Name:</label>
+          <div class="row" style="margin-top: -10px;margin-bottom: -10px">
+              <div class="col-md-2">
+                  <label for=""> Name</label>
                   <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="name" [(ngModel)]="queryString" name="name" #firstName="ngModel">
                   <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid" style="width:200px;">
                   <div *ngIf=firstName.errors.pattern>name should contain only alphabets </div>
                   </div>    
           </div>
       
-              <div class="col-md-4">
-               <label for="email">Group:</label>  
+              <div class="col-md-2">
+               <label for="email">Group</label>  
                <input type="text" class="form-control" id=""  name="text">
                </div>
 
-               <div class="col-md-4">
-                  <label for="email">Room_Type:</label>
+               <div class="col-md-2">
+                  <label for="email">Room Type</label>
                   <input type="text" class="form-control" id="room_type" name="room_type" [(ngModel)]="qrtype">
              </div>
-      
+             <div class="col-md-2">
+                <label for="email">Res. Type</label>
+                 <input type="text" class="form-control" id="type"  name="type" [(ngModel)]="restype">
+                </div>
+                            <div class="col-md-2">
+                            <label for="email"> VIP</label>
+                            <input type="text" class="form-control" id="vip" name="vip">
+                    </div>
+                    <div class="col-md-2">
+                            <label for="email"> Date</label>                 
+                        <input id="type" type="date" class="form-control" name="date"style="border-radius:5px;" [(ngModel)]="qdate">
+                    </div>    
           </div>
       
             <div class="row">
 
-              <div class="col-md-4">
-                         <label for="email">Res. Type:</label>
-                          <input type="text" class="form-control" id="type"  name="type" [(ngModel)]="restype">
-             </div>
-             
-             <div class="col-md-4">
-                 <label for="email"> VIP:</label>
-                 <input type="text" class="form-control" id="vip" name="vip">
-             </div>
 
-                 <div class="col-md-4">
-                  <label for="email"> Date:</label>                 
-                 <input id="type" type="date" class="form-control" name="date"style="border-radius:5px;" [(ngModel)]="qdate">
-            </div>
-      </div>
+             
+
+
       <br>
-            <div class="row">
-      
- 
-                  <div class="col-md-5">                 
-                  </div> 
-                  <div class="col-md-2"> 
-  
-                          <button class="btn btn-warning"  style="width: 100%;">Advance <i class="fa fa-edit"></i> </button>        
-                          </div>           
+        
+         
                           <div class="col-md-5">                 
                             </div>       
-           </div>
+           
       
-      </div>
-      <div style="margin-left:90%"> 
+      </div></div></div>
+      <div style="margin-left:90%;margin-top: -15px"> 
         <span>
           <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
           [ngClass]="{disabling:showMore!=true}" (click)="showLessBut()"></i>
@@ -116,7 +110,7 @@
       </table>
       <br>
       
-      <div>
+      <div class="row" style="margin-top: -15px;text-align: center"> 
         <button class="btn btn-info" style="width:11%; margin-left:5%;" routerLink="/housekeeping" [disabled]=assign> Assign <i class="fa fa-sign-in"></i></button>    
         <button class="btn btn-Warning"style="width:11%" (click)="unassignProfile()" data-toggle="modal" data-target="#Unassign"  [disabled]=unass> Unassign <i class="fa fa-sign-in"></i> </button>    
         <button class="btn btn-primary disabled" style="width:11%"> Auto <i class="fa fa-tasks"></i></button>     
@@ -478,7 +472,7 @@
                 <div class="modal-content" style="width:150%;margin-left: -20%;margin-top: 10%;">
                       <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              <h4 class="modal-title">Room Unassignment details</h4>
+                              <h4 class="modal-title" style="text-align: center">Room Unassignment details</h4>
                             </div>
                       <div class="modal-body">  
                           <div>    
@@ -502,10 +496,10 @@
                 <div class="modal-dialog">
                 
                   <!-- Modal content-->
-                  <div class="modal-content" style="width:150%;">
+                  <div class="modal-content" style="width:150%;margin-left: -125px;margin-top: 220px">
                         <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Checkin Status</h4>
+                                <h4 class="modal-title" style="text-align: center">Checkin Status</h4>
                               </div>
                         <div class="modal-body">  
                             <div>    

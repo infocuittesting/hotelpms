@@ -271,7 +271,7 @@
                        <!-- table content -->
                        <div class="table-responsive"  style="margin-top:0px">
                         <div class="scroll">
-                            <div *ngIf="currentTab" >
+                            <div  >
                           
                             <table class="table table-bordered table-hover" style="width:100%;">
                             
@@ -283,11 +283,12 @@
                                 </tr>
                               </thead>
                               <tbody style="font-size:12px;">
-                                <tr *ngFor="let dettable of ratedettabl; let i=index" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
+                                  <ng-container *ngFor="let dettable of ratedettabl; let i=index">
+                                <tr *ngIf="dettable.rate_tier_id == currentTab" (click)="selectMembers1(dettable,i)"  [ngClass]="{'backGroundColor':i==selectindexx}">
                                     <td>{{dettable.start_date}}</td>     
                                     <td>{{dettable.end_date}} </td>
                                     <td>{{dettable.rooms_id}}</td>
-                                </tr>
+                                </tr></ng-container>
                               </tbody>
                             </table>
                         </div>

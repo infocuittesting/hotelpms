@@ -3,52 +3,53 @@
   <div class="col-md-10">
       <br>
 <div class="container-fluid">
-  <div class="jumbotron" style="background-color: #0077B5;color: white; ">
+  <div class="panel panel-primary" style="border-color: lightgray;margin-left: 5px;margin-right: 5px;margin-top: -15px">
+      <div class="panel-body" style="margin-bottom: -20px">
     <form action="" id="myform">
-    <div class="row">
+    <div class="row" style="margin-top: -15px">
 
         <div class="col-sm-4">
            <b> First Name</b> <div class="input-group">
                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" name="firstname" id="name" class="form-control" [(ngModel)]="queryString"></div>
+                <input type="text" name="firstname" id="name" class="form-control" [(ngModel)]="queryString" style="height: 30px;width: 60%"></div>
         </div>
   
         <div class="col-sm-4">
   
             <b>Last Name</b> <div class="input-group">
                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" name="Lastname" id="name" class="form-control" [(ngModel)]="query"></div>
+                <input type="text" name="Lastname" id="name" class="form-control" [(ngModel)]="query" style="height: 30px;width: 60%"></div>
         </div>
         
           <div class="col-sm-4">
               <b>Company</b> <div class="input-group">
                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" name="Company" id="name" class="form-control"></div>
+                <input type="text" name="Company" id="name" class="form-control" style="height: 30px;width: 60%"></div>
   
             </div>
       
   
           </div>
   
-          <div class="row" style="padding-top:10px;">
+          <div class="row" >
   
               <div class="col-lg-4">
                   <b>Contact</b> <div class="input-group">
                        <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
-                       <input type="text"name="Contact" class="form-control"></div>
+                       <input type="text"name="Contact" class="form-control" style="height: 30px;width: 60%"></div>
                </div>
   
         <div class="col-lg-4">
             <b>Arrival From</b> <div class="input-group">
                  <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                 <input type="date" name="Arrivalfrom" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)"></div>
+                 <input type="date" name="Arrivalfrom" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)" style="height: 30px;width: 60%"></div>
          </div>
    
          <div class="col-lg-4">
    
              <b>Arrival To</b> <div class="input-group">
                  <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-                 <input type="date" name="Arrivalto"class="form-control" [(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)"></div>
+                 <input type="date" name="Arrivalto"class="form-control" [(ngModel)]="endDate" (change)="filterDatefrmList(startDate,endDate)" style="height: 30px;width: 60%"></div>
          </div>
         
   
@@ -57,12 +58,12 @@
           </div>
   
   
-          <div class="row" style="padding-top:10px;">
+          <div class="row" >
   
             <div class="col-lg-4">
               <b>Group</b> <div class="input-group">
                    <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                   <input type="text" name="Group" id="name" class="form-control"></div>
+                   <input type="text" name="Group" id="name" class="form-control" style="height: 30px;width: 60%"></div>
            </div>
            
         
@@ -70,13 +71,13 @@
         
                   <b>Source</b> <div class="input-group">
                       <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                      <input type="text" name="Source" id="name" class="form-control" [(ngModel)]="qsource"></div>
+                      <input type="text" name="Source" id="name" class="form-control" [(ngModel)]="qsource" style="height: 30px;width: 60%"></div>
               </div>
             
               <div class="col-lg-4">
                     <b>Agent</b> <div class="input-group">
                       <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
-                      <input type="text" name="Agent" id="name" class="form-control"></div>
+                      <input type="text" name="Agent" id="name" class="form-control" style="height: 30px;width: 60%"></div>
         
                   </div>
             
@@ -84,7 +85,7 @@
                 </div>  
            
 <br>
-<div class="row">
+<div class="row" style="margin-top: -10px">
 <div class="col-md-3"></div>
 <div class="col-md-2">
   <button class="btn btn-info" style="width: 100%" routerLink="/arrival">Advance  </button>    
@@ -101,7 +102,8 @@
 </form>
 </div>
 </div>
-<div style="margin-left:90%"> 
+</div>
+<div style="margin-left:90%;margin-top: -20px"> 
   <span>
     <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
     [ngClass]="{disabling:showMore!=true}" (click)="showLessBut()"></i>
@@ -222,10 +224,10 @@
             <div class="modal-dialog">
             
               <!-- Modal content-->
-              <div class="modal-content" style="width:150%;">
+              <div class="modal-content" style="width:150%;margin-left: -100px;margin-top: 225px">
                     <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Checkin Status</h4>
+                            <h4 class="modal-title" style="text-align: center;">Checkin Status</h4>
                           </div>
                     <div class="modal-body">  
                         <div>    

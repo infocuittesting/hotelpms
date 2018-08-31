@@ -2,8 +2,8 @@
  <div class="row" style="width: 99%;">
   <div class="col-md-2"></div>
   <div class="col-md-10">
-  <div class="panel panel-primary" style="margin-left: 16px;margin-top: 10px;">
-  <div class="panel-body" >
+  <div class="panel panel-primary" style="margin-left: 16px;margin-top: 10px;margin-right: 15px;border:solid 1px;border-color: lightgray">
+  <div class="panel-body" style="margin-left: 10px">
  <div class="container-fluid" style="padding-top:50px;">
  <div  style="padding-top:10px;padding-bottom:20px;">
   <!-- <form #f="ngForm">    -->
@@ -12,20 +12,20 @@
      <div class="col-sm-4">
         <b>First Name</b> <div class="input-group">
              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-             <input type="text" [(ngModel)]="queryString" class="form-control" name="queryString"></div>
+             <input type="text" [(ngModel)]="queryString" class="form-control" name="queryString" style="height: 30px;width: 215px;"></div>
      </div>
 
      <div class="col-sm-4">
 
          <b>Last Name</b> <div class="input-group">
              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
-             <input type="text" [(ngModel)]="lastname" class="form-control" name="lastname"></div>
+             <input type="text" [(ngModel)]="lastname" class="form-control" name="lastname" style="height: 30px;width: 215px;"></div>
      </div>
    
      <div class="col-sm-4">
            <b>Mobile No</b> <div class="input-group">
              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
-             <input type="text" class="form-control" [(ngModel)]="mobile" style="width: 90%"></div>
+             <input type="text" class="form-control" [(ngModel)]="mobile" style="height: 30px;width: 215px;"></div>
 
          </div>
    
@@ -40,7 +40,7 @@
     <b>City</b> <div class="input-group">
              
       <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>  
-             <input type="text" [(ngModel)]="city" class="form-control"  name="city" >
+             <input type="text" [(ngModel)]="city" class="form-control"  name="city" style="height: 30px;width: 215px;">
 
        </div>
      </div>
@@ -48,7 +48,7 @@
      <div class="col-lg-4">
          <b>Postal Code</b> <div class="input-group">
             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>              
-            <input type="text" [(ngModel)]="postal" class="form-control"  class="form-control">
+            <input type="text" [(ngModel)]="postal" class="form-control"  class="form-control" style="height: 30px;width: 215px;">
 
             </div>
           </div>
@@ -56,7 +56,7 @@
    <div class="col-lg-4">
      <b>View By</b>
      <div class="input-group">
-     <select [(ngModel)]="pftypeselection" (ngModelChange)="onSelect(pftypeselection)" style="width:295px;height:35px;color:black;"> 
+     <select [(ngModel)]="pftypeselection" (ngModelChange)="onSelect(pftypeselection)" style="width:255px;height:30px;color:black;"> 
       <option *ngFor="let option of options" 
               [ngValue]="option.profiletype"> 
               {{option.profiletype}}
@@ -69,7 +69,7 @@
 
 
 
-<div class="row" style="padding-top:0px;margin-bottom: -20px">
+<div class="row" style="padding-top:8px;margin-bottom: -20px">
 
 <div class="col-lg-4">
  
@@ -86,7 +86,7 @@
 </div>
 
  <div class="col-lg-4">
-<button type="reset" class="btn btn-success" (click)="clear()"><b>Clear</b></button>
+<button type="reset" class="btn btn-warning" style="height: 35px;width: 110px" (click)="clear()"><b>Clear</b></button>
 </div> 
 </div></div></div>
   <!-- </form>  -->
@@ -94,7 +94,7 @@
 
  </div>
 
- <div style="margin-left:90%"> 
+ <div style="margin-left:90%;margin-top: -18px"> 
   <span>
     <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
     [ngClass]="{disabling:showMore!=true}" (click)="showLessBut()"></i>
@@ -174,7 +174,7 @@
 </div>
 
 <div class="col-lg-2">
-    <button type="button" class="btn btn-success" routerLink="/modal-basic" style="width:160px;" [disabled]=edit><b>Edit</b></button>
+    <button type="button" class="btn btn-warning" routerLink="/modal-basic" style="width:160px;" [disabled]=edit><b>Edit</b></button>
    </div>
    
 

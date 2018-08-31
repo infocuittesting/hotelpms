@@ -3,20 +3,20 @@
         <div class="col-md-10">
             <br>
       <div class="container-fluid">
-        <div class="jumbotron" style="background-color: #0077B5;color: white; ">
-
+            <div class="panel panel-primary" style="border-color: lightgray;">
+                <div class="panel-body" style="margin-top: -10px">
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-2">
-                        <label for="email">First Name:</label>                
-                        <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="name" [(ngModel)]="queryString" name="name" #firstName="ngModel">
+                        <label for="email">First Name</label>                
+                        <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="name" [(ngModel)]="queryString" name="name" #firstName="ngModel" style="height: 30px;width:90% ">
                         <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid" style="width:205px;">                   
                         <div *ngIf=firstName.errors.pattern>first name should contain only alphabets </div>
                         </div>    
                 </div>
       
              <div class="col-md-2">
-                            <label for="email">Last Name:</label>
+                            <label for="email">Last Name</label>
                              <input type="text" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" id="email" [(ngModel)]="lastName" name="email" #LastNAMEE="ngModel">
                              <div class="alert alert-danger" *ngIf="LastNAMEE.touched && !LastNAMEE.valid" style="width:205px;">
                              <div *ngIf=LastNAMEE.errors.pattern>last name should contain only alphabets </div>
@@ -24,19 +24,19 @@
                 </div>
       
                 <div class="col-md-2">
-                                   <label for="email">Room Type:</label>
+                                   <label for="email">Room Type</label>
                                     <select name="roomtypetemp" class="form-control" id="email" [(ngModel)]="roomtype" (ngModelChange)="onSelect(roomtype)">
                                     <option *ngFor="let rooms of list" [ngValue]="rooms.type">{{rooms.type}}</option>    
                                     </select>   
                        </div>
                  <div class="col-md-2">
-                   <label for="room">Room:</label>
+                   <label for="room">Room</label>
                    <select name="Room" class="form-control" id="room" [(ngModel)]="roomno" (ngModelChange)="onSelected(roomno)">
                       <option *ngFor="let litsrm of room" [ngValue]="litsrm.rm_room">{{litsrm.rm_room}}</option>    
                       </select>
               </div>
               <div class="col-md-2">
-                <label for="roomclass">Room Class:</label>
+                <label for="roomclass">Room Class</label>
                 <select name="RoomClass" class="form-control" id="roomclass" [(ngModel)]="roomclass" (ngModelChange)="onSelectclass(roomclass)">
                     <option *ngFor="let litsclss of class1" [ngValue]="litsclss.class">{{litsclss.class}}</option>    
                     </select>  
@@ -44,10 +44,10 @@
     <div class="col-md-1"></div>
 
             </div>   
-      </div>
+      </div></div>
       
       <br>
-          <table class="table table-bordered tableBodyScroll" >
+          <table class="table table-bordered tableBodyScroll" style="margin-top: -25px">
         <thead>
             <tr class="table table-primary"style="background-color: #0077B5;color:white; ">
                 <th style="width:50px;">x</th>
@@ -79,58 +79,8 @@
                   <td style="width:97px;">  {{checkin.rm_fo_status}}</td>     
                   <td>  {{checkin.rm_room_status}}</td>                             
                </tr>
-                    <tr>
-                  <td style="width:50px;"> <input type="checkbox"></td>      
-                   <td style="width:150px;"></td>     
-                   <td style="width:75px;"></td>     
-                   <td style="width:85px;"></td>     
-                   <td style="width:110px;"></td>     
-                   <td style="width:100px;"></td>     
-                   <td style="width:65px;"></td>     
-                   <td style="width:102px;"></td>
-                   <td style="width:107px;"></td>     
-                   <td style="width:97px;"></td>     
-                   <td></td>                        
-                </tr>
-                    <tr>
-                  <td style="width:50px;"> <input type="checkbox"></td>      
-                   <td style="width:150px;"></td>     
-                   <td style="width:75px;"></td>     
-                   <td style="width:85px;"></td>     
-                   <td style="width:110px;"></td>     
-                   <td style="width:100px;"></td>     
-                   <td style="width:65px;"></td>     
-                   <td style="width:102px;"></td>
-                   <td style="width:107px;"></td>     
-                   <td style="width:97px;"></td>     
-                   <td></td>                        
-                </tr>
-                    <tr>
-                   <td style="width:50px;"> <input type="checkbox"></td>          
-                   <td style="width:150px;"></td> 
-                   <td style="width:75px;"></td>     
-                   <td style="width:85px;"></td>     
-                   <td style="width:110px;"></td>     
-                   <td style="width:100px;"></td>     
-                   <td style="width:65px;"></td>     
-                   <td style="width:102px;"></td>
-                   <td style="width:107px;"></td>     
-                   <td style="width:97px;"></td>     
-                   <td></td>                             
-                </tr>
-                    <tr>
-                  <td style="width:50px;"> <input type="checkbox"></td>      
-                   <td style="width:150px;"></td>     
-                   <td style="width:75px;"></td>     
-                   <td style="width:85px;"></td>     
-                   <td style="width:110px;"></td>     
-                   <td style="width:100px;"></td>     
-                   <td style="width:65px;"></td>     
-                   <td style="width:102px;"></td>
-                   <td style="width:107px;"></td>     
-                   <td></td>     
-                   <td></td>                        
-                </tr>                                                            
+  
+                                                           
         </tbody>
       </table>
       <br>
@@ -147,7 +97,7 @@
       
       
       </div>
-      </div>
+      
       
       
       <!---managing the queue-->
@@ -158,10 +108,10 @@
                 <div class="modal-dialog">
                 
                   <!-- Modal content-->
-                  <div class="modal-content" style="width:150%;">
+                  <div class="modal-content" style="width:150%;margin-left: -120px;margin-top: 210px">
                         <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Checkin Status</h4>
+                                <h4 class="modal-title" style="text-align: center">Checkin Status</h4>
                               </div>
                         <div class="modal-body">  
                             <div>    
@@ -186,7 +136,7 @@
               <div class="modal-content" style="margin-left:-45%;margin-top: 10%; width:190%;" >
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Managing Queue Report</h4>
+                  <h4 class="modal-title" style="text-align: center">Managing Queue Report</h4>
                 </div>
                 <div class="modal-body">                    
                <div id="content" #content style="font-size:20px">
@@ -212,75 +162,19 @@
                           
                                     <tr *ngFor="let checkin of search | filterdata: queryString :'pf_firstname'| filterdata: lastName : 'pf_firstname'| filterdata: roomtype : 'Room_Class'; let i = index"
                                     (click)="selectMembersEdit(checkin,i)" [ngClass]="{'backGroundColor':i==selectindex}">
-                                      <td>  {{i+1}}</td>     
-                                      <td>  {{checkin.res_id}}</td>
-                                      <td>  {{checkin.pf_firstname}}</td>     
-                                      <td>  {{checkin.rm_qtime}}</td>     
-                                      <td>  {{checkin.rm_queue}}</td>     
-                                      <td>  {{checkin.rm_queue_date}}</td>     
-                                      <td>  {{checkin.pf_mobileno}}</td>     
-                                      <td>  {{checkin.res_room}}</td>     
-                                      <td>  {{checkin?.rm_room_type}}</td>     
-                                      <td>  {{checkin.rm_room_class}}</td>     
-                                      <td>  {{checkin.rm_fo_status}}</td>     
-                                      <td>  {{checkin.rm_room_status}}</td>                             
-                                   </tr>
-                                        <tr>
-                                      <td> <input type="checkbox"></td>      
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>                        
-                                    </tr>
-                                        <tr>
-                                      <td> <input type="checkbox"></td>      
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>                        
-                                    </tr>
-                                        <tr>
-                                       <td> <input type="checkbox"></td>          
-                                       <td></td>     
-                                       <td></td> 
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>                             
-                                    </tr>
-                                        <tr>
-                                      <td> <input type="checkbox"></td>      
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>
-                                       <td></td>     
-                                       <td></td>     
-                                       <td></td>                        
-                                    </tr>                                                            
+                                      <td>{{i+1}}</td>     
+                                      <td>{{checkin.res_id}}</td>
+                                      <td>{{checkin.pf_firstname}}</td>     
+                                      <td>{{checkin.rm_qtime}}</td>     
+                                      <td>{{checkin.rm_queue}}</td>     
+                                      <td>{{checkin.rm_queue_date}}</td>     
+                                      <td>{{checkin.pf_mobileno}}</td>     
+                                      <td>{{checkin.res_room}}</td>     
+                                      <td>{{checkin?.rm_room_type}}</td>     
+                                      <td>{{checkin.rm_room_class}}</td>     
+                                      <td>{{checkin.rm_fo_status}}</td>     
+                                      <td> {{checkin.rm_room_status}}</td>                             
+                                   </tr>                                                          
                             </tbody>
                           </table>
 
