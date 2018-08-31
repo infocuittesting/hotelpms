@@ -16,21 +16,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<div class="row"  style="width:99%">
+  <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-10">
-  <div class="container-fluid" style="padding-top:40px;">
-  <div class="jumbotron" style="padding-top:10px;background-color:#0077B5;color:white;padding-bottom:20px;">
+  <div class="container-fluid" style="padding-top:20px;">
+  <div class="panel panel-default">
+    <div class="panel-body" style="max-height: 218px;">
+    <div  style="padding-top:0px;">
         <form action="" #loginForm="ngForm">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-3">
 
          <b> First Name *</b>
               <div class="input-group">
                 <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
                     <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"  [value]="PF_Firstname | titlecase" required>
                 <span class="input-group-btn" >
-                  <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+                  <button class="btn btn-primary btn-lg" routerLink="/psearch"><i class="glyphicon glyphicon-option-horizontal" style="margin-top: -5px;"></i></button>
                 </span>
 
             </div>
@@ -38,7 +40,7 @@
             <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid && firstName.errors.required" style="width:420px;">first name is required </div>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-3">
 
           <b>Last Name</b> <div class="input-group">
               <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span>
@@ -46,100 +48,80 @@
               <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid && lastName.errors.pattern" style="width:478px;">last name should contain only alphabets </div>
       </div>
 	  
-      <div class="col-lg-4">
+      <div class="col-lg-3">
         <b>Language</b> <div class="input-group">
             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
             <input type="text" name="Language" class="form-control"[(ngModel)]="Pf_language"></div>
+     </div> 
+     <div class="col-lg-3">
+        <b>Contact</b> <div class="input-group">
+             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
+             <input type="text" name="Contact" class="form-control"></div>
      </div>
 
         </div>
 
         <div class="row">
-
-      <div class="col-lg-4">
-         <b>Contact</b> <div class="input-group">
-              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
-              <input type="text" name="Contact" class="form-control"></div>
-      </div>
-
-	    <div class="col-lg-4">
+	    <div class="col-lg-3">
         <b>Phone</b> <div class="input-group">
           <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-phone"></i></span>
           <input type="text"name="Phone" pattern="^(0|[1-9][0-9]*)$" class="form-control" [(ngModel)]="PF_Mobileno" #phone="ngModel"></div>
           <div class="alert alert-danger" *ngIf="phone.touched && !phone.valid && phone.errors.pattern" style="width:205px;">phone number should contain only numbers </div>
 
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-3">
         <b>Title</b> <div class="input-group">
             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
             <input type="text" name="Title" class="form-control"[(ngModel)]="Pf_title"></div>
-     </div>    
+      </div>  
+      <div class="col-lg-3">
+          <b>Group</b> <div class="input-group">
+            <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-th"></i></span>
+            <input type="text"name="Group" class="form-control"></div>
+        </div>  
+        <div class="col-lg-3">
+            <b>Source</b><div class="input-group">
+             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-share"></i></span>
+             <input type="text"name="Source" class="form-control"></div>
+         </div>
 
         </div>
     
         
-        <div class="row">
-
-          <div class="col-lg-4">
-            <b>Group</b> <div class="input-group">
-              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-th"></i></span>
-              <input type="text"name="Group" class="form-control"></div>
-          </div>
-          <div class="col-lg-4">
-             <b>Source</b><div class="input-group">
-              <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-share"></i></span>
-              <input type="text"name="Source" class="form-control"></div>
-          </div>
-    
-
-        
-         <div class="col-lg-4">
+      <div class="row" style="margin-top: 10;">
+         <div class="col-lg-3">
           <b>Country</b> <div class="input-group">
               <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-pencil"></i></span>
               <input type="text" name="Country" class="form-control"[(ngModel)]="Pf_country"></div>
-       </div>
-        
-    
-            </div>
-
-
-                
-        <div class="row">
-
-          <div class="col-lg-4">
+         </div>
+         <div class="col-lg-3">
             <b>Company</b> <div class="input-group">
               <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-th"></i></span>
               <input type="text"name="company" class="form-control"></div>
          </div>
 
-         <div class="col-lg-4">
-
+         <div class="col-lg-3">
           <b>Agent</b> <div class="input-group">
             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-share"></i></span>
             <input type="text"name="Agent" class="form-control"></div>
-      </div>         
+         </div>         
     
-          <div class="col-lg-4">
+          <div class="col-lg-3">
             <b>VIP</b> <div class="input-group">
                 <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-edit"></i></span>
                 <input type="text" name="Vip" class="form-control" [(ngModel)]="Pf_vip"></div>
          </div>
-        
-    
-            </div>
-
-
+        </div>
         </form>
-
-
+  </div>
+</div>
+</div>
   </div>
 
-  </div>
 
-
-  <div class="container-fluid">
+  <div class="container-fluid" >
       <form #rese="ngForm">
-      <div class="panel panel-primary">
+      <div class="panel panel-default">
           <div class="panel-body">
 
     <div class="row">
@@ -551,11 +533,11 @@
   </div>
 </form>
   </div>
-
-
-
 </div>
 </div>
+
+
+
 
 
 <div class="modal fade" id="myModal" role="dialog">

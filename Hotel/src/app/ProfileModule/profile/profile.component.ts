@@ -101,9 +101,7 @@ public user={};
  });
 }
 
-cleardata(){
-  this.user=' ';
-}
+
 ngOnInit()
 {
   this.navtag= this.session.retrieve("navigate");

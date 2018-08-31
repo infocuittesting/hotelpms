@@ -103,6 +103,26 @@ postbuttoninsert(selected,currency,amount,ref,supp,expdt): Observable<object[]> 
 
 }
 
+postbuttoninsert1(selected,currency,amount,ref,supp): Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+ let body={ 
+  "res_id":this.session.retrieve("id1"),
+  "res_room":this.session.retrieve("id"),
+  "Payment_code_id":selected.toString(),
+  "currency_id":currency.toString(),
+  "Postig_amount":amount,
+  "payment_supplemet":supp,
+  "Posting_reference":ref,
+  "credicard_id":"", 
+ }
+ console.log(JSON.stringify(body));
+
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_CAH_POST_INSERT_UPDATEPOSTINGPAYMENT',body,options)
+     .map(this.extractData)
+
+}
 
 currencydropdown():  Observable<object[]> {
        

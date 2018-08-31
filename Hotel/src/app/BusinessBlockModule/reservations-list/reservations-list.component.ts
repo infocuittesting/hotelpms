@@ -11,6 +11,8 @@ import {ReservationListService} from './reservation-list.service';
  
 })
 export class ReservationsListComponent implements OnInit {
+  public Id = this.session.retrieve("blockid");
+public Name = this.session.retrieve("blockname");
 
   constructor(private reservationlist: ReservationListService,public session:SessionStorageService,private route:Router) { }
 
@@ -25,6 +27,7 @@ export class ReservationsListComponent implements OnInit {
   }
 
 // Seletct reservation list.........................
+
 public querypay=[];
 public selectindex=null;
 public res_block_code;

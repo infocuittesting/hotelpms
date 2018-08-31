@@ -3,19 +3,19 @@
   <div class="col-md-10">
     <br>
       <div class="container-fluid">
-          <div class ="table-responsive"style="width:100%;">
+          <div class ="table-responsive"style="width:100%; margin-left: 35px;">
               <table class="table table-bordered tableBodyScroll">
                   <thead style="background-color: #337ab7;color: white;">
                     <tr>
-                      <th>Confirmation Number</th>
+                      <th >Conf No</th>
                       <th>Name</th>
                       <th>Arrival</th>
                       <th>Depature</th>
                       <th>Nights</th>
-                      <th>Room Type</th>
+                      <th style="width:100px;">Room Type</th>
                       <th>Adult</th>
                       <th>Child</th>
-                      <th>Number of rooms</th>
+                      <th style="width:100px;">No of rooms</th>
                       <th>Rooms</th>
                       <th>Block ID</th>
                       <th width=10% ></th>
@@ -29,14 +29,14 @@
                        </select>
                        </td> -->
 
-                          <td><input style="width: 100%;height: 25px;" name = "confnumber" type="text" [(ngModel)]="confnumber" disabled/></td>
+                          <td><input style="width:100px;height: 25px;" name = "confnumber" type="text" [(ngModel)]="confnumber" disabled/></td>
                       
-                          <td><input style="width: 100%;height: 25px;"  name = "profilename" type="text" [(ngModel)]="Names"/></td>
+                          <td><input style="width: 100px;height: 25px;" pattern="^[a-z A-Z]+$"  name = "profilename" type="text" [(ngModel)]="Names"/></td>
                           <td><input type="text" style="width: 100%;height: 25px;"  name = "arrival"  [(ngModel)]="Arrival" disabled [value]="arrive"/></td>
                           <td><input type="text" style="width: 100%;height: 25px;"  name = "depature"  [(ngModel)]="Depature" disabled [value]="depature"/></td>
                           <td><input style="width: 100%;height: 25px;"  name = "nights" type="text" [(ngModel)]="nights" disabled [value]="nightss" /></td>
                           <td>
-                           <select name="romnm"  style="width:100%;" [(ngModel)]="roomtype" >
+                           <select name="romnm"  style="width:100px;" [(ngModel)]="roomtype" >
                             <option  *ngFor="let roomtype of show_room_type" [ngValue] = "roomtype">{{roomtype}}</option>
                            </select>
                           </td>
@@ -44,7 +44,7 @@
                           <td><input style="width: 100%;height: 25px;"  name = "adult" type="text" [(ngModel)]="adult" /></td>
 
                           <td><input style="width: 100%;height: 25px;"  name = "child" type="text" [(ngModel)]="child" /></td>
-                          <td><input style="width: 100%;height: 25px;" name = "numberofrooms" type="text" [(ngModel)]="numberofrooms"/></td>
+                          <td><input style="width:100px;height: 25px;" name = "numberofrooms" type="text" [(ngModel)]="numberofrooms"/></td>
                           
                           <td><input style="width: 100%;height: 25px;"  name = "rooms" type="text" [(ngModel)]="rooms" disabled /></td>
                           <td><input style="width: 100%;height: 25px;"  name = "blockid" type="text" [(ngModel)]="blockid" [value]="blockid" disabled/></td>
@@ -166,7 +166,7 @@
               <button class="btn btn-success" style="width:100%" data-toggle="modal" data-target="#myModal4" (click)="UpdateRoomingList()" (click)="CreateGroupReservation()">save</button>
             </div>
             <div class="col-md-2">
-              <button class="btn btn-Warning" style="width:100%">Close</button>
+              <button class="btn btn-Warning"  routerLink="/mains"style="width:100%">Close</button>
             </div> 
 
           </div>

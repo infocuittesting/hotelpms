@@ -58,6 +58,27 @@ export class CasheringinhouseguestService {
   
   }
 
+  checkoutbuttoninsert1(input,balnc): Observable<object[]> {
+       
+    const headers = new Headers({'Content-Type':'application/json'})
+    const options = new RequestOptions({ headers: headers })
+   let body={ 
+    "res_id":this.session.retrieve("id1"),
+    "res_room":this.session.retrieve("id"),
+    "Payment_code_id":input.selected,
+    "currency_id":input.currency,
+    "Postig_amount":balnc,
+    "payment_supplemet":input.supp,
+    "Posting_reference":input.ref,
+    "credicard_id":""
+   }
+   console.log(JSON.stringify(body));
+  
+    return this.http.post('https://hotel360.herokuapp.com/HOTEL_CAH_POST_INSERT_UPDATEPOSTINGPAYMENTCHECKOUT',body,options)
+       .map(this.extractData)
+  
+  }
+
 
   currencydropdown():  Observable<object[]> {
        

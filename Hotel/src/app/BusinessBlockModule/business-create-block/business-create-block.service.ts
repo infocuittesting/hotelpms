@@ -31,6 +31,18 @@ marketdropdown():Observable<object[]> {
 
 }
 
+//packages
+
+revenuepackages():  Observable<object[]> {
+       
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers })
+ 
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_REVENUE_MANAGEMENT_SELECT_Packages',options)
+     .map(this.extractData)
+
+}
+
 // source dropdown..................................
 sourcedropdown():Observable<object[]> {
        

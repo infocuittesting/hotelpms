@@ -20,7 +20,7 @@ export class SearchandeditreservationComponent implements OnInit {
   public arry=[];
 
   constructor(private pService:SearchandeditreservationService,private route:Router,public session:SessionStorageService) { }
-   
+  showMore=false;
   ngOnInit() {
       
   this.pService.searchedit()
@@ -35,6 +35,14 @@ this.pService.reasondropdown()
 
 }
 
+  //show more
+  showMoreBut(){
+    this.showMore=true;
+  }
+  //show less
+  showLessBut(){
+    this.showMore=false;
+  }
 
 //res cancel
 cans={};
@@ -134,6 +142,7 @@ public resid;
 public name;
 selectindex=null;
 selectMembersEdit(details,index){
+console.log(details)  
 this.selectindex=index;
 this.reinstate=details.res_guest_status;
 this.resid=details.res_id;

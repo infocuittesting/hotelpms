@@ -50,6 +50,7 @@ import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roomm
 //Cashering
 import { BillingComponent } from './CasheringModule/billing/billing.component';
 import { CasheringinhouseguestComponent } from './CasheringModule/casheringinhouseguest/casheringinhouseguest.component';
+import {FoliohistoryComponent} from './CasheringModule/foliohistory/foliohistory.component';
 import { ContextmenuModule } from 'ng2-contextmenu';
 import { RevenuemanagementComponent } from './RevenueManagementModule/revenuemanagement/revenuemanagement.component';
 
@@ -70,7 +71,14 @@ import { EditRevenueManagementComponent } from './RevenueManagementModule/edit-r
 import { EditBusinessBlockComponent } from './BusinessBlockModule/edit-business-block/edit-business-block.component';
 import { QueryReservationListComponent } from './BusinessBlockModule/query-reservation-list/query-reservation-list.component';
 import {HotkeyModule} from 'angular2-hotkeys';
+<<<<<<< HEAD
 import { EditGridRoomsComponent } from './BusinessBlockModule/edit-grid-rooms/edit-grid-rooms.component'; 
+=======
+import { ResolvePipe } from './resolve.pipe';
+//packages Module
+import { PackagesComponent } from './PackagesModule/packages/packages.component';
+import { PackagesnewComponent } from './PackagesModule/packagesnew/packagesnew.component'; 
+>>>>>>> b6d41e7d00b05d227a60dbbcb2b5498ce0eb89cf
 
 
 
@@ -111,7 +119,14 @@ import { EditGridRoomsComponent } from './BusinessBlockModule/edit-grid-rooms/ed
    RevenueRateCodeComponent,
    EditBusinessBlockComponent,
    QueryReservationListComponent,
+<<<<<<< HEAD
    EditGridRoomsComponent,
+=======
+   ResolvePipe,
+   PackagesComponent,
+   PackagesnewComponent,
+   FoliohistoryComponent,
+>>>>>>> b6d41e7d00b05d227a60dbbcb2b5498ce0eb89cf
   
    
    

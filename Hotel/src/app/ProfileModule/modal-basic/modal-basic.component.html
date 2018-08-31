@@ -76,7 +76,7 @@
   <div class="modal-dialog">
   
   
-    <div class="modal-content">
+    <div class="modal-content" style="margin-top: 270px">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
        <h4>Connect 24/7 Hotel</h4>
@@ -85,7 +85,7 @@
       <b align="center">Are sure you want to Delete the profile ?</b>
       </div>
       <div class="modal-footer">
-          <button type="button" class="btn btn-info"  (click)="deletesClick()" data-toggle="modal" data-target="#profilerecordresponse1" data-dismiss="modal"><b>Ok</b></button>
+          <button type="button" class="btn btn-success"  (click)="deletesClick()" data-toggle="modal" data-target="#profilerecordresponse1" data-dismiss="modal"><b>Ok</b></button>
           <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
       </div>
     </div>
@@ -412,7 +412,7 @@
     
       <!-- Modal Header -->
       <div class="modal-header">
-        <!-- <h4 class="modal-title">Profile Options</h4> -->
+        <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Changes</h4>
        <b> <button type="button" class="close" data-dismiss="modal">&times;</button></b>
       </div>
       
@@ -467,7 +467,7 @@
     
       <!-- Modal Header -->
       <div class="modal-header">
-        <!-- <h4 class="modal-title">Modal Heading</h4> -->
+        <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Credit Card</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       
@@ -481,7 +481,7 @@
                       <th> Card Type</th>
                       <th> Credit Card Number</th>
                       <th>Expiration Date</th>
-                      <th>ID</th>
+                     
                     
                    </tr>
                </thead> 
@@ -492,7 +492,7 @@
                                 <td>{{creditlist.pf_card_type}}</td>
                                 <td>{{creditlist.pf_creditcard_no}} </td>
                                 <td>{{creditlist.pf_expiration_date}}</td>
-                                <td>{{creditlist.cc_id}}</td>
+                                
                               </tr>
                                  
                              <!-- <tr *ngIf="prefer==null || prefer.length==0">
@@ -510,9 +510,9 @@
       
       <!-- Modal footer -->
       <div class="modal-footer" style="padding-right:150px;">
-        <button class="btn btn-info" type="button"  data-toggle="modal" data-target="#insert"><b>Add New</b></button>
-        <button class="btn btn-danger" type="button" (click)="deletecreditClick(flag)" data-toggle="modal" data-target="#carddeleteresponse" [disabled]=delet><b>Delete</b></button>
-        <button class="btn btn-success"  type="button" data-toggle="modal" data-target="#updatecard" [disabled]=edit><b>Edit</b></button>
+        <button class="btn btn-primary" type="button"  data-toggle="modal" data-target="#insert"><b>Add New</b></button>
+        <button class="btn btn-secondary" type="button" (click)="deletecreditClick(flag)" data-toggle="modal" data-target="#carddeleteresponse" [disabled]=delet><b>Delete</b></button>
+        <button class="btn btn-warning"  type="button" data-toggle="modal" data-target="#updatecard" [disabled]=edit><b>Edit</b></button>
         <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
        </div>   
       
@@ -535,9 +535,9 @@
     
       <!-- Modal content-->
       <div class="modal-content" style="width:40%;margin-left: 35%;">
-        <div class="modal-header">
+        <div class="modal-header" >
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add Credit Card Details here...</h4>
+          <h4 class="modal-title" >Add Credit Card Details here</h4>
         </div>
         <form #rese="ngForm">
         <div class="modal-body">
@@ -565,7 +565,7 @@
       <div class="col-md-6" style="text-align:left"><b>Creditcard Type</b></div>
       <div class="col-md-6">   
         <div class="input-group" [class.has-error]="creditcardno.touched && creditcardno.invalid">       
-       <select name="Creditcardtype" class="form-control" #creditcardno="ngModel" required style="width:175px; height:34px;color:black;border-radius:4px;color:black;" [(ngModel)]="mbc.PF_Card_Type"(change)="onSelect5(class)">
+       <select name="Creditcardtype" class="form-control" #creditcardno="ngModel" required style="width:185px; height:34px;margin-left: -10px;color:black;border-radius:4px;color:black;" [(ngModel)]="mbc.PF_Card_Type"(change)="onSelect5(class)">
           <option *ngFor="let creditcardnumber of creditcard" [ngValue] = "creditcardnumber.creditcard_description" >{{creditcardnumber.creditcard_description}} </option>
             </select> 
         <div *ngIf="creditcardno.touched && !creditcardno.valid && creditcardno.errors?.required" ngClass="{ 'has-error' : !creditcard.valid && submitAttempt }"></div>             
@@ -617,7 +617,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <!-- <h4 class="modal-title">Modal Heading</h4> -->
+          <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Feature</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -662,7 +662,7 @@
           
            
             <button type="button" class="btn btn-primary" routerLink="/reservation" data-dismiss="modal"><b>New</b></button>
-            <button type="button" class="btn btn-success"><b>Edit</b></button>
+            <button type="button" class="btn btn-warning"><b>Edit</b></button>
             <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
        
         </div>
@@ -682,13 +682,14 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
+          <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">History</h4>
          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
         <!-- Modal body -->
-        <div class="modal-body">
-            <div>
-                <table class="table table-hover table-bordered" style="width: 90%;margin-left:5%;">
+        <div class="modal-body" style="overflow-y: scroll; max-height:350px;">
+           
+                <table class="table table-hover table-bordered " style="width: 90%;margin-left:5%;">
                 <thead style="background-color:#0077B5;color:white;">
                   <tr>
                     <th>Arrival</th>
@@ -718,7 +719,7 @@
                     </tr>
                     </tbody>
                 </table>
-              </div>
+             
         </div>
         
         <!-- Modal footer -->
@@ -741,7 +742,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <!-- <h4 class="modal-title">Modal Heading</h4> -->
+          <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Merge</h4>
           <button type="button" class="close" data-dismiss="modal"><b>&times;</b></button>
         </div>
         
@@ -867,6 +868,8 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
+            <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Notes</h4>
+
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -874,25 +877,26 @@
         <div class="modal-body">
             <div>
                 <br>
-                    <table style=" width:95%; margin-left: 2%; border: 1px solid lightgray;height:70px;background-color:#0077B5;color:white;">
+                    <div class="row" style=" width:95%; margin-left: 2%; height:70px;margin-top: -25px;margin-bottom: -45px">
                        <tr>
-                        <td style="padding-left:30px;"><b>Note Type</b></td>
+                         <td></td>
+                        <td style="padding-left:130px"><b>Note Type</b></td>
           <td style="padding-left:15px;">
-              <select [(ngModel)]="notetypeselection" (change)="notesfilter(notetypeselection)" name="notetypeselect" required style="height:34px;width:250px;color:black;" >
+              <select [(ngModel)]="notetypeselection" (change)="notesfilter(notetypeselection)" name="notetypeselect" required style="height:34px;width:250px;color:black;margin-right: 290px;" >
                   <option *ngFor="let notecode of note1" [ngValue] = "notecode.notetype">{{notecode.notetype}} </option>
                  </select>
               
         </td>
           
           
-          <td><b>Internal Only</b></td>
-          <td><input type="checkbox" style="width:20px;height:20px;"></td>
+          <td><b style="margin-left: -490px;">Internal Only</b></td>
+          <td><input type="checkbox" style="width:20px;height:17px;margin-left: -390px"></td>
           
           
           
           
           </tr>
-                        </table>
+        </div>
                        <br>
                        
                         <table class="table table-hover table-bordered" style=" width:95%; margin-left: 2%;">
@@ -901,7 +905,7 @@
            
                 <th>Note Type</th>
                 <th>Note Title</th>
-                <th>ID</th>
+             
                
                    
               </tr>
@@ -919,9 +923,7 @@
                       
                     </td>
 
-                    <td>{{notelist?.notes_id}}
-                      
-                    </td>
+
 
                    
                        </tr>
@@ -948,9 +950,9 @@
         
         <!-- Modal footer -->
         <div class="modal-footer" style="padding-right:150px;">
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#insert2"><b>Add New</b></button>
-            <button type="button" class="btn btn-danger" (click)="deletenotesClick()" data-toggle="modal" data-target="#notesdeleteresponse" data-dismiss="modal" [disabled]=notedelete><b>Delete</b></button>
-            <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#update2" [disabled]=noteedit><b>Edit</b></button> 
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insert2"><b>Add New</b></button>
+            <button type="button" class="btn btn-secondary" (click)="deletenotesClick()" data-toggle="modal" data-target="#notesdeleteresponse" data-dismiss="modal" [disabled]=notedelete><b>Delete</b></button>
+            <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#update2" [disabled]=noteedit><b>Edit</b></button> 
              <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
         </div>
         
@@ -971,7 +973,7 @@
     <div class="modal-content" >
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add Notes Details here...</h4>
+        <h4 class="modal-title">Add Notes Details here</h4>
       </div>
       <form action="">
       <div class="modal-body">
@@ -1032,7 +1034,7 @@
     <div class="modal-content" >
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add Notes Details here...</h4>
+        <h4 class="modal-title">Add Notes Details here</h4>
       </div>
       <form action="">
       <div class="modal-body">
@@ -1094,18 +1096,21 @@
         <div class="modal-content" style="width: 55%;">
         
           <!-- Modal Header -->
-          <div class="modal-header">
+          
+          <div class="modal-header" >
+              <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Negotiated</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           
           <!-- Modal body -->
           <div class="modal-body">
-              <table style=" border: 1px solid lightgray;background-color:#0077B5;color:white;">
+            <div class="row" style="margin-left: 152px">
+              
                         
-                  <tr>
-                  <td style="padding-left:30px;"><b>Rate Code</b></td>
+                 
+                  <td style="padding-left:30px;"><b style="font-size: 15px">Rate Code</b></td>
   <td style="padding-left:15px;">
-      <select name="filtertypeselection" [(ngModel)]="typeselection" (change)="onSelect(typeselection)" required style="height:34px;width:250px;color:black;">
+      <select name="filtertypeselection" [(ngModel)]="typeselection" (change)="onSelect(typeselection)" required style="height:30px;width:130px;color:black;">
           <option *ngFor="let negotiatedratecode of rate" 
           [ngValue] = "negotiatedratecode.ratecode">
           {{negotiatedratecode.ratecode}} 
@@ -1116,13 +1121,13 @@
   
   
   
-  <td style="padding-left:80px;"><input type="checkbox" style="width:20px;height:20px;"></td>
+  <td style="padding-left:25px;"><input type="checkbox" ></td>
   
-  <td><b>Show Active</b></td>
+  <td><b style="font-size: 15px">Show Active</b></td>
   
   
-  </tr>
-                  </table><br>
+ 
+</div><br>
        
       <div id="negotiation">            
     <table class="table table-hover table-bordered" style=" width:95%; margin-left: 2%;">
@@ -1132,7 +1137,7 @@
           <th>Rate Code</th>
           <th>Start Sell</th>
            <th>End Sell Date</th>
-           <th>ID</th>
+          
           
             
            
@@ -1160,9 +1165,7 @@
         
         </td>
 
-        <td>{{negotiatedlist?.negotiate_id}}
-        
-        </td>  
+ 
         </tr>
           
        
@@ -1180,10 +1183,10 @@
         
            <button type="button" class="btn btn-info" ><b>Detail</b></button>
            
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#update3" [disabled]=negoteedit><b>Edit</b></button>
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#insert1"><b>Add New</b></button>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#update3" [disabled]=negoteedit><b>Edit</b></button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insert1"><b>Add New</b></button>
             <button type="button" class="btn btn-danger" (click)="deletenegotesClick()" data-toggle="modal" data-target="#negodeleteresponse" data-dismiss="modal" [disabled]=negotedelete><b>Delete</b></button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"><b>Close</b></button>
         
           </div>
         
@@ -1207,7 +1210,7 @@
     <div class="modal-content" >
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Add Negotiated Details here...</h4>
+        <h4 class="modal-title">Add Negotiated Details here</h4>
       </div>
       <div class="modal-body">
 
@@ -1314,7 +1317,8 @@
       <div class="modal-content">
       
         <!-- Modal Header -->
-        <div class="modal-header">
+        <div class="modal-header" style="margin-bottom: -25px">
+            <h4 class="modal-title" style="text-align: center;margin-bottom: -30px">Preference</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -1322,32 +1326,32 @@
         <div class="modal-body">
             <div>
                 <br>
-                <table style=" margin-left:2%; border: 1px solid lightgray;background-color:#0077B5;height:70px;color:white;" >
+                <div class="row">
                    <tr>
                        <td style="padding-left:20px;"><b>Preference</b></td>
          <td style="padding-left:15px;">
-            <select  name="filterprtypeselection" [(ngModel)]="prtypeselection" (change)="preferencefilter(prtypeselection,pgtypeselection)" required style="height:34px;color:black;">
+            <select  name="filterprtypeselection" [(ngModel)]="prtypeselection" (change)="preferencefilter(prtypeselection,pgtypeselection)" required style="height:30px;color:black;">
                 <option *ngFor="let companypreference of preference1" [ngValue] = "companypreference.preference">{{companypreference.preference}} </option>
                </select>
            </td>
          
         <td style="padding-left:50px;"><b>Preference Group</b></td>
          <td style="padding-left:15px;">
-            <select   name="filterpgtypeselection" [(ngModel)]="pgtypeselection" (change)="preferencefilter(prtypeselection,pgtypeselection)" required style="height:34px;color:black;">
+            <select   name="filterpgtypeselection" [(ngModel)]="pgtypeselection" (change)="preferencefilter(prtypeselection,pgtypeselection)" required style="height:30px;color:black;">
                 <option *ngFor="let companypreference2 of preference2" [ngValue] = "companypreference2.prefernecegroup">{{companypreference2.prefernecegroup}} </option>
                </select>
            </td>
-         </tr>
-           </table>
+         </tr></div>
+          
                       
             <br>
-         <table class="table table-hover table-bordered" style=" width:98%; margin-left: 2%; background-color:white;">
+         <table class="table table-hover table-bordered" style=" width:98%; margin-left: 2%; background-color:white;font-size: 15px">
            <thead style="background-color:#0077B5;color:white;">
              <tr>
                <th>Preference Group</th>
                <th>Description</th>
                <th>Preferences</th>
-               <th>ID</th>
+               
              
                </tr>
            </thead>
@@ -1366,9 +1370,6 @@
              
              </td>
 
-             <td>{{preferlist?.preference_id}}
-             
-            </td>
             
             </tr>
 
@@ -1389,9 +1390,9 @@
         
         <!-- Modal footer -->
         <div class="modal-footer" style="padding-right:100px;">
-           <button type="button" class="btn btn-info" data-toggle="modal" data-target="#insert3"><b>Add New</b></button>
-           <button type="button" class="btn btn-danger" (click)="deletepreferClick(flag)"  data-toggle="modal" data-target="#preferdeleteresponse" data-dismiss="modal" [disabled]=prefdelete><b>Delete</b></button>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#update4" [disabled]=prefedit><b>Edit</b></button>
+           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#insert3"><b>Add New</b></button>
+           <button type="button" class="btn btn-secondary" (click)="deletepreferClick(flag)"  data-toggle="modal" data-target="#preferdeleteresponse" data-dismiss="modal" [disabled]=prefdelete><b>Delete</b></button>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#update4" [disabled]=prefedit><b>Edit</b></button>
              <button type="button" class="btn btn-danger" data-dismiss="modal"><b>Close</b></button>
       </div>
         
@@ -1710,7 +1711,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add Credit Card Details here...</h4>
+          <h4 class="modal-title">Add Credit Card Details here</h4>
         </div>
         <div class="modal-body">
  

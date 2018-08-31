@@ -4,6 +4,8 @@ import { SessionStorageService } from "ngx-webstorage";
 import { Router } from "@angular/router";
 import { BusinessCreateBlockService } from './business-create-block.service'
 import { ReservationsListComponent } from '../reservations-list/reservations-list.component';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-business-create-block',
@@ -26,6 +28,8 @@ public inventory=[];
 public ratecode=[];
 public restype=[];
 public blocktype=[];
+editblock:any = {};
+public selected1=[];
 
 
 public block:any={};
@@ -49,6 +53,19 @@ public contact_val;
 public group_val;
 public pfids;
 public totalroomsperday;
+public revenueroom=[];
+user:any={};
+
+
+//date
+arriveDepartureDateFun(arrDate,depDate){
+    if(arrDate!=null && depDate!=null){
+  const daydiff = moment(arrDate).diff(moment(depDate), "days");
+  this.user.RES_Nights=Math.abs(daydiff);
+    }
+  }
+
+
 // ................................................
   ngOnInit() {
     // this.session.clear("gridvalues");
@@ -111,6 +128,12 @@ this.businessblock.cancelreasondropdown()
 .subscribe((resp: any) => {
     this.cancelreason=resp.ReturnValue;
      console.log(this.cancelreason);
+ });
+ //packages
+ this.businessblock.revenuepackages()
+ .subscribe((resp: any) => {
+   this.revenueroom = resp.Return;
+   console.log("package value",this.revenueroom)
  });
 
 //  Meetingspacetpye dropdown......................
@@ -231,8 +254,39 @@ this.businessblock.BlockTypedropdown()
          this.blocksuccess="something"
      }
  });
- 
   }
+ 
+  selected_id1 = [];
+  selected_code = [];
+  idx1: any;
+  public rmid1:any;
+  public rmcodes:any;
+  exist1(item) {
+    this.selected1.indexOf(item) > -1;
+  }
+  toggleSelection1(item) {
+    this.idx1 = this.selected1.indexOf(item);
+    // this.room_type += item.type
+    console.log("string", item)
+    if (this.idx1 > -1) {
+      this.selected1.splice(this.idx1, 1);
+      this.selected_id1.splice(this.idx1, 1);
+      this.selected_code.splice(this.idx1, 1);
+
+    }
+    else {
+      this.selected1.push(item);
+      this.selected_id1.push(item.package_code_id);
+      this.selected_code.push(item.package_code);
+
+    }
+    this.rmcodes = this.selected_code.toString();
+    this.rmid1 = this.selected_id1.toString();
+    console.log("selected id", this.rmid1);
+    console.log("selected code", this.rmcodes);
+
+  }
+  
   
 // create paymaster for resv button.............................................
 //   CreatePaymaster(){
@@ -318,4 +372,7 @@ this.businessblock.BlockTypedropdown()
 //     sessionStorage.clear();
 // }
 
+// roompackages(){
+  
+// }
 }
