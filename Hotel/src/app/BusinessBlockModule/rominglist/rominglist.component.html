@@ -21,7 +21,7 @@
                       <th width=10% ></th>
                     </tr>
                   </thead>
-                  <tbody >
+                  <tbody>
                       <tr>
                        <!-- <td>
                         <select   style="width:100%;" [(ngModel)]="confnumber">
@@ -31,7 +31,7 @@
 
                           <td><input style="width:100px;height: 25px;" name = "confnumber" type="text" [(ngModel)]="confnumber" disabled/></td>
                       
-                          <td><input style="width: 100px;height: 25px;"  name = "profilename" type="text" [(ngModel)]="Names"/></td>
+                          <td><input style="width: 100px;height: 25px;" pattern="^[a-z A-Z]+$"  name = "profilename" type="text" [(ngModel)]="Names"/></td>
                           <td><input type="text" style="width: 100%;height: 25px;"  name = "arrival"  [(ngModel)]="Arrival" disabled [value]="arrive"/></td>
                           <td><input type="text" style="width: 100%;height: 25px;"  name = "depature"  [(ngModel)]="Depature" disabled [value]="depature"/></td>
                           <td><input style="width: 100%;height: 25px;"  name = "nights" type="text" [(ngModel)]="nights" disabled [value]="nightss" /></td>
@@ -48,30 +48,40 @@
                           
                           <td><input style="width: 100%;height: 25px;"  name = "rooms" type="text" [(ngModel)]="rooms" disabled /></td>
                           <td><input style="width: 100%;height: 25px;"  name = "blockid" type="text" [(ngModel)]="blockid" [value]="blockid" disabled/></td>
-                          <td style="width: 86px;"><span>
+                        <td style="width: 86px;"><span>
                             <i style="padding-left: 34px;cursor: pointer;" (click)="size(roomtype)" (click)="addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid)"
                             class="fa fa-plus-circle" aria-hidden="true"></i>
-                         </span></td>
+                         </span>
+                        </td>
 
                          </tr>
                         <tr *ngFor="let room of savedetails ; let i=index;">
 
                             <td><label *ngIf="room.editFlag==false">{{room.confnumber}}</label>
-                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.confnumber"></td>
+                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.confnumber" disabled></td>
                             <td><label *ngIf="room.editFlag==false">{{room.pf_firstname}}</label>
                               <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.pf_firstname"></td>
 
                             <td ><label *ngIf="room.editFlag==false">{{room.res_arrival}}</label>
-                            <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.res_arrival"[value]="res_arrival"></td>
+                            <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.res_arrival"[value]="res_arrival" disabled></td>
                             <td ><label *ngIf="room.editFlag==false">{{room.res_depature}}</label>
-                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.res_depature"[value]="res_depature"></td>
+                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.res_depature"[value]="res_depature" disabled></td>
       
                             <td><label *ngIf="room.editFlag==false">{{room.res_nights}}</label>
-                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_nights" [value]="res_nights"></td>
-      
-                            <td  ><label *ngIf="room.editFlag==false">{{room.res_room_type}}</label>
+                              <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_nights" [value]="res_nights" disabled></td>
+                              <!-- <td>
+                                <select name="room_select"  style="width:100%;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_room_type" >
+                                 <option  *ngFor="let roomtype of show_room_type" [ngValue] = "res_room_type" *ngIf="room.editFlag==false">{{room.res_room_type}}</option>
+                                </select>
+                               </td> -->
+                               <td >
+                                <select name="room_type"  style="width:100%;" [(ngModel)]="room.res_room_type"  >
+                                 <option  *ngFor="let roomtype of show_room_type" [ngValue] = "room.res_room_type" >{{roomtype}}</option>
+                                </select>
+                               </td>
+                            <!-- <td  ><label *ngIf="room.editFlag==false">{{room.res_room_type}}</label>
                               <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.res_room_type"></td>
-      
+       -->
                             <td ><label *ngIf="room.editFlag==false">{{room.res_adults}}</label>
                               <input type="number"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_adults"></td>
       
@@ -82,18 +92,18 @@
                               <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_number_of_rooms"></td>
                               
                             <td ><label *ngIf="room.editFlag==false">{{room.res_rooms}}</label>
-                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_rooms"></td>
+                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_rooms" disabled></td>
 
                             <td ><label *ngIf="room.editFlag==false">{{room.res_block_code}}</label>
-                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_block_code" [value]="res_block_code"></td>
+                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.res_block_code" [value]="res_block_code" disabled></td>
                                   
-                            <!-- <td style="width: 86px;"><span><i style="cursor: pointer;" class="fa fa-trash" aria-hidden="true"
+                             <td style="width: 86px;"><span><i style="cursor: pointer;" class="fa fa-trash" aria-hidden="true"
                               (click)="deleterows(i)"></i> &nbsp;&nbsp;&nbsp;
                               <i  style="cursor: pointer;"  *ngIf="room.editFlag==false" class="fa fa-pencil" aria-hidden="true"
-                              (click)="editrows(i)"></i>
+                              (click)="editrows(i,room)"></i>
                               <i  style="cursor: pointer;" *ngIf="room.editFlag!=false" class="fa fa-check" aria-hidden="true"
-                              (click)="saveButton(i)"></i>
-                            </span></td> -->
+                              (click)="saveRows(i,room)"></i>
+                            </span></td> 
                                                         
 
                           </tr>
@@ -156,7 +166,7 @@
               <button class="btn btn-success" style="width:100%" data-toggle="modal" data-target="#myModal4" (click)="UpdateRoomingList()" (click)="CreateGroupReservation()">save</button>
             </div>
             <div class="col-md-2">
-              <button class="btn btn-Warning" style="width:100%">Close</button>
+              <button class="btn btn-Warning"  routerLink="/mains"style="width:100%">Close</button>
             </div> 
 
           </div>

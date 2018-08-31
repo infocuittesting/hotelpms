@@ -18,8 +18,8 @@
                   <b> Acct/corm*</b>
                   <div class="input-group">
                     <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-                    <input type="text" name="accountscom" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="editblock.pf_account"
-                      [value]="editblock.pf_account" disabled>
+                    <input type="text" name="accountscom" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="acc_com"
+                      [value]="acc_com" disabled>
                     <span class="input-group-btn">
                       <button class="btn btn-primary btn-lg" routerLink="/psearch"  style="height: 34px;" disabled> 
                         <i class="glyphicon glyphicon-option-horizontal"></i>
@@ -31,10 +31,10 @@
                   <b> Agent*</b>
                   <div class="input-group">
                     <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-                    <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="PF_Firstname" [value]="acco"
-                      #firstName="ngModel" style="margin-top: 2px;" [value]="PF_Firstname | titlecase" required>
+                    <input type="text" disabled name="Agent Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="Travel_Agent" [value]="Travel_Agent"
+                      #firstName="ngModel" style="margin-top: 2px;" required>
                     <span class="input-group-btn">
-                      <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;">
+                      <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;" disabled>
                         <i class="glyphicon glyphicon-option-horizontal"></i>
                       </button>
                     </span>
@@ -46,10 +46,10 @@
                   <b> Source*</b>
                   <div class="input-group">
                     <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-                    <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="PF_Firstname" #firstName="ngModel"
-                      style="margin-top: 2px;" [value]="PF_Firstname | titlecase" required>
+                    <input type="text" disabled name="source Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="source_name" [value]="source_name" #firstName="ngModel"
+                      style="margin-top: 2px;"  required>
                     <span class="input-group-btn">
-                      <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;">
+                      <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;" disabled>
                         <i class="glyphicon glyphicon-option-horizontal"></i>
                       </button>
                     </span>
@@ -59,10 +59,10 @@
                   <b>Group*</b>
                   <div class="input-group">
                     <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-                    <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="PF_Firstname" #firstName="ngModel"
-                      style="margin-top: 2px;" [value]="PF_Firstname | titlecase" required>
+                    <input type="text" disabled name="group Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="Group_name" [value]="Group_name" #firstName="ngModel"
+                      style="margin-top: 2px;"  required>
                     <span class="input-group-btn">
-                      <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;">
+                      <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;" disabled>
                         <i class="glyphicon glyphicon-option-horizontal"></i>
                       </button>
                     </span>
@@ -72,10 +72,10 @@
                   <b> Contact*</b>
                   <div class="input-group">
                     <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-                    <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="PF_Firstname" #firstName="ngModel"
-                      style="margin-top: 2px;" [value]="PF_Firstname | titlecase" required>
+                    <input type="text" disabled name="contact Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control" [(ngModel)]="Contact_name" [value]="Contact_name" #firstName="ngModel"
+                      style="margin-top: 2px;"  required>
                     <span class="input-group-btn">
-                      <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;">
+                      <button class="btn btn-primary btn-lg" routerLink="/psearch" style="height: 34px;" disabled>
                         <i class="glyphicon glyphicon-option-horizontal"></i>
                       </button>
                     </span>
@@ -105,8 +105,8 @@
               <div class="row">
                 <div class="col-md-2">
                   <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" disabled class="form-control" name="blockname" [value]="editblock.block_name" style="height: 30px;">
+                    <label for="name">Blocks Name</label>
+                    <input type="text"  class="form-control" name="blockname" [value]="editblock.block_name" style="height: 30px;">
                   </div>
 
                 </div>
@@ -245,9 +245,9 @@
                   <div class="col-md-2">
                     <b>Rate Code</b>
                     <div class="form-group">
-                      <select class="form-control input-sm" name="ratecode" style="margin-top: 4px;" [(ngModel)]="editblock.rate_description">
+                      <select class="form-control input-sm" name="ratecode name" style="margin-top: 4px;" [(ngModel)]="editblock.ratecode">
                         <option value="" hidden></option>
-                        <option *ngFor="let selectratecode of ratecode" [ngValue]="selectratecode.rate_description">{{selectratecode.ratecode}} </option>
+                        <option *ngFor="let selectratecode of ratecode" [ngValue]="selectratecode.ratecode">{{selectratecode.ratecode}} </option>
 
                       </select>
                     </div>
@@ -648,19 +648,19 @@
             </thead>
             <tbody>
               <tr *ngFor="let roomrevenues of  queryroomrevenue">
-                <label>RoomNights</label>
+                <p align="center">RoomNights</p>
                 <td>{{roomrevenues.room_nights}}</td>
                 <td>{{roomrevenues.room_nights_picked}}</td>
                 <td>{{roomrevenues.room_nights_available}}</td>
               </tr>
               <tr *ngFor="let roomrevenues of  queryroomrevenue">
-                <label>NetRevenue</label>
+                <p align="center">NetRevenue</p>
                 <td>{{roomrevenues.net_revenue}}</td>
                 <td>{{roomrevenues.net_revenue_picked}}</td>
                 <td>{{roomrevenues.net_revenue_available}}</td>
               </tr>
               <tr *ngFor="let roomrevenues of  queryroomrevenue">
-                <label>NetRate</label>
+                <p align="center">NetRate</p>
                 <td>{{roomrevenues.net_rate}}</td>
                 <td>{{roomrevenues.net_rate_picked}}</td>
                 <td>{{roomrevenues.net_rate_available}}</td>

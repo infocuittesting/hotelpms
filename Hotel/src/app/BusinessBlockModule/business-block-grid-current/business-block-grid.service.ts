@@ -45,6 +45,45 @@ querygridvalue():  Observable<object[]> {
 
 }
 
+querygroomtype():  Observable<object[]> {   
+  console.log("opennnnnnnnnnnnnnnnnnnnnn",this.session.retrieve("blockid".toString()))
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body={
+              "block_id":this.session.retrieve("blockid".toString())
+  }
+  
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_SelectRoomtype',body,options)
+     .map(this.extractData)
+
+}
+
+queryroom_choice(params):  Observable<object[]> {   
+  console.log("opennnnnnnnnnnnnnnnnnnnnn",this.session.retrieve("blockid".toString()))
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+ 
+  
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_SELECT_gridservice',params,options)
+     .map(this.extractData)
+
+     
+}
+
+updateGrid(params):Observable<object[]> {  
+  console.log("varuthuuuu",params) 
+  const headers = new Headers({'Content-Type':'application/json'})
+  const options = new RequestOptions({ headers: headers });
+  let body_input = {
+    "grid":params
+  }
+  
+  return this.http.post('https://hotel360.herokuapp.com/HOTEL_BBL_POST_UPDATE_UpdateGrid',body_input,options)
+     .map(this.extractData)
+
+}
+
+
   private extractData(res: Response) {
     //alert('hai20')
     console.log('res========---===='+res);

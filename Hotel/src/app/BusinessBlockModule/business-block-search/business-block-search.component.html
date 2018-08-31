@@ -5,13 +5,13 @@
      <!-- <div class="row"> --> 
      <form #ClearAll="ngForm">  
     <div class="container-fluid" style="background-color:  white; margin-left: 18px;margin-top: 20px;">
-     <div class="panel panel-primary" style="margin-left: -16px; margin-top: -10px; ">
+     <div class="panel panel-default" style="margin-left: -16px; margin-top: -10px; ">
        <div class="panel-body" style="max-height: 126px;margin-top: -15px;">
       <div class="row">
           <div class="col-md-2"><label for="room" style="margin-top: 26px;margin-left: -11px;">Block Name</label></div>
           <div class ="col-md-3">
               
-              <div class="form-group" style="width:82%;" [class.has-error]="name.touched && name.invalid">
+              <div class="form-group" style="width:82%;">
                   <input type="text" id="Names" name="Names" style="margin-top: 24px;margin-left: -91px;" class="form-control input-sm" [(ngModel)]="Name" #name="ngModel" required>
                   <div *ngIf="name.touched && !name.valid && name.errors?.required " ngClass="{ 'has-error' : !name.valid && submitAttempt }">
                 </div>
@@ -19,7 +19,7 @@
             </div>
           <div class="col-md-2"><label for="room" style="margin-top: 27px;margin-left: -134px;">Start Date</label></div>
           <div class="col-lg-3" style="margin-left: -233px;">
-             <div class="input-group" style="margin-top: 20px;"[class.has-error]="Arrivalfrom.touched && Arrivalfrom.invalid">
+             <div class="input-group" style="margin-top: 20px;" [class.has-error]="Arrivalfrom.touched && Arrivalfrom.invalid">
                  <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
                  <input type="date"id="Arrivalfrom" name="Arrivalfrom" class="form-control"[(ngModel)]="startDate" (change)="filterDatefrmList(startDate,endDate)" #Arrivalfrom="ngModel" required></div>
                  <div *ngIf="Arrivalfrom.touched && !Arrivalfrom.valid && Arrivalfrom.errors?.required " ngClass="{ 'has-error' : !Arrivalfrom.valid && submitAttempt }">
@@ -28,7 +28,7 @@
               <div class ="col-md-1"><label for="name" style="margin-top: 26px;margin-left: 20px;">Status</label></div>
               <div class ="col-md-3">
              <div class="form-group" style="width:82%;">
-          <select class="form-control input-sm" id="Status" style="width:222px;margin-top: 23px;" [(ngModel)]="status" (ngModelChange)="onSelcat(status)" #Status="ngModel" required>
+          <select class="form-control input-sm" name="Status"id="Status" style="width:222px;margin-top: 23px;" [(ngModel)]="status" (ngModelChange)="onSel(status)" >
             <option *ngFor="let option of roomtype" 
              [ngValue]="option.status"> 
              {{option.status}}</option>
@@ -48,7 +48,7 @@
   </div>
    </div>
    <div class="col-md-2 "><label for="room" style="margin-left: -42px;">End Date</label></div>
-   <div class="col-lg-3" style="margin-left: -141px;">
+   <div class="col-lg-3" style="margin-left: -144px;">
  
      <div class="input-group"[class.has-error]="Arrivalto.touched && Arrivalto.invalid">
         <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -169,7 +169,7 @@
               <div col-md-4>        <!-- <p align="center"><b>Are You sure want to Create Reservation</b></p> -->
         <div class="from-group" style="width:82%;margin-left: 43px;">
           <label for="name">BlockStatus</label>
-          <select class="from-control class=input-sm" id="name"name="BlockStatus"style="width:150px; height: 5%;"[(ngModel)]="BlockStatus" (ngModelChange)="onSelect(BlockStatus)">
+          <select class="from-control class=input-sm" id="name" name="BlockStatus"style="width:150px; height: 5%;"[(ngModel)]="BlockStatus" (ngModelChange)="onSelect(BlockStatus)">
             <option *ngFor="let option of roomtype" 
             [ngValue]="option.id"> 
             {{option.status}}

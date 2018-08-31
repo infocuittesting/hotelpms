@@ -60,6 +60,8 @@ import { GroupOptionsComponent } from './BusinessBlockModule/group-options/group
 import { BlockRangeSettingComponent } from './BusinessBlockModule/block-range-setting/block-range-setting.component';
 import { EditBusinessBlockComponent } from './BusinessBlockModule/edit-business-block/edit-business-block.component';
 import { QueryReservationListComponent} from './BusinessBlockModule/query-reservation-list/query-reservation-list.component'
+import { EditGridRoomsComponent } from './BusinessBlockModule/edit-grid-rooms/edit-grid-rooms.component'; 
+
 
 //Packages Module
 import { PackagesComponent } from './PackagesModule/packages/packages.component'; 
@@ -117,9 +119,13 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 {path:"blockrange",component:BlockRangeSettingComponent},
 {path:"editblock",component:EditBusinessBlockComponent},
 {path:"queryreservation",component:QueryReservationListComponent},
+<<<<<<< HEAD
+{path:"editgrid",component:EditGridRoomsComponent},
+=======
 //packages Module
 {path:"packages",component:PackagesComponent},
 {path:"packagecodenew",component:PackagesnewComponent},
+>>>>>>> b6d41e7d00b05d227a60dbbcb2b5498ce0eb89cf
 ];
 
 @NgModule({
@@ -132,6 +138,6 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 export class AppRoutingModule { }
 export const routingComponents = [IndividualprofileComponent,ReservationComponent,ModalBasicComponent,ReservationoptionComponent,MainscreenComponent,
   ProfileComponent,ProfilesearchComponent,SearchandeditreservationComponent,HousekeepingComponent,QueueroomComponent,RoomdiscrepanciesComponent,RoomconditionComponent
-,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,
+,FacilityforecastComponent,RoomhistoryComponent,ArrivalComponent,CheckinComponent,TracesComponent,ManagingqueueComponent,RoomassignmentComponent,AdvancedsearchComponent,EditGridRoomsComponent,EditBusinessBlockComponent,
 GuestservicestatusComponent,OutoforderserviceComponent,RoommaintainComponent,BillingComponent,CasheringinhouseguestComponent,RevenuemanagementComponent,
 BusinessBlockSearchComponent,InquriprocessComponent,BusinessCreateBlockComponent,BusinessBlockOptionsComponent,RominglistComponent,BusinessBlockGridCurrentComponent,ReservationsListComponent,GroupOptionsComponent,BlockRangeSettingComponent,RevenueRateCodeComponent,EditRevenueManagementComponent,PackagesComponent,PackagesnewComponent,FoliohistoryComponent]
