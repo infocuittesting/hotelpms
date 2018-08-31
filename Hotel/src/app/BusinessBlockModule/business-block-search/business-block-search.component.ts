@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
   providers :[BusinessBlockSearchService]
 })
 export class BusinessBlockSearchComponent implements OnInit {
-  public tableschanges;
+  public tableschanges=[];
   public roomtype=[];
   public statustype=[];
   blockopt=true;

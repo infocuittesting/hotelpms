@@ -1,4 +1,4 @@
-table{
+/* table{
 
     font-size:16px;
    
@@ -6,7 +6,7 @@ table{
 
 .tableBodyScroll tbody {
     display:block;
-    max-height:250px;
+    max-height:500px;
     overflow-y:scroll;
     table-layout:fixed;
     }
@@ -14,7 +14,7 @@ table{
     display:table;
     width:100%;
     table-layout:fixed;
-    }
+    } */
     
    
    .backgroundcolor{

@@ -28,7 +28,7 @@
               <div class ="col-md-1"><label for="name" style="margin-top: 26px;margin-left: 20px;">Status</label></div>
               <div class ="col-md-3">
              <div class="form-group" style="width:82%;">
-          <select class="form-control input-sm" id="Status" style="width:222px;margin-top: 23px;" [(ngModel)]="status" (ngModelChange)="onSelcat(status)" #Status="ngModel" required>
+          <select class="form-control input-sm" name="Status" id="Status" style="width:222px;margin-top: 23px;" [(ngModel)]="status" (ngModelChange)="onSelcat(status)" #Status="ngModel" required>
             <option *ngFor="let option of roomtype" 
              [ngValue]="option.status"> 
              {{option.status}}</option>
