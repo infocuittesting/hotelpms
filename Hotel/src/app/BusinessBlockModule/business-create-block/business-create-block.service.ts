@@ -136,7 +136,8 @@ CreateBusinessBlock(block):Observable<object[]> {
     "Definite":
            {
             "pf_id":this.session.retrieve("id".toString()),
-	          "block_status_id":block.statusblock,
+            "block_status_id":block.statusblock,
+            "block_name":block.blocknames,
             "market_id":block.marketcode,
             "source_id":block.sourcecode,
             "owner":block.owner,

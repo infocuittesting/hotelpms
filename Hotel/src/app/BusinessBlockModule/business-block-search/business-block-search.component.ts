@@ -86,6 +86,7 @@ selectindex=null;
     this.startdate=details.start_date;
     this.enddate=details.end_date;
     this.nights=details.nights;
+
     if(this.Blockid==details.block_id){
       this.blockopt=false;
       this.blc=false;
@@ -113,9 +114,10 @@ selectindex=null;
 // business block valuee...............................................
    this.session.store("blockid",details.block_id.toString());
   this.session.store("blockname",details.block_name.toString());
-    this.session.store("starts",details.start_date.toString());
+  this.session.store("starts",details.start_date.toString());
   this.session.store("ends",details.end_date.toString());
   this.session.store("nght",details.nights.toString());
+  this.session.store("total_room_peray", details.total_rooms_perday.toString())
   // this.session.store("startdate",details.start_date.toString());
   // this.session.store("enddate",details.end_date.toString());
   // this.session.store("nights",details.nights.toString());

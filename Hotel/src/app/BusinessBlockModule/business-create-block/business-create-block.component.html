@@ -14,7 +14,7 @@
             <b> Acct/com*</b>
             <div class="input-group">
               <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-                  <input type="text" name="Account/Company" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="acc_com" #firstName="ngModel" style="margin-top: 2px;" required>
+                  <input type="text" name="Account/Company" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="account_company" #firstName="ngModel" style="margin-top: 2px;" required>
               <span class="input-group-btn" >
                   <button class="btn btn-primary "  routerLink="/psearch" style="height: 34px;" ><i class="glyphicon glyphicon-option-horizontal" ></i></button>
               </span>
@@ -24,7 +24,7 @@
           <b> Agent*</b>
             <div class="input-group">
               <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-                  <input type="text" name="Agent Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="acc_comf" #firstName="ngModel"style="margin-top: 2px;"   required>
+                  <input type="text" name="Agent Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="agent_val" #firstName="ngModel"style="margin-top: 2px;"   required>
               <span class="input-group-btn"   >
                   <button class="btn btn-primary" routerLink="/psearch" style="height: 34px;" ><i class="glyphicon glyphicon-option-horizontal"></i></button>
               </span>
@@ -36,9 +36,9 @@
           <b> Source*</b>
           <div class="input-group">
             <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-                <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
+                <input type="text" name="source Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="source_val" #firstName="ngModel"style="margin-top: 2px;"  required>
             <span class="input-group-btn" >
-                <button class="btn btn-primary " routerLink="/psearch"  style="height: 34px;" ><i class="glyphicon glyphicon-option-horizontal"></i></button>
+                <button class="btn btn-primary "  routerLink="/psearch"  style="height: 34px;" ><i class="glyphicon glyphicon-option-horizontal"></i></button>
             </span>
         </div> 
   </div>
@@ -46,9 +46,9 @@
     <b>Group*</b>
         <div class="input-group">
           <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-              <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
+              <input type="text" name="group Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="group_val" #firstName="ngModel"style="margin-top: 2px;"  required>
           <span class="input-group-btn" >
-              <button class="btn btn-primary "  routerLink="/psearch"  style="height: 34px;"><i class="glyphicon glyphicon-option-horizontal"></i></button>
+              <button class="btn btn-primary "   routerLink="/psearch"  style="height: 34px;"><i class="glyphicon glyphicon-option-horizontal"></i></button>
           </span>
       </div>
  </div>
@@ -56,7 +56,7 @@
     <b> Contact*</b>
     <div class="input-group">
       <!-- <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-user"></i></span> -->
-          <input type="text" name="First Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="PF_Firstname" #firstName="ngModel"style="margin-top: 2px;"  [value]="PF_Firstname | titlecase" required>
+          <input type="text" name="contact Name" pattern="[a-zA-Z][a-zA-Z ]*" class="form-control"[(ngModel)]="contact_val" #firstName="ngModel"style="margin-top: 2px;"   required>
       <span class="input-group-btn" >
           <button class="btn btn-primary "  routerLink="/psearch"  style="height: 34px;"><i class="glyphicon glyphicon-option-horizontal"></i></button>
       </span>
@@ -87,7 +87,7 @@
     <div class="col-md-2">
         <div class="form-group">
           <label for="name" >Name</label>
-            <input type="text"disabled class="form-control"name="blockname" [value]="block_name"> 
+            <input type="text" class="form-control"name="blockname" [(ngModel)]="block.blocknames" [value]="block_name"> 
       </div>
 
 </div>
@@ -275,12 +275,12 @@
                 </div>
                 <div class="col-md-2" style="margin-top: -45px;">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.print_rate" [value]="ptrrate">
+                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example1" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.print_rate" >
                       <label class="custom-control-label" for="customCheck">Print Rate</label>
                     </div>
                     <br>
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.suppress" [value]="suprate">
+                      <input type="checkbox" class="custom-control-input" id="customCheck" name="example2" style="margin-left: 14px;zoom:1.5;"[(ngModel)]="block.suppress" >
                       <label class="custom-control-label" for="customCheck">Suppress Rate</label>
                     </div>
                   </div>

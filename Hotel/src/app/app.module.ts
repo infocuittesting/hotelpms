@@ -69,7 +69,8 @@ import { RevenueRateCodeComponent } from './RevenueManagementModule/revenue-rate
 import { EditRevenueManagementComponent } from './RevenueManagementModule/edit-revenue-management/edit-revenue-management.component';
 import { EditBusinessBlockComponent } from './BusinessBlockModule/edit-business-block/edit-business-block.component';
 import { QueryReservationListComponent } from './BusinessBlockModule/query-reservation-list/query-reservation-list.component';
-import {HotkeyModule} from 'angular2-hotkeys'; 
+import {HotkeyModule} from 'angular2-hotkeys';
+import { EditGridRoomsComponent } from './BusinessBlockModule/edit-grid-rooms/edit-grid-rooms.component'; 
 
 
 
@@ -110,6 +111,7 @@ import {HotkeyModule} from 'angular2-hotkeys';
    RevenueRateCodeComponent,
    EditBusinessBlockComponent,
    QueryReservationListComponent,
+   EditGridRoomsComponent,
   
    
    
