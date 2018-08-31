@@ -119,13 +119,10 @@ const routes: Routes = [ { path:'individualprofile', component:Individualprofile
 {path:"blockrange",component:BlockRangeSettingComponent},
 {path:"editblock",component:EditBusinessBlockComponent},
 {path:"queryreservation",component:QueryReservationListComponent},
-<<<<<<< HEAD
 {path:"editgrid",component:EditGridRoomsComponent},
-=======
 //packages Module
 {path:"packages",component:PackagesComponent},
 {path:"packagecodenew",component:PackagesnewComponent},
->>>>>>> b6d41e7d00b05d227a60dbbcb2b5498ce0eb89cf
 ];
 
 @NgModule({

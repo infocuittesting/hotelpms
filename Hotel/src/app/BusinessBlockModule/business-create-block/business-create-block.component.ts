@@ -6,7 +6,6 @@ import { BusinessCreateBlockService } from './business-create-block.service'
 import { ReservationsListComponent } from '../reservations-list/reservations-list.component';
 import * as moment from 'moment';
 
-
 @Component({
   selector: 'app-business-create-block',
   templateUrl: './business-create-block.component.html',
@@ -28,8 +27,6 @@ public inventory=[];
 public ratecode=[];
 public restype=[];
 public blocktype=[];
-editblock:any = {};
-public selected1=[];
 
 
 public block:any={};
@@ -54,17 +51,14 @@ public group_val;
 public pfids;
 public totalroomsperday;
 public revenueroom=[];
-user:any={};
-
 
 //date
 arriveDepartureDateFun(arrDate,depDate){
     if(arrDate!=null && depDate!=null){
   const daydiff = moment(arrDate).diff(moment(depDate), "days");
-  this.user.RES_Nights=Math.abs(daydiff);
+  this.block.nights=Math.abs(daydiff);
     }
   }
-
 
 // ................................................
   ngOnInit() {
@@ -87,7 +81,7 @@ console.log("come to block",this.pfids);
     this.session.clear("pf_accounts");
     this.session.clear("sourceval");
     this.session.clear("Contactval");
-    this.session.clear("Groupval");
+    this.session.clear("Groupval"); 
     
 
     this.businessblock.blockstatusdropdown()
@@ -254,13 +248,15 @@ this.businessblock.BlockTypedropdown()
          this.blocksuccess="something"
      }
  });
-  }
  
+  }
+
   selected_id1 = [];
   selected_code = [];
   idx1: any;
   public rmid1:any;
   public rmcodes:any;
+  public selected1=[];
   exist1(item) {
     this.selected1.indexOf(item) > -1;
   }
@@ -372,7 +368,4 @@ this.businessblock.BlockTypedropdown()
 //     sessionStorage.clear();
 // }
 
-// roompackages(){
-  
-// }
 }

@@ -101,7 +101,7 @@
         <div class="input-group" style="margin-top: -2px; margin-left: 35px;">
             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
             <input type="date" name="arrival"required class="form-control" placeholder="Enter your User Name" style="width:157px;"
-            [(ngModel)]="user.RES_Arrival" (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #arrivaldate="ngModel"/></div>
+            [(ngModel)]="block.startdate" (change)="arriveDepartureDateFun(block.startdate,block.enddate)" #arrivaldate="ngModel"/></div>
      
           </div>
       
@@ -111,9 +111,9 @@
       
       <div class="form-group">
           <label for="name" style="margin-left: 120px;">Origin</label>
-          <select class="form-control" name="origin" [(ngModel)]="block.origincode" [value]="orign" style="margin-left: 121px;width: 157px;">
+          <select class="form-control" name="origin_value" [(ngModel)]="block.origincode" [value]="orign" style="margin-left: 121px;width: 157px;">
               <option value="" hidden></option> 
-              <option *ngFor="let select of origin" [ngValue] ="select.id">{{select.origindescription}} </option>
+              <option *ngFor="let selectorigin of origin" [ngValue] ="selectorigin.id">{{selectorigin.origindescription}} </option>
           
           
             </select> 
@@ -123,7 +123,7 @@
  <div class="col-md-2">
         <div class="form-group">
           <label style="margin-left: 131px;">Status</label>
-            <select name="state" class="form-control"[(ngModel)]="block.statusblock" [value]="blstatus" style="margin-left: 133px;">
+            <select name="status_vlock" class="form-control"[(ngModel)]="block.statusblock" [value]="blstatus" style="margin-left: 133px;">
               <option value="" hidden></option> 
               <option *ngFor="let selectstatus of blockstatus" [ngValue] ="selectstatus.id">{{selectstatus.status}} </option>
               </select> 
@@ -163,8 +163,8 @@
       <label style="margin-left: -42px;">End Date</label>
         <div class="input-group" style="padding-left: 6px;;margin-top: -1px; margin-left: -50px;">
             <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-calendar"></i></span>
-            <input type="date" name="departure" class="form-control" placeholder="Enter your User Name" style="width:157px;" [(ngModel)]="user.RES_Depature"
-            (change)="arriveDepartureDateFun(user.RES_Arrival,user.RES_Depature)" #departuredate="ngModel" required/></div>
+            <input type="date" name="departure" class="form-control" placeholder="Enter your User Name" style="width:157px;" [(ngModel)]="block.enddate"
+            (change)="arriveDepartureDateFun(block.startdate,block.enddate)" #departuredate="ngModel" required/></div>
             <div class="alert alert-danger" *ngIf="departuredate.touched && !departuredate.valid && departuredate.errors.required" style="width:211px;margin-left: 40px;">departure date is required </div>
           </div>
      
@@ -176,7 +176,7 @@
                 <label>Nights</label>
                <div class="input-group" style="padding-left:-8px;margin-top: 0px;">
                   <span class="input-group-addon" style="background-color:#0077B5;color:white;"><i class="glyphicon glyphicon-home"></i></span>
-                  <input type="text" name="nights" class="form-control" style="width:122px" [(ngModel)]="user.RES_Nights" /></div>
+                  <input type="text" name="nights" class="form-control" style="width:122px" [(ngModel)]="block.nights" /></div>
                </div>
               
          
@@ -282,7 +282,7 @@
                   <b>Package</b>
                   <div class="input-group">
                    <span class="input-group-addon" data-toggle="modal" data-target="#rateheadpack" > <i class="glyphicon glyphicon-option-horizontal"></i>   </span> 
-                  <input type="text"  class="form-control input-sm" name="packages"  style="width:59%;height: 27px;" [(ngModel)]="editblock.type"   [value]="rmcodes" > 
+                  <input type="text"  class="form-control input-sm" name="packages"  style="width:59%;height: 27px;" [(ngModel)]="block.type"   [value]="rmcodes" > 
                    <!-- <input name="omg" class="form-control input-sm" [(ngModel)]="editblock.types" type="text" [value]="rmcodes" [(ngModel)]="editblock.type"> -->
                          <!-- <option  *ngFor="let roomlist of room" [ngValue] = "roomlist.id">{{roomlist.type}}</option>  -->
                      <!-- </select> -->
