@@ -1,12 +1,12 @@
 
-<div class="scrollhid">
+<!-- <div class="scrollhid" style="overflow-x: hidden;"> -->
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-10">
     <div class="row"  style="padding-top:5px;">
     
       <div class="container">
-        <div class="panel panel-primary" style="border-color: lightgray;margin-left: 15px;margin-right: 35px;margin-bottom: 10px">
+        <div class="panel panel-primary" style="border-color: lightgray;margin-left: 15px;margin-right: 22px;margin-bottom: 10px">
           <div class="panel-body" style="    margin-bottom: -45px;margin-top: -13px;">
         <div class="jumbotron jumbotron-fluid" style="background-color: white;padding-top:20px;padding-bottom:1%;margin-left:5px;margin-right:1%;width:98%;">
         
@@ -146,7 +146,7 @@
   <div class="row">
     <div class="col-md-6">
         <div class="container-fluid" style="padding-right:0px;padding-left:0px;">
-            <div class="scrollable3">
+            <div class="scrollable3" style="height:60%;width:100%;overflow-x: auto;overflow-y: auto;">
          <table class="table table-bordered table-hover">
           <thead style="background-color:#0077B5;color:white;font-size:14px;">
             <tr>
@@ -202,7 +202,7 @@
 
     <div class="col-md-6">
         <div class="container" style="width:101%;margin-left:-30px;">
-        <div class="scrollable3">
+        <div class="scrollable3" style="height:60%;width:100%;overflow-x: auto;overflow-y: auto;">
          <table class="table table-bordered table-hover">
           <thead style="background-color:#0077B5;color:white;font-size:14px;">
             <tr>
@@ -287,7 +287,7 @@
 </div>
     </div>
     </div>
-  </div>
+  <!-- </div> -->
    
   <!-- *********************************************************************************************************** -->
      
@@ -295,12 +295,12 @@
 
  <!--alert for Transfer to another room-->
     
- <div class="modal fade" id="transfertowindowalert" role="dialog">
-    <div class="vertical-alignment-helper">  
-  <div class="modal-dialog vertical-align-center modal-sm">
+ <div class="modal fade" style="text-align: left;padding: 0!important;" id="transfertowindowalert" role="dialog">
+    <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">  
+  <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
     
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><b>Alert</b></h4>
@@ -326,10 +326,10 @@
 
         <!--  post option Modal -->
   
-  <div class="modal fade" id="postoption" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="vertical-alignment-helper">
-          <div class="modal-dialog vertical-align-center modal-lg">
-              <div class="modal-content">
+  <div class="modal fade" style="text-align: left;padding: 0!important;" id="postoption" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+          <div class="modal-dialog vertical-align-center modal-lg" style="display: table-cell;vertical-align: middle;">
+              <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
                   <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
   
@@ -384,37 +384,37 @@
                                                   <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_code_id"></td>
 
                                                 <td><label *ngIf="room.editFlag==false">{{room.Post_des}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Post_des"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Post_des"></td>
   
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_amount}}</label>
-                                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Posting_amount"></td>
+                                                <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Posting_amount"></td>
 
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_quantity}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Posting_qty"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Posting_quantity"></td>
                           
                                                 <td><label *ngIf="room.editFlag==false">{{room.Post_window}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Post_window"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_window"></td>
                           
                                                 <td  ><label *ngIf="room.editFlag==false">{{room.Arrangement_code}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="Arrangement_code"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Arrangement_code"></td>
                           
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Checkno}}</label>
-                                                  <input type="number"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Checkno"></td>
+                                                  <input type="number"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Checkno"></td>
                           
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_supplement}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Posting_supplement"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Posting_supplement"></td>
                           
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_reference}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="Posting_reference"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Posting_reference"></td>
                                                   
                                                   
-                                                <!-- <td style="width: 86px;"><span><i style="cursor: pointer;" class="fa fa-trash" aria-hidden="true"
+                                                <td style="width: 86px;"><span><i style="cursor: pointer;" class="fa fa-trash" aria-hidden="true"
                                                   (click)="deleterows(i)"></i> &nbsp;&nbsp;&nbsp;
                                                   <i  style="cursor: pointer;"  *ngIf="room.editFlag==false" class="fa fa-pencil" aria-hidden="true"
-                                                  (click)="editrows(i)"></i>
+                                                  (click)="editrows(i,room)"></i>
                                                   <i  style="cursor: pointer;" *ngIf="room.editFlag!=false" class="fa fa-check" aria-hidden="true"
-                                                  (click)="saveButton(i)"></i>
-                                                </span></td> -->
+                                                  (click)="saveButton(i,room)"></i>
+                                                </span></td>
                                                                             
                   
                                               </tr>
@@ -457,12 +457,12 @@
 <!-- ************************************************************posting modal ends******************************************************** -->
 <!--alert after posting modal-->
     
- <div class="modal fade" id="postingchargealert" role="dialog">
-  <div class="vertical-alignment-helper">  
-<div class="modal-dialog vertical-align-center modal-sm">
+ <div class="modal fade" style="text-align: left;padding: 0!important;" id="postingchargealert" role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">  
+<div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
   
     <!-- Modal content-->
-    <div class="modal-content">
+    <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"><b>Alert</b></h4>
@@ -484,10 +484,10 @@
 
         <!--posting history modal  -->
 
-        <div class="modal fade" id="postinghistory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade" style="text-align: left;padding: 0!important;" id="postinghistory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
          
               <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
+                  <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
                       <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
       
@@ -498,7 +498,7 @@
                       <div class="modal-body" style="margin-top: -15px;">
                           <div class="container-fluid">
                               <!-- <div class="scrollable2"> -->
-                              <div class="table-responsive">
+                              <div class="table-responsive" style=" height:45%;width:100%;overflow-x:auto;overflow-y:auto;">                                                             
                                 <table class="table table-bordered table-hover"  style="font-size:12px;">        
                                     <thead style="background-color:#0077B5;color:white;">
                                       <tr>
@@ -511,7 +511,8 @@
                                         <th scope="col">Description</th>
                                       </tr>
                                     </thead>
-                                    <tbody *ngFor="let firstitem of house">
+                                    <tbody *ngFor="let firstitem of house; let i=index"  (click)="selecthistory(firstitem,i)"  
+                                    [ngClass]="{'backGroundColor':i==selectind}">
                                       <tr>
                                         <th scope="row">{{firstitem?.posting_action}}</th>
                                         
@@ -528,11 +529,12 @@
                                   </div>
                                   </div>
                                   <!-- </div> -->
+                                  <br>
                             <div class="row">
                               <div class="col-md-6">
                                 <div class="container-fluid">
                                   <b>Original</b>
-                                  <div class="scrollable2">
+                                  <div style="height:20%;width:107%;overflow-x:auto;overflow-y:auto;">
                                   <!-- <div class="table-responsive" style="min-height:101.01%;"> -->
                                     <table class="table table-bordered table-hover"  style="font-size:12px;">
                                       <thead style="background-color:#0077B5;color:white;">
@@ -546,8 +548,8 @@
                                           <th scope="col">Description</th>
                                         </tr>
                                       </thead>
-                                      <tbody *ngFor="let hisitem of hist">
-                                        <tr>
+                                      <tbody>
+                                        <tr  *ngFor="let hisitem of hist1;">
                                           <th scope="row">{{hisitem?.posting_action}}</th>
                                           
                                           <td>{{hisitem?.revenue_date}}</td>
@@ -567,7 +569,7 @@
                                   <div class="col-md-6">
                                     <div class="container-fluid">
                                       <b>Changes</b>
-                                      <div class="scrollable2">
+                                      <div style="height:20%;width:106%;overflow-x:auto;overflow-y:auto;margin-left:-25px;">                                                                                                   
                                       <!-- <div class="table-responsive" style="min-height:101.01%;"> -->
                                         <table class="table table-bordered table-hover"  style="font-size:12px;">
                                           <thead style="background-color:#0077B5;color:white;">
@@ -581,11 +583,10 @@
                                               <th scope="col">Description</th>
                                             </tr>
                                           </thead>
-                                          <tbody *ngFor="let postitem of home">
+                                          <tbody *ngFor="let postitem of home1">
                                             
                                             <tr>
-                                              <th scope="row" >{{postitem?.posting_action}} </th>
-                                              
+                                              <th scope="row" >{{postitem?.posting_action}} </th>                                              
                                               <td>{{postitem?.revenue_date}}</td>
                                               <td>{{postitem?.posting_date}}</td>
                                               <td>{{postitem?.user_role}}</td>
@@ -613,10 +614,10 @@
 <!-- *******************************************posting history modal ends************************************************************************** -->
           
         <!--  Edit Modal -->
-        <div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="vertical-alignment-helper">
-                <div class="modal-dialog vertical-align-center">
-                    <div class="modal-content">
+        <div class="modal fade" style="text-align: left;padding: 0!important;" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+                <div class="modal-dialog vertical-align-center" style="display: table-cell;vertical-align: middle;">
+                    <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
                         <div class="modal-header" style="background: #0077B5;color: white;margin-bottom: -12px;text-align: center;margin-top: -10px;height: 46px;">
                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
         
@@ -654,7 +655,7 @@
                               </div>
                               </div>
                             </div>
-                              <hr>
+                              <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
   
                               <div class="row">
                                   <div class="col-sm-6">
@@ -668,7 +669,7 @@
                                       </div>
                               </div>
                             </div>
-                              <hr>
+                              <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
                                   <div class="row">
                                     <div class="col-md-6">
                                   <div class="form-group">
@@ -709,7 +710,7 @@
                                     </div>
                                  </div>
                                 </div>
-                              </div><hr>
+                              </div><hr style="margin-top:5px !important;margin-bottom: 5px !important;">
   
                       <div class="row">
                           
@@ -759,7 +760,7 @@
                               </div>
                             </div>
                            </div>
-                      <hr>
+                      <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
   
                       <div class="row">
                           <div class="col-sm-6">
@@ -786,7 +787,7 @@
                       </div>
                       </div>
                       </div>
-  <hr>
+  <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
   <div class="row">
       <div class="col-sm-6">
     <div class="form-group">
@@ -910,12 +911,12 @@
 <!-- **********************************************edit modal ends********************************************************* -->
 
 <!--alert after edit posting payment Modal -->
-    <div class="modal fade" id="afteredit" role="dialog">
-      <div class="vertical-alignment-helper">  
-        <div class="modal-dialog vertical-align-center modal-sm">
+    <div class="modal fade" style="text-align: left;padding: 0!important;" id="afteredit" role="dialog">
+      <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">  
+        <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;"> 
       
           <!-- Modal content-->
-          <div class="modal-content">
+          <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h4 class="modal-title"><b>Alert</b></h4>
@@ -938,12 +939,12 @@
 
 <!--Reinstate modal-->
 
-<div class="modal fade" id="reinstatemodal" role="dialog">
-    <div class="vertical-alignment-helper">  
-  <div class="modal-dialog vertical-align-center modal-sm">
+<div class="modal fade" style="text-align: left;padding: 0!important;" id="reinstatemodal" role="dialog">
+    <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">  
+  <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
     
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
         <div class="modal-header" style="background: #0077B5;color: white;">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"><b>Confirm Reinstate</b></h4>
@@ -962,12 +963,12 @@
   </div>
   <!-- ******************************************reinstate ends*************************************************************** -->
   <!-- transfer to another room modal -->
-  <div class="modal fade" id="transfertransaction" role="dialog">
-      <div class="vertical-alignment-helper">
-    <div class="modal-dialog vertical-align-center">
+  <div class="modal fade" style="text-align: left;padding: 0!important;" id="transfertransaction" role="dialog">
+      <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+    <div class="modal-dialog vertical-align-center" style="display: table-cell;vertical-align: middle;">
     
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
         <div class="modal-header" style="background: #0077B5;color: white;">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title" style="text-align: center;"><b>Transfer To Another Room</b></h4>
@@ -1100,12 +1101,12 @@
   </div>
   <!--********************************************** transfer to another room modal******************************************************************* -->
     <!--after transfer to another room Modal -->
-    <div class="modal fade" id="aftertransfer" role="dialog">
-        <div class="vertical-alignment-helper">  
-          <div class="modal-dialog vertical-align-center modal-sm">
+    <div class="modal fade" style="text-align: left;padding: 0!important;" id="aftertransfer" role="dialog">
+        <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">  
+          <div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
         
             <!-- Modal content-->
-            <div class="modal-content">
+            <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
               <div class="modal-header" style="background: #0077B5;color: white;">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title"><b>Alert</b></h4>
@@ -1124,13 +1125,13 @@
 <!--****************************** after transfer to another room ends************************************************************ -->
 
  <!-- payment Modal in billing -->
- <div class="modal fade" id="paymentmodal"  role="dialog">
-  <div class="vertical-alignment-helper">
-  <div class="modal-dialog vertical-align-center">
+ <div class="modal fade" style="text-align: left;padding: 0!important;" id="paymentmodal"  role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">
+  <div class="modal-dialog vertical-align-center" style="display: table-cell;vertical-align: middle;">
   
     <!-- payment  Modal content-->
-    <div class="modal-content">
-      <div class="modal-header" style="background: #0077B5;color: white;">
+    <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
+      <div class="modal-header" >
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title" style="text-align: center">Payment </h4>
       </div>
@@ -1169,12 +1170,13 @@
                       <b style="margin-left: 17px;">Currency</b>
                     </div>
                     <div class="col-sm-6">
-                        <select name="curcy" style="height:30px;width:150%;" class="form-control" [(ngModel)]="currency">
+                        <select name="curcy" style="height:30px;width:150%;" class="form-control" [(ngModel)]="currency" (change)="selectoption1(currency)">
                           <option value="" hidden>select value</option>
                           <option *ngFor="let list of money" [ngValue]="list.transaction_currency_id">{{list.currency}}</option>
                           </select>
                       </div>
                     </div>  
+                   
                   </div>
               </div>
             </div> 
@@ -1189,6 +1191,12 @@
                     <div class="col-sm-6">
                         <input type="text" name="curr" class="form-control" style="width:150%;height:30px;" [(ngModel)]="amount">
                     </div>
+                    </div>
+                    <div class="col-sm-3" style="color:#0077B5;" style="margin-left: 15px;">
+                      <div *ngIf="showdivv=='1'">RUB</div>
+                      <div *ngIf="showdivv=='2'">EUR</div>
+                      <div *ngIf="showdivv=='3'">USD</div>
+                      <div *ngIf="showdivv=='4'">INR</div>
                     </div>
                   </div>
                 </div>
@@ -1259,7 +1267,7 @@
           </div>
       <div class="modal-footer" style="margin-top: -36px;">
           <button type="button" class="btn btn-success" data-dismiss="modal" (click)="checkoutpost(selected,currency,amount,ref,supp,cardno); heroForm.reset()" data-target="#paymentalert" data-toggle="modal"><b>Post</b></button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="heroForm.reset()" ><b>Close</b></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="close();heroForm.reset()" ><b>Close</b></button>
       </div>
     </form>
     </div>
@@ -1272,12 +1280,12 @@
 <!--**************************************************************payment Modal ends**************************************************************************************-->
  <!--alert after payment modal-->
     
- <div class="modal fade" id="paymentalert" role="dialog">
-  <div class="vertical-alignment-helper">  
-<div class="modal-dialog vertical-align-center modal-sm">
+ <div class="modal fade" style="text-align: left;padding: 0!important;" id="paymentalert" role="dialog">
+  <div class="vertical-alignment-helper" style=" display:table;height: 100%;width: 100%;">  
+<div class="modal-dialog vertical-align-center modal-sm" style="display: table-cell;vertical-align: middle;">
   
     <!-- Modal content-->
-    <div class="modal-content">
+    <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
       <div class="modal-header" style="background: #0077B5;color: white;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title"><b>Alert</b></h4>

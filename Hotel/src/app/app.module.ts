@@ -50,6 +50,7 @@ import { RoommaintainComponent } from './RoomManagementModule/roommaintain/roomm
 //Cashering
 import { BillingComponent } from './CasheringModule/billing/billing.component';
 import { CasheringinhouseguestComponent } from './CasheringModule/casheringinhouseguest/casheringinhouseguest.component';
+import {FoliohistoryComponent} from './CasheringModule/foliohistory/foliohistory.component';
 import { ContextmenuModule } from 'ng2-contextmenu';
 import { RevenuemanagementComponent } from './RevenueManagementModule/revenuemanagement/revenuemanagement.component';
 
@@ -117,6 +118,7 @@ import { PackagesnewComponent } from './PackagesModule/packagesnew/packagesnew.c
    ResolvePipe,
    PackagesComponent,
    PackagesnewComponent,
+   FoliohistoryComponent,
   
    
    

@@ -63,7 +63,8 @@
       </tr>
   </thead>
   <tbody>
-          <tr *ngFor="let list of gettrace|resolve:checkboxValue:'resloved_on'|resolve:checkValue:'resloved_on'; let i=index" > 
+          <tr *ngFor="let list of gettrace|resolve:checkboxValue:'resloved_on'|resolve:checkValue:'resloved_on'; let i=index" 
+          (click)="selected(list,i)"  [ngClass]="{'backGroundColor':i==selectindex}"> 
              <td style="width:40px;">{{i+1}}</td>    
              <td style="width:138px;">{{list.pf_firstname}}</td>        
              <td style="width:138px;">{{list.traces_date}}</td>         
@@ -131,7 +132,7 @@
 </table>
 <br>    
 <div>
-        <button class="btn btn-info" style="width:12%; margin-left:10%;"> Resolve </button>    
+        <button class="btn btn-info" style="width:12%; margin-left:10%;" data-toggle="modal" data-target="#resolvessss" (click)="resolve()" > Resolve </button>    
         <button class="btn btn-primary"style="width:12%"> New  </button>    
         <button  routerLink="/reservation" class="btn btn-warning" style="width:12%">Resv </button>   
         <button class="btn btn-info " style="width:12%"> Edit </button>   
@@ -146,3 +147,25 @@
 </div>
 
 
+         <!-- traces start-->
+         <div class="modal fade" id="resolvessss" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content" style="margin-left:-20%; margin-top: 15%; width:150%;">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title" align="center"> Traces Resolve</h4>
+                </div>
+                <div class="modal-body">
+      
+                  <p align="center"><b> {{resolvetrace}}</b></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success"style="padding-left:5px;"data-dismiss="modal"><b>Ok</b><span class="glyphicon glyphicon-ok" style="padding-left:5px;"></span></button>
+                </div>
+              </div>
+              
+            </div>
+          </div> 
+          <!-- Accept End -->      

@@ -91,6 +91,7 @@ siva=true
    .subscribe((resp: any) => {
 
     this.housetable=resp.ReturnValue;
+    this.orderr=this.housetable;
     // console.log(this.housetable);
   });
 
@@ -108,10 +109,10 @@ siva=true
   });
 
 
-  this.cashinservice.foliohistory()
-  .subscribe((resp: any) => {
-    this.foliohis = resp.Return;
-  });
+  // this.cashinservice.foliohistory()
+  // .subscribe((resp: any) => {
+  //   this.foliohis = resp.Return;
+  // });
 
   this.cashinservice.paymentcodedropdown()
   .subscribe((resp: any) => {
@@ -120,13 +121,20 @@ siva=true
    });
 
   }
-  showdiv="9000";
+  showdiv="900";
   selectoption(flag){
     console.log(flag);
     this.showdiv=flag;
     console.log(flag);
   }
 
+  showdivv="0";
+  selectoption1(flag)
+  {
+    console.log("showdivv",flag);
+    this.showdivv=flag;
+    console.log(flag);
+  }
 public balnc=[];  
 public checkname; 
 selectindex=null;
@@ -225,19 +233,20 @@ checkoutpost(arg1,balnc)
           this.failuremsg="Unable to update";
         }
         })
+         //refresh
+         this.cashinservice.inhousetable()
+         .subscribe((resp: any) => {
+   
+         this.housetable=resp.ReturnValue;
+         // console.log(this.housetable);
+         });
        });  
         
-        //refresh
-        this.cashinservice.inhousetable()
-        .subscribe((resp: any) => {
-  
-        this.housetable=resp.ReturnValue;
-        // console.log(this.housetable);
-        });
+       
     }
     else
     {
-      this.cashinservice.checkoutbuttoninsert(arg1,balnc,this.exprydt)
+      this.cashinservice.checkoutbuttoninsert1(arg1,balnc)
       .subscribe((resp: any) => {
       this.letter=resp.ReturnCode;
       if(this.letter=="RIS")
@@ -248,16 +257,23 @@ checkoutpost(arg1,balnc)
       {
         this.failuremsg="Unable to update";
       }
-      })
-      
       this.cashinservice.inhousetable()
       .subscribe((resp: any) => {
 
       this.housetable=resp.ReturnValue;
       // console.log(this.housetable);
       });
+      })
+      
+      
     }
- 
+    this.showdiv="900";
+    this.showdivv="0";
+}
+
+close(){
+  this.showdiv="900";
+    this.showdivv="0";
 }
 
 //zero checkout
@@ -320,6 +336,7 @@ filtercheckboxData(ngmodel, flag) {
 //dropdown filter
 onSelect(val){
   console.log(val);
+  console.log("orderrrrrrrrrrrr",this.orderr)
   this.housetable = this.orderr.filter(x => x.res_res_type == val)
 } 
 
