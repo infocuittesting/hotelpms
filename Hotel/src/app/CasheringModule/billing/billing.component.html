@@ -145,19 +145,28 @@
   <div class="container">
   <div class="row">
     <div class="col-md-6">
+        <div style="margin-left:80%"> 
+            <span>
+              <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
+              [ngClass]="{disabling:showMore!=true}" (click)="showLessBut()"></i>
+            
+              <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer"
+              [ngClass]="{disabling:showMore!=false}" (click)="showMoreBut()"></i>
+            </span>
+            </div>
         <div class="container-fluid" style="padding-right:0px;padding-left:0px;">
             <div class="scrollable3" style="height:60%;width:100%;overflow-x: auto;overflow-y: auto;">
-         <table class="table table-bordered table-hover">
-          <thead style="background-color:#0077B5;color:white;font-size:14px;">
+         <table class="table table-bordered table-hover fixtab">
+          <thead style="background-color:#0077B5;color:white;font-size:14px;width:100%;">
             <tr>
               <th>Posting_Date</th>
-              <th>Code</th>
-              <th>Description</th>
-              <th>Amount</th>
-              <th>ChequeNumber</th>
-              <th>Quantity</th>           
-              <th>Supplement</th>
-              <th>Reference</th>
+              <th *ngIf="showMore!=true">Code</th>
+              <th *ngIf="showMore!=true">Description</th>
+              <th *ngIf="showMore==true">Amount</th>
+              <th *ngIf="showMore!=true">ChequeNumber</th>
+              <th *ngIf="showMore==true">Quantity</th>           
+              <th *ngIf="showMore==true">Supplement</th>
+              <th *ngIf="showMore==true">Reference</th>
                
             </tr>
           </thead>
@@ -182,13 +191,13 @@
             [ngClass]="{'backGroundColor':i==selectindexx}"  [contextmenu]="[contextmenu, {item: item}]" >
              
               <td >{{item.posting_date}}</td>
-              <td >{{item.posting_code}}</td>
-              <td >{{item.posting_code_description}}</td>           
-              <td>{{item.posting_amount}}</td>
-              <td>{{item.checkno}}</td>
-              <td>{{item.posting_quantity}}</td>
-              <td>{{item.posting_supplement }}</td>
-              <td>{{item.posting_reference }}</td>
+              <td *ngIf="showMore!=true" >{{item.posting_code}}</td>
+              <td *ngIf="showMore!=true">{{item.posting_code_description}}</td>           
+              <td *ngIf="showMore==true">{{item.posting_amount}}</td>
+              <td *ngIf="showMore!=true">{{item.checkno}}</td>
+              <td *ngIf="showMore==true">{{item.posting_quantity}}</td>
+              <td *ngIf="showMore==true">{{item.posting_supplement }}</td>
+              <td *ngIf="showMore==true">{{item.posting_reference }}</td>
 
               
             </tr>
@@ -201,19 +210,28 @@
     </div>
 
     <div class="col-md-6">
+        <div style="margin-left:80%"> 
+            <span>
+              <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
+              [ngClass]="{disabling:showMore1!=true}" (click)="showLessBut1()"></i>
+            
+              <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer"
+              [ngClass]="{disabling:showMore1!=false}" (click)="showMoreBut1()"></i>
+            </span>
+            </div>
         <div class="container" style="width:101%;margin-left:-30px;">
         <div class="scrollable3" style="height:60%;width:100%;overflow-x: auto;overflow-y: auto;">
-         <table class="table table-bordered table-hover">
+         <table class="table table-bordered table-hover fixtab1">
           <thead style="background-color:#0077B5;color:white;font-size:14px;">
             <tr>
               <th>Posting_Date</th>
-              <th>Code</th>
-              <th>Description</th>
-              <th>Amount</th>
-              <th>ChequeNumber</th>
-              <th>Quantity</th>           
-              <th>Supplement</th>
-              <th>Reference</th>
+              <th *ngIf="showMore1!=true">Code</th>
+              <th *ngIf="showMore1!=true">Description</th>
+              <th *ngIf="showMore1==true">Amount</th>
+              <th *ngIf="showMore1!=true">ChequeNumber</th>
+              <th *ngIf="showMore1==true">Quantity</th>           
+              <th *ngIf="showMore1==true">Supplement</th>
+              <th *ngIf="showMore1==true">Reference</th>
                
             </tr>
           </thead>
@@ -239,13 +257,13 @@
             [ngClass]="{'backGroundColor':i==sidx}"  [contextmenu]="[contextmenu, {itemm: itemm}]" >
              
               <td >{{itemm.posting_date}}</td>
-              <td >{{itemm.posting_code}}</td>
-              <td >{{itemm.posting_code_description}}</td>           
-              <td>{{itemm.posting_amount}}</td>
-              <td>{{itemm.checkno}}</td>
-              <td>{{itemm.posting_quantity}}</td>
-              <td>{{itemm.posting_supplement }}</td>
-              <td>{{itemm.posting_reference }}</td>
+              <td *ngIf="showMore1!=true">{{itemm.posting_code}}</td>
+              <td *ngIf="showMore1!=true">{{itemm.posting_code_description}}</td>           
+              <td *ngIf="showMore1==true">{{itemm.posting_amount}}</td>
+              <td *ngIf="showMore1!=true">{{itemm.checkno}}</td>
+              <td *ngIf="showMore1==true">{{itemm.posting_quantity}}</td>
+              <td *ngIf="showMore1==true">{{itemm.posting_supplement }}</td>
+              <td *ngIf="showMore1==true">{{itemm.posting_reference }}</td>
             </tr>     
           </tbody>
          </table>
@@ -261,7 +279,7 @@
     
   <form class="form-inline">
   
-    <div class="row">
+    <div class="row" style="margin-top: -40px;">
       
       <button type="button" id="post" class="btn btn-success" style="width:110px;margin-left:5%;" data-target="#postoption" data-toggle="modal"><b>post</b></button>
                 
@@ -337,12 +355,12 @@
                        <h3 class="modal-title" id="myModalLabel" style="text-align: center"><b >Transaction Posting</b></h3>
   
                   </div>
-                  <div class="modal-body">
+                  <div class="modal-body" >
                     <div class="row" >
                       <div class="col-sm-12">
-                              <table class="table table-bordered tableBodyScroll">
-                                      <thead style="background-color: #337ab7;color: white;">
-                                        <tr>
+                              <table class="table table-bordered " >
+                                      <thead >
+                                        <tr style="background-color: #337ab7;color: white;">
                                           <th>Code</th>
                                           <th>Description</th>
                                           <th>Amount</th>
@@ -355,20 +373,52 @@
                                           <th >Reference</th>
                                           <th width=10% ></th>
                                         </tr>
+                                        <tr>
+                                          <td>
+                                            <select   style="width:100%;" [(ngModel)]="add.Code">
+                                               <option  *ngFor="let ratecdlist of pscd_dd" [ngValue] = "ratecdlist.posting_code_description">{{ratecdlist.posting_code}}</option>
+                                            </select>
+                                          </td>
+                                          <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Code" disabled/></td>
+                                          <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Amount" /></td>
+                                          <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Qty" /></td>
+                                          <td>
+                                              <select style="width: 100%;height: 25px;"[(ngModel)]="add.Windowno">
+                                                  <option value="" hidden>select value</option>
+                                                  <option value="101">1</option>
+                                                  <option value="102">2</option>
+                                                </select>
+                                            <!-- <input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Windowno"/> -->
+                                          </td>
+                                          <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Arr_Code" /></td>                  
+                                          <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Check_No" /></td>
+                                          <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Supplement" /></td>
+                                          <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Reference" /></td>
+                                          <td style="width: 86px;"><span>
+                                            <i style="padding-left: 34px;cursor: pointer;" (click)="addRows(add)"
+                                            class="fa fa-plus-circle" aria-hidden="true"></i>
+                                         </span></td>
+              
+                                         </tr>
                                       </thead>
-                                      <tbody >
-                                          <tr>
+                                      <tbody>
+                                          <!-- <tr>
                                               <td>
                                                 <select   style="width:100%;" [(ngModel)]="add.Code">
                                                    <option  *ngFor="let ratecdlist of pscd_dd" [ngValue] = "ratecdlist.posting_code_description">{{ratecdlist.posting_code}}</option>
                                                 </select>
                                               </td>
-                                              <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Code"/></td>
+                                              <td><input style="width: 100%;height: 25px;" type="text" [(ngModel)]="add.Code" disabled/></td>
                                               <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Amount" /></td>
                                               <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Qty" /></td>
-                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Windowno" /></td>
-                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Arr_Code" /></td>
-                  
+                                              <td>
+                                                  <select style="width: 100%;height: 25px;"[(ngModel)]="add.Windowno">
+                                                      <option value="" hidden>select value</option>
+                                                      <option value="101">1</option>
+                                                      <option value="102">2</option>
+                                                    </select>
+                                              </td>
+                                              <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Arr_Code" /></td>                  
                                               <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Check_No" /></td>
                                               <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Supplement" /></td>
                                               <td><input style="width: 100%;height: 25px;"  type="text" [(ngModel)]="add.Reference" /></td>
@@ -377,14 +427,14 @@
                                                 class="fa fa-plus-circle" aria-hidden="true"></i>
                                              </span></td>
                   
-                                             </tr>
+                                             </tr> -->
                                             <tr *ngFor="let room of showdetails ; let i=index;">
                   
                                                 <td><label *ngIf="room.editFlag==false">{{room.Post_code_id}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_code_id"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_code_id" disabled></td>
 
                                                 <td><label *ngIf="room.editFlag==false">{{room.Post_des}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Post_des"></td>
+                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Post_des" disabled></td>
   
                                                 <td ><label *ngIf="room.editFlag==false">{{room.Posting_amount}}</label>
                                                 <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Posting_amount"></td>
@@ -393,7 +443,13 @@
                                                   <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Posting_quantity"></td>
                           
                                                 <td><label *ngIf="room.editFlag==false">{{room.Post_window}}</label>
-                                                  <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_window"></td>
+                                                  <select style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_window">
+                                                    <option value="" hidden>select value</option>
+                                                    <option value="101">1</option>
+                                                    <option value="102">2</option>
+                                                  </select>
+                                                  <!-- <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true" [(ngModel)]="room.Post_window"> -->
+                                                </td>
                           
                                                 <td  ><label *ngIf="room.editFlag==false">{{room.Arrangement_code}}</label>
                                                   <input type="text"  style="width: 100%;height: 25px;" *ngIf="room.editFlag==true"  [(ngModel)]="room.Arrangement_code"></td>
@@ -426,7 +482,7 @@
                   
                   </div>
                   <div class="row">
-                    <table>
+                    <table style="margin-bottom: -150px;">
                       <tr>
                         <td class="col-sm-2" style="width:20%;">
                             <label style="margin-left:10px;">Total Posting</label>
@@ -488,7 +544,7 @@
          
               <div class="modal-dialog modal-lg">
                   <div class="modal-content" style="width:inherit;height:inherit;margin: 0 auto;">
-                      <div class="modal-header">
+                      <div class="modal-header" style="margin-top: -25px;">
                           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
       
                           </button>
@@ -496,25 +552,25 @@
       
                       </div>
                       <div class="modal-body" style="margin-top: -15px;">
-                          <div class="container-fluid">
+                          <div class="container-fluid" style="margin-top: -10px;" >
                               <!-- <div class="scrollable2"> -->
-                              <div class="table-responsive" style=" height:45%;width:100%;overflow-x:auto;overflow-y:auto;">                                                             
-                                <table class="table table-bordered table-hover"  style="font-size:12px;">        
+                              <!-- <div class="table-responsive" style=" height:45%;width:100%;overflow-x:auto;overflow-y:auto;">                                                              -->
+                                <table class="table table-bordered table-hover tableBodyScroll"  style="font-size:12px;">        
                                     <thead style="background-color:#0077B5;color:white;">
                                       <tr>
-                                        <th scope="col">Action</th>
-                                        <th scope="col">Revenue Date</th>
-                                        <th scope="col">posting code</th>
-                                        <th scope="col">User</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Reason</th>
-                                        <th scope="col">Description</th>
+                                        <th>Action</th>
+                                        <th>Revenue Date</th>
+                                        <th>posting code</th>
+                                        <th>User</th>
+                                        <th>Name</th>
+                                        <th>Reason</th>
+                                        <th>Description</th>
                                       </tr>
                                     </thead>
-                                    <tbody *ngFor="let firstitem of house; let i=index"  (click)="selecthistory(firstitem,i)"  
-                                    [ngClass]="{'backGroundColor':i==selectind}">
-                                      <tr>
-                                        <th scope="row">{{firstitem?.posting_action}}</th>
+                                    <tbody>
+                                      <tr *ngFor="let firstitem of house; let i=index"  (click)="selecthistory(firstitem,i)"  
+                                      [ngClass]="{'backGroundColor':i==selectind}">
+                                        <td >{{firstitem?.posting_action}}</td>
                                         
                                         <td>{{firstitem?.revenue_date}}</td>
                                         <td>{{firstitem?.posting_date}}</td>
@@ -526,38 +582,47 @@
 
                                     </tbody>
                                   </table><br>
-                                  </div>
+                                  <!-- </div> -->
                                   </div>
                                   <!-- </div> -->
-                                  <br>
+                                  
                             <div class="row">
-                              <div class="col-md-6">
+                              <div class="col-md-6" style="margin-top: -40px;">
                                 <div class="container-fluid">
                                   <b>Original</b>
-                                  <div style="height:20%;width:107%;overflow-x:auto;overflow-y:auto;">
+                                  <div >
+                                      <div style="margin-left:80%"> 
+                                          <span>
+                                            <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
+                                            [ngClass]="{disabling:showMore2!=true}" (click)="showLessBut2()"></i>
+                                          
+                                            <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer"
+                                            [ngClass]="{disabling:showMore2!=false}" (click)="showMoreBut2()"></i>
+                                          </span>
+                                          </div>
                                   <!-- <div class="table-responsive" style="min-height:101.01%;"> -->
                                     <table class="table table-bordered table-hover"  style="font-size:12px;">
                                       <thead style="background-color:#0077B5;color:white;">
                                         <tr>
-                                          <th scope="col">Action</th>
-                                          <th scope="col">Revenue_Date</th>
-                                          <th scope="col">posting_code</th>
-                                          <th scope="col">User</th>
-                                          <th scope="col">Name</th>
-                                          <th scope="col">Reason</th>
-                                          <th scope="col">Description</th>
+                                          <th>Action</th>
+                                          <th *ngIf="showMore2!=true">Revenue_Date</th>
+                                          <th *ngIf="showMore2!=true">posting_code</th>
+                                          <th  *ngIf="showMore2!=true">User</th>
+                                          <th *ngIf="showMore2==true">Name</th>
+                                          <th *ngIf="showMore2==true">Reason</th>
+                                          <th *ngIf="showMore2==true">Description</th>
                                         </tr>
                                       </thead>
-                                      <tbody>
+                                      <tbody >
                                         <tr  *ngFor="let hisitem of hist1;">
-                                          <th scope="row">{{hisitem?.posting_action}}</th>
+                                          <td >{{hisitem?.posting_action}}</td>
                                           
-                                          <td>{{hisitem?.revenue_date}}</td>
-                                          <td>{{hisitem?.posting_date}}</td>
-                                          <td>{{hisitem?.user_role}}</td>
-                                          <td>{{hisitem?.user_name}}</td>
-                                          <td>{{hisitem?.posting_reason}}</td>
-                                          <td>{{hisitem?.posting_description}}</td>                                        
+                                          <td *ngIf="showMore2!=true">{{hisitem?.revenue_date}}</td>
+                                          <td *ngIf="showMore2!=true">{{hisitem?.posting_date}}</td>
+                                          <td *ngIf="showMore2!=true">{{hisitem?.user_role}}</td>
+                                          <td *ngIf="showMore2==true">{{hisitem?.user_name}}</td>
+                                          <td *ngIf="showMore2==true">{{hisitem?.posting_reason}}</td>
+                                          <td *ngIf="showMore2==true">{{hisitem?.posting_description}}</td>                                        
                                         </tr>
                                       
                                       </tbody>
@@ -566,33 +631,42 @@
                                     </div>
                                     </div>
                                   <!-- </div> -->
-                                  <div class="col-md-6">
+                                  <div class="col-md-6"  style="margin-top: -40px;">
                                     <div class="container-fluid">
                                       <b>Changes</b>
-                                      <div style="height:20%;width:106%;overflow-x:auto;overflow-y:auto;margin-left:-25px;">                                                                                                   
+                                      <div >
+                                          <div style="margin-left:80%"> 
+                                              <span>
+                                                <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true" style="cursor: pointer"
+                                                [ngClass]="{disabling:showMoretable!=true}" (click)="showLessButtable()"></i>
+                                              
+                                                <i class="fa fa-chevron-circle-right fa-2x" aria-hidden="true" style="cursor: pointer"
+                                                [ngClass]="{disabling:showMoretable!=false}" (click)="showMoreButtable()"></i>
+                                              </span>
+                                              </div>                                                                                                   
                                       <!-- <div class="table-responsive" style="min-height:101.01%;"> -->
                                         <table class="table table-bordered table-hover"  style="font-size:12px;">
                                           <thead style="background-color:#0077B5;color:white;">
                                             <tr>
-                                              <th scope="col">Action</th>
-                                              <th scope="col">Revenue_Date</th>
-                                              <th scope="col">posting_code</th>
-                                              <th scope="col">User</th>
-                                              <th scope="col">Name</th>
-                                              <th scope="col">Reason</th>
-                                              <th scope="col">Description</th>
+                                              <th>Action</th>
+                                              <th *ngIf="showMoretable!=true">Revenue_Date</th>
+                                              <th *ngIf="showMoretable!=true">posting_code</th>
+                                              <th *ngIf="showMoretable==true">User</th>
+                                              <th *ngIf="showMoretable==true">Name</th>
+                                              <th *ngIf="showMoretable==true">Reason</th>
+                                              <th *ngIf="showMoretable==true">Description</th>
                                             </tr>
                                           </thead>
-                                          <tbody *ngFor="let postitem of home1">
+                                          <tbody >
                                             
-                                            <tr>
-                                              <th scope="row" >{{postitem?.posting_action}} </th>                                              
-                                              <td>{{postitem?.revenue_date}}</td>
-                                              <td>{{postitem?.posting_date}}</td>
-                                              <td>{{postitem?.user_role}}</td>
-                                              <td>{{postitem?.user_name}}</td>
-                                              <td>{{postitem?.posting_reason}}</td>
-                                              <td>{{postitem?.posting_description}}</td>                                        
+                                            <tr *ngFor="let postitem of home1">
+                                              <th>{{postitem?.posting_action}} </th>                                              
+                                              <td *ngIf="showMoretable!=true">{{postitem?.revenue_date}}</td>
+                                              <td *ngIf="showMoretable!=true">{{postitem?.posting_date}}</td>
+                                              <td *ngIf="showMoretable!=true">{{postitem?.user_role}}</td>
+                                              <td *ngIf="showMoretable==true">{{postitem?.user_name}}</td>
+                                              <td *ngIf="showMoretable==true">{{postitem?.posting_reason}}</td>
+                                              <td *ngIf="showMoretable==true">{{postitem?.posting_description}}</td>                                        
                                             </tr>
                                           
                                           </tbody>
@@ -603,7 +677,7 @@
                           </div>
                           </div>
                       <!-- </div> -->
-                      <div class="modal-footer">
+                      <div class="modal-footer" style="margin-top:-40px">
                           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                           
                       </div>
@@ -672,24 +746,28 @@
                               <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
                                   <div class="row">
                                     <div class="col-md-6">
-                                  <div class="form-group">
-                                  <div class="col-sm-6">
-                                      <b>Amount</b>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text"  name="editamount" class="form-control" [(ngModel)]="amt" style="width:160px;" required>
-                                      </div>
-                                      </div>
-                           
-                  
-                                <div class="form-group">
-                                <div class="col-sm-6" style="padding-top:5px;">
-                                    <b>Quantity</b>
-                                  </div>
-                                  <div class="col-sm-6" style="padding-top:5px;">
-                                      <input type="text" class="form-control" name="quantityy" [(ngModel)]="quant" style="width:160px;" required>
-                                  </div>
-                                </div>
+                                  
+                                      <div class="col-sm-6">
+                                          <b>Amount</b>
+                                        </div>
+                                        <div class="col-sm-6"> 
+                                          <div class="form-group" [class.has-error]="edamt.dirty && !edamt.valid">
+                                            <input type="text"  name="editamount" class="form-control" [(ngModel)]="amt" pattern="^[0-9]+$" #edamt="ngModel" style="width:160px;" required>
+                                            <div *ngIf="edamt.dirty && !edamt.valid && edamt.errors.pattern " ngClass="{ 'has-error' : !edamt.valid && submitAttempt }">  </div>
+                                            <div *ngIf="edamt.dirty && !edamt.valid && edamt.errors.required " ngClass="{ 'has-error' : !edamt.valid && submitAttempt }"> </div>                                                                                                                                                                                                                                 
+                                          </div>
+                                        </div>                                            
+                                
+                                        <div class="col-sm-6" style="padding-top:5px;">
+                                            <b>Quantity</b>
+                                        </div>
+                                        <div class="col-sm-6" style="padding-top:5px;">
+                                          <div class="form-group" [class.has-error]="edquant.dirty && !edquant.valid">
+                                            <input type="text" class="form-control" name="quantityy" [(ngModel)]="quant" pattern="^[0-9]+$" #edquant="ngModel" style="width:160px;" required>
+                                            <div *ngIf="edquant.dirty && !edquant.valid && edquant.errors.pattern " ngClass="{ 'has-error' : !edquant.valid && submitAttempt }">  </div>
+                                            <div *ngIf="edquant.dirty && !edquant.valid && edquant.errors.required " ngClass="{ 'has-error' : !edquant.valid && submitAttempt }"> </div>  
+                                          </div>
+                                        </div>
                         
   
   
@@ -715,26 +793,26 @@
                       <div class="row">
                           
                           <div class="col-md-6">
-                              <div class="form-group">
-                                    <div class="col-sm-6">
-                                      <b>Cashier</b>
-                                    </div>
-                                    <div class="col-sm-6" >
-                                      <input type="text" name="editcash" class="form-control" style="width:160px;" disabled>
-                                    </div>
+                            <div class="form-group">
+                              <div class="col-sm-6">
+                                <b>Cashier</b>
                               </div>
+                              <div class="col-sm-6" >
+                                <input type="text" name="editcash" class="form-control" style="width:160px;" disabled>
+                              </div>
+                            </div>
                                 
                                     
                                        
                                           
-                                      <div class="form-group">
-                                        <div class="col-sm-6" style="padding-top:5px;">
-                                          <b>Folio.No</b>
-                                        </div>
-                                        <div class="col-sm-6" style="padding-top:5px;">
-                                          <input type="text" name="editfolio" class="form-control" style="width:160px;" disabled>
-                                        </div>
-                                  </div>
+                            <div class="form-group">
+                              <div class="col-sm-6" style="padding-top:5px;">
+                                <b>Folio.No</b>
+                              </div>
+                              <div class="col-sm-6" style="padding-top:5px;">
+                                <input type="text" name="editfolio" class="form-control" style="width:160px;" disabled>
+                              </div>
+                            </div>
   
                           
                                          
@@ -743,23 +821,25 @@
   
                           
                           <div class="col-md-6">
-                              <div class="form-group">
-                                <div class="col-md-4" style="margin-left:5%;">
-                                  <label>Arr.code</label>
-                                </div> 
+                              
+                            <div class="col-md-4" style="margin-left:5%;">
+                              <label>Arr.code</label>
+                            </div> 
                          
-                                <div class="col-md-6">
-                                  <select style="width:70%;height:100%;" name="arrcode" class="form-control" [(ngModel)]="ed_arcode" required>
-                                      <option value="" hidden>select value</option>
-                                      <option value="101">1</option>
-                                      <option value="102">2</option>
-                                      <option value="103">3</option>
-                                      <option value="104">4</option>
-                                    </select>
-                                </div>
+                            <div class="col-md-6">
+                              <div class="form-group" [class.has-error]="edarval.touched && !edarval.valid"> 
+                                <select style="width:70%;height:100%;" name="arrcode" class="form-control" #edarval="ngModel" [(ngModel)]="ed_arcode" required>
+                                  <option value="" hidden>select value</option>
+                                  <option value="101">1</option>
+                                  <option value="102">2</option>
+                                  <option value="103">3</option>
+                                  <option value="104">4</option>
+                                </select>
+                                <div *ngIf="edarval.touched && !edarval.valid && edarval.errors.required" ngClass="{ 'has-error' : !edarval.valid && submitAttempt }"> </div>
                               </div>
                             </div>
-                           </div>
+                          </div>
+                        </div>
                       <hr style="margin-top:5px !important;margin-bottom: 5px !important;">
   
                       <div class="row">
@@ -828,58 +908,70 @@
     </div>
   </div>
     
-       <div class="row" style="padding-top:5px;">
-          <div class="col-sm-6">
-        <div class="form-group">
-          <div class="col-sm-6">
-              <b>Supplement</b>
-            </div>
-            <div class="col-sm-6">
-                <input type="text" name="editsupple" class="form-control" style="width:160px;" [(ngModel)]="supple" required> 
-            </div>
+  <div class="row" style="padding-top:5px;">
+    <div class="col-sm-6">  
+      <div class="col-sm-6">
+        <b>Supplement</b>
       </div>
-      </div>
-      </div>
-  
-      <div class="row" style="padding-top:5px;">
-          <div class="col-sm-6">
-        <div class="form-group">
-          <div class="col-sm-6">
-              <b>Reference</b>
-            </div>
-            <div class="col-sm-6">
-                <input type="text" name="editreference" class="form-control" style="width:160px;"  [(ngModel)]="ref" required>
-              </div>
-      </div></div>
-      <div class="form-group">
-          <div class="col-md-3">
-            <label style="margin-left: 25px;">Covers</label>
-          </div> 
-   
-          <div class="col-md-6">
-              <input type="text" name="editcovers" class="form-control" style="width: 40%;margin-left: 124px;margin-top: -30px;">
+      <div class="col-sm-6">
+        <div class="form-group" [class.has-error]="edsupval.dirty && !edsupval.valid">
+          <input type="text" name="editsupple" class="form-control" style="width:160px;"  pattern="[a-zA-Z][a-zA-Z ]*"  #edsupval="ngModel" [(ngModel)]="supple" required> 
+          <div *ngIf="edquant.dirty && !edquant.valid && edquant.errors.required " ngClass="{ 'has-error' : !edquant.valid && submitAttempt }"> </div>  
+          <div *ngIf="edsupval.dirty && !edsupval.valid && edsupval.errors.pattern " ngClass="{ 'has-error' : !edsupval.valid && submitAttempt }">                                                                                                            
           </div>
         </div>
-      
       </div>
+    </div>
+  </div>
+
+  <div class="row" style="padding-top:5px;">
+    <div class="col-sm-6">     
+      <div class="col-sm-6">
+        <b>Reference</b>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group" [class.has-error]="edrefval.dirty && !edrefval.valid">
+          <input type="text" name="editreference" class="form-control" style="width:160px;"  [(ngModel)]="ref" pattern="[a-zA-Z][a-zA-Z ]*"  #edrefval="ngModel" required>
+          <div *ngIf="edquant.dirty && !edquant.valid && edquant.errors.required " ngClass="{ 'has-error' : !edquant.valid && submitAttempt }"> </div>            
+          <div *ngIf="edrefval.dirty && !edrefval.valid && edrefval.errors.pattern " ngClass="{ 'has-error' : !edrefval.valid && submitAttempt }">  
+          </div>                                                                                                                    
+        </div>
+      </div>
+    </div>
+  <div class="form-group">
+    <div class="col-md-3">
+      <label style="margin-left: 25px;">Covers</label>
+    </div> 
+
+    <div class="col-md-6">
+      <input type="text" name="editcovers" class="form-control" style="width: 40%;margin-left: 124px;margin-top: -30px;">
+    </div>
+  </div>
+  
+</div>
   
   
   
   <div class="row" style="padding-top:5px;">
       <div class="col-md-6">
+          
+        <div class="col-sm-6">
+          <b>Cheque No.</b>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group" [class.has-error]="edchqval.dirty && !edchqval.valid">
+            <input type="text"name="editcheque" class="form-control" [(ngModel)]="cqno" pattern="^[0-9]+$"  #edchqval="ngModel" style="width:160px;" required> 
+            <div *ngIf="edquant.dirty && !edquant.valid && edquant.errors.required " ngClass="{ 'has-error' : !edquant.valid && submitAttempt }"> </div>  
+            <div *ngIf="edchqval.dirty && !edchqval.valid && edchqval.errors.pattern " ngClass="{ 'has-error' : !edchqval.valid && submitAttempt }"> 
+            </div>             
+          </div>
           <div class="form-group">
-          <div class="col-sm-6">
-              <b>Cheque No.</b>
+            <div class="col-md-6" style="margin-left: 421px;margin-top: -33px;">
+              <button type="button" class="btn btn-success" style="margin-left: -152px;" (click)="editbilling(amt,quan,ed_arcode,supple,ref,cqno)" data-toggle="modal" data-target="#afteredit" data-dismiss="modal" [disabled]="!editform.form.valid">OK</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
-            <div class="col-sm-6">
-                <input type="text"name="editcheque" class="form-control" [(ngModel)]="cqno" style="width:160px;" required> 
-            </div>
-            <div class="form-group">
-                <div class="col-md-6" style="margin-left: 421px;margin-top: -33px;">
-            <button type="button" class="btn btn-success" (click)="editbilling(amt,quan,ed_arcode,supple,ref,cqno)" data-toggle="modal" data-target="#afteredit" data-dismiss="modal" [disabled]="!editform.form.valid">OK</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-          </div></div>
-            </div>
+          </div>
+        </div>
                      
                      
       </div>
@@ -887,14 +979,14 @@
      
       <div class="col-md-6">
 
-        </div>
       </div>
+  </div>
                       
-      <div class="row">
-        <div class="col-md-6">
-          
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-md-6">
+      
+    </div>
+  </div>
 
     
   </div>

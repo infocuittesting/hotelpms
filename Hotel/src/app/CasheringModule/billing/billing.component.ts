@@ -76,10 +76,47 @@ public company;
     // { Date: '18-04-2018', Code: 4444,Description:'parking',Amount:400 },
     // { Date: '19-04-2018', Code: 4321,Description:'hotel',Amount:100 },
   ];
-  
+  showMore=false;
+  showMore1=false;
+  showMore2=false;
+  showMoretable=false;
    constructor(private cashbillservice: BillingService, public session:SessionStorageService,private route:Router) { }
   public listmark:any=[];
 
+    //show more
+    showMoreBut(){
+      this.showMore=true;
+    }
+    //show less
+    showLessBut(){
+      this.showMore=false;
+    }
+
+        //show more
+        showMoreBut1(){
+          this.showMore1=true;
+        }
+        //show less
+        showLessBut1(){
+          this.showMore1=false;
+        }
+        
+    //show more
+    showMoreBut2(){
+      this.showMore2=true;
+    }
+    //show less
+    showLessBut2(){
+      this.showMore2=false;
+    }
+        //show more
+        showMoreButtable(){
+          this.showMoretable=true;
+        }
+        //show less
+        showLessButtable(){
+          this.showMoretable=false;
+        }
   // service call for editposting payment 
   editbilling(amt,quan,ed_arcode,supple,ref,ed_cqno)
   {
@@ -273,7 +310,8 @@ saveroomDetails(postdetails)
        this.navigat = resp.ReturnValue;
        this.navtbl=resp.ReturnValue1;
        this.windowbal=resp.ReturnValue2;
-      
+       console.log("return  value 111111111111111111")
+       console.log(this.navtbl)
        //seperating values for window1 and window2 
        this.vaal1=[];
        this.vaal2=[];
@@ -288,37 +326,50 @@ saveroomDetails(postdetails)
  
          }
        }
-       
+       console.log("***************************after service hits******************************");
+       console.log("vaal1",this.vaal1);
+       console.log("vaal2",this.vaal2);
+          
      });
      
 }
 
 // delete buttons
-deleterows(index){
+deleterows(index,room){
   this.showdetails.splice(index,1);
   this.postdetails.splice(index,1);
-
+  this.totalPos  -= 1;
+  this.totalamt -= Number(room.Amount)*Number(room.Qty);
 }
 
 // edit rows
 editrows(index,room){
   console.log("showpostroom",room)
   this.showdetails[index].editFlag=true;
+  this.totalPos  -= 1;
+  this.totalamt -= Number(room.Amount)*Number(room.Qty);
   // this.postdetails[index].editFlag=true;
-  this.postdetails.splice(index,1);
+  // this.postdetails.splice(index,1);
 }
 del_key:any;
 saveButton(index,room){
-  console.log("room details savebutton",room)
+  console.log("room details savebutton",room,typeof(room))
 
-  this.del_key = "editFlag"
-  delete this.room[this.del_key];
+  // this.del_key = "editFlag"
+  // delete room.editFlag;
   console.log("room details savebutton after delete flag",room)
+  this.totalPos += 1;
+  this.totalamt += Number(room.Amount)*Number(room.Qty);
 
-  this.postdetails.push(room)
+  this.postdetails[index]['Posting_amount'] = room.Posting_amount;
+  this.postdetails[index]['Posting_quantity'] = room.Posting_quantity;
+  this.postdetails[index]['Post_window'] = room.Post_window;
+  this.postdetails[index]['Arrangement_code'] = room.Arrangement_code;
+  this.postdetails[index]['Checkno'] = room.Checkno;
+  this.postdetails[index]['Posting_supplement'] = room.Posting_supplement;
+  this.postdetails[index]['Posting_reference'] = room.Posting_reference;
   this.showdetails[index].editFlag=false;
   this.postdetails[index].editFlag=false;
-  
   
 }
 //close button in posting payment 
