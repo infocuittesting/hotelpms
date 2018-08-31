@@ -12,11 +12,14 @@
                                 <b>Rate code</b>
                                 </div>
                                 <div class="col-sm-3">
-                                <select name="Ratecode" class="form-control input-sm" required style="width:150px;" [(ngModel)]="editblock.ratecodedrop" [disabled]=ratecodedis>
+                                <select name="Ratecode" class="form-control input-sm" required style="width:150px;" [(ngModel)]="editblock.ratecodedrop" >
                                         <option value="" hidden></option>
 -                                       <option *ngFor="let ratecdlist of price" [ngValue] = "ratecdlist.ratecode_id" >{{ratecdlist.rate_code}}</option>
                                 </select>
                                 </div>
+                                <div class="col-sm-3" style="margin-left: -90px">
+                                    {{editblock.ratecodedrop}} 
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -634,15 +637,11 @@
               <button type="button" class="btn btn-Info" style="width:110px;" data-toggle="modal" routerLink="/ratetier"><b>Rate Tier</b></button>
           </div>
           <div class="col-md-2">
-<<<<<<< HEAD
               <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" (click)="repeating(editratedetail)" ><b>Repeat</b></button>
-=======
-              <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" ><b>Repeat</b></button>
->>>>>>> c80fcd14d802c5a9da44975c3aa81897cb06b655
           </div>
-          <div class="col-md-2">
+          <!-- <div class="col-md-2">
                 <button type="button" class="btn btn-Primary" style="width:110px;" data-toggle="modal" (click)="repeatingpaste()" ><b>paste</b></button>
-            </div>
+            </div> -->
           <div class="col-md-2">
               <button type="button" class="btn btn-danger" style="width:110px;" data-toggle="modal" data-toggle="modal" data-target="#afteratedetdel" (click)="ratdetfun()"><b>Delete</b></button>
           </div>
