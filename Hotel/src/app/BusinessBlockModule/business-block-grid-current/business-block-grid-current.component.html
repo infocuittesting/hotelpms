@@ -195,13 +195,15 @@
                               <legend style="margin-left:0px;background-color: #0077B5;color:white" >Room Type</legend>
                               <div class="panel-body">
                                   <div class="col-md-5">
-                                    <div class="form-group">
+                                    <div class="form-group"  [class.has-error]="name.touched && name.invalid" >
                                       <label for="RoomType">RoomType</label>
-                                      <select class="form-control input-sm" name="Roomtype" [(ngModel)]="range.roomtype">
+                                      <select class="form-control  input-sm" name="Roomtype" [(ngModel)]="range.roomtype" #name="ngModel" required>
                                           <option *ngFor="let option of roomtype" 
                                                       [ngValue]="option"> 
                                                       {{option.type}}
                                           </option>
+                                          <div *ngIf="name.touched && !name.valid && name.errors?.required " ngClass="{ 'has-error' : !name.valid && submitAttempt }">
+                                          </div>
                                           </select> 
                                     </div>
                                

@@ -19,18 +19,20 @@ export class BusinessBlockSearchComponent implements OnInit {
   public someData=[];
   public mainratecode=[];
   public showMore;
-
+ 
   
   public =[];
   blc = true;
   grop = true;
   newblockbut=false;
   public querylist=[];
-  constructor(private blocksearch:BusinessBlockSearchService,private route:Router,public session:SessionStorageService) { }
-  onSelcat(val){
-    console.log(val);
-    this.tableschanges = this.someData.filter(x => x.status == val)
-  }
+  constructor(private blocksearch:BusinessBlockSearchService,private route:Router,public session:SessionStorageService) {this.tableschanges=this.someData }
+  // onSelcat(val){
+  //   console.log(val);
+  //   this.tableschanges = this.someData.filter(x => x.status == val)
+  // }
+
+ 
 
 
   ngOnInit() {
@@ -52,14 +54,25 @@ export class BusinessBlockSearchComponent implements OnInit {
     //  console.log(this.roomtype);
     });
 
-  }//show more
+  }
+  
+  
+  onSel(val){
+    console.log(val);
+    this.tableschanges = this.someData.filter(x => x.status == val)
+  }
+  //show more
   showMoreBut(){
     this.showMore=true;
   }
   //show less
   showLessBut(){
     this.showMore=false;
-  }
+  } 
+  
+
+  // select unselect table
+ 
 
 
   // filter the from to to
@@ -87,8 +100,11 @@ public startdate;
 public enddate;
 public nights;
 selectindex=null;
+flag=false;
 
   selectMembersEdit(details,index){
+if(this.flag==false){
+  this.flag=true;
 
     
     this.selectindex=index;
@@ -103,12 +119,13 @@ selectindex=null;
       this.grop=false;
       this.newblockbut=true;
     }
-    else{
-      this.blockopt=true;
-      this.blc=true;
-      this.grop=true;
-      this.newblockbut=false;
-    }
+  }else{
+    this.flag=false;
+    this.blockopt=true;
+    this.blc=true;
+    this.grop=true;
+    this.newblockbut=false;
+  }
     // if(this.Blockid==details.block_id){
     //   this.new=true;
     //   this.profile=true;
