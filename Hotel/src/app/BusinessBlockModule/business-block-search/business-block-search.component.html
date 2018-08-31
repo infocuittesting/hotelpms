@@ -28,11 +28,7 @@
               <div class ="col-md-1"><label for="name" style="margin-top: 26px;margin-left: 20px;">Status</label></div>
               <div class ="col-md-3">
              <div class="form-group" style="width:82%;">
-<<<<<<< HEAD
           <select class="form-control input-sm" name="Status"id="Status" style="width:222px;margin-top: 23px;" [(ngModel)]="status" (ngModelChange)="onSel(status)" >
-=======
-          <select class="form-control input-sm" name="Status" id="Status" style="width:222px;margin-top: 23px;" [(ngModel)]="status" (ngModelChange)="onSelcat(status)" #Status="ngModel" required>
->>>>>>> ae262f335780d56398133f9f0726fb277a443c2c
             <option *ngFor="let option of roomtype" 
              [ngValue]="option.status"> 
              {{option.status}}</option>
