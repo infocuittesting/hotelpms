@@ -49,4 +49,22 @@ table{
 	.backgroundcolor{
 		background-color: lightgrey;
 	}
+	tbody {
+		display:block;
+		height:200px;
+		overflow:auto;
+	}
+	thead, tbody tr {
+		display:table;
+		width:100%;
+		table-layout:fixed;
+	}
+	thead {
+		width: calc( 100% - 1em )
+	}
+	  
+		.backgroundcolor{
+			background-color: lightgrey;
+		}
+	  
   

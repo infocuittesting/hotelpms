@@ -3,6 +3,7 @@ import { Route } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from "@angular/router";
 import { ProfileService } from "./profile.service";
+import { SessionStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-profile',
@@ -21,31 +22,66 @@ export class ProfileComponent implements OnInit {
   public type=[];
   public cury=[];
   public itl=[];
+  public navtag;
+  public checkpftype; 
 
 
-  constructor(private ProfileService:ProfileService,private route:Router) { }
-public user={};
- 
+  constructor(private ProfileService:ProfileService,private route:Router,public session:SessionStorageService) { }
+  public user={};
   user33={};
   public profile;
-  submit(inputt):void {
-    console.log(inputt);
-      this.ProfileService.postandgetdata (inputt)
+  submit(input1) {
+      console.log("input in submit function",input1)
+      this.ProfileService.postandgetdata (input1)
       .subscribe(( user333:any)=> {
         this.user33 = user333;
         this.profile=user333.ReturnCode;
+        this.checkpftype = user333.profiletype;
+        this.session.store("id",user333.profileid);
+        console.log("id valuesssssssssssssssssss",user333.profileid);
         if(this.profile=="RIS"){
-          this.profile="The Company Profile is Created";
+           this.profile="The Company Profile is successfully"+user333.profileid;
+        
+        console.log("create company success",this.checkpftype,typeof(this.checkpftype))
+        if(this.checkpftype == "Travel Agent"){
+          this.session.store("agentval",input1.PF_Account)
+          console.log("travel agentttttttttttttttttt"+input1.PF_Account)
         }
-      
-    //   console.log("user33  "+ user333);   
-      //  alert("user33  "+ user333);    
-      },
-                 //     error => this.errorMessage = <any>error
-                     // function(response) { console.log("Success Response" + response)}
-                      );  
-                      this.route.navigate(['profile/']);
+        else if(this.checkpftype == "Source"){
+            this.session.store("sourceval",input1.PF_Account)
+            console.log("sourceeeeeeeeeeeeeeeeeeee"+input1.PF_Account)
+        }
+        else if(this.checkpftype == "Company"){
+            this.session.store("pf_accounts",input1.PF_Account);
+            console.log("comapnyyyyyyyyyyyyyyyyyyyyy"+input1.PF_Account)
+        }
+          
+        else if(this.checkpftype == "Contact"){
+            this.session.store("Contactval",input1.PF_Account);
+        }
+        else if(this.checkpftype == "Group"){
+            this.session.store("Groupval",input1.PF_Account);
+        }
+        else{
+            console.log("work agala")
+        }  
+        }
+        else{
+          console.log("else else else")
+        }
+      });  
+                    
      }
+
+     navigatepages(){
+      this.navtag = this.session.retrieve("navigate");
+      if(this.navtag == "Rev"){
+        this.route.navigate(['reservation/']);
+      }
+      else if(this.navtag == "Block"){
+        this.route.navigate(['bcreate/']);
+      }
+    }
 
 
      servicestatus=[];
@@ -71,10 +107,12 @@ public user={};
  });
 }
 
-
+cleardata(){
+  this.user=' ';
+}
 ngOnInit()
 {
-
+  this.navtag= this.session.retrieve("navigate");
   this.ProfileService.countrydropdown()
   .subscribe((resp: any) => {
    this.country1=resp.ReturnValue;

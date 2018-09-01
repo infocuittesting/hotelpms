@@ -172,10 +172,12 @@
 
 <div class="row" style="width: 99%">
   <div class="col-md-2"></div>
-  <div class="col-md-10">
+  <div class="col-md-10" style="margin-left: 18%;">
 <div class="container-fluid" style="padding-top:50px;">
-<div class="jumbotron jumbotron-fluid" style="padding-top:20px;">
-<div class="row">
+<div  style="padding-top:20px;">
+<div class="panel panel-default" style="margin-top: -58px;">
+  <div class="panel body" style="max-height: 98px;">
+  <div class="row">
 <div class="col-lg-6">
 <b><u>Room Status</u></b>
 <div class="row" id="div1">
@@ -204,25 +206,20 @@
 </div><br>
 
 
-
-<div class="row">
-<div class="col-lg-8"></div>
-
-<div class="col-lg-2">
-<button type="button" class="btn btn-success" style="width:100%;" (click)="selectandClearAll('sel')"><b>Select All</b></button>
-</div>
-
-<div class="col-lg-2">
-<button type="button" class="btn btn-danger" style="width:100%;" (click)="selectandClearAll('clr')"><b>Clear All</b></button>
-</div>
-
-<!-- <div class="col-lg-2"></div> -->
-
-
-</div>
-</div>
-
-</div>
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-2"></div>
+        <div class="col-md-2">
+        <button type="button" class="btn btn-success" style="width:100%;margin-top: -94px;" (click)="selectandClearAll('sel')"><b>Select All</b></button>
+        </div>
+        <div class="col-md-2">
+        <button type="button" class="btn btn-danger" style="width:100%;margin-top: -94px;" (click)="selectandClearAll('clr')"><b>Clear All</b></button>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
 
 
@@ -233,7 +230,7 @@
 <table class="table table-bordered table-responsive table-hover">
 <thead style="background-color:#0077B5;color:white;">
 <tr>
-  <th>X</th>
+  <th style="width:30px">X</th>
   <th>Room</th>
   <th>Room Type</th>
   <th>Room Status</th>

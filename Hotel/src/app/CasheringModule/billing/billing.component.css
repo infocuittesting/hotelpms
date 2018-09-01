@@ -55,3 +55,30 @@
     overflow-y: auto;
    } */
    
+   .tableBodyScroll tbody {
+    display:block;
+    max-height:250px;
+    overflow-y:scroll;
+    table-layout:fixed;
+    }
+    .tableBodyScroll thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+    }
+
+    
+.fixtab,.fixtab1, tbody {
+    display:block;
+    height:200px;
+    overflow:auto;
+}
+.fixtab,.fixtab1, thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+.fixtab thead {
+    width: calc( 100% - 1em )
+}
+

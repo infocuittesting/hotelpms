@@ -26,7 +26,8 @@ public comm1=[];
 public comm2=[];
 public comm3=[];
 public listtype=[];
-
+public navtag;
+public checkpftype;
 
   constructor(private IndividualService:IndividualService,private route:Router,public session:SessionStorageService) { }
 public user={};
@@ -48,6 +49,25 @@ public user={};
 
           // this.value = JSON.stringify(this.value);
           // sessionStorage.setItem(key,inputt);
+          // this.checkpftype = inputt.PF_Type;
+          // if(this.checkpftype == "Travel Agent"){
+          //   this.session.store("agentval",inputt.PF_Type)
+          //   console.log("travel agentttttttttttttttttt"+inputt.PF_Type)
+          // }
+          // else if(this.checkpftype == "Source"){
+          //   this.session.store("sourceval",inputt.PF_Type)
+          // }
+          // else if(this.checkpftype == "Company"){
+          //   this.session.store("pf_accounts",inputt.PF_Type);
+          //   console.log("comapnyyyyyyyyyyyyyyyyyyyyy"+inputt.PF_Type)
+          // }
+          
+          // else if(this.checkpftype == "Contact"){
+          //   this.session.store("Contactval",inputt.PF_Type);
+          // }
+          // else if(this.checkpftype == "Group"){
+          //   this.session.store("Groupval",inputt.PF_Type);
+          // }
           this.session.store("pf_fname",inputt.PF_Firstname);
           this.session.store("pf_lastname",inputt.PF_Lastname);
           this.session.store("pf_language",inputt.PF_Language);
@@ -55,18 +75,21 @@ public user={};
           this.session.store("pf_mobileno",inputt.PF_Mobileno.toString());
           this.session.store("pf_individual_country",inputt.PF_Individual_Country);
           this.session.store("pf_individual_vip",inputt.PF_Individual_VIP);
-      
+          // this.navigatepages();
         }
-    //   console.log("user33  "+ user333);   
-      //  alert("user33  "+ user333);    
-      
-           },
-                 //     error => this.errorMessage = <any>error
-                     // function(response) { console.log("Success Response" + response)}
-                      );  
-                      // this.route.navigate(['reservation/']);
+      });  
      }
 
+
+    //  navigatepages(){
+    //   this.navtag = this.session.retrieve("navigate");
+    //   if(this.navtag == "Rev"){
+    //     this.route.navigate(['reservation/']);
+    //   }
+    //   else if(this.navtag == "Block"){
+    //     this.route.navigate(['bcreate/']);
+    //   }
+    // }
 
 
      servicestatus=[];
@@ -96,6 +119,8 @@ public user={};
 
 ngOnInit()
 {
+  this.navtag= this.session.retrieve("navigate");
+  console.log("########################"+this.navtag);
   //dropdown 
   this.IndividualService.countrydropdown()
   .subscribe((resp: any) => {

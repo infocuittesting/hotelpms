@@ -6,7 +6,7 @@ table{
 
    .tableBodyScroll tbody {
     display:block;
-    max-height:250px;
+    max-height:240px;
     overflow-y:scroll;
     table-layout:fixed;
     }

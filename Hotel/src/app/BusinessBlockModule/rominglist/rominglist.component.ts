@@ -61,6 +61,8 @@ public resgroup;
 public l:number;
 public j:number;
 public k:number;
+public edit_key;
+public res_details=[];
 size(roomtype){
   console.log("selected room type",roomtype)
   if (this.room_type_count[0] == roomtype){
@@ -115,9 +117,6 @@ UpdateRoomingList(){
 addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid)
 {
   if( roomtype!=null)
-  // for(let i=1; i<=total_count; i++){
-  //   console.log("total conunt",total_count)
-  //   console.log("rooom typesss",roomtype)
   {
  
 
@@ -125,7 +124,7 @@ addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid
         // "business_id":this.session.retrieve("business_id")     
           "res_arrival":this.session.retrieve("arrive"),
           "res_depature":this.session.retrieve("depature"),
-          "res_nights":this.session.retrieve("nightss"),
+          "res_nights":this.session.retrieve("nightss").toString(),
           "res_adults":adult,
           "res_child":child,
           "res_number_of_rooms":numberofrooms,
@@ -139,16 +138,16 @@ addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid
         // "business_id":this.session.retrieve("business_id")     
           "res_arrival":this.session.retrieve("arrive"),
           "res_depature":this.session.retrieve("depature"),
-          "res_nights":this.session.retrieve("nightss"),
-          "res_adults":adult,
-          "res_child":child,
+          "res_nights":this.session.retrieve("nightss").toString(),
+          "res_adults":adult.toString(),
+          "res_child":child.toString(),
           "res_number_of_rooms":numberofrooms,
           "res_room_type":roomtype,
           "res_block_code":this.session.retrieve("blockid"),
           "pf_firstname":Names,
           
       });  
-    
+     console.log("without edit flag",this.savedetails1)
       console.log("retrieve id",this.session.retrieve("blockid"));  
       // this.add={};
       this.Arrival="";
@@ -167,9 +166,33 @@ addRows(Names,Arrival,Depature,nights,roomtype,adult,child,numberofrooms,blockid
   }
 }
 
+
+editrows(index,rooms){
+  this.savedetails[index].editFlag=true;
+  // this.show_room_type.push(rooms.res_room_type)
+
+    console.log("edit rows ..............",this.savedetails1)
+
+  // this.savedetails.splice(this.savedetails.indexOf(msg), 1);
+  // console.log("edit rows working fine...........................")
+}
+
+saveRows(index,rooms){
+  console.log("push code",this.savedetails1)
+  this.savedetails1[index]['pf_firstname'] = rooms.pf_firstname
+  this.savedetails1[index]['res_adults'] = rooms.res_adults
+  this.savedetails1[index]['res_child'] = rooms.res_child
+  this.savedetails1[index]['res_room_type'] = rooms.res_room_type
+  // this.savedetails1.push(rooms)
+  console.log("remove rooms",typeof(this.savedetails1),this.savedetails1)
+  
+  this.savedetails[index].editFlag=false;
+  
+}
 // CREATE GROUP RESERVATION
 public groupresv;
 CreateGroupReservation(){
+
   console.log("enter to component",this.savedetails1)
   this.roomlistservice.GroupReservation(this.savedetails1)
   .subscribe((resp: any) => {
