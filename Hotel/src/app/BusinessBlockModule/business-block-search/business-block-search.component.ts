@@ -19,6 +19,8 @@ export class BusinessBlockSearchComponent implements OnInit {
   public someData=[];
   public mainratecode=[];
   public showMore;
+  public ClearAll=[];
+  public filterdata;
  
   
   public =[];
@@ -60,6 +62,7 @@ export class BusinessBlockSearchComponent implements OnInit {
   onSel(val){
     console.log(val);
     this.tableschanges = this.someData.filter(x => x.status == val)
+    this.tableschanges=this.filterdata.filter(x => x.status == val)
   }
   //show more
   showMoreBut(){
@@ -69,6 +72,14 @@ export class BusinessBlockSearchComponent implements OnInit {
   showLessBut(){
     this.showMore=false;
   } 
+  cleartab(){
+    this. blocksearch.bsearchtable()
+    .subscribe((resp: any) => {
+      this.tableschanges=resp.ReturnValue;
+      this.someData=resp.ReturnValue;
+    });
+
+  }
   
 
   // select unselect table
@@ -84,6 +95,7 @@ export class BusinessBlockSearchComponent implements OnInit {
         );
           console.log(selectedMembers);
           this.tableschanges = selectedMembers;
+          this.filterdata=selectedMembers;
     }else {
       this.tableschanges = this.tableschanges;
     }
